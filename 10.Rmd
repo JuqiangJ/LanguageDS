@@ -13,7 +13,7 @@
 ```{r message=FALSE, warning=FALSE }
 library(lme4)
 library(lsmeans)
-setwd("~/Nutstore Files/310_Tutorial/Language data science")
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 
 library(tidyverse)
 

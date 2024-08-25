@@ -52,11 +52,13 @@ output:
 
 ```{r message=FALSE}
 library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
+
 ```
 
 ```{r message=FALSE}
 
-setwd("~/Nutstore Files/310_Tutorial/Language data science")
+
 
 
 # install.packages('caTools')

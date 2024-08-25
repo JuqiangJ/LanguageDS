@@ -6,7 +6,7 @@
 
 ```{r message=FALSE, warning=FALSE }
 
-setwd("~/Nutstore Files/310_Tutorial/Language data science")
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 #install.packages("plotfunctions")
 library(tidyverse)
 ## 构建模型

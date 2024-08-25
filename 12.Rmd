@@ -6,7 +6,7 @@
 library(tidyverse)
 # install.packages('e1071')
 library(e1071)
-setwd("~/Nutstore Files/310_Tutorial/Language data science")
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 
 library(cowplot)
 ```

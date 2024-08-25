@@ -11,11 +11,12 @@
 ## 数据导入
 ```{r message=FALSE}
 library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 library(quanteda)
 #install.packages("readtext")
 require(readtext)
 
-detectives.raw <- readtext("~/Nutstore Files/310_Tutorial/Language data science/data/ch6/detectives/*txt")
+detectives.raw <- readtext("data/ch6/detectives/*txt")
 
 corps.detectives = corpus(detectives.raw)
 

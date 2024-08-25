@@ -1,0 +1,98 @@
+{
+  "name": "AmE_Consonants",
+  "UUID": "6280f273-9c1b-4fae-ae01-99413dda6fb8",
+  "mediafileExtension": "wav",
+  "ssffTrackDefinitions": [],
+  "levelDefinitions": [
+    {
+      "name": "token",
+      "type": "SEGMENT",
+      "attributeDefinitions": [
+        {
+          "name": "token",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "word",
+      "type": "SEGMENT",
+      "attributeDefinitions": [
+        {
+          "name": "word",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "segment",
+      "type": "SEGMENT",
+      "attributeDefinitions": [
+        {
+          "name": "segment",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "closure",
+      "type": "SEGMENT",
+      "attributeDefinitions": [
+        {
+          "name": "closure",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "burst",
+      "type": "SEGMENT",
+      "attributeDefinitions": [
+        {
+          "name": "burst",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "aspiration",
+      "type": "SEGMENT",
+      "attributeDefinitions": [
+        {
+          "name": "aspiration",
+          "type": "STRING"
+        }
+      ]
+    }
+  ],
+  "linkDefinitions": [],
+  "EMUwebAppConfig": {
+    "perspectives": [
+      {
+        "name": "default",
+        "signalCanvases": {
+          "order": ["OSCI", "SPEC"],
+          "assign": [],
+          "contourLims": []
+        },
+        "levelCanvases": {
+          "order": [
+            "token",
+            "word",
+            "segment",
+            "closure",
+            "burst",
+            "aspiration"
+          ]
+        },
+        "twoDimCanvases": {
+          "order": []
+        }
+      }
+    ],
+    "activeButtons": {
+      "saveBundle": true,
+      "showHierarchy": true
+    }
+  }
+}

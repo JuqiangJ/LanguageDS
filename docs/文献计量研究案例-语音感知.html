@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 文献计量研究案例-语音感知 | 语言数据科学教程</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 文献计量研究案例-语音感知 | 语言数据科学教程" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 文献计量研究案例-语音感知 | 语言数据科学教程" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="陈居强" />
+
+
+<meta name="date" content="2024-08-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="机器学习案例-预测声调学习难点.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Language Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 第一章 数据科学简介</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#数据科学发展简史"><i class="fa fa-check"></i><b>1.1</b> 数据科学发展简史</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#数据科学家"><i class="fa fa-check"></i><b>1.2</b> 数据科学家</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#数据科学工作流程"><i class="fa fa-check"></i><b>1.3</b> 数据科学工作流程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html"><i class="fa fa-check"></i><b>2</b> 第二章 R语言简介</a><ul>
+<li class="chapter" data-level="2.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言发展简史"><i class="fa fa-check"></i><b>2.1</b> R语言发展简史</a></li>
+<li class="chapter" data-level="2.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#rr-studior软件包的安装简介"><i class="fa fa-check"></i><b>2.2</b> R、R-Studio、R软件包的安装简介</a></li>
+<li class="chapter" data-level="2.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言的数据结构"><i class="fa fa-check"></i><b>2.3</b> R语言的数据结构</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#向量vector"><i class="fa fa-check"></i><b>2.3.1</b> 向量（vector）</a></li>
+<li class="chapter" data-level="2.3.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#列表list"><i class="fa fa-check"></i><b>2.3.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="2.3.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#矩阵matrix"><i class="fa fa-check"></i><b>2.3.3</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="2.3.4" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数据框data-frame"><i class="fa fa-check"></i><b>2.3.4</b> 数据框（data frame）</a></li>
+<li class="chapter" data-level="2.3.5" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数组array"><i class="fa fa-check"></i><b>2.3.5</b> 数组（array）</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html"><i class="fa fa-check"></i><b>3</b> 第三章 数据整理</a><ul>
+<li class="chapter" data-level="3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据与变量"><i class="fa fa-check"></i><b>3.1</b> 数据与变量</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#结构型数据和非结构型数据"><i class="fa fa-check"></i><b>3.1.1</b> 结构型数据和非结构型数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#质性数据和量化数据"><i class="fa fa-check"></i><b>3.1.2</b> 质性数据和量化数据</a></li>
+<li class="chapter" data-level="3.1.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量"><i class="fa fa-check"></i><b>3.1.3</b> 变量</a></li>
+<li class="chapter" data-level="3.1.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#类别变量"><i class="fa fa-check"></i><b>3.1.4</b> 类别变量</a></li>
+<li class="chapter" data-level="3.1.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数值型变量"><i class="fa fa-check"></i><b>3.1.5</b> 数值型变量</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据清洁"><i class="fa fa-check"></i><b>3.2</b> 数据清洁</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-处理异常值"><i class="fa fa-check"></i><b>3.2.1</b> 任务-处理异常值</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量筛选"><i class="fa fa-check"></i><b>3.3</b> 变量筛选</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-变量筛选"><i class="fa fa-check"></i><b>3.3.1</b> 任务-变量筛选</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据塑形"><i class="fa fa-check"></i><b>3.4</b> 数据塑形</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据塑形"><i class="fa fa-check"></i><b>3.4.1</b> 任务-数据塑形</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据整合"><i class="fa fa-check"></i><b>3.5</b> 数据整合</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据整合"><i class="fa fa-check"></i><b>3.5.1</b> 任务-数据整合</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html"><i class="fa fa-check"></i><b>4</b> 第四章 探索性数据分析</a><ul>
+<li class="chapter" data-level="4.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据转换"><i class="fa fa-check"></i><b>4.1</b> 数据转换</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-数据转化"><i class="fa fa-check"></i><b>4.1.1</b> 任务-数据转化</a></li>
+<li class="chapter" data-level="4.1.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-描述性统计"><i class="fa fa-check"></i><b>4.1.2</b> 任务-描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据可视化"><i class="fa fa-check"></i><b>4.2</b> 数据可视化</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#单变量数据可视化"><i class="fa fa-check"></i><b>4.2.1</b> 单变量数据可视化</a></li>
+<li class="chapter" data-level="4.2.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#多变量数据"><i class="fa fa-check"></i><b>4.2.2</b> 多变量数据</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html"><i class="fa fa-check"></i><b>5</b> 第五章 语言实验数据分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据导入"><i class="fa fa-check"></i><b>5.1</b> 数据导入</a></li>
+<li class="chapter" data-level="5.2" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据整理"><i class="fa fa-check"></i><b>5.2</b> 数据整理</a></li>
+<li class="chapter" data-level="5.3" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据转化"><i class="fa fa-check"></i><b>5.3</b> 数据转化</a></li>
+<li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
+<li class="chapter" data-level="7.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#语音库创建"><i class="fa fa-check"></i><b>7.1</b> 语音库创建</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#检索相关语音信息"><i class="fa fa-check"></i><b>7.1.1</b> 检索相关语音信息</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#时长提取"><i class="fa fa-check"></i><b>7.2</b> 时长提取</a></li>
+<li class="chapter" data-level="7.3" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#共振峰提取"><i class="fa fa-check"></i><b>7.3</b> 共振峰提取</a></li>
+<li class="chapter" data-level="7.4" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#基频分析"><i class="fa fa-check"></i><b>7.4</b> 基频分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html"><i class="fa fa-check"></i><b>8</b> 第八章 统计建模</a><ul>
+<li class="chapter" data-level="8.1" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量和自变量均为分类变量"><i class="fa fa-check"></i><b>8.1</b> 因变量和自变量均为分类变量</a></li>
+<li class="chapter" data-level="8.2" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量而自变量为分类变量"><i class="fa fa-check"></i><b>8.2</b> 因变量为连续变量而自变量为分类变量</a></li>
+<li class="chapter" data-level="8.3" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量自变量为分类变量"><i class="fa fa-check"></i><b>8.3</b> 因变量为连续变量，自变量为分类变量</a></li>
+<li class="chapter" data-level="8.4" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量与自变量均为连续变量"><i class="fa fa-check"></i><b>8.4</b> 因变量与自变量均为连续变量</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
+<li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
+<li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html"><i class="fa fa-check"></i><b>10</b> 案例一、二语语音区分实验</a><ul>
+<li class="chapter" data-level="10.1" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#研究背景研究问题"><i class="fa fa-check"></i><b>10.1</b> 研究背景+研究问题</a></li>
+<li class="chapter" data-level="10.2" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据整理描述性统计"><i class="fa fa-check"></i><b>10.2</b> 数据整理+描述性统计</a></li>
+<li class="chapter" data-level="10.3" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据可视化-1"><i class="fa fa-check"></i><b>10.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="10.4" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
+<li class="chapter" data-level="10.5" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html"><i class="fa fa-check"></i><b>11</b> 十一 案例二、翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#研究背景"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.4" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.5" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 语音数据处理案例</a><ul>
+<li class="chapter" data-level="12.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#研究背景-1"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="12.3" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
+<li class="chapter" data-level="12.3.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语南部方言声调建模"><i class="fa fa-check"></i><b>12.3.2</b> 越南语南部方言声调建模</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#展示与呈现"><i class="fa fa-check"></i><b>12.4</b> 展示与呈现</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html"><i class="fa fa-check"></i><b>13</b> 机器学习案例-预测声调学习难点</a><ul>
+<li class="chapter" data-level="13.1" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练普通话声调模型"><i class="fa fa-check"></i><b>13.1</b> 训练普通话声调模型</a></li>
+<li class="chapter" data-level="13.2" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练泰语母语者声调模型"><i class="fa fa-check"></i><b>13.2</b> 训练泰语母语者声调模型</a></li>
+<li class="chapter" data-level="13.3" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟普通话听者感知泰语声调"><i class="fa fa-check"></i><b>13.3</b> 模拟普通话听者感知泰语声调</a></li>
+<li class="chapter" data-level="13.4" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟泰语母语听者感知普通话声调"><i class="fa fa-check"></i><b>13.4</b> 模拟泰语母语听者感知普通话声调</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html"><i class="fa fa-check"></i><b>14</b> 文献计量研究案例-语音感知</a><ul>
+<li class="chapter" data-level="14.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据导入及整理-1"><i class="fa fa-check"></i><b>14.1</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="14.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据可视化与展示"><i class="fa fa-check"></i><b>14.2</b> 数据可视化与展示</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究概况2000-2020."><i class="fa fa-check"></i><b>14.2.1</b> 语音感知研究概况(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究发表最多的杂志"><i class="fa fa-check"></i><b>14.2.2</b> 语音感知研究发表最多的杂志</a></li>
+<li class="chapter" data-level="14.2.3" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究能产性分析"><i class="fa fa-check"></i><b>14.2.3</b> 研究能产性分析</a></li>
+<li class="chapter" data-level="14.2.4" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究产出量-2000-2020."><i class="fa fa-check"></i><b>14.2.4</b> 语音感知研究产出量 (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.5" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究数量最高的10个国家地区-2000-2020."><i class="fa fa-check"></i><b>14.2.5</b> 语音感知研究数量最高的10个国家（地区） (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.6" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#发表量最大的10个国家发表趋势"><i class="fa fa-check"></i><b>14.2.6</b> 发表量最大的10个国家发表趋势</a></li>
+<li class="chapter" data-level="14.2.7" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者2000-2020."><i class="fa fa-check"></i><b>14.2.7</b> 语音感知领域发表量最高20位学者(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.8" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-."><i class="fa fa-check"></i><b>14.2.8</b> 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). .</a></li>
+<li class="chapter" data-level="14.2.9" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#合作情况"><i class="fa fa-check"></i><b>14.2.9</b> 合作情况</a></li>
+<li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">语言数据科学教程</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="文献计量研究案例-语音感知" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 14</span> 文献计量研究案例-语音感知<a href="文献计量研究案例-语音感知.html#文献计量研究案例-语音感知" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>首先，我们使用Web of Science核心合集进行了主题为“speech perception”（带引号）的搜索，搜索对象为社会科学引文索引（SSCI）、科学引文索引扩展版（SCIE）、新兴资源引文索引（ESCI）中发表的研究文章（文档类型=文章），搜索日期为2021年2月24日。时间跨度设定为2000年至2020年，非英语论文被排除。最初找到了9436篇研究文章。鉴于本次文献计量分析的重点是从语音学/语言学、心理学、神经科学和言语病理学的角度研究言语感知，因此排除了属于Web of Science分类中的耳鼻喉科的纯医学研究（n = 2731）。</p>
+<p>这些文章的完整记录和被引用参考文献被下载并通过R语言中的bibliometrix包（Aria 和 Cuccurullo, 2017）进行处理。我们检查了数据集，并移除了数据缺失的文章，这进一步将研究文章的数量减少到6407篇（见图1）。bibliometrix包是用R语言开发的，提供了多种用于综合文献计量分析的功能，并且可以无缝集成其他R包，以实现更高级的数据建模和可视化。我们选择bibliometrix包而非其他软件，是因为它提供了一个更加开放、灵活、可定制且可重复的工作流程。</p>
+<div id="数据导入及整理-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.1</span> 数据导入及整理<a href="文献计量研究案例-语音感知.html#数据导入及整理-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1"><span class="co"># read files</span></a>
+<a class="sourceLine" id="cb344-2" data-line-number="2">filenames =<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data/ch14/data-24-02-2021&quot;</span>, </a>
+<a class="sourceLine" id="cb344-3" data-line-number="3">                       <span class="dt">pattern =</span> <span class="st">&quot;txt&quot;</span>, </a>
+<a class="sourceLine" id="cb344-4" data-line-number="4">                       <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb344-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb344-6" data-line-number="6"><span class="co"># converting to bibliometric data frame</span></a>
+<a class="sourceLine" id="cb344-7" data-line-number="7">speech.data =<span class="st"> </span><span class="kw">convert2df</span>(filenames, </a>
+<a class="sourceLine" id="cb344-8" data-line-number="8">                         <span class="dt">dbsource =</span> <span class="st">&quot;wos&quot;</span>, </a>
+<a class="sourceLine" id="cb344-9" data-line-number="9">                         <span class="dt">format =</span> <span class="st">&quot;plaintext&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Converting your wos collection into a bibliographic dataframe
+## 
+## Done!
+## 
+## 
+## Generating affiliation field tag AU_UN from C1:  Done!</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="co"># use only research articles</span></a>
+<a class="sourceLine" id="cb346-2" data-line-number="2">speech.data =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(PY <span class="op">!=</span><span class="st"> </span><span class="dv">2021</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(PY))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(DT <span class="op">==</span><span class="st"> &quot;ARTICLE&quot;</span>)</a>
+<a class="sourceLine" id="cb346-5" data-line-number="5">speech.df =<span class="st"> </span><span class="kw">select</span>(speech.data, <span class="st">&quot;AU&quot;</span>  ,   <span class="st">&quot;AF&quot;</span>   ,    <span class="st">&quot;CR&quot;</span>   ,    <span class="st">&quot;AB&quot;</span> )<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">AB =</span> <span class="kw">tolower</span>(AB))</a></code></pre></div>
+</div>
+<div id="数据可视化与展示" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.2</span> 数据可视化与展示<a href="文献计量研究案例-语音感知.html#数据可视化与展示" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="语音感知研究概况2000-2020." class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.1</span> 语音感知研究概况(2000-2020).<a href="文献计量研究案例-语音感知.html#语音感知研究概况2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th align="left">Results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">MAIN INFORMATION ABOUT DATA</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Timespan</td>
+<td align="left">2000:2020</td>
+</tr>
+<tr class="odd">
+<td align="left">Sources (Journals, Books, etc)</td>
+<td align="left">725</td>
+</tr>
+<tr class="even">
+<td align="left">Documents</td>
+<td align="left">6407</td>
+</tr>
+<tr class="odd">
+<td align="left">Annual Growth Rate %</td>
+<td align="left">6.11</td>
+</tr>
+<tr class="even">
+<td align="left">Document Average Age</td>
+<td align="left">11.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Average citations per doc</td>
+<td align="left">27.91</td>
+</tr>
+<tr class="even">
+<td align="left">Average citations per year per doc</td>
+<td align="left">1.842</td>
+</tr>
+<tr class="odd">
+<td align="left">References</td>
+<td align="left">129988</td>
+</tr>
+<tr class="even">
+<td align="left">DOCUMENT TYPES</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">article</td>
+<td align="left">6407</td>
+</tr>
+<tr class="even">
+<td align="left">DOCUMENT CONTENTS</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Keywords Plus (ID)</td>
+<td align="left">7243</td>
+</tr>
+<tr class="even">
+<td align="left">Author’s Keywords (DE)</td>
+<td align="left">8001</td>
+</tr>
+<tr class="odd">
+<td align="left">AUTHORS</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Authors</td>
+<td align="left">12381</td>
+</tr>
+<tr class="odd">
+<td align="left">Author Appearances</td>
+<td align="left">23242</td>
+</tr>
+<tr class="even">
+<td align="left">Authors of single-authored docs</td>
+<td align="left">438</td>
+</tr>
+<tr class="odd">
+<td align="left">AUTHORS COLLABORATION</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Single-authored docs</td>
+<td align="left">564</td>
+</tr>
+<tr class="odd">
+<td align="left">Documents per Author</td>
+<td align="left">0.517</td>
+</tr>
+<tr class="even">
+<td align="left">Co-Authors per Doc</td>
+<td align="left">3.63</td>
+</tr>
+<tr class="odd">
+<td align="left">International co-authorships %</td>
+<td align="left">27.59</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="语音感知研究发表最多的杂志" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.2</span> 语音感知研究发表最多的杂志<a href="文献计量研究案例-语音感知.html#语音感知研究发表最多的杂志" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="89%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Sources</th>
+<th align="left">Articles</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">JOURNAL OF THE ACOUSTICAL SOCIETY OF AMERICA</td>
+<td align="left">443</td>
+</tr>
+<tr class="even">
+<td align="left">JOURNAL OF SPEECH LANGUAGE AND HEARING RESEARCH</td>
+<td align="left">360</td>
+</tr>
+<tr class="odd">
+<td align="left">FRONTIERS IN PSYCHOLOGY</td>
+<td align="left">232</td>
+</tr>
+<tr class="even">
+<td align="left">PLOS ONE</td>
+<td align="left">190</td>
+</tr>
+<tr class="odd">
+<td align="left">NEUROIMAGE</td>
+<td align="left">155</td>
+</tr>
+<tr class="even">
+<td align="left">BRAIN AND LANGUAGE</td>
+<td align="left">150</td>
+</tr>
+<tr class="odd">
+<td align="left">JOURNAL OF PHONETICS</td>
+<td align="left">145</td>
+</tr>
+<tr class="even">
+<td align="left">NEUROPSYCHOLOGIA</td>
+<td align="left">132</td>
+</tr>
+<tr class="odd">
+<td align="left">COGNITION</td>
+<td align="left">131</td>
+</tr>
+<tr class="even">
+<td align="left">JOURNAL OF EXPERIMENTAL PSYCHOLOGY-HUMAN PERCEPTION AND PERFORMANCE</td>
+<td align="left">100</td>
+</tr>
+<tr class="odd">
+<td align="left">JOURNAL OF NEUROSCIENCE</td>
+<td align="left">99</td>
+</tr>
+<tr class="even">
+<td align="left">SPEECH COMMUNICATION</td>
+<td align="left">98</td>
+</tr>
+<tr class="odd">
+<td align="left">ATTENTION PERCEPTION &amp; PSYCHOPHYSICS</td>
+<td align="left">94</td>
+</tr>
+<tr class="even">
+<td align="left">FRONTIERS IN HUMAN NEUROSCIENCE</td>
+<td align="left">82</td>
+</tr>
+<tr class="odd">
+<td align="left">JOURNAL OF MEMORY AND LANGUAGE</td>
+<td align="left">81</td>
+</tr>
+<tr class="even">
+<td align="left">DEVELOPMENTAL SCIENCE</td>
+<td align="left">74</td>
+</tr>
+<tr class="odd">
+<td align="left">LANGUAGE AND SPEECH</td>
+<td align="left">74</td>
+</tr>
+<tr class="even">
+<td align="left">PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA</td>
+<td align="left">74</td>
+</tr>
+<tr class="odd">
+<td align="left">CEREBRAL CORTEX</td>
+<td align="left">71</td>
+</tr>
+<tr class="even">
+<td align="left">NEUROREPORT</td>
+<td align="left">70</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="研究能产性分析" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.3</span> 研究能产性分析<a href="文献计量研究案例-语音感知.html#研究能产性分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="语音感知研究产出量-2000-2020." class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.4</span> 语音感知研究产出量 (2000-2020).<a href="文献计量研究案例-语音感知.html#语音感知研究产出量-2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+</div>
+<div id="语音感知研究数量最高的10个国家地区-2000-2020." class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.5</span> 语音感知研究数量最高的10个国家（地区） (2000-2020).<a href="文献计量研究案例-语音感知.html#语音感知研究数量最高的10个国家地区-2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>SCP = 单一国家发表; MCP = 多个国家合作发表</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Country</th>
+<th align="left">Articles</th>
+<th align="left">Freq</th>
+<th align="left">SCP</th>
+<th align="left">MCP</th>
+<th align="left">MCP_Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">USA</td>
+<td align="left">2444</td>
+<td align="left">0.38217</td>
+<td align="left">2074</td>
+<td align="left">370</td>
+<td align="left">0.151</td>
+</tr>
+<tr class="even">
+<td align="left">UNITED KINGDOM</td>
+<td align="left">574</td>
+<td align="left">0.08976</td>
+<td align="left">405</td>
+<td align="left">169</td>
+<td align="left">0.294</td>
+</tr>
+<tr class="odd">
+<td align="left">CANADA</td>
+<td align="left">462</td>
+<td align="left">0.07224</td>
+<td align="left">306</td>
+<td align="left">156</td>
+<td align="left">0.338</td>
+</tr>
+<tr class="even">
+<td align="left">GERMANY</td>
+<td align="left">399</td>
+<td align="left">0.06239</td>
+<td align="left">255</td>
+<td align="left">144</td>
+<td align="left">0.361</td>
+</tr>
+<tr class="odd">
+<td align="left">FRANCE</td>
+<td align="left">310</td>
+<td align="left">0.04848</td>
+<td align="left">163</td>
+<td align="left">147</td>
+<td align="left">0.474</td>
+</tr>
+<tr class="even">
+<td align="left">NETHERLANDS</td>
+<td align="left">301</td>
+<td align="left">0.04707</td>
+<td align="left">187</td>
+<td align="left">114</td>
+<td align="left">0.379</td>
+</tr>
+<tr class="odd">
+<td align="left">CHINA</td>
+<td align="left">262</td>
+<td align="left">0.04097</td>
+<td align="left">151</td>
+<td align="left">111</td>
+<td align="left">0.424</td>
+</tr>
+<tr class="even">
+<td align="left">AUSTRALIA</td>
+<td align="left">251</td>
+<td align="left">0.03925</td>
+<td align="left">160</td>
+<td align="left">91</td>
+<td align="left">0.363</td>
+</tr>
+<tr class="odd">
+<td align="left">JAPAN</td>
+<td align="left">161</td>
+<td align="left">0.02518</td>
+<td align="left">129</td>
+<td align="left">32</td>
+<td align="left">0.199</td>
+</tr>
+<tr class="even">
+<td align="left">SPAIN</td>
+<td align="left">136</td>
+<td align="left">0.02127</td>
+<td align="left">73</td>
+<td align="left">63</td>
+<td align="left">0.463</td>
+</tr>
+<tr class="odd">
+<td align="left">FINLAND</td>
+<td align="left">131</td>
+<td align="left">0.02048</td>
+<td align="left">84</td>
+<td align="left">47</td>
+<td align="left">0.359</td>
+</tr>
+<tr class="even">
+<td align="left">BELGIUM</td>
+<td align="left">107</td>
+<td align="left">0.01673</td>
+<td align="left">66</td>
+<td align="left">41</td>
+<td align="left">0.383</td>
+</tr>
+<tr class="odd">
+<td align="left">ITALY</td>
+<td align="left">92</td>
+<td align="left">0.01439</td>
+<td align="left">59</td>
+<td align="left">33</td>
+<td align="left">0.359</td>
+</tr>
+<tr class="even">
+<td align="left">ISRAEL</td>
+<td align="left">79</td>
+<td align="left">0.01235</td>
+<td align="left">70</td>
+<td align="left">9</td>
+<td align="left">0.114</td>
+</tr>
+<tr class="odd">
+<td align="left">KOREA</td>
+<td align="left">77</td>
+<td align="left">0.01204</td>
+<td align="left">43</td>
+<td align="left">34</td>
+<td align="left">0.442</td>
+</tr>
+<tr class="even">
+<td align="left">INDIA</td>
+<td align="left">63</td>
+<td align="left">0.00985</td>
+<td align="left">55</td>
+<td align="left">8</td>
+<td align="left">0.127</td>
+</tr>
+<tr class="odd">
+<td align="left">SWITZERLAND</td>
+<td align="left">56</td>
+<td align="left">0.00876</td>
+<td align="left">25</td>
+<td align="left">31</td>
+<td align="left">0.554</td>
+</tr>
+<tr class="even">
+<td align="left">NORWAY</td>
+<td align="left">51</td>
+<td align="left">0.00797</td>
+<td align="left">30</td>
+<td align="left">21</td>
+<td align="left">0.412</td>
+</tr>
+<tr class="odd">
+<td align="left">BRAZIL</td>
+<td align="left">50</td>
+<td align="left">0.00782</td>
+<td align="left">44</td>
+<td align="left">6</td>
+<td align="left">0.120</td>
+</tr>
+<tr class="even">
+<td align="left">SWEDEN</td>
+<td align="left">47</td>
+<td align="left">0.00735</td>
+<td align="left">33</td>
+<td align="left">14</td>
+<td align="left">0.298</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="发表量最大的10个国家发表趋势" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.6</span> 发表量最大的10个国家发表趋势<a href="文献计量研究案例-语音感知.html#发表量最大的10个国家发表趋势" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+</div>
+<div id="语音感知领域发表量最高20位学者2000-2020." class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.7</span> 语音感知领域发表量最高20位学者(2000-2020).<a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Element</th>
+<th align="right">h_index</th>
+<th align="right">TC</th>
+<th align="right">NP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ACKERMANN H</td>
+<td align="right">18</td>
+<td align="right">1219</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">BIDELMAN GM</td>
+<td align="right">13</td>
+<td align="right">658</td>
+<td align="right">26</td>
+</tr>
+<tr class="odd">
+<td align="left">ESCUDERO P</td>
+<td align="right">14</td>
+<td align="right">660</td>
+<td align="right">31</td>
+</tr>
+<tr class="even">
+<td align="left">HICKOK G</td>
+<td align="right">22</td>
+<td align="right">2002</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="left">HOLT LL</td>
+<td align="right">20</td>
+<td align="right">931</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="left">HUGDAHL K</td>
+<td align="right">21</td>
+<td align="right">1280</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">KRAUS N</td>
+<td align="right">29</td>
+<td align="right">3232</td>
+<td align="right">40</td>
+</tr>
+<tr class="even">
+<td align="left">MCMURRAY B</td>
+<td align="right">21</td>
+<td align="right">1671</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">MCQUEEN JM</td>
+<td align="right">18</td>
+<td align="right">956</td>
+<td align="right">41</td>
+</tr>
+<tr class="even">
+<td align="left">MITTERER H</td>
+<td align="right">22</td>
+<td align="right">1124</td>
+<td align="right">44</td>
+</tr>
+<tr class="odd">
+<td align="left">NITTROUER S</td>
+<td align="right">14</td>
+<td align="right">680</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">PISONI DB</td>
+<td align="right">23</td>
+<td align="right">1944</td>
+<td align="right">39</td>
+</tr>
+<tr class="odd">
+<td align="left">POEPPEL D</td>
+<td align="right">19</td>
+<td align="right">3503</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">ROSEN S</td>
+<td align="right">22</td>
+<td align="right">3177</td>
+<td align="right">41</td>
+</tr>
+<tr class="odd">
+<td align="left">SAMUEL AG</td>
+<td align="right">15</td>
+<td align="right">1159</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">SATO M</td>
+<td align="right">15</td>
+<td align="right">660</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="left">SCHWARTZ JL</td>
+<td align="right">15</td>
+<td align="right">787</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="left">SOTO-FARACO S</td>
+<td align="right">15</td>
+<td align="right">842</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="left">STEVENSON RA</td>
+<td align="right">18</td>
+<td align="right">1292</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">WERKER JF</td>
+<td align="right">23</td>
+<td align="right">2865</td>
+<td align="right">38</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-." class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.8</span> 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). .<a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>TC = 所有发表. 圆圈大小代表发表数量；颜色深度表示引用数数量。</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+</div>
+<div id="合作情况" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.9</span> 合作情况<a href="文献计量研究案例-语音感知.html#合作情况" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>语音感知研究中最活跃的20所大学/研究机构及其合作网络。网络中的每个节点代表一个不同的大学/研究机构，节点的直径与该机构与其他机构的合作强度成正比。节点之间的连线表示这些大学或研究机构之间的合作路径。</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p>语音感知研究中前20个国家的合作网络。</p>
+<p>网络中的每个节点代表一个不同的国家，节点的直径与该国家与其他国家合作的强度成正比。节点之间的连线表示国家之间的合作路径。</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+</div>
+<div id="研究影响力" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.10</span> 研究影响力<a href="文献计量研究案例-语音感知.html#研究影响力" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最高被引研究</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Researcher</th>
+<th align="left">Year</th>
+<th align="left">source</th>
+<th align="left">DOI</th>
+<th align="right">Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">MCGURK H</td>
+<td align="left">1976</td>
+<td align="left">NATURE</td>
+<td align="left">DOI 10.1038/264746A0</td>
+<td align="right">582</td>
+</tr>
+<tr class="even">
+<td align="left">WERKER JF</td>
+<td align="left">1984</td>
+<td align="left">INFANT BEHAV DEV</td>
+<td align="left">DOI 10.1016/S0163-6383(84)80022-3</td>
+<td align="right">498</td>
+</tr>
+<tr class="odd">
+<td align="left">SUMBY WH</td>
+<td align="left">1954</td>
+<td align="left">J ACOUST SOC AM</td>
+<td align="left">DOI 10.1121/1.1907309</td>
+<td align="right">449</td>
+</tr>
+<tr class="even">
+<td align="left">HICKOK G</td>
+<td align="left">2007</td>
+<td align="left">NAT REV NEUROSCI</td>
+<td align="left">DOI 10.1038/NRN2113</td>
+<td align="right">441</td>
+</tr>
+<tr class="odd">
+<td align="left">LIBERMAN AM</td>
+<td align="left">1985</td>
+<td align="left">COGNITION</td>
+<td align="left">DOI 10.1016/0010-0277(85)90021-6</td>
+<td align="right">438</td>
+</tr>
+<tr class="even">
+<td align="left">MCCLELLAND JL</td>
+<td align="left">1986</td>
+<td align="left">COGNITIVE PSYCHOL</td>
+<td align="left">DOI 10.1016/0010-0285(86)90015-0</td>
+<td align="right">397</td>
+</tr>
+<tr class="odd">
+<td align="left">OLDFIELD RC</td>
+<td align="left">1971</td>
+<td align="left">NEUROPSYCHOLOGIA</td>
+<td align="left">DOI 10.1016/0028-3932(71)90067-4</td>
+<td align="right">389</td>
+</tr>
+<tr class="even">
+<td align="left">LIBERMAN AM</td>
+<td align="left">1967</td>
+<td align="left">PSYCHOL REV</td>
+<td align="left">DOI 10.1037/H0020279</td>
+<td align="right">328</td>
+</tr>
+<tr class="odd">
+<td align="left">SHANNON RV</td>
+<td align="left">1995</td>
+<td align="left">SCIENCE</td>
+<td align="left">DOI 10.1126/SCIENCE.270.5234.303</td>
+<td align="right">305</td>
+</tr>
+<tr class="even">
+<td align="left">KUHL PK</td>
+<td align="left">1992</td>
+<td align="left">SCIENCE</td>
+<td align="left">DOI 10.1126/SCIENCE.1736364</td>
+<td align="right">298</td>
+</tr>
+<tr class="odd">
+<td align="left">GOLDINGER SD</td>
+<td align="left">1998</td>
+<td align="left">PSYCHOL REV</td>
+<td align="left">DOI 10.1037/0033-295X.105.2.251</td>
+<td align="right">272</td>
+</tr>
+<tr class="even">
+<td align="left">TALLAL P</td>
+<td align="left">1980</td>
+<td align="left">BRAIN LANG</td>
+<td align="left">DOI 10.1016/0093-934X(80)90139-X</td>
+<td align="right">231</td>
+</tr>
+<tr class="odd">
+<td align="left">BEST C.</td>
+<td align="left">1995</td>
+<td align="left">SPEECH PERCEPTION LI</td>
+<td align="left">NA</td>
+<td align="right">224</td>
+</tr>
+<tr class="even">
+<td align="left">EIMAS PD</td>
+<td align="left">1971</td>
+<td align="left">SCIENCE</td>
+<td align="left">DOI 10.1126/SCIENCE.171.3968.303</td>
+<td align="right">224</td>
+</tr>
+<tr class="odd">
+<td align="left">FLEGE J.E.</td>
+<td align="left">1995</td>
+<td align="left">SPEECH PERCEPTION LI</td>
+<td align="left">NA</td>
+<td align="right">219</td>
+</tr>
+<tr class="even">
+<td align="left">NORRIS D</td>
+<td align="left">2003</td>
+<td align="left">COGNITIVE PSYCHOL</td>
+<td align="left">DOI 10.1016/S0010-0285(03)00006-9</td>
+<td align="right">215</td>
+</tr>
+<tr class="odd">
+<td align="left">BINDER JR</td>
+<td align="left">2000</td>
+<td align="left">CEREB CORTEX</td>
+<td align="left">DOI 10.1093/CERCOR/10.5.512</td>
+<td align="right">213</td>
+</tr>
+<tr class="even">
+<td align="left">HICKOK G</td>
+<td align="left">2004</td>
+<td align="left">COGNITION</td>
+<td align="left">DOI 10.1016/J.COGNITION.2003.10.011</td>
+<td align="right">207</td>
+</tr>
+<tr class="odd">
+<td align="left">LISKER L</td>
+<td align="left">1964</td>
+<td align="left">WORD</td>
+<td align="left">DOI 10.1080/00437956.1964.11659830</td>
+<td align="right">203</td>
+</tr>
+<tr class="even">
+<td align="left">SCOTT SK</td>
+<td align="left">2000</td>
+<td align="left">BRAIN</td>
+<td align="left">DOI 10.1093/BRAIN/123.12.2400</td>
+<td align="right">203</td>
+</tr>
+</tbody>
+</table>
+<p>语音感知高被引作者</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Authors</th>
+<th align="right">Citations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">KUHL PK</td>
+<td align="right">1994</td>
+</tr>
+<tr class="even">
+<td align="left">WERKER JF</td>
+<td align="right">1693</td>
+</tr>
+<tr class="odd">
+<td align="left">HICKOK G</td>
+<td align="right">1433</td>
+</tr>
+<tr class="even">
+<td align="left">LIBERMAN AM</td>
+<td align="right">1347</td>
+</tr>
+<tr class="odd">
+<td align="left">NAATANEN R</td>
+<td align="right">1268</td>
+</tr>
+<tr class="even">
+<td align="left">TALLAL P</td>
+<td align="right">1126</td>
+</tr>
+<tr class="odd">
+<td align="left">BOERSMA P</td>
+<td align="right">872</td>
+</tr>
+<tr class="even">
+<td align="left">FLEGE JE</td>
+<td align="right">844</td>
+</tr>
+<tr class="odd">
+<td align="left">NITTROUER S</td>
+<td align="right">790</td>
+</tr>
+<tr class="even">
+<td align="left">JUSCZYK PW</td>
+<td align="right">784</td>
+</tr>
+<tr class="odd">
+<td align="left">CUTLER A</td>
+<td align="right">759</td>
+</tr>
+<tr class="even">
+<td align="left">ZATORRE RJ</td>
+<td align="right">758</td>
+</tr>
+<tr class="odd">
+<td align="left">BEST CT</td>
+<td align="right">726</td>
+</tr>
+<tr class="even">
+<td align="left">NORRIS D</td>
+<td align="right">713</td>
+</tr>
+<tr class="odd">
+<td align="left">SCOTT SK</td>
+<td align="right">664</td>
+</tr>
+<tr class="even">
+<td align="left">BRADLOW AR</td>
+<td align="right">653</td>
+</tr>
+<tr class="odd">
+<td align="left">FOWLER CA</td>
+<td align="right">634</td>
+</tr>
+<tr class="even">
+<td align="left">PISONI DB</td>
+<td align="right">633</td>
+</tr>
+<tr class="odd">
+<td align="left">MCCLELLAND JL</td>
+<td align="right">631</td>
+</tr>
+<tr class="even">
+<td align="left">BINDER JR</td>
+<td align="right">604</td>
+</tr>
+</tbody>
+</table>
+<p>语音感知研究的共引网络。节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其共引度成正比。</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">vertex</th>
+<th align="right">cluster</th>
+<th align="right">btw_centrality</th>
+<th align="right">clos_centrality</th>
+<th align="right">pagerank_centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">mcgurk h 1976</td>
+<td align="right">1</td>
+<td align="right">15.2635617</td>
+<td align="right">0.0303030</td>
+<td align="right">0.0480495</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">sumby wh 1954</td>
+<td align="right">1</td>
+<td align="right">9.5227885</td>
+<td align="right">0.0303030</td>
+<td align="right">0.0420926</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">liberman am 1985-1</td>
+<td align="right">1</td>
+<td align="right">40.9724291</td>
+<td align="right">0.0303030</td>
+<td align="right">0.0334798</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">liberman am 1967</td>
+<td align="right">1</td>
+<td align="right">33.2167686</td>
+<td align="right">0.0303030</td>
+<td align="right">0.0276759</td>
+</tr>
+<tr class="odd">
+<td align="left">25</td>
+<td align="left">van wassenhove 2005</td>
+<td align="right">1</td>
+<td align="right">4.0447249</td>
+<td align="right">0.0303030</td>
+<td align="right">0.0244103</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">werker jf 1984-1</td>
+<td align="right">2</td>
+<td align="right">1.2448940</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0714746</td>
+</tr>
+<tr class="odd">
+<td align="left">10</td>
+<td align="left">kuhl pk 1992-1</td>
+<td align="right">2</td>
+<td align="right">0.9467332</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0526162</td>
+</tr>
+<tr class="even">
+<td align="left">11</td>
+<td align="left">goldinger sd 1998-1</td>
+<td align="right">2</td>
+<td align="right">1.7304269</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0270523</td>
+</tr>
+<tr class="odd">
+<td align="left">12</td>
+<td align="left">tallal p 1980-1</td>
+<td align="right">2</td>
+<td align="right">0.6760632</td>
+<td align="right">0.0232558</td>
+<td align="right">0.0090834</td>
+</tr>
+<tr class="even">
+<td align="left">13</td>
+<td align="left">eimas pd 1971</td>
+<td align="right">2</td>
+<td align="right">0.7466488</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0367231</td>
+</tr>
+<tr class="odd">
+<td align="left">14</td>
+<td align="left">best c. 1995-1</td>
+<td align="right">2</td>
+<td align="right">0.3031579</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0290432</td>
+</tr>
+<tr class="even">
+<td align="left">15</td>
+<td align="left">flege j.e. 1995</td>
+<td align="right">2</td>
+<td align="right">0.1627206</td>
+<td align="right">0.0227273</td>
+<td align="right">0.0288952</td>
+</tr>
+<tr class="odd">
+<td align="left">16</td>
+<td align="left">norris d 2003</td>
+<td align="right">2</td>
+<td align="right">1.6333429</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0209435</td>
+</tr>
+<tr class="even">
+<td align="left">19</td>
+<td align="left">lisker l 1964</td>
+<td align="right">2</td>
+<td align="right">0.9477373</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0251291</td>
+</tr>
+<tr class="odd">
+<td align="left">20</td>
+<td align="left">peterson ge 1952</td>
+<td align="right">2</td>
+<td align="right">1.1605696</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0206468</td>
+</tr>
+<tr class="even">
+<td align="left">22</td>
+<td align="left">maye j 2002</td>
+<td align="right">2</td>
+<td align="right">0.2124056</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0426923</td>
+</tr>
+<tr class="odd">
+<td align="left">23</td>
+<td align="left">saffran jr 1996-1</td>
+<td align="right">2</td>
+<td align="right">0.3801173</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0302510</td>
+</tr>
+<tr class="even">
+<td align="left">27</td>
+<td align="left">stager cl 1997</td>
+<td align="right">2</td>
+<td align="right">0.1064318</td>
+<td align="right">0.0232558</td>
+<td align="right">0.0327461</td>
+</tr>
+<tr class="odd">
+<td align="left">28</td>
+<td align="left">kuhl pk 2004-1</td>
+<td align="right">2</td>
+<td align="right">0.9889261</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0278373</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">hickok g 2007-1</td>
+<td align="right">3</td>
+<td align="right">8.1022227</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0622358</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="left">mcclelland jl 1986-1</td>
+<td align="right">3</td>
+<td align="right">20.3301412</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0221149</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="left">oldfield rc 1971-1</td>
+<td align="right">3</td>
+<td align="right">3.6281583</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0340063</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">shannon rv 1995</td>
+<td align="right">3</td>
+<td align="right">3.8120309</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0204179</td>
+</tr>
+<tr class="even">
+<td align="left">17</td>
+<td align="left">binder jr 2000-1</td>
+<td align="right">3</td>
+<td align="right">0.9234015</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0371099</td>
+</tr>
+<tr class="odd">
+<td align="left">18</td>
+<td align="left">hickok g 2004</td>
+<td align="right">3</td>
+<td align="right">1.7757471</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0388617</td>
+</tr>
+<tr class="even">
+<td align="left">21</td>
+<td align="left">scott sk 2000</td>
+<td align="right">3</td>
+<td align="right">0.8692364</td>
+<td align="right">0.0250000</td>
+<td align="right">0.0369853</td>
+</tr>
+<tr class="odd">
+<td align="left">24</td>
+<td align="left">hickok g 2000-1</td>
+<td align="right">3</td>
+<td align="right">1.3611736</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0360646</td>
+</tr>
+<tr class="even">
+<td align="left">26</td>
+<td align="left">wilson sm 2004-1</td>
+<td align="right">3</td>
+<td align="right">2.5644671</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0266347</td>
+</tr>
+<tr class="odd">
+<td align="left">29</td>
+<td align="left">poeppel d 2003</td>
+<td align="right">3</td>
+<td align="right">1.3686819</td>
+<td align="right">0.0250000</td>
+<td align="right">0.0235652</td>
+</tr>
+<tr class="even">
+<td align="left">30</td>
+<td align="left">rauschecker jp 2009</td>
+<td align="right">3</td>
+<td align="right">1.0042912</td>
+<td align="right">0.0243902</td>
+<td align="right">0.0311617</td>
+</tr>
+</tbody>
+</table>
+<p>语音感知研究的文献耦合网络，其中节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其文献耦合度成正比。</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">vertex</th>
+<th align="right">cluster</th>
+<th align="right">btw_centrality</th>
+<th align="right">clos_centrality</th>
+<th align="right">pagerank_centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">sato m, 2010-2</td>
+<td align="right">1</td>
+<td align="right">0.7164865</td>
+<td align="right">0.0222222</td>
+<td align="right">0.0422785</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="left">barnaud ml, 2018</td>
+<td align="right">1</td>
+<td align="right">2.9212251</td>
+<td align="right">0.0232558</td>
+<td align="right">0.0478014</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">treille a, 2018</td>
+<td align="right">1</td>
+<td align="right">1.0317870</td>
+<td align="right">0.0217391</td>
+<td align="right">0.0412177</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">schmitz j, 2018</td>
+<td align="right">1</td>
+<td align="right">3.8122417</td>
+<td align="right">0.0232558</td>
+<td align="right">0.0318383</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">laurent r, 2017</td>
+<td align="right">1</td>
+<td align="right">18.0738573</td>
+<td align="right">0.0243902</td>
+<td align="right">0.0499274</td>
+</tr>
+<tr class="even">
+<td align="left">13</td>
+<td align="left">irwin j, 2017-3</td>
+<td align="right">1</td>
+<td align="right">6.2482815</td>
+<td align="right">0.0243902</td>
+<td align="right">0.0344240</td>
+</tr>
+<tr class="odd">
+<td align="left">21</td>
+<td align="left">sato m, 2013-1</td>
+<td align="right">1</td>
+<td align="right">5.5514049</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0312268</td>
+</tr>
+<tr class="even">
+<td align="left">23</td>
+<td align="left">grabski k, 2013-2</td>
+<td align="right">1</td>
+<td align="right">1.7199251</td>
+<td align="right">0.0222222</td>
+<td align="right">0.0511367</td>
+</tr>
+<tr class="odd">
+<td align="left">24</td>
+<td align="left">sanchez-garcia c, 2013</td>
+<td align="right">1</td>
+<td align="right">4.6155264</td>
+<td align="right">0.0243902</td>
+<td align="right">0.0291568</td>
+</tr>
+<tr class="even">
+<td align="left">26</td>
+<td align="left">bernstein le, 2013</td>
+<td align="right">1</td>
+<td align="right">2.2834294</td>
+<td align="right">0.0227273</td>
+<td align="right">0.0248360</td>
+</tr>
+<tr class="odd">
+<td align="left">27</td>
+<td align="left">hickok g, 2012</td>
+<td align="right">1</td>
+<td align="right">3.3007337</td>
+<td align="right">0.0227273</td>
+<td align="right">0.0386245</td>
+</tr>
+<tr class="even">
+<td align="left">29</td>
+<td align="left">tremblay p, 2011-1</td>
+<td align="right">1</td>
+<td align="right">0.6086756</td>
+<td align="right">0.0222222</td>
+<td align="right">0.0358885</td>
+</tr>
+<tr class="odd">
+<td align="left">30</td>
+<td align="left">hickok g, 2011-2</td>
+<td align="right">1</td>
+<td align="right">1.2554936</td>
+<td align="right">0.0222222</td>
+<td align="right">0.0429051</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">hawkins s, 2010</td>
+<td align="right">2</td>
+<td align="right">9.3703836</td>
+<td align="right">0.0263158</td>
+<td align="right">0.0239215</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">feldman nh, 2009</td>
+<td align="right">2</td>
+<td align="right">3.8011565</td>
+<td align="right">0.0232558</td>
+<td align="right">0.0258212</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="left">baese-berk mm, 2019-1</td>
+<td align="right">2</td>
+<td align="right">9.3727377</td>
+<td align="right">0.0263158</td>
+<td align="right">0.0207865</td>
+</tr>
+<tr class="odd">
+<td align="left">12</td>
+<td align="left">heald slm, 2017</td>
+<td align="right">2</td>
+<td align="right">11.2805244</td>
+<td align="right">0.0263158</td>
+<td align="right">0.0401531</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">blank h, 2016</td>
+<td align="right">2</td>
+<td align="right">4.0603971</td>
+<td align="right">0.0238095</td>
+<td align="right">0.0235782</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">fowler ca, 2016</td>
+<td align="right">2</td>
+<td align="right">8.9413695</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0262904</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">christiansen mh, 2016</td>
+<td align="right">2</td>
+<td align="right">6.4460889</td>
+<td align="right">0.0256410</td>
+<td align="right">0.0307733</td>
+</tr>
+<tr class="odd">
+<td align="left">17</td>
+<td align="left">kleinschmidt df, 2015</td>
+<td align="right">2</td>
+<td align="right">7.8949937</td>
+<td align="right">0.0263158</td>
+<td align="right">0.0449141</td>
+</tr>
+<tr class="even">
+<td align="left">19</td>
+<td align="left">heald slm, 2014-2</td>
+<td align="right">2</td>
+<td align="right">8.2948035</td>
+<td align="right">0.0263158</td>
+<td align="right">0.0367782</td>
+</tr>
+<tr class="odd">
+<td align="left">20</td>
+<td align="left">guediche s, 2014</td>
+<td align="right">2</td>
+<td align="right">6.5318437</td>
+<td align="right">0.0243902</td>
+<td align="right">0.0354950</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">werker jf, 2005</td>
+<td align="right">3</td>
+<td align="right">1.3277236</td>
+<td align="right">0.0217391</td>
+<td align="right">0.0310011</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="left">choi d, 2018</td>
+<td align="right">3</td>
+<td align="right">6.3736653</td>
+<td align="right">0.0285714</td>
+<td align="right">0.0271317</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">werker jf, 2018</td>
+<td align="right">3</td>
+<td align="right">1.1648052</td>
+<td align="right">0.0222222</td>
+<td align="right">0.0442706</td>
+</tr>
+<tr class="odd">
+<td align="left">18</td>
+<td align="left">kuhl pk, 2014</td>
+<td align="right">3</td>
+<td align="right">15.1309787</td>
+<td align="right">0.0277778</td>
+<td align="right">0.0193553</td>
+</tr>
+<tr class="even">
+<td align="left">22</td>
+<td align="left">vouloumanos a, 2013</td>
+<td align="right">3</td>
+<td align="right">5.9773141</td>
+<td align="right">0.0285714</td>
+<td align="right">0.0219283</td>
+</tr>
+<tr class="odd">
+<td align="left">25</td>
+<td align="left">yeung hh, 2013-2</td>
+<td align="right">3</td>
+<td align="right">0.8147466</td>
+<td align="right">0.0212766</td>
+<td align="right">0.0247105</td>
+</tr>
+<tr class="even">
+<td align="left">28</td>
+<td align="left">calabrese a, 2012</td>
+<td align="right">3</td>
+<td align="right">25.0774001</td>
+<td align="right">0.0285714</td>
+<td align="right">0.0218293</td>
+</tr>
+</tbody>
+</table>
+<p>前20个作者定义关键词、机器生成关键词、基于标题和摘要的两词短语（Freq = 频率）<em>注意：在论文表格中，一些术语进行了合并处理，例如在标题两词短语列中，“Cochlear implant”（人工耳蜗）和“cochlear implantation”（人工耳蜗植入）被合并。</em></p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="6%" />
+<col width="18%" />
+<col width="5%" />
+<col width="18%" />
+<col width="5%" />
+<col width="18%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">AuthorKeywords</th>
+<th align="right">AuFreq</th>
+<th align="left">MachineKeywords</th>
+<th align="right">MFreq</th>
+<th align="left">Title2gram</th>
+<th align="right">TFreq</th>
+<th align="left">Abstract2gram</th>
+<th align="right">ABFreq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Cochlearimplant</td>
+<td align="right">251</td>
+<td align="left">Recognition</td>
+<td align="right">783</td>
+<td align="left">Cochlearimplant</td>
+<td align="right">408</td>
+<td align="left">Hearingloss</td>
+<td align="right">950</td>
+</tr>
+<tr class="even">
+<td align="left">Fmri</td>
+<td align="right">199</td>
+<td align="left">Discrimination</td>
+<td align="right">746</td>
+<td align="left">Hearingloss</td>
+<td align="right">155</td>
+<td align="left">Normalhearing</td>
+<td align="right">840</td>
+</tr>
+<tr class="odd">
+<td align="left">Dyslexia</td>
+<td align="right">161</td>
+<td align="left">Children</td>
+<td align="right">653</td>
+<td align="left">Wordrecognition</td>
+<td align="right">132</td>
+<td align="left">Cochlearimplant</td>
+<td align="right">587</td>
+</tr>
+<tr class="even">
+<td align="left">Speechproduction</td>
+<td align="right">158</td>
+<td align="left">Information</td>
+<td align="right">525</td>
+<td align="left">Audiovisualspeech</td>
+<td align="right">117</td>
+<td align="left">Speechsounds</td>
+<td align="right">587</td>
+</tr>
+<tr class="odd">
+<td align="left">Children</td>
+<td align="right">139</td>
+<td align="left">Noise</td>
+<td align="right">418</td>
+<td align="left">Spokenword</td>
+<td align="right">97</td>
+<td align="left">Auditorycortex</td>
+<td align="right">541</td>
+</tr>
+<tr class="even">
+<td align="left">Hearingloss</td>
+<td align="right">129</td>
+<td align="left">Identification</td>
+<td align="right">396</td>
+<td align="left">Auditoryprocessing</td>
+<td align="right">93</td>
+<td align="left">Wordrecognition</td>
+<td align="right">535</td>
+</tr>
+<tr class="odd">
+<td align="left">Aging</td>
+<td align="right">116</td>
+<td align="left">Acquisition</td>
+<td align="right">378</td>
+<td align="left">Auditorycortex</td>
+<td align="right">91</td>
+<td align="left">Auditoryprocessing</td>
+<td align="right">515</td>
+</tr>
+<tr class="even">
+<td align="left">Spokenwordrecognition</td>
+<td align="right">112</td>
+<td align="left">English</td>
+<td align="right">368</td>
+<td align="left">Visualspeech</td>
+<td align="right">91</td>
+<td align="left">Superiortemporal</td>
+<td align="right">509</td>
+</tr>
+<tr class="odd">
+<td align="left">Auditorycortex</td>
+<td align="right">104</td>
+<td align="left">Brain</td>
+<td align="right">363</td>
+<td align="left">Cochlearimplantation</td>
+<td align="right">87</td>
+<td align="left">Speechproduction</td>
+<td align="right">494</td>
+</tr>
+<tr class="even">
+<td align="left">Phonology</td>
+<td align="right">101</td>
+<td align="left">Intelligibility</td>
+<td align="right">336</td>
+<td align="left">Implantusers</td>
+<td align="right">82</td>
+<td align="left">Visualspeech</td>
+<td align="right">465</td>
+</tr>
+<tr class="odd">
+<td align="left">Auditoryperception</td>
+<td align="right">98</td>
+<td align="left">Integration</td>
+<td align="right">326</td>
+<td align="left">Eventrelated</td>
+<td align="right">71</td>
+<td align="left">Speechprocessing</td>
+<td align="right">460</td>
+</tr>
+<tr class="even">
+<td align="left">Auditoryprocessing</td>
+<td align="right">98</td>
+<td align="left">Infants</td>
+<td align="right">307</td>
+<td align="left">Speechprocessing</td>
+<td align="right">70</td>
+<td align="left">Speechrecognition</td>
+<td align="right">448</td>
+</tr>
+<tr class="odd">
+<td align="left">Languageacquisition</td>
+<td align="right">94</td>
+<td align="left">Adults</td>
+<td align="right">305</td>
+<td align="left">Developmentaldyslexia</td>
+<td align="right">64</td>
+<td align="left">Nativelanguage</td>
+<td align="right">439</td>
+</tr>
+<tr class="even">
+<td align="left">Mismatchnegativity</td>
+<td align="right">93</td>
+<td align="left">Workingmemory</td>
+<td align="right">300</td>
+<td align="left">Normalhearing</td>
+<td align="right">64</td>
+<td align="left">Eventrelated</td>
+<td align="right">427</td>
+</tr>
+<tr class="odd">
+<td align="left">Bilingualism</td>
+<td align="right">90</td>
+<td align="left">Activation</td>
+<td align="right">296</td>
+<td align="left">Wordlearning</td>
+<td align="right">64</td>
+<td align="left">Cochlearimplant</td>
+<td align="right">409</td>
+</tr>
+<tr class="even">
+<td align="left">Attention</td>
+<td align="right">85</td>
+<td align="left">Age</td>
+<td align="right">296</td>
+<td align="left">Languageimpairment</td>
+<td align="right">62</td>
+<td align="left">Acousticalsociety</td>
+<td align="right">399</td>
+</tr>
+<tr class="odd">
+<td align="left">Eeg</td>
+<td align="right">84</td>
+<td align="left">Comprehension</td>
+<td align="right">295</td>
+<td align="left">Speechrecognition</td>
+<td align="right">61</td>
+<td align="left">Ciusers</td>
+<td align="right">347</td>
+</tr>
+<tr class="even">
+<td align="left">Eventrelatedpotentials</td>
+<td align="right">82</td>
+<td align="left">Hearing</td>
+<td align="right">294</td>
+<td align="left">Specificlanguage</td>
+<td align="right">60</td>
+<td align="left">Currentstudy</td>
+<td align="right">342</td>
+</tr>
+<tr class="odd">
+<td align="left">Audiovisual</td>
+<td align="right">80</td>
+<td align="left">Cortex</td>
+<td align="right">288</td>
+<td align="left">Audiovisual</td>
+<td align="right">58</td>
+<td align="left">Findingssuggest</td>
+<td align="right">314</td>
+</tr>
+<tr class="even">
+<td align="left">Multisensoryintegration</td>
+<td align="right">80</td>
+<td align="left">Attention</td>
+<td align="right">285</td>
+<td align="left">Speechproduction</td>
+<td align="right">58</td>
+<td align="left">Phonologicalawareness</td>
+<td align="right">311</td>
+</tr>
+<tr class="odd">
+<td align="left">Development</td>
+<td align="right">78</td>
+<td align="left">Developmentaldyslexia</td>
+<td align="right">276</td>
+<td align="left">Verticalbar</td>
+<td align="right">56</td>
+<td align="left">Audiovisualspeech</td>
+<td align="right">305</td>
+</tr>
+<tr class="even">
+<td align="left">Perceptuallearning</td>
+<td align="right">78</td>
+<td align="left">Auditorycortex</td>
+<td align="right">264</td>
+<td align="left">Fmristudy</td>
+<td align="right">53</td>
+<td align="left">Montholds</td>
+<td align="right">300</td>
+</tr>
+<tr class="odd">
+<td align="left">Auditory</td>
+<td align="right">75</td>
+<td align="left">Model</td>
+<td align="right">258</td>
+<td align="left">Individualdifferences</td>
+<td align="right">53</td>
+<td align="left">Speechintelligibility</td>
+<td align="right">293</td>
+</tr>
+<tr class="even">
+<td align="left">Prosody</td>
+<td align="right">73</td>
+<td align="left">Sounds</td>
+<td align="right">251</td>
+<td align="left">Temporalprocessing</td>
+<td align="right">53</td>
+<td align="left">Speechsignal</td>
+<td align="right">289</td>
+</tr>
+</tbody>
+</table>
+<p>作者自定义词网络</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="机器学习案例-预测声调学习难点.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/13.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

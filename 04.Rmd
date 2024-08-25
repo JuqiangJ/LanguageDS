@@ -13,11 +13,12 @@
 
 ```{r message=FALSE}
 library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 ```
 
 ```{r}
 
-cm13 <- read.delim("~/Nutstore Files/310_Tutorial/Language data science/data/ch5/cm13.txt")
+cm13 <- read.delim("data/ch5/cm13.txt")
 
 head(cm13)
 # library(readr)

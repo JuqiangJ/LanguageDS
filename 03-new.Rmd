@@ -26,6 +26,7 @@
 
 ```{r message=FALSE}
 library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 ```
 
 

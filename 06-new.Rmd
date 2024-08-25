@@ -17,9 +17,9 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 # load the package
 library(emuR)
 library(tidyverse)
-
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 # 设置语音库的位置
- corpusPath = "/Users/chenjuqiang/Desktop/speech_corp"
+ corpusPath = "data/ch7/speech_corp"
 # 
 # # 设置已经标注的语音文件 .wav 和标注文件.TextGrid files的位置
 # path2folder = "/Users/chenjuqiang/Desktop/AmE_Consonants/"

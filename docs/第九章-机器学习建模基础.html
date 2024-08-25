@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 第九章 机器学习建模基础 | 语言数据科学教程</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 第九章 机器学习建模基础 | 语言数据科学教程" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 第九章 机器学习建模基础 | 语言数据科学教程" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="陈居强" />
+
+
+<meta name="date" content="2024-08-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="第八章-统计建模.html"/>
+<link rel="next" href="案例一二语语音区分实验.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Language Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 第一章 数据科学简介</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#数据科学发展简史"><i class="fa fa-check"></i><b>1.1</b> 数据科学发展简史</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#数据科学家"><i class="fa fa-check"></i><b>1.2</b> 数据科学家</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#数据科学工作流程"><i class="fa fa-check"></i><b>1.3</b> 数据科学工作流程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html"><i class="fa fa-check"></i><b>2</b> 第二章 R语言简介</a><ul>
+<li class="chapter" data-level="2.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言发展简史"><i class="fa fa-check"></i><b>2.1</b> R语言发展简史</a></li>
+<li class="chapter" data-level="2.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#rr-studior软件包的安装简介"><i class="fa fa-check"></i><b>2.2</b> R、R-Studio、R软件包的安装简介</a></li>
+<li class="chapter" data-level="2.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言的数据结构"><i class="fa fa-check"></i><b>2.3</b> R语言的数据结构</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#向量vector"><i class="fa fa-check"></i><b>2.3.1</b> 向量（vector）</a></li>
+<li class="chapter" data-level="2.3.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#列表list"><i class="fa fa-check"></i><b>2.3.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="2.3.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#矩阵matrix"><i class="fa fa-check"></i><b>2.3.3</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="2.3.4" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数据框data-frame"><i class="fa fa-check"></i><b>2.3.4</b> 数据框（data frame）</a></li>
+<li class="chapter" data-level="2.3.5" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数组array"><i class="fa fa-check"></i><b>2.3.5</b> 数组（array）</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html"><i class="fa fa-check"></i><b>3</b> 第三章 数据整理</a><ul>
+<li class="chapter" data-level="3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据与变量"><i class="fa fa-check"></i><b>3.1</b> 数据与变量</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#结构型数据和非结构型数据"><i class="fa fa-check"></i><b>3.1.1</b> 结构型数据和非结构型数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#质性数据和量化数据"><i class="fa fa-check"></i><b>3.1.2</b> 质性数据和量化数据</a></li>
+<li class="chapter" data-level="3.1.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量"><i class="fa fa-check"></i><b>3.1.3</b> 变量</a></li>
+<li class="chapter" data-level="3.1.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#类别变量"><i class="fa fa-check"></i><b>3.1.4</b> 类别变量</a></li>
+<li class="chapter" data-level="3.1.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数值型变量"><i class="fa fa-check"></i><b>3.1.5</b> 数值型变量</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据清洁"><i class="fa fa-check"></i><b>3.2</b> 数据清洁</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-处理异常值"><i class="fa fa-check"></i><b>3.2.1</b> 任务-处理异常值</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量筛选"><i class="fa fa-check"></i><b>3.3</b> 变量筛选</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-变量筛选"><i class="fa fa-check"></i><b>3.3.1</b> 任务-变量筛选</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据塑形"><i class="fa fa-check"></i><b>3.4</b> 数据塑形</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据塑形"><i class="fa fa-check"></i><b>3.4.1</b> 任务-数据塑形</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据整合"><i class="fa fa-check"></i><b>3.5</b> 数据整合</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据整合"><i class="fa fa-check"></i><b>3.5.1</b> 任务-数据整合</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html"><i class="fa fa-check"></i><b>4</b> 第四章 探索性数据分析</a><ul>
+<li class="chapter" data-level="4.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据转换"><i class="fa fa-check"></i><b>4.1</b> 数据转换</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-数据转化"><i class="fa fa-check"></i><b>4.1.1</b> 任务-数据转化</a></li>
+<li class="chapter" data-level="4.1.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-描述性统计"><i class="fa fa-check"></i><b>4.1.2</b> 任务-描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据可视化"><i class="fa fa-check"></i><b>4.2</b> 数据可视化</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#单变量数据可视化"><i class="fa fa-check"></i><b>4.2.1</b> 单变量数据可视化</a></li>
+<li class="chapter" data-level="4.2.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#多变量数据"><i class="fa fa-check"></i><b>4.2.2</b> 多变量数据</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html"><i class="fa fa-check"></i><b>5</b> 第五章 语言实验数据分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据导入"><i class="fa fa-check"></i><b>5.1</b> 数据导入</a></li>
+<li class="chapter" data-level="5.2" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据整理"><i class="fa fa-check"></i><b>5.2</b> 数据整理</a></li>
+<li class="chapter" data-level="5.3" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据转化"><i class="fa fa-check"></i><b>5.3</b> 数据转化</a></li>
+<li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
+<li class="chapter" data-level="7.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#语音库创建"><i class="fa fa-check"></i><b>7.1</b> 语音库创建</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#检索相关语音信息"><i class="fa fa-check"></i><b>7.1.1</b> 检索相关语音信息</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#时长提取"><i class="fa fa-check"></i><b>7.2</b> 时长提取</a></li>
+<li class="chapter" data-level="7.3" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#共振峰提取"><i class="fa fa-check"></i><b>7.3</b> 共振峰提取</a></li>
+<li class="chapter" data-level="7.4" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#基频分析"><i class="fa fa-check"></i><b>7.4</b> 基频分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html"><i class="fa fa-check"></i><b>8</b> 第八章 统计建模</a><ul>
+<li class="chapter" data-level="8.1" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量和自变量均为分类变量"><i class="fa fa-check"></i><b>8.1</b> 因变量和自变量均为分类变量</a></li>
+<li class="chapter" data-level="8.2" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量而自变量为分类变量"><i class="fa fa-check"></i><b>8.2</b> 因变量为连续变量而自变量为分类变量</a></li>
+<li class="chapter" data-level="8.3" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量自变量为分类变量"><i class="fa fa-check"></i><b>8.3</b> 因变量为连续变量，自变量为分类变量</a></li>
+<li class="chapter" data-level="8.4" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量与自变量均为连续变量"><i class="fa fa-check"></i><b>8.4</b> 因变量与自变量均为连续变量</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
+<li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
+<li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html"><i class="fa fa-check"></i><b>10</b> 案例一、二语语音区分实验</a><ul>
+<li class="chapter" data-level="10.1" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#研究背景研究问题"><i class="fa fa-check"></i><b>10.1</b> 研究背景+研究问题</a></li>
+<li class="chapter" data-level="10.2" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据整理描述性统计"><i class="fa fa-check"></i><b>10.2</b> 数据整理+描述性统计</a></li>
+<li class="chapter" data-level="10.3" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据可视化-1"><i class="fa fa-check"></i><b>10.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="10.4" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
+<li class="chapter" data-level="10.5" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html"><i class="fa fa-check"></i><b>11</b> 十一 案例二、翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#研究背景"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.4" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.5" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 语音数据处理案例</a><ul>
+<li class="chapter" data-level="12.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#研究背景-1"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="12.3" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
+<li class="chapter" data-level="12.3.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语南部方言声调建模"><i class="fa fa-check"></i><b>12.3.2</b> 越南语南部方言声调建模</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#展示与呈现"><i class="fa fa-check"></i><b>12.4</b> 展示与呈现</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html"><i class="fa fa-check"></i><b>13</b> 机器学习案例-预测声调学习难点</a><ul>
+<li class="chapter" data-level="13.1" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练普通话声调模型"><i class="fa fa-check"></i><b>13.1</b> 训练普通话声调模型</a></li>
+<li class="chapter" data-level="13.2" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练泰语母语者声调模型"><i class="fa fa-check"></i><b>13.2</b> 训练泰语母语者声调模型</a></li>
+<li class="chapter" data-level="13.3" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟普通话听者感知泰语声调"><i class="fa fa-check"></i><b>13.3</b> 模拟普通话听者感知泰语声调</a></li>
+<li class="chapter" data-level="13.4" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟泰语母语听者感知普通话声调"><i class="fa fa-check"></i><b>13.4</b> 模拟泰语母语听者感知普通话声调</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html"><i class="fa fa-check"></i><b>14</b> 文献计量研究案例-语音感知</a><ul>
+<li class="chapter" data-level="14.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据导入及整理-1"><i class="fa fa-check"></i><b>14.1</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="14.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据可视化与展示"><i class="fa fa-check"></i><b>14.2</b> 数据可视化与展示</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究概况2000-2020."><i class="fa fa-check"></i><b>14.2.1</b> 语音感知研究概况(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究发表最多的杂志"><i class="fa fa-check"></i><b>14.2.2</b> 语音感知研究发表最多的杂志</a></li>
+<li class="chapter" data-level="14.2.3" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究能产性分析"><i class="fa fa-check"></i><b>14.2.3</b> 研究能产性分析</a></li>
+<li class="chapter" data-level="14.2.4" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究产出量-2000-2020."><i class="fa fa-check"></i><b>14.2.4</b> 语音感知研究产出量 (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.5" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究数量最高的10个国家地区-2000-2020."><i class="fa fa-check"></i><b>14.2.5</b> 语音感知研究数量最高的10个国家（地区） (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.6" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#发表量最大的10个国家发表趋势"><i class="fa fa-check"></i><b>14.2.6</b> 发表量最大的10个国家发表趋势</a></li>
+<li class="chapter" data-level="14.2.7" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者2000-2020."><i class="fa fa-check"></i><b>14.2.7</b> 语音感知领域发表量最高20位学者(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.8" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-."><i class="fa fa-check"></i><b>14.2.8</b> 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). .</a></li>
+<li class="chapter" data-level="14.2.9" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#合作情况"><i class="fa fa-check"></i><b>14.2.9</b> 合作情况</a></li>
+<li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">语言数据科学教程</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="第九章-机器学习建模基础" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 9</span> 第九章 机器学习建模基础<a href="第九章-机器学习建模基础.html#第九章-机器学习建模基础" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>机器学习（Machine Learning）是人工智能（Artificial Intelligence, AI）的一个重要分支，其主要目标是使计算机通过学习经验数据自动改进和发展。机器学习使计算机从数据中学习模式和规律，从而做出预测或决策，而无需显式地编程。机器学习主要分为2种主要类型，监督学习（Supervised Learning）和无监督学习（Unsupervised Learning）。</p>
+<p>根据学习方式和目标任务的不同，它们各自解决不同类型的问题。监督学习是一种通过已标记的训练数据来训练模型，从而预测或估计新数据的输出。在监督学习中，训练数据包含了输入特征和相应的标签。模型学习从输入到标签之间的映射关系，以便对未知数据进行预测。监督学习的任务可以分为分类（Classification）任务即预测离散类别标签，如垃圾邮件检测、疾病诊断。典型算法包括支持向量机（SVM）、逻辑回归、决策树、随机森林等。回归（Regression）任务则是预测连续数值，如房价预测、销售预测。典型算法包括，线性回归、多项式回归、支持向量回归（SVR）等。</p>
+<p>无监督学习使用未标记的数据，没有预先定义的输出，其目标是发现数据中的隐藏结构或模式。这种学习方法通常用于探索数据的内在关系，发现数据的聚类、降维或异常检测等特征。常见的无监督学习包括聚类分析（Clustering）和降维（Dimensionality Reduction）。聚类分析将数据集划分为不同的组（簇），使每个组内的数据点相似度最大化，而组间的相似度最小化。典型算法包括K均值聚类、层次聚类等。降维减少数据的特征维度，保留最重要的信息，以便更好地可视化和理解数据，同时降低计算复杂度。典型算法包括主成分分析（PCA）、因子分析、独立成分分析（ICA）等。</p>
+<div id="监督学习" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.1</span> 监督学习<a href="第九章-机器学习建模基础.html#监督学习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>下面将用一个二语语音研究的例子讲解如何使用支持向量机（SVM）和随机森林来对中国英语学习者的焦点语音实现进行自动评估。
+传统的统计建模（如广义线性模型）在大多数先前研究中用于调查信息焦点的语音实现，这些研究检查整个数据集，并通过离散指标检测焦点类型的效果。通常，基于不同的声学测量构建几个模型，以测试不同焦点和语言组的效果，但很难得到全面的图景。而人类听众则逐一听取话语并据此作出判断。这个过程可以通过机器学习算法来模拟，这些算法输入一组特征并基于这些特征输出分类结果。
+支持向量机（SVM）和随机森林模型被用于基于不同的声学测量集分类鼻音元音和口音元音。我们理解，计算感知与人类感知并不完全相同，但计算感知在语音研究中的优势在于它纯粹基于声学特征，因此可以剔除句法或词汇的影响。此外，与识别元音或辅音不同，仅仅给听众一些目标词并测试他们如何识别不同的焦点是困难的。机器学习算法可以在没有上下文的情况下识别不同的焦点，从而从感知的角度接近这个问题。
+焦点是话语中提供信息的部分，与句子的背景信息形成对比。为了进一步解释焦点在话语中的作用，以下是具体例子：</p>
+<ol style="list-style-type: lower-alpha">
+<li><strong>广泛焦点（Broad Focus, BF）</strong></li>
+</ol>
+<ul>
+<li>A: 你明天有什么计划？</li>
+<li>B: 我想去纽约。</li>
+</ul>
+<p>在这个例子中，B的整个回答都在提供新信息，因此整个句子是焦点。</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><strong>狭窄焦点（Narrow Focus, NF）</strong></li>
+</ol>
+<ul>
+<li>A: Karel想带你去哪里？</li>
+<li>B: 他想带我去纽约。</li>
+</ul>
+<p>在这个例子中，焦点是“纽约”，因为这是B回答A的问题“哪里”的特定信息。</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><strong>纠正焦点（Corrective Focus, CF）</strong></li>
+</ol>
+<ul>
+<li>A: 你妈妈想送你去芝加哥吗？</li>
+<li>B: 不，她想送我去纽约。</li>
+</ul>
+<p>在这个例子中，焦点也是“纽约”，但这次是为了纠正A的问题中的错误信息“芝加哥”。通过这些例子可以看出，焦点的范围和功能可以根据对话中的具体信息需求和信息状态有所不同。</p>
+<p>不同语言的母语者使用不同语音手段（如音高重音分布、短语边界、音高范围和持续时间）来表达不同焦点条件下的意义。本研究采用两种机器学习模型，支持向量机（SVM）和随机森林（Random Forest），来探讨基于语音特征的不同类型信息焦点。我们还比较了美国英语母语者（AE）与低熟练度的中国英语学习者（CE1）和高熟练度的中国英语学习者（CE2）在分类准确性和不同语音特征排名方面的差异。此外，我们使用AE的语音数据训练了两个模型，并用CE1和CE2的数据进行测试，以模拟AE听者如何感知非母语者在不同信息焦点下的语音产出。</p>
+<p>我们在本研究中使用了两种机器学习分类器，随机森林（RandomForests）和支持向量机（SVM）。随机森林是一种机器学习模型，由一组在数据的随机子集上训练和测试的决策树组成。在本研究中，我们在所有随机森林模型中使用了500棵树，如[9]所述。随机森林分类器检查每棵决策树的输出，并产生分类准确率。此外，随机森林分类器为每个模型提供了直接的特征重要性度量。本研究中使用了R语言中的randomForest包[10]来构建分类器。</p>
+<p>然而，随机森林为了其可解释性在分类中牺牲了一些准确性。为了弥补这一点，我们使用了SVM，这在机器学习领域中整体表现良好。SVM通过找到最佳分离数据中不同类别的线来工作。当数据不是线性可分时，可以使用核函数来处理非线性关系。在本研究中，使用了“径向基函数”（radial）核。然而，使用核函数时我们无法得到特征权重。因此，我们主要依赖随机森林来指示每个语音特征的重要性。</p>
+<p>此外，由于数据集相对较小（从机器学习的角度来看），我们使用了“10折交叉验证”，即对数据运行10次分析，每次使用不同的9/10数据作为“训练”集，剩余的1/10作为“测试”集。本研究中使用了R语言中的e1071包[11]来构建SVM分类器。</p>
+<div id="数据导入-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.1</span> 数据导入<a href="第九章-机器学习建模基础.html#数据导入-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb165-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="co"># install.packages(&#39;caTools&#39;)</span></a>
+<a class="sourceLine" id="cb166-2" data-line-number="2"><span class="kw">library</span>(caTools)</a>
+<a class="sourceLine" id="cb166-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb166-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb166-5" data-line-number="5"><span class="co"># 美国英语本族语者数据</span></a>
+<a class="sourceLine" id="cb166-6" data-line-number="6">datasetAE &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetAE.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb166-7" data-line-number="7"><span class="co"># 中国英语学习者大一</span></a>
+<a class="sourceLine" id="cb166-8" data-line-number="8">datasetCE1 =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetCE1.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb166-9" data-line-number="9"><span class="co"># 中国英语学习者大三</span></a>
+<a class="sourceLine" id="cb166-10" data-line-number="10">datasetCE2 =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetCE2.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb166-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb166-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb166-13" data-line-number="13">datasetAE<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetAE<span class="op">$</span>focus_type)</a>
+<a class="sourceLine" id="cb166-14" data-line-number="14">datasetCE1<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetCE1<span class="op">$</span>focus_type)</a>
+<a class="sourceLine" id="cb166-15" data-line-number="15">datasetCE2<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetCE2<span class="op">$</span>focus_type)</a>
+<a class="sourceLine" id="cb166-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb166-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb166-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb166-19" data-line-number="19"><span class="co"># install.packages(&#39;e1071&#39;)</span></a>
+<a class="sourceLine" id="cb166-20" data-line-number="20"><span class="kw">library</span>(e1071)</a></code></pre></div>
+</div>
+<div id="构建svm模型" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.2</span> 构建SVM模型<a href="第九章-机器学习建模基础.html#构建svm模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">svm_AE =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> focus_type <span class="op">~</span><span class="st"> </span>.,</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2">                 <span class="dt">data =</span> datasetAE,</a>
+<a class="sourceLine" id="cb167-3" data-line-number="3">                 <span class="co">#regression or classification</span></a>
+<a class="sourceLine" id="cb167-4" data-line-number="4">                 <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>, </a>
+<a class="sourceLine" id="cb167-5" data-line-number="5">                 <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
+<a class="sourceLine" id="cb167-6" data-line-number="6">                 <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
+<a class="sourceLine" id="cb167-7" data-line-number="7">                 <span class="dt">cross =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb167-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb167-9" data-line-number="9"><span class="co"># 交叉验证（Cross Validation）是一种用于评估和验证机器学习模型性能的方法，通过将数据集划分为多个子集，交替进行训练和测试，以确保模型在不同的数据集上都具有良好的泛化能力。最常见的方法是K折交叉验证（K-Fold Cross Validation），将数据集划分为K个大小大致相同的子集，每个子集轮流作为验证集，其余子集作为训练集，重复K次后将结果平均，作为模型的最终性能评估指标。交叉验证可以充分利用数据，提高模型评估的可靠性，防止过拟合问题，是机器学习和数据挖掘中广泛应用的技术。</span></a>
+<a class="sourceLine" id="cb167-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb167-11" data-line-number="11"><span class="kw">summary</span>(svm_AE)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## svm(formula = focus_type ~ ., data = datasetAE, type = &quot;C-classification&quot;, kernel = &quot;radial&quot;, cost = &quot;2&quot;, 
+##     cross = 10)
+## 
+## 
+## Parameters:
+##    SVM-Type:  C-classification 
+##  SVM-Kernel:  radial 
+##        cost:  2 
+## 
+## Number of Support Vectors:  174
+## 
+##  ( 58 61 55 )
+## 
+## 
+## Number of Classes:  3 
+## 
+## Levels: 
+##  bro cor nar
+## 
+## 10-fold cross-validation on training data:
+## 
+## Total Accuracy: 42.24599 
+## Single Accuracies:
+##  50 42.10526 36.84211 33.33333 42.10526 31.57895 55.55556 52.63158 36.84211 42.10526</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">svm_AE<span class="op">$</span>tot.accuracy</a></code></pre></div>
+<pre><code>## [1] 42.24599</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">svm_AE<span class="op">$</span>accuracies</a></code></pre></div>
+<pre><code>##  [1] 50.00000 42.10526 36.84211 33.33333 42.10526 31.57895 55.55556 52.63158 36.84211 42.10526</code></pre>
+</div>
+<div id="random-forest" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.3</span> random forest<a href="第九章-机器学习建模基础.html#random-forest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a>
+<a class="sourceLine" id="cb173-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb173-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb173-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb173-5" data-line-number="5"><span class="co">#AE</span></a>
+<a class="sourceLine" id="cb173-6" data-line-number="6">RF_AE =<span class="st"> </span><span class="kw">randomForest</span>(focus_type <span class="op">~</span><span class="st"> </span>.,</a>
+<a class="sourceLine" id="cb173-7" data-line-number="7">                    <span class="dt">ntree =</span> <span class="dv">500</span>, </a>
+<a class="sourceLine" id="cb173-8" data-line-number="8">                    <span class="dt">data =</span> datasetAE, </a>
+<a class="sourceLine" id="cb173-9" data-line-number="9">                    <span class="dt">importance =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb173-10" data-line-number="10"><span class="kw">importance</span>(RF_AE)   </a></code></pre></div>
+<pre><code>##                       bro        cor        nar MeanDecreaseAccuracy MeanDecreaseGini
+## Odur            0.5140828  2.1340207 -2.1872216           0.35538483         5.317048
+## Vdur            0.0429139  1.1813533  2.4925858           2.07368177         5.604926
+## Cdur            4.2245241  1.3416428  1.8691133           4.42392485         8.415981
+## Rdur            3.1940865 -1.5403027  1.6942768           2.09952920         5.386566
+## Sylldur        -0.7632086  0.7226848  0.1116193          -0.07377943         5.040385
+## Wdur            0.4031192  1.2760254  0.5353081           1.25499400         6.202501
+## O1Hexc          3.2166992  1.3994444 -0.3550104           2.58880098         5.439555
+## Fallexc        -0.3784383  4.4299155  6.2340216           6.18100973         6.970555
+## Nucleusfallexc  5.0580749  2.0103623 -2.1740778           2.88325662         7.725118
+## H_N2exc         0.1552991  2.3525700  1.0984669           1.94682400         5.702467
+## pd              0.4784784  0.8331123 -0.6137476           0.71097692         4.687184
+## Pd_rime         3.8104797 -0.2959070  0.3361559           2.10364327         5.994991
+## Falldur         1.1514921  0.2380824  8.1123263           6.18477738         9.538895
+## Risedur         3.9233410  1.3787518  2.9428743           5.15879783         6.624772
+## Hf0_Ef0         1.7389798  3.0422496  3.2327149           4.67262290         5.265986
+## L1_Hexc         2.5726081  0.1309762  3.1346224           3.35089696         5.677258
+## O1f0_Ef0        1.0765409  2.7237252  1.0950456           2.70134078         4.712215
+## L1f0_Ef0        0.9964942  4.8822834 -1.4506798           2.70266139         5.059596
+## L2f0_Ef0        0.6635268  1.0752717 -1.6661622           0.51157262         4.394975
+## Risesp          0.1264366 -0.1587295  2.0082139           0.94940044         5.059293
+## Fallsp         -0.1783400  3.6014926  4.0233803           4.18582556         5.154706</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="kw">varImpPlot</span>(RF_AE, <span class="dt">n.var=</span> <span class="dv">5</span>, <span class="dt">main =</span><span class="st">&quot;AE&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="co"># 在构建随机森林的过程中，每棵决策树都是通过对原始训练数据进行有放回抽样（Bootstrap Sampling）得到的子样本训练出来的。剩下样本则没有被该树用于训练，这些样本就是袋外样本。利用那些没有进行训练的数据来进行预测。</span></a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb176-3" data-line-number="3">RF_AE<span class="op">$</span>confusion</a></code></pre></div>
+<pre><code>##     bro cor nar class.error
+## bro  26  22  15   0.5873016
+## cor  21  30  13   0.5312500
+## nar  14  17  29   0.5166667</code></pre>
+<p>为了模拟美国英语（AE）听众如何感知由中国英语（CE1和CE2）学习者发出的焦点目标词语，使用所有AE数据特征训练了一个支持向量机（SVM）模型，并分别使用两个中国英语学习者组的数据进行测试。</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="co">#Cross langauge preception</span></a>
+<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="co">#svm</span></a>
+<a class="sourceLine" id="cb178-3" data-line-number="3">y_predCE1 =<span class="st"> </span><span class="kw">predict</span>(svm_AE, <span class="dt">newdata =</span> datasetCE1[<span class="op">-</span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb178-4" data-line-number="4">y_predCE2 =<span class="st"> </span><span class="kw">predict</span>(svm_AE, <span class="dt">newdata =</span> datasetCE2[<span class="op">-</span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb178-5" data-line-number="5"><span class="co">#output the data</span></a>
+<a class="sourceLine" id="cb178-6" data-line-number="6"><span class="co">#install.packages(&quot;caret&quot;)</span></a>
+<a class="sourceLine" id="cb178-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb178-8" data-line-number="8"><span class="kw">library</span>(caret)</a>
+<a class="sourceLine" id="cb178-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb178-10" data-line-number="10">conf_ce1 =<span class="st"> </span><span class="kw">confusionMatrix</span>(<span class="kw">as.factor</span>(datasetCE1<span class="op">$</span>focus_type), y_predCE1)</a>
+<a class="sourceLine" id="cb178-11" data-line-number="11">conf_ce2 =<span class="st"> </span><span class="kw">confusionMatrix</span>(<span class="kw">as.factor</span>(datasetCE2<span class="op">$</span>focus_type), y_predCE2)</a>
+<a class="sourceLine" id="cb178-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb178-13" data-line-number="13">CE1.TEST =<span class="st"> </span><span class="kw">as.data.frame</span>(conf_ce1<span class="op">$</span>table)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-14" data-line-number="14"><span class="st">  </span><span class="kw">group_by</span>(Reference)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-15" data-line-number="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> Freq<span class="op">/</span><span class="kw">sum</span>(Freq),</a>
+<a class="sourceLine" id="cb178-16" data-line-number="16">         <span class="dt">LANG =</span> <span class="st">&quot;CE1&quot;</span>)</a>
+<a class="sourceLine" id="cb178-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb178-18" data-line-number="18">CE2.TEST =<span class="st"> </span><span class="kw">as.data.frame</span>(conf_ce2<span class="op">$</span>table)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-19" data-line-number="19"><span class="st">  </span><span class="kw">group_by</span>(Reference)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-20" data-line-number="20"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> Freq<span class="op">/</span><span class="kw">sum</span>(Freq),</a>
+<a class="sourceLine" id="cb178-21" data-line-number="21">         <span class="dt">LANG =</span> <span class="st">&quot;CE2&quot;</span>)</a>
+<a class="sourceLine" id="cb178-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb178-23" data-line-number="23"><span class="co"># 总体准确率在CE1和CE2两组中均高于随机水平，且两组之间的差异较小。在每个组内，BF类词汇相对容易分类，而NF和CF类词汇则较难分类，反映在较低的准确率上。</span></a>
+<a class="sourceLine" id="cb178-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb178-25" data-line-number="25"><span class="kw">rbind</span>(CE1.TEST, CE2.TEST)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-26" data-line-number="26"><span class="st">  </span><span class="kw">filter</span>(Prediction <span class="op">==</span><span class="st"> </span>Reference)</a></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+## # Groups:   Reference [3]
+##   Prediction Reference  Freq accuracy LANG 
+##   &lt;fct&gt;      &lt;fct&gt;     &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;
+## 1 bro        bro          54    0.535 CE1  
+## 2 cor        cor          30    0.417 CE1  
+## 3 nar        nar          27    0.403 CE1  
+## 4 bro        bro          42    0.494 CE2  
+## 5 cor        cor          31    0.360 CE2  
+## 6 nar        nar          33    0.478 CE2</code></pre>
+<p>根据机器学习算法，仅基于目标词的语音特征对不同信息焦点进行分类的总体准确率并不高。这从感知的角度支持了目标词本身没有稳健的语音线索来区分广义、狭义和对比焦点的观点。然而，与持续时间相关的特征在重要性指数中的高排名与之前的文献一致。然而，目标词焦点中缺乏稳健的语音特征并不意味着语音信息不能足以建模信息焦点。相反，目标词以外的语音信息可能有助于区分不同的焦点。在文献[3]中，所有焦点后的词的f0峰值均低于这些词在中性焦点句子中的f0峰值。包含焦点后词的语音信息可能会提高分类准确率。</p>
+<p>使用AE数据训练的SVM模型对第二语言学习者的发音进行分类，生成的准确率与对AE发音进行分类的结果相当。这表明尽管AE和CE之间存在语音差异，但两个CE组的目标词至少在SVM模型区分这些词的能力上与AE相当。两个CE组之间的差异非常小，表明英语水平并未改变CE学习者的焦点实现模式。</p>
+</div>
+</div>
+<div id="非监督学习" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.2</span> 非监督学习<a href="第九章-机器学习建模基础.html#非监督学习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>下面我们基于词频特征计算两个文本的文体风格特征并通过不同的非监督学习的方法对两个不同的文本进行分类。</p>
+<div id="文本数据预处理" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.1</span> 文本数据预处理<a href="第九章-机器学习建模基础.html#文本数据预处理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">library</span>(stylo)</a>
+<a class="sourceLine" id="cb180-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="co"># 导入文本数据</span></a>
+<a class="sourceLine" id="cb180-4" data-line-number="4">style.corpus &lt;-<span class="st"> </span><span class="kw">load.corpus</span>(<span class="dt">files =</span> <span class="st">&quot;all&quot;</span>, <span class="dt">corpus.dir =</span> <span class="st">&quot;~/Nutstore Files/310_Tutorial/Language data science/data/ch6/detectives&quot;</span>,</a>
+<a class="sourceLine" id="cb180-5" data-line-number="5">         <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
+<a class="sourceLine" id="cb180-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb180-7" data-line-number="7"><span class="co"># 对文本进行分词</span></a>
+<a class="sourceLine" id="cb180-8" data-line-number="8">tokenized.corpus &lt;-<span class="st"> </span><span class="kw">txt.to.words.ext</span>(style.corpus, </a>
+<a class="sourceLine" id="cb180-9" data-line-number="9">                                     <span class="dt">preserve.case =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb180-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb180-11" data-line-number="11"><span class="co"># 根据研究目的我们可以设置一个词表去除一些干扰词。比如我们想排除文本中高频专有名词的干扰。</span></a>
+<a class="sourceLine" id="cb180-12" data-line-number="12"><span class="co">#proper.noun = c(&quot;DEE&quot;,&quot;Judge&quot;,&quot;Dee&quot;,&quot;&quot;)</span></a>
+<a class="sourceLine" id="cb180-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb180-14" data-line-number="14"><span class="co"># clean.corpus = delete.stop.words(tokenized.corpus, </span></a>
+<a class="sourceLine" id="cb180-15" data-line-number="15"><span class="co">#                                   stop.words = proper.noun)</span></a>
+<a class="sourceLine" id="cb180-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb180-17" data-line-number="17"><span class="co"># 一些研究认为代词对于计算文体风格有干扰，比如如果是一个大女主的小说，那么女性代词就会很多。但是这些不能代表作者风格，只能代表作品风格。</span></a>
+<a class="sourceLine" id="cb180-18" data-line-number="18">clean.corpus =<span class="st"> </span><span class="kw">delete.stop.words</span>(tokenized.corpus,</a>
+<a class="sourceLine" id="cb180-19" data-line-number="19">                                  <span class="dt">stop.words =</span> <span class="kw">stylo.pronouns</span>(<span class="dt">corpus.lang =</span> <span class="st">&quot;English&quot;</span>))</a>
+<a class="sourceLine" id="cb180-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb180-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb180-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb180-23" data-line-number="23">corpus.char<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">txt.to.features</span>(clean.corpus, </a>
+<a class="sourceLine" id="cb180-24" data-line-number="24">                                       <span class="dt">ngram.size =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb180-25" data-line-number="25">                                       <span class="dt">features =</span> <span class="st">&quot;w&quot;</span>)</a>
+<a class="sourceLine" id="cb180-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb180-27" data-line-number="27"><span class="co"># 将数据划分成1000个词一份</span></a>
+<a class="sourceLine" id="cb180-28" data-line-number="28">sliced.corpus.char<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">make.samples</span>(corpus.char<span class="fl">.1</span>, </a>
+<a class="sourceLine" id="cb180-29" data-line-number="29">                              <span class="dt">sampling =</span> <span class="st">&quot;normal.sampling&quot;</span>, </a>
+<a class="sourceLine" id="cb180-30" data-line-number="30">                              <span class="dt">sample.size =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb180-31" data-line-number="31"><span class="co"># 提取词频特征</span></a>
+<a class="sourceLine" id="cb180-32" data-line-number="32">features1 &lt;-<span class="st"> </span><span class="kw">make.frequency.list</span>(sliced.corpus.char<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb180-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb180-34" data-line-number="34"><span class="co"># 制作词频特征表</span></a>
+<a class="sourceLine" id="cb180-35" data-line-number="35">freqs1 &lt;-<span class="st"> </span><span class="kw">make.table.of.frequencies</span>(sliced.corpus.char<span class="fl">.1</span>, </a>
+<a class="sourceLine" id="cb180-36" data-line-number="36">                                   <span class="dt">features =</span> features1)</a>
+<a class="sourceLine" id="cb180-37" data-line-number="37"></a>
+<a class="sourceLine" id="cb180-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb180-39" data-line-number="39"><span class="co"># Culling</span></a>
+<a class="sourceLine" id="cb180-40" data-line-number="40"><span class="co"># 通过删选，用户可以指定特征在语料库中的出现比例，以决定其是否被纳入分析。在语料库中未达到指定比例的词语将被忽略。</span></a>
+<a class="sourceLine" id="cb180-41" data-line-number="41">culled.freqs1 &lt;-<span class="st"> </span><span class="kw">perform.culling</span>(freqs1, <span class="dt">culling.level =</span> <span class="dv">80</span>)</a></code></pre></div>
+</div>
+<div id="文本聚类分析" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.2</span> 文本聚类分析<a href="第九章-机器学习建模基础.html#文本聚类分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="co"># 主成分分析</span></a>
+<a class="sourceLine" id="cb181-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb181-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>,</a>
+<a class="sourceLine" id="cb181-4" data-line-number="4">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
+<a class="sourceLine" id="cb181-5" data-line-number="5">      <span class="dt">pca.visual.flavour =</span> <span class="st">&quot;technical&quot;</span>, </a>
+<a class="sourceLine" id="cb181-6" data-line-number="6">      <span class="dt">write.png.file =</span> <span class="ot">TRUE</span>, <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="co"># 显示两本书在第一第二主成分空间的分布</span></a>
+<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb182-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>, </a>
+<a class="sourceLine" id="cb182-4" data-line-number="4">      <span class="dt">mfw.min =</span> <span class="dv">100</span>, <span class="dt">mfw.max =</span> <span class="dv">500</span>,</a>
+<a class="sourceLine" id="cb182-5" data-line-number="5">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
+<a class="sourceLine" id="cb182-6" data-line-number="6">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>, <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb182-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb182-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb182-9" data-line-number="9"><span class="co"># 显示不同高频词的权重loadings</span></a>
+<a class="sourceLine" id="cb182-10" data-line-number="10"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb182-11" data-line-number="11">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>, </a>
+<a class="sourceLine" id="cb182-12" data-line-number="12">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>,</a>
+<a class="sourceLine" id="cb182-13" data-line-number="13">      <span class="dt">pca.visual.flavour =</span> <span class="st">&quot;loadings&quot;</span>, </a>
+<a class="sourceLine" id="cb182-14" data-line-number="14">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb182-15" data-line-number="15">      <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-71-2.png" width="672" /></p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="co"># cluster analysis</span></a>
+<a class="sourceLine" id="cb183-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb183-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;CA&quot;</span>, </a>
+<a class="sourceLine" id="cb183-4" data-line-number="4">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>,  </a>
+<a class="sourceLine" id="cb183-5" data-line-number="5">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
+<a class="sourceLine" id="cb183-6" data-line-number="6">      <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-71-3.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="第八章-统计建模.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="案例一二语语音区分实验.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-new.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

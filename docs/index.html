@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>语言数据科学教程</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="语言数据科学教程" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="语言数据科学教程" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="陈居强" />
+
+
+<meta name="date" content="2024-08-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="第二章-r语言简介.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Language Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 第一章 数据科学简介</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#数据科学发展简史"><i class="fa fa-check"></i><b>1.1</b> 数据科学发展简史</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#数据科学家"><i class="fa fa-check"></i><b>1.2</b> 数据科学家</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#数据科学工作流程"><i class="fa fa-check"></i><b>1.3</b> 数据科学工作流程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html"><i class="fa fa-check"></i><b>2</b> 第二章 R语言简介</a><ul>
+<li class="chapter" data-level="2.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言发展简史"><i class="fa fa-check"></i><b>2.1</b> R语言发展简史</a></li>
+<li class="chapter" data-level="2.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#rr-studior软件包的安装简介"><i class="fa fa-check"></i><b>2.2</b> R、R-Studio、R软件包的安装简介</a></li>
+<li class="chapter" data-level="2.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言的数据结构"><i class="fa fa-check"></i><b>2.3</b> R语言的数据结构</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#向量vector"><i class="fa fa-check"></i><b>2.3.1</b> 向量（vector）</a></li>
+<li class="chapter" data-level="2.3.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#列表list"><i class="fa fa-check"></i><b>2.3.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="2.3.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#矩阵matrix"><i class="fa fa-check"></i><b>2.3.3</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="2.3.4" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数据框data-frame"><i class="fa fa-check"></i><b>2.3.4</b> 数据框（data frame）</a></li>
+<li class="chapter" data-level="2.3.5" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数组array"><i class="fa fa-check"></i><b>2.3.5</b> 数组（array）</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html"><i class="fa fa-check"></i><b>3</b> 第三章 数据整理</a><ul>
+<li class="chapter" data-level="3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据与变量"><i class="fa fa-check"></i><b>3.1</b> 数据与变量</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#结构型数据和非结构型数据"><i class="fa fa-check"></i><b>3.1.1</b> 结构型数据和非结构型数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#质性数据和量化数据"><i class="fa fa-check"></i><b>3.1.2</b> 质性数据和量化数据</a></li>
+<li class="chapter" data-level="3.1.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量"><i class="fa fa-check"></i><b>3.1.3</b> 变量</a></li>
+<li class="chapter" data-level="3.1.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#类别变量"><i class="fa fa-check"></i><b>3.1.4</b> 类别变量</a></li>
+<li class="chapter" data-level="3.1.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数值型变量"><i class="fa fa-check"></i><b>3.1.5</b> 数值型变量</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据清洁"><i class="fa fa-check"></i><b>3.2</b> 数据清洁</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-处理异常值"><i class="fa fa-check"></i><b>3.2.1</b> 任务-处理异常值</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量筛选"><i class="fa fa-check"></i><b>3.3</b> 变量筛选</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-变量筛选"><i class="fa fa-check"></i><b>3.3.1</b> 任务-变量筛选</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据塑形"><i class="fa fa-check"></i><b>3.4</b> 数据塑形</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据塑形"><i class="fa fa-check"></i><b>3.4.1</b> 任务-数据塑形</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据整合"><i class="fa fa-check"></i><b>3.5</b> 数据整合</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据整合"><i class="fa fa-check"></i><b>3.5.1</b> 任务-数据整合</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html"><i class="fa fa-check"></i><b>4</b> 第四章 探索性数据分析</a><ul>
+<li class="chapter" data-level="4.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据转换"><i class="fa fa-check"></i><b>4.1</b> 数据转换</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-数据转化"><i class="fa fa-check"></i><b>4.1.1</b> 任务-数据转化</a></li>
+<li class="chapter" data-level="4.1.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-描述性统计"><i class="fa fa-check"></i><b>4.1.2</b> 任务-描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据可视化"><i class="fa fa-check"></i><b>4.2</b> 数据可视化</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#单变量数据可视化"><i class="fa fa-check"></i><b>4.2.1</b> 单变量数据可视化</a></li>
+<li class="chapter" data-level="4.2.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#多变量数据"><i class="fa fa-check"></i><b>4.2.2</b> 多变量数据</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html"><i class="fa fa-check"></i><b>5</b> 第五章 语言实验数据分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据导入"><i class="fa fa-check"></i><b>5.1</b> 数据导入</a></li>
+<li class="chapter" data-level="5.2" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据整理"><i class="fa fa-check"></i><b>5.2</b> 数据整理</a></li>
+<li class="chapter" data-level="5.3" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据转化"><i class="fa fa-check"></i><b>5.3</b> 数据转化</a></li>
+<li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
+<li class="chapter" data-level="7.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#语音库创建"><i class="fa fa-check"></i><b>7.1</b> 语音库创建</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#检索相关语音信息"><i class="fa fa-check"></i><b>7.1.1</b> 检索相关语音信息</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#时长提取"><i class="fa fa-check"></i><b>7.2</b> 时长提取</a></li>
+<li class="chapter" data-level="7.3" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#共振峰提取"><i class="fa fa-check"></i><b>7.3</b> 共振峰提取</a></li>
+<li class="chapter" data-level="7.4" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#基频分析"><i class="fa fa-check"></i><b>7.4</b> 基频分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html"><i class="fa fa-check"></i><b>8</b> 第八章 统计建模</a><ul>
+<li class="chapter" data-level="8.1" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量和自变量均为分类变量"><i class="fa fa-check"></i><b>8.1</b> 因变量和自变量均为分类变量</a></li>
+<li class="chapter" data-level="8.2" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量而自变量为分类变量"><i class="fa fa-check"></i><b>8.2</b> 因变量为连续变量而自变量为分类变量</a></li>
+<li class="chapter" data-level="8.3" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量自变量为分类变量"><i class="fa fa-check"></i><b>8.3</b> 因变量为连续变量，自变量为分类变量</a></li>
+<li class="chapter" data-level="8.4" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量与自变量均为连续变量"><i class="fa fa-check"></i><b>8.4</b> 因变量与自变量均为连续变量</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
+<li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
+<li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html"><i class="fa fa-check"></i><b>10</b> 案例一、二语语音区分实验</a><ul>
+<li class="chapter" data-level="10.1" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#研究背景研究问题"><i class="fa fa-check"></i><b>10.1</b> 研究背景+研究问题</a></li>
+<li class="chapter" data-level="10.2" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据整理描述性统计"><i class="fa fa-check"></i><b>10.2</b> 数据整理+描述性统计</a></li>
+<li class="chapter" data-level="10.3" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据可视化-1"><i class="fa fa-check"></i><b>10.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="10.4" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
+<li class="chapter" data-level="10.5" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html"><i class="fa fa-check"></i><b>11</b> 十一 案例二、翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#研究背景"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.4" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.5" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 语音数据处理案例</a><ul>
+<li class="chapter" data-level="12.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#研究背景-1"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="12.3" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
+<li class="chapter" data-level="12.3.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语南部方言声调建模"><i class="fa fa-check"></i><b>12.3.2</b> 越南语南部方言声调建模</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#展示与呈现"><i class="fa fa-check"></i><b>12.4</b> 展示与呈现</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html"><i class="fa fa-check"></i><b>13</b> 机器学习案例-预测声调学习难点</a><ul>
+<li class="chapter" data-level="13.1" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练普通话声调模型"><i class="fa fa-check"></i><b>13.1</b> 训练普通话声调模型</a></li>
+<li class="chapter" data-level="13.2" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练泰语母语者声调模型"><i class="fa fa-check"></i><b>13.2</b> 训练泰语母语者声调模型</a></li>
+<li class="chapter" data-level="13.3" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟普通话听者感知泰语声调"><i class="fa fa-check"></i><b>13.3</b> 模拟普通话听者感知泰语声调</a></li>
+<li class="chapter" data-level="13.4" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟泰语母语听者感知普通话声调"><i class="fa fa-check"></i><b>13.4</b> 模拟泰语母语听者感知普通话声调</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html"><i class="fa fa-check"></i><b>14</b> 文献计量研究案例-语音感知</a><ul>
+<li class="chapter" data-level="14.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据导入及整理-1"><i class="fa fa-check"></i><b>14.1</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="14.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据可视化与展示"><i class="fa fa-check"></i><b>14.2</b> 数据可视化与展示</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究概况2000-2020."><i class="fa fa-check"></i><b>14.2.1</b> 语音感知研究概况(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究发表最多的杂志"><i class="fa fa-check"></i><b>14.2.2</b> 语音感知研究发表最多的杂志</a></li>
+<li class="chapter" data-level="14.2.3" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究能产性分析"><i class="fa fa-check"></i><b>14.2.3</b> 研究能产性分析</a></li>
+<li class="chapter" data-level="14.2.4" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究产出量-2000-2020."><i class="fa fa-check"></i><b>14.2.4</b> 语音感知研究产出量 (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.5" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究数量最高的10个国家地区-2000-2020."><i class="fa fa-check"></i><b>14.2.5</b> 语音感知研究数量最高的10个国家（地区） (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.6" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#发表量最大的10个国家发表趋势"><i class="fa fa-check"></i><b>14.2.6</b> 发表量最大的10个国家发表趋势</a></li>
+<li class="chapter" data-level="14.2.7" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者2000-2020."><i class="fa fa-check"></i><b>14.2.7</b> 语音感知领域发表量最高20位学者(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.8" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-."><i class="fa fa-check"></i><b>14.2.8</b> 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). .</a></li>
+<li class="chapter" data-level="14.2.9" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#合作情况"><i class="fa fa-check"></i><b>14.2.9</b> 合作情况</a></li>
+<li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">语言数据科学教程</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">语言数据科学教程</h1>
+<p class="author"><em>陈居强</em></p>
+<p class="date"><em>2024-08-25</em></p>
+</div>
+<div id="第一章-数据科学简介" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 1</span> 第一章 数据科学简介<a href="index.html#第一章-数据科学简介" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="数据科学发展简史" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.1</span> 数据科学发展简史<a href="index.html#数据科学发展简史" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="数据科学家" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.2</span> 数据科学家<a href="index.html#数据科学家" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="数据科学工作流程" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.3</span> 数据科学工作流程<a href="index.html#数据科学工作流程" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># bookdown::render_book(&quot;index.Rmd&quot;, &quot;bookdown::gitbook&quot;)</span></a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="第二章-r语言简介.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

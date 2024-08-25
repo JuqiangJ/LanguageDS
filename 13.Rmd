@@ -7,7 +7,7 @@
 ```{r echo=FALSE, include=FALSE}
 library(tidyverse)
 
-setwd("~/Nutstore Files/310_Tutorial/Language data science")
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 
 library(bibliometrix)
 library(cowplot)
@@ -273,26 +273,26 @@ plot(uni.coc.plot$graph)
 
 ```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
 
-country.coc = metaTagExtraction(speech.data, Field = "AU_CO", sep = ";")
-
-country.collab <- biblioNetwork(country.coc, 
-                           analysis = "collaboration", 
-                           network = "countries", sep = ";")
-
-# Plot the network
-
-# jpeg(paste("ctry.collab",Sys.Date(),"jpeg",sep = "."),
-#     units="in", width=6, height=4, res=600)
-#
-country.collab.plot = networkPlot(country.collab, n = dim(country.collab)[1],
-                Title = "Country collaborations",
-                type = "sphere", size=TRUE,
-                remove.multiple=F,
-                label.n = 15,
-                labelsize=0.7,
-                verbose = FALSE)
-#
-# dev.off()
+# country.coc = metaTagExtraction(speech.data, Field = "AU_CO", sep = ";")
+# 
+# country.collab <- biblioNetwork(country.coc, 
+#                            analysis = "collaboration", 
+#                            network = "countries", sep = ";")
+# 
+# # Plot the network
+# 
+# # jpeg(paste("ctry.collab",Sys.Date(),"jpeg",sep = "."),
+# #     units="in", width=6, height=4, res=600)
+# #
+# country.collab.plot = networkPlot(country.collab, n = dim(country.collab)[1],
+#                 Title = "Country collaborations",
+#                 type = "sphere", size=TRUE,
+#                 remove.multiple=F,
+#                 label.n = 15,
+#                 labelsize=0.7,
+#                 verbose = FALSE)
+# #
+# # dev.off()
 
 
 ```
@@ -461,7 +461,7 @@ au.ky = speech.data%>%
   mutate(DE = str_replace_all(DE, " ",""),
          DE = str_replace_all(DE, "-",""),
          DE = str_to_title(DE),
-         DE = recode(DE, "Cochlearimplants" = "Cochlearimplant"),)%>%
+         DE = dplyr::recode(DE, "Cochlearimplants" = "Cochlearimplant"),)%>%
   count(DE, sort = TRUE)%>%
   mutate(order = 1:n())%>%
   filter(order < 25)%>%
@@ -488,7 +488,7 @@ machine.ky = speech.data%>%
   mutate(ID = str_replace_all(ID, " ",""),
          ID = str_replace_all(ID, "-",""),
          ID = str_to_title(ID),
-         ID = recode(ID, "Cochlearimplants" = "Cochlearimplant"))%>%
+         ID = dplyr::recode(ID, "Cochlearimplants" = "Cochlearimplant"))%>%
   count(ID, sort = TRUE)%>%
   mutate(order = 1:n())%>%
   filter(order < 25)%>%
@@ -512,7 +512,7 @@ title.ky.2gram = speech.data%>%
   mutate(bigram = str_replace_all(bigram, " ",""),
          #ID = str_replace_all(ID, "-",""),
          bigram = str_to_title(bigram),
-         bigram = recode(bigram, "Cochlearimplants" = "Cochlearimplant"))%>%
+         bigram = dplyr::recode(bigram, "Cochlearimplants" = "Cochlearimplant"))%>%
   count(bigram,sort = TRUE)%>%
   mutate(order = 1:n())%>%
   filter(order<25)%>%
@@ -543,7 +543,7 @@ ab.ky.2gram = speech.data%>%
   mutate(bigram = str_replace_all(bigram, " ",""),
          #ID = str_replace_all(ID, "-",""),
          bigram = str_to_title(bigram),
-         bigram = recode(bigram, "Cochlearimplants" = "Cochlearimplant"))%>%
+         bigram = dplyr::recode(bigram, "Cochlearimplants" = "Cochlearimplant"))%>%
   mutate(order = 1:n())%>%
   filter(order<25)%>%
   select(-order)%>%

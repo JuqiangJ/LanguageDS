@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 第六章 文本数据分析 | 语言数据科学教程</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 第六章 文本数据分析 | 语言数据科学教程" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 第六章 文本数据分析 | 语言数据科学教程" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="陈居强" />
+
+
+<meta name="date" content="2024-08-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="第五章-语言实验数据分析.html"/>
+<link rel="next" href="第七章-语音数据分析.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Language Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 第一章 数据科学简介</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#数据科学发展简史"><i class="fa fa-check"></i><b>1.1</b> 数据科学发展简史</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#数据科学家"><i class="fa fa-check"></i><b>1.2</b> 数据科学家</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#数据科学工作流程"><i class="fa fa-check"></i><b>1.3</b> 数据科学工作流程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html"><i class="fa fa-check"></i><b>2</b> 第二章 R语言简介</a><ul>
+<li class="chapter" data-level="2.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言发展简史"><i class="fa fa-check"></i><b>2.1</b> R语言发展简史</a></li>
+<li class="chapter" data-level="2.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#rr-studior软件包的安装简介"><i class="fa fa-check"></i><b>2.2</b> R、R-Studio、R软件包的安装简介</a></li>
+<li class="chapter" data-level="2.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#r语言的数据结构"><i class="fa fa-check"></i><b>2.3</b> R语言的数据结构</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#向量vector"><i class="fa fa-check"></i><b>2.3.1</b> 向量（vector）</a></li>
+<li class="chapter" data-level="2.3.2" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#列表list"><i class="fa fa-check"></i><b>2.3.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="2.3.3" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#矩阵matrix"><i class="fa fa-check"></i><b>2.3.3</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="2.3.4" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数据框data-frame"><i class="fa fa-check"></i><b>2.3.4</b> 数据框（data frame）</a></li>
+<li class="chapter" data-level="2.3.5" data-path="第二章-r语言简介.html"><a href="第二章-r语言简介.html#数组array"><i class="fa fa-check"></i><b>2.3.5</b> 数组（array）</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html"><i class="fa fa-check"></i><b>3</b> 第三章 数据整理</a><ul>
+<li class="chapter" data-level="3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据与变量"><i class="fa fa-check"></i><b>3.1</b> 数据与变量</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#结构型数据和非结构型数据"><i class="fa fa-check"></i><b>3.1.1</b> 结构型数据和非结构型数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#质性数据和量化数据"><i class="fa fa-check"></i><b>3.1.2</b> 质性数据和量化数据</a></li>
+<li class="chapter" data-level="3.1.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量"><i class="fa fa-check"></i><b>3.1.3</b> 变量</a></li>
+<li class="chapter" data-level="3.1.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#类别变量"><i class="fa fa-check"></i><b>3.1.4</b> 类别变量</a></li>
+<li class="chapter" data-level="3.1.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数值型变量"><i class="fa fa-check"></i><b>3.1.5</b> 数值型变量</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据清洁"><i class="fa fa-check"></i><b>3.2</b> 数据清洁</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-处理异常值"><i class="fa fa-check"></i><b>3.2.1</b> 任务-处理异常值</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#变量筛选"><i class="fa fa-check"></i><b>3.3</b> 变量筛选</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-变量筛选"><i class="fa fa-check"></i><b>3.3.1</b> 任务-变量筛选</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据塑形"><i class="fa fa-check"></i><b>3.4</b> 数据塑形</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据塑形"><i class="fa fa-check"></i><b>3.4.1</b> 任务-数据塑形</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#数据整合"><i class="fa fa-check"></i><b>3.5</b> 数据整合</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="第三章-数据整理.html"><a href="第三章-数据整理.html#任务-数据整合"><i class="fa fa-check"></i><b>3.5.1</b> 任务-数据整合</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html"><i class="fa fa-check"></i><b>4</b> 第四章 探索性数据分析</a><ul>
+<li class="chapter" data-level="4.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据转换"><i class="fa fa-check"></i><b>4.1</b> 数据转换</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-数据转化"><i class="fa fa-check"></i><b>4.1.1</b> 任务-数据转化</a></li>
+<li class="chapter" data-level="4.1.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#任务-描述性统计"><i class="fa fa-check"></i><b>4.1.2</b> 任务-描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#数据可视化"><i class="fa fa-check"></i><b>4.2</b> 数据可视化</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#单变量数据可视化"><i class="fa fa-check"></i><b>4.2.1</b> 单变量数据可视化</a></li>
+<li class="chapter" data-level="4.2.2" data-path="第四章-探索性数据分析.html"><a href="第四章-探索性数据分析.html#多变量数据"><i class="fa fa-check"></i><b>4.2.2</b> 多变量数据</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html"><i class="fa fa-check"></i><b>5</b> 第五章 语言实验数据分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据导入"><i class="fa fa-check"></i><b>5.1</b> 数据导入</a></li>
+<li class="chapter" data-level="5.2" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据整理"><i class="fa fa-check"></i><b>5.2</b> 数据整理</a></li>
+<li class="chapter" data-level="5.3" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#数据转化"><i class="fa fa-check"></i><b>5.3</b> 数据转化</a></li>
+<li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
+<li class="chapter" data-level="7.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#语音库创建"><i class="fa fa-check"></i><b>7.1</b> 语音库创建</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#检索相关语音信息"><i class="fa fa-check"></i><b>7.1.1</b> 检索相关语音信息</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#时长提取"><i class="fa fa-check"></i><b>7.2</b> 时长提取</a></li>
+<li class="chapter" data-level="7.3" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#共振峰提取"><i class="fa fa-check"></i><b>7.3</b> 共振峰提取</a></li>
+<li class="chapter" data-level="7.4" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html#基频分析"><i class="fa fa-check"></i><b>7.4</b> 基频分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html"><i class="fa fa-check"></i><b>8</b> 第八章 统计建模</a><ul>
+<li class="chapter" data-level="8.1" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量和自变量均为分类变量"><i class="fa fa-check"></i><b>8.1</b> 因变量和自变量均为分类变量</a></li>
+<li class="chapter" data-level="8.2" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量而自变量为分类变量"><i class="fa fa-check"></i><b>8.2</b> 因变量为连续变量而自变量为分类变量</a></li>
+<li class="chapter" data-level="8.3" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量为连续变量自变量为分类变量"><i class="fa fa-check"></i><b>8.3</b> 因变量为连续变量，自变量为分类变量</a></li>
+<li class="chapter" data-level="8.4" data-path="第八章-统计建模.html"><a href="第八章-统计建模.html#因变量与自变量均为连续变量"><i class="fa fa-check"></i><b>8.4</b> 因变量与自变量均为连续变量</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
+<li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
+<li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html"><i class="fa fa-check"></i><b>10</b> 案例一、二语语音区分实验</a><ul>
+<li class="chapter" data-level="10.1" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#研究背景研究问题"><i class="fa fa-check"></i><b>10.1</b> 研究背景+研究问题</a></li>
+<li class="chapter" data-level="10.2" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据整理描述性统计"><i class="fa fa-check"></i><b>10.2</b> 数据整理+描述性统计</a></li>
+<li class="chapter" data-level="10.3" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#数据可视化-1"><i class="fa fa-check"></i><b>10.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="10.4" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
+<li class="chapter" data-level="10.5" data-path="案例一二语语音区分实验.html"><a href="案例一二语语音区分实验.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html"><i class="fa fa-check"></i><b>11</b> 十一 案例二、翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#研究背景"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.4" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.5" data-path="十一-案例二翻译文体风格.html"><a href="十一-案例二翻译文体风格.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 语音数据处理案例</a><ul>
+<li class="chapter" data-level="12.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#研究背景-1"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="12.3" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
+<li class="chapter" data-level="12.3.2" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#越南语南部方言声调建模"><i class="fa fa-check"></i><b>12.3.2</b> 越南语南部方言声调建模</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="语音数据处理案例.html"><a href="语音数据处理案例.html#展示与呈现"><i class="fa fa-check"></i><b>12.4</b> 展示与呈现</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html"><i class="fa fa-check"></i><b>13</b> 机器学习案例-预测声调学习难点</a><ul>
+<li class="chapter" data-level="13.1" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练普通话声调模型"><i class="fa fa-check"></i><b>13.1</b> 训练普通话声调模型</a></li>
+<li class="chapter" data-level="13.2" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#训练泰语母语者声调模型"><i class="fa fa-check"></i><b>13.2</b> 训练泰语母语者声调模型</a></li>
+<li class="chapter" data-level="13.3" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟普通话听者感知泰语声调"><i class="fa fa-check"></i><b>13.3</b> 模拟普通话听者感知泰语声调</a></li>
+<li class="chapter" data-level="13.4" data-path="机器学习案例-预测声调学习难点.html"><a href="机器学习案例-预测声调学习难点.html#模拟泰语母语听者感知普通话声调"><i class="fa fa-check"></i><b>13.4</b> 模拟泰语母语听者感知普通话声调</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html"><i class="fa fa-check"></i><b>14</b> 文献计量研究案例-语音感知</a><ul>
+<li class="chapter" data-level="14.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据导入及整理-1"><i class="fa fa-check"></i><b>14.1</b> 数据导入及整理</a></li>
+<li class="chapter" data-level="14.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#数据可视化与展示"><i class="fa fa-check"></i><b>14.2</b> 数据可视化与展示</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究概况2000-2020."><i class="fa fa-check"></i><b>14.2.1</b> 语音感知研究概况(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.2" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究发表最多的杂志"><i class="fa fa-check"></i><b>14.2.2</b> 语音感知研究发表最多的杂志</a></li>
+<li class="chapter" data-level="14.2.3" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究能产性分析"><i class="fa fa-check"></i><b>14.2.3</b> 研究能产性分析</a></li>
+<li class="chapter" data-level="14.2.4" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究产出量-2000-2020."><i class="fa fa-check"></i><b>14.2.4</b> 语音感知研究产出量 (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.5" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知研究数量最高的10个国家地区-2000-2020."><i class="fa fa-check"></i><b>14.2.5</b> 语音感知研究数量最高的10个国家（地区） (2000-2020).</a></li>
+<li class="chapter" data-level="14.2.6" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#发表量最大的10个国家发表趋势"><i class="fa fa-check"></i><b>14.2.6</b> 发表量最大的10个国家发表趋势</a></li>
+<li class="chapter" data-level="14.2.7" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者2000-2020."><i class="fa fa-check"></i><b>14.2.7</b> 语音感知领域发表量最高20位学者(2000-2020).</a></li>
+<li class="chapter" data-level="14.2.8" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-."><i class="fa fa-check"></i><b>14.2.8</b> 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). .</a></li>
+<li class="chapter" data-level="14.2.9" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#合作情况"><i class="fa fa-check"></i><b>14.2.9</b> 合作情况</a></li>
+<li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">语言数据科学教程</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="第六章-文本数据分析" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 6</span> 第六章 文本数据分析<a href="第六章-文本数据分析.html#第六章-文本数据分析" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>文本数据属于非结构化数据，通常需要通过分词、词性赋码等自然语言处理方法，将文本数据进行结构化。
+在语言学研究中，语料库研究与文本最为相关。Tognini-Bonelli（2001）提出基于语料库（corpus-based）和语料库驱动（corpus-driven）的区分。基于语料库的研究将语料库用作验证研究者直觉或检查小型数据集中语言的频率和/或合理性的例子来源。研究者不会质疑预先存在的传统描述单元和类别。语料库驱动的分析则是一种更具归纳性的过程：语料库本身就是数据，分析过程中通过记录语料库中的模式来表达语言中的规律性（和例外情况）。语料库驱动的分析倾向于只使用关于语法结构的最低限度的理论预设。</p>
+<p>在词汇层面的语料库研究中，我们一般会进行词频统计（Word Frequency Count），即统计词汇在语料库中的出现频率，以了解词汇的使用频率和分布情况，构建词表。其次，与参考语料库比较，我们可以进行关键词提取（Keyword Extraction）即识别出在特定语境或文本类型中特别频繁出现的词汇。再者，如果对于某些特定词汇感兴趣，我们可以通过共现分析（concordance Analysis）研究哪些词汇经常一起出现，以了解词汇之间的关系和语境。最后，通过collocation anlysis我们可以分析词组搭配。
+除了对文本中的词汇进行分析，也可以通过词汇来分析文本的风格。词汇丰富度和可读性分析可以帮我们比较不同文本之间词汇复杂性的差异。在分析不同翻译文本的特征是我们常常用到。此外，通过文本中最高频的几百个词的频率特征我们可以解锁不同作家的创作指纹。这样的分析可以帮我们鉴定一些归属存疑的文本作品。</p>
+<p>在R语言中常用的文本处理的程序包有tidytext和quenteda。他们各有不同的功能，同时彼此之间可以相互转化。</p>
+<div id="数据导入-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.1</span> 数据导入<a href="第六章-文本数据分析.html#数据导入-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="kw">library</span>(quanteda)</a>
+<a class="sourceLine" id="cb73-4" data-line-number="4"><span class="co">#install.packages(&quot;readtext&quot;)</span></a>
+<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="kw">require</span>(readtext)</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7">detectives.raw &lt;-<span class="st"> </span><span class="kw">readtext</span>(<span class="st">&quot;data/ch6/detectives/*txt&quot;</span>)</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">corps.detectives =<span class="st"> </span><span class="kw">corpus</span>(detectives.raw)</a>
+<a class="sourceLine" id="cb73-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb73-11" data-line-number="11"><span class="kw">summary</span>(<span class="kw">corpus</span>(corps.detectives), <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## Corpus consisting of 2 documents, showing 2 documents:
+## 
+##                    Text Types Tokens Sentences
+##  A_Study_in_Scarlet.txt  6313  51368      2736
+##           Judge_dee.txt  6010  79276      3686</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">docvars</span>(corps.detectives, <span class="st">&quot;book&quot;</span>) &lt;-<span class="st"> </span><span class="kw">names</span>(corps.detectives)</a></code></pre></div>
+</div>
+<div id="数据整理-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.2</span> 数据整理<a href="第六章-文本数据分析.html#数据整理-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># make a dfm</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb76-3" data-line-number="3">dfm_detectives &lt;-<span class="st"> </span>corps.detectives <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="st">   </span><span class="kw">tokens</span>(<span class="dt">remove_punct =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="st">   </span><span class="kw">tokens_remove</span>(<span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-6" data-line-number="6"><span class="st">   </span><span class="kw">dfm</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-7" data-line-number="7"><span class="st">   </span><span class="kw">dfm_group</span>(<span class="dt">groups =</span> book)</a>
+<a class="sourceLine" id="cb76-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb76-9" data-line-number="9"><span class="kw">print</span>(dfm_detectives)</a></code></pre></div>
+<pre><code>## Document-feature matrix of: 2 documents, 8,565 features (35.77% sparse) and 1 docvar.
+##                         features
+## docs                     study scarlet part _being reprint reminiscences of_ john h watson
+##   A_Study_in_Scarlet.txt    11       4   14      1       1             2   1   36 2      7
+##   Judge_dee.txt              3       3   26      0       0             0   0    0 0      0
+## [ reached max_nfeat ... 8,555 more features ]</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">topfeatures</span>(dfm_detectives, <span class="dv">20</span>)</a></code></pre></div>
+<pre><code>## judge  said   dee   one   now   man   old   two  upon shall   mrs  time young  room  case  back    ma  come   see joong 
+##   701   553   542   326   315   300   225   222   217   207   204   197   179   177   167   166   160   158   156   154</code></pre>
+</div>
+<div id="词汇特征" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.3</span> 词汇特征<a href="第六章-文本数据分析.html#词汇特征" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="词频提取与词表构建" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.3.1</span> 词频提取与词表构建<a href="第六章-文本数据分析.html#词频提取与词表构建" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>词频是语料库语言学最基本的概念。频率可以以原始数据的形式给出，例如在某个文本中，某个词出现了58次；或者可以以百分比或比例的形式给出，某个词在每百万词中出现602.91次。这使得可以在不同大小的语料库之间进行比较。</p>
+<p>通过对语料库中每个词进行词频统计编制的词表可以用来生成关键词列表。</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;quanteda.textstats&quot;</span>)</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;quanteda.textplots&quot;</span>)</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">dfm_detectives.freq &lt;-<span class="st"> </span><span class="kw">textstat_frequency</span>(dfm_detectives, </a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">                                          <span class="dt">n =</span> <span class="dv">20</span>, </a>
+<a class="sourceLine" id="cb80-6" data-line-number="6">                                          <span class="dt">groups =</span> book)</a>
+<a class="sourceLine" id="cb80-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb80-8" data-line-number="8"><span class="kw">ggplot</span>(dfm_detectives.freq, </a>
+<a class="sourceLine" id="cb80-9" data-line-number="9">       <span class="kw">aes</span>(<span class="dt">x =</span> frequency, <span class="dt">y =</span> <span class="kw">reorder</span>(feature, frequency))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-11" data-line-number="11"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Frequency&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Feature&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb80-12" data-line-number="12"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>group, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+</div>
+<div id="关键词提取" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.3.2</span> 关键词提取<a href="第六章-文本数据分析.html#关键词提取" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在语料库语言学中，关键词分析（keyword analysis）是一种通过与参考语料库进行比较，识别出在特定语料库中出现频率异常高（正关键词）或异常低（负关键词）的词语的方法。</p>
+<p><strong>关键词（Keyword）</strong>是指在一个文本或语料库中，与参考语料库相比，出现频率显著高于或低于预期的词语。通常，使用统计测试（如对数似然检验或卡方检验）来比较两个词表，以得出关键词。
+<strong>参考语料库（Reference corpus）</strong>是一个平衡且代表性的语料库，通常用于关键词分析中提供参考词表。在关键词分析中，通过与参考语料库的比较，可以发现哪些词在特定语料库中是关键的。</p>
+<p>在关键词分析中，一个词可能仅仅因为在某些文本中频率极高，而被误认为是关键词。为了确认一个词是否真的具有代表性，可以使用分布图查看这个词在整个语料库中的分布，或者计算在多个文本中均为关键词的词汇列表，以避免因不均匀分布导致的偏差。</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co"># Calculate keyness and determine Trump as target group</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2">tstat_keyness &lt;-<span class="st"> </span><span class="kw">textstat_keyness</span>(dfm_detectives , </a>
+<a class="sourceLine" id="cb81-3" data-line-number="3">                                  <span class="dt">target =</span> <span class="st">&quot;Judge_dee.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb81-4" data-line-number="4"><span class="co"># Plot estimated word keyness</span></a>
+<a class="sourceLine" id="cb81-5" data-line-number="5"><span class="kw">textplot_keyness</span>(tstat_keyness) </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="上下文中的关键词索引kwic" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.3.3</span> 上下文中的关键词索引（KWIC）<a href="第六章-文本数据分析.html#上下文中的关键词索引kwic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>索引（Concordance）是指在语料库中按照字母顺序排列的搜索模式索引，显示该搜索模式在每个上下文中的出现。上下文中的关键词索引（Key-Word-In-Context Concordance，简称KWIC）是一种显示关键词在语料库中实际使用情况的工具或方法。具体来说，KWIC 索引会将目标关键词放在中心位置，并显示该词在文本中的所有出现位置，同时显示它前后的一定数量的单词或词组。这种排列方式可以帮助研究者观察关键词在不同上下文中的用法和意义。</p>
+<p>例如，如果你想研究英语中“education”一词的用法，KWIC 索引会将所有包含“education”的句子或句段列出，展示该词左右的上下文。这样，研究者就可以一目了然地看到“education”在不同语境下的使用方式，并分析其频率、搭配、语法特征以及语义变化。</p>
+<p>KWIC 索引在语料库语言学中被广泛应用，因为它能够帮助研究者深入理解词语在实际语言使用中的行为，而不仅仅是关注词频等表面数据。</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">toks_corpus_detectives &lt;-<span class="st"> </span>corps.detectives<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-2" data-line-number="2"><span class="st">   </span><span class="kw">tokens</span>(<span class="dt">remove_punct =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="st">   </span><span class="kw">tokens_remove</span>(<span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>)) </a>
+<a class="sourceLine" id="cb82-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb82-5" data-line-number="5"><span class="kw">kwic</span>(toks_corpus_detectives , <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-6" data-line-number="6"><span class="st">  </span><span class="kw">head</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-7" data-line-number="7"><span class="st">  </span><span class="kw">as.data.frame</span>()</a></code></pre></div>
+<pre><code>##                  docname from   to                                     pre keyword
+## 1 A_Study_in_Scarlet.txt 3864 3864 second individual 8 presumably murderer  murder
+## 2 A_Study_in_Scarlet.txt 4560 4560   case continued turning two detectives  murder
+## 3 A_Study_in_Scarlet.txt 5492 5492    across table constable get arresting  murder
+## 4 A_Study_in_Scarlet.txt 5747 5747        little art jargon scarlet thread  murder
+## 5 A_Study_in_Scarlet.txt 6186 6186      reason eyes finding ring connected  murder
+## 6 A_Study_in_Scarlet.txt 8837 8837            must stayed room little time  murder
+##                                              post pattern
+## 1 committed reminds circumstances attendant death  murder
+## 2                      done murderer man six feet  murder
+## 3                         said one hounds wolf Mr  murder
+## 4              running colourless skein life duty  murder
+## 5                      come come shall see within  murder
+## 6          found blood-stained water basin washed  murder</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># 对于词组</span></a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="kw">phrase</span>(<span class="st">&quot;commit crime&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="st">    </span><span class="kw">head</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-4" data-line-number="4"><span class="st">   </span><span class="kw">as.data.frame</span>()</a></code></pre></div>
+<pre><code>##         docname from   to                                 pre      keyword                              post
+## 1 Judge_dee.txt 2617 2618 bamboo still faced original problem commit crime thus ruminated Sergeant Hoong set
+##        pattern
+## 1 commit crime</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">kwic</span>(toks_corpus_detectives , <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">    </span><span class="kw">textplot_xray</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">textplot_xray</span>(</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>),</a>
+<a class="sourceLine" id="cb87-3" data-line-number="3">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;judge&quot;</span>),</a>
+<a class="sourceLine" id="cb87-4" data-line-number="4">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;police&quot;</span>),</a>
+<a class="sourceLine" id="cb87-5" data-line-number="5">    <span class="dt">scale =</span> <span class="st">&quot;absolute&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Use of `x$ntokens` is discouraged.
+## ℹ Use `ntokens` instead.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
+</div>
+<div id="搭配分析" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.3.4</span> 搭配分析<a href="第六章-文本数据分析.html#搭配分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>搭配分析（collocation analysis）是语料库语言学中的一种方法，用于研究词汇之间的共现关系，即在自然语言中某些词语经常一起出现的现象。搭配分析通过识别和分析这些词语的共现频率和模式，可以揭示出词语之间的语义或语法关系。</p>
+<p><strong>搭配（Collocation）</strong>：搭配是指两个或多个词在特定的上下文中经常一起出现。例如，在英语中，“strong”常常与“tea”搭配，而“powerful”则很少与“tea”搭配。类似地，“make a decision”和“take a photo”也是常见的搭配。</p>
+<p><strong>搭配强度（Collocational Strength）</strong>：搭配强度是衡量词语之间共现关系的紧密程度。它通常通过统计方法计算，比如互信息（Mutual Information，MI）或t检验（t-score）等。高搭配强度表明这些词语经常一起出现，并且比随机出现的可能性大得多。</p>
+<p><strong>搭配范围（Collocational Range）</strong>：搭配范围指的是词语在多大范围内（比如在前后几个词内）出现的频率。例如，“make”在前面紧跟着“decision”或“mistake”时，是一个常见的搭配，这个范围通常称为“window size”。</p>
+<p><strong>搭配分析的应用</strong>：
+1. <strong>语言学习</strong>：
+搭配分析有助于语言学习者理解哪些词语经常一起使用，从而提高语言的自然性和流利度。例如，学习者可以通过搭配分析了解“do homework”比“make homework”更自然。</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>词典编纂</strong>：
+词典编纂者使用搭配分析来确定哪些词语组合应该被列为固定搭配，从而为使用者提供更准确的词语用法信息。</p></li>
+<li><p><strong>语义分析</strong>：
+通过分析一个词的搭配，可以推测其语义。例如，“dark”通常与“night”搭配，而“dark”与“mood”搭配时，可以暗示“mood”是消极的。</p></li>
+</ol>
+<p>搭配分析是通过统计方法研究词语之间的共现关系，揭示语言使用中的规律性和隐含语义。它在语言研究、教育和自然语言处理等领域具有广泛的应用。</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">toks_corpus_detectives<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="st">  </span><span class="co">#提取包含大写字母的专有名词</span></a>
+<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="st">    </span><span class="kw">tokens_select</span>(<span class="dt">pattern =</span> <span class="st">&quot;^[A-Z]&quot;</span>, </a>
+<a class="sourceLine" id="cb89-4" data-line-number="4">                  <span class="dt">valuetype =</span> <span class="st">&quot;regex&quot;</span>, </a>
+<a class="sourceLine" id="cb89-5" data-line-number="5">                  <span class="dt">case_insensitive =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb89-6" data-line-number="6">                  <span class="dt">padding =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-7" data-line-number="7"><span class="st">    </span><span class="kw">textstat_collocations</span>(<span class="dt">min_count =</span> <span class="dv">5</span>, </a>
+<a class="sourceLine" id="cb89-8" data-line-number="8">                          <span class="dt">size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb89-9" data-line-number="9">                          <span class="dt">tolower =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>##                 collocation count count_nested length      lambda           z
+## 1               Mrs Bee Mrs     9            0      3   2.2919763  1.36609804
+## 2      Mr Joseph Stangerson     5            0      3   0.1381491  0.06382149
+## 3          Six Mile Village    31            0      3  -1.9053123 -0.64514763
+## 4        Mr Sherlock Holmes     7            0      3  -3.2857683 -1.32091898
+## 5                Old Mr Hua     6            0      3  -2.9543269 -1.39733298
+## 6           Joong Chiao Tai    26            0      3  -6.0239003 -2.11855345
+## 7            Salt Lake City     8            0      3  -7.4583249 -2.49079675
+## 8  Halliday&#39;s Private Hotel     5            0      3  -9.1930925 -2.63393615
+## 9            Ma Joong Chiao    26            0      3  -6.6460942 -2.66082620
+## 10             Chiao Tai Ma     5            0      3  -8.0017108 -2.79263343
+## 11             Tai Ma Joong     5            0      3  -7.7720469 -3.08084494
+## 12     Dragon Boat Festival     5            0      3 -10.8024934 -3.32080583
+## 13            Warden Ho Kai    29            0      3  -8.5385706 -3.38490330
+## 14             Bee Mrs Djou     7            0      3  -4.8207475 -3.77602086
+## 15     Excellency Judge Dee     5            0      3  -6.6373310 -4.10986859</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">collocation<span class="fl">.3</span>wd &lt;-<span class="st"> </span><span class="kw">textstat_collocations</span>(corps.detectives, </a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">                                         <span class="dt">size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb91-3" data-line-number="3">                                         <span class="dt">tolower =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="文本风格分析" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.4</span> 文本风格分析<a href="第六章-文本数据分析.html#文本风格分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="词汇多样性" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.4.1</span> 词汇多样性<a href="第六章-文本数据分析.html#词汇多样性" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>词汇丰富度（Lexical Richness）是指在语言学和语言习得研究中，用来衡量一个人使用语言时，所表现出的词汇多样性和复杂程度的指标。它反映了一个人语言表达的广度和深度，具体而言，就是在一个语言片段中，使用多少不同的词汇以及这些词汇的复杂性。</p>
+<p>词汇丰富度通常通过以下几个方面来衡量：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>类型-标记比率（Type-Token Ratio, TTR）</strong>：这是最常见的词汇丰富度衡量指标。类型指的是不同的词汇种类，而标记指的是词汇的总数。类型-标记比率就是不同词汇种类数与总词汇数的比值。TTR 比值越高，表示词汇丰富度越高，但它会受到文本长度的影响。</p></li>
+<li><p><strong>词汇密度（Lexical Density）</strong>：衡量一个文本中实词（如名词、动词、形容词、副词）所占的比例。高词汇密度意味着文本中使用了较多的实词，相对内容较为丰富。</p></li>
+<li><p><strong>平均词长（Mean Word Length）</strong>：平均词长可以作为词汇复杂性的一种衡量方式，通常较长的词汇意味着较高的词汇丰富度。</p></li>
+<li><p><strong>稀有词汇比例（Proportion of Rare Words）</strong>：这个指标衡量的是在文本中使用的稀有或不常见词汇的比例。稀有词汇使用越多，词汇丰富度通常越高。</p></li>
+<li><p><strong>D值（D-measure）</strong>：这是一个更复杂的指标，试图通过建模解决 TTR 中的文本长度影响问题，提供一个更稳定的词汇丰富度衡量方式。</p></li>
+</ol>
+<p><strong>词汇丰富度</strong>的分析在二语习得、语言能力评估、心理语言学等领域中具有重要意义。通过衡量一个人词汇丰富度，可以判断其语言能力、表达能力、认知水平，甚至可以用来诊断语言障碍或认知功能衰退。</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">lexical.diversity &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(dfm_detectives, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3">lexical.diversity.df =<span class="st"> </span>lexical.diversity<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-4" data-line-number="4"><span class="st">  </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="st">  </span><span class="co"># mutate(id = 1:n())%&gt;%</span></a>
+<a class="sourceLine" id="cb92-6" data-line-number="6"><span class="st">  </span><span class="co"># filter(id &gt;1 )%&gt;%</span></a>
+<a class="sourceLine" id="cb92-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;document&quot;</span>,<span class="st">&quot;TTR&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;Vm&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-8" data-line-number="8"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;document&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">measures =</span> <span class="kw">as.factor</span>(measures),</a>
+<a class="sourceLine" id="cb92-10" data-line-number="10">         <span class="dt">measures =</span> <span class="kw">fct_relevel</span>(measures, <span class="st">&quot;TTR&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;Vm&quot;</span>))</a>
+<a class="sourceLine" id="cb92-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb92-12" data-line-number="12">lexical.diversity.df</a></code></pre></div>
+<pre><code>##                  document measures       values
+## 1  A_Study_in_Scarlet.txt      TTR  0.288416556
+## 2           Judge_dee.txt      TTR  0.153516445
+## 3  A_Study_in_Scarlet.txt        C  0.874239515
+## 4           Judge_dee.txt        C  0.820550958
+## 5  A_Study_in_Scarlet.txt        R 40.446244676
+## 6           Judge_dee.txt        R 28.429985636
+## 7  A_Study_in_Scarlet.txt        K 10.631269445
+## 8           Judge_dee.txt        K 18.348438591
+## 9  A_Study_in_Scarlet.txt        D  0.001063181
+## 10          Judge_dee.txt        D  0.001834897
+## 11 A_Study_in_Scarlet.txt       Vm  0.030621422
+## 12          Judge_dee.txt       Vm  0.040915379</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="co">## 移动窗口词汇丰富度</span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2">lexical.mattr &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(<span class="kw">tokens</span>(corps.detectives), </a>
+<a class="sourceLine" id="cb94-3" data-line-number="3">                                 <span class="dt">measure =</span> <span class="st">&quot;MATTR&quot;</span>, <span class="dt">MATTR_window =</span> <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb94-5" data-line-number="5">lexical.mattr</a></code></pre></div>
+<pre><code>##                 document     MATTR
+## 1 A_Study_in_Scarlet.txt 0.5203928
+## 2          Judge_dee.txt 0.4970508</code></pre>
+</div>
+<div id="文本可读性" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.4.2</span> 文本可读性<a href="第六章-文本数据分析.html#文本可读性" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">readability &lt;-<span class="st"> </span><span class="kw">textstat_readability</span>(corps.detectives, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2">readability.df =<span class="st"> </span>readability <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;document&quot;</span>,<span class="st">&quot;ARI&quot;</span>,<span class="st">&quot;Flesch&quot;</span>,<span class="st">&quot;FOG&quot;</span>,</a>
+<a class="sourceLine" id="cb96-4" data-line-number="4">         <span class="st">&quot;Coleman.Liau.short&quot;</span>,<span class="st">&quot;Dale.Chall&quot;</span>,<span class="st">&quot;Spache&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;document&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">measures =</span> <span class="kw">as.factor</span>(measures),</a>
+<a class="sourceLine" id="cb96-7" data-line-number="7">         <span class="dt">measures =</span> <span class="kw">fct_relevel</span>(measures, <span class="st">&quot;ARI&quot;</span>,<span class="st">&quot;Flesch&quot;</span>,<span class="st">&quot;FOG&quot;</span>,</a>
+<a class="sourceLine" id="cb96-8" data-line-number="8">                                <span class="st">&quot;Coleman.Liau.short&quot;</span>,<span class="st">&quot;Dale.Chall&quot;</span>,<span class="st">&quot;Spache&quot;</span>))</a></code></pre></div>
+</div>
+<div id="文本信息熵" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.4.3</span> 文本信息熵<a href="第六章-文本数据分析.html#文本信息熵" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>文本信息熵（Textual Information Entropy）是信息理论中的一个概念，用来衡量文本中信息的复杂性和不确定性。它是由克劳德·香农（Claude Shannon）在1948年提出的，并广泛应用于语言学、计算机科学和信息论等领域。</p>
+<p><strong>信息熵的基本概念：</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>不确定性（Uncertainty）</strong>：信息熵反映了一个系统的不确定性程度。如果某个事件的发生是完全确定的，那么其信息熵为零；相反，如果事件的发生非常不确定，其信息熵则较高。</p></li>
+<li><p><strong>概率分布（Probability Distribution）</strong>：信息熵的计算基于事件出现的概率分布。在文本处理中，这通常意味着计算某个字母、单词或符号在整个文本中出现的概率。</p></li>
+<li><p><strong>香农熵（Shannon Entropy）</strong>：这是信息熵最常用的形式，表示为：
+<span class="math display">\[
+H(X) = -\sum_{i=1}^{n} P(x_i) \log_2 P(x_i)
+\]</span>
+其中，<span class="math inline">\(H(X)\)</span> 是信息熵，<span class="math inline">\(P(x_i)\)</span> 是事件 <span class="math inline">\(x_i\)</span> 发生的概率，<span class="math inline">\(n\)</span> 是可能的事件总数。对于文本信息熵，事件通常是字符、单词或其他文本元素的出现。</p></li>
+</ol>
+<p><strong>文本信息熵在语言学中的应用：</strong></p>
+<p>通过计算文本的熵，可以分析文本的语言复杂性。熵值越高，意味着文本的信息量大、复杂性高；熵值越低，意味着文本更为简单、信息量较少。</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">textstat_entropy</span>(dfm_detectives)</a></code></pre></div>
+<pre><code>##                 document  entropy
+## 1 A_Study_in_Scarlet.txt 11.24657
+## 2          Judge_dee.txt 10.71768</code></pre>
+</div>
+<div id="文本情感分析" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.4.4</span> 文本情感分析<a href="第六章-文本数据分析.html#文本情感分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb99-5" data-line-number="5">tidy_books &lt;-<span class="st"> </span>detectives.raw <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="st">  </span><span class="kw">unnest_sentences</span>(sentence, text)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(doc_id) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-9" data-line-number="9"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-10" data-line-number="10"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, sentence)</a>
+<a class="sourceLine" id="cb99-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb99-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb99-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb99-14" data-line-number="14">tidy.sent =<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-15" data-line-number="15"><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-16" data-line-number="16"><span class="st">  </span><span class="kw">count</span>(doc_id, <span class="dt">index =</span> linenumber <span class="op">%/%</span><span class="st"> </span><span class="dv">80</span>, sentiment) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-17" data-line-number="17"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> sentiment, <span class="dt">values_from =</span> n, <span class="dt">values_fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb99-18" data-line-number="18"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)</a></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb101-3" data-line-number="3"><span class="kw">ggplot</span>(tidy.sent , <span class="kw">aes</span>(index, sentiment, <span class="dt">fill =</span> doc_id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb101-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb101-5" data-line-number="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>doc_id, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="co"># 进一步看看哪些积极或者消极的词</span></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2">bing_word_counts &lt;-<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>(doc_id) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(word, sentiment, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">bing_word_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(sentiment) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="st">  </span><span class="kw">slice_max</span>(n, <span class="dt">n =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n, word, <span class="dt">fill =</span> sentiment)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="st">  </span><span class="kw">facet_wrap</span>(doc_id<span class="op">~</span>sentiment, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Contribution to sentiment&quot;</span>,</a>
+<a class="sourceLine" id="cb104-10" data-line-number="10">       <span class="dt">y =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-2.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="第五章-语言实验数据分析.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="第七章-语音数据分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-new.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
