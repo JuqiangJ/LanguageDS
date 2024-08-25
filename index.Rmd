@@ -1,0 +1,62 @@
+--- 
+title: "语言数据科学教程"
+author: "陈居强"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  bookdown::pdf_document2:
+    template: /Users/chenjuqiang/Nutstore Files/310_Tutorial/Language data science/template.tex
+  html_document:
+    df_print: paged
+description: This is a minimal example of using the bookdown package to write a book.
+  The output format for this example is bookdown::gitbook.
+documentclass: book
+github-repo: rstudio/bookdown-demo
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+    
+# 第一章 数据科学简介
+
+
+
+
+## 数据科学发展简史
+
+
+
+## 数据科学家
+
+## 数据科学工作流程
+
+
+
+```{r }
+
+# bookdown::render_book("index.Rmd", "bookdown::gitbook")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

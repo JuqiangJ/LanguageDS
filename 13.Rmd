@@ -1,0 +1,603 @@
+# 文献计量研究案例-语音感知
+
+首先，我们使用Web of Science核心合集进行了主题为“speech perception”（带引号）的搜索，搜索对象为社会科学引文索引（SSCI）、科学引文索引扩展版（SCIE）、新兴资源引文索引（ESCI）中发表的研究文章（文档类型=文章），搜索日期为2021年2月24日。时间跨度设定为2000年至2020年，非英语论文被排除。最初找到了9436篇研究文章。鉴于本次文献计量分析的重点是从语音学/语言学、心理学、神经科学和言语病理学的角度研究言语感知，因此排除了属于Web of Science分类中的耳鼻喉科的纯医学研究（n = 2731）。
+
+这些文章的完整记录和被引用参考文献被下载并通过R语言中的bibliometrix包（Aria 和 Cuccurullo, 2017）进行处理。我们检查了数据集，并移除了数据缺失的文章，这进一步将研究文章的数量减少到6407篇（见图1）。bibliometrix包是用R语言开发的，提供了多种用于综合文献计量分析的功能，并且可以无缝集成其他R包，以实现更高级的数据建模和可视化。我们选择bibliometrix包而非其他软件，是因为它提供了一个更加开放、灵活、可定制且可重复的工作流程。
+
+```{r echo=FALSE, include=FALSE}
+library(tidyverse)
+
+setwd("~/Nutstore Files/310_Tutorial/Language data science")
+
+library(bibliometrix)
+library(cowplot)
+
+```
+
+
+
+## 数据导入及整理
+
+```{r}
+# read files
+filenames = list.files(path = "data/ch14/data-24-02-2021", 
+                       pattern = "txt", 
+                       full.names = TRUE)
+
+# converting to bibliometric data frame
+speech.data = convert2df(filenames, 
+                         dbsource = "wos", 
+                         format = "plaintext")
+
+# use only research articles
+speech.data = speech.data%>%
+  filter(PY != 2021 & !is.na(PY))%>%
+  filter(DT == "ARTICLE")
+speech.df = select(speech.data, "AU"  ,   "AF"   ,    "CR"   ,    "AB" )%>%
+  mutate(AB = tolower(AB))
+```
+
+
+
+```{r message = FALSE, warning=FALSE, echo = FALSE,results="hide"}
+
+result.bib = biblioAnalysis(speech.data, sep = ";")
+
+bib.dscrp = summary(result.bib, k= 20)
+
+```
+
+## 数据可视化与展示
+
+### 语音感知研究概况(2000-2020).
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+
+knitr::kable(bib.dscrp$MainInformationDF)
+
+```
+
+### 语音感知研究发表最多的杂志
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+# most relevant sources (journals)
+knitr::kable( head(bib.dscrp$MostRelSources, n=20))
+
+# write.csv(bib.dscrp$MostRelSources,
+#           file =  paste("MostRelSources",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+```
+
+### 研究能产性分析
+
+
+### 语音感知研究产出量 (2000-2020).
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+pd.year = data.frame(bib.dscrp$AnnualProduction)
+
+pd.year = speech.data%>%
+  select(PY, SC)%>%
+  group_by(PY)%>%
+  summarise(n = n())
+
+pd.year.fig = ggplot(data=pd.year, 
+                        aes(x = PY, y = n, 
+                            group = 1)) +
+                        geom_point()+
+                        geom_line()+
+  xlab("Years")+
+  ylab("Number of publications")+
+  #ggtitle("Publications per year 2000-2020") +
+  theme_bw()+
+  theme(panel.background = element_blank())
+
+
+
+# jpeg(paste( paste("year.pub",Sys.Date(),"jpeg",sep = "."), sep = ""),
+#     units="in", width=4, height=3, res=600)
+#  
+  plot(pd.year.fig)
+# 
+#  dev.off()
+
+
+```
+
+### 语音感知研究数量最高的10个国家（地区） (2000-2020). 
+
+SCP = 单一国家发表; MCP = 多个国家合作发表 
+
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+pd.ctry = bib.dscrp$MostProdCountries
+
+knitr::kable(pd.ctry)
+# write.csv(pd.ctry,
+#           file =  paste("pd.ctry",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+# total citations per country
+# bib.dscrp$TCperCountries
+# 
+# pd.ct = cbind(pd.ctry, bib.dscrp$TCperCountries)
+
+# write.csv(pd.ct,
+#           file =  paste("pd.ct",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+```
+
+### 发表量最大的10个国家发表趋势 
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+# a list of top ten countries
+
+list.ctry = c("USA","UNITED KINGDOM" ,"CANADA" ,
+              "GERMANY","FRANCE" ,"NETHERLANDS",
+              "CHINA" ,"AUSTRALIA", "JAPAN" ,"SPAIN")
+
+speech.meta = metaTagExtraction(speech.data, Field = "AU_CO", sep = ";")
+
+pd.year.ctry = speech.meta%>%
+  tibble::rownames_to_column(., "paper")%>%
+  select(paper, PY, AU_CO)%>%
+  transform(AU_CO= strsplit(AU_CO, ";")) %>%
+  unnest(AU_CO)%>%
+  # reduce repetition of multi-author paper
+  group_by(paper, AU_CO)%>%
+  mutate(order = 1:n())%>%
+  filter(order == 1)%>%
+  ungroup()%>%
+  count(PY, AU_CO, sort = TRUE)%>%
+  filter(AU_CO%in%list.ctry)%>%
+  group_by(AU_CO)%>%
+  mutate(total = sum(n))
+
+
+pd.year.ctry.fig = ggplot(data=pd.year.ctry, 
+                          aes(x = PY, y = n, 
+                            group = AU_CO,color = AU_CO)) +
+                        geom_point()+
+                        geom_line()+
+  xlab("Years")+
+  ylab("Number of publications")+
+  ggtitle("Publications per year 2000-2020") +
+  theme_bw()+
+  theme(panel.background = element_blank())
+
+# jpeg(paste( paste("year.pub.ctry",Sys.Date(),"jpeg",sep = "."), sep = ""),
+#     units="in", width=6, height=3, res=600)
+# 
+ plot(pd.year.ctry.fig)
+# 
+# dev.off()
+
+```
+
+### 语音感知领域发表量最高20位学者(2000-2020). 
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+au.pd =gsub(","," ",names(result.bib$Authors)[1:20])
+
+h.pub.au <- Hindex(speech.data, 
+                  field = "author", 
+                  elements= au.pd,
+                  sep = ";", years = 50)
+
+h.au = as.data.frame(h.pub.au$H)%>%
+  select(-3,-4,-7)
+
+knitr::kable(h.au)
+
+# write.csv(h.pub.au$H,
+#           file =  paste("MostPdAU",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+```
+
+### 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). . 
+
+TC = 所有发表. 圆圈大小代表发表数量；颜色深度表示引用数数量。
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+topAU10 <- authorProdOverTime(speech.data, k = 20)
+
+# plot(topAU10$graph)
+
+# jpeg(paste( paste("MostPdAU",Sys.Date(),"jpeg",sep = "."), sep = ""),
+#     units="in", width=8, height=4, res=600)
+# 
+# topAU10
+# 
+# dev.off()
+
+```
+
+### 合作情况
+
+语音感知研究中最活跃的20所大学/研究机构及其合作网络。网络中的每个节点代表一个不同的大学/研究机构，节点的直径与该机构与其他机构的合作强度成正比。节点之间的连线表示这些大学或研究机构之间的合作路径。
+
+```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
+
+uni.coc <- biblioNetwork(speech.data, 
+                         analysis = "collaboration",  
+                         network = "universities", 
+                         sep = ";")
+
+# jpeg(paste("edu.collab",Sys.Date(),"jpeg",sep = "."),
+#     units="in", width=6, height=4, res=600)
+
+uni.coc.plot = networkPlot(uni.coc,
+                n = 50,
+                #Title = "Collaborations among universities/institutes",
+                type = "sphere",
+                size=10,size.cex=T,
+                remove.multiple=F,
+                label.n = 20,
+                edgesize = 3,labelsize=0.6,
+                # plot or not
+                verbose = FALSE)
+
+
+
+# dev.off()
+
+
+```
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+plot(uni.coc.plot$graph)
+
+```
+
+语音感知研究中前20个国家的合作网络。
+
+网络中的每个节点代表一个不同的国家，节点的直径与该国家与其他国家合作的强度成正比。节点之间的连线表示国家之间的合作路径。
+
+```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
+
+country.coc = metaTagExtraction(speech.data, Field = "AU_CO", sep = ";")
+
+country.collab <- biblioNetwork(country.coc, 
+                           analysis = "collaboration", 
+                           network = "countries", sep = ";")
+
+# Plot the network
+
+# jpeg(paste("ctry.collab",Sys.Date(),"jpeg",sep = "."),
+#     units="in", width=6, height=4, res=600)
+#
+country.collab.plot = networkPlot(country.collab, n = dim(country.collab)[1],
+                Title = "Country collaborations",
+                type = "sphere", size=TRUE,
+                remove.multiple=F,
+                label.n = 15,
+                labelsize=0.7,
+                verbose = FALSE)
+#
+# dev.off()
+
+
+```
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+plot(country.collab.plot$graph)
+
+```
+
+### 研究影响力
+
+最高被引研究
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+ct.artcl = citations(speech.data, 
+                      field = "article", 
+                      sep = ";")
+
+hot.papers = data.frame(ct.artcl$Cited[1:20],
+                        ct.artcl$Year[1:20], 
+                        ct.artcl$Source[1:20])%>%
+  select(1,2)%>%
+  rename(Researcher = CR,
+         Citations = Freq)%>%
+  separate(Researcher, c("Researcher","Year", "source","p1","p2","DOI"), ",")%>%
+  select(-p1,-p2)
+
+knitr::kable(hot.papers)
+
+# write.csv(hot.papers,
+#           file =  paste("hot.papers",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+```
+
+语音感知高被引作者
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+ct.athr = citations(speech.data, 
+                    field = "author", 
+                    sep = ";")
+
+hot.authors = data.frame(ct.athr$Cited[1:20])%>%
+  rename(Authors = CR,
+         Citations = Freq)
+
+knitr::kable(hot.authors)
+# h.cite.au = Hindex(speech.data, 
+#                     field = "author", 
+#                     elements= hot.authors$CR,
+#                     sep = ";", years = 100)
+
+# au.impact = cbind(hot.authors, h.cite.au$H)
+# 
+# write.csv(hot.authors,
+#           file =  paste("hot.authors",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+```
+
+语音感知研究的共引网络。节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其共引度成正比。
+
+```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
+
+# article co-citation network
+co.cite <- biblioNetwork(speech.data, 
+                         analysis = "co-citation", 
+                         network = "references", 
+                         sep = ";")
+
+# jpeg( paste("co-citation.network",Sys.Date(),"jpeg",sep = "."),
+#      units="in", width=8, height=6, res=600)
+#  
+cocitation = networkPlot(co.cite, n = 30,
+                Title = "Co-citation network",
+                type = "auto", size=T,
+                remove.isolates = T,
+                remove.multiple=FALSE,
+                labelsize=0.7,edgesize = 5,
+                verbose = FALSE)
+#  
+#  dev.off()
+
+```
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+plot(cocitation$graph)
+knitr::kable( cocitation$cluster_res)
+
+# write.csv(cocitation$cluster_res,
+#           file =  paste("co-cite.stats",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+```
+
+
+语音感知研究的文献耦合网络，其中节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其文献耦合度成正比。
+
+```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
+
+# article coupling network
+article.cpl = biblioNetwork(speech.data, 
+                           analysis = "coupling", 
+                           network = "references", 
+                           sep = ";")
+
+
+# jpeg(paste("article.coupling.network",Sys.Date(),"jpeg",sep = "."),
+#      units="in", width=8, height=6, res=600)
+#  
+coupling.net = networkPlot(article.cpl, n = 30,
+                Title = "Bibliographic coupling network",
+                type = "auto", size=T,
+                remove.isolates = T,
+                remove.multiple=FALSE,
+                labelsize=0.7,edgesize = 5,
+                verbose = FALSE
+                )
+#  
+# dev.off()
+
+
+
+```
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+plot(coupling.net$graph)
+
+knitr::kable(coupling.net$cluster_res)
+
+# write.csv(coupling.net$cluster_res,
+#           file =  paste("coupling.stats",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+```
+
+
+前20个作者定义关键词、机器生成关键词、基于标题和摘要的两词短语（Freq = 频率）*注意：在论文表格中，一些术语进行了合并处理，例如在标题两词短语列中，“Cochlear implant”（人工耳蜗）和“cochlear implantation”（人工耳蜗植入）被合并。*
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+library(tidytext)
+
+stop.words = c("elsevier","rights reserved","NA NA",
+               "results suggest","experiment 1","speech perception",
+               "experiment 2","NA","NA")
+
+# no temporal variation
+au.ky = speech.data%>%
+  select(DE,PY)%>%
+  transform(DE = strsplit(DE, ";")) %>%
+  unnest(DE)%>%
+  filter(!DE%in%c("SPEECH PERCEPTION","SPEECH",
+                  "PERCEPTION", " SPEECH"," SPEECH PERCEPTION",
+                  " PERCEPTION"," LANGUAGE", "LANGUAGE"))%>%
+  filter(DE != "" & !is.na(DE))%>%
+  mutate(DE = str_replace_all(DE, " ",""),
+         DE = str_replace_all(DE, "-",""),
+         DE = str_to_title(DE),
+         DE = recode(DE, "Cochlearimplants" = "Cochlearimplant"),)%>%
+  count(DE, sort = TRUE)%>%
+  mutate(order = 1:n())%>%
+  filter(order < 25)%>%
+  select(-order)%>%
+  rename(AuthorKeywords= DE,
+         AuFreq = n)
+
+# write.csv(au.ky, 
+#           file =  paste("au.ky",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+# No temporal variation
+machine.ky = speech.data%>%
+  select(ID,PY)%>%
+  transform(ID = strsplit(ID, ";")) %>%
+  unnest(ID)%>%
+  filter(!ID%in%c("SPEECH PERCEPTION","SPEECH",
+                  "PERCEPTION", " SPEECH"," SPEECH PERCEPTION",
+                  " PERCEPTION"," LANGUAGE", "LANGUAGE", 
+                  "SPEECH-PERCEPTION", " SPEECH-PERCEPTION"))%>%
+  filter(ID != "" & !is.na(ID))%>%
+  mutate(ID = str_replace_all(ID, " ",""),
+         ID = str_replace_all(ID, "-",""),
+         ID = str_to_title(ID),
+         ID = recode(ID, "Cochlearimplants" = "Cochlearimplant"))%>%
+  count(ID, sort = TRUE)%>%
+  mutate(order = 1:n())%>%
+  filter(order < 25)%>%
+  select(-order)%>%
+  rename(MachineKeywords= ID,
+         MFreq = n)
+
+
+# title 2-gram
+title.ky.2gram = speech.data%>%
+  select(TI,PY)%>%
+  tibble::rownames_to_column(., "paper")%>%
+  unnest_tokens(bigram, TI, 
+                to_lower = T,
+                token = "ngrams", n = 2)%>%
+  separate(bigram, c("word1", "word2"), sep = " ")%>%
+  filter(!word1 %in% stop_words$word, !word1 %in% stop.words) %>%
+  filter(!word2 %in% stop_words$word, !word2 %in% stop.words)%>%
+  unite(bigram, word1, word2, sep = " ")%>%
+  filter(!bigram%in% stop.words)%>%
+  mutate(bigram = str_replace_all(bigram, " ",""),
+         #ID = str_replace_all(ID, "-",""),
+         bigram = str_to_title(bigram),
+         bigram = recode(bigram, "Cochlearimplants" = "Cochlearimplant"))%>%
+  count(bigram,sort = TRUE)%>%
+  mutate(order = 1:n())%>%
+  filter(order<25)%>%
+  select(-order)%>%
+  rename(Title2gram= bigram,
+         TFreq = n)
+
+# write.csv(title.ky.2gram, 
+#           file =  paste("title.ky.2gram",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+
+# no temporal variation
+ab.ky.2gram = speech.data%>%
+  select(AB,PY)%>%
+  tibble::rownames_to_column(., "paper")%>%
+  unnest_tokens(bigram, AB, 
+                to_lower = T,
+                token = "ngrams", n = 2)%>%
+  separate(bigram, c("word1", "word2"), sep = " ")%>%
+  filter(!word1 %in% stop_words$word, !word1 %in% stop.words) %>%
+  filter(!word2 %in% stop_words$word, !word2 %in% stop.words)%>%
+  unite(bigram, word1, word2, sep = " ")%>%
+  filter(!bigram%in% stop.words)%>%
+  count(bigram, sort = TRUE)%>%
+  mutate(bigram = str_replace_all(bigram, " ",""),
+         #ID = str_replace_all(ID, "-",""),
+         bigram = str_to_title(bigram),
+         bigram = recode(bigram, "Cochlearimplants" = "Cochlearimplant"))%>%
+  mutate(order = 1:n())%>%
+  filter(order<25)%>%
+  select(-order)%>%
+  rename(Abstract2gram= bigram,
+         ABFreq = n)
+
+# write.csv(ab.ky.2gram, 
+#           file =  paste("ab.ky.2gram",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = ".") ,row.names = FALSE)
+
+term.freq = au.ky%>%
+  bind_cols(machine.ky, title.ky.2gram, ab.ky.2gram)
+
+knitr::kable(term.freq)
+
+```
+
+作者自定义词网络
+
+```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
+
+
+keyword.au <- biblioNetwork(speech.data, 
+                           analysis = "co-occurrences", 
+                           network = "author_keywords", 
+                           sep = ";")
+
+# Plot the network
+
+# jpeg(paste(paste("keyword.au.co-occurrence",Sys.Date(),"jpeg",sep = "."),
+#           sep = ""),
+#     units="in", width=10, height=8, res=600)
+# 
+keyword.fig = networkPlot(keyword.au,
+                normalize="association", weighted=T, n = 30,
+                Title = "Author keyword co-occurrences",
+                type = "auto", size.cex = TRUE,
+                size=T,edgesize = 5,labelsize=1,
+                verbose = FALSE)
+
+# dev.off()
+
+```
+
+```{r message = FALSE, warning=FALSE, echo = FALSE}
+
+plot(keyword.fig$graph)
+
+
+```
+
+
+
+
+

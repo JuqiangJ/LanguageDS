@@ -1,0 +1,237 @@
+# 十一 案例二、翻译文体风格
+
+## 研究背景
+
+罗伯特·范·古利克（Robert Van Gulik）是一位荷兰小说家和汉学家。他的《狄公案》侦探小说系列（总共17本）在1949年至1968年间陆续出版。该系列的第一本书，即《狄公奇案》（Celebrated Cases of Judge Dee），是从一本中文书《狄公案》翻译而来。狄公或狄仁杰是一位真实存在的历史上的侦探和政治家，生活在公元630年至700年之间，即唐代（公元618年至907年）。这部翻译作品激发了译者对中国侦探故事的兴趣，并为他自己的侦探小说（其余16本）创造了狄仁杰这一角色。在翻译的前言中，作者声称他保留了原文中的所有中国元素，并谴责那些涉及过多改写并扭曲中国文化和历史现实的伪造“中国”故事。相反，在创作中，作者在第15册中承认，尽管他在创作后来的故事时借用了一些古代中国刑侦文学的元素，但这些故事本身是完全虚构的，即非翻译作品。于是，一个想法诞生了。
+
+**对于同一个主题故事，翻译和创造的文本语言上有什么不同呢？**
+
+我收集了这17本书，进行了文本分析，从词汇丰富度、可读性、和句法复杂度进行了研究。
+
+## 数据处理
+
+```{r message=FALSE, warning=FALSE }
+library(lme4)
+library(lsmeans)
+setwd("~/Nutstore Files/310_Tutorial/Language data science")
+
+library(tidyverse)
+
+# 显示小数点后很多位
+options(scipen=999)
+
+# 计算置信区间
+library(rcompanion)
+
+# 改变y轴度量
+library(scales)
+
+# 组合图
+library(cowplot)
+
+library(tidytext)
+require(readtext)
+library(rstatix)
+library(flextable)
+
+library(quanteda)
+library(quanteda.textstats)
+
+```
+
+
+
+### 特征提取
+
+#### 词汇复杂度特征
+```{r}
+
+dee.raw =readtext("data/ch11/*txt", docvarsfrom = "filenames")
+
+dee.corpus = corpus(dee.raw)
+
+dee.corpus.summary = data.frame(summary(dee.corpus))
+
+dee.dfm <- dfm(dee.corpus, 
+               remove_numbers = TRUE, 
+               remove_punct = TRUE, 
+               remove_symbols = TRUE
+               #remove = stopwords("english")
+               )
+
+
+dee.corpus.summary%>%
+    flextable()%>%
+    set_caption(caption = "Table 1. Number of types, tokens, and sentences of each book in the Judge Dee series.")
+
+
+
+lexical.diversity <- textstat_lexdiv(dee.dfm, measure = "all")
+
+
+lexical.diversity%>%
+    flextable()%>%
+    set_caption(caption = "词汇复杂度指标.")
+
+# 信息熵
+textstat_entropy(dee.dfm)$entropy
+
+
+```
+
+```{r}
+readability <- textstat_readability(dee.corpus, measure = "all")
+
+readability.df = readability%>%
+   as.data.frame()%>%
+   select(document, ARI, Flesch, FOG, Coleman.Liau.short, Dale.Chall, Spache)
+
+```
+
+
+
+
+#### 句法特征提取
+
+句法复杂度分析器，L2SCA
+
+> L2 Syntactic Complexity Analyzer (“L2SCA”) is a tool that allows ESL and EFL teachers and researchers to analyze the syntactic complexity of written English language samples produced by advanced English learners. L2SCA was developed by Xiaofei Lu at The Pennsylvania State University (“PSU”), University Park, PA, USA. Unless stated otherwise, these Terms of Service apply to all usage of L2SCA, including those currently offered as well as any new products or services that we may add in the future.
+
+陆小飞老师的官网
+**http://www.personal.psu.edu/xxl13/downloads/l2sca.html**
+
+
+需要注意的是，这个句法复杂度分析器是基于英语笔语开发的，基本的要求是句法分词和标注是准确的。如果是中文，标注正确率一般不如英文，如果是口语，转写时如何确定句子的单位边界也是问题。
+
+由于文本数据处理需要一定时间，此处我们导入已经处理完成的词汇和句法数据进行分析。
+
+```{r}
+lexical.diversity.df = read_csv("data/ch11/lexical.diversity.df.2022-07-21.CSV")
+  
+
+readability.df = read.csv("data/ch11/readability.df.2022-07-21.CSV")
+  
+metrics_SCA <- read_csv("data/ch11/metrics_SCA.csv")
+```
+
+
+## 数据可视化
+
+
+## 统计建模
+```{r}
+
+t.test(lexical.diversity.df$TTR[2:17], mu = lexical.diversity.df$TTR[1], alternative = "greater")
+
+# t.test(lexical.diversity.df$C[2:17], mu = lexical.diversity.df$C[1], alternative = "greater")
+# 
+# t.test(lexical.diversity.df$R[2:17], mu = lexical.diversity.df$R[1], alternative = "greater")
+# 
+# t.test(lexical.diversity.df$MATTR[2:17], mu = lexical.diversity.df$MATTR[1], alternative = "greater")
+# 
+# lexical.diversity.stat = lexical.diversity.df%>%
+#   as.data.frame()%>%
+#   mutate(id = 1:n())%>%
+#   select("document", "id","TTR","C","R")%>%
+#   mutate(txt.type = case_when(id < 2  ~ "ref",
+#                               id > 1 ~ "freewriting"))%>%
+#   gather("measures", "values", -c("document", "id","txt.type"))%>%
+#   mutate(measures = as.factor(measures),
+#          measures = fct_relevel(measures, "TTR","C","R"))%>%
+#   filter(measures == "TTR")%>%
+#   group_by(measures)%>% 
+#   rstatix::t_test(values ~ 1, mu = "ref") 
+# %>% 
+#   rstatix::adjust_pvalue() %>%
+#   rstatix::add_significance("p.adj")
+
+
+
+```
+
+```{r}
+
+
+metrics_SCA.ci = metrics_SCA%>%
+  filter(text !="01.txt")%>%
+  gather("measures", "values", -c("text"))%>%
+  groupwiseMean(values ~ measures,
+                data = .,
+                conf = 0.95,
+                digits = 3)
+
+  
+
+# mean length of clause (MLC): number of words divided by number of clauses;
+t.test(metrics_SCA$MLC[2:17], mu = metrics_SCA$MLC[1],  alternative = "less")
+
+t.test(metrics_SCA$MLS[2:17], mu = metrics_SCA$MLS[1], alternative = "less")
+# 
+# t.test(metrics_SCA$MLT[2:17], mu = metrics_SCA$MLT[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"C/S"[2:17], mu = metrics_SCA$"C/S"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"C/T"[2:17], mu = metrics_SCA$"C/T"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"CT/T"[2:17], mu = metrics_SCA$"CT/T"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"DC/C"[2:17], mu = metrics_SCA$"DC/C"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"DC/T"[2:17], mu = metrics_SCA$"DC/T"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"CP/C"[2:17], mu = metrics_SCA$"CP/C"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"CP/T"[2:17], mu = metrics_SCA$"CP/T"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"T/S"[2:17], mu = metrics_SCA$"T/S"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"CN/C"[2:17], mu = metrics_SCA$"CN/C"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"CN/T"[2:17], mu = metrics_SCA$"CN/T"[1], alternative = "less")
+# 
+# t.test(metrics_SCA$"VP/T"[2:17], mu = metrics_SCA$"VP/T"[1], alternative = "less")
+
+
+```
+
+```{r}
+
+
+t.test(readability.df$ARI[2:17], mu = readability.df$ARI[1], alternative = "less")
+
+t.test(readability.df$Flesch[2:17], mu = readability.df$Flesch[1], alternative = "greater")
+
+t.test(readability.df$FOG[2:17], mu = readability.df$FOG[1], alternative = "less")
+
+t.test(readability.df$Coleman.Liau.short[2:17], mu = readability.df$Coleman.Liau.short[1], alternative = "less")
+
+t.test(readability.df$Dale.Chall[2:17], mu = readability.df$Dale.Chall[1], alternative = "greater")
+
+t.test(readability.df$Spache[2:17], mu = readability.df$Spache[1], alternative = "less")
+
+
+
+```
+
+我们发现，**翻译文本和创作文本相比，词汇丰富性较低。**
+
+
+
+**翻译文本和创作文本相比，句法复杂度较高。**
+
+
+
+可读性指标显示，**翻译文本的可读性比创作文本差。**
+
+
+
+## 结论
+根据受限语言理论（the constrained language theory,），翻译中的复杂认知过程，如激活两种语言系统和不断进行编码切换，给翻译者增加了额外的认知负担并降低了他的工作记忆容量，促使他采用简化等策略。此外，源文本在翻译过程中也可能限制了他可用的词汇资源。相反，作家能够充分发挥他的语言库，因此产生了更丰富的词汇多样性的文本。
+
+然而，翻译文本的句法结构比创作的更为复杂。这不能归因于翻译过程的内在限制，因为翻译者需要面对更大的认知需求，并且预计他们将使用降低认知负担的策略，导致更短或更简单的句子。
+
+于是，我们考虑英汉语的差异性。原生的汉语往往更依赖意义而不是功能词或结构来连接从句和句子，而西方语言则依靠丰富的句法手段。因此，受源语言影响的翻译汉语相对于原生汉语展现出更复杂的句法结构。在本研究中，翻译的方向是从古代汉语到英语，因此源文本的语言结构不太可能在整体上导致更复杂的目标文本句子。
+
+抛开这一解释，我们认为罗伯特·范·古利克作为翻译者特别意识到自己作为中介者的角色，希望承担起让古代中国侦探故事为西方世界所理解的责任。为了实现这一目标，他在翻译中使用了符合西方风格的句法手段，可能**过度使用**了它们。我们还可以推测，翻译文本中更复杂的句子可能与显性化效应有关。也就是说，翻译者仔细说明了原始古代中国故事中包含的信息，这些故事发生在地理和文化上与他的读者相距甚远的国家。
+
+可读性指标显示，翻译文本可能比创作文本更难阅读。这表明翻译文本中的句子可能要么更长，要么词更难，要么两者兼而有之。考虑到翻译文本的词汇多样性较低，我们推断句法复杂性在相对较低的可读性中发挥了更大的作用。正如我们所论证的，翻译中更复杂的句子可能表明翻译者在传达源文本信息时的努力，导致可读性的下降是无意的。尽管罗伯特·范·古利克作为翻译者和小说作家将目标读者放在心中，但似乎作为翻译者，他受到了源文本的限制，并在跨越语言和文化传达古代中国侦探故事时在一定程度上牺牲了可读性。翻译者和读者在翻译/阅读来自不同文化和非常古老时期的故事时可能不得不付出代价。

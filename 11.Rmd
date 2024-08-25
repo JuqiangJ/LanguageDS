@@ -1,0 +1,291 @@
+# 语音数据处理案例 
+
+## 研究背景
+越南南部方言中SV214调（hỏi）和SV415调（ngã）的音调合并，使得南部越南语的音系系统与北部越南语不同。鉴于这一差异的重要性及其对泰语音调感知同化模式的潜在影响，我们在声学研究中验证了南部越南语中这两个音调的合并情况。为了对基频（f0）轮廓进行全面而动态的比较，我们采用了广义加性混合模型（GAMM），这是一种非线性回归方法，不需要对数据进行聚合或预先选择轮廓中的固定时间点。该方法能够检测动态变化数据中的一般模式，同时考虑到受试者和项目相关的变异性（Nixon, van Rij, Mok, Baayen, & Chen, 2016; Wieling, 2018）。通过这种方式，它可以揭示在数据聚合或任意选择单一时间点时被掩盖的模式。
+
+
+```{r message=FALSE, warning=FALSE }
+
+setwd("~/Nutstore Files/310_Tutorial/Language data science")
+#install.packages("plotfunctions")
+library(tidyverse)
+## 构建模型
+library(mgcv)
+## 作图
+library(itsadug)
+```
+
+
+
+## 数据导入及整理
+```{r}
+contour_data_all = read.csv("data/ch12/nv.sv.data.2024-08-24.csv")
+
+# modelling NV difference
+nv.data = contour_data_all%>%
+  ungroup()%>%
+  filter(tone %in% c("NV415", "NV214") )%>%
+  #filter(subject != 214)%>%
+  rename(Time = Timepoint)%>%
+  select(-language)%>%
+  mutate(id = as.factor(id),
+        tone = as.factor(tone),
+         subject = as.factor(subject))
+
+#sort data per individual trajectory (for autocorrelation)
+nv.data = data.frame(nv.data)
+nv.data$id = as.factor(nv.data$id)
+nv.data = start_event(nv.data, event = c("subject", "id"))
+
+```
+
+## 数据建模
+
+### 越南语北部方言声调建模
+```{r }
+# preliminary model without autocorrelation correction 
+model.nv = bam(normF0 ~ tone + s(Time, by=tone)+
+               s(Time, subject, by = tone, bs = "fs", m = 1),
+             data= nv.data)
+summary(model.nv)
+nvacf = acf_resid(model.nv)
+#获取参数
+nvacf[2]
+
+## with autocorrelation correction
+model.nv.b = bam(normF0 ~ tone + s(Time, by=tone)+
+                 s(Time, subject, by = tone, bs = "fs", m = 1),
+               rho = nvacf[2],
+               AR.start = nv.data$start.event, 
+               discrete = T, 
+               nthreads = 2,
+               data= nv.data)
+
+summary(model.nv.b)
+
+# plot
+plot_smooth(model.nv.b, ylab = "Normalised f0", 
+            xlab = "Normalised time",
+            view="Time", cond=list(tone=c("NV415")), 
+            ylim=c(-0.5,1), rm.ranef=T, 
+            main="Northen Vietnamese", 
+            rug=FALSE, col="blue", 
+            hide.label = "fitted values")
+
+plot_smooth(model.nv.b, view="Time", 
+            cond=list(tone=c("NV214")), 
+            v0 = 6, rug=FALSE,rm.ranef=T, 
+            col="green",add=T)
+
+```
+
+
+验证越南语北部方言是否存在这个声调对立
+
+ 模型比较法
+ 模型1区分两个对立
+```{r    }
+
+
+
+
+model.nv = bam(normF0 ~ tone + s(Time, by=tone)+
+                 s(Time, subject, by = tone, bs = "fs", m = 1),
+               data= nv.data)
+#模型2不区分两个对立
+model.nv0 = bam(normF0 ~ tone + s(Time)+
+                 s(Time, subject, by = tone, bs = "fs", m = 1),
+               data= nv.data)
+#比较两个模型
+compareML(model.nv, model.nv0)
+#此方法缺点是计算量比较大。但是对于不是很复杂的模型没有影响。
+
+```
+
+差值比较法
+通过修改模型的设定，将表示两个原始平滑函数之间差异的函数包含在模型中。接下来，发现这个差异平滑函数是显著的，这就表明有显著差异。为了拟合这个新模型，我们首先需要创建一个新的二元变量，该变量在一个水平上等于0，而在另一个水平上等于1。我们现在创建一个名为IS214的变量，该变量在单词‘NV214’上为1，而在单词‘NV415’上为0。
+
+```{r }
+nv.data$IS214 = (nv.data$tone == "NV214")*1
+
+model.nv.binary = bam(normF0 ~ s(Time) + s(Time, by=IS214)+
+                        s(Time, subject, by = tone, bs = "fs", m = 1),
+                      rho = nvacf[2],
+                      AR.start = nv.data$start.event, 
+                      discrete = T, 
+                      nthreads = 2,
+                      data= nv.data)
+
+summary(model.nv.binary)
+```
+
+
+soluation 3
+
+```{r }
+nv.data$toneO = as.ordered(nv.data$tone)
+contrasts(nv.data$toneO) = "contr.treatment"
+
+model.nv.ord = bam(normF0 ~ toneO+ s(Time) + s(Time, by=toneO)+
+                     s(Time, subject, by = tone, bs = "fs", m = 1),
+                   rho = nvacf[2],
+                   AR.start = nv.data$start.event, 
+                   discrete = T, 
+                   nthreads = 2,
+                   data= nv.data)
+summary(model.nv.ord )
+
+```
+
+### 越南语南部方言声调建模
+
+```{r }
+
+sv.data = contour_data_all%>%
+  ungroup()%>%
+  filter(tone %in% c("SV415", "SV214") )%>%
+  rename(Time = Timepoint)%>%
+  select(-language)%>%
+  mutate(id = as.factor(id),
+         tone = as.factor(tone),
+         subject = as.factor(subject))
+
+#sort data per individual trajectory (for autocorrelation)
+sv.data = start_event(sv.data, event = c("subject", "id"))
+
+# preliminary model without autocorrelation correction 
+model.sv = bam(normF0 ~ tone + s(Time, by=tone)+
+                 s(Time, subject, by = tone, bs = "fs", m = 1),
+               data= sv.data)
+summary(model.sv)
+svacf = acf_resid(model.sv)
+svacf[2]
+
+## with autocorrelation correction
+model.sv.b = bam(normF0 ~ tone + s(Time, by=tone)+
+                   s(Time, subject, by = tone, bs = "fs", m = 1),
+                 rho = svacf[2],
+                 AR.start = sv.data$start.event, 
+                 discrete = T, 
+                 nthreads = 2,
+                 data= sv.data)
+
+summary(model.sv.b)
+
+# plot
+plot_smooth(model.sv.b, ylab = "Normalised f0", 
+            xlab = "Normalised time",
+            view="Time", cond=list(tone=c("SV415")), 
+            ylim=c(-0.5,1), rm.ranef=T, 
+            main="Southen Vietnamese", 
+            rug=FALSE, col="blue", 
+            hide.label = "fitted values")
+
+plot_smooth(model.sv.b, view="Time", 
+            cond=list(tone=c("SV214")), 
+            v0 = 6, rug=FALSE,rm.ranef=T, 
+            col="green",add=T)
+
+# testing if the tone contrast exists
+#solution 1
+model.sv.b = bam(normF0 ~ tone + s(Time, by=tone)+
+                   s(Time, subject, by = tone, bs = "fs", m = 1),
+                 rho = svacf[2],
+                 AR.start = sv.data$start.event, 
+                 discrete = T, 
+                 nthreads = 2,
+                 data= sv.data)
+model.sv.b0 = bam(normF0 ~ tone + 
+                   s(Time, subject, by = tone, bs = "fs", m = 1),
+                 rho = svacf[2],
+                 AR.start = sv.data$start.event, 
+                 discrete = T, 
+                 nthreads = 2,
+                 data= sv.data)
+compareML(model.sv, model.sv.b0)
+
+# solution 2
+sv.data$IS214 = (sv.data$tone == "SV214")*1
+
+model.sv.binary = bam(normF0 ~ s(Time) + s(Time, by=IS214)+
+                   s(Time, subject, by = tone, bs = "fs", m = 1),
+                 rho = svacf[2],
+                 AR.start = sv.data$start.event, 
+                 discrete = T, 
+                 nthreads = 2,
+                 data= sv.data)
+
+summary(model.sv.binary)
+
+# soluation 3
+
+sv.data$toneO = as.ordered(sv.data$tone)
+contrasts(sv.data$toneO) = "contr.treatment"
+
+model.sv.ord = bam(normF0 ~ toneO+ s(Time) + s(Time, by=toneO)+
+                     s(Time, subject, by = tone, bs = "fs", m = 1),
+                   rho = svacf[2],
+                   AR.start = sv.data$start.event, 
+                   discrete = T, 
+                   nthreads = 2,
+                   data= sv.data)
+summary(model.sv.ord )
+
+
+```
+
+
+## 展示与呈现
+
+```{r}
+# plot the comparison
+library(cowplot)
+
+# png(paste(dir.fig, paste("gam.mdl",Sys.Date(),"png",sep = "."),sep = ""), units="in", width=14, height=10, res=600)
+
+par(mfrow=c(1,2))
+
+# Northen Vietnamese
+plot_smooth(model.nv.b, ylab = "Normalised f0", 
+            xlab = "Normalised time",
+            view="Time", cond=list(tone=c("NV415")), 
+            ylim=c(-0.5,0.6), rm.ranef=T, 
+            main="Northern Vietnamese", 
+            rug=FALSE, col="black", 
+            hide.label = "fitted values")
+
+plot_smooth(model.nv.b, view="Time", 
+            cond=list(tone=c("NV214")), 
+            v0 = 6, rug=FALSE,rm.ranef=T, 
+            col="gray",add=T)
+
+# Southern vietnamese
+plot_smooth(model.sv.b, ylab = "Normalised f0", 
+            xlab = "Normalised time",
+            view="Time", cond=list(tone=c("SV415")), 
+            ylim=c(-0.5,0.6), rm.ranef=T, 
+            main="Southern Vietnamese", 
+            rug=FALSE, col="black", 
+            hide.label = "fitted values")
+
+plot_smooth(model.sv.b, view="Time", 
+            cond=list(tone=c("SV214")), 
+            v0 = 6, rug=FALSE,rm.ranef=T, 
+            col="gray",add=T)
+# dev.off()
+
+
+
+# write.csv(nv.data,
+#           file = paste("data/ch12/",
+#                        paste("nv.sv.data",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") ,row.names = FALSE)
+```
+
+
+
+
+

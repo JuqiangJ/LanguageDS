@@ -1,0 +1,26 @@
+Network neutrality
+
+A tangled web
+
+Dec 29th 2010 | from PRINT EDITION
+
+America's new internet rules are mostly sensible-but the country's real web problem is far more basic
+
+FOR a subject that arouses such strong passions, "network neutrality" is fiendishly difficult to pin down. Ask five geeks and you may well be given six definitions of it. The basic concept sounds simple enough: that the internet's pipes should show no favours and blindly deliver packets of data from one place to another regardless of their origin, destination or contents. But the devil is in the detail. What happens for instance if some people want to pay for their data to go faster, or if others hog all the bandwidth? And it does not help that both political proponents and opponents of this undefinable thing claim they are fighting to defend free speech and innovation.
+
+This debate is loudest in America, uncoincidentally the developed market with the least competitive market in internet access. Democrats, who are in favour of net-neutrality rules, insist regulation is needed to prevent network operators discriminating in favour of their own services. A cable-TV firm that sells both broadband internet access and television services over its cables might, for example, try to block internet-based video that competes with its own television packages. Republicans, meanwhile, worry that net neutrality will be used to justify a takeover of the internet by government bureaucrats, stifling innovation. (That the internet's origins lie in a government-funded project is quietly passed over.) 
+
+From a consumer's perspective, both sides are half right. Without some neutrality rules it is unclear how a network operator can be stopped from blocking particular sites or services. But overly prescriptive rules that fossilise the internet in its current form could indeed hamper innovation. Firms that come up with faster and fancier services should be able to charge a premium, just as delivery companies and airlines do.
+
+So the fact that zealots on both sides are moaning about the new regime finally passed by America's telecoms regulator on December 21st is on the whole a good sign. Two of the three new rules from the Federal Communications Commission (FCC) are relatively straightforward. One prevents network operators from blocking lawful traffic, subject to "reasonable network management" (an exception needed to ensure that spam or denial-of-service attacks can be stopped). The second requires network operators to be open about their network-management policies, so consumers and companies can see what might be blocked, and why.
+
+The difficulty comes with the FCC's third rule, prohibiting "unreasonable discrimination". Discrimination, in this context, means letting some packets of data travel faster than others. To net-neutrality purists, any kind of discrimination is unacceptable: by allowing the "reasonable" sort the FCC has, in their view, left open a vast loophole. That seems overly conservative, to this newspaper. Why on earth shouldn't a company be able to charge more for, say, faster delivery of video, or special broadband links that ensure snappy connections for video-gamers? Such "fast-tracking" is already widespread: if you pay a bit more, you can get a speedier connection or even a special "content delivery network" to hurry up the delivery of your data (as many large firms do). In some countries you can get connections optimised for gaming.
+
+Sadly, there are two caveats and a huge omission. The first caveat is that the law is not clear. Despite allowing reasonable discrimination, the FCC says that "pay for priority" would "raise significant cause for concern". In other words the FCC has not explicitly banned fast-tracking, but it does not seem disposed to allow it. So fast-tracking's fate will be decided by the courts, to the annoyance of everyone except lawyers.
+
+The other caveat with the FCC's new rules is their leniency towards mobile operators, who will be allowed to block some kinds of traffic. Wireless firms point out, rightly, that their bandwidth is less abundant than the fixed-line sort and especially vulnerable to data hogs who use too much capacity. But the best way to deal with this, on both fixed and mobile networks, is to offer a monthly data limit and charge by the megabyte beyond it. Usage-based pricing, not a different regulatory regime, is all that is needed. Again, other countries do this.
+
+The fundamental problem
+
+These details are important, but the noise about them only makes the omission more startling: the failure in America to tackle the underlying lack of competition in the provision of internet access. In other rich countries it would not matter if some operators blocked some sites: consumers could switch to a rival provider. That is because the big telecoms firms with wires into people's homes have to offer access to their networks on a wholesale basis, ensuring vigorous competition between dozens of providers, with lower prices and faster connections than are available in America. Getting America's phone and cable companies to open up their networks to others would be a lot harder for politicians than prattling on about neutrality; but it would do far more to open up the net.
+
