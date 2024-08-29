@@ -1,0 +1,143 @@
+# R语言学习资源分类汇总
+
+
+
+## 统计建模
+&emsp;&emsp;首先，很多人了解R并开始使用它，尤其是用于研究目的，通常是因为他们需要进行一些统计建模，而R有相应的包可以完成这项工作。事实上，统计建模是R的一个重要优势。对于简单的统计建模，像SPSS这样的不需要编码的程序可以和R一样出色，许多人仍然依赖SPSS进行统计建模。然而，SPSS不是开源的，它是由公司拥有的，而R是开源的。这意味着全球的R用户可以通过开发包来丰富R的功能，而不是依赖于公司内部的一小部分人。如果需要更复杂和精密的模型，可以简单地用Google搜索："model name" with R。
+
+- [Summary and Analysis of Extension Program Evaluation in R](https://rcompanion.org/handbook/index.html)  当我需要了解如何进行各种t检验、ANOVA或回归分析时，我常用的参考。
+
+
+
+## 机器学习
+
+- The [caret package](https://topepo.github.io/caret/index.html) (short for Classification And REgression Training) is a set of functions that attempt to streamline the process for creating predictive models. 
+
+## 数据整理
+
+- [R for Data Science](https://r4ds.had.co.nz/) by Garrett Grolemund和Hadley Wickham
+
+- 我的工作坊的[教程](https://juqiangj.github.io/DH_Data_wrangling/)。
+其他书籍:
+
+- [Data Science Live Book](https://livebook.datascienceheroes.com/index.html)
+
+- [The Pirate’s Guide to R](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html)
+
+## 数据可视化
+
+
+- [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/index.html)。
+
+- [cookbook R](http://www.cookbook-r.com/Graphs/)。
+
+- [*R Graphics Cookbook, 2nd edition*](https://r-graphics.org/)。
+
+- **地图可视化**[*Geocomputation with R*](https://geocompr.robinlovelace.net/) 
+
+- 流程图[DiagramR](https://rich-iannone.github.io/DiagrammeR/)
+
+## 网络分析
+
+- [Network Analysis in R](https://robwiederstein.github.io/network_analysis/) by Robert Wiederstein
+- [An Introduction to Network Analysis for Psycholinguists
+](https://vpf-netsci.netlify.app/part2-demo.html#Meso-level_(community_structure)) by Cynthia Siew
+
+**网络可视化**
+
+* [*Static and dynamic network visualization with R*](http://kateto.net/network-visualization)
+
+* [*Introduction to Network Analysis with R*](https://www.jessesadler.com/post/network-analysis-with-r/)
+
+* [ggnet2: network visualization with ggplot2](https://briatte.github.io/ggnet/)
+
+- [论文](https://journal.r-project.org/archive/2017/RJ-2017-023/index.html)。
+
+## 文本分析
+
+- [Text mining with R](https://www.tidytextmining.com/index.html)
+
+- [Computational Stylistics Group](https://computationalstylistics.github.io/) is a cross-institutional research team focused on computer-assisted text analysis, stylometry, authorship attribution, sentiment analysis, and the like stuff. The research projects conducted by the team members could be described as an intersection of linguistics, literary criticism, and computer science – however the best name here would be “Digital Humanities”. The group is based mostly in Kraków, at the Institute of Polish Language (Polish Academy of Sciences), but also at the Jagiellonian University and the University of Antwerp.
+
+## 网络抓取
+
+- [rvest: easy web scraping with R](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/) 
+
+- [教程 1](https://www.datacamp.com/community/tutorials/r-web-scraping-rvest) 
+
+- [教程 2](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/)
+
+## 社交媒体分析
+
+随着越来越多的人深深沉浸在社交媒体中，分析他们的语言行为可能会揭示出有价值的信息。
+
+- [Learning Social Media Analytics with R](https://learning.oreilly.com/library/view/learning-social-media/9781787127524/)
+
+- [教程 1](http://pablobarbera.com/big-data-upf/html/02a-networks-intro-visualization.html)
+
+## 语音分析
+
+* wrassp 是R的一个封装包，围绕Michel Scheffers的libassp（高级语音信号处理器）构建。libassp库旨在提供处理大多数常见音频格式的语音信号文件并执行语音科学/语音科学中常见分析的功能。这包括计算共振峰、基频、均方根、自动相关、一系列频谱分析、零交叉率、滤波等。这个封装包为R提供了libassp信号处理功能的大部分子集，并以一种（希望）用户友好的方式提供给用户。
+
+-[教程](https://cran.r-project.org/web/packages/wrassp/vignettes/wrassp_intro.html)
+
+* soundgen 基于*seewave*的功能，增加了用于声音合成、操作和分析的高级函数（参见关于声音合成的小册子）。[教程](https://cran.r-project.org/web/packages/soundgen/vignettes/acoustic_analysis.html)
+
+* EMU-R: EMU语音数据库管理系统（EMU-SDMS）是一组软件工具，旨在尽可能接近一个集成解决方案，用于生成、操作、查询、分析和管理语音数据库。[手册](https://ips-lmu.github.io/The-EMU-SDMS-Manual/index.html)
+
+## 学科研究
+- [文献计量bibliometrix](https://www.bibliometrix.org/home/)
+
+- [Using R for psychological research](https://personality-project.org/r/r.guide.html)
+
+- [The psych and psychTools packages](https://personality-project.org/r/psych/)
+
+## R-markdown
+
+当你希望输出你的R工作时，将代码与分析嵌入在一起是理想的选择。这在Word或其他文件类型中并不容易实现。感谢*r markdown*包，你现在可以：
+
+* 将单个R Markdown文档编译为不同格式的报告，如PDF、HTML或Word。
+
+* 创建可以直接交互运行代码块的笔记本。
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) [Tufte](https://rstudio.github.io/tufte/) 
+- [DataTables](https://rstudio.github.io/DT/)
+
+* 生成网站和博客。
+教程: [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/)
+
+* 编写多章节的书籍。
+教程: [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+
+* 制作演示幻灯片
+- [xaringan, creating remark.js through R Markdown](https://github.com/yihui/xaringan) 
+
+- [reveal.js Presentations](https://bookdown.org/yihui/rmarkdown/revealjs.html) 
+
+- [reveal.js](https://github.com/hakimel/reveal.js#markdown)
+
+* 创建R的交互式教程 [教程](https://rstudio.github.io/learnr/#overview)
+
+Markdown 语法
+- 字体  
++ <font face="宋体">我是宋体</font>  
++ <font face="楷体">我是楷体</font>- 字号  
++ <font size=5>我是尺寸</font>   
++ <font size=10>我是尺寸</font>
+- 颜色  
++ <font color=Blue>我是蓝色</font>    
++ <font color=#871F78>我是紫色</font>  
+- 背景  
++ <font style="background:Black;"color=White>黑色背景白字</font>
+
+- 对齐    
++ <p style="text-align:center;">这是居中对齐的段落</p>   
++ <p style="text-align:right;">这是右对齐的段落</p>    
++ <p style="text-align:justify">分散对齐</p>  
+- 缩进  
++ <p style="text-indent:32px;">首行缩进：这是一行以上的段落，第1行进行了缩进，之后所有行没有缩进。缩进的宽度是可以调节的，这里展示的常见的缩进两个汉字宽度的形式，可以设置为`2em`或`32px`。</p>
+
+&emsp;&emsp;每当我开展R语言的工作坊时，我首先需要向参与者解释为什么他们应该学习R语言。  
+
+&emsp;&emsp;下面是使用R可以做的一些很酷的事情，涵盖了从数据分析、统计建模、可视化到制作幻灯片、仪表板、博客文章、互动教程等多个方面。
+
+
