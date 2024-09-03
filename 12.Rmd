@@ -1,6 +1,6 @@
-# 机器学习案例-预测声调学习难点
+# 案例四、机器学习
 
-
+![详细背景请看原文献](images/12.1.png)
 
 ```{r echo=FALSE, include=FALSE}
 library(tidyverse)

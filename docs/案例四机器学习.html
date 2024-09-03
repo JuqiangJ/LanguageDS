@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,12 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -302,6 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
 <li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
+<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
+<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
+<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
+<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
+<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
+<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
+<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+</ul></li>
+<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
+<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
+<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
+<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
+<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
+<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -331,53 +374,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="训练普通话声调模型" class="section level2 hasAnchor">
 <h2><span class="header-section-number">13.1</span> 训练普通话声调模型<a href="案例四机器学习.html#训练普通话声调模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="co"># import data</span></a>
-<a class="sourceLine" id="cb330-2" data-line-number="2">md_discrete =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch13/md_discrete.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb330-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="co"># Selecting features</span></a>
-<a class="sourceLine" id="cb330-5" data-line-number="5">dataset_md =<span class="st"> </span>md_discrete[ , <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">9</span>)]</a>
-<a class="sourceLine" id="cb330-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb330-7" data-line-number="7"><span class="co"># scale the data</span></a>
-<a class="sourceLine" id="cb330-8" data-line-number="8">dataset_md[,<span class="op">-</span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">scale</span>(dataset_md[<span class="op">-</span><span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb330-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb330-10" data-line-number="10">dataset_md<span class="op">$</span>tone =<span class="st"> </span><span class="kw">as.factor</span>(dataset_md<span class="op">$</span>tone)</a>
-<a class="sourceLine" id="cb330-11" data-line-number="11"><span class="co"># Fitting classifier</span></a>
-<a class="sourceLine" id="cb330-12" data-line-number="12"><span class="co"># model based on discrete features</span></a>
-<a class="sourceLine" id="cb330-13" data-line-number="13">svm_md =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> tone <span class="op">~</span><span class="st"> </span>.,</a>
-<a class="sourceLine" id="cb330-14" data-line-number="14">               <span class="dt">data =</span> dataset_md,</a>
-<a class="sourceLine" id="cb330-15" data-line-number="15">               <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>,<span class="co">#regression or classification</span></a>
-<a class="sourceLine" id="cb330-16" data-line-number="16">               <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
-<a class="sourceLine" id="cb330-17" data-line-number="17">               <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
-<a class="sourceLine" id="cb330-18" data-line-number="18">               <span class="dt">cross =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb330-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb330-20" data-line-number="20"><span class="co"># total accuracy</span></a>
-<a class="sourceLine" id="cb330-21" data-line-number="21"><span class="co"># summary(svm_md)</span></a>
-<a class="sourceLine" id="cb330-22" data-line-number="22">svm_md<span class="op">$</span>tot.accuracy</a></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="co"># import data</span></a>
+<a class="sourceLine" id="cb324-2" data-line-number="2">md_discrete =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch13/md_discrete.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb324-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb324-4" data-line-number="4"><span class="co"># Selecting features</span></a>
+<a class="sourceLine" id="cb324-5" data-line-number="5">dataset_md =<span class="st"> </span>md_discrete[ , <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">9</span>)]</a>
+<a class="sourceLine" id="cb324-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb324-7" data-line-number="7"><span class="co"># scale the data</span></a>
+<a class="sourceLine" id="cb324-8" data-line-number="8">dataset_md[,<span class="op">-</span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">scale</span>(dataset_md[<span class="op">-</span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb324-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb324-10" data-line-number="10">dataset_md<span class="op">$</span>tone =<span class="st"> </span><span class="kw">as.factor</span>(dataset_md<span class="op">$</span>tone)</a>
+<a class="sourceLine" id="cb324-11" data-line-number="11"><span class="co"># Fitting classifier</span></a>
+<a class="sourceLine" id="cb324-12" data-line-number="12"><span class="co"># model based on discrete features</span></a>
+<a class="sourceLine" id="cb324-13" data-line-number="13">svm_md =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> tone <span class="op">~</span><span class="st"> </span>.,</a>
+<a class="sourceLine" id="cb324-14" data-line-number="14">               <span class="dt">data =</span> dataset_md,</a>
+<a class="sourceLine" id="cb324-15" data-line-number="15">               <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>,<span class="co">#regression or classification</span></a>
+<a class="sourceLine" id="cb324-16" data-line-number="16">               <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
+<a class="sourceLine" id="cb324-17" data-line-number="17">               <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
+<a class="sourceLine" id="cb324-18" data-line-number="18">               <span class="dt">cross =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb324-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb324-20" data-line-number="20"><span class="co"># total accuracy</span></a>
+<a class="sourceLine" id="cb324-21" data-line-number="21"><span class="co"># summary(svm_md)</span></a>
+<a class="sourceLine" id="cb324-22" data-line-number="22">svm_md<span class="op">$</span>tot.accuracy</a></code></pre></div>
 <pre><code>## [1] 96.4775</code></pre>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="co"># # model based on contour features</span></a>
-<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="co"># svm_contour = svm(formula = tone ~ .,</span></a>
-<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="co">#                   data = dataset_thai_8point,</span></a>
-<a class="sourceLine" id="cb332-4" data-line-number="4"><span class="co">#                   type = &#39;C-classification&#39;,#regression or classification</span></a>
-<a class="sourceLine" id="cb332-5" data-line-number="5"><span class="co">#                   kernel = &#39;radial&#39;,</span></a>
-<a class="sourceLine" id="cb332-6" data-line-number="6"><span class="co">#                   cost = &quot;2&quot;,</span></a>
-<a class="sourceLine" id="cb332-7" data-line-number="7"><span class="co">#                   cross = 10)</span></a>
-<a class="sourceLine" id="cb332-8" data-line-number="8"><span class="co"># svm_contour$tot.accuracy</span></a></code></pre></div>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"><span class="co"># producing confusion matrix</span></a>
-<a class="sourceLine" id="cb333-2" data-line-number="2">prediction_md &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_md, dataset_md)</a>
-<a class="sourceLine" id="cb333-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb333-4" data-line-number="4">md_confusion =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span> prediction_md, <span class="dt">tone =</span> md_discrete<span class="op">$</span>tone)</a>
-<a class="sourceLine" id="cb333-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb333-6" data-line-number="6">md_confusion_table =<span class="st"> </span>md_confusion<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(tone,pred)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum =</span> <span class="kw">sum</span>(n),</a>
-<a class="sourceLine" id="cb333-11" data-line-number="11">         <span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span>sum)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-12" data-line-number="12"><span class="st">  </span><span class="kw">select</span>(tone,pred,percent)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb333-13" data-line-number="13"><span class="st">  </span><span class="kw">spread</span>(tone, percent)</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;tone&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1">md_confusion_table</a></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1"><span class="co"># # model based on contour features</span></a>
+<a class="sourceLine" id="cb326-2" data-line-number="2"><span class="co"># svm_contour = svm(formula = tone ~ .,</span></a>
+<a class="sourceLine" id="cb326-3" data-line-number="3"><span class="co">#                   data = dataset_thai_8point,</span></a>
+<a class="sourceLine" id="cb326-4" data-line-number="4"><span class="co">#                   type = &#39;C-classification&#39;,#regression or classification</span></a>
+<a class="sourceLine" id="cb326-5" data-line-number="5"><span class="co">#                   kernel = &#39;radial&#39;,</span></a>
+<a class="sourceLine" id="cb326-6" data-line-number="6"><span class="co">#                   cost = &quot;2&quot;,</span></a>
+<a class="sourceLine" id="cb326-7" data-line-number="7"><span class="co">#                   cross = 10)</span></a>
+<a class="sourceLine" id="cb326-8" data-line-number="8"><span class="co"># svm_contour$tot.accuracy</span></a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="co"># producing confusion matrix</span></a>
+<a class="sourceLine" id="cb327-2" data-line-number="2">prediction_md &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_md, dataset_md)</a>
+<a class="sourceLine" id="cb327-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb327-4" data-line-number="4">md_confusion =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span> prediction_md, <span class="dt">tone =</span> md_discrete<span class="op">$</span>tone)</a>
+<a class="sourceLine" id="cb327-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb327-6" data-line-number="6">md_confusion_table =<span class="st"> </span>md_confusion<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(tone,pred)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum =</span> <span class="kw">sum</span>(n),</a>
+<a class="sourceLine" id="cb327-11" data-line-number="11">         <span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span>sum)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-12" data-line-number="12"><span class="st">  </span><span class="kw">select</span>(tone,pred,percent)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-13" data-line-number="13"><span class="st">  </span><span class="kw">spread</span>(tone, percent)</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;tone&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1">md_confusion_table</a></code></pre></div>
 <pre><code>## # A tibble: 4 × 5
 ##   pred   M214   M35   M51   M55
 ##   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -385,243 +427,238 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 M35    3.91   100 NA     0.78
 ## 3 M51   NA       NA 98.4  NA   
 ## 4 M55   NA       NA  1.57 99.2</code></pre>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="co"># write.csv(md_confusion_table, </span></a>
-<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="co">#           file =&quot;data/processed/md_confusion_table.csv&quot;, </span></a>
-<a class="sourceLine" id="cb337-3" data-line-number="3"><span class="co">#           row.names = FALSE)</span></a>
-<a class="sourceLine" id="cb337-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb337-5" data-line-number="5">md_plot =<span class="st"> </span>md_confusion<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-7" data-line-number="7"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> n<span class="op">/</span><span class="kw">sum</span>(n),</a>
-<a class="sourceLine" id="cb337-10" data-line-number="10">         <span class="dt">sum =</span> <span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb337-11" data-line-number="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pred, tone))<span class="op">+</span></a>
-<a class="sourceLine" id="cb337-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent<span class="op">*</span><span class="dv">100</span> ))<span class="op">+</span></a>
-<a class="sourceLine" id="cb337-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(percent<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>)), <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb337-14" data-line-number="14"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predictions&quot;</span>,</a>
-<a class="sourceLine" id="cb337-15" data-line-number="15">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb337-16" data-line-number="16">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb337-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin tones&quot;</span>,</a>
-<a class="sourceLine" id="cb337-18" data-line-number="18">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb337-19" data-line-number="19">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb337-20" data-line-number="20"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
-<a class="sourceLine" id="cb337-21" data-line-number="21">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb337-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb337-23" data-line-number="23">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb337-24" data-line-number="24">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb337-25" data-line-number="25">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb337-26" data-line-number="26">        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1"> md_plot</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1"><span class="co"># Print this our for publication</span></a>
-<a class="sourceLine" id="cb340-2" data-line-number="2"><span class="co"># png(&quot;figure4.png&quot;, units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
-<a class="sourceLine" id="cb340-3" data-line-number="3"><span class="co"># md_plot</span></a>
-<a class="sourceLine" id="cb340-4" data-line-number="4"><span class="co"># dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="co"># write.csv(md_confusion_table, </span></a>
+<a class="sourceLine" id="cb331-2" data-line-number="2"><span class="co">#           file =&quot;data/processed/md_confusion_table.csv&quot;, </span></a>
+<a class="sourceLine" id="cb331-3" data-line-number="3"><span class="co">#           row.names = FALSE)</span></a>
+<a class="sourceLine" id="cb331-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb331-5" data-line-number="5">md_plot =<span class="st"> </span>md_confusion<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-7" data-line-number="7"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> n<span class="op">/</span><span class="kw">sum</span>(n),</a>
+<a class="sourceLine" id="cb331-10" data-line-number="10">         <span class="dt">sum =</span> <span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb331-11" data-line-number="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pred, tone))<span class="op">+</span></a>
+<a class="sourceLine" id="cb331-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent<span class="op">*</span><span class="dv">100</span> ))<span class="op">+</span></a>
+<a class="sourceLine" id="cb331-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(percent<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>)), <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb331-14" data-line-number="14"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predictions&quot;</span>,</a>
+<a class="sourceLine" id="cb331-15" data-line-number="15">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb331-16" data-line-number="16">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb331-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin tones&quot;</span>,</a>
+<a class="sourceLine" id="cb331-18" data-line-number="18">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb331-19" data-line-number="19">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb331-20" data-line-number="20"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
+<a class="sourceLine" id="cb331-21" data-line-number="21">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb331-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb331-23" data-line-number="23">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb331-24" data-line-number="24">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb331-25" data-line-number="25">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb331-26" data-line-number="26">        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"> md_plot</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-355-1.png" width="672" /></p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="co"># Print this our for publication</span></a>
+<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="co"># png(&quot;figure4.png&quot;, units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb334-3" data-line-number="3"><span class="co"># md_plot</span></a>
+<a class="sourceLine" id="cb334-4" data-line-number="4"><span class="co"># dev.off()</span></a></code></pre></div>
 </div>
 <div id="训练泰语母语者声调模型" class="section level2 hasAnchor">
 <h2><span class="header-section-number">13.2</span> 训练泰语母语者声调模型<a href="案例四机器学习.html#训练泰语母语者声调模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1"><span class="co"># import data</span></a>
-<a class="sourceLine" id="cb341-2" data-line-number="2">thai_discrete =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch13/thai_discrete.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb341-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb341-4" data-line-number="4"><span class="co"># Selecting features</span></a>
-<a class="sourceLine" id="cb341-5" data-line-number="5">dataset_thai =<span class="st"> </span>thai_discrete[ , <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span><span class="op">:</span><span class="dv">11</span>)]</a>
-<a class="sourceLine" id="cb341-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb341-7" data-line-number="7"><span class="co"># scale the data</span></a>
-<a class="sourceLine" id="cb341-8" data-line-number="8">dataset_thai[,<span class="op">-</span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">scale</span>(dataset_thai[<span class="op">-</span><span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb341-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb341-10" data-line-number="10"><span class="co"># Fitting classifier</span></a>
-<a class="sourceLine" id="cb341-11" data-line-number="11"><span class="co"># model based on discrete features</span></a>
-<a class="sourceLine" id="cb341-12" data-line-number="12">svm_thai =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> tone <span class="op">~</span><span class="st"> </span>.,</a>
-<a class="sourceLine" id="cb341-13" data-line-number="13">               <span class="dt">data =</span> dataset_thai,</a>
-<a class="sourceLine" id="cb341-14" data-line-number="14">               <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>,<span class="co">#regression or classification</span></a>
-<a class="sourceLine" id="cb341-15" data-line-number="15">               <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
-<a class="sourceLine" id="cb341-16" data-line-number="16">               <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
-<a class="sourceLine" id="cb341-17" data-line-number="17">               <span class="dt">cross =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb341-18" data-line-number="18"><span class="co"># total accuracy</span></a>
-<a class="sourceLine" id="cb341-19" data-line-number="19"><span class="co"># summary(svm_thai)</span></a>
-<a class="sourceLine" id="cb341-20" data-line-number="20">svm_thai<span class="op">$</span>tot.accuracy</a></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1"><span class="co"># import data</span></a>
+<a class="sourceLine" id="cb335-2" data-line-number="2">thai_discrete =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch13/thai_discrete.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb335-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb335-4" data-line-number="4"><span class="co"># Selecting features</span></a>
+<a class="sourceLine" id="cb335-5" data-line-number="5">dataset_thai =<span class="st"> </span>thai_discrete[ , <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span><span class="op">:</span><span class="dv">11</span>)]</a>
+<a class="sourceLine" id="cb335-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb335-7" data-line-number="7"><span class="co"># scale the data</span></a>
+<a class="sourceLine" id="cb335-8" data-line-number="8">dataset_thai[,<span class="op">-</span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">scale</span>(dataset_thai[<span class="op">-</span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb335-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb335-10" data-line-number="10"><span class="co"># Fitting classifier</span></a>
+<a class="sourceLine" id="cb335-11" data-line-number="11"><span class="co"># model based on discrete features</span></a>
+<a class="sourceLine" id="cb335-12" data-line-number="12">svm_thai =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> tone <span class="op">~</span><span class="st"> </span>.,</a>
+<a class="sourceLine" id="cb335-13" data-line-number="13">               <span class="dt">data =</span> dataset_thai,</a>
+<a class="sourceLine" id="cb335-14" data-line-number="14">               <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>,<span class="co">#regression or classification</span></a>
+<a class="sourceLine" id="cb335-15" data-line-number="15">               <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
+<a class="sourceLine" id="cb335-16" data-line-number="16">               <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
+<a class="sourceLine" id="cb335-17" data-line-number="17">               <span class="dt">cross =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb335-18" data-line-number="18"><span class="co"># total accuracy</span></a>
+<a class="sourceLine" id="cb335-19" data-line-number="19"><span class="co"># summary(svm_thai)</span></a>
+<a class="sourceLine" id="cb335-20" data-line-number="20">svm_thai<span class="op">$</span>tot.accuracy</a></code></pre></div>
 <pre><code>## [1] 91.86047</code></pre>
 <p>检测泰语母语者声调模型的正确率。</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="co"># confusion matrix</span></a>
-<a class="sourceLine" id="cb343-2" data-line-number="2">prediction &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_thai, dataset_thai)</a>
-<a class="sourceLine" id="cb343-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb343-4" data-line-number="4">thai_confusion =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span> prediction, <span class="dt">tone =</span> thai_discrete<span class="op">$</span>tone)</a>
-<a class="sourceLine" id="cb343-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb343-6" data-line-number="6">thai_confusion_table =<span class="st"> </span>thai_confusion<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb343-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(tone,pred)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb343-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb343-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb343-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum =</span> <span class="kw">sum</span>(n),</a>
-<a class="sourceLine" id="cb343-11" data-line-number="11">         <span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span>sum)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb343-12" data-line-number="12"><span class="st">  </span><span class="kw">select</span>(tone,pred,percent)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb343-13" data-line-number="13"><span class="st">  </span><span class="kw">spread</span>(tone, percent)</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;tone&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">thai_confusion<span class="op">$</span>tone =<span class="st"> </span><span class="kw">as.factor</span>(thai_confusion<span class="op">$</span>tone)</a>
-<a class="sourceLine" id="cb345-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb345-3" data-line-number="3"><span class="co"># write.csv(thai_confusion_table, </span></a>
-<a class="sourceLine" id="cb345-4" data-line-number="4"><span class="co">#           file = &quot;data/processed/thai_confusion_table &quot;, </span></a>
-<a class="sourceLine" id="cb345-5" data-line-number="5"><span class="co">#           row.names = FALSE)</span></a>
-<a class="sourceLine" id="cb345-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb345-7" data-line-number="7">thai_plot =<span class="st"> </span>thai_confusion<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-9" data-line-number="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-10" data-line-number="10"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> n<span class="op">/</span><span class="kw">sum</span>(n),</a>
-<a class="sourceLine" id="cb345-12" data-line-number="12">         <span class="dt">sum =</span> <span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb345-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pred, tone))<span class="op">+</span></a>
-<a class="sourceLine" id="cb345-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent<span class="op">*</span><span class="dv">100</span> ))<span class="op">+</span></a>
-<a class="sourceLine" id="cb345-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(percent<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>)), <span class="dt">size =</span> <span class="dv">4</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb345-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predictions&quot;</span>,</a>
-<a class="sourceLine" id="cb345-17" data-line-number="17">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
-<a class="sourceLine" id="cb345-18" data-line-number="18">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T21&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb345-19" data-line-number="19"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai tones&quot;</span>,</a>
-<a class="sourceLine" id="cb345-20" data-line-number="20">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
-<a class="sourceLine" id="cb345-21" data-line-number="21">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T21&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb345-22" data-line-number="22"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
-<a class="sourceLine" id="cb345-23" data-line-number="23">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb345-24" data-line-number="24"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb345-25" data-line-number="25">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb345-26" data-line-number="26">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb345-27" data-line-number="27">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb345-28" data-line-number="28">        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">thai_plot</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="co"># Print this our for publication</span></a>
-<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="co"># png(&quot;thai_tones.png&quot;, units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
-<a class="sourceLine" id="cb348-3" data-line-number="3"><span class="co"># thai_plot</span></a>
-<a class="sourceLine" id="cb348-4" data-line-number="4"><span class="co"># dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="co"># confusion matrix</span></a>
+<a class="sourceLine" id="cb337-2" data-line-number="2">prediction &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_thai, dataset_thai)</a>
+<a class="sourceLine" id="cb337-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb337-4" data-line-number="4">thai_confusion =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span> prediction, <span class="dt">tone =</span> thai_discrete<span class="op">$</span>tone)</a>
+<a class="sourceLine" id="cb337-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb337-6" data-line-number="6">thai_confusion_table =<span class="st"> </span>thai_confusion<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(tone,pred)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum =</span> <span class="kw">sum</span>(n),</a>
+<a class="sourceLine" id="cb337-11" data-line-number="11">         <span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span>sum)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-12" data-line-number="12"><span class="st">  </span><span class="kw">select</span>(tone,pred,percent)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-13" data-line-number="13"><span class="st">  </span><span class="kw">spread</span>(tone, percent)</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;tone&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">thai_confusion<span class="op">$</span>tone =<span class="st"> </span><span class="kw">as.factor</span>(thai_confusion<span class="op">$</span>tone)</a>
+<a class="sourceLine" id="cb339-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb339-3" data-line-number="3"><span class="co"># write.csv(thai_confusion_table, </span></a>
+<a class="sourceLine" id="cb339-4" data-line-number="4"><span class="co">#           file = &quot;data/processed/thai_confusion_table &quot;, </span></a>
+<a class="sourceLine" id="cb339-5" data-line-number="5"><span class="co">#           row.names = FALSE)</span></a>
+<a class="sourceLine" id="cb339-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb339-7" data-line-number="7">thai_plot =<span class="st"> </span>thai_confusion<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb339-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb339-9" data-line-number="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb339-10" data-line-number="10"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb339-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> n<span class="op">/</span><span class="kw">sum</span>(n),</a>
+<a class="sourceLine" id="cb339-12" data-line-number="12">         <span class="dt">sum =</span> <span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb339-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pred, tone))<span class="op">+</span></a>
+<a class="sourceLine" id="cb339-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent<span class="op">*</span><span class="dv">100</span> ))<span class="op">+</span></a>
+<a class="sourceLine" id="cb339-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(percent<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>)), <span class="dt">size =</span> <span class="dv">4</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb339-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predictions&quot;</span>,</a>
+<a class="sourceLine" id="cb339-17" data-line-number="17">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
+<a class="sourceLine" id="cb339-18" data-line-number="18">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T21&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb339-19" data-line-number="19"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai tones&quot;</span>,</a>
+<a class="sourceLine" id="cb339-20" data-line-number="20">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
+<a class="sourceLine" id="cb339-21" data-line-number="21">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T21&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb339-22" data-line-number="22"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
+<a class="sourceLine" id="cb339-23" data-line-number="23">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb339-24" data-line-number="24"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb339-25" data-line-number="25">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb339-26" data-line-number="26">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb339-27" data-line-number="27">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb339-28" data-line-number="28">        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">thai_plot</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-357-1.png" width="672" /></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1"><span class="co"># Print this our for publication</span></a>
+<a class="sourceLine" id="cb342-2" data-line-number="2"><span class="co"># png(&quot;thai_tones.png&quot;, units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb342-3" data-line-number="3"><span class="co"># thai_plot</span></a>
+<a class="sourceLine" id="cb342-4" data-line-number="4"><span class="co"># dev.off()</span></a></code></pre></div>
 </div>
 <div id="模拟普通话听者感知泰语声调" class="section level2 hasAnchor">
 <h2><span class="header-section-number">13.3</span> 模拟普通话听者感知泰语声调<a href="案例四机器学习.html#模拟普通话听者感知泰语声调" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1"><span class="co"># mandarin listeners percieve Thai tones</span></a>
-<a class="sourceLine" id="cb349-2" data-line-number="2">prediction_md_thai &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_md, dataset_thai)</a>
-<a class="sourceLine" id="cb349-3" data-line-number="3"> </a>
-<a class="sourceLine" id="cb349-4" data-line-number="4"><span class="kw">table</span>( prediction_md_thai, thai_discrete<span class="op">$</span>tone)</a></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="co"># mandarin listeners percieve Thai tones</span></a>
+<a class="sourceLine" id="cb343-2" data-line-number="2">prediction_md_thai &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_md, dataset_thai)</a>
+<a class="sourceLine" id="cb343-3" data-line-number="3"> </a>
+<a class="sourceLine" id="cb343-4" data-line-number="4"><span class="kw">table</span>( prediction_md_thai, thai_discrete<span class="op">$</span>tone)</a></code></pre></div>
 <pre><code>##                   
 ## prediction_md_thai 21 33 45 241 315
 ##               M214 65 26  0   0  21
 ##               M35   0  3 55   1  61
 ##               M51  20 22  7  79   4
 ##               M55   1 35 24   6   0</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="co"># SVM assimilation table</span></a>
-<a class="sourceLine" id="cb351-2" data-line-number="2">md.svm.assim =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span>  prediction_md_thai, </a>
-<a class="sourceLine" id="cb351-3" data-line-number="3">            <span class="dt">tone =</span> thai_discrete<span class="op">$</span>tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb351-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb351-5" data-line-number="5"><span class="st">   </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb351-6" data-line-number="6"><span class="st">   </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb351-7" data-line-number="7"><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span><span class="kw">sum</span>(n)),<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb351-8" data-line-number="8">          <span class="dt">sum =</span> <span class="kw">sum</span>(n))</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1">md.svm.assim<span class="op">$</span>pred =<span class="st"> </span><span class="kw">factor</span>(md.svm.assim<span class="op">$</span>pred, <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
-<a class="sourceLine" id="cb353-2" data-line-number="2"> </a>
-<a class="sourceLine" id="cb353-3" data-line-number="3">md.svm.assim<span class="op">$</span>tone =<span class="st"> </span><span class="kw">factor</span>(md.svm.assim<span class="op">$</span>tone,<span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>))</a>
-<a class="sourceLine" id="cb353-4" data-line-number="4"> </a>
-<a class="sourceLine" id="cb353-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb353-6" data-line-number="6"><span class="co"># Stacked barplot </span></a>
-<a class="sourceLine" id="cb353-7" data-line-number="7">  </a>
-<a class="sourceLine" id="cb353-8" data-line-number="8">md.svm.assim.stacked =<span class="st"> </span><span class="kw">ggplot</span>(md.svm.assim, </a>
-<a class="sourceLine" id="cb353-9" data-line-number="9">                 <span class="kw">aes</span>(<span class="dt">fill=</span>pred, <span class="dt">y=</span>percent, <span class="dt">x=</span>tone, <span class="dt">label =</span> percent)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb353-10" data-line-number="10"><span class="st">   </span><span class="kw">geom_bar</span>( <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-11" data-line-number="11"><span class="st">   </span><span class="kw">scale_fill_manual</span>(</a>
-<a class="sourceLine" id="cb353-12" data-line-number="12">     <span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span> =<span class="st"> &quot;black&quot;</span>, <span class="st">&quot;M35&quot;</span>=<span class="st">&quot;gray25&quot;</span>,</a>
-<a class="sourceLine" id="cb353-13" data-line-number="13">              <span class="st">&quot;M214&quot;</span>=<span class="st">&quot;gray75&quot;</span>, <span class="st">&quot;M51&quot;</span>=<span class="st">&quot;white&quot;</span>), </a>
-<a class="sourceLine" id="cb353-14" data-line-number="14">     <span class="dt">name=</span><span class="st">&quot;Mandarin&quot;</span>,</a>
-<a class="sourceLine" id="cb353-15" data-line-number="15">     <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb353-16" data-line-number="16">     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-17" data-line-number="17"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-18" data-line-number="18"><span class="st">   </span><span class="kw">xlab</span>(<span class="st">&quot;Thai tones&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-19" data-line-number="19"><span class="st">   </span><span class="kw">ylab</span>(<span class="st">&quot;Mandarin responses(%)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb353-20" data-line-number="20"><span class="st">   </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">101</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-21" data-line-number="21"><span class="st">   </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-22" data-line-number="22"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-23" data-line-number="23"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-24" data-line-number="24"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-25" data-line-number="25"><span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;45&quot;</span>, <span class="st">&quot;33&quot;</span>, <span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
-<a class="sourceLine" id="cb353-26" data-line-number="26">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb353-27" data-line-number="27"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>),<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb353-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb353-29" data-line-number="29">md.svm.assim.stacked </a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1"><span class="co"># png(&quot;figure/md.svm.assim.stacked .png&quot;, </span></a>
-<a class="sourceLine" id="cb354-2" data-line-number="2"><span class="co">#      units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
-<a class="sourceLine" id="cb354-3" data-line-number="3"><span class="co"># md.svm.assim.stacked </span></a>
-<a class="sourceLine" id="cb354-4" data-line-number="4"><span class="co"># dev.off()</span></a>
-<a class="sourceLine" id="cb354-5" data-line-number="5"> </a>
-<a class="sourceLine" id="cb354-6" data-line-number="6"><span class="co"># heat map </span></a>
-<a class="sourceLine" id="cb354-7" data-line-number="7">md.svm.assim.heat =<span class="st"> </span>md.svm.assim<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb354-8" data-line-number="8"><span class="st">   </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb354-9" data-line-number="9"><span class="st">   </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tone, pred))<span class="op">+</span></a>
-<a class="sourceLine" id="cb354-10" data-line-number="10"><span class="st">   </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent ))<span class="op">+</span></a>
-<a class="sourceLine" id="cb354-11" data-line-number="11"><span class="st">   </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> percent)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb354-12" data-line-number="12"><span class="st">   </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai stimuli&quot;</span>,</a>
-<a class="sourceLine" id="cb354-13" data-line-number="13">                    <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
-<a class="sourceLine" id="cb354-14" data-line-number="14">                    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb354-15" data-line-number="15"><span class="st">   </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predicted responses&quot;</span>,</a>
-<a class="sourceLine" id="cb354-16" data-line-number="16">                    <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>),</a>
-<a class="sourceLine" id="cb354-17" data-line-number="17">                    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb354-18" data-line-number="18"><span class="st">   </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
-<a class="sourceLine" id="cb354-19" data-line-number="19">                       <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb354-20" data-line-number="20"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb354-21" data-line-number="21">                                    <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb354-22" data-line-number="22">         <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb354-23" data-line-number="23">                                    <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb354-24" data-line-number="24">         <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())<span class="op">+</span></a>
-<a class="sourceLine" id="cb354-25" data-line-number="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb354-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb354-27" data-line-number="27">md.svm.assim.heat</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1">final.cm =<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/ch13/final.cm.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb355-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb355-3" data-line-number="3">final.cm<span class="op">$</span>stimuli =<span class="st"> </span><span class="kw">as.factor</span>(final.cm<span class="op">$</span>stimuli)</a>
-<a class="sourceLine" id="cb355-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb355-5" data-line-number="5">md.human.assim.heat =<span class="st"> </span>final.cm<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb355-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(stimuli, response)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb355-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(subject <span class="op">!=</span><span class="st">&quot;106&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb355-8" data-line-number="8"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">cat.mean =</span> <span class="kw">round</span> ((<span class="kw">sum</span>(percentage)<span class="op">/</span><span class="dv">12</span>)<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb355-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>(cat.mean <span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb355-10" data-line-number="10"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(stimuli, response))<span class="op">+</span></a>
-<a class="sourceLine" id="cb355-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> cat.mean ))<span class="op">+</span></a>
-<a class="sourceLine" id="cb355-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> cat.mean)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb355-13" data-line-number="13"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai stimuli&quot;</span>,</a>
-<a class="sourceLine" id="cb355-14" data-line-number="14">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
-<a class="sourceLine" id="cb355-15" data-line-number="15">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb355-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin listeners&#39; responses&quot;</span>,</a>
-<a class="sourceLine" id="cb355-17" data-line-number="17">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>),</a>
-<a class="sourceLine" id="cb355-18" data-line-number="18">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb355-19" data-line-number="19"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
-<a class="sourceLine" id="cb355-20" data-line-number="20">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb355-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb355-22" data-line-number="22">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb355-23" data-line-number="23">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb355-24" data-line-number="24">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb355-25" data-line-number="25">        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;stimuli&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1">md.human.assim.heat</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">md_compare =<span class="st"> </span><span class="kw">plot_grid</span>(md.svm.assim.heat, md.human.assim.heat,  </a>
-<a class="sourceLine" id="cb358-2" data-line-number="2">          <span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>),</a>
-<a class="sourceLine" id="cb358-3" data-line-number="3">          <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.4</span>)</a>
-<a class="sourceLine" id="cb358-4" data-line-number="4">          ) <span class="co">#Or labels=&quot;AUTO&quot;</span></a>
-<a class="sourceLine" id="cb358-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb358-6" data-line-number="6">md_compare</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"> <span class="co"># png(&quot;md_compare.png&quot;, units=&quot;in&quot;, width=8, height=3, res=600)</span></a>
-<a class="sourceLine" id="cb359-2" data-line-number="2"> <span class="co"># md_compare</span></a>
-<a class="sourceLine" id="cb359-3" data-line-number="3"> <span class="co"># dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1"><span class="co"># SVM assimilation table</span></a>
+<a class="sourceLine" id="cb345-2" data-line-number="2">md.svm.assim =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span>  prediction_md_thai, </a>
+<a class="sourceLine" id="cb345-3" data-line-number="3">            <span class="dt">tone =</span> thai_discrete<span class="op">$</span>tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb345-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb345-5" data-line-number="5"><span class="st">   </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb345-6" data-line-number="6"><span class="st">   </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb345-7" data-line-number="7"><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span><span class="kw">sum</span>(n)),<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb345-8" data-line-number="8">          <span class="dt">sum =</span> <span class="kw">sum</span>(n))</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">md.svm.assim<span class="op">$</span>pred =<span class="st"> </span><span class="kw">factor</span>(md.svm.assim<span class="op">$</span>pred, <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
+<a class="sourceLine" id="cb347-2" data-line-number="2"> </a>
+<a class="sourceLine" id="cb347-3" data-line-number="3">md.svm.assim<span class="op">$</span>tone =<span class="st"> </span><span class="kw">factor</span>(md.svm.assim<span class="op">$</span>tone,<span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>))</a>
+<a class="sourceLine" id="cb347-4" data-line-number="4"> </a>
+<a class="sourceLine" id="cb347-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb347-6" data-line-number="6"><span class="co"># Stacked barplot </span></a>
+<a class="sourceLine" id="cb347-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb347-8" data-line-number="8">md.svm.assim.stacked =<span class="st"> </span><span class="kw">ggplot</span>(md.svm.assim, </a>
+<a class="sourceLine" id="cb347-9" data-line-number="9">                 <span class="kw">aes</span>(<span class="dt">fill=</span>pred, <span class="dt">y=</span>percent, <span class="dt">x=</span>tone, <span class="dt">label =</span> percent)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb347-10" data-line-number="10"><span class="st">   </span><span class="kw">geom_bar</span>( <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-11" data-line-number="11"><span class="st">   </span><span class="kw">scale_fill_manual</span>(</a>
+<a class="sourceLine" id="cb347-12" data-line-number="12">     <span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span> =<span class="st"> &quot;black&quot;</span>, <span class="st">&quot;M35&quot;</span>=<span class="st">&quot;gray25&quot;</span>,</a>
+<a class="sourceLine" id="cb347-13" data-line-number="13">              <span class="st">&quot;M214&quot;</span>=<span class="st">&quot;gray75&quot;</span>, <span class="st">&quot;M51&quot;</span>=<span class="st">&quot;white&quot;</span>), </a>
+<a class="sourceLine" id="cb347-14" data-line-number="14">     <span class="dt">name=</span><span class="st">&quot;Mandarin&quot;</span>,</a>
+<a class="sourceLine" id="cb347-15" data-line-number="15">     <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb347-16" data-line-number="16">     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-17" data-line-number="17"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-18" data-line-number="18"><span class="st">   </span><span class="kw">xlab</span>(<span class="st">&quot;Thai tones&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-19" data-line-number="19"><span class="st">   </span><span class="kw">ylab</span>(<span class="st">&quot;Mandarin responses(%)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb347-20" data-line-number="20"><span class="st">   </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">101</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-21" data-line-number="21"><span class="st">   </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-22" data-line-number="22"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-23" data-line-number="23"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-24" data-line-number="24"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-25" data-line-number="25"><span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;45&quot;</span>, <span class="st">&quot;33&quot;</span>, <span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
+<a class="sourceLine" id="cb347-26" data-line-number="26">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb347-27" data-line-number="27"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>),<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb347-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb347-29" data-line-number="29">md.svm.assim.stacked </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-358-1.png" width="672" /></p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="co"># png(&quot;figure/md.svm.assim.stacked .png&quot;, </span></a>
+<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="co">#      units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb348-3" data-line-number="3"><span class="co"># md.svm.assim.stacked </span></a>
+<a class="sourceLine" id="cb348-4" data-line-number="4"><span class="co"># dev.off()</span></a>
+<a class="sourceLine" id="cb348-5" data-line-number="5"> </a>
+<a class="sourceLine" id="cb348-6" data-line-number="6"><span class="co"># heat map </span></a>
+<a class="sourceLine" id="cb348-7" data-line-number="7">md.svm.assim.heat =<span class="st"> </span>md.svm.assim<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-8" data-line-number="8"><span class="st">   </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-9" data-line-number="9"><span class="st">   </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tone, pred))<span class="op">+</span></a>
+<a class="sourceLine" id="cb348-10" data-line-number="10"><span class="st">   </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent ))<span class="op">+</span></a>
+<a class="sourceLine" id="cb348-11" data-line-number="11"><span class="st">   </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> percent)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb348-12" data-line-number="12"><span class="st">   </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai stimuli&quot;</span>,</a>
+<a class="sourceLine" id="cb348-13" data-line-number="13">                    <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
+<a class="sourceLine" id="cb348-14" data-line-number="14">                    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb348-15" data-line-number="15"><span class="st">   </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predicted responses&quot;</span>,</a>
+<a class="sourceLine" id="cb348-16" data-line-number="16">                    <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>),</a>
+<a class="sourceLine" id="cb348-17" data-line-number="17">                    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb348-18" data-line-number="18"><span class="st">   </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
+<a class="sourceLine" id="cb348-19" data-line-number="19">                       <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb348-20" data-line-number="20"><span class="st">   </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb348-21" data-line-number="21">                                    <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb348-22" data-line-number="22">         <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb348-23" data-line-number="23">                                    <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb348-24" data-line-number="24">         <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb348-25" data-line-number="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb348-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb348-27" data-line-number="27">md.svm.assim.heat</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-358-2.png" width="672" /></p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1">final.cm =<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/ch13/final.cm.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb349-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb349-3" data-line-number="3">final.cm<span class="op">$</span>stimuli =<span class="st"> </span><span class="kw">as.factor</span>(final.cm<span class="op">$</span>stimuli)</a>
+<a class="sourceLine" id="cb349-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb349-5" data-line-number="5">md.human.assim.heat =<span class="st"> </span>final.cm<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb349-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(stimuli, response)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb349-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(subject <span class="op">!=</span><span class="st">&quot;106&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb349-8" data-line-number="8"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">cat.mean =</span> <span class="kw">round</span> ((<span class="kw">sum</span>(percentage)<span class="op">/</span><span class="dv">12</span>)<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb349-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>(cat.mean <span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb349-10" data-line-number="10"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(stimuli, response))<span class="op">+</span></a>
+<a class="sourceLine" id="cb349-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> cat.mean ))<span class="op">+</span></a>
+<a class="sourceLine" id="cb349-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> cat.mean)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb349-13" data-line-number="13"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai stimuli&quot;</span>,</a>
+<a class="sourceLine" id="cb349-14" data-line-number="14">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
+<a class="sourceLine" id="cb349-15" data-line-number="15">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb349-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin listeners&#39; responses&quot;</span>,</a>
+<a class="sourceLine" id="cb349-17" data-line-number="17">                   <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>),</a>
+<a class="sourceLine" id="cb349-18" data-line-number="18">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M51&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M55&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb349-19" data-line-number="19"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
+<a class="sourceLine" id="cb349-20" data-line-number="20">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb349-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb349-22" data-line-number="22">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb349-23" data-line-number="23">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb349-24" data-line-number="24">                                   <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb349-25" data-line-number="25">        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;stimuli&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">md.human.assim.heat</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-359-1.png" width="672" /></p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">md_compare =<span class="st"> </span><span class="kw">plot_grid</span>(md.svm.assim.heat, md.human.assim.heat,  </a>
+<a class="sourceLine" id="cb352-2" data-line-number="2">          <span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>),</a>
+<a class="sourceLine" id="cb352-3" data-line-number="3">          <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.4</span>)</a>
+<a class="sourceLine" id="cb352-4" data-line-number="4">          ) <span class="co">#Or labels=&quot;AUTO&quot;</span></a>
+<a class="sourceLine" id="cb352-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb352-6" data-line-number="6">md_compare</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-359-2.png" width="672" /></p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1"> <span class="co"># png(&quot;md_compare.png&quot;, units=&quot;in&quot;, width=8, height=3, res=600)</span></a>
+<a class="sourceLine" id="cb353-2" data-line-number="2"> <span class="co"># md_compare</span></a>
+<a class="sourceLine" id="cb353-3" data-line-number="3"> <span class="co"># dev.off()</span></a></code></pre></div>
 </div>
 <div id="模拟泰语母语听者感知普通话声调" class="section level2 hasAnchor">
 <h2><span class="header-section-number">13.4</span> 模拟泰语母语听者感知普通话声调<a href="案例四机器学习.html#模拟泰语母语听者感知普通话声调" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1"><span class="co"># thai listeners percieve mandarin tones</span></a>
-<a class="sourceLine" id="cb360-2" data-line-number="2">prediction_thai_md &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_thai, dataset_md)</a>
-<a class="sourceLine" id="cb360-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb360-4" data-line-number="4"><span class="kw">table</span>(prediction_thai_md, md_discrete<span class="op">$</span>tone)</a></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1"><span class="co"># thai listeners percieve mandarin tones</span></a>
+<a class="sourceLine" id="cb354-2" data-line-number="2">prediction_thai_md &lt;-<span class="st"> </span><span class="kw">predict</span>(svm_thai, dataset_md)</a>
+<a class="sourceLine" id="cb354-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb354-4" data-line-number="4"><span class="kw">table</span>(prediction_thai_md, md_discrete<span class="op">$</span>tone)</a></code></pre></div>
 <pre><code>##                   
 ## prediction_thai_md M214 M35 M51 M55
 ##                21    82   0  15   0
@@ -629,118 +666,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                45     0  49   8  55
 ##                241    5   4  91  32
 ##                315   35  73   6   0</code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="co"># set the order of thai tones</span></a>
-<a class="sourceLine" id="cb362-2" data-line-number="2">thai.svm.assim =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span> prediction_thai_md, </a>
-<a class="sourceLine" id="cb362-3" data-line-number="3">               <span class="dt">tone =</span> md_discrete<span class="op">$</span>tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb362-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb362-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb362-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb362-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span><span class="kw">sum</span>(n)),<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb362-8" data-line-number="8">         <span class="dt">sum =</span> <span class="kw">sum</span>(n))</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">thai.svm.assim<span class="op">$</span>tone =<span class="st"> </span><span class="kw">factor</span>(thai.svm.assim<span class="op">$</span>tone, </a>
-<a class="sourceLine" id="cb364-2" data-line-number="2">                             <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
-<a class="sourceLine" id="cb364-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb364-4" data-line-number="4">thai.svm.assim<span class="op">$</span>pred =<span class="st"> </span><span class="kw">factor</span>(thai.svm.assim<span class="op">$</span>pred,</a>
-<a class="sourceLine" id="cb364-5" data-line-number="5">                             <span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>))</a>
-<a class="sourceLine" id="cb364-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb364-7" data-line-number="7">thai.svm.assim.stacked =<span class="st"> </span><span class="kw">ggplot</span>(thai.svm.assim,</a>
-<a class="sourceLine" id="cb364-8" data-line-number="8">                 <span class="kw">aes</span>(<span class="dt">fill=</span>pred, <span class="dt">y=</span>percent, <span class="dt">x=</span>tone, <span class="dt">label =</span> percent)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb364-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_bar</span>( <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_fill_manual</span>(</a>
-<a class="sourceLine" id="cb364-11" data-line-number="11">    <span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span> =<span class="st"> &quot;black&quot;</span>, <span class="st">&quot;33&quot;</span>=<span class="st">&quot;gray25&quot;</span>, <span class="st">&quot;21&quot;</span>=<span class="st">&quot;gray50&quot;</span>,</a>
-<a class="sourceLine" id="cb364-12" data-line-number="12">             <span class="st">&quot;315&quot;</span>=<span class="st">&quot;gray75&quot;</span>, <span class="st">&quot;241&quot;</span>=<span class="st">&quot;white&quot;</span>), </a>
-<a class="sourceLine" id="cb364-13" data-line-number="13">    <span class="dt">name=</span><span class="st">&quot;Thai&quot;</span>,</a>
-<a class="sourceLine" id="cb364-14" data-line-number="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span>, <span class="st">&quot;33&quot;</span>, <span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
-<a class="sourceLine" id="cb364-15" data-line-number="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-17" data-line-number="17"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Mandarin tones&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-18" data-line-number="18"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Thai responses(%)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb364-19" data-line-number="19"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-20" data-line-number="20"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-23" data-line-number="23"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-24" data-line-number="24"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb364-25" data-line-number="25">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-26" data-line-number="26"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>),<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb364-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb364-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb364-29" data-line-number="29"><span class="co"># Print this our for publication</span></a>
-<a class="sourceLine" id="cb364-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb364-31" data-line-number="31"><span class="co"># png(&quot;figure3.png&quot;, units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
-<a class="sourceLine" id="cb364-32" data-line-number="32"><span class="co"># figure3</span></a>
-<a class="sourceLine" id="cb364-33" data-line-number="33"><span class="co"># dev.off()</span></a>
-<a class="sourceLine" id="cb364-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb364-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb364-36" data-line-number="36"><span class="co"># svm predictions</span></a>
-<a class="sourceLine" id="cb364-37" data-line-number="37"> thai.svm.assim.heat =<span class="st"> </span>thai.svm.assim<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb364-38" data-line-number="38"><span class="st">    </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb364-39" data-line-number="39"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tone, pred))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-40" data-line-number="40"><span class="st">    </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent ))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-41" data-line-number="41"><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> percent))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-42" data-line-number="42"><span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
-<a class="sourceLine" id="cb364-43" data-line-number="43">                        <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-44" data-line-number="44"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb364-45" data-line-number="45">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb364-46" data-line-number="46">          <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb364-47" data-line-number="47">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb364-48" data-line-number="48">          <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-49" data-line-number="49"><span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin stimuli&quot;</span>,</a>
-<a class="sourceLine" id="cb364-50" data-line-number="50">                     <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb364-51" data-line-number="51">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-52" data-line-number="52"><span class="st">    </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predicted responses&quot;</span>,</a>
-<a class="sourceLine" id="cb364-53" data-line-number="53">                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;241&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>),</a>
-<a class="sourceLine" id="cb364-54" data-line-number="54">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T241&quot;</span>, <span class="st">&quot;T315&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T45&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb364-55" data-line-number="55"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb364-56" data-line-number="56">thai.svm.assim.heat  </a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1"><span class="co"># human listener predictions</span></a>
-<a class="sourceLine" id="cb365-2" data-line-number="2">thai_assm &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch13/thai_assm.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1"><span class="co"># set the order of thai tones</span></a>
+<a class="sourceLine" id="cb356-2" data-line-number="2">thai.svm.assim =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pred =</span> prediction_thai_md, </a>
+<a class="sourceLine" id="cb356-3" data-line-number="3">               <span class="dt">tone =</span> md_discrete<span class="op">$</span>tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb356-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(pred, tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb356-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb356-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(tone)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb356-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> <span class="kw">round</span>((n<span class="op">/</span><span class="kw">sum</span>(n)),<span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb356-8" data-line-number="8">         <span class="dt">sum =</span> <span class="kw">sum</span>(n))</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;pred&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">thai.svm.assim<span class="op">$</span>tone =<span class="st"> </span><span class="kw">factor</span>(thai.svm.assim<span class="op">$</span>tone, </a>
+<a class="sourceLine" id="cb358-2" data-line-number="2">                             <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
+<a class="sourceLine" id="cb358-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb358-4" data-line-number="4">thai.svm.assim<span class="op">$</span>pred =<span class="st"> </span><span class="kw">factor</span>(thai.svm.assim<span class="op">$</span>pred,</a>
+<a class="sourceLine" id="cb358-5" data-line-number="5">                             <span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>))</a>
+<a class="sourceLine" id="cb358-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb358-7" data-line-number="7">thai.svm.assim.stacked =<span class="st"> </span><span class="kw">ggplot</span>(thai.svm.assim,</a>
+<a class="sourceLine" id="cb358-8" data-line-number="8">                 <span class="kw">aes</span>(<span class="dt">fill=</span>pred, <span class="dt">y=</span>percent, <span class="dt">x=</span>tone, <span class="dt">label =</span> percent)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb358-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_bar</span>( <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_fill_manual</span>(</a>
+<a class="sourceLine" id="cb358-11" data-line-number="11">    <span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span> =<span class="st"> &quot;black&quot;</span>, <span class="st">&quot;33&quot;</span>=<span class="st">&quot;gray25&quot;</span>, <span class="st">&quot;21&quot;</span>=<span class="st">&quot;gray50&quot;</span>,</a>
+<a class="sourceLine" id="cb358-12" data-line-number="12">             <span class="st">&quot;315&quot;</span>=<span class="st">&quot;gray75&quot;</span>, <span class="st">&quot;241&quot;</span>=<span class="st">&quot;white&quot;</span>), </a>
+<a class="sourceLine" id="cb358-13" data-line-number="13">    <span class="dt">name=</span><span class="st">&quot;Thai&quot;</span>,</a>
+<a class="sourceLine" id="cb358-14" data-line-number="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;45&quot;</span>, <span class="st">&quot;33&quot;</span>, <span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>),</a>
+<a class="sourceLine" id="cb358-15" data-line-number="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T45&quot;</span>, <span class="st">&quot;T33&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T315&quot;</span>,<span class="st">&quot;T241&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-17" data-line-number="17"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Mandarin tones&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-18" data-line-number="18"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Thai responses(%)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb358-19" data-line-number="19"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-20" data-line-number="20"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-23" data-line-number="23"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-24" data-line-number="24"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb358-25" data-line-number="25">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-26" data-line-number="26"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>),<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb358-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb358-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb358-29" data-line-number="29"><span class="co"># Print this our for publication</span></a>
+<a class="sourceLine" id="cb358-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb358-31" data-line-number="31"><span class="co"># png(&quot;figure3.png&quot;, units=&quot;in&quot;, width=5, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb358-32" data-line-number="32"><span class="co"># figure3</span></a>
+<a class="sourceLine" id="cb358-33" data-line-number="33"><span class="co"># dev.off()</span></a>
+<a class="sourceLine" id="cb358-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb358-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb358-36" data-line-number="36"><span class="co"># svm predictions</span></a>
+<a class="sourceLine" id="cb358-37" data-line-number="37"> thai.svm.assim.heat =<span class="st"> </span>thai.svm.assim<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb358-38" data-line-number="38"><span class="st">    </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb358-39" data-line-number="39"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tone, pred))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-40" data-line-number="40"><span class="st">    </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent ))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-41" data-line-number="41"><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> percent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-42" data-line-number="42"><span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
+<a class="sourceLine" id="cb358-43" data-line-number="43">                        <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-44" data-line-number="44"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb358-45" data-line-number="45">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb358-46" data-line-number="46">          <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb358-47" data-line-number="47">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb358-48" data-line-number="48">          <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-49" data-line-number="49"><span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin stimuli&quot;</span>,</a>
+<a class="sourceLine" id="cb358-50" data-line-number="50">                     <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb358-51" data-line-number="51">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-52" data-line-number="52"><span class="st">    </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Predicted responses&quot;</span>,</a>
+<a class="sourceLine" id="cb358-53" data-line-number="53">                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;241&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>),</a>
+<a class="sourceLine" id="cb358-54" data-line-number="54">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T241&quot;</span>, <span class="st">&quot;T315&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T45&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb358-55" data-line-number="55"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb358-56" data-line-number="56">thai.svm.assim.heat  </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-360-1.png" width="672" /></p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="co"># human listener predictions</span></a>
+<a class="sourceLine" id="cb359-2" data-line-number="2">thai_assm &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch13/thai_assm.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Rows: 20 Columns: 3
-## ── Column specification ─────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): tone
 ## dbl (2): pred, percent
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">thai_assm<span class="op">$</span>pred =<span class="st"> </span><span class="kw">as.character</span>(thai_assm<span class="op">$</span>pred)  </a>
-<a class="sourceLine" id="cb367-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb367-3" data-line-number="3">thai_assm<span class="op">$</span>tone =<span class="st"> </span><span class="kw">factor</span>(thai_assm<span class="op">$</span>tone, <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
-<a class="sourceLine" id="cb367-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb367-5" data-line-number="5">thai_assm<span class="op">$</span>pred =<span class="st"> </span><span class="kw">factor</span>(thai_assm<span class="op">$</span>pred,<span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>)) </a>
-<a class="sourceLine" id="cb367-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb367-7" data-line-number="7">thai.human.assim.heat =<span class="st"> </span>thai_assm<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb367-8" data-line-number="8"><span class="st">    </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb367-9" data-line-number="9"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tone, pred))<span class="op">+</span></a>
-<a class="sourceLine" id="cb367-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent ))<span class="op">+</span></a>
-<a class="sourceLine" id="cb367-11" data-line-number="11"><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> percent))<span class="op">+</span></a>
-<a class="sourceLine" id="cb367-12" data-line-number="12"><span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
-<a class="sourceLine" id="cb367-13" data-line-number="13">                        <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb367-14" data-line-number="14"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb367-15" data-line-number="15">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb367-16" data-line-number="16">          <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
-<a class="sourceLine" id="cb367-17" data-line-number="17">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb367-18" data-line-number="18">          <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())<span class="op">+</span></a>
-<a class="sourceLine" id="cb367-19" data-line-number="19"><span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin stimuli&quot;</span>,</a>
-<a class="sourceLine" id="cb367-20" data-line-number="20">                   <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb367-21" data-line-number="21">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb367-22" data-line-number="22"><span class="st">    </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai listners&#39; responses&quot;</span>,</a>
-<a class="sourceLine" id="cb367-23" data-line-number="23">                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;241&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>),</a>
-<a class="sourceLine" id="cb367-24" data-line-number="24">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T241&quot;</span>, <span class="st">&quot;T315&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T45&quot;</span>))</a>
-<a class="sourceLine" id="cb367-25" data-line-number="25">    </a>
-<a class="sourceLine" id="cb367-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb367-27" data-line-number="27">thai_compare =<span class="st"> </span><span class="kw">plot_grid</span>(thai.svm.assim.heat , thai.human.assim.heat,  </a>
-<a class="sourceLine" id="cb367-28" data-line-number="28">                         <span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>),</a>
-<a class="sourceLine" id="cb367-29" data-line-number="29">                         <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.3</span>))</a>
-<a class="sourceLine" id="cb367-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb367-31" data-line-number="31">thai_compare</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-100-2.png" width="672" /></p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1"> <span class="kw">png</span>(<span class="st">&quot;thai_compare.png&quot;</span>, <span class="dt">units=</span><span class="st">&quot;in&quot;</span>, <span class="dt">width=</span><span class="dv">8</span>, <span class="dt">height=</span><span class="dv">3</span>, <span class="dt">res=</span><span class="dv">600</span>)</a>
-<a class="sourceLine" id="cb368-2" data-line-number="2"> thai_compare</a>
-<a class="sourceLine" id="cb368-3" data-line-number="3"> <span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1">thai_assm<span class="op">$</span>pred =<span class="st"> </span><span class="kw">as.character</span>(thai_assm<span class="op">$</span>pred)  </a>
+<a class="sourceLine" id="cb361-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb361-3" data-line-number="3">thai_assm<span class="op">$</span>tone =<span class="st"> </span><span class="kw">factor</span>(thai_assm<span class="op">$</span>tone, <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
+<a class="sourceLine" id="cb361-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb361-5" data-line-number="5">thai_assm<span class="op">$</span>pred =<span class="st"> </span><span class="kw">factor</span>(thai_assm<span class="op">$</span>pred,<span class="kw">c</span>(<span class="st">&quot;45&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;241&quot;</span>)) </a>
+<a class="sourceLine" id="cb361-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb361-7" data-line-number="7">thai.human.assim.heat =<span class="st"> </span>thai_assm<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb361-8" data-line-number="8"><span class="st">    </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">10</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb361-9" data-line-number="9"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tone, pred))<span class="op">+</span></a>
+<a class="sourceLine" id="cb361-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> percent ))<span class="op">+</span></a>
+<a class="sourceLine" id="cb361-11" data-line-number="11"><span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> percent))<span class="op">+</span></a>
+<a class="sourceLine" id="cb361-12" data-line-number="12"><span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;Percentage (%)&quot;</span>,</a>
+<a class="sourceLine" id="cb361-13" data-line-number="13">                        <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;gray&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb361-14" data-line-number="14"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb361-15" data-line-number="15">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb361-16" data-line-number="16">          <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, </a>
+<a class="sourceLine" id="cb361-17" data-line-number="17">                                     <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb361-18" data-line-number="18">          <span class="dt">panel.background =</span> <span class="kw">element_blank</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb361-19" data-line-number="19"><span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin stimuli&quot;</span>,</a>
+<a class="sourceLine" id="cb361-20" data-line-number="20">                   <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb361-21" data-line-number="21">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb361-22" data-line-number="22"><span class="st">    </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai listners&#39; responses&quot;</span>,</a>
+<a class="sourceLine" id="cb361-23" data-line-number="23">                     <span class="dt">limits=</span><span class="kw">c</span>(<span class="st">&quot;241&quot;</span>,<span class="st">&quot;315&quot;</span>,<span class="st">&quot;21&quot;</span>,<span class="st">&quot;33&quot;</span>,<span class="st">&quot;45&quot;</span>),</a>
+<a class="sourceLine" id="cb361-24" data-line-number="24">                     <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;T241&quot;</span>, <span class="st">&quot;T315&quot;</span>, <span class="st">&quot;T21&quot;</span>,<span class="st">&quot;T33&quot;</span>,<span class="st">&quot;T45&quot;</span>))</a>
+<a class="sourceLine" id="cb361-25" data-line-number="25">    </a>
+<a class="sourceLine" id="cb361-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb361-27" data-line-number="27">thai_compare =<span class="st"> </span><span class="kw">plot_grid</span>(thai.svm.assim.heat , thai.human.assim.heat,  </a>
+<a class="sourceLine" id="cb361-28" data-line-number="28">                         <span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>),</a>
+<a class="sourceLine" id="cb361-29" data-line-number="29">                         <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.3</span>))</a>
+<a class="sourceLine" id="cb361-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb361-31" data-line-number="31">thai_compare</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-360-2.png" width="672" /></p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"> <span class="kw">png</span>(<span class="st">&quot;thai_compare.png&quot;</span>, <span class="dt">units=</span><span class="st">&quot;in&quot;</span>, <span class="dt">width=</span><span class="dv">8</span>, <span class="dt">height=</span><span class="dv">3</span>, <span class="dt">res=</span><span class="dv">600</span>)</a>
+<a class="sourceLine" id="cb362-2" data-line-number="2"> thai_compare</a>
+<a class="sourceLine" id="cb362-3" data-line-number="3"> <span class="kw">dev.off</span>()</a></code></pre></div>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 

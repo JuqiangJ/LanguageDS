@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,12 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -302,6 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
 <li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
+<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
+<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
+<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
+<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
+<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
+<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
+<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+</ul></li>
+<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
+<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
+<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
+<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
+<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
+<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -417,26 +460,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="数据清洁" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.2</span> 数据清洁<a href="第三章-数据整理.html#数据清洁" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  数据清理（Data Cleaning）是数据科学和数据分析中的重要步骤，指的是对原始数据进行检查或修正，处理数据中的错误、缺失、异常和重复值等问题，从而得到干净、可靠的数据集，使数据更适合后续的分析和建模工作。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## ── Attaching core tidyverse packages ───────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.3     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
-## ── Conflicts ─────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># 创建含有错误值的数据</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子以确保可重复性</span></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">df_errors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">                    <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">                    <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">999</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb21-6" data-line-number="6">                    <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">105</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb21-7" data-line-number="7">                    <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb21-8" data-line-number="8">                    <span class="dt">Age =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">40</span>, <span class="ot">NA</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb21-9" data-line-number="9">                    <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="co"># 创建含有错误值的数据</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子以确保可重复性</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">df_errors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">                    <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">                    <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">999</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">                    <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">105</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb19-8" data-line-number="8">                    <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb19-9" data-line-number="9">                    <span class="dt">Age =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">40</span>, <span class="ot">NA</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb19-10" data-line-number="10">                    <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <div id="任务-处理异常值" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.2.1</span> 任务-处理异常值<a href="第三章-数据整理.html#任务-处理异常值" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
@@ -447,9 +480,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>筛除学生阅读分数超过满分100分的数据。</li>
 <li>筛除年龄缺失的数据</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">df.clean =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Listening_Score <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>Reading_Score <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Age))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">df.clean =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Listening_Score <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>Reading_Score <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Age))</a></code></pre></div>
 </div>
 </div>
 <div id="变量筛选" class="section level2 hasAnchor">
@@ -461,14 +494,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>选择所有女生的听力数据</p></li>
 <li><p>选择所有男生的阅读数据</p></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">df.girl =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;Female&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(Listening_Score)</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb23-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">df.boy =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;Male&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="st">  </span><span class="kw">select</span>(Reading_Score)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">df.girl =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;Female&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(Listening_Score)</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">df.boy =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;Male&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="st">  </span><span class="kw">select</span>(Reading_Score)</a></code></pre></div>
 </div>
 </div>
 <div id="数据塑形" class="section level2 hasAnchor">
@@ -532,35 +565,35 @@ Tidy data（整洁数据）是Hadley Wickham在2014年提出的一种数据组�
 </tbody>
 </table>
 <p>  长数据和宽数据的选择取决于具体的数据分析需求和使用场景。在某些情况下，长数据更适合进行数据处理和可视化，而在其他情况下，宽数据更便于进行数据呈现。它们可以相互转换。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="co"># 生成一个二语学术写作数据集</span></a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子，以确保结果可复现</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">academic_writing_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">  <span class="dt">student_id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,  <span class="co"># 学生ID</span></a>
-<a class="sourceLine" id="cb24-6" data-line-number="6">  <span class="dt">native_language =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Chinese&quot;</span>, <span class="st">&quot;Spanish&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;Russian&quot;</span>, <span class="st">&quot;German&quot;</span>, <span class="st">&quot;Italian&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 母语</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">  <span class="dt">second_language =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;English&quot;</span>, <span class="st">&quot;Chinese&quot;</span>, <span class="st">&quot;Spanish&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;German&quot;</span>, <span class="st">&quot;Italian&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 二语</span></a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">  <span class="dt">essay1_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文1长度</span></a>
-<a class="sourceLine" id="cb24-9" data-line-number="9">  <span class="dt">essay2_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文2长度</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10">  <span class="dt">essay3_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文3长度</span></a>
-<a class="sourceLine" id="cb24-11" data-line-number="11">  <span class="dt">academic_performance =</span> <span class="kw">sample</span>(<span class="dv">60</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 学术成绩</span></a>
-<a class="sourceLine" id="cb24-12" data-line-number="12">  <span class="dt">writing_speed =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">800</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 写作速度（单词/分钟）</span></a>
-<a class="sourceLine" id="cb24-13" data-line-number="13">  <span class="dt">language_anxiety =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 语言焦虑水平（1-5分）</span></a>
-<a class="sourceLine" id="cb24-14" data-line-number="14">  <span class="dt">writing_errors =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">30</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 写作错误数</span></a>
-<a class="sourceLine" id="cb24-15" data-line-number="15">  <span class="dt">research_experience =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 是否有研究经验</span></a>
-<a class="sourceLine" id="cb24-16" data-line-number="16">  <span class="dt">self_evaluation =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Excellent&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Fair&quot;</span>, <span class="st">&quot;Poor&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)  <span class="co"># 自我评价</span></a>
-<a class="sourceLine" id="cb24-17" data-line-number="17">)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="co"># 生成一个二语学术写作数据集</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子，以确保结果可复现</span></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">academic_writing_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">  <span class="dt">student_id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>,  <span class="co"># 学生ID</span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6">  <span class="dt">native_language =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Chinese&quot;</span>, <span class="st">&quot;Spanish&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;Russian&quot;</span>, <span class="st">&quot;German&quot;</span>, <span class="st">&quot;Italian&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 母语</span></a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">  <span class="dt">second_language =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;English&quot;</span>, <span class="st">&quot;Chinese&quot;</span>, <span class="st">&quot;Spanish&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;German&quot;</span>, <span class="st">&quot;Italian&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 二语</span></a>
+<a class="sourceLine" id="cb22-8" data-line-number="8">  <span class="dt">essay1_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文1长度</span></a>
+<a class="sourceLine" id="cb22-9" data-line-number="9">  <span class="dt">essay2_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文2长度</span></a>
+<a class="sourceLine" id="cb22-10" data-line-number="10">  <span class="dt">essay3_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文3长度</span></a>
+<a class="sourceLine" id="cb22-11" data-line-number="11">  <span class="dt">academic_performance =</span> <span class="kw">sample</span>(<span class="dv">60</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 学术成绩</span></a>
+<a class="sourceLine" id="cb22-12" data-line-number="12">  <span class="dt">writing_speed =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">800</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 写作速度（单词/分钟）</span></a>
+<a class="sourceLine" id="cb22-13" data-line-number="13">  <span class="dt">language_anxiety =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 语言焦虑水平（1-5分）</span></a>
+<a class="sourceLine" id="cb22-14" data-line-number="14">  <span class="dt">writing_errors =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">30</span>, <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 写作错误数</span></a>
+<a class="sourceLine" id="cb22-15" data-line-number="15">  <span class="dt">research_experience =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 是否有研究经验</span></a>
+<a class="sourceLine" id="cb22-16" data-line-number="16">  <span class="dt">self_evaluation =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Excellent&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Fair&quot;</span>, <span class="st">&quot;Poor&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)  <span class="co"># 自我评价</span></a>
+<a class="sourceLine" id="cb22-17" data-line-number="17">)</a></code></pre></div>
 <div id="任务-数据塑形" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.4.1</span> 任务-数据塑形<a href="第三章-数据整理.html#任务-数据塑形" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>把essay1_length、essay2_length和essay3_length三列汇总到一列中</p></li>
 <li><p>把gathered_data_1转回宽格式</p></li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co"># 把essay1_length、essay2_length和essay3_length三列汇总到一列中</span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">gathered_data_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">gather</span>(academic_writing_data, essay, length, essay1_length<span class="op">:</span>essay3_length)</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co"># 把gathered_data_1转回宽格式</span></a>
-<a class="sourceLine" id="cb25-6" data-line-number="6">spreaded_data_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">spread</span>(gathered_data_<span class="dv">1</span>, essay, length)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co"># 把essay1_length、essay2_length和essay3_length三列汇总到一列中</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">gathered_data_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">gather</span>(academic_writing_data, essay, length, essay1_length<span class="op">:</span>essay3_length)</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="co"># 把gathered_data_1转回宽格式</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">spreaded_data_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">spread</span>(gathered_data_<span class="dv">1</span>, essay, length)</a></code></pre></div>
 </div>
 </div>
 <div id="数据整合" class="section level2 hasAnchor">
@@ -573,20 +606,20 @@ Tidy data（整洁数据）是Hadley Wickham在2014年提出的一种数据组�
 <div id="任务-数据整合" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.5.1</span> 任务-数据整合<a href="第三章-数据整理.html#任务-数据整合" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>合并学生信息数据集和语言测试数据集，创建一个包含学生信息和语言测试结果的数据集。</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># 创建学生信息数据集</span></a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">student_info &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3">                       <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb26-4" data-line-number="4">                       <span class="dt">Age =</span> <span class="kw">sample</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">25</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="co"># 创建语言测试数据集</span></a>
-<a class="sourceLine" id="cb26-7" data-line-number="7">language_test &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb26-8" data-line-number="8">                        <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb26-9" data-line-number="9">                        <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb26-10" data-line-number="10">                        <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb26-11" data-line-number="11">                        <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb26-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb26-13" data-line-number="13"><span class="co"># 使用inner_join函数将学生信息数据集和语言测试数据集合并</span></a>
-<a class="sourceLine" id="cb26-14" data-line-number="14">merged_data &lt;-<span class="st"> </span><span class="kw">inner_join</span>(student_info, language_test, <span class="dt">by =</span> <span class="st">&quot;Student_ID&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="co"># 创建学生信息数据集</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">student_info &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">                       <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">                       <span class="dt">Age =</span> <span class="kw">sample</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">25</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb24-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="co"># 创建语言测试数据集</span></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">language_test &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">                        <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">                        <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb24-10" data-line-number="10">                        <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb24-11" data-line-number="11">                        <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb24-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb24-13" data-line-number="13"><span class="co"># 使用inner_join函数将学生信息数据集和语言测试数据集合并</span></a>
+<a class="sourceLine" id="cb24-14" data-line-number="14">merged_data &lt;-<span class="st"> </span><span class="kw">inner_join</span>(student_info, language_test, <span class="dt">by =</span> <span class="st">&quot;Student_ID&quot;</span>)</a></code></pre></div>
 
 </div>
 </div>

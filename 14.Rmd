@@ -1,5 +1,7 @@
 # 实践案例 汉语失语症话语产出
 
+![详细背景请看原文献](images/14.1.png)
+
 ## 研究背景
 &emsp;&emsp;口语话语产出越来越被视为评估失语症患者（PWA）语言能力的重要来源。如果有相关话语产出的转录本，一些语言学指标，如类型-标记比（TTR）或平均语句长度，可以自动化处理，以辅助PWA的话语分析。其他类型的指标，如主要概念（Dalton & Richardson, 2015; Dalton & Richardson, 2019; Kong, 2009; Nicholas & Brookshire, 1995; Richardson & Dalton, 2016; Richardson et al., 2021）、内容单元（Yorkston & Beukelman, 1980）、正确信息单元（CIUs，Nicholas & Brookshire, 1993）和主要事件（Capilouto et al., 2005），则需要经过训练的标注员进行主观判断。虽然这些指标在揭示PWA语言能力和缺陷的不同方面具有重要意义，但它们通常涉及到劳动密集且耗时的过程，如转录和标注，因此很少在临床实践中实时使用。因此，需要一种可以在临床环境中轻松应用的标准化和有参照的指标。
 

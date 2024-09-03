@@ -18,9 +18,13 @@ site: bookdown::bookdown_site
 biblio-style: apalike
 ---
 
+
     
 # 第一章 数据科学简介
 
+欢迎关注我的[个人主页](https://juqiangj.github.io/research/)：
+
+![](images/1.0.png)
 
 ## 数据科学发展简史
 
@@ -32,7 +36,7 @@ biblio-style: apalike
 
 
 
-```{r }
+```{r include=FALSE}
 
 # bookdown::render_book("index.Rmd", "bookdown::gitbook")
 ```

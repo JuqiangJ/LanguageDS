@@ -11,6 +11,8 @@
 
 ## 机器学习
 
+- [Tidymodels packages](https://www.tidymodels.org/packages/)
+
 - The [caret package](https://topepo.github.io/caret/index.html) (short for Classification And REgression Training) is a set of functions that attempt to streamline the process for creating predictive models. 
 
 ## 数据整理
@@ -54,6 +56,8 @@
 - [论文](https://journal.r-project.org/archive/2017/RJ-2017-023/index.html)。
 
 ## 文本分析
+
+- [Corpus Linguistics](https://alvinntnu.github.io/NTNU_ENC2036_LECTURES/) by Alvin Cheng-Hsien Chen
 
 - [Text mining with R](https://www.tidytextmining.com/index.html)
 
@@ -116,6 +120,8 @@
 - [reveal.js](https://github.com/hakimel/reveal.js#markdown)
 
 * 创建R的交互式教程 [教程](https://rstudio.github.io/learnr/#overview)
+
+- [pkgdown](https://pkgdown.r-lib.org/articles/pkgdown.html)
 
 Markdown 语法
 - 字体  

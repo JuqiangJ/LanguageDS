@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,12 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -302,6 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
 <li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
+<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
+<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
+<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
+<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
+<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
+<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
+<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+</ul></li>
+<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
+<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
+<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
+<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
+<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
+<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -341,22 +384,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>对数化（Logarithm）：将数据进行对数变换，使得数据更加符合线性关系或满足某些假设。</p></li>
 </ul>
 <p>  此处，我们模拟创建一个包含200个汉语词汇的数据集，包含词频、抽象度、意象度、词汇起始习得年龄、词汇难度、词汇情感评分等变量。这里的数据均为模拟数据。</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co"># 创建含有真实汉语词汇的数据集</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子以确保可重复性</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">df_vocabulary &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Word =</span> <span class="kw">c</span>(<span class="st">&quot;苹果&quot;</span>, <span class="st">&quot;梨子&quot;</span>, <span class="st">&quot;香蕉&quot;</span>, <span class="st">&quot;草莓&quot;</span>, <span class="st">&quot;桃子&quot;</span>, <span class="st">&quot;西瓜&quot;</span>, <span class="st">&quot;橙子&quot;</span>, <span class="st">&quot;柚子&quot;</span>, <span class="st">&quot;葡萄&quot;</span>, <span class="st">&quot;芒果&quot;</span>,</a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">                                 <span class="st">&quot;书&quot;</span>, <span class="st">&quot;笔&quot;</span>, <span class="st">&quot;课本&quot;</span>, <span class="st">&quot;教室&quot;</span>, <span class="st">&quot;黑板&quot;</span>, <span class="st">&quot;学生&quot;</span>, <span class="st">&quot;老师&quot;</span>, <span class="st">&quot;考试&quot;</span>, <span class="st">&quot;作业&quot;</span>, <span class="st">&quot;校园&quot;</span>,</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">                                 <span class="st">&quot;美食&quot;</span>, <span class="st">&quot;旅游&quot;</span>, <span class="st">&quot;音乐&quot;</span>, <span class="st">&quot;电影&quot;</span>, <span class="st">&quot;运动&quot;</span>, <span class="st">&quot;阅读&quot;</span>, <span class="st">&quot;绘画&quot;</span>, <span class="st">&quot;写作&quot;</span>, <span class="st">&quot;摄影&quot;</span>, <span class="st">&quot;游戏&quot;</span>,</a>
-<a class="sourceLine" id="cb28-6" data-line-number="6">                                 <span class="st">&quot;猫&quot;</span>, <span class="st">&quot;狗&quot;</span>, <span class="st">&quot;兔子&quot;</span>, <span class="st">&quot;鱼&quot;</span>, <span class="st">&quot;鸟&quot;</span>, <span class="st">&quot;大象&quot;</span>, <span class="st">&quot;狮子&quot;</span>, <span class="st">&quot;熊猫&quot;</span>, <span class="st">&quot;猴子&quot;</span>, <span class="st">&quot;蛇&quot;</span>,</a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">                                 <span class="st">&quot;早晨&quot;</span>, <span class="st">&quot;中午&quot;</span>, <span class="st">&quot;下午&quot;</span>, <span class="st">&quot;晚上&quot;</span>, <span class="st">&quot;春天&quot;</span>, <span class="st">&quot;夏天&quot;</span>, <span class="st">&quot;秋天&quot;</span>, <span class="st">&quot;冬天&quot;</span>, <span class="st">&quot;天气&quot;</span>, <span class="st">&quot;季节&quot;</span>,</a>
-<a class="sourceLine" id="cb28-8" data-line-number="8">                                 <span class="st">&quot;篮球&quot;</span>, <span class="st">&quot;足球&quot;</span>, <span class="st">&quot;乒乓球&quot;</span>, <span class="st">&quot;网球&quot;</span>, <span class="st">&quot;羽毛球&quot;</span>, <span class="st">&quot;游泳&quot;</span>, <span class="st">&quot;滑雪&quot;</span>, <span class="st">&quot;跑步&quot;</span>, <span class="st">&quot;健身&quot;</span>, <span class="st">&quot;瑜伽&quot;</span>),</a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">                        <span class="dt">Frequency =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb28-10" data-line-number="10">                        <span class="dt">Abstractness =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb28-11" data-line-number="11">                        <span class="dt">Imagery =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb28-12" data-line-number="12">                        <span class="dt">Age_of_Acquisition =</span> <span class="kw">sample</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb28-13" data-line-number="13">                        <span class="dt">Difficulty =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb28-14" data-line-number="14">                        <span class="dt">Emotion_Score =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># 创建含有真实汉语词汇的数据集</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子以确保可重复性</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">df_vocabulary &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Word =</span> <span class="kw">c</span>(<span class="st">&quot;苹果&quot;</span>, <span class="st">&quot;梨子&quot;</span>, <span class="st">&quot;香蕉&quot;</span>, <span class="st">&quot;草莓&quot;</span>, <span class="st">&quot;桃子&quot;</span>, <span class="st">&quot;西瓜&quot;</span>, <span class="st">&quot;橙子&quot;</span>, <span class="st">&quot;柚子&quot;</span>, <span class="st">&quot;葡萄&quot;</span>, <span class="st">&quot;芒果&quot;</span>,</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">                                 <span class="st">&quot;书&quot;</span>, <span class="st">&quot;笔&quot;</span>, <span class="st">&quot;课本&quot;</span>, <span class="st">&quot;教室&quot;</span>, <span class="st">&quot;黑板&quot;</span>, <span class="st">&quot;学生&quot;</span>, <span class="st">&quot;老师&quot;</span>, <span class="st">&quot;考试&quot;</span>, <span class="st">&quot;作业&quot;</span>, <span class="st">&quot;校园&quot;</span>,</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">                                 <span class="st">&quot;美食&quot;</span>, <span class="st">&quot;旅游&quot;</span>, <span class="st">&quot;音乐&quot;</span>, <span class="st">&quot;电影&quot;</span>, <span class="st">&quot;运动&quot;</span>, <span class="st">&quot;阅读&quot;</span>, <span class="st">&quot;绘画&quot;</span>, <span class="st">&quot;写作&quot;</span>, <span class="st">&quot;摄影&quot;</span>, <span class="st">&quot;游戏&quot;</span>,</a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">                                 <span class="st">&quot;猫&quot;</span>, <span class="st">&quot;狗&quot;</span>, <span class="st">&quot;兔子&quot;</span>, <span class="st">&quot;鱼&quot;</span>, <span class="st">&quot;鸟&quot;</span>, <span class="st">&quot;大象&quot;</span>, <span class="st">&quot;狮子&quot;</span>, <span class="st">&quot;熊猫&quot;</span>, <span class="st">&quot;猴子&quot;</span>, <span class="st">&quot;蛇&quot;</span>,</a>
+<a class="sourceLine" id="cb26-7" data-line-number="7">                                 <span class="st">&quot;早晨&quot;</span>, <span class="st">&quot;中午&quot;</span>, <span class="st">&quot;下午&quot;</span>, <span class="st">&quot;晚上&quot;</span>, <span class="st">&quot;春天&quot;</span>, <span class="st">&quot;夏天&quot;</span>, <span class="st">&quot;秋天&quot;</span>, <span class="st">&quot;冬天&quot;</span>, <span class="st">&quot;天气&quot;</span>, <span class="st">&quot;季节&quot;</span>,</a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">                                 <span class="st">&quot;篮球&quot;</span>, <span class="st">&quot;足球&quot;</span>, <span class="st">&quot;乒乓球&quot;</span>, <span class="st">&quot;网球&quot;</span>, <span class="st">&quot;羽毛球&quot;</span>, <span class="st">&quot;游泳&quot;</span>, <span class="st">&quot;滑雪&quot;</span>, <span class="st">&quot;跑步&quot;</span>, <span class="st">&quot;健身&quot;</span>, <span class="st">&quot;瑜伽&quot;</span>),</a>
+<a class="sourceLine" id="cb26-9" data-line-number="9">                        <span class="dt">Frequency =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">                        <span class="dt">Abstractness =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb26-11" data-line-number="11">                        <span class="dt">Imagery =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb26-12" data-line-number="12">                        <span class="dt">Age_of_Acquisition =</span> <span class="kw">sample</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb26-13" data-line-number="13">                        <span class="dt">Difficulty =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb26-14" data-line-number="14">                        <span class="dt">Emotion_Score =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">60</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <div id="任务-数据转化" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.1.1</span> 任务-数据转化<a href="第四章-探索性数据分析.html#任务-数据转化" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -366,196 +409,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>对词汇抽象度进行Min-Max归一化，并创建新特征Abstractness_Normalized</li>
 <li>对词频特征进行对数化，并创建新特征Frequency_Log。</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># 使用mutate函数创建新特征</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">df_vocabulary <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Emotion_Abstractness_Product =</span> Emotion_Score <span class="op">*</span><span class="st"> </span>Abstractness,</a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">         <span class="dt">Frequency_Imagery_Difference =</span> Frequency <span class="op">-</span><span class="st"> </span>Imagery,</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">         <span class="dt">Frequency_Zscore =</span> <span class="kw">scale</span>(Frequency),</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">         <span class="dt">Abstractness_Normalized =</span> (Abstractness <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(Abstractness)) <span class="op">/</span><span class="st"> </span>(<span class="kw">max</span>(Abstractness) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(Abstractness)),</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">         <span class="dt">Frequency_Log =</span> <span class="kw">log</span>(Frequency))</a></code></pre></div>
-<pre><code>##      Word Frequency Abstractness Imagery Age_of_Acquisition Difficulty
-## 1    苹果       415            4       1                 11          2
-## 2    梨子       463            5       2                  6          5
-## 3    香蕉       179            2       1                 12          1
-## 4    草莓       526            1       2                  9          1
-## 5    桃子       195            1       5                 11          2
-## 6    西瓜       938            3       3                  9          1
-## 7    橙子       818            1       4                 12          2
-## 8    柚子       118            5       4                  6          5
-## 9    葡萄       299            1       1                 10          1
-## 10   芒果       229            2       4                 11          3
-## 11     书       244            4       1                 11          2
-## 12     笔        14            4       3                 11          2
-## 13   课本       374            3       4                  7          5
-## 14   教室       665            1       3                  9          4
-## 15   黑板       602            2       5                  8          1
-## 16   学生       603            1       4                  3          5
-## 17   老师       768            2       4                 12          2
-## 18   考试       709            4       4                 12          5
-## 19   作业        91            5       1                  3          2
-## 20   校园       953            5       2                 12          2
-## 21   美食       348            3       3                  3          4
-## 22   旅游       649            1       4                 12          3
-## 23   音乐       989            4       3                  7          4
-## 24   电影       355            1       1                  9          3
-## 25   运动       840            1       5                  7          3
-## 26   阅读        26            3       5                 12          3
-## 27   绘画       519            4       2                 11          5
-## 28   写作       426            1       3                  6          3
-## 29   摄影       649            3       5                  8          2
-## 30   游戏       766            5       1                  4          3
-## 31     猫       211            3       4                  3          1
-## 32     狗       932            2       2                  7          5
-## 33   兔子       590            5       4                 11          1
-## 34     鱼       593            5       5                  6          4
-## 35     鸟       555            3       5                  5          2
-## 36   大象       871            2       5                 11          2
-## 37   狮子       373            2       5                  3          4
-## 38   熊猫       844            2       1                  4          1
-## 39   猴子       143            4       2                  6          4
-## 40     蛇       544            2       1                 12          5
-## 41   早晨       490            2       2                  3          5
-## 42   中午       621            4       5                  7          3
-## 43   下午       775            4       5                  7          5
-## 44   晚上       905            1       1                 11          5
-## 45   春天       937            3       2                 10          3
-## 46   夏天       842            3       5                  9          1
-## 47   秋天        23            1       4                 11          3
-## 48   冬天       923            3       2                  7          4
-## 49   天气       956            5       2                  4          2
-## 50   季节       309            2       3                 12          5
-## 51   篮球       135            3       1                  8          1
-## 52   足球       821            2       1                  9          4
-## 53 乒乓球       923            5       5                 11          3
-## 54   网球       224            5       5                  3          1
-## 55 羽毛球       166            3       3                  7          2
-## 56   游泳       217            4       2                  7          3
-## 57   滑雪       290            4       5                 10          3
-## 58   跑步       989            4       5                  7          1
-## 59   健身       581            5       3                  9          2
-## 60   瑜伽        72            3       3                  6          1
-##    Emotion_Score Emotion_Abstractness_Product Frequency_Imagery_Difference
-## 1              2                            8                          414
-## 2              2                           10                          461
-## 3              2                            4                          178
-## 4              5                            5                          524
-## 5              4                            4                          190
-## 6              4                           12                          935
-## 7              5                            5                          814
-## 8              4                           20                          114
-## 9              1                            1                          298
-## 10             2                            4                          225
-## 11             1                            4                          243
-## 12             2                            8                           11
-## 13             3                            9                          370
-## 14             2                            2                          662
-## 15             3                            6                          597
-## 16             1                            1                          599
-## 17             4                            8                          764
-## 18             2                            8                          705
-## 19             3                           15                           90
-## 20             5                           25                          951
-## 21             5                           15                          345
-## 22             3                            3                          645
-## 23             2                            8                          986
-## 24             5                            5                          354
-## 25             4                            4                          835
-## 26             2                            6                           21
-## 27             1                            4                          517
-## 28             4                            4                          423
-## 29             1                            3                          644
-## 30             4                           20                          765
-## 31             5                           15                          207
-## 32             4                            8                          930
-## 33             2                           10                          586
-## 34             2                           10                          588
-## 35             4                           12                          550
-## 36             3                            6                          866
-## 37             5                           10                          368
-## 38             2                            4                          843
-## 39             3                           12                          141
-## 40             3                            6                          543
-## 41             3                            6                          488
-## 42             1                            4                          616
-## 43             1                            4                          770
-## 44             3                            3                          904
-## 45             4                           12                          935
-## 46             4                           12                          837
-## 47             5                            5                           19
-## 48             2                            6                          921
-## 49             2                           10                          954
-## 50             4                            8                          306
-## 51             2                            6                          134
-## 52             1                            2                          820
-## 53             4                           20                          918
-## 54             3                           15                          219
-## 55             1                            3                          163
-## 56             5                           20                          215
-## 57             3                           12                          285
-## 58             4                           16                          984
-## 59             2                           10                          578
-## 60             5                           15                           69
-##    Frequency_Zscore Abstractness_Normalized Frequency_Log
-## 1      -0.371413868                    0.75      6.028279
-## 2      -0.212354843                    1.00      6.137727
-## 3      -1.153454071                    0.25      5.187386
-## 4      -0.003589874                    0.00      6.265301
-## 5      -1.100434396                    0.00      5.273000
-## 6       1.361666752                    0.50      6.843750
-## 7       0.964019191                    0.00      6.706862
-## 8      -1.355591581                    1.00      4.770685
-## 9      -0.755806510                    0.00      5.700444
-## 10     -0.987767587                    0.25      5.433722
-## 11     -0.938061642                    0.75      5.497168
-## 12     -1.700219467                    0.75      2.639057
-## 13     -0.507276784                    0.50      5.924256
-## 14      0.457018551                    0.00      6.499787
-## 15      0.248253581                    0.25      6.400257
-## 16      0.251567311                    0.00      6.401917
-## 17      0.798332708                    0.25      6.643790
-## 18      0.602822657                    0.75      6.563856
-## 19     -1.445062282                    1.00      4.510860
-## 20      1.411372697                    1.00      6.859615
-## 21     -0.593433756                    0.50      5.852202
-## 22      0.403998876                    0.00      6.475433
-## 23      1.530666966                    0.75      6.896694
-## 24     -0.570237648                    0.00      5.872118
-## 25      1.036921244                    0.00      6.733402
-## 26     -1.660454711                    0.50      3.258097
-## 27     -0.026785982                    0.75      6.251904
-## 28     -0.334962841                    0.00      6.054439
-## 29      0.403998876                    0.50      6.475433
-## 30      0.791705248                    1.00      6.641182
-## 31     -1.047414721                    0.50      5.351858
-## 32      1.341784374                    0.25      6.837333
-## 33      0.208488825                    1.00      6.380123
-## 34      0.218430014                    1.00      6.385194
-## 35      0.092508287                    0.50      6.318968
-## 36      1.139646864                    0.25      6.769642
-## 37     -0.510590514                    0.25      5.921578
-## 38      1.050176163                    0.25      6.738152
-## 39     -1.272748339                    0.75      4.962845
-## 40      0.056057260                    0.25      6.298949
-## 41     -0.122884142                    0.25      6.194405
-## 42      0.311214445                    0.75      6.431331
-## 43      0.821528815                    0.75      6.652863
-## 44      1.252313673                    0.00      6.807935
-## 45      1.358353023                    0.50      6.842683
-## 46      1.043548704                    0.50      6.735780
-## 47     -1.670395900                    0.00      3.135494
-## 48      1.311960807                    0.50      6.827629
-## 49      1.421313886                    1.00      6.862758
-## 50     -0.722669213                    0.25      5.733341
-## 51     -1.299258177                    0.50      4.905275
-## 52      0.973960380                    0.25      6.710523
-## 53      1.311960807                    1.00      6.827629
-## 54     -1.004336236                    1.00      5.411646
-## 55     -1.196532557                    0.50      5.111988
-## 56     -1.027532343                    0.75      5.379897
-## 57     -0.785630077                    0.75      5.669881
-## 58      1.530666966                    0.75      6.896694
-## 59      0.178665258                    1.00      6.364751
-## 60     -1.508023146                    0.50      4.276666</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co"># 使用mutate函数创建新特征</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">df_vocabulary <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Emotion_Abstractness_Product =</span> Emotion_Score <span class="op">*</span><span class="st"> </span>Abstractness,</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">         <span class="dt">Frequency_Imagery_Difference =</span> Frequency <span class="op">-</span><span class="st"> </span>Imagery,</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">         <span class="dt">Frequency_Zscore =</span> <span class="kw">scale</span>(Frequency),</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">         <span class="dt">Abstractness_Normalized =</span> (Abstractness <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(Abstractness)) <span class="op">/</span><span class="st"> </span>(<span class="kw">max</span>(Abstractness) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(Abstractness)),</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">         <span class="dt">Frequency_Log =</span> <span class="kw">log</span>(Frequency))</a></code></pre></div>
+<pre><code>##      Word Frequency Abstractness Imagery Age_of_Acquisition Difficulty Emotion_Score Emotion_Abstractness_Product
+## 1    苹果       415            4       1                 11          2             2                            8
+## 2    梨子       463            5       2                  6          5             2                           10
+## 3    香蕉       179            2       1                 12          1             2                            4
+## 4    草莓       526            1       2                  9          1             5                            5
+## 5    桃子       195            1       5                 11          2             4                            4
+## 6    西瓜       938            3       3                  9          1             4                           12
+## 7    橙子       818            1       4                 12          2             5                            5
+## 8    柚子       118            5       4                  6          5             4                           20
+## 9    葡萄       299            1       1                 10          1             1                            1
+## 10   芒果       229            2       4                 11          3             2                            4
+## 11     书       244            4       1                 11          2             1                            4
+## 12     笔        14            4       3                 11          2             2                            8
+## 13   课本       374            3       4                  7          5             3                            9
+## 14   教室       665            1       3                  9          4             2                            2
+## 15   黑板       602            2       5                  8          1             3                            6
+## 16   学生       603            1       4                  3          5             1                            1
+## 17   老师       768            2       4                 12          2             4                            8
+## 18   考试       709            4       4                 12          5             2                            8
+## 19   作业        91            5       1                  3          2             3                           15
+## 20   校园       953            5       2                 12          2             5                           25
+## 21   美食       348            3       3                  3          4             5                           15
+## 22   旅游       649            1       4                 12          3             3                            3
+## 23   音乐       989            4       3                  7          4             2                            8
+## 24   电影       355            1       1                  9          3             5                            5
+## 25   运动       840            1       5                  7          3             4                            4
+## 26   阅读        26            3       5                 12          3             2                            6
+## 27   绘画       519            4       2                 11          5             1                            4
+## 28   写作       426            1       3                  6          3             4                            4
+## 29   摄影       649            3       5                  8          2             1                            3
+## 30   游戏       766            5       1                  4          3             4                           20
+## 31     猫       211            3       4                  3          1             5                           15
+## 32     狗       932            2       2                  7          5             4                            8
+## 33   兔子       590            5       4                 11          1             2                           10
+## 34     鱼       593            5       5                  6          4             2                           10
+## 35     鸟       555            3       5                  5          2             4                           12
+## 36   大象       871            2       5                 11          2             3                            6
+## 37   狮子       373            2       5                  3          4             5                           10
+## 38   熊猫       844            2       1                  4          1             2                            4
+## 39   猴子       143            4       2                  6          4             3                           12
+## 40     蛇       544            2       1                 12          5             3                            6
+## 41   早晨       490            2       2                  3          5             3                            6
+## 42   中午       621            4       5                  7          3             1                            4
+## 43   下午       775            4       5                  7          5             1                            4
+## 44   晚上       905            1       1                 11          5             3                            3
+## 45   春天       937            3       2                 10          3             4                           12
+## 46   夏天       842            3       5                  9          1             4                           12
+## 47   秋天        23            1       4                 11          3             5                            5
+## 48   冬天       923            3       2                  7          4             2                            6
+## 49   天气       956            5       2                  4          2             2                           10
+## 50   季节       309            2       3                 12          5             4                            8
+## 51   篮球       135            3       1                  8          1             2                            6
+## 52   足球       821            2       1                  9          4             1                            2
+## 53 乒乓球       923            5       5                 11          3             4                           20
+## 54   网球       224            5       5                  3          1             3                           15
+## 55 羽毛球       166            3       3                  7          2             1                            3
+## 56   游泳       217            4       2                  7          3             5                           20
+## 57   滑雪       290            4       5                 10          3             3                           12
+## 58   跑步       989            4       5                  7          1             4                           16
+## 59   健身       581            5       3                  9          2             2                           10
+## 60   瑜伽        72            3       3                  6          1             5                           15
+##    Frequency_Imagery_Difference Frequency_Zscore Abstractness_Normalized Frequency_Log
+## 1                           414     -0.371413868                    0.75      6.028279
+## 2                           461     -0.212354843                    1.00      6.137727
+## 3                           178     -1.153454071                    0.25      5.187386
+## 4                           524     -0.003589874                    0.00      6.265301
+## 5                           190     -1.100434396                    0.00      5.273000
+## 6                           935      1.361666752                    0.50      6.843750
+## 7                           814      0.964019191                    0.00      6.706862
+## 8                           114     -1.355591581                    1.00      4.770685
+## 9                           298     -0.755806510                    0.00      5.700444
+## 10                          225     -0.987767587                    0.25      5.433722
+## 11                          243     -0.938061642                    0.75      5.497168
+## 12                           11     -1.700219467                    0.75      2.639057
+## 13                          370     -0.507276784                    0.50      5.924256
+## 14                          662      0.457018551                    0.00      6.499787
+## 15                          597      0.248253581                    0.25      6.400257
+## 16                          599      0.251567311                    0.00      6.401917
+## 17                          764      0.798332708                    0.25      6.643790
+## 18                          705      0.602822657                    0.75      6.563856
+## 19                           90     -1.445062282                    1.00      4.510860
+## 20                          951      1.411372697                    1.00      6.859615
+## 21                          345     -0.593433756                    0.50      5.852202
+## 22                          645      0.403998876                    0.00      6.475433
+## 23                          986      1.530666966                    0.75      6.896694
+## 24                          354     -0.570237648                    0.00      5.872118
+## 25                          835      1.036921244                    0.00      6.733402
+## 26                           21     -1.660454711                    0.50      3.258097
+## 27                          517     -0.026785982                    0.75      6.251904
+## 28                          423     -0.334962841                    0.00      6.054439
+## 29                          644      0.403998876                    0.50      6.475433
+## 30                          765      0.791705248                    1.00      6.641182
+## 31                          207     -1.047414721                    0.50      5.351858
+## 32                          930      1.341784374                    0.25      6.837333
+## 33                          586      0.208488825                    1.00      6.380123
+## 34                          588      0.218430014                    1.00      6.385194
+## 35                          550      0.092508287                    0.50      6.318968
+## 36                          866      1.139646864                    0.25      6.769642
+## 37                          368     -0.510590514                    0.25      5.921578
+## 38                          843      1.050176163                    0.25      6.738152
+## 39                          141     -1.272748339                    0.75      4.962845
+## 40                          543      0.056057260                    0.25      6.298949
+## 41                          488     -0.122884142                    0.25      6.194405
+## 42                          616      0.311214445                    0.75      6.431331
+## 43                          770      0.821528815                    0.75      6.652863
+## 44                          904      1.252313673                    0.00      6.807935
+## 45                          935      1.358353023                    0.50      6.842683
+## 46                          837      1.043548704                    0.50      6.735780
+## 47                           19     -1.670395900                    0.00      3.135494
+## 48                          921      1.311960807                    0.50      6.827629
+## 49                          954      1.421313886                    1.00      6.862758
+## 50                          306     -0.722669213                    0.25      5.733341
+## 51                          134     -1.299258177                    0.50      4.905275
+## 52                          820      0.973960380                    0.25      6.710523
+## 53                          918      1.311960807                    1.00      6.827629
+## 54                          219     -1.004336236                    1.00      5.411646
+## 55                          163     -1.196532557                    0.50      5.111988
+## 56                          215     -1.027532343                    0.75      5.379897
+## 57                          285     -0.785630077                    0.75      5.669881
+## 58                          984      1.530666966                    0.75      6.896694
+## 59                          578      0.178665258                    1.00      6.364751
+## 60                           69     -1.508023146                    0.50      4.276666</code></pre>
 <p>  对于数据集中的连续型变量，我们常常会根据不同组别进行描述性统计。通常我们从两个方面描述连续型变量：中心趋势（Measures of Central Tendency）和分布。</p>
 <p>  中心趋势度量可以由众数（Mode）、中位数（Median）和均值（Mean），每个指标都描述了分布中不同的典型值或中心值。均值（Mean）是数据集中每个观测值的值之和除以观测值的数量。这也被称为算术平均值。均值适用于连续和离散数值数据。但是均值无法计算分类数据，因为无法对这些值进行求和。由于均值包括分布中的每个值，因此受到异常值和偏斜分布的影响。总体均值是用希腊字母μ（读作“mu”）表示的。当从样本中计算均值时，用符号x̅（读作X-bar）表示。</p>
 <p>  中位数（Median）是数据按升序或降序排列时的中间值。中位数将分布分成两半（中位数值的两侧各有50％的观测值）。在具有奇数个观测值的分布中，中位数是中间值。当分布中有偶数个观测值时，中位数是两个中间值的平均值。中位数对于异常值和偏斜数据的影响较小，通常在分布不对称时作为首选的中心趋势度量。对于分类名义数据，无法确定中位数，因为它们无法进行逻辑排序。</p>
@@ -568,30 +550,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 比如下面这两组数据的中心趋势相同但是二者的离散程度不同
 集合1: 4, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8
 集合2: 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">dataset1 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">dataset2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb31-5" data-line-number="5">dataset =<span class="st"> </span><span class="kw">data.frame</span>(dataset1, dataset2)</a>
-<a class="sourceLine" id="cb31-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb31-7" data-line-number="7">dataset =<span class="st">  </span><span class="kw">gather</span>(dataset, type, data)</a>
-<a class="sourceLine" id="cb31-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb31-9" data-line-number="9"><span class="kw">ggplot</span>(dataset, <span class="kw">aes</span>(data, <span class="dt">fill =</span> type)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="kw">position_dodge</span>())</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">range</span>(dataset1)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">dataset1 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">dataset2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">dataset =<span class="st"> </span><span class="kw">data.frame</span>(dataset1, dataset2)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">dataset =<span class="st">  </span><span class="kw">gather</span>(dataset, type, data)</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb29-9" data-line-number="9"><span class="kw">ggplot</span>(dataset, <span class="kw">aes</span>(data, <span class="dt">fill =</span> type)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="kw">position_dodge</span>())</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-287-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">range</span>(dataset1)</a></code></pre></div>
 <pre><code>## [1] 4 8</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">quantile</span>(dataset1)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">quantile</span>(dataset1)</a></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##    4    5    6    7    8</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">quantile</span>(dataset2)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">quantile</span>(dataset2)</a></code></pre></div>
 <pre><code>##    0%   25%   50%   75%  100% 
 ##  1.00  3.75  6.00  8.25 11.00</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">var</span>(dataset1)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">var</span>(dataset1)</a></code></pre></div>
 <pre><code>## [1] 1.272727</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">sqrt</span>(<span class="kw">var</span>(dataset1))</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">sqrt</span>(<span class="kw">var</span>(dataset1))</a></code></pre></div>
 <pre><code>## [1] 1.128152</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">sd</span>(dataset1)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">sd</span>(dataset1)</a></code></pre></div>
 <pre><code>## [1] 1.128152</code></pre>
 <p>  对于数据分布的度量指标有极差（Range）、四分位数（Quartiles）、四分位距（Interquartile Range，IQR）、方差（variance） 和标准差（standard deviation）。</p>
 <p>  极差是最大值和最小值之间的差异。四分位数（Quartiles）将有序数据集分为四个等份。四分位距（Interquartile Range，IQR）是上四分位数（Q3）和下四分位数（Q1）之间的差值，用于描述数据集从最低到最高排序的中间50％的值。与极差相比，IQR通常被视为更好的散布度量，因为它不受异常值的影响。方差和标准差是衡量每个观察数据值与均值的接近程度的度量。在具有较小散布的数据集中，所有值都非常接近均值，导致方差和标准差较小。当数据集更为分散时，值离均值的距离较远，导致方差和标准差较大。方差和标准差越小，均值就越能代表整个数据集。因此，如果数据集的所有值都相同，则标准差和方差为零。</p>
@@ -602,19 +584,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="任务-描述性统计" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.1.2</span> 任务-描述性统计<a href="第四章-探索性数据分析.html#任务-描述性统计" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>计算男女生各门成绩的均分和标准差</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">df.score =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2">                    <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb44-3" data-line-number="3">                    <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">999</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb44-4" data-line-number="4">                    <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">105</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb44-5" data-line-number="5">                    <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb44-6" data-line-number="6">                    <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb44-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="co"># 计算每种母语的学习者的平均学习时长</span></a>
-<a class="sourceLine" id="cb44-9" data-line-number="9">df.mean.sd &lt;-<span class="st"> </span>df.score <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-10" data-line-number="10"><span class="st">  </span><span class="kw">filter</span>(Listening_Score <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>Reading_Score <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-11" data-line-number="11"><span class="st">  </span><span class="kw">group_by</span>(Gender) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-12" data-line-number="12"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Listening.mean =</span> <span class="kw">mean</span>(Listening_Score),</a>
-<a class="sourceLine" id="cb44-13" data-line-number="13">            <span class="dt">Listening.sd =</span> <span class="kw">sd</span>(Listening_Score))</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">df.score =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">                    <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">                    <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">999</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb42-4" data-line-number="4">                    <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">105</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">                    <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb42-6" data-line-number="6">                    <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb42-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="co"># 计算每种母语的学习者的平均学习时长</span></a>
+<a class="sourceLine" id="cb42-9" data-line-number="9">df.mean.sd &lt;-<span class="st"> </span>df.score <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="st">  </span><span class="kw">filter</span>(Listening_Score <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>Reading_Score <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-11" data-line-number="11"><span class="st">  </span><span class="kw">group_by</span>(Gender) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-12" data-line-number="12"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Listening.mean =</span> <span class="kw">mean</span>(Listening_Score),</a>
+<a class="sourceLine" id="cb42-13" data-line-number="13">            <span class="dt">Listening.sd =</span> <span class="kw">sd</span>(Listening_Score))</a></code></pre></div>
 </div>
 </div>
 <div id="数据可视化" class="section level2 hasAnchor">
@@ -624,72 +606,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.2.1</span> 单变量数据可视化<a href="第四章-探索性数据分析.html#单变量数据可视化" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>  描述分类变量的最佳方式是通过频率。频率可以用不同的方式表示。绝对频率描述一个特定变量出现的次数,就是计数。相对频率描述一个特定变量出现的次数与该变量的总值之间的关系。比如，在语言研究中，我们最常见的分类变量就是词汇或者语法类别。在语料库研究中我们会统计词汇的相对整个语料库总词数的频率。在写作研究中，我们会统计学生名词、动词等不同词类的使用次数。</p>
 <p>  常见的显示频率分布的方法包括频率表和条形图。频率表是一种简单直接的方式，用于显示特定值或特征出现的次数。条形图则可以基于频率表进行可视化，使得结果更加便于展示。这里我们使用janeaustenr这个包里所包含的简奥斯丁小说数据来构建小说中的词频表，并基于词频表产生条形图。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co">#用于数据</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">library</span>(janeaustenr)</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="co">#用于分词</span></a>
-<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="kw">library</span>(tidytext)</a>
-<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="kw">library</span>(stringr)</a>
-<a class="sourceLine" id="cb45-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb45-8" data-line-number="8">austen.emma.word &lt;-<span class="st"> </span><span class="kw">austen_books</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>(),</a>
-<a class="sourceLine" id="cb45-11" data-line-number="11">         <span class="dt">chapter =</span> <span class="kw">cumsum</span>(<span class="kw">str_detect</span>(text, </a>
-<a class="sourceLine" id="cb45-12" data-line-number="12">                                     <span class="kw">regex</span>(<span class="st">&quot;^chapter [</span><span class="ch">\\</span><span class="st">divxlc]&quot;</span>,</a>
-<a class="sourceLine" id="cb45-13" data-line-number="13">                                           <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-14" data-line-number="14"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-15" data-line-number="15"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-16" data-line-number="16"><span class="st">  </span><span class="co">#筛选Emma这个小说</span></a>
-<a class="sourceLine" id="cb45-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(book <span class="op">==</span><span class="st"> &quot;Emma&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-18" data-line-number="18"><span class="st">  </span><span class="co">#显示前20个高频词</span></a>
-<a class="sourceLine" id="cb45-19" data-line-number="19"><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co">#用于数据</span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="kw">library</span>(janeaustenr)</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">#用于分词</span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb43-8" data-line-number="8">austen.emma.word &lt;-<span class="st"> </span><span class="kw">austen_books</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>(),</a>
+<a class="sourceLine" id="cb43-11" data-line-number="11">         <span class="dt">chapter =</span> <span class="kw">cumsum</span>(<span class="kw">str_detect</span>(text, </a>
+<a class="sourceLine" id="cb43-12" data-line-number="12">                                     <span class="kw">regex</span>(<span class="st">&quot;^chapter [</span><span class="ch">\\</span><span class="st">divxlc]&quot;</span>,</a>
+<a class="sourceLine" id="cb43-13" data-line-number="13">                                           <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-14" data-line-number="14"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-15" data-line-number="15"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-16" data-line-number="16"><span class="st">  </span><span class="co">#筛选Emma这个小说</span></a>
+<a class="sourceLine" id="cb43-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(book <span class="op">==</span><span class="st"> &quot;Emma&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-18" data-line-number="18"><span class="st">  </span><span class="co">#显示前20个高频词</span></a>
+<a class="sourceLine" id="cb43-19" data-line-number="19"><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>)</a></code></pre></div>
 <div id="条形图" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.1.1</span> 条形图<a href="第四章-探索性数据分析.html#条形图" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>  条形图是一种图表类型，其中每个列（可以是垂直或水平绘制）的高度（如果是垂直条形图）或长度（如果是水平条形图）表示一个分类变量的频率（计数）。每个条之间都包含有间隔，可以按任意顺序排列，而不影响数据。</p>
 <p>  我们根据上述Emma小说最高频的20个词，绘制条形图。</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb46-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb46-3" data-line-number="3">austen.emma.word  <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-4" data-line-number="4"><span class="st">  </span><span class="co">#给高频词排序</span></a>
-<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n, word)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="ot">NULL</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">austen.emma.word  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="st">  </span><span class="co">#给高频词排序</span></a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n, word)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 <p>  连续变量的描述包括中心趋势和分布。在可视化中我们可以使用箱线图、小提琴图和直方图来显示这两个方面的不同特征。</p>
 </div>
 <div id="箱线图和小提琴图" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.1.2</span> 箱线图和小提琴图<a href="第四章-探索性数据分析.html#箱线图和小提琴图" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>  箱线图通过从盒子（也称为“须”）延伸垂直线来表示上下四分位数外的变异性。异常值会以单独的点显示。盒子的不同部分之间的间隔表示数据的离散程度。箱线图通常绘制六个数据点，最小值（排除异常值）、第一四分位数、中位数、第三四分位数、最大值（排除异常值）、异常值。</p>
 <p>  小提琴图结合了箱线图和密度图的特点，可以更直观地展示数据的分布情况。在小提琴图中，箱线图表示五数概括，而密度图展示数据的概率密度分布。</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="co"># `languageR` 包中包含了多个数据集，供用户在语言学研究和数据分析中使用。其中`lexdec`:包含了英语词汇决策任务的数据，用于研究词汇的判断和决策过程。</span></a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="kw">library</span>(languageR)</a>
-<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;lexdec&quot;</span>)</a>
-<a class="sourceLine" id="cb47-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;RT&quot;</span>, <span class="dt">y=</span>RT))<span class="op">+</span></a>
-<a class="sourceLine" id="cb47-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co">#violin plot</span></a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;RT&quot;</span>, <span class="dt">y=</span>RT))<span class="op">+</span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_violin</span>()</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co"># `languageR` 包中包含了多个数据集，供用户在语言学研究和数据分析中使用。其中`lexdec`:包含了英语词汇决策任务的数据，用于研究词汇的判断和决策过程。</span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">library</span>(languageR)</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;lexdec&quot;</span>)</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;RT&quot;</span>, <span class="dt">y=</span>RT))<span class="op">+</span></a>
+<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="co">#violin plot</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;RT&quot;</span>, <span class="dt">y=</span>RT))<span class="op">+</span></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_violin</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-291-2.png" width="672" /></p>
 </div>
 <div id="直方图" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.1.3</span> 直方图<a href="第四章-探索性数据分析.html#直方图" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>  直方图展示了数据集中所有观察值的分布情况。柱的高度显示了特定数值范围的频数。柱通常具有相等的宽度，每个柱所代表的数值必须是互斥且完整的，之间没有空隙，每个观察值只能属于一个柱。
 直方图和柱状图有一些区别：柱状图适用于展示不同类别变量，每个柱子代表一个类别，高度表示该类别的频数或频率。直方图适用于展示连续变量的分布情况，将数据分成若干连续的区间，每个区间称为一个“柱”，高度表示该区间内数据的频数或频率。</p>
 <p>  柱状图的X轴通常显示不同的类别标签，例如产品名称、地区等。直方图的X轴显示连续变量的数值范围，例如温度、成绩等。在柱状图中，各个柱体之间通常有间隔，以区分不同的类别。在直方图中，各个柱体紧密相邻，没有间隔，因为它们代表连续的数值区间。</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co"># histogram</span></a>
-<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="kw">ggplot</span>(lexdec)<span class="op">+</span></a>
-<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(RT), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="co"># histogram</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="kw">ggplot</span>(lexdec)<span class="op">+</span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(RT), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
 </div>
 <div id="密度图" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.1.4</span> 密度图<a href="第四章-探索性数据分析.html#密度图" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>  密度图（Density Plot）也可以展示数据分布，它通过平滑数据点来显示数据在不同区间的密度，提供数据分布的连续视图。与直方图不同，密度图通过使用核密度估计（Kernel Density Estimation, KDE）等方法对数据进行平滑处理，形成一条连续的曲线。可以在同一图上绘制多条密度曲线，便于比较不同组数据的分布差异。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(RT))<span class="op">+</span></a>
-<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="fl">0.1</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(RT))<span class="op">+</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="fl">0.1</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-293-1.png" width="672" /></p>
 </div>
 </div>
 <div id="多变量数据" class="section level3 hasAnchor">
@@ -698,71 +680,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="瓦片图tile-plot" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.2.1</span> 瓦片图（tile plot）<a href="第四章-探索性数据分析.html#瓦片图tile-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>  对于两个分类变量，我们可以使用交叉表（contingency table）来描述两个分类变量之间的协变性，显示各自的频率。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">table</span>(lexdec<span class="op">$</span>NativeLanguage,lexdec<span class="op">$</span>Sex)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">table</span>(lexdec<span class="op">$</span>NativeLanguage,lexdec<span class="op">$</span>Sex)</a></code></pre></div>
 <pre><code>##          
 ##             F   M
 ##   English 553 395
 ##   Other   553 158</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(Class, Correct)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Class, Correct))<span class="op">+</span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>n))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">ggplot</span>(lexdec)<span class="op">+</span></a>
-<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_count</span>(<span class="kw">aes</span>(Class, Correct))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(Class, Correct)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Class, Correct))<span class="op">+</span></a>
+<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>n))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">ggplot</span>(lexdec)<span class="op">+</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_count</span>(<span class="kw">aes</span>(Class, Correct))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-294-2.png" width="672" /></p>
 </div>
 <div id="分类变量连续变量" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.2.2</span> 分类变量+连续变量<a href="第四章-探索性数据分析.html#分类变量连续变量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>  如果既包含分类变量也包含连续变量，可以通过将分类变量视为组别来可视化，其与连续变量之间的协变性。我们可以通过柱状图加误差线的方法来表示不同组之间均值和变异性的差别。也可以通过箱型图和小提琴图来表示。此外我们还可以通过密度图来表示不同的分布特征。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="co">#bar plot</span></a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(PrevType)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(RT))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb55-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(PrevType, mean))<span class="op">+</span></a>
-<a class="sourceLine" id="cb55-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(PrevType)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(RT),</a>
-<a class="sourceLine" id="cb56-4" data-line-number="4">            <span class="dt">sd =</span> <span class="kw">sd</span>(RT))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb56-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(PrevType, mean, <span class="dt">fill =</span> PrevType))<span class="op">+</span></a>
-<a class="sourceLine" id="cb56-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb56-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean <span class="op">-</span><span class="st"> </span>sd,</a>
-<a class="sourceLine" id="cb56-8" data-line-number="8">                    <span class="dt">ymax =</span> mean <span class="op">+</span><span class="st"> </span>sd),</a>
-<a class="sourceLine" id="cb56-9" data-line-number="9">                <span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))</a></code></pre></div>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="st"> </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span>PrevType, <span class="dt">y=</span>RT))<span class="op">+</span></a>
-<a class="sourceLine" id="cb58-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-3.png" width="672" /></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co">#violin plot</span></a>
-<a class="sourceLine" id="cb59-2" data-line-number="2">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="st"> </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span>PrevType, <span class="dt">y=</span>RT))<span class="op">+</span></a>
-<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_violin</span>()</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-4.png" width="672" /></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co"># 密度图</span></a>
-<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(<span class="dt">x =</span> RT, <span class="dt">y =</span>  ..density..))<span class="op">+</span></a>
-<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> PrevType), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="co">#bar plot</span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(PrevType)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(RT))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(PrevType, mean))<span class="op">+</span></a>
+<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-295-1.png" width="672" /></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(PrevType)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(RT),</a>
+<a class="sourceLine" id="cb54-4" data-line-number="4">            <span class="dt">sd =</span> <span class="kw">sd</span>(RT))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(PrevType, mean, <span class="dt">fill =</span> PrevType))<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean <span class="op">-</span><span class="st"> </span>sd,</a>
+<a class="sourceLine" id="cb54-8" data-line-number="8">                    <span class="dt">ymax =</span> mean <span class="op">+</span><span class="st"> </span>sd),</a>
+<a class="sourceLine" id="cb54-9" data-line-number="9">                <span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-295-2.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="st"> </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span>PrevType, <span class="dt">y=</span>RT))<span class="op">+</span></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-295-3.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co">#violin plot</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">lexdec<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="st"> </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x=</span>PrevType, <span class="dt">y=</span>RT))<span class="op">+</span></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_violin</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-295-4.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co"># 密度图</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="kw">ggplot</span>(lexdec, <span class="kw">aes</span>(<span class="dt">x =</span> RT, <span class="dt">y =</span>  ..density..))<span class="op">+</span></a>
+<a class="sourceLine" id="cb57-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> PrevType), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</a></code></pre></div>
 <pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-5.png" width="672" /></p>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-295-5.png" width="672" /></p>
 <p>  如果变量均为连续变量，我们最常见的方式是使用散点图来可视化两个连续变量之间的关系。</p>
 </div>
 <div id="两个连续变量" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.2.2.3</span> 两个连续变量<a href="第四章-探索性数据分析.html#两个连续变量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>散点图</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">ggplot</span>(lexdec)<span class="op">+</span></a>
-<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(RT, Frequency))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">ggplot</span>(lexdec)<span class="op">+</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(RT, Frequency))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-296-1.png" width="672" /></p>
 
 </div>
 </div>

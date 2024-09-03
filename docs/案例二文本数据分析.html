@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,12 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -302,6 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
 <li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
+<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
+<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
+<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
+<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
+<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
+<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
+<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+</ul></li>
+<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
+<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
+<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
+<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
+<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
+<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -340,81 +383,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="数据处理" class="section level2 hasAnchor">
 <h2><span class="header-section-number">11.2</span> 数据处理<a href="案例二文本数据分析.html#数据处理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="kw">library</span>(lme4)</a>
-<a class="sourceLine" id="cb229-2" data-line-number="2"><span class="kw">library</span>(lsmeans)</a>
-<a class="sourceLine" id="cb229-3" data-line-number="3"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
-<a class="sourceLine" id="cb229-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb229-5" data-line-number="5"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb229-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb229-7" data-line-number="7"><span class="co"># 显示小数点后很多位</span></a>
-<a class="sourceLine" id="cb229-8" data-line-number="8"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</a>
-<a class="sourceLine" id="cb229-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb229-10" data-line-number="10"><span class="co"># 计算置信区间</span></a>
-<a class="sourceLine" id="cb229-11" data-line-number="11"><span class="kw">library</span>(rcompanion)</a>
-<a class="sourceLine" id="cb229-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb229-13" data-line-number="13"><span class="co"># 改变y轴度量</span></a>
-<a class="sourceLine" id="cb229-14" data-line-number="14"><span class="kw">library</span>(scales)</a>
-<a class="sourceLine" id="cb229-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb229-16" data-line-number="16"><span class="co"># 组合图</span></a>
-<a class="sourceLine" id="cb229-17" data-line-number="17"><span class="kw">library</span>(cowplot)</a>
-<a class="sourceLine" id="cb229-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb229-19" data-line-number="19"><span class="kw">library</span>(tidytext)</a>
-<a class="sourceLine" id="cb229-20" data-line-number="20"><span class="kw">require</span>(readtext)</a>
-<a class="sourceLine" id="cb229-21" data-line-number="21"><span class="kw">library</span>(rstatix)</a>
-<a class="sourceLine" id="cb229-22" data-line-number="22"><span class="kw">library</span>(flextable)</a>
-<a class="sourceLine" id="cb229-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb229-24" data-line-number="24"><span class="kw">library</span>(quanteda)</a>
-<a class="sourceLine" id="cb229-25" data-line-number="25"><span class="kw">library</span>(quanteda.textstats)</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">library</span>(lme4)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="kw">library</span>(lsmeans)</a>
+<a class="sourceLine" id="cb223-3" data-line-number="3"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
+<a class="sourceLine" id="cb223-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb223-5" data-line-number="5"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb223-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb223-7" data-line-number="7"><span class="co"># 显示小数点后很多位</span></a>
+<a class="sourceLine" id="cb223-8" data-line-number="8"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</a>
+<a class="sourceLine" id="cb223-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb223-10" data-line-number="10"><span class="co"># 计算置信区间</span></a>
+<a class="sourceLine" id="cb223-11" data-line-number="11"><span class="kw">library</span>(rcompanion)</a>
+<a class="sourceLine" id="cb223-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb223-13" data-line-number="13"><span class="co"># 改变y轴度量</span></a>
+<a class="sourceLine" id="cb223-14" data-line-number="14"><span class="kw">library</span>(scales)</a>
+<a class="sourceLine" id="cb223-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb223-16" data-line-number="16"><span class="co"># 组合图</span></a>
+<a class="sourceLine" id="cb223-17" data-line-number="17"><span class="kw">library</span>(cowplot)</a>
+<a class="sourceLine" id="cb223-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb223-19" data-line-number="19"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb223-20" data-line-number="20"><span class="kw">require</span>(readtext)</a>
+<a class="sourceLine" id="cb223-21" data-line-number="21"><span class="kw">library</span>(rstatix)</a>
+<a class="sourceLine" id="cb223-22" data-line-number="22"><span class="kw">library</span>(flextable)</a>
+<a class="sourceLine" id="cb223-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb223-24" data-line-number="24"><span class="kw">library</span>(quanteda)</a>
+<a class="sourceLine" id="cb223-25" data-line-number="25"><span class="kw">library</span>(quanteda.textstats)</a></code></pre></div>
 <div id="特征提取" class="section level3 hasAnchor">
 <h3><span class="header-section-number">11.2.1</span> 特征提取<a href="案例二文本数据分析.html#特征提取" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="词汇复杂度特征" class="section level4 hasAnchor">
 <h4><span class="header-section-number">11.2.1.1</span> 词汇复杂度特征<a href="案例二文本数据分析.html#词汇复杂度特征" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">dee.raw =<span class="kw">readtext</span>(<span class="st">&quot;data/ch11/*txt&quot;</span>, <span class="dt">docvarsfrom =</span> <span class="st">&quot;filenames&quot;</span>)</a>
-<a class="sourceLine" id="cb230-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb230-3" data-line-number="3">dee.corpus =<span class="st"> </span><span class="kw">corpus</span>(dee.raw)</a>
-<a class="sourceLine" id="cb230-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb230-5" data-line-number="5">dee.corpus.summary =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">summary</span>(dee.corpus))</a>
-<a class="sourceLine" id="cb230-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb230-7" data-line-number="7">dee.dfm &lt;-<span class="st"> </span><span class="kw">dfm</span>(dee.corpus, </a>
-<a class="sourceLine" id="cb230-8" data-line-number="8">               <span class="dt">remove_numbers =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb230-9" data-line-number="9">               <span class="dt">remove_punct =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb230-10" data-line-number="10">               <span class="dt">remove_symbols =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb230-11" data-line-number="11">               <span class="co">#remove = stopwords(&quot;english&quot;)</span></a>
-<a class="sourceLine" id="cb230-12" data-line-number="12">               )</a></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">dee.raw =<span class="kw">readtext</span>(<span class="st">&quot;data/ch11/*txt&quot;</span>, <span class="dt">docvarsfrom =</span> <span class="st">&quot;filenames&quot;</span>)</a>
+<a class="sourceLine" id="cb224-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb224-3" data-line-number="3">dee.corpus =<span class="st"> </span><span class="kw">corpus</span>(dee.raw)</a>
+<a class="sourceLine" id="cb224-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb224-5" data-line-number="5">dee.corpus.summary =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">summary</span>(dee.corpus))</a>
+<a class="sourceLine" id="cb224-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb224-7" data-line-number="7">dee.dfm &lt;-<span class="st"> </span><span class="kw">dfm</span>(dee.corpus, </a>
+<a class="sourceLine" id="cb224-8" data-line-number="8">               <span class="dt">remove_numbers =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb224-9" data-line-number="9">               <span class="dt">remove_punct =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb224-10" data-line-number="10">               <span class="dt">remove_symbols =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb224-11" data-line-number="11">               <span class="co">#remove = stopwords(&quot;english&quot;)</span></a>
+<a class="sourceLine" id="cb224-12" data-line-number="12">               )</a></code></pre></div>
 <pre><code>## Warning: &#39;dfm.corpus()&#39; is deprecated. Use &#39;tokens()&#39; first.</code></pre>
-<pre><code>## Warning: &#39;...&#39; should not be used for tokens() arguments; use &#39;tokens()&#39;
-## first.</code></pre>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">dee.corpus.summary<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="st">    </span><span class="kw">flextable</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb233-3" data-line-number="3"><span class="st">    </span><span class="kw">set_caption</span>(<span class="dt">caption =</span> <span class="st">&quot;Table 1. Number of types, tokens, and sentences of each book in the Judge Dee series.&quot;</span>)</a></code></pre></div>
-<div class="tabwid"><style>.cl-56d95d92{}.cl-56b3615a{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-56d410d0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-56d410da{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-56d42d9a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56d42da4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56d42da5{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56d42dae{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56d42daf{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56d42db8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-56d95d92'>
+<pre><code>## Warning: &#39;...&#39; should not be used for tokens() arguments; use &#39;tokens()&#39; first.</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">dee.corpus.summary<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="st">    </span><span class="kw">flextable</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb227-3" data-line-number="3"><span class="st">    </span><span class="kw">set_caption</span>(<span class="dt">caption =</span> <span class="st">&quot;Table 1. Number of types, tokens, and sentences of each book in the Judge Dee series.&quot;</span>)</a></code></pre></div>
+<div class="tabwid"><style>.cl-5cb8957c{}.cl-5caefb2a{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5cb329fc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5cb32a06{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5cb33e42{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5cb33e4c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5cb33e56{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5cb33e57{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5cb33e60{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5cb33e6a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-5cb8957c'>
 
 <caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;">
-<span id="tab:unnamed-chunk-79">Table 11.1: </span><span>Table 1. Number of types, tokens, and sentences of each book in the Judge Dee series.</span>
+<span id="tab:unnamed-chunk-339">Table 11.1: </span><span>Table 1. Number of types, tokens, and sentences of each book in the Judge Dee series.</span>
 </caption>
 
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-56d42d9a"><p class="cl-56d410d0"><span class="cl-56b3615a">Text</span></p></th><th class="cl-56d42da4"><p class="cl-56d410da"><span class="cl-56b3615a">Types</span></p></th><th class="cl-56d42da4"><p class="cl-56d410da"><span class="cl-56b3615a">Tokens</span></p></th><th class="cl-56d42da4"><p class="cl-56d410da"><span class="cl-56b3615a">Sentences</span></p></th><th class="cl-56d42da4"><p class="cl-56d410da"><span class="cl-56b3615a">docvar1</span></p></th><th class="cl-56d42d9a"><p class="cl-56d410d0"><span class="cl-56b3615a">docvar2</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-56d42da5"><p class="cl-56d410d0"><span class="cl-56b3615a">01_Celebrated-Cases.txt</span></p></td><td class="cl-56d42dae"><p class="cl-56d410da"><span class="cl-56b3615a">6,010</span></p></td><td class="cl-56d42dae"><p class="cl-56d410da"><span class="cl-56b3615a">79,276</span></p></td><td class="cl-56d42dae"><p class="cl-56d410da"><span class="cl-56b3615a">3,686</span></p></td><td class="cl-56d42dae"><p class="cl-56d410da"><span class="cl-56b3615a">1</span></p></td><td class="cl-56d42da5"><p class="cl-56d410d0"><span class="cl-56b3615a">Celebrated-Cases</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-56d42daf"><p class="cl-56d410d0"><span class="cl-56b3615a">02_The-Chinese-Bell-Murders.txt</span></p></td><td class="cl-56d42db8"><p class="cl-56d410da"><span class="cl-56b3615a">7,858</span></p></td><td class="cl-56d42db8"><p class="cl-56d410da"><span class="cl-56b3615a">89,611</span></p></td><td class="cl-56d42db8"><p class="cl-56d410da"><span class="cl-56b3615a">4,696</span></p></td><td class="cl-56d42db8"><p class="cl-56d410da"><span class="cl-56b3615a">2</span></p></td><td class="cl-56d42daf"><p class="cl-56d410d0"><span class="cl-56b3615a">The-Chinese-Bell-Murders</span></p></td></tr></tbody></table></div>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">lexical.diversity &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(dee.dfm, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
-<a class="sourceLine" id="cb234-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb234-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb234-4" data-line-number="4">lexical.diversity<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-5" data-line-number="5"><span class="st">    </span><span class="kw">flextable</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-6" data-line-number="6"><span class="st">    </span><span class="kw">set_caption</span>(<span class="dt">caption =</span> <span class="st">&quot;词汇复杂度指标.&quot;</span>)</a></code></pre></div>
-<div class="tabwid"><style>.cl-57030b4c{}.cl-56fa719e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-56fe4080{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-56fe408a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-56fe585e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56fe5868{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56fe5869{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56fe5872{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56fe5873{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56fe587c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-57030b4c'>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-5cb33e42"><p class="cl-5cb329fc"><span class="cl-5caefb2a">Text</span></p></th><th class="cl-5cb33e4c"><p class="cl-5cb32a06"><span class="cl-5caefb2a">Types</span></p></th><th class="cl-5cb33e4c"><p class="cl-5cb32a06"><span class="cl-5caefb2a">Tokens</span></p></th><th class="cl-5cb33e4c"><p class="cl-5cb32a06"><span class="cl-5caefb2a">Sentences</span></p></th><th class="cl-5cb33e4c"><p class="cl-5cb32a06"><span class="cl-5caefb2a">docvar1</span></p></th><th class="cl-5cb33e42"><p class="cl-5cb329fc"><span class="cl-5caefb2a">docvar2</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-5cb33e56"><p class="cl-5cb329fc"><span class="cl-5caefb2a">01_Celebrated-Cases.txt</span></p></td><td class="cl-5cb33e57"><p class="cl-5cb32a06"><span class="cl-5caefb2a">6010</span></p></td><td class="cl-5cb33e57"><p class="cl-5cb32a06"><span class="cl-5caefb2a">79276</span></p></td><td class="cl-5cb33e57"><p class="cl-5cb32a06"><span class="cl-5caefb2a">3686</span></p></td><td class="cl-5cb33e57"><p class="cl-5cb32a06"><span class="cl-5caefb2a">1</span></p></td><td class="cl-5cb33e56"><p class="cl-5cb329fc"><span class="cl-5caefb2a">Celebrated-Cases</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5cb33e60"><p class="cl-5cb329fc"><span class="cl-5caefb2a">02_The-Chinese-Bell-Murders.txt</span></p></td><td class="cl-5cb33e6a"><p class="cl-5cb32a06"><span class="cl-5caefb2a">7858</span></p></td><td class="cl-5cb33e6a"><p class="cl-5cb32a06"><span class="cl-5caefb2a">89611</span></p></td><td class="cl-5cb33e6a"><p class="cl-5cb32a06"><span class="cl-5caefb2a">4696</span></p></td><td class="cl-5cb33e6a"><p class="cl-5cb32a06"><span class="cl-5caefb2a">2</span></p></td><td class="cl-5cb33e60"><p class="cl-5cb329fc"><span class="cl-5caefb2a">The-Chinese-Bell-Murders</span></p></td></tr></tbody></table></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">lexical.diversity &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(dee.dfm, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb228-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb228-4" data-line-number="4">lexical.diversity<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb228-5" data-line-number="5"><span class="st">    </span><span class="kw">flextable</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb228-6" data-line-number="6"><span class="st">    </span><span class="kw">set_caption</span>(<span class="dt">caption =</span> <span class="st">&quot;词汇复杂度指标.&quot;</span>)</a></code></pre></div>
+<div class="tabwid"><style>.cl-5ce9f45a{}.cl-5ce15566{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5ce51020{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5ce5102a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5ce5240c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5ce52416{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 1.5pt solid rgba(190, 190, 190, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5ce52420{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5ce52421{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5ce5242a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5ce5242b{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(190, 190, 190, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-5ce9f45a'>
 
 <caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;">
-<span id="tab:unnamed-chunk-79">Table 11.1: </span><span>词汇复杂度指标.</span>
+<span id="tab:unnamed-chunk-339">Table 11.1: </span><span>词汇复杂度指标.</span>
 </caption>
 
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-56fe585e"><p class="cl-56fe4080"><span class="cl-56fa719e">document</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">TTR</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">C</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">R</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">CTTR</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">U</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">S</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">K</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">I</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">D</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">Vm</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">Maas</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">lgV0</span></p></th><th class="cl-56fe5868"><p class="cl-56fe408a"><span class="cl-56fa719e">lgeV0</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-56fe5869"><p class="cl-56fe4080"><span class="cl-56fa719e">01_Celebrated-Cases.txt</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.07799624</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.7710857</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">20.51316</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">14.50499</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">21.14293</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.8351474</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">97.79596</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.6212049</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.009779738</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.09802396</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">0.2174791</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">5.861171</span></p></td><td class="cl-56fe5872"><p class="cl-56fe408a"><span class="cl-56fa719e">13.49585</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-56fe5873"><p class="cl-56fe4080"><span class="cl-56fa719e">02_The-Chinese-Bell-Murders.txt</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.09061102</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.7870019</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">25.41764</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">17.97299</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">22.98570</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.8492039</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">104.17292</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.7872736</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.010417424</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.10143839</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">0.2085793</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">6.245379</span></p></td><td class="cl-56fe587c"><p class="cl-56fe408a"><span class="cl-56fa719e">14.38052</span></p></td></tr></tbody></table></div>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="co"># 信息熵</span></a>
-<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="kw">textstat_entropy</span>(dee.dfm)<span class="op">$</span>entropy</a></code></pre></div>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-5ce5240c"><p class="cl-5ce51020"><span class="cl-5ce15566">document</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">TTR</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">C</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">R</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">CTTR</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">U</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">S</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">K</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">I</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">D</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">Vm</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">Maas</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">lgV0</span></p></th><th class="cl-5ce52416"><p class="cl-5ce5102a"><span class="cl-5ce15566">lgeV0</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-5ce52420"><p class="cl-5ce51020"><span class="cl-5ce15566">01_Celebrated-Cases.txt</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.07799624</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.7710857</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">20.51316</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">14.50499</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">21.14293</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.8351474</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">97.79596</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.6212049</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.009779738</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.09802396</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.2174791</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">5.861171</span></p></td><td class="cl-5ce52421"><p class="cl-5ce5102a"><span class="cl-5ce15566">13.49585</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5ce5242a"><p class="cl-5ce51020"><span class="cl-5ce15566">02_The-Chinese-Bell-Murders.txt</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.09061102</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.7870019</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">25.41764</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">17.97299</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">22.98570</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.8492039</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">104.17292</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.7872736</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.010417424</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.10143839</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">0.2085793</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">6.245379</span></p></td><td class="cl-5ce5242b"><p class="cl-5ce5102a"><span class="cl-5ce15566">14.38052</span></p></td></tr></tbody></table></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="co"># 信息熵</span></a>
+<a class="sourceLine" id="cb229-2" data-line-number="2"><span class="kw">textstat_entropy</span>(dee.dfm)<span class="op">$</span>entropy</a></code></pre></div>
 <pre><code>## [1] 9.176072 9.449439</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">readability &lt;-<span class="st"> </span><span class="kw">textstat_readability</span>(dee.corpus, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
-<a class="sourceLine" id="cb237-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb237-3" data-line-number="3">readability.df =<span class="st"> </span>readability<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb237-4" data-line-number="4"><span class="st">   </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb237-5" data-line-number="5"><span class="st">   </span><span class="kw">select</span>(document, ARI, Flesch, FOG, Coleman.Liau.short, Dale.Chall, Spache)</a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">readability &lt;-<span class="st"> </span><span class="kw">textstat_readability</span>(dee.corpus, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
+<a class="sourceLine" id="cb231-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb231-3" data-line-number="3">readability.df =<span class="st"> </span>readability<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb231-4" data-line-number="4"><span class="st">   </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb231-5" data-line-number="5"><span class="st">   </span><span class="kw">select</span>(document, ARI, Flesch, FOG, Coleman.Liau.short, Dale.Chall, Spache)</a></code></pre></div>
 </div>
 <div id="句法特征提取" class="section level4 hasAnchor">
 <h4><span class="header-section-number">11.2.1.2</span> 句法特征提取<a href="案例二文本数据分析.html#句法特征提取" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -427,23 +469,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 <p>  需要注意的是，这个句法复杂度分析器是基于英语笔语开发的，基本的要求是句法分词和标注是准确的。如果是中文，标注正确率一般不如英文，如果是口语，转写时如何确定句子的单位边界也是问题。</p>
 <p>  由于文本数据处理需要一定时间，此处我们导入已经处理完成的词汇和句法数据进行分析。</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">lexical.diversity.df =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch11/lexical.diversity.df.2022-07-21.CSV&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">lexical.diversity.df =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch11/lexical.diversity.df.2022-07-21.CSV&quot;</span>)</a></code></pre></div>
 <pre><code>## Rows: 17 Columns: 6
-## ── Column specification ─────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): document
 ## dbl (5): TTR, C, R, MATTR, entropy
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">readability.df =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch11/readability.df.2022-07-21.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb240-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb240-3" data-line-number="3">metrics_SCA &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch11/metrics_SCA.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">readability.df =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch11/readability.df.2022-07-21.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb234-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb234-3" data-line-number="3">metrics_SCA &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch11/metrics_SCA.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Rows: 38 Columns: 15
-## ── Column specification ─────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (1): text
-## dbl (14): MLS, MLT, MLC, C/S, VP/T, C/T, DC/C, DC/T, T/S, CT/T, CP/T, CP/...
+## dbl (14): MLS, MLT, MLC, C/S, VP/T, C/T, DC/C, DC/T, T/S, CT/T, CP/T, CP/C, CN/T, CN/C
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -455,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="统计建模-1" class="section level2 hasAnchor">
 <h2><span class="header-section-number">11.4</span> 统计建模<a href="案例二文本数据分析.html#统计建模-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="kw">t.test</span>(lexical.diversity.df<span class="op">$</span>TTR[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> lexical.diversity.df<span class="op">$</span>TTR[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">t.test</span>(lexical.diversity.df<span class="op">$</span>TTR[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> lexical.diversity.df<span class="op">$</span>TTR[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -467,39 +509,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  0.101875</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="co"># t.test(lexical.diversity.df$C[2:17], mu = lexical.diversity.df$C[1], alternative = &quot;greater&quot;)</span></a>
-<a class="sourceLine" id="cb244-2" data-line-number="2"><span class="co"># </span></a>
-<a class="sourceLine" id="cb244-3" data-line-number="3"><span class="co"># t.test(lexical.diversity.df$R[2:17], mu = lexical.diversity.df$R[1], alternative = &quot;greater&quot;)</span></a>
-<a class="sourceLine" id="cb244-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb244-5" data-line-number="5"><span class="co"># t.test(lexical.diversity.df$MATTR[2:17], mu = lexical.diversity.df$MATTR[1], alternative = &quot;greater&quot;)</span></a>
-<a class="sourceLine" id="cb244-6" data-line-number="6"><span class="co"># </span></a>
-<a class="sourceLine" id="cb244-7" data-line-number="7"><span class="co"># lexical.diversity.stat = lexical.diversity.df%&gt;%</span></a>
-<a class="sourceLine" id="cb244-8" data-line-number="8"><span class="co">#   as.data.frame()%&gt;%</span></a>
-<a class="sourceLine" id="cb244-9" data-line-number="9"><span class="co">#   mutate(id = 1:n())%&gt;%</span></a>
-<a class="sourceLine" id="cb244-10" data-line-number="10"><span class="co">#   select(&quot;document&quot;, &quot;id&quot;,&quot;TTR&quot;,&quot;C&quot;,&quot;R&quot;)%&gt;%</span></a>
-<a class="sourceLine" id="cb244-11" data-line-number="11"><span class="co">#   mutate(txt.type = case_when(id &lt; 2  ~ &quot;ref&quot;,</span></a>
-<a class="sourceLine" id="cb244-12" data-line-number="12"><span class="co">#                               id &gt; 1 ~ &quot;freewriting&quot;))%&gt;%</span></a>
-<a class="sourceLine" id="cb244-13" data-line-number="13"><span class="co">#   gather(&quot;measures&quot;, &quot;values&quot;, -c(&quot;document&quot;, &quot;id&quot;,&quot;txt.type&quot;))%&gt;%</span></a>
-<a class="sourceLine" id="cb244-14" data-line-number="14"><span class="co">#   mutate(measures = as.factor(measures),</span></a>
-<a class="sourceLine" id="cb244-15" data-line-number="15"><span class="co">#          measures = fct_relevel(measures, &quot;TTR&quot;,&quot;C&quot;,&quot;R&quot;))%&gt;%</span></a>
-<a class="sourceLine" id="cb244-16" data-line-number="16"><span class="co">#   filter(measures == &quot;TTR&quot;)%&gt;%</span></a>
-<a class="sourceLine" id="cb244-17" data-line-number="17"><span class="co">#   group_by(measures)%&gt;% </span></a>
-<a class="sourceLine" id="cb244-18" data-line-number="18"><span class="co">#   rstatix::t_test(values ~ 1, mu = &quot;ref&quot;) </span></a>
-<a class="sourceLine" id="cb244-19" data-line-number="19"><span class="co"># %&gt;% </span></a>
-<a class="sourceLine" id="cb244-20" data-line-number="20"><span class="co">#   rstatix::adjust_pvalue() %&gt;%</span></a>
-<a class="sourceLine" id="cb244-21" data-line-number="21"><span class="co">#   rstatix::add_significance(&quot;p.adj&quot;)</span></a></code></pre></div>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">metrics_SCA.ci =<span class="st"> </span>metrics_SCA<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(text <span class="op">!=</span><span class="st">&quot;01.txt&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-3" data-line-number="3"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;text&quot;</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-4" data-line-number="4"><span class="st">  </span><span class="kw">groupwiseMean</span>(values <span class="op">~</span><span class="st"> </span>measures,</a>
-<a class="sourceLine" id="cb245-5" data-line-number="5">                <span class="dt">data =</span> .,</a>
-<a class="sourceLine" id="cb245-6" data-line-number="6">                <span class="dt">conf =</span> <span class="fl">0.95</span>,</a>
-<a class="sourceLine" id="cb245-7" data-line-number="7">                <span class="dt">digits =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb245-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb245-9" data-line-number="9">  </a>
-<a class="sourceLine" id="cb245-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb245-11" data-line-number="11"><span class="co"># mean length of clause (MLC): number of words divided by number of clauses;</span></a>
-<a class="sourceLine" id="cb245-12" data-line-number="12"><span class="kw">t.test</span>(metrics_SCA<span class="op">$</span>MLC[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> metrics_SCA<span class="op">$</span>MLC[<span class="dv">1</span>],  <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="co"># t.test(lexical.diversity.df$C[2:17], mu = lexical.diversity.df$C[1], alternative = &quot;greater&quot;)</span></a>
+<a class="sourceLine" id="cb238-2" data-line-number="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb238-3" data-line-number="3"><span class="co"># t.test(lexical.diversity.df$R[2:17], mu = lexical.diversity.df$R[1], alternative = &quot;greater&quot;)</span></a>
+<a class="sourceLine" id="cb238-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb238-5" data-line-number="5"><span class="co"># t.test(lexical.diversity.df$MATTR[2:17], mu = lexical.diversity.df$MATTR[1], alternative = &quot;greater&quot;)</span></a>
+<a class="sourceLine" id="cb238-6" data-line-number="6"><span class="co"># </span></a>
+<a class="sourceLine" id="cb238-7" data-line-number="7"><span class="co"># lexical.diversity.stat = lexical.diversity.df%&gt;%</span></a>
+<a class="sourceLine" id="cb238-8" data-line-number="8"><span class="co">#   as.data.frame()%&gt;%</span></a>
+<a class="sourceLine" id="cb238-9" data-line-number="9"><span class="co">#   mutate(id = 1:n())%&gt;%</span></a>
+<a class="sourceLine" id="cb238-10" data-line-number="10"><span class="co">#   select(&quot;document&quot;, &quot;id&quot;,&quot;TTR&quot;,&quot;C&quot;,&quot;R&quot;)%&gt;%</span></a>
+<a class="sourceLine" id="cb238-11" data-line-number="11"><span class="co">#   mutate(txt.type = case_when(id &lt; 2  ~ &quot;ref&quot;,</span></a>
+<a class="sourceLine" id="cb238-12" data-line-number="12"><span class="co">#                               id &gt; 1 ~ &quot;freewriting&quot;))%&gt;%</span></a>
+<a class="sourceLine" id="cb238-13" data-line-number="13"><span class="co">#   gather(&quot;measures&quot;, &quot;values&quot;, -c(&quot;document&quot;, &quot;id&quot;,&quot;txt.type&quot;))%&gt;%</span></a>
+<a class="sourceLine" id="cb238-14" data-line-number="14"><span class="co">#   mutate(measures = as.factor(measures),</span></a>
+<a class="sourceLine" id="cb238-15" data-line-number="15"><span class="co">#          measures = fct_relevel(measures, &quot;TTR&quot;,&quot;C&quot;,&quot;R&quot;))%&gt;%</span></a>
+<a class="sourceLine" id="cb238-16" data-line-number="16"><span class="co">#   filter(measures == &quot;TTR&quot;)%&gt;%</span></a>
+<a class="sourceLine" id="cb238-17" data-line-number="17"><span class="co">#   group_by(measures)%&gt;% </span></a>
+<a class="sourceLine" id="cb238-18" data-line-number="18"><span class="co">#   rstatix::t_test(values ~ 1, mu = &quot;ref&quot;) </span></a>
+<a class="sourceLine" id="cb238-19" data-line-number="19"><span class="co"># %&gt;% </span></a>
+<a class="sourceLine" id="cb238-20" data-line-number="20"><span class="co">#   rstatix::adjust_pvalue() %&gt;%</span></a>
+<a class="sourceLine" id="cb238-21" data-line-number="21"><span class="co">#   rstatix::add_significance(&quot;p.adj&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">metrics_SCA.ci =<span class="st"> </span>metrics_SCA<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(text <span class="op">!=</span><span class="st">&quot;01.txt&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-3" data-line-number="3"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;text&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-4" data-line-number="4"><span class="st">  </span><span class="kw">groupwiseMean</span>(values <span class="op">~</span><span class="st"> </span>measures,</a>
+<a class="sourceLine" id="cb239-5" data-line-number="5">                <span class="dt">data =</span> .,</a>
+<a class="sourceLine" id="cb239-6" data-line-number="6">                <span class="dt">conf =</span> <span class="fl">0.95</span>,</a>
+<a class="sourceLine" id="cb239-7" data-line-number="7">                <span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb239-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb239-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb239-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb239-11" data-line-number="11"><span class="co"># mean length of clause (MLC): number of words divided by number of clauses;</span></a>
+<a class="sourceLine" id="cb239-12" data-line-number="12"><span class="kw">t.test</span>(metrics_SCA<span class="op">$</span>MLC[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> metrics_SCA<span class="op">$</span>MLC[<span class="dv">1</span>],  <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -511,7 +553,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  8.558075</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">t.test</span>(metrics_SCA<span class="op">$</span>MLS[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> metrics_SCA<span class="op">$</span>MLS[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="kw">t.test</span>(metrics_SCA<span class="op">$</span>MLS[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> metrics_SCA<span class="op">$</span>MLS[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -523,31 +565,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  13.87829</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-2" data-line-number="2"><span class="co"># t.test(metrics_SCA$MLT[2:17], mu = metrics_SCA$MLT[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-3" data-line-number="3"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-4" data-line-number="4"><span class="co"># t.test(metrics_SCA$&quot;C/S&quot;[2:17], mu = metrics_SCA$&quot;C/S&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-5" data-line-number="5"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-6" data-line-number="6"><span class="co"># t.test(metrics_SCA$&quot;C/T&quot;[2:17], mu = metrics_SCA$&quot;C/T&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-7" data-line-number="7"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-8" data-line-number="8"><span class="co"># t.test(metrics_SCA$&quot;CT/T&quot;[2:17], mu = metrics_SCA$&quot;CT/T&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-9" data-line-number="9"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-10" data-line-number="10"><span class="co"># t.test(metrics_SCA$&quot;DC/C&quot;[2:17], mu = metrics_SCA$&quot;DC/C&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-11" data-line-number="11"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-12" data-line-number="12"><span class="co"># t.test(metrics_SCA$&quot;DC/T&quot;[2:17], mu = metrics_SCA$&quot;DC/T&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-13" data-line-number="13"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-14" data-line-number="14"><span class="co"># t.test(metrics_SCA$&quot;CP/C&quot;[2:17], mu = metrics_SCA$&quot;CP/C&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-15" data-line-number="15"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-16" data-line-number="16"><span class="co"># t.test(metrics_SCA$&quot;CP/T&quot;[2:17], mu = metrics_SCA$&quot;CP/T&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-17" data-line-number="17"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-18" data-line-number="18"><span class="co"># t.test(metrics_SCA$&quot;T/S&quot;[2:17], mu = metrics_SCA$&quot;T/S&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-19" data-line-number="19"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-20" data-line-number="20"><span class="co"># t.test(metrics_SCA$&quot;CN/C&quot;[2:17], mu = metrics_SCA$&quot;CN/C&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-21" data-line-number="21"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-22" data-line-number="22"><span class="co"># t.test(metrics_SCA$&quot;CN/T&quot;[2:17], mu = metrics_SCA$&quot;CN/T&quot;[1], alternative = &quot;less&quot;)</span></a>
-<a class="sourceLine" id="cb249-23" data-line-number="23"><span class="co"># </span></a>
-<a class="sourceLine" id="cb249-24" data-line-number="24"><span class="co"># t.test(metrics_SCA$&quot;VP/T&quot;[2:17], mu = metrics_SCA$&quot;VP/T&quot;[1], alternative = &quot;less&quot;)</span></a></code></pre></div>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>ARI[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>ARI[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-2" data-line-number="2"><span class="co"># t.test(metrics_SCA$MLT[2:17], mu = metrics_SCA$MLT[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-3" data-line-number="3"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-4" data-line-number="4"><span class="co"># t.test(metrics_SCA$&quot;C/S&quot;[2:17], mu = metrics_SCA$&quot;C/S&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-5" data-line-number="5"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-6" data-line-number="6"><span class="co"># t.test(metrics_SCA$&quot;C/T&quot;[2:17], mu = metrics_SCA$&quot;C/T&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-7" data-line-number="7"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-8" data-line-number="8"><span class="co"># t.test(metrics_SCA$&quot;CT/T&quot;[2:17], mu = metrics_SCA$&quot;CT/T&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-9" data-line-number="9"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-10" data-line-number="10"><span class="co"># t.test(metrics_SCA$&quot;DC/C&quot;[2:17], mu = metrics_SCA$&quot;DC/C&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-11" data-line-number="11"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-12" data-line-number="12"><span class="co"># t.test(metrics_SCA$&quot;DC/T&quot;[2:17], mu = metrics_SCA$&quot;DC/T&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-13" data-line-number="13"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-14" data-line-number="14"><span class="co"># t.test(metrics_SCA$&quot;CP/C&quot;[2:17], mu = metrics_SCA$&quot;CP/C&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-15" data-line-number="15"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-16" data-line-number="16"><span class="co"># t.test(metrics_SCA$&quot;CP/T&quot;[2:17], mu = metrics_SCA$&quot;CP/T&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-17" data-line-number="17"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-18" data-line-number="18"><span class="co"># t.test(metrics_SCA$&quot;T/S&quot;[2:17], mu = metrics_SCA$&quot;T/S&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-19" data-line-number="19"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-20" data-line-number="20"><span class="co"># t.test(metrics_SCA$&quot;CN/C&quot;[2:17], mu = metrics_SCA$&quot;CN/C&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-21" data-line-number="21"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-22" data-line-number="22"><span class="co"># t.test(metrics_SCA$&quot;CN/T&quot;[2:17], mu = metrics_SCA$&quot;CN/T&quot;[1], alternative = &quot;less&quot;)</span></a>
+<a class="sourceLine" id="cb243-23" data-line-number="23"><span class="co"># </span></a>
+<a class="sourceLine" id="cb243-24" data-line-number="24"><span class="co"># t.test(metrics_SCA$&quot;VP/T&quot;[2:17], mu = metrics_SCA$&quot;VP/T&quot;[1], alternative = &quot;less&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>ARI[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>ARI[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -559,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##     5.525</code></pre>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Flesch[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Flesch[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Flesch[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Flesch[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -571,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  78.83187</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>FOG[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>FOG[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>FOG[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>FOG[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -583,7 +625,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  8.335625</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Coleman.Liau.short[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Coleman.Liau.short[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Coleman.Liau.short[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Coleman.Liau.short[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -595,7 +637,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  7.158125</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Dale.Chall[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Dale.Chall[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Dale.Chall[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Dale.Chall[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -607,7 +649,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  39.08812</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Spache[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Spache[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="kw">t.test</span>(readability.df<span class="op">$</span>Spache[<span class="dv">2</span><span class="op">:</span><span class="dv">17</span>], <span class="dt">mu =</span> readability.df<span class="op">$</span>Spache[<span class="dv">1</span>], <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 

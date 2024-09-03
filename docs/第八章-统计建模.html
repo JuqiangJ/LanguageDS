@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,12 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -302,6 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
 <li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
+<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
+<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
+<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
+<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
+<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
+<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
+<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+</ul></li>
+<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
+<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
+<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
+<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
+<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
+<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -340,25 +383,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="images/8.1.png" alt="图8.1 统计建模" />
 <p class="caption">图8.1 统计建模</p>
 </div>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
 <div id="因变量和自变量均为分类变量" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.1</span> 因变量和自变量均为分类变量<a href="第八章-统计建模.html#因变量和自变量均为分类变量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  如果统计建模的因变量和自变量均为分类变量，我们可以使用卡方检验（Chi-Square Test）。卡方检验是一种常用的非参数统计检验方法，通过比较观察频数和期望频数来判断变量之间是否存在显著关系。
 卡方独立性检验用于检验两个分类变量之间是否存在关联，通常适用于二维列联表（contingency table）。它回答的问题是：一个变量的分类是否依赖于另一个变量的分类。</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">library</span>(languageR)</a>
-<a class="sourceLine" id="cb143-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb143-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;lexdec&quot;</span>)</a>
-<a class="sourceLine" id="cb143-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb143-5" data-line-number="5">tbl=<span class="st"> </span><span class="kw">table</span>(lexdec<span class="op">$</span>Correct, lexdec<span class="op">$</span>PrevType)</a>
-<a class="sourceLine" id="cb143-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb143-7" data-line-number="7">tbl</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">library</span>(languageR)</a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;lexdec&quot;</span>)</a>
+<a class="sourceLine" id="cb140-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb140-5" data-line-number="5">tbl=<span class="st"> </span><span class="kw">table</span>(lexdec<span class="op">$</span>Correct, lexdec<span class="op">$</span>PrevType)</a>
+<a class="sourceLine" id="cb140-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb140-7" data-line-number="7">tbl</a></code></pre></div>
 <pre><code>##            
 ##             nonword word
 ##   correct       825  769
 ##   incorrect      30   35</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="co"># 卡方检验</span></a>
-<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="kw">chisq.test</span>(tbl) </a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="co"># 卡方检验</span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="kw">chisq.test</span>(tbl) </a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
@@ -368,16 +411,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="因变量为连续变量而自变量为分类变量" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.2</span> 因变量为连续变量而自变量为分类变量<a href="第八章-统计建模.html#因变量为连续变量而自变量为分类变量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  当因变量为分类变量而自变量为连续变量时，我们可以使用逻辑回归（Logistic Regression）。逻辑回归是一种广泛使用的统计模型，特别适用于处理分类问题，尤其是二分类问题。它通过建立自变量和因变量之间的关系来预测因变量的类别概率。逻辑回归通过一个逻辑函数（Logistic Function），也称为Sigmoid函数，将自变量的线性组合转换为一个概率值。它输出的结果是一个在0到1之间的概率值，用来表示某个事件发生的可能性。</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="co">#fit logistic regression model</span></a>
-<a class="sourceLine" id="cb147-2" data-line-number="2">model &lt;-<span class="st"> </span><span class="kw">glm</span>(Correct <span class="op">~</span><span class="st"> </span>Frequency<span class="op">+</span>FamilySize, </a>
-<a class="sourceLine" id="cb147-3" data-line-number="3">             <span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>, </a>
-<a class="sourceLine" id="cb147-4" data-line-number="4">             <span class="dt">data=</span>lexdec)</a>
-<a class="sourceLine" id="cb147-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb147-6" data-line-number="6"><span class="co">#disable scientific notation for model summary</span></a>
-<a class="sourceLine" id="cb147-7" data-line-number="7"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</a>
-<a class="sourceLine" id="cb147-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb147-9" data-line-number="9"><span class="co">#view model summary</span></a>
-<a class="sourceLine" id="cb147-10" data-line-number="10"><span class="kw">summary</span>(model)</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="co">#fit logistic regression model</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">model &lt;-<span class="st"> </span><span class="kw">glm</span>(Correct <span class="op">~</span><span class="st"> </span>Frequency<span class="op">+</span>FamilySize, </a>
+<a class="sourceLine" id="cb144-3" data-line-number="3">             <span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>, </a>
+<a class="sourceLine" id="cb144-4" data-line-number="4">             <span class="dt">data=</span>lexdec)</a>
+<a class="sourceLine" id="cb144-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb144-6" data-line-number="6"><span class="co">#disable scientific notation for model summary</span></a>
+<a class="sourceLine" id="cb144-7" data-line-number="7"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</a>
+<a class="sourceLine" id="cb144-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb144-9" data-line-number="9"><span class="co">#view model summary</span></a>
+<a class="sourceLine" id="cb144-10" data-line-number="10"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = Correct ~ Frequency + FamilySize, family = &quot;binomial&quot;, 
@@ -402,7 +445,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## AIC: 524.48
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">caret<span class="op">::</span><span class="kw">varImp</span>(model)</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">caret<span class="op">::</span><span class="kw">varImp</span>(model)</a></code></pre></div>
 <pre><code>##              Overall
 ## Frequency  4.4533767
 ## FamilySize 0.8123094</code></pre>
@@ -416,18 +459,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 比如，我们想比较男性和女性的平均工资，抽取了一组男性和女性的工资数据，检验两者的平均工资是否有显著差异。</p></li>
 <li><p>配对样本t检验（Paired Samples T-test）用于比较两个相关样本的均值是否显著不同。通常用于前后测量或配对设计。应用前提是配对差值（即每对观测值的差值）来自正态分布。样本是成对的，每对数据之间有某种相关性。比如，我们想比较一组学生在参加培训前后的考试成绩，检查培训是否对考试成绩有显著影响。</p></li>
 </ul>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="co"># 检测数据是否符合正态分布，P&lt;0.05 不符合正态分布</span></a>
-<a class="sourceLine" id="cb151-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb151-3" data-line-number="3"><span class="kw">shapiro.test</span>(lexdec<span class="op">$</span>RT)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="co"># 检测数据是否符合正态分布，P&lt;0.05 不符合正态分布</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb148-3" data-line-number="3"><span class="kw">shapiro.test</span>(lexdec<span class="op">$</span>RT)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  lexdec$RT
 ## W = 0.94738, p-value &lt; 0.00000000000000022</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">density</span>(lexdec<span class="op">$</span>RT))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="co"># 参与者母语是否是英语</span></a>
-<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="kw">t.test</span>(RT <span class="op">~</span><span class="st"> </span>NativeLanguage, <span class="dt">data=</span>lexdec)</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">density</span>(lexdec<span class="op">$</span>RT))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-321-1.png" width="672" /></p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="co"># 参与者母语是否是英语</span></a>
+<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="kw">t.test</span>(RT <span class="op">~</span><span class="st"> </span>NativeLanguage, <span class="dt">data=</span>lexdec)</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -439,8 +482,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean in group English   mean in group Other 
 ##              6.318309              6.474130</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="co"># 汇报Mann–Whitney U test 更好</span></a>
-<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="kw">wilcox.test</span>(RT <span class="op">~</span><span class="st"> </span>NativeLanguage, <span class="dt">data=</span>lexdec)</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="co"># 汇报Mann–Whitney U test 更好</span></a>
+<a class="sourceLine" id="cb153-2" data-line-number="2"><span class="kw">wilcox.test</span>(RT <span class="op">~</span><span class="st"> </span>NativeLanguage, <span class="dt">data=</span>lexdec)</a></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -457,16 +500,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>ANOVA 的基本原理是通过将总变异分解为组间变异和组内变异，来判断不同组的均值是否存在显著差异。</p>
 <p>  在发现整体组间均值存在显著差异后，进一步确定哪些具体组之间存在差异需要使用事后比较（Post-Hoc Comparisons）。因为ANOVA只告诉我们至少有一组均值不同，但不能明确指出哪些组之间存在差异。事后比较中，我们要控制多重比较带来的第一类错误（即假阳性）。常见的方法有Tukey’s HSD（Honestly Significant Difference）检验、Bonferroni检验等。</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1">lex.aov =<span class="st"> </span><span class="kw">aov</span> (RT <span class="op">~</span><span class="st"> </span>PrevType <span class="op">+</span><span class="st"> </span>Class, <span class="dt">data =</span> lexdec)</a>
-<a class="sourceLine" id="cb158-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb158-3" data-line-number="3"><span class="kw">summary</span>(lex.aov)</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">lex.aov =<span class="st"> </span><span class="kw">aov</span> (RT <span class="op">~</span><span class="st"> </span>PrevType <span class="op">+</span><span class="st"> </span>Class, <span class="dt">data =</span> lexdec)</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="kw">summary</span>(lex.aov)</a></code></pre></div>
 <pre><code>##               Df Sum Sq Mean Sq F value       Pr(&gt;F)    
 ## PrevType       1   1.71  1.7144  29.891 0.0000000527 ***
 ## Class          1   0.01  0.0119   0.208        0.648    
 ## Residuals   1656  94.98  0.0574                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">TukeyHSD</span>(lex.aov)</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">TukeyHSD</span>(lex.aov)</a></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -488,9 +531,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Pearson相关系数（Pearson Correlation Coefficient）是最常用的相关性测量方法，用于衡量两个变量之间的线性关系。假设前提：数据是连续的，符合正态分布，数据之间存在线性关系。数据是独立的。简单易计算，结果易于解释。在数据符合正态分布且有线性关系时，效果最好。对异常值敏感。不能有效处理非线性关系。</p></li>
 <li><p>Spearman相关系数（Spearman Rank Correlation Coefficient）是基于数据排序的非参数检验方法，用于衡量两个变量之间的单调关系。假设前提有数据是连续的或离散的。数据不需要符合正态分布。数据之间存在单调关系。适用于衡量两个变量之间的单调关系，例如学生成绩排名和运动成绩排名的关系。对异常值不敏感。可以处理非线性关系。对于完全线性关系，效率不如Pearson相关系数。</p></li>
 </ul>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb162-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
-<a class="sourceLine" id="cb162-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
+<a class="sourceLine" id="cb159-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
+<a class="sourceLine" id="cb159-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -502,9 +545,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##        cor 
 ## -0.2263358</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb164-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
-<a class="sourceLine" id="cb164-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
+<a class="sourceLine" id="cb161-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
+<a class="sourceLine" id="cb161-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Kendall&#39;s rank correlation tau
 ## 
@@ -514,11 +557,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##        tau 
 ## -0.1581668</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb166-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
-<a class="sourceLine" id="cb166-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning in cor.test.default(x = mf[[1L]], y = mf[[2L]], ...): Cannot compute
-## exact p-value with ties</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
+<a class="sourceLine" id="cb163-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
+<a class="sourceLine" id="cb163-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning in cor.test.default(x = mf[[1L]], y = mf[[2L]], ...): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
@@ -529,10 +571,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##        rho 
 ## -0.2322793</code></pre>
 <p>  线性回归指定一个变量为自变量，另一个为因变量。所得模型用线性关系来描述这些变量之间的关系。线性回归是参数检验，假设残差的正态性、同方差性和独立性，以及两个变量之间的线性关系。如果模型中有多个区间/比例类型的自变量，那么线性回归将扩展为多元回归。如果自变量是分类变量，那么线性回归将变成单因素方差分析。可以使用 lm 函数来执行线性回归，这与我们用于方差分析的函数相同。</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">lm.model =<span class="st"> </span><span class="kw">lm</span>(RT <span class="op">~</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb169-2" data-line-number="2">               <span class="dt">data =</span> lexdec)</a>
-<a class="sourceLine" id="cb169-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb169-4" data-line-number="4"><span class="kw">summary</span>(lm.model)</a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">lm.model =<span class="st"> </span><span class="kw">lm</span>(RT <span class="op">~</span><span class="st"> </span>Frequency,</a>
+<a class="sourceLine" id="cb166-2" data-line-number="2">               <span class="dt">data =</span> lexdec)</a>
+<a class="sourceLine" id="cb166-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb166-4" data-line-number="4"><span class="kw">summary</span>(lm.model)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = RT ~ Frequency, data = lexdec)

@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-01" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,12 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -302,6 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
 <li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
+<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
+<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
+<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
+<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
+<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
+<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
+<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+</ul></li>
+<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
+<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
+<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
+<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
+<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
+<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -334,50 +377,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>  在R语言中常用的文本处理的程序包有tidytext和quenteda。他们各有不同的功能，同时彼此之间可以相互转化。</p>
 <div id="数据导入-1" class="section level2 hasAnchor">
 <h2><span class="header-section-number">6.1</span> 数据导入<a href="第六章-文本数据分析.html#数据导入-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
-<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="kw">library</span>(quanteda)</a>
-<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="co">#install.packages(&quot;readtext&quot;)</span></a>
-<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="kw">require</span>(readtext)</a>
-<a class="sourceLine" id="cb76-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb76-7" data-line-number="7">detectives.raw &lt;-<span class="st"> </span><span class="kw">readtext</span>(<span class="st">&quot;data/ch6/detectives/*txt&quot;</span>)</a>
-<a class="sourceLine" id="cb76-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb76-9" data-line-number="9">corps.detectives =<span class="st"> </span><span class="kw">corpus</span>(detectives.raw)</a>
-<a class="sourceLine" id="cb76-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb76-11" data-line-number="11"><span class="kw">summary</span>(<span class="kw">corpus</span>(corps.detectives), <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="kw">library</span>(quanteda)</a>
+<a class="sourceLine" id="cb73-4" data-line-number="4"><span class="co">#install.packages(&quot;readtext&quot;)</span></a>
+<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="kw">require</span>(readtext)</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7">detectives.raw &lt;-<span class="st"> </span><span class="kw">readtext</span>(<span class="st">&quot;data/ch6/detectives/*txt&quot;</span>)</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">corps.detectives =<span class="st"> </span><span class="kw">corpus</span>(detectives.raw)</a>
+<a class="sourceLine" id="cb73-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb73-11" data-line-number="11"><span class="kw">summary</span>(<span class="kw">corpus</span>(corps.detectives), <span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## Corpus consisting of 2 documents, showing 2 documents:
 ## 
 ##                    Text Types Tokens Sentences
 ##  A_Study_in_Scarlet.txt  6313  51368      2736
 ##           Judge_dee.txt  6010  79276      3686</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">docvars</span>(corps.detectives, <span class="st">&quot;book&quot;</span>) &lt;-<span class="st"> </span><span class="kw">names</span>(corps.detectives)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">docvars</span>(corps.detectives, <span class="st">&quot;book&quot;</span>) &lt;-<span class="st"> </span><span class="kw">names</span>(corps.detectives)</a></code></pre></div>
 </div>
 <div id="数据整理-1" class="section level2 hasAnchor">
 <h2><span class="header-section-number">6.2</span> 数据整理<a href="第六章-文本数据分析.html#数据整理-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># make a dfm</span></a>
-<a class="sourceLine" id="cb79-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb79-3" data-line-number="3">dfm_detectives &lt;-<span class="st"> </span>corps.detectives <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-4" data-line-number="4"><span class="st">   </span><span class="kw">tokens</span>(<span class="dt">remove_punct =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-5" data-line-number="5"><span class="st">   </span><span class="kw">tokens_remove</span>(<span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-6" data-line-number="6"><span class="st">   </span><span class="kw">dfm</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-7" data-line-number="7"><span class="st">   </span><span class="kw">dfm_group</span>(<span class="dt">groups =</span> book)</a>
-<a class="sourceLine" id="cb79-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb79-9" data-line-number="9"><span class="kw">print</span>(dfm_detectives)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># make a dfm</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb76-3" data-line-number="3">dfm_detectives &lt;-<span class="st"> </span>corps.detectives <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="st">   </span><span class="kw">tokens</span>(<span class="dt">remove_punct =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="st">   </span><span class="kw">tokens_remove</span>(<span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-6" data-line-number="6"><span class="st">   </span><span class="kw">dfm</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-7" data-line-number="7"><span class="st">   </span><span class="kw">dfm_group</span>(<span class="dt">groups =</span> book)</a>
+<a class="sourceLine" id="cb76-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb76-9" data-line-number="9"><span class="kw">print</span>(dfm_detectives)</a></code></pre></div>
 <pre><code>## Document-feature matrix of: 2 documents, 8,565 features (35.77% sparse) and 1 docvar.
 ##                         features
-## docs                     study scarlet part _being reprint reminiscences of_
-##   A_Study_in_Scarlet.txt    11       4   14      1       1             2   1
-##   Judge_dee.txt              3       3   26      0       0             0   0
-##                         features
-## docs                     john h watson
-##   A_Study_in_Scarlet.txt   36 2      7
-##   Judge_dee.txt             0 0      0
+## docs                     study scarlet part _being reprint reminiscences of_ john h watson
+##   A_Study_in_Scarlet.txt    11       4   14      1       1             2   1   36 2      7
+##   Judge_dee.txt              3       3   26      0       0             0   0    0 0      0
 ## [ reached max_nfeat ... 8,555 more features ]</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">topfeatures</span>(dfm_detectives, <span class="dv">20</span>)</a></code></pre></div>
-<pre><code>## judge  said   dee   one   now   man   old   two  upon shall   mrs  time 
-##   701   553   542   326   315   300   225   222   217   207   204   197 
-## young  room  case  back    ma  come   see joong 
-##   179   177   167   166   160   158   156   154</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">topfeatures</span>(dfm_detectives, <span class="dv">20</span>)</a></code></pre></div>
+<pre><code>## judge  said   dee   one   now   man   old   two  upon shall   mrs  time young  room  case  back    ma  come   see 
+##   701   553   542   326   315   300   225   222   217   207   204   197   179   177   167   166   160   158   156 
+## joong 
+##   154</code></pre>
 </div>
 <div id="词汇特征" class="section level2 hasAnchor">
 <h2><span class="header-section-number">6.3</span> 词汇特征<a href="第六章-文本数据分析.html#词汇特征" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -385,19 +424,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.3.1</span> 词频提取与词表构建<a href="第六章-文本数据分析.html#词频提取与词表构建" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>  词频是语料库语言学最基本的概念。频率可以以原始数据的形式给出，例如在某个文本中，某个词出现了58次；或者可以以百分比或比例的形式给出，某个词在每百万词中出现602.91次。这使得可以在不同大小的语料库之间进行比较。</p>
 <p>  通过对语料库中每个词进行词频统计编制的词表可以用来生成关键词列表。</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;quanteda.textstats&quot;</span>)</a>
-<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;quanteda.textplots&quot;</span>)</a>
-<a class="sourceLine" id="cb83-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb83-4" data-line-number="4">dfm_detectives.freq &lt;-<span class="st"> </span><span class="kw">textstat_frequency</span>(dfm_detectives, </a>
-<a class="sourceLine" id="cb83-5" data-line-number="5">                                          <span class="dt">n =</span> <span class="dv">20</span>, </a>
-<a class="sourceLine" id="cb83-6" data-line-number="6">                                          <span class="dt">groups =</span> book)</a>
-<a class="sourceLine" id="cb83-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb83-8" data-line-number="8"><span class="kw">ggplot</span>(dfm_detectives.freq, </a>
-<a class="sourceLine" id="cb83-9" data-line-number="9">       <span class="kw">aes</span>(<span class="dt">x =</span> frequency, <span class="dt">y =</span> <span class="kw">reorder</span>(feature, frequency))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb83-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb83-11" data-line-number="11"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Frequency&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Feature&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb83-12" data-line-number="12"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>group, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) </a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;quanteda.textstats&quot;</span>)</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;quanteda.textplots&quot;</span>)</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">dfm_detectives.freq &lt;-<span class="st"> </span><span class="kw">textstat_frequency</span>(dfm_detectives, </a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">                                          <span class="dt">n =</span> <span class="dv">20</span>, </a>
+<a class="sourceLine" id="cb80-6" data-line-number="6">                                          <span class="dt">groups =</span> book)</a>
+<a class="sourceLine" id="cb80-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb80-8" data-line-number="8"><span class="kw">ggplot</span>(dfm_detectives.freq, </a>
+<a class="sourceLine" id="cb80-9" data-line-number="9">       <span class="kw">aes</span>(<span class="dt">x =</span> frequency, <span class="dt">y =</span> <span class="kw">reorder</span>(feature, frequency))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-11" data-line-number="11"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Frequency&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Feature&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb80-12" data-line-number="12"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>group, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-305-1.png" width="672" /></p>
 </div>
 <div id="关键词提取" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.3.2</span> 关键词提取<a href="第六章-文本数据分析.html#关键词提取" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -405,58 +444,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>  <strong>关键词（Keyword）</strong>是指在一个文本或语料库中，与参考语料库相比，出现频率显著高于或低于预期的词语。通常，使用统计测试（如对数似然检验或卡方检验）来比较两个词表，以得出关键词。
   <strong>参考语料库（Reference corpus）</strong>是一个平衡且代表性的语料库，通常用于关键词分析中提供参考词表。在关键词分析中，通过与参考语料库的比较，可以发现哪些词在特定语料库中是关键的。</p>
 <p>  在关键词分析中，一个词可能仅仅因为在某些文本中频率极高，而被误认为是关键词。为了确认一个词是否真的具有代表性，可以使用分布图查看这个词在整个语料库中的分布，或者计算在多个文本中均为关键词的词汇列表，以避免因不均匀分布导致的偏差。</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># Calculate keyness and determine Trump as target group</span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2">tstat_keyness &lt;-<span class="st"> </span><span class="kw">textstat_keyness</span>(dfm_detectives , </a>
-<a class="sourceLine" id="cb84-3" data-line-number="3">                                  <span class="dt">target =</span> <span class="st">&quot;Judge_dee.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb84-4" data-line-number="4"><span class="co"># Plot estimated word keyness</span></a>
-<a class="sourceLine" id="cb84-5" data-line-number="5"><span class="kw">textplot_keyness</span>(tstat_keyness) </a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co"># Calculate keyness and determine Trump as target group</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2">tstat_keyness &lt;-<span class="st"> </span><span class="kw">textstat_keyness</span>(dfm_detectives , </a>
+<a class="sourceLine" id="cb81-3" data-line-number="3">                                  <span class="dt">target =</span> <span class="st">&quot;Judge_dee.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb81-4" data-line-number="4"><span class="co"># Plot estimated word keyness</span></a>
+<a class="sourceLine" id="cb81-5" data-line-number="5"><span class="kw">textplot_keyness</span>(tstat_keyness) </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
 </div>
 <div id="上下文中的关键词索引kwic" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.3.3</span> 上下文中的关键词索引（KWIC）<a href="第六章-文本数据分析.html#上下文中的关键词索引kwic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>  索引（Concordance）是指在语料库中按照字母顺序排列的搜索模式索引，显示该搜索模式在每个上下文中的出现。上下文中的关键词索引（Key-Word-In-Context Concordance，简称KWIC）是一种显示关键词在语料库中实际使用情况的工具或方法。具体来说，KWIC 索引会将目标关键词放在中心位置，并显示该词在文本中的所有出现位置，同时显示它前后的一定数量的单词或词组。这种排列方式可以帮助研究者观察关键词在不同上下文中的用法和意义。</p>
 <p>  例如，如果你想研究英语中“education”一词的用法，KWIC 索引会将所有包含“education”的句子或句段列出，展示该词左右的上下文。这样，研究者就可以一目了然地看到“education”在不同语境下的使用方式，并分析其频率、搭配、语法特征以及语义变化。</p>
 <p>  KWIC 索引在语料库语言学中被广泛应用，因为它能够帮助研究者深入理解词语在实际语言使用中的行为，而不仅仅是关注词频等表面数据。</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">toks_corpus_detectives &lt;-<span class="st"> </span>corps.detectives<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="st">   </span><span class="kw">tokens</span>(<span class="dt">remove_punct =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="st">   </span><span class="kw">tokens_remove</span>(<span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>)) </a>
-<a class="sourceLine" id="cb85-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb85-5" data-line-number="5"><span class="kw">kwic</span>(toks_corpus_detectives , <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-6" data-line-number="6"><span class="st">  </span><span class="kw">head</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-7" data-line-number="7"><span class="st">  </span><span class="kw">as.data.frame</span>()</a></code></pre></div>
-<pre><code>##                  docname from   to                                     pre
-## 1 A_Study_in_Scarlet.txt 3864 3864 second individual 8 presumably murderer
-## 2 A_Study_in_Scarlet.txt 4560 4560   case continued turning two detectives
-## 3 A_Study_in_Scarlet.txt 5492 5492    across table constable get arresting
-## 4 A_Study_in_Scarlet.txt 5747 5747        little art jargon scarlet thread
-## 5 A_Study_in_Scarlet.txt 6186 6186      reason eyes finding ring connected
-## 6 A_Study_in_Scarlet.txt 8837 8837            must stayed room little time
-##   keyword                                            post pattern
-## 1  murder committed reminds circumstances attendant death  murder
-## 2  murder                      done murderer man six feet  murder
-## 3  murder                         said one hounds wolf Mr  murder
-## 4  murder              running colourless skein life duty  murder
-## 5  murder                      come come shall see within  murder
-## 6  murder          found blood-stained water basin washed  murder</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># 对于词组</span></a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="kw">phrase</span>(<span class="st">&quot;commit crime&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb87-3" data-line-number="3"><span class="st">    </span><span class="kw">head</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb87-4" data-line-number="4"><span class="st">   </span><span class="kw">as.data.frame</span>()</a></code></pre></div>
-<pre><code>##         docname from   to                                 pre      keyword
-## 1 Judge_dee.txt 2617 2618 bamboo still faced original problem commit crime
-##                                post      pattern
-## 1 thus ruminated Sergeant Hoong set commit crime</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="kw">kwic</span>(toks_corpus_detectives , <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="st">    </span><span class="kw">textplot_xray</span>()</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">textplot_xray</span>(</a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>),</a>
-<a class="sourceLine" id="cb90-3" data-line-number="3">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;judge&quot;</span>),</a>
-<a class="sourceLine" id="cb90-4" data-line-number="4">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;police&quot;</span>),</a>
-<a class="sourceLine" id="cb90-5" data-line-number="5">    <span class="dt">scale =</span> <span class="st">&quot;absolute&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">toks_corpus_detectives &lt;-<span class="st"> </span>corps.detectives<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-2" data-line-number="2"><span class="st">   </span><span class="kw">tokens</span>(<span class="dt">remove_punct =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="st">   </span><span class="kw">tokens_remove</span>(<span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>)) </a>
+<a class="sourceLine" id="cb82-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb82-5" data-line-number="5"><span class="kw">kwic</span>(toks_corpus_detectives , <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-6" data-line-number="6"><span class="st">  </span><span class="kw">head</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-7" data-line-number="7"><span class="st">  </span><span class="kw">as.data.frame</span>()</a></code></pre></div>
+<pre><code>##                  docname from   to                                     pre keyword
+## 1 A_Study_in_Scarlet.txt 3864 3864 second individual 8 presumably murderer  murder
+## 2 A_Study_in_Scarlet.txt 4560 4560   case continued turning two detectives  murder
+## 3 A_Study_in_Scarlet.txt 5492 5492    across table constable get arresting  murder
+## 4 A_Study_in_Scarlet.txt 5747 5747        little art jargon scarlet thread  murder
+## 5 A_Study_in_Scarlet.txt 6186 6186      reason eyes finding ring connected  murder
+## 6 A_Study_in_Scarlet.txt 8837 8837            must stayed room little time  murder
+##                                              post pattern
+## 1 committed reminds circumstances attendant death  murder
+## 2                      done murderer man six feet  murder
+## 3                         said one hounds wolf Mr  murder
+## 4              running colourless skein life duty  murder
+## 5                      come come shall see within  murder
+## 6          found blood-stained water basin washed  murder</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># 对于词组</span></a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="kw">phrase</span>(<span class="st">&quot;commit crime&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="st">    </span><span class="kw">head</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-4" data-line-number="4"><span class="st">   </span><span class="kw">as.data.frame</span>()</a></code></pre></div>
+<pre><code>##         docname from   to                                 pre      keyword                              post
+## 1 Judge_dee.txt 2617 2618 bamboo still faced original problem commit crime thus ruminated Sergeant Hoong set
+##        pattern
+## 1 commit crime</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">kwic</span>(toks_corpus_detectives , <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">    </span><span class="kw">textplot_xray</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-307-1.png" width="672" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">textplot_xray</span>(</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;murder&quot;</span>),</a>
+<a class="sourceLine" id="cb87-3" data-line-number="3">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;judge&quot;</span>),</a>
+<a class="sourceLine" id="cb87-4" data-line-number="4">    <span class="kw">kwic</span>(toks_corpus_detectives, <span class="dt">pattern =</span> <span class="st">&quot;police&quot;</span>),</a>
+<a class="sourceLine" id="cb87-5" data-line-number="5">    <span class="dt">scale =</span> <span class="st">&quot;absolute&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Use of `x$ntokens` is discouraged.
 ## ℹ Use `ntokens` instead.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-307-2.png" width="672" /></p>
 </div>
 <div id="搭配分析" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.3.4</span> 搭配分析<a href="第六章-文本数据分析.html#搭配分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -474,50 +513,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 通过分析一个词的搭配，可以推测其语义。例如，“dark”通常与“night”搭配，而“dark”与“mood”搭配时，可以暗示“mood”是消极的。</p></li>
 </ol>
 <p>  搭配分析是通过统计方法研究词语之间的共现关系，揭示语言使用中的规律性和隐含语义。它在语言研究、教育和自然语言处理等领域具有广泛的应用。</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">toks_corpus_detectives<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="st">  </span><span class="co">#提取包含大写字母的专有名词</span></a>
-<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="st">    </span><span class="kw">tokens_select</span>(<span class="dt">pattern =</span> <span class="st">&quot;^[A-Z]&quot;</span>, </a>
-<a class="sourceLine" id="cb92-4" data-line-number="4">                  <span class="dt">valuetype =</span> <span class="st">&quot;regex&quot;</span>, </a>
-<a class="sourceLine" id="cb92-5" data-line-number="5">                  <span class="dt">case_insensitive =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb92-6" data-line-number="6">                  <span class="dt">padding =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb92-7" data-line-number="7"><span class="st">    </span><span class="kw">textstat_collocations</span>(<span class="dt">min_count =</span> <span class="dv">5</span>, </a>
-<a class="sourceLine" id="cb92-8" data-line-number="8">                          <span class="dt">size =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb92-9" data-line-number="9">                          <span class="dt">tolower =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<pre><code>##                 collocation count count_nested length      lambda
-## 1               Mrs Bee Mrs     9            0      3   2.2919763
-## 2      Mr Joseph Stangerson     5            0      3   0.1381491
-## 3          Six Mile Village    31            0      3  -1.9053123
-## 4        Mr Sherlock Holmes     7            0      3  -3.2857683
-## 5                Old Mr Hua     6            0      3  -2.9543269
-## 6           Joong Chiao Tai    26            0      3  -6.0239003
-## 7            Salt Lake City     8            0      3  -7.4583249
-## 8  Halliday&#39;s Private Hotel     5            0      3  -9.1930925
-## 9            Ma Joong Chiao    26            0      3  -6.6460942
-## 10             Chiao Tai Ma     5            0      3  -8.0017108
-## 11             Tai Ma Joong     5            0      3  -7.7720469
-## 12     Dragon Boat Festival     5            0      3 -10.8024934
-## 13            Warden Ho Kai    29            0      3  -8.5385706
-## 14             Bee Mrs Djou     7            0      3  -4.8207475
-## 15     Excellency Judge Dee     5            0      3  -6.6373310
-##              z
-## 1   1.36609804
-## 2   0.06382149
-## 3  -0.64514763
-## 4  -1.32091898
-## 5  -1.39733298
-## 6  -2.11855345
-## 7  -2.49079675
-## 8  -2.63393615
-## 9  -2.66082620
-## 10 -2.79263343
-## 11 -3.08084494
-## 12 -3.32080583
-## 13 -3.38490330
-## 14 -3.77602086
-## 15 -4.10986859</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">collocation<span class="fl">.3</span>wd &lt;-<span class="st"> </span><span class="kw">textstat_collocations</span>(corps.detectives, </a>
-<a class="sourceLine" id="cb94-2" data-line-number="2">                                         <span class="dt">size =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb94-3" data-line-number="3">                                         <span class="dt">tolower =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">toks_corpus_detectives<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="st">  </span><span class="co">#提取包含大写字母的专有名词</span></a>
+<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="st">    </span><span class="kw">tokens_select</span>(<span class="dt">pattern =</span> <span class="st">&quot;^[A-Z]&quot;</span>, </a>
+<a class="sourceLine" id="cb89-4" data-line-number="4">                  <span class="dt">valuetype =</span> <span class="st">&quot;regex&quot;</span>, </a>
+<a class="sourceLine" id="cb89-5" data-line-number="5">                  <span class="dt">case_insensitive =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb89-6" data-line-number="6">                  <span class="dt">padding =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-7" data-line-number="7"><span class="st">    </span><span class="kw">textstat_collocations</span>(<span class="dt">min_count =</span> <span class="dv">5</span>, </a>
+<a class="sourceLine" id="cb89-8" data-line-number="8">                          <span class="dt">size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb89-9" data-line-number="9">                          <span class="dt">tolower =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>##                 collocation count count_nested length      lambda           z
+## 1               Mrs Bee Mrs     9            0      3   2.2919763  1.36609804
+## 2      Mr Joseph Stangerson     5            0      3   0.1381491  0.06382149
+## 3          Six Mile Village    31            0      3  -1.9053123 -0.64514763
+## 4        Mr Sherlock Holmes     7            0      3  -3.2857683 -1.32091898
+## 5                Old Mr Hua     6            0      3  -2.9543269 -1.39733298
+## 6           Joong Chiao Tai    26            0      3  -6.0239003 -2.11855345
+## 7            Salt Lake City     8            0      3  -7.4583249 -2.49079675
+## 8  Halliday&#39;s Private Hotel     5            0      3  -9.1930925 -2.63393615
+## 9            Ma Joong Chiao    26            0      3  -6.6460942 -2.66082620
+## 10             Chiao Tai Ma     5            0      3  -8.0017108 -2.79263343
+## 11             Tai Ma Joong     5            0      3  -7.7720469 -3.08084494
+## 12     Dragon Boat Festival     5            0      3 -10.8024934 -3.32080583
+## 13            Warden Ho Kai    29            0      3  -8.5385706 -3.38490330
+## 14             Bee Mrs Djou     7            0      3  -4.8207475 -3.77602086
+## 15     Excellency Judge Dee     5            0      3  -6.6373310 -4.10986859</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">collocation<span class="fl">.3</span>wd &lt;-<span class="st"> </span><span class="kw">textstat_collocations</span>(corps.detectives, </a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">                                         <span class="dt">size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb91-3" data-line-number="3">                                         <span class="dt">tolower =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="文本风格分析" class="section level2 hasAnchor">
@@ -534,18 +557,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>D值（D-measure）</strong>：这是一个更复杂的指标，试图通过建模解决 TTR 中的文本长度影响问题，提供一个更稳定的词汇丰富度衡量方式。</p></li>
 </ol>
 <p><strong>词汇丰富度</strong>的分析在二语习得、语言能力评估、心理语言学等领域中具有重要意义。通过衡量一个人词汇丰富度，可以判断其语言能力、表达能力、认知水平，甚至可以用来诊断语言障碍或认知功能衰退。</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">lexical.diversity &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(dfm_detectives, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb95-3" data-line-number="3">lexical.diversity.df =<span class="st"> </span>lexical.diversity<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-4" data-line-number="4"><span class="st">  </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-5" data-line-number="5"><span class="st">  </span><span class="co"># mutate(id = 1:n())%&gt;%</span></a>
-<a class="sourceLine" id="cb95-6" data-line-number="6"><span class="st">  </span><span class="co"># filter(id &gt;1 )%&gt;%</span></a>
-<a class="sourceLine" id="cb95-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;document&quot;</span>,<span class="st">&quot;TTR&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;Vm&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-8" data-line-number="8"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;document&quot;</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">measures =</span> <span class="kw">as.factor</span>(measures),</a>
-<a class="sourceLine" id="cb95-10" data-line-number="10">         <span class="dt">measures =</span> <span class="kw">fct_relevel</span>(measures, <span class="st">&quot;TTR&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;Vm&quot;</span>))</a>
-<a class="sourceLine" id="cb95-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb95-12" data-line-number="12">lexical.diversity.df</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">lexical.diversity &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(dfm_detectives, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3">lexical.diversity.df =<span class="st"> </span>lexical.diversity<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-4" data-line-number="4"><span class="st">  </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="st">  </span><span class="co"># mutate(id = 1:n())%&gt;%</span></a>
+<a class="sourceLine" id="cb92-6" data-line-number="6"><span class="st">  </span><span class="co"># filter(id &gt;1 )%&gt;%</span></a>
+<a class="sourceLine" id="cb92-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;document&quot;</span>,<span class="st">&quot;TTR&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;Vm&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-8" data-line-number="8"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;document&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">measures =</span> <span class="kw">as.factor</span>(measures),</a>
+<a class="sourceLine" id="cb92-10" data-line-number="10">         <span class="dt">measures =</span> <span class="kw">fct_relevel</span>(measures, <span class="st">&quot;TTR&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;Vm&quot;</span>))</a>
+<a class="sourceLine" id="cb92-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb92-12" data-line-number="12">lexical.diversity.df</a></code></pre></div>
 <pre><code>##                  document measures       values
 ## 1  A_Study_in_Scarlet.txt      TTR  0.288416556
 ## 2           Judge_dee.txt      TTR  0.153516445
@@ -559,25 +582,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10          Judge_dee.txt        D  0.001834897
 ## 11 A_Study_in_Scarlet.txt       Vm  0.030621422
 ## 12          Judge_dee.txt       Vm  0.040915379</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co">## 移动窗口词汇丰富度</span></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2">lexical.mattr &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(<span class="kw">tokens</span>(corps.detectives), </a>
-<a class="sourceLine" id="cb97-3" data-line-number="3">                                 <span class="dt">measure =</span> <span class="st">&quot;MATTR&quot;</span>, <span class="dt">MATTR_window =</span> <span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb97-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb97-5" data-line-number="5">lexical.mattr</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="co">## 移动窗口词汇丰富度</span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2">lexical.mattr &lt;-<span class="st"> </span><span class="kw">textstat_lexdiv</span>(<span class="kw">tokens</span>(corps.detectives), </a>
+<a class="sourceLine" id="cb94-3" data-line-number="3">                                 <span class="dt">measure =</span> <span class="st">&quot;MATTR&quot;</span>, <span class="dt">MATTR_window =</span> <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb94-5" data-line-number="5">lexical.mattr</a></code></pre></div>
 <pre><code>##                 document     MATTR
 ## 1 A_Study_in_Scarlet.txt 0.5203928
 ## 2          Judge_dee.txt 0.4970508</code></pre>
 </div>
 <div id="文本可读性" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.4.2</span> 文本可读性<a href="第六章-文本数据分析.html#文本可读性" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">readability &lt;-<span class="st"> </span><span class="kw">textstat_readability</span>(corps.detectives, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
-<a class="sourceLine" id="cb99-2" data-line-number="2">readability.df =<span class="st"> </span>readability <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;document&quot;</span>,<span class="st">&quot;ARI&quot;</span>,<span class="st">&quot;Flesch&quot;</span>,<span class="st">&quot;FOG&quot;</span>,</a>
-<a class="sourceLine" id="cb99-4" data-line-number="4">         <span class="st">&quot;Coleman.Liau.short&quot;</span>,<span class="st">&quot;Dale.Chall&quot;</span>,<span class="st">&quot;Spache&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;document&quot;</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">measures =</span> <span class="kw">as.factor</span>(measures),</a>
-<a class="sourceLine" id="cb99-7" data-line-number="7">         <span class="dt">measures =</span> <span class="kw">fct_relevel</span>(measures, <span class="st">&quot;ARI&quot;</span>,<span class="st">&quot;Flesch&quot;</span>,<span class="st">&quot;FOG&quot;</span>,</a>
-<a class="sourceLine" id="cb99-8" data-line-number="8">                                <span class="st">&quot;Coleman.Liau.short&quot;</span>,<span class="st">&quot;Dale.Chall&quot;</span>,<span class="st">&quot;Spache&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">readability &lt;-<span class="st"> </span><span class="kw">textstat_readability</span>(corps.detectives, <span class="dt">measure =</span> <span class="st">&quot;all&quot;</span>)</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2">readability.df =<span class="st"> </span>readability <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;document&quot;</span>,<span class="st">&quot;ARI&quot;</span>,<span class="st">&quot;Flesch&quot;</span>,<span class="st">&quot;FOG&quot;</span>,</a>
+<a class="sourceLine" id="cb96-4" data-line-number="4">         <span class="st">&quot;Coleman.Liau.short&quot;</span>,<span class="st">&quot;Dale.Chall&quot;</span>,<span class="st">&quot;Spache&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;measures&quot;</span>, <span class="st">&quot;values&quot;</span>, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;document&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">measures =</span> <span class="kw">as.factor</span>(measures),</a>
+<a class="sourceLine" id="cb96-7" data-line-number="7">         <span class="dt">measures =</span> <span class="kw">fct_relevel</span>(measures, <span class="st">&quot;ARI&quot;</span>,<span class="st">&quot;Flesch&quot;</span>,<span class="st">&quot;FOG&quot;</span>,</a>
+<a class="sourceLine" id="cb96-8" data-line-number="8">                                <span class="st">&quot;Coleman.Liau.short&quot;</span>,<span class="st">&quot;Dale.Chall&quot;</span>,<span class="st">&quot;Spache&quot;</span>))</a></code></pre></div>
 </div>
 <div id="文本信息熵" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.4.3</span> 文本信息熵<a href="第六章-文本数据分析.html#文本信息熵" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -594,56 +617,56 @@ H(X) = -\sum_{i=1}^{n} P(x_i) \log_2 P(x_i)
 </ol>
 <p><strong>文本信息熵在语言学中的应用：</strong></p>
 <p>  通过计算文本的熵，可以分析文本的语言复杂性。熵值越高，意味着文本的信息量大、复杂性高；熵值越低，意味着文本更为简单、信息量较少。</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">textstat_entropy</span>(dfm_detectives)</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">textstat_entropy</span>(dfm_detectives)</a></code></pre></div>
 <pre><code>##                 document  entropy
 ## 1 A_Study_in_Scarlet.txt 11.24657
 ## 2          Judge_dee.txt 10.71768</code></pre>
 </div>
 <div id="文本情感分析" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.4.4</span> 文本情感分析<a href="第六章-文本数据分析.html#文本情感分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="kw">library</span>(stringr)</a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="kw">library</span>(tidytext)</a>
-<a class="sourceLine" id="cb102-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb102-5" data-line-number="5">tidy_books &lt;-<span class="st"> </span>detectives.raw <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="st">  </span><span class="kw">unnest_sentences</span>(sentence, text)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(doc_id) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-9" data-line-number="9"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-10" data-line-number="10"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, sentence)</a>
-<a class="sourceLine" id="cb102-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb102-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb102-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb102-14" data-line-number="14">tidy.sent =<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-15" data-line-number="15"><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-16" data-line-number="16"><span class="st">  </span><span class="kw">count</span>(doc_id, <span class="dt">index =</span> linenumber <span class="op">%/%</span><span class="st"> </span><span class="dv">80</span>, sentiment) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb102-17" data-line-number="17"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> sentiment, <span class="dt">values_from =</span> n, <span class="dt">values_fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb102-18" data-line-number="18"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb99-5" data-line-number="5">tidy_books &lt;-<span class="st"> </span>detectives.raw <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="st">  </span><span class="kw">unnest_sentences</span>(sentence, text)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(doc_id) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-9" data-line-number="9"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-10" data-line-number="10"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, sentence)</a>
+<a class="sourceLine" id="cb99-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb99-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb99-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb99-14" data-line-number="14">tidy.sent =<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-15" data-line-number="15"><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-16" data-line-number="16"><span class="st">  </span><span class="kw">count</span>(doc_id, <span class="dt">index =</span> linenumber <span class="op">%/%</span><span class="st"> </span><span class="dv">80</span>, sentiment) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-17" data-line-number="17"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> sentiment, <span class="dt">values_from =</span> n, <span class="dt">values_fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb99-18" data-line-number="18"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)</a></code></pre></div>
 <pre><code>## Joining with `by = join_by(word)`</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb104-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="kw">ggplot</span>(tidy.sent , <span class="kw">aes</span>(index, sentiment, <span class="dt">fill =</span> doc_id)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>doc_id, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="co"># 进一步看看哪些积极或者消极的词</span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2">bing_word_counts &lt;-<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>(doc_id) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(word, sentiment, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb105-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb101-3" data-line-number="3"><span class="kw">ggplot</span>(tidy.sent , <span class="kw">aes</span>(index, sentiment, <span class="dt">fill =</span> doc_id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb101-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb101-5" data-line-number="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>doc_id, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-312-1.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="co"># 进一步看看哪些积极或者消极的词</span></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2">bing_word_counts &lt;-<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="st">   </span><span class="kw">group_by</span>(doc_id) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(word, sentiment, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
 <pre><code>## Joining with `by = join_by(word)`</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">bing_word_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(sentiment) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb107-3" data-line-number="3"><span class="st">  </span><span class="kw">slice_max</span>(n, <span class="dt">n =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-4" data-line-number="4"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb107-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb107-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n, word, <span class="dt">fill =</span> sentiment)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-8" data-line-number="8"><span class="st">  </span><span class="kw">facet_wrap</span>(doc_id<span class="op">~</span>sentiment, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Contribution to sentiment&quot;</span>,</a>
-<a class="sourceLine" id="cb107-10" data-line-number="10">       <span class="dt">y =</span> <span class="ot">NULL</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-2.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">bing_word_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(sentiment) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="st">  </span><span class="kw">slice_max</span>(n, <span class="dt">n =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n, word, <span class="dt">fill =</span> sentiment)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="st">  </span><span class="kw">facet_wrap</span>(doc_id<span class="op">~</span>sentiment, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Contribution to sentiment&quot;</span>,</a>
+<a class="sourceLine" id="cb104-10" data-line-number="10">       <span class="dt">y =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-312-2.png" width="672" /></p>
 
 </div>
 </div>
