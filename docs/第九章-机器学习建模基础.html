@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-03" />
+<meta name="date" content="2024-09-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
-<script src="libs/viz-1.8.2/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -236,8 +228,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
-<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#principal-components-analysis"><i class="fa fa-check"></i><b>9.2.1</b> principal components analysis</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#因子分析"><i class="fa fa-check"></i><b>9.2.2</b> 因子分析</a></li>
+<li class="chapter" data-level="9.2.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#correspondence-analysis"><i class="fa fa-check"></i><b>9.2.3</b> Correspondence analysis</a></li>
+<li class="chapter" data-level="9.2.4" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#multi-demensional-scaling"><i class="fa fa-check"></i><b>9.2.4</b> Multi-demensional scaling</a></li>
+<li class="chapter" data-level="9.2.5" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#cluster"><i class="fa fa-check"></i><b>9.2.5</b> Cluster</a></li>
+<li class="chapter" data-level="9.2.6" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#确定最佳的聚类数量"><i class="fa fa-check"></i><b>9.2.6</b> 确定最佳的聚类数量</a></li>
+<li class="chapter" data-level="9.2.7" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.7</b> 文本聚类分析</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html"><i class="fa fa-check"></i><b>10</b> 案例一、行为实验数据分析</a><ul>
@@ -368,17 +365,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="第九章-机器学习建模基础" class="section level1 hasAnchor">
 <h1><span class="header-section-number">Chapter 9</span> 第九章 机器学习建模基础<a href="第九章-机器学习建模基础.html#第九章-机器学习建模基础" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="figure">
-<img src="images/8.2.png" alt="详细背景请看原文献" />
-<p class="caption">详细背景请看原文献</p>
-</div>
+<p>  对于某一个观测对象收集多个不同的变量（或者叫特征）形成的数据称为多元数据（Multivariate Data） 。例如，在一个关于学生成绩的研究中，你可能会同时记录每个学生的多门课程成绩（如数学、语文、英语等），这些不同课程的成绩就构成了多变量数据。</p>
+<p>  多元数据的分析可以通过统计建模，也可以通过机器学习建模。</p>
+<p>  在本章中，我们讨论了两种发现多变量数据集结构的方法。在一种方法中，我们试图通过观测值的分组来发现数据中的结构。这些技术是无监督的（unsupervised），因为我们并不预先规定应该存在什么样的分组。我们将在“聚类（clustering）”这个标题下讨论这些技术。另一种方法中，我们理论上知道存在哪些分组，问题在于数据是否支持这些分组。这第二类技术可以被描述为监督式的（supervised），因为这些技术在分析数据时使用的是由分析师强加于数据的分组。我们将这些技术称为分类方法（methods for classification）。</p>
 <p>  机器学习（Machine Learning）是人工智能（Artificial Intelligence, AI）的一个重要分支，其主要目标是使计算机通过学习经验数据自动改进和发展。机器学习使计算机从数据中学习模式和规律，从而做出预测或决策，而无需显式地编程。机器学习主要分为2种主要类型，监督学习（Supervised Learning）和无监督学习（Unsupervised Learning）。</p>
 <p>  根据学习方式和目标任务的不同，它们各自解决不同类型的问题。监督学习是一种通过已标记的训练数据来训练模型，从而预测或估计新数据的输出。在监督学习中，训练数据包含了输入特征和相应的标签。模型学习从输入到标签之间的映射关系，以便对未知数据进行预测。监督学习的任务可以分为分类（Classification）任务即预测离散类别标签，如垃圾邮件检测、疾病诊断。典型算法包括支持向量机（SVM）、逻辑回归、决策树、随机森林等。回归（Regression）任务则是预测连续数值，如房价预测、销售预测。典型算法包括，线性回归、多项式回归、支持向量回归（SVR）等。</p>
 <p>  无监督学习使用未标记的数据，没有预先定义的输出，其目标是发现数据中的隐藏结构或模式。这种学习方法通常用于探索数据的内在关系，发现数据的聚类、降维或异常检测等特征。常见的无监督学习包括聚类分析（Clustering）和降维（Dimensionality Reduction）。聚类分析将数据集划分为不同的组（簇），使每个组内的数据点相似度最大化，而组间的相似度最小化。典型算法包括K均值聚类、层次聚类等。降维减少数据的特征维度，保留最重要的信息，以便更好地可视化和理解数据，同时降低计算复杂度。典型算法包括主成分分析（PCA）、因子分析、独立成分分析（ICA）等。</p>
 <div id="监督学习" class="section level2 hasAnchor">
 <h2><span class="header-section-number">9.1</span> 监督学习<a href="第九章-机器学习建模基础.html#监督学习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>  下面将用一个二语语音研究的例子讲解如何使用支持向量机（SVM）和随机森林来对中国英语学习者的焦点语音实现进行自动评估。</p>
-<p>  传统的统计建模（如广义线性模型）在大多数先前研究中用于调查信息焦点的语音实现，这些研究检查整个数据集，并通过离散指标检测焦点类型的效果。通常，基于不同的声学测量构建几个模型，以测试不同焦点和语言组的效果，但很难得到全面的图景。而人类听众则逐一听取话语并据此作出判断。这个过程可以通过机器学习算法来模拟，这些算法输入一组特征并基于这些特征输出分类结果。</p>
+<p>  下面将用一个二语语音研究的例子讲解如何使用支持向量机（SVM）和随机森林来对中国英语学习者的焦点语音实现进行自动评估。
+<img src="images/8.2.png" alt="详细背景请看原文献" />
+  传统的统计建模（如广义线性模型）在大多数先前研究中用于调查信息焦点的语音实现，这些研究检查整个数据集，并通过离散指标检测焦点类型的效果。通常，基于不同的声学测量构建几个模型，以测试不同焦点和语言组的效果，但很难得到全面的图景。而人类听众则逐一听取话语并据此作出判断。这个过程可以通过机器学习算法来模拟，这些算法输入一组特征并基于这些特征输出分类结果。</p>
 <p>  支持向量机（SVM）和随机森林模型被用于基于不同的声学测量集分类鼻音元音和口音元音。我们理解，计算感知与人类感知并不完全相同，但计算感知在语音研究中的优势在于它纯粹基于声学特征，因此可以剔除句法或词汇的影响。此外，与识别元音或辅音不同，仅仅给听众一些目标词并测试他们如何识别不同的焦点是困难的。机器学习算法可以在没有上下文的情况下识别不同的焦点，从而从感知的角度接近这个问题。
 焦点是话语中提供信息的部分，与句子的背景信息形成对比。为了进一步解释焦点在话语中的作用，以下是具体例子：</p>
 <ol style="list-style-type: lower-alpha">
@@ -411,46 +408,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>  此外，由于数据集相对较小（从机器学习的角度来看），我们使用了“10折交叉验证”，即对数据运行10次分析，每次使用不同的9/10数据作为“训练”集，剩余的1/10作为“测试”集。本研究中使用了R语言中的e1071包[11]来构建SVM分类器。</p>
 <div id="数据导入-2" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.1.1</span> 数据导入<a href="第九章-机器学习建模基础.html#数据导入-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="co"># install.packages(&#39;caTools&#39;)</span></a>
-<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">library</span>(caTools)</a>
-<a class="sourceLine" id="cb169-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb169-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb169-5" data-line-number="5"><span class="co"># 美国英语本族语者数据</span></a>
-<a class="sourceLine" id="cb169-6" data-line-number="6">datasetAE &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetAE.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb169-7" data-line-number="7"><span class="co"># 中国英语学习者大一</span></a>
-<a class="sourceLine" id="cb169-8" data-line-number="8">datasetCE1 =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetCE1.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb169-9" data-line-number="9"><span class="co"># 中国英语学习者大三</span></a>
-<a class="sourceLine" id="cb169-10" data-line-number="10">datasetCE2 =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetCE2.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb169-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb169-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb169-13" data-line-number="13">datasetAE<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetAE<span class="op">$</span>focus_type)</a>
-<a class="sourceLine" id="cb169-14" data-line-number="14">datasetCE1<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetCE1<span class="op">$</span>focus_type)</a>
-<a class="sourceLine" id="cb169-15" data-line-number="15">datasetCE2<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetCE2<span class="op">$</span>focus_type)</a>
-<a class="sourceLine" id="cb169-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb169-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb169-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb169-19" data-line-number="19"><span class="co"># install.packages(&#39;e1071&#39;)</span></a>
-<a class="sourceLine" id="cb169-20" data-line-number="20"><span class="kw">library</span>(e1071)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(languageR)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(cluster)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(factoextra)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages(&#39;caTools&#39;)</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(caTools)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># 美国英语本族语者数据</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">datasetAE &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetAE.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># 中国英语学习者大一</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">datasetCE1 =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetCE1.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co"># 中国英语学习者大三</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">datasetCE2 =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/datasetCE2.CSV&quot;</span>)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">datasetAE<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetAE<span class="op">$</span>focus_type)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">datasetCE1<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetCE1<span class="op">$</span>focus_type)</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">datasetCE2<span class="op">$</span>focus_type =<span class="st"> </span><span class="kw">as.factor</span>(datasetCE2<span class="op">$</span>focus_type)</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co"># install.packages(&#39;e1071&#39;)</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="kw">library</span>(e1071)</a></code></pre></div>
 </div>
 <div id="构建svm模型" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.1.2</span> 构建SVM模型<a href="第九章-机器学习建模基础.html#构建svm模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">svm_AE =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> focus_type <span class="op">~</span><span class="st"> </span>.,</a>
-<a class="sourceLine" id="cb170-2" data-line-number="2">                 <span class="dt">data =</span> datasetAE,</a>
-<a class="sourceLine" id="cb170-3" data-line-number="3">                 <span class="co">#regression or classification</span></a>
-<a class="sourceLine" id="cb170-4" data-line-number="4">                 <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>, </a>
-<a class="sourceLine" id="cb170-5" data-line-number="5">                 <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
-<a class="sourceLine" id="cb170-6" data-line-number="6">                 <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
-<a class="sourceLine" id="cb170-7" data-line-number="7">                 <span class="dt">cross =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb170-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb170-9" data-line-number="9"><span class="co"># 交叉验证（Cross Validation）是一种用于评估和验证机器学习模型性能的方法，通过将数据集划分为多个子集，交替进行训练和测试，以确保模型在不同的数据集上都具有良好的泛化能力。最常见的方法是K折交叉验证（K-Fold Cross Validation），将数据集划分为K个大小大致相同的子集，每个子集轮流作为验证集，其余子集作为训练集，重复K次后将结果平均，作为模型的最终性能评估指标。交叉验证可以充分利用数据，提高模型评估的可靠性，防止过拟合问题，是机器学习和数据挖掘中广泛应用的技术。</span></a>
-<a class="sourceLine" id="cb170-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb170-11" data-line-number="11"><span class="kw">summary</span>(svm_AE)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">svm_AE =<span class="st"> </span><span class="kw">svm</span>(<span class="dt">formula =</span> focus_type <span class="op">~</span><span class="st"> </span>.,</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">                 <span class="dt">data =</span> datasetAE,</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">                 <span class="co">#regression or classification</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">                 <span class="dt">type =</span> <span class="st">&#39;C-classification&#39;</span>, </a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">                 <span class="dt">kernel =</span> <span class="st">&#39;radial&#39;</span>,</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">                 <span class="dt">cost =</span> <span class="st">&quot;2&quot;</span>,</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">                 <span class="dt">cross =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co"># 交叉验证（Cross Validation）是一种用于评估和验证机器学习模型性能的方法，通过将数据集划分为多个子集，交替进行训练和测试，以确保模型在不同的数据集上都具有良好的泛化能力。最常见的方法是K折交叉验证（K-Fold Cross Validation），将数据集划分为K个大小大致相同的子集，每个子集轮流作为验证集，其余子集作为训练集，重复K次后将结果平均，作为模型的最终性能评估指标。交叉验证可以充分利用数据，提高模型评估的可靠性，防止过拟合问题，是机器学习和数据挖掘中广泛应用的技术。</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">summary</span>(svm_AE)</a></code></pre></div>
 <pre><code>## 
 ## Call:
-## svm(formula = focus_type ~ ., data = datasetAE, type = &quot;C-classification&quot;, kernel = &quot;radial&quot;, 
-##     cost = &quot;2&quot;, cross = 10)
+## svm(formula = focus_type ~ ., data = datasetAE, type = &quot;C-classification&quot;, 
+##     kernel = &quot;radial&quot;, cost = &quot;2&quot;, cross = 10)
 ## 
 ## 
 ## Parameters:
@@ -473,14 +473,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Total Accuracy: 42.24599 
 ## Single Accuracies:
 ##  50 42.10526 36.84211 33.33333 42.10526 31.57895 55.55556 52.63158 36.84211 42.10526</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">svm_AE<span class="op">$</span>tot.accuracy</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">svm_AE<span class="op">$</span>tot.accuracy</a></code></pre></div>
 <pre><code>## [1] 42.24599</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">svm_AE<span class="op">$</span>accuracies</a></code></pre></div>
-<pre><code>##  [1] 50.00000 42.10526 36.84211 33.33333 42.10526 31.57895 55.55556 52.63158 36.84211 42.10526</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">svm_AE<span class="op">$</span>accuracies</a></code></pre></div>
+<pre><code>##  [1] 50.00000 42.10526 36.84211 33.33333 42.10526 31.57895 55.55556 52.63158
+##  [9] 36.84211 42.10526</code></pre>
 </div>
 <div id="random-forest" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.1.3</span> random forest<a href="第九章-机器学习建模基础.html#random-forest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a></code></pre></div>
 <pre><code>## randomForest 4.7-1.1</code></pre>
 <pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
 <pre><code>## 
@@ -491,80 +492,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
 ## 
 ##     margin</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb182-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb182-3" data-line-number="3"><span class="co">#AE</span></a>
-<a class="sourceLine" id="cb182-4" data-line-number="4">RF_AE =<span class="st"> </span><span class="kw">randomForest</span>(focus_type <span class="op">~</span><span class="st"> </span>.,</a>
-<a class="sourceLine" id="cb182-5" data-line-number="5">                    <span class="dt">ntree =</span> <span class="dv">500</span>, </a>
-<a class="sourceLine" id="cb182-6" data-line-number="6">                    <span class="dt">data =</span> datasetAE, </a>
-<a class="sourceLine" id="cb182-7" data-line-number="7">                    <span class="dt">importance =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb182-8" data-line-number="8"><span class="kw">importance</span>(RF_AE)   </a></code></pre></div>
-<pre><code>##                       bro        cor        nar MeanDecreaseAccuracy MeanDecreaseGini
-## Odur            0.5140828  2.1340207 -2.1872216           0.35538483         5.317048
-## Vdur            0.0429139  1.1813533  2.4925858           2.07368177         5.604926
-## Cdur            4.2245241  1.3416428  1.8691133           4.42392485         8.415981
-## Rdur            3.1940865 -1.5403027  1.6942768           2.09952920         5.386566
-## Sylldur        -0.7632086  0.7226848  0.1116193          -0.07377943         5.040385
-## Wdur            0.4031192  1.2760254  0.5353081           1.25499400         6.202501
-## O1Hexc          3.2166992  1.3994444 -0.3550104           2.58880098         5.439555
-## Fallexc        -0.3784383  4.4299155  6.2340216           6.18100973         6.970555
-## Nucleusfallexc  5.0580749  2.0103623 -2.1740778           2.88325662         7.725118
-## H_N2exc         0.1552991  2.3525700  1.0984669           1.94682400         5.702467
-## pd              0.4784784  0.8331123 -0.6137476           0.71097692         4.687184
-## Pd_rime         3.8104797 -0.2959070  0.3361559           2.10364327         5.994991
-## Falldur         1.1514921  0.2380824  8.1123263           6.18477738         9.538895
-## Risedur         3.9233410  1.3787518  2.9428743           5.15879783         6.624772
-## Hf0_Ef0         1.7389798  3.0422496  3.2327149           4.67262290         5.265986
-## L1_Hexc         2.5726081  0.1309762  3.1346224           3.35089696         5.677258
-## O1f0_Ef0        1.0765409  2.7237252  1.0950456           2.70134078         4.712215
-## L1f0_Ef0        0.9964942  4.8822834 -1.4506798           2.70266139         5.059596
-## L2f0_Ef0        0.6635268  1.0752717 -1.6661622           0.51157262         4.394975
-## Risesp          0.1264366 -0.1587295  2.0082139           0.94940044         5.059293
-## Fallsp         -0.1783400  3.6014926  4.0233803           4.18582556         5.154706</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">varImpPlot</span>(RF_AE, <span class="dt">n.var=</span> <span class="dv">5</span>, <span class="dt">main =</span><span class="st">&quot;AE&quot;</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-328-1.png" width="672" /></p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="co"># 在构建随机森林的过程中，每棵决策树都是通过对原始训练数据进行有放回抽样（Bootstrap Sampling）得到的子样本训练出来的。剩下样本则没有被该树用于训练，这些样本就是袋外样本。利用那些没有进行训练的数据来进行预测。</span></a>
-<a class="sourceLine" id="cb185-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb185-3" data-line-number="3">RF_AE<span class="op">$</span>confusion</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#AE</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">RF_AE =<span class="st"> </span><span class="kw">randomForest</span>(focus_type <span class="op">~</span><span class="st"> </span>.,</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">                    <span class="dt">ntree =</span> <span class="dv">500</span>, </a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">                    <span class="dt">data =</span> datasetAE, </a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">                    <span class="dt">importance =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="kw">importance</span>(RF_AE)   </a></code></pre></div>
+<pre><code>##                       bro        cor        nar MeanDecreaseAccuracy
+## Odur            0.5140828  2.1340207 -2.1872216           0.35538483
+## Vdur            0.0429139  1.1813533  2.4925858           2.07368177
+## Cdur            4.2245241  1.3416428  1.8691133           4.42392485
+## Rdur            3.1940865 -1.5403027  1.6942768           2.09952920
+## Sylldur        -0.7632086  0.7226848  0.1116193          -0.07377943
+## Wdur            0.4031192  1.2760254  0.5353081           1.25499400
+## O1Hexc          3.2166992  1.3994444 -0.3550104           2.58880098
+## Fallexc        -0.3784383  4.4299155  6.2340216           6.18100973
+## Nucleusfallexc  5.0580749  2.0103623 -2.1740778           2.88325662
+## H_N2exc         0.1552991  2.3525700  1.0984669           1.94682400
+## pd              0.4784784  0.8331123 -0.6137476           0.71097692
+## Pd_rime         3.8104797 -0.2959070  0.3361559           2.10364327
+## Falldur         1.1514921  0.2380824  8.1123263           6.18477738
+## Risedur         3.9233410  1.3787518  2.9428743           5.15879783
+## Hf0_Ef0         1.7389798  3.0422496  3.2327149           4.67262290
+## L1_Hexc         2.5726081  0.1309762  3.1346224           3.35089696
+## O1f0_Ef0        1.0765409  2.7237252  1.0950456           2.70134078
+## L1f0_Ef0        0.9964942  4.8822834 -1.4506798           2.70266139
+## L2f0_Ef0        0.6635268  1.0752717 -1.6661622           0.51157262
+## Risesp          0.1264366 -0.1587295  2.0082139           0.94940044
+## Fallsp         -0.1783400  3.6014926  4.0233803           4.18582556
+##                MeanDecreaseGini
+## Odur                   5.317048
+## Vdur                   5.604926
+## Cdur                   8.415981
+## Rdur                   5.386566
+## Sylldur                5.040385
+## Wdur                   6.202501
+## O1Hexc                 5.439555
+## Fallexc                6.970555
+## Nucleusfallexc         7.725118
+## H_N2exc                5.702467
+## pd                     4.687184
+## Pd_rime                5.994991
+## Falldur                9.538895
+## Risedur                6.624772
+## Hf0_Ef0                5.265986
+## L1_Hexc                5.677258
+## O1f0_Ef0               4.712215
+## L1f0_Ef0               5.059596
+## L2f0_Ef0               4.394975
+## Risesp                 5.059293
+## Fallsp                 5.154706</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">varImpPlot</span>(RF_AE, <span class="dt">n.var=</span> <span class="dv">5</span>, <span class="dt">main =</span><span class="st">&quot;AE&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># 在构建随机森林的过程中，每棵决策树都是通过对原始训练数据进行有放回抽样（Bootstrap Sampling）得到的子样本训练出来的。剩下样本则没有被该树用于训练，这些样本就是袋外样本。利用那些没有进行训练的数据来进行预测。</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">RF_AE<span class="op">$</span>confusion</a></code></pre></div>
 <pre><code>##     bro cor nar class.error
 ## bro  26  22  15   0.5873016
 ## cor  21  30  13   0.5312500
 ## nar  14  17  29   0.5166667</code></pre>
 <p>  为了模拟美国英语（AE）听众如何感知由中国英语（CE1和CE2）学习者发出的焦点目标词语，使用所有AE数据特征训练了一个支持向量机（SVM）模型，并分别使用两个中国英语学习者组的数据进行测试。</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="co">#Cross langauge preception</span></a>
-<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="co">#svm</span></a>
-<a class="sourceLine" id="cb187-3" data-line-number="3">y_predCE1 =<span class="st"> </span><span class="kw">predict</span>(svm_AE, <span class="dt">newdata =</span> datasetCE1[<span class="op">-</span><span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb187-4" data-line-number="4">y_predCE2 =<span class="st"> </span><span class="kw">predict</span>(svm_AE, <span class="dt">newdata =</span> datasetCE2[<span class="op">-</span><span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb187-5" data-line-number="5"><span class="co">#output the data</span></a>
-<a class="sourceLine" id="cb187-6" data-line-number="6"><span class="co">#install.packages(&quot;caret&quot;)</span></a>
-<a class="sourceLine" id="cb187-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb187-8" data-line-number="8"><span class="kw">library</span>(caret)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co">#Cross langauge preception</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co">#svm</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">y_predCE1 =<span class="st"> </span><span class="kw">predict</span>(svm_AE, <span class="dt">newdata =</span> datasetCE1[<span class="op">-</span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">y_predCE2 =<span class="st"> </span><span class="kw">predict</span>(svm_AE, <span class="dt">newdata =</span> datasetCE2[<span class="op">-</span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co">#output the data</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="co">#install.packages(&quot;caret&quot;)</span></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="kw">library</span>(caret)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;caret&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:emuR&#39;:
-## 
-##     train</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     lift</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">conf_ce1 =<span class="st"> </span><span class="kw">confusionMatrix</span>(<span class="kw">as.factor</span>(datasetCE1<span class="op">$</span>focus_type), y_predCE1)</a>
-<a class="sourceLine" id="cb192-2" data-line-number="2">conf_ce2 =<span class="st"> </span><span class="kw">confusionMatrix</span>(<span class="kw">as.factor</span>(datasetCE2<span class="op">$</span>focus_type), y_predCE2)</a>
-<a class="sourceLine" id="cb192-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb192-4" data-line-number="4">CE1.TEST =<span class="st"> </span><span class="kw">as.data.frame</span>(conf_ce1<span class="op">$</span>table)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb192-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(Reference)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb192-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> Freq<span class="op">/</span><span class="kw">sum</span>(Freq),</a>
-<a class="sourceLine" id="cb192-7" data-line-number="7">         <span class="dt">LANG =</span> <span class="st">&quot;CE1&quot;</span>)</a>
-<a class="sourceLine" id="cb192-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb192-9" data-line-number="9">CE2.TEST =<span class="st"> </span><span class="kw">as.data.frame</span>(conf_ce2<span class="op">$</span>table)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb192-10" data-line-number="10"><span class="st">  </span><span class="kw">group_by</span>(Reference)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb192-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> Freq<span class="op">/</span><span class="kw">sum</span>(Freq),</a>
-<a class="sourceLine" id="cb192-12" data-line-number="12">         <span class="dt">LANG =</span> <span class="st">&quot;CE2&quot;</span>)</a>
-<a class="sourceLine" id="cb192-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb192-14" data-line-number="14"><span class="co"># 总体准确率在CE1和CE2两组中均高于随机水平，且两组之间的差异较小。在每个组内，BF类词汇相对容易分类，而NF和CF类词汇则较难分类，反映在较低的准确率上。</span></a>
-<a class="sourceLine" id="cb192-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb192-16" data-line-number="16"><span class="kw">rbind</span>(CE1.TEST, CE2.TEST)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb192-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(Prediction <span class="op">==</span><span class="st"> </span>Reference)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">conf_ce1 =<span class="st"> </span><span class="kw">confusionMatrix</span>(<span class="kw">as.factor</span>(datasetCE1<span class="op">$</span>focus_type), y_predCE1)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">conf_ce2 =<span class="st"> </span><span class="kw">confusionMatrix</span>(<span class="kw">as.factor</span>(datasetCE2<span class="op">$</span>focus_type), y_predCE2)</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">CE1.TEST =<span class="st"> </span><span class="kw">as.data.frame</span>(conf_ce1<span class="op">$</span>table)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(Reference)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> Freq<span class="op">/</span><span class="kw">sum</span>(Freq),</a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">         <span class="dt">LANG =</span> <span class="st">&quot;CE1&quot;</span>)</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">CE2.TEST =<span class="st"> </span><span class="kw">as.data.frame</span>(conf_ce2<span class="op">$</span>table)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="st">  </span><span class="kw">group_by</span>(Reference)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> Freq<span class="op">/</span><span class="kw">sum</span>(Freq),</a>
+<a class="sourceLine" id="cb24-12" data-line-number="12">         <span class="dt">LANG =</span> <span class="st">&quot;CE2&quot;</span>)</a>
+<a class="sourceLine" id="cb24-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb24-14" data-line-number="14"><span class="co"># 总体准确率在CE1和CE2两组中均高于随机水平，且两组之间的差异较小。在每个组内，BF类词汇相对容易分类，而NF和CF类词汇则较难分类，反映在较低的准确率上。</span></a>
+<a class="sourceLine" id="cb24-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb24-16" data-line-number="16"><span class="kw">rbind</span>(CE1.TEST, CE2.TEST)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(Prediction <span class="op">==</span><span class="st"> </span>Reference)</a></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ## # Groups:   Reference [3]
 ##   Prediction Reference  Freq accuracy LANG 
@@ -581,83 +601,622 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="非监督学习" class="section level2 hasAnchor">
 <h2><span class="header-section-number">9.2</span> 非监督学习<a href="第九章-机器学习建模基础.html#非监督学习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">类别数据</th>
+<th align="left">连续数据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">非距离矩阵</td>
+<td align="left"></td>
+<td align="left">PCA, FA</td>
+</tr>
+<tr class="even">
+<td align="left">距离矩阵</td>
+<td align="left">CA, cluster</td>
+<td align="left">MDS, cluster</td>
+</tr>
+</tbody>
+</table>
+<p>从数据的角度，非监督学习中的多元变量可以是连续型或者类别型。连续型变量中有一种特殊的是距离变量。据此我们介绍不同的非监督学习方法。</p>
+<div id="principal-components-analysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.1</span> principal components analysis<a href="第九章-机器学习建模基础.html#principal-components-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Xiaofei Lu 的句法复杂性测量是一套用于评估书面或口语语言中句法结构复杂性的量化指标。这些测量广泛应用于二语习得（SLA）研究和应用语言学领域，用于评估学习者在语言产出中的句法复杂性发展情况。</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Measure</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>MLS (Mean Length of Sentence)</strong></td>
+<td>The average number of words per sentence.</td>
+</tr>
+<tr class="even">
+<td><strong>MLT (Mean Length of T-unit)</strong></td>
+<td>The average number of words per T-unit.</td>
+</tr>
+<tr class="odd">
+<td><strong>MLC (Mean Length of Clause)</strong></td>
+<td>The average number of words per clause.</td>
+</tr>
+<tr class="even">
+<td><strong>C/S (Clauses per Sentence)</strong></td>
+<td>The ratio of the total number of clauses to the total number of sentences.</td>
+</tr>
+<tr class="odd">
+<td><strong>VP/T (Verb Phrases per T-unit)</strong></td>
+<td>The ratio of the total number of verb phrases to the total number of T-units.</td>
+</tr>
+<tr class="even">
+<td><strong>C/T (Clauses per T-unit)</strong></td>
+<td>The ratio of the total number of clauses to the total number of T-units.</td>
+</tr>
+<tr class="odd">
+<td><strong>DC/C (Dependent Clauses per Clause)</strong></td>
+<td>The ratio of the total number of dependent clauses to the total number of clauses.</td>
+</tr>
+<tr class="even">
+<td><strong>DC/T (Dependent Clauses per T-unit)</strong></td>
+<td>The ratio of the total number of dependent clauses to the total number of T-units.</td>
+</tr>
+<tr class="odd">
+<td><strong>T/S (T-units per Sentence)</strong></td>
+<td>The ratio of the total number of T-units to the total number of sentences.</td>
+</tr>
+<tr class="even">
+<td><strong>CT/T (Complex T-units per T-unit)</strong></td>
+<td>The ratio of the total number of complex T-units (T-units with dependent clauses) to T-units.</td>
+</tr>
+<tr class="odd">
+<td><strong>CP/C (Coordinate Phrases per Clause)</strong></td>
+<td>The ratio of the total number of coordinate phrases to the total number of clauses.</td>
+</tr>
+<tr class="even">
+<td><strong>CP/T (Coordinate Phrases per T-unit)</strong></td>
+<td>The ratio of the total number of coordinate phrases to the total number of T-units.</td>
+</tr>
+<tr class="odd">
+<td><strong>CN/C (Complex Nominals per Clause)</strong></td>
+<td>The ratio of the total number of complex nominals to the total number of clauses.</td>
+</tr>
+<tr class="even">
+<td><strong>CN/T (Complex Nominals per T-unit)</strong></td>
+<td>The ratio of the total number of complex nominals to the total number of T-units.</td>
+</tr>
+<tr class="odd">
+<td><strong>SWT/T (Sentence Weight per T-unit)</strong></td>
+<td>The ratio of the total number of sentence weight (content words) to the total number of T-units.</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">metrics_SCA &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ch9/metrics_SCA.CSV&quot;</span>)</a></code></pre></div>
+<pre><code>## Rows: 17 Columns: 16
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (2): text, Registers
+## dbl (14): MLS, MLT, MLC, C_S, VP_T, C_T, DC_C, DC_T, T_S, CT_T, CP_T, CP_C, ...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">sc.pr =<span class="st"> </span><span class="kw">prcomp</span>(metrics_SCA[, <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">16</span>)])</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">names</span>(sc.pr)</a></code></pre></div>
+<pre><code>## [1] &quot;sdev&quot;     &quot;rotation&quot; &quot;center&quot;   &quot;scale&quot;    &quot;x&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">round</span>(sc.pr<span class="op">$</span>sdev, <span class="dv">4</span>)</a></code></pre></div>
+<pre><code>##  [1] 1.8901 0.3342 0.1426 0.0308 0.0217 0.0113 0.0104 0.0048 0.0028 0.0020
+## [11] 0.0003 0.0003 0.0001 0.0001</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">summary</span>(sc.pr)</a></code></pre></div>
+<pre><code>## Importance of components:
+##                           PC1     PC2     PC3     PC4     PC5     PC6     PC7
+## Standard deviation     1.8901 0.33416 0.14265 0.03081 0.02170 0.01131 0.01038
+## Proportion of Variance 0.9639 0.03013 0.00549 0.00026 0.00013 0.00003 0.00003
+## Cumulative Proportion  0.9639 0.99405 0.99954 0.99980 0.99993 0.99996 0.99999
+##                            PC8      PC9     PC10      PC11      PC12      PC13
+## Standard deviation     0.00483 0.002843 0.002039 0.0003102 0.0002823 0.0001049
+## Proportion of Variance 0.00001 0.000000 0.000000 0.0000000 0.0000000 0.0000000
+## Cumulative Proportion  1.00000 1.000000 1.000000 1.0000000 1.0000000 1.0000000
+##                             PC14
+## Standard deviation     5.446e-05
+## Proportion of Variance 0.000e+00
+## Cumulative Proportion  1.000e+00</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">props =<span class="st"> </span><span class="kw">round</span>((sc.pr<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(sc.pr<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span>)), <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="kw">barplot</span>(props, <span class="dt">col =</span> <span class="kw">as.numeric</span>(props <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.05</span>), </a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">        <span class="dt">xlab =</span> <span class="st">&quot;principal components&quot;</span>, </a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">        <span class="dt">ylab =</span> <span class="st">&quot;proportion of variance explained&quot;</span>) </a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">sc.pr<span class="op">$</span>x[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
+<pre><code>##              PC1         PC2         PC3
+##  [1,] -5.6678755  0.39252022  0.18921251
+##  [2,] -3.8203320 -0.47080364 -0.19827777
+##  [3,]  0.3694866  0.30087970 -0.08225046
+##  [4,]  0.6538607  0.15639171  0.26993685
+##  [5,]  0.2809699  0.50212353 -0.12599412
+##  [6,]  1.6470246  0.41218393  0.04205135
+##  [7,]  0.3089003  0.23713423 -0.24996723
+##  [8,]  0.4672870 -0.27998203 -0.13950075
+##  [9,]  1.3891812  0.33306454 -0.04060635
+## [10,] -0.5097736 -0.07729285 -0.13145459
+## [11,]  0.6227071 -0.13369953  0.05080880
+## [12,]  1.1682836 -0.32690815  0.03747206
+## [13,]  1.4643628 -0.21359235  0.03742893
+## [14,]  0.4945817 -0.06416250  0.01680801
+## [15,]  0.4499698  0.15196303  0.09370500
+## [16,]  0.3906499 -0.43079805  0.19037147
+## [17,]  0.2907160 -0.48902178  0.04025630</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">library</span>(lattice)</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">super.sym =<span class="st"> </span><span class="kw">trellis.par.get</span>(<span class="st">&quot;superpose.symbol&quot;</span>)</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="kw">splom</span>(<span class="kw">data.frame</span>(sc.pr<span class="op">$</span>x[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]), </a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">        <span class="dt">groups =</span> metrics_SCA<span class="op">$</span>Registers, </a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">        <span class="dt">panel =</span> panel.superpose, </a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">        <span class="dt">key =</span> <span class="kw">list</span>( <span class="dt">title =</span> <span class="st">&quot;texts in productivity space&quot;</span>, </a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">                      <span class="dt">text =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;trans&quot;</span>, <span class="st">&quot;writing&quot;</span>)), </a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">                      <span class="dt">points =</span> <span class="kw">list</span>(<span class="dt">pch =</span> super.sym<span class="op">$</span>pch[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb37-10" data-line-number="10">                                      <span class="dt">col =</span> super.sym<span class="op">$</span>col[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">dim</span>(sc.pr<span class="op">$</span>rotation)</a></code></pre></div>
+<pre><code>## [1] 14 14</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">sc.pr<span class="op">$</span>rotation[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
+<pre><code>##               PC1          PC2         PC3
+## MLS  -0.780741710  0.458316463  0.39524592
+## MLT  -0.583352900 -0.382892409 -0.67206895
+## MLC  -0.188837511 -0.718615536  0.56375761
+## C_S  -0.050196255  0.185706377 -0.07528150
+## VP_T -0.061850409  0.080929317 -0.13012241
+## C_T  -0.032757258  0.077000459 -0.17891375
+## DC_C -0.012533463  0.009274188 -0.01341515
+## DC_T -0.029067939  0.035833749 -0.06333909
+## T_S  -0.008350435  0.066380134  0.07835067
+## CT_T -0.019437948  0.032647517 -0.03651945</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">biplot</span>(sc.pr, <span class="dt">scale =</span> <span class="dv">0</span>, <span class="dt">var.axes =</span> F, </a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;darkgrey&quot;</span>, <span class="st">&quot;black&quot;</span>), </a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">       <span class="dt">cex =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">1.2</span>))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">sc.pr =<span class="st"> </span><span class="kw">prcomp</span>(metrics_SCA[ ,<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">16</span>)], </a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">               <span class="dt">scale =</span> T, <span class="dt">center =</span> T)</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">biplot</span>(sc.pr, <span class="dt">var.axes =</span> F, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;darkgrey&quot;</span>, <span class="st">&quot;black&quot;</span>), </a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">       <span class="dt">cex =</span> <span class="kw">c</span>(<span class="fl">0.6</span>, <span class="dv">1</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.42</span>, <span class="fl">0.38</span>))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co"># k-means clustering [assume 3 clusters]</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">sc.pr<span class="op">$</span>x[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
+<pre><code>##               PC1        PC2         PC3
+##  [1,] -9.88302972  1.2148695  0.59163495
+##  [2,] -6.63655938 -2.1956318 -0.39052086
+##  [3,]  0.49126238  1.4827272 -0.18589389
+##  [4,]  1.05595265  0.6008529  1.60050109
+##  [5,]  0.35914950  2.4850187 -0.88108304
+##  [6,]  2.56945811  1.6712688  0.06286037
+##  [7,]  0.01189399  1.1950523 -1.15636304
+##  [8,]  0.54275580 -1.1540620 -0.02722837
+##  [9,]  1.69159168  1.6968221  0.07810719
+## [10,] -0.87660913 -0.1970229 -0.49937926
+## [11,]  1.22073048 -0.4672236 -0.02287285
+## [12,]  2.32603347 -1.5456573 -0.31040472
+## [13,]  3.02073678 -1.1120001  0.30338478
+## [14,]  0.82432037 -0.3313737  0.04813735
+## [15,]  1.01344821  0.7773963  0.73684529
+## [16,]  1.36478492 -1.7573993  0.58619223
+## [17,]  0.90407989 -2.3636371 -0.53391721</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">km =<span class="st"> </span><span class="kw">kmeans</span>(sc.pr<span class="op">$</span>x[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dt">centers=</span><span class="dv">2</span>, <span class="dt">nstart=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="co"># fviz_cluster(km, data = metrics_SCA[, c(-1,-16)],</span></a>
+<a class="sourceLine" id="cb46-4" data-line-number="4"><span class="co">#              palette = c(&quot;#2E9FDF&quot;, &quot;#00AFBB&quot;, &quot;#E7B800&quot;), </span></a>
+<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="co">#              geom = &quot;point&quot;,</span></a>
+<a class="sourceLine" id="cb46-6" data-line-number="6"><span class="co">#              ellipse.type = &quot;convex&quot;, </span></a>
+<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="co">#              ggtheme = theme_bw()</span></a>
+<a class="sourceLine" id="cb46-8" data-line-number="8"><span class="co">#              )</span></a>
+<a class="sourceLine" id="cb46-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb46-10" data-line-number="10"><span class="co"># km.df &lt;- data.frame(sc.pr$x[,1:3], </span></a>
+<a class="sourceLine" id="cb46-11" data-line-number="11"><span class="co">#                      Cluster=km$cluster, </span></a>
+<a class="sourceLine" id="cb46-12" data-line-number="12"><span class="co">#                      Register = metrics_SCA$Registers)</span></a>
+<a class="sourceLine" id="cb46-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb46-14" data-line-number="14"><span class="co"># Coordinates of individuals</span></a>
+<a class="sourceLine" id="cb46-15" data-line-number="15">ind.coord &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">get_pca_ind</span>(sc.pr)<span class="op">$</span>coord)</a>
+<a class="sourceLine" id="cb46-16" data-line-number="16"><span class="co"># Add clusters obtained using the K-means algorithm</span></a>
+<a class="sourceLine" id="cb46-17" data-line-number="17">ind.coord<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">factor</span>(km<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb46-18" data-line-number="18"><span class="co"># Add Species groups from the original data sett</span></a>
+<a class="sourceLine" id="cb46-19" data-line-number="19">ind.coord<span class="op">$</span>Registers &lt;-<span class="st"> </span>metrics_SCA<span class="op">$</span>Registers</a>
+<a class="sourceLine" id="cb46-20" data-line-number="20">ind.coord<span class="op">$</span>text &lt;-<span class="st"> </span>metrics_SCA<span class="op">$</span>text</a>
+<a class="sourceLine" id="cb46-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb46-22" data-line-number="22"><span class="co"># Percentage of variance explained by dimensions</span></a>
+<a class="sourceLine" id="cb46-23" data-line-number="23">eigenvalue &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">get_eigenvalue</span>(sc.pr), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb46-24" data-line-number="24">variance.percent &lt;-<span class="st"> </span>eigenvalue<span class="op">$</span>variance.percent</a>
+<a class="sourceLine" id="cb46-25" data-line-number="25"><span class="kw">head</span>(eigenvalue)</a></code></pre></div>
+<pre><code>##       eigenvalue variance.percent cumulative.variance.percent
+## Dim.1       10.9             77.7                        77.7
+## Dim.2        2.3             16.4                        94.1
+## Dim.3        0.4              3.1                        97.2
+## Dim.4        0.3              1.9                        99.1
+## Dim.5        0.1              0.5                        99.6
+## Dim.6        0.0              0.2                        99.8</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">library</span>(ggpubr)</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="kw">ggscatter</span>(ind.coord, <span class="dt">x =</span> <span class="st">&quot;Dim.1&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Dim.2&quot;</span>,</a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">  <span class="dt">color =</span> <span class="st">&quot;cluster&quot;</span>, </a>
+<a class="sourceLine" id="cb48-5" data-line-number="5">  <span class="dt">palette =</span> <span class="st">&quot;npg&quot;</span>, </a>
+<a class="sourceLine" id="cb48-6" data-line-number="6">  <span class="dt">ellipse =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb48-7" data-line-number="7">  <span class="dt">ellipse.type =</span> <span class="st">&quot;convex&quot;</span>,</a>
+<a class="sourceLine" id="cb48-8" data-line-number="8">  <span class="dt">label =</span> <span class="st">&quot;text&quot;</span>,</a>
+<a class="sourceLine" id="cb48-9" data-line-number="9">  <span class="dt">shape =</span> <span class="st">&quot;Registers&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>,  <span class="dt">legend =</span> <span class="st">&quot;right&quot;</span>, </a>
+<a class="sourceLine" id="cb48-10" data-line-number="10">  <span class="dt">ggtheme =</span> <span class="kw">theme_bw</span>(),</a>
+<a class="sourceLine" id="cb48-11" data-line-number="11">  <span class="dt">xlab =</span> <span class="kw">paste0</span>(<span class="st">&quot;PC 1 (&quot;</span>, variance.percent[<span class="dv">1</span>], <span class="st">&quot;% )&quot;</span> ),</a>
+<a class="sourceLine" id="cb48-12" data-line-number="12">  <span class="dt">ylab =</span> <span class="kw">paste0</span>(<span class="st">&quot;PC 2 (&quot;</span>, variance.percent[<span class="dv">2</span>], <span class="st">&quot;% )&quot;</span> )) </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co"># ggplot(ggdata) +</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="co">#   geom_point(aes(x=PC1, y=PC2, </span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="co">#                  color=factor(Register)), </span></a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="co">#              size=5, shape=20) +</span></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="co">#   # stat_ellipse(aes(x=PC1,y=PC2,fill=factor(Cluster)),</span></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6"><span class="co">#   #              geom=&quot;polygon&quot;, level=0.95, alpha=0.2) +</span></a>
+<a class="sourceLine" id="cb49-7" data-line-number="7"><span class="co">#   guides(color=guide_legend(&quot;Register&quot;),fill=guide_legend(&quot;Cluster&quot;))</span></a></code></pre></div>
+</div>
+<div id="因子分析" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.2</span> 因子分析<a href="第九章-机器学习建模基础.html#因子分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>主成分分析（Principal Components Analysis，简称PCA）的扩展方法是探索性因子分析（Exploratory Factor Analysis，简称EFA）。在主成分分析中，总方差被分配到各个主成分（PCs）中。因此，某个主成分解释的方差比例由该主成分的方差除以所有主成分的总方差得出。然而，在因子分析中，模型中加入了一个误差项，以考虑数据中可能存在的噪音。因此，不再有唯一的一组主成分（现在称为因子）和载荷。相反，通过因子旋转（Factor Rotation）技术，可以获得各种备选的因子（及其载荷）。因子旋转的目的是尽可能简化因子模型的解释。如果变量在少数几个因子上具有高载荷，并且在某一维度上的载荷要么很大要么接近于零，解释将变得更加直观。</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">sc.fac =<span class="st"> </span><span class="kw">factanal</span>(metrics_SCA[ ,<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">16</span>)], <span class="dt">factors =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">loadings =<span class="st"> </span><span class="kw">loadings</span>(sc.fac) </a>
+<a class="sourceLine" id="cb50-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="kw">plot</span>(loadings, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.4</span>, <span class="dv">1</span>)) </a>
+<a class="sourceLine" id="cb50-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb50-7" data-line-number="7"><span class="kw">text</span>(loadings, <span class="kw">rownames</span>(loadings), <span class="dt">cex =</span> <span class="fl">0.8</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">sc.fac2 =<span class="st"> </span><span class="kw">factanal</span>(metrics_SCA[ ,<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">16</span>)], <span class="dt">factors =</span> <span class="dv">3</span>, <span class="dt">rotation =</span> <span class="st">&quot;promax&quot;</span>) </a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">loadings2 =<span class="st"> </span><span class="kw">loadings</span>(sc.fac2) </a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="kw">plot</span>(loadings2, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.4</span>, <span class="dv">1</span>)) </a>
+<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="kw">text</span>(loadings2, <span class="kw">rownames</span>(loadings)) </a>
+<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">-0.1</span>, <span class="dt">col =</span> <span class="st">&quot;darkgrey&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+</div>
+<div id="correspondence-analysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.3</span> Correspondence analysis<a href="第九章-机器学习建模基础.html#correspondence-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>适用于频数数据。Correspondence analysis, MDS和hierarchical cluster analysis都基于distance matrix。Correspondence analysis是MDS的一种特殊情况。</p>
+<p>在对应分析（Correspondence Analysis）中，我们将行向量（或列向量）视为“城市”的轮廓，并计算它们之间的距离。可以用多种方式计算向量之间的距离（或不相似度），在 <code>dist()</code> 函数的在线帮助页面中记录了多种选项。在对应分析中使用的距离度量是所谓的卡方距离（chi-squared distance）。给定一个包含20行和5列的列联表，对应分析构建了两个距离矩阵，一个是20x20的矩阵，指定行之间的距离，另一个是5x5的矩阵，指定列之间的距离。</p>
+<p>对应分析的第二步是尽可能忠实地将这些距离表示在二维散点图中，即低维地图中。两行之间的距离越大，它们在行的地图中应该越远。同样，不相似的列应该相距较远，而相似的列在列的地图中应该彼此接近。在对应分析中，我们将行图和列图叠加，这类似于双标图（biplot）中主成分得分（PC scores）和这些主成分上的载荷的叠加。由于卡方距离度量，我们可以确保在合并的地图中行和列之间的接近程度尽可能好地近似于行和列之间的相关性。</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">library</span>(stylo)</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="co"># 导入文本数据</span></a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">style.corpus &lt;-<span class="st"> </span><span class="kw">load.corpus</span>(<span class="dt">files =</span> <span class="st">&quot;all&quot;</span>, </a>
+<a class="sourceLine" id="cb52-5" data-line-number="5">                            <span class="dt">corpus.dir =</span> <span class="st">&quot;data/ch6/detectives&quot;</span>,</a>
+<a class="sourceLine" id="cb52-6" data-line-number="6">         <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb52-8" data-line-number="8"><span class="co"># 对文本进行分词</span></a>
+<a class="sourceLine" id="cb52-9" data-line-number="9">tokenized.corpus &lt;-<span class="st"> </span><span class="kw">txt.to.words.ext</span>(style.corpus, </a>
+<a class="sourceLine" id="cb52-10" data-line-number="10">                                     <span class="dt">preserve.case =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb52-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb52-12" data-line-number="12"><span class="co"># 根据研究目的我们可以设置一个词表去除一些干扰词。比如我们想排除文本中高频专有名词的干扰。</span></a>
+<a class="sourceLine" id="cb52-13" data-line-number="13"><span class="co">#proper.noun = c(&quot;DEE&quot;,&quot;Judge&quot;,&quot;Dee&quot;,&quot;&quot;)</span></a>
+<a class="sourceLine" id="cb52-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb52-15" data-line-number="15"><span class="co"># clean.corpus = delete.stop.words(tokenized.corpus, </span></a>
+<a class="sourceLine" id="cb52-16" data-line-number="16"><span class="co">#                                   stop.words = proper.noun)</span></a>
+<a class="sourceLine" id="cb52-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb52-18" data-line-number="18"><span class="co"># 一些研究认为代词对于计算文体风格有干扰，比如如果是一个大女主的小说，那么女性代词就会很多。但是这些不能代表作者风格，只能代表作品风格。</span></a>
+<a class="sourceLine" id="cb52-19" data-line-number="19">clean.corpus =<span class="st"> </span><span class="kw">delete.stop.words</span>(tokenized.corpus,</a>
+<a class="sourceLine" id="cb52-20" data-line-number="20">                                  <span class="dt">stop.words =</span> <span class="kw">stylo.pronouns</span>(<span class="dt">corpus.lang =</span> <span class="st">&quot;English&quot;</span>))</a>
+<a class="sourceLine" id="cb52-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb52-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb52-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb52-24" data-line-number="24">corpus.char<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">txt.to.features</span>(clean.corpus, </a>
+<a class="sourceLine" id="cb52-25" data-line-number="25">                                       <span class="dt">ngram.size =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb52-26" data-line-number="26">                                       <span class="dt">features =</span> <span class="st">&quot;w&quot;</span>)</a>
+<a class="sourceLine" id="cb52-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb52-28" data-line-number="28"><span class="co"># 将数据划分成1000个词一份</span></a>
+<a class="sourceLine" id="cb52-29" data-line-number="29">sliced.corpus.char<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">make.samples</span>(corpus.char<span class="fl">.1</span>, </a>
+<a class="sourceLine" id="cb52-30" data-line-number="30">                              <span class="dt">sampling =</span> <span class="st">&quot;normal.sampling&quot;</span>, </a>
+<a class="sourceLine" id="cb52-31" data-line-number="31">                              <span class="dt">sample.size =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb52-32" data-line-number="32"><span class="co"># 提取词频特征</span></a>
+<a class="sourceLine" id="cb52-33" data-line-number="33">features1 &lt;-<span class="st"> </span><span class="kw">make.frequency.list</span>(sliced.corpus.char<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb52-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb52-35" data-line-number="35"><span class="co"># 制作词频特征表</span></a>
+<a class="sourceLine" id="cb52-36" data-line-number="36">freqs1 &lt;-<span class="st"> </span><span class="kw">make.table.of.frequencies</span>(sliced.corpus.char<span class="fl">.1</span>, </a>
+<a class="sourceLine" id="cb52-37" data-line-number="37">                                   <span class="dt">features =</span> features1)</a>
+<a class="sourceLine" id="cb52-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb52-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb52-40" data-line-number="40"><span class="co"># Culling</span></a>
+<a class="sourceLine" id="cb52-41" data-line-number="41"><span class="co"># 通过删选，用户可以指定特征在语料库中的出现比例，以决定其是否被纳入分析。在语料库中未达到指定比例的词语将被忽略。</span></a>
+<a class="sourceLine" id="cb52-42" data-line-number="42">culled.freqs1 &lt;-<span class="st"> </span><span class="kw">perform.culling</span>(freqs1, <span class="dt">culling.level =</span> <span class="dv">80</span>)</a>
+<a class="sourceLine" id="cb52-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb52-44" data-line-number="44">wd.df =<span class="st"> </span><span class="kw">as.data.frame</span>(culled.freqs1)</a>
+<a class="sourceLine" id="cb52-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb52-46" data-line-number="46">detect.ca =<span class="st"> </span><span class="kw">corres.fnc</span>(wd.df)</a>
+<a class="sourceLine" id="cb52-47" data-line-number="47"></a>
+<a class="sourceLine" id="cb52-48" data-line-number="48"><span class="kw">summary</span>(detect.ca, <span class="dt">head =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## corres(wd.df)
+## 
+## Eigenvalue rates:
+## 
+##      0.1626131 0.1001058 0.06225465 0.05089965 0.04367982 0.04005806  ... 
+## 
+## Factor 1 
+## 
+##     coordinates correlations contributions
+## the      -0.225        0.708         0.215
+## and      -0.066        0.090         0.009
+## to       -0.023        0.007         0.001
+## of       -0.138        0.216         0.035
+## a         0.034        0.018         0.002
+## I         0.601        0.798         0.442
+## ... 
+## 
+## Factor 2 
+## 
+##     coordinates correlations contributions
+## the       0.010        0.001         0.001
+## and       0.055        0.063         0.010
+## to       -0.154        0.302         0.082
+## of        0.076        0.067         0.018
+## a         0.024        0.009         0.001
+## I         0.130        0.037         0.034
+## ...</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">plot</span>(detect.ca)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">plot</span>(detect.ca, </a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">     <span class="co">#rlabels = oldFrenchMeta$Genre, </span></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">     <span class="co">#rcol = as.numeric(oldFrenchMeta$Genre), </span></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4">     <span class="dt">rcex =</span> <span class="fl">0.4</span>, </a>
+<a class="sourceLine" id="cb55-5" data-line-number="5">     <span class="dt">extreme =</span> <span class="fl">0.1</span>, <span class="dt">ccol =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+</div>
+<div id="multi-demensional-scaling" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.4</span> Multi-demensional scaling<a href="第九章-机器学习建模基础.html#multi-demensional-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>   多维尺度分析（Multidimensional Scaling, MDS）是一种用于在距离矩阵中发现结构的技术。类似于主成分分析（Principal Components Analysis, PCA），它是一种用于降维的技术，通常将数据降到二维或三维。与对应分析（Correspondence Analysis）类似，实际上对应分析是多维尺度分析的一种特殊情况，其核心思想是在一个平面（例如）中创建一个表示，使得平面中各点之间的距离尽可能准确地反映原始多维空间中各点之间的距离。</p>
 <p>  下面我们基于词频特征计算两个文本的文体风格特征并通过不同的非监督学习的方法对两个不同的文本进行分类。</p>
-<div id="文本数据预处理" class="section level3 hasAnchor">
-<h3><span class="header-section-number">9.2.1</span> 文本数据预处理<a href="第九章-机器学习建模基础.html#文本数据预处理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">library</span>(stylo)</a>
-<a class="sourceLine" id="cb194-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="co"># 导入文本数据</span></a>
-<a class="sourceLine" id="cb194-4" data-line-number="4">style.corpus &lt;-<span class="st"> </span><span class="kw">load.corpus</span>(<span class="dt">files =</span> <span class="st">&quot;all&quot;</span>, <span class="dt">corpus.dir =</span> <span class="st">&quot;~/Nutstore Files/310_Tutorial/Language data science/data/ch6/detectives&quot;</span>,</a>
-<a class="sourceLine" id="cb194-5" data-line-number="5">         <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a>
-<a class="sourceLine" id="cb194-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb194-7" data-line-number="7"><span class="co"># 对文本进行分词</span></a>
-<a class="sourceLine" id="cb194-8" data-line-number="8">tokenized.corpus &lt;-<span class="st"> </span><span class="kw">txt.to.words.ext</span>(style.corpus, </a>
-<a class="sourceLine" id="cb194-9" data-line-number="9">                                     <span class="dt">preserve.case =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb194-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb194-11" data-line-number="11"><span class="co"># 根据研究目的我们可以设置一个词表去除一些干扰词。比如我们想排除文本中高频专有名词的干扰。</span></a>
-<a class="sourceLine" id="cb194-12" data-line-number="12"><span class="co">#proper.noun = c(&quot;DEE&quot;,&quot;Judge&quot;,&quot;Dee&quot;,&quot;&quot;)</span></a>
-<a class="sourceLine" id="cb194-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb194-14" data-line-number="14"><span class="co"># clean.corpus = delete.stop.words(tokenized.corpus, </span></a>
-<a class="sourceLine" id="cb194-15" data-line-number="15"><span class="co">#                                   stop.words = proper.noun)</span></a>
-<a class="sourceLine" id="cb194-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb194-17" data-line-number="17"><span class="co"># 一些研究认为代词对于计算文体风格有干扰，比如如果是一个大女主的小说，那么女性代词就会很多。但是这些不能代表作者风格，只能代表作品风格。</span></a>
-<a class="sourceLine" id="cb194-18" data-line-number="18">clean.corpus =<span class="st"> </span><span class="kw">delete.stop.words</span>(tokenized.corpus,</a>
-<a class="sourceLine" id="cb194-19" data-line-number="19">                                  <span class="dt">stop.words =</span> <span class="kw">stylo.pronouns</span>(<span class="dt">corpus.lang =</span> <span class="st">&quot;English&quot;</span>))</a>
-<a class="sourceLine" id="cb194-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb194-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb194-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb194-23" data-line-number="23">corpus.char<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">txt.to.features</span>(clean.corpus, </a>
-<a class="sourceLine" id="cb194-24" data-line-number="24">                                       <span class="dt">ngram.size =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb194-25" data-line-number="25">                                       <span class="dt">features =</span> <span class="st">&quot;w&quot;</span>)</a>
-<a class="sourceLine" id="cb194-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb194-27" data-line-number="27"><span class="co"># 将数据划分成1000个词一份</span></a>
-<a class="sourceLine" id="cb194-28" data-line-number="28">sliced.corpus.char<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">make.samples</span>(corpus.char<span class="fl">.1</span>, </a>
-<a class="sourceLine" id="cb194-29" data-line-number="29">                              <span class="dt">sampling =</span> <span class="st">&quot;normal.sampling&quot;</span>, </a>
-<a class="sourceLine" id="cb194-30" data-line-number="30">                              <span class="dt">sample.size =</span> <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb194-31" data-line-number="31"><span class="co"># 提取词频特征</span></a>
-<a class="sourceLine" id="cb194-32" data-line-number="32">features1 &lt;-<span class="st"> </span><span class="kw">make.frequency.list</span>(sliced.corpus.char<span class="fl">.1</span>)</a>
-<a class="sourceLine" id="cb194-33" data-line-number="33"></a>
-<a class="sourceLine" id="cb194-34" data-line-number="34"><span class="co"># 制作词频特征表</span></a>
-<a class="sourceLine" id="cb194-35" data-line-number="35">freqs1 &lt;-<span class="st"> </span><span class="kw">make.table.of.frequencies</span>(sliced.corpus.char<span class="fl">.1</span>, </a>
-<a class="sourceLine" id="cb194-36" data-line-number="36">                                   <span class="dt">features =</span> features1)</a>
-<a class="sourceLine" id="cb194-37" data-line-number="37"></a>
-<a class="sourceLine" id="cb194-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb194-39" data-line-number="39"><span class="co"># Culling</span></a>
-<a class="sourceLine" id="cb194-40" data-line-number="40"><span class="co"># 通过删选，用户可以指定特征在语料库中的出现比例，以决定其是否被纳入分析。在语料库中未达到指定比例的词语将被忽略。</span></a>
-<a class="sourceLine" id="cb194-41" data-line-number="41">culled.freqs1 &lt;-<span class="st"> </span><span class="kw">perform.culling</span>(freqs1, <span class="dt">culling.level =</span> <span class="dv">80</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">wd.df.d =<span class="st"> </span><span class="kw">dist</span>(wd.df,                 <span class="co"># create distance matrix</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">               <span class="dt">method =</span> <span class="st">&quot;euclidean&quot;</span>)  </a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">wd.mds =<span class="st"> </span><span class="kw">cmdscale</span>( wd.df.d, <span class="dt">k =</span> <span class="dv">3</span>)</a></code></pre></div>
+</div>
+<div id="cluster" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.5</span> Cluster<a href="第九章-机器学习建模基础.html#cluster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="检测数据是否可以聚类" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.5.1</span> 检测数据是否可以聚类<a href="第九章-机器学习建模基础.html#检测数据是否可以聚类" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>  我们通过测试数据是否包含非随机性来评估数据是否“可聚类”（clusterable）。为此，我们计算Hopkins统计量，该统计量表示数据与随机分布的相似程度。</p>
+<ul>
+<li><p>Hopkins值为0.5表明数据是随机的，且没有内在的聚类。</p></li>
+<li><p>如果Hopkins统计量接近1，则说明数据高度可聚类。</p></li>
+<li><p>Hopkins值为0表示数据是均匀分布的 (Aggarwal 2015, 158)。</p></li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co"># apply get_clust_tendency to cluster object</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">clusttendency &lt;-<span class="st"> </span><span class="kw">get_clust_tendency</span>(wd.df,    </a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">                                    <span class="co"># define number of points from sample space</span></a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">                                    <span class="dt">n =</span> <span class="dv">9</span>,      </a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">                   <span class="dt">gradient =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb57-6" data-line-number="6">                     <span class="co"># define color for low values</span></a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">                     <span class="dt">low =</span> <span class="st">&quot;steelblue&quot;</span>,</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">                     <span class="co"># define color for high values</span></a>
+<a class="sourceLine" id="cb57-9" data-line-number="9">                     <span class="dt">high =</span> <span class="st">&quot;white&quot;</span>)) </a>
+<a class="sourceLine" id="cb57-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb57-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb57-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb57-13" data-line-number="13">clusttendency[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## $hopkins_stat
+## [1] 0.6259924</code></pre>
+</div>
+<div id="数据预处理" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.5.2</span> 数据预处理<a href="第九章-机器学习建模基础.html#数据预处理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co"># clust &lt;- na.omit(clust)     # remove missing values</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="co"># clean data</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="co"># clusm &lt;- as.matrix(clus)</span></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="co"># clust &lt;- t(clusm)            # transpose data</span></a>
+<a class="sourceLine" id="cb59-5" data-line-number="5"><span class="co"># clust &lt;- na.omit(clust)     # remove missing values</span></a>
+<a class="sourceLine" id="cb59-6" data-line-number="6"><span class="co"># clusts &lt;- scale(clust)      # standardize variables</span></a>
+<a class="sourceLine" id="cb59-7" data-line-number="7"><span class="co"># clusts &lt;- as.matrix(clusts) # convert into matrix</span></a>
+<a class="sourceLine" id="cb59-8" data-line-number="8">wd.dfs &lt;-<span class="st"> </span><span class="kw">scale</span>(wd.df)</a></code></pre></div>
+</div>
+<div id="计算距离矩阵" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.5.3</span> 计算距离矩阵<a href="第九章-机器学习建模基础.html#计算距离矩阵" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure">
+<img src="images/distance.png" alt="距离" />
+<p class="caption">距离</p>
+</div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">clustd &lt;-<span class="st"> </span><span class="kw">dist</span>(wd.dfs,                 <span class="co"># 计算距离</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">               <span class="dt">method =</span> <span class="st">&quot;euclidean&quot;</span>)   <span class="co"># use euclidean (!) distance</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="co">## 计算距离的各种方法</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co"># # create distance matrix (euclidean method: not good when dealing with many dimensions)</span></a>
+<a class="sourceLine" id="cb60-6" data-line-number="6"><span class="co"># clustd &lt;- dist(clusts, method = &quot;euclidean&quot;)</span></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7"><span class="co"># # create distance matrix (maximum method: here the difference between points dominates)</span></a>
+<a class="sourceLine" id="cb60-8" data-line-number="8"><span class="co"># clustd_maximum &lt;- round(dist(clusts, method = &quot;maximum&quot;), 2)</span></a>
+<a class="sourceLine" id="cb60-9" data-line-number="9"><span class="co"># # create distance matrix (manhattan method: most popular choice)</span></a>
+<a class="sourceLine" id="cb60-10" data-line-number="10"><span class="co"># clustd_manhatten &lt;- round(dist(clusts, method = &quot;manhattan&quot;), 2) </span></a>
+<a class="sourceLine" id="cb60-11" data-line-number="11"><span class="co"># # create distance matrix (canberra method: for count data only - focuses on small differences and neglects larger differences)</span></a>
+<a class="sourceLine" id="cb60-12" data-line-number="12"><span class="co"># clustd_canberra &lt;- round(dist(clusts, method = &quot;canberra&quot;), 2)</span></a>
+<a class="sourceLine" id="cb60-13" data-line-number="13"><span class="co"># # create distance matrix (binary method: for binary data only!)</span></a>
+<a class="sourceLine" id="cb60-14" data-line-number="14"><span class="co"># clustd_binary &lt;- round(dist(clusts, method = &quot;binary&quot;), 2) </span></a>
+<a class="sourceLine" id="cb60-15" data-line-number="15"><span class="co"># # create distance matrix (minkowski method: is not a true distance measure)</span></a>
+<a class="sourceLine" id="cb60-16" data-line-number="16"><span class="co"># clustd_minkowski &lt;- round(dist(clusts, method = &quot;minkowski&quot;), 2) </span></a>
+<a class="sourceLine" id="cb60-17" data-line-number="17"><span class="co"># # distance method for words: daisy (other possible distances are &quot;manhattan&quot; and &quot;gower&quot;)</span></a>
+<a class="sourceLine" id="cb60-18" data-line-number="18"><span class="co"># clustd_daisy &lt;- round(daisy(clusts, metric = &quot;euclidean&quot;), 2)</span></a></code></pre></div>
+</div>
+<div id="创建聚类" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.5.4</span> 创建聚类<a href="第九章-机器学习建模基础.html#创建聚类" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>最常见的聚类方法称为<strong>ward.D</strong>或<strong>ward.D2</strong>。这两种连接函数都旨在最小化方差。也就是说，它们以一种使方差最小化的方式进行聚类（类似于普通最小二乘法设计中的回归线）。</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co"># create cluster object</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">cd &lt;-<span class="st"> </span><span class="kw">hclust</span>(clustd, <span class="dt">method=</span><span class="st">&quot;ward.D2&quot;</span>) </a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co"># display dendrogram              </span></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="kw">plot</span>(cd, <span class="dt">hang =</span> <span class="dv">-1</span>)        </a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># 创建cluster的方法</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="co"># # single linkage: cluster with nearest data point</span></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="co"># cd_single &lt;- hclust(clustd, method=&quot;single&quot;) </span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="co"># # create cluster object (ward.D linkage)</span></a>
+<a class="sourceLine" id="cb62-5" data-line-number="5"><span class="co"># cd_wardd &lt;- hclust(clustd, method=&quot;ward.D&quot;)</span></a>
+<a class="sourceLine" id="cb62-6" data-line-number="6"><span class="co"># # create cluster object (ward.D2 linkage): </span></a>
+<a class="sourceLine" id="cb62-7" data-line-number="7"><span class="co"># # cluster in a way to achieve minimum variance</span></a>
+<a class="sourceLine" id="cb62-8" data-line-number="8"><span class="co"># cd_wardd2 &lt;- hclust(clustd, method=&quot;ward.D2&quot;)</span></a>
+<a class="sourceLine" id="cb62-9" data-line-number="9"><span class="co"># # average linkage: cluster with closest mean</span></a>
+<a class="sourceLine" id="cb62-10" data-line-number="10"><span class="co"># cd_average &lt;- hclust(clustd, method=&quot;average&quot;) </span></a>
+<a class="sourceLine" id="cb62-11" data-line-number="11"><span class="co"># # mcquitty linkage</span></a>
+<a class="sourceLine" id="cb62-12" data-line-number="12"><span class="co"># cd_mcquitty &lt;- hclust(clustd, method=&quot;mcquitty&quot;) </span></a>
+<a class="sourceLine" id="cb62-13" data-line-number="13"><span class="co"># # median linkage: cluster with closest median</span></a>
+<a class="sourceLine" id="cb62-14" data-line-number="14"><span class="co"># cd_median &lt;- hclust(clustd, method=&quot;median&quot;)</span></a>
+<a class="sourceLine" id="cb62-15" data-line-number="15"><span class="co"># # centroid linkage: cluster with closest prototypical point of target cluster</span></a>
+<a class="sourceLine" id="cb62-16" data-line-number="16"><span class="co"># cd_centroid &lt;- hclust(clustd, method=&quot;centroid&quot;) </span></a>
+<a class="sourceLine" id="cb62-17" data-line-number="17"><span class="co"># # complete linkage: cluster with nearest/furthest data point of target cluster</span></a>
+<a class="sourceLine" id="cb62-18" data-line-number="18"><span class="co"># cd_complete &lt;- hclust(clustd, method=&quot;complete&quot;)  </span></a></code></pre></div>
+</div>
+</div>
+<div id="确定最佳的聚类数量" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.6</span> 确定最佳的聚类数量<a href="第九章-机器学习建模基础.html#确定最佳的聚类数量" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>  现在，我们基于轮廓宽度（silhouette widths）来确定最佳的聚类数量。轮廓宽度显示了聚类内部相似性与聚类之间相似性的比率。如果轮廓宽度的值低于0.2，这表明聚类可能不合适（Levshina 2015, 311）。下面的函数显示了2到8个聚类的轮廓宽度值。</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">optclus &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">8</span>, <span class="cf">function</span>(x) <span class="kw">summary</span>(<span class="kw">silhouette</span>(<span class="kw">cutree</span>(cd, <span class="dt">k =</span> x), clustd))<span class="op">$</span>avg.width)</a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">optclus <span class="co"># inspect results</span></a></code></pre></div>
+<pre><code>## [1] 0.05391875 0.04634888 0.04462229 0.04769065 0.03598193 0.03790021 0.04366335</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="co"># 最佳的聚类数量是具有最高轮廓系数（silhouette width）的聚类方案。我们将树状图剪切为最佳的聚类数量，并绘制结果。</span></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">optnclust &lt;-<span class="st"> </span><span class="kw">which</span>(optclus <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(optclus)) <span class="co"># determine optimal number of clusters</span></a>
+<a class="sourceLine" id="cb65-3" data-line-number="3">groups &lt;-<span class="st"> </span><span class="kw">cutree</span>(cd, <span class="dt">k=</span>optnclust) <span class="co"># cut tree into optimal number of clusters</span></a>
+<a class="sourceLine" id="cb65-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb65-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="kw">plot</span>(cd, <span class="dt">hang =</span> <span class="dv">-1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>)             <span class="co"># plot result as dendrogram</span></a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co">#rect.hclust(cd, k=optnclust, border=&quot;red&quot;) # draw red borders around clusters</span></a></code></pre></div>
+<div id="确定影响因素" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.6.1</span> 确定影响因素<a href="第九章-机器学习建模基础.html#确定影响因素" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>在下一步中，我们旨在确定哪些因素对聚类特别重要——这一步骤类似于推理设计中测量效应大小的过程。</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="co"># which factors are particularly important</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">celtic &lt;-<span class="st"> </span>wd.dfs[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),]</a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">others &lt;-<span class="st"> </span>wd.dfs[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),]</a>
+<a class="sourceLine" id="cb67-4" data-line-number="4"><span class="co"># calculate column means</span></a>
+<a class="sourceLine" id="cb67-5" data-line-number="5">celtic.cm &lt;-<span class="st"> </span><span class="kw">colMeans</span>(celtic)</a>
+<a class="sourceLine" id="cb67-6" data-line-number="6">others.cm &lt;-<span class="st"> </span><span class="kw">colMeans</span>(others)</a>
+<a class="sourceLine" id="cb67-7" data-line-number="7"><span class="co"># calculate difference between celtic and other englishes</span></a>
+<a class="sourceLine" id="cb67-8" data-line-number="8">diff &lt;-<span class="st"> </span>celtic.cm <span class="op">-</span><span class="st"> </span>others.cm</a>
+<a class="sourceLine" id="cb67-9" data-line-number="9"><span class="kw">sort</span>(diff, <span class="dt">decreasing =</span> F)</a></code></pre></div>
+<pre><code>##        that         but        with          it        said           I 
+## -1.69321119 -1.33784741 -1.13644247 -1.12259843 -1.06083926 -0.95872635 
+##         had          He         out          so           s         one 
+## -0.95424014 -0.83743853 -0.81340938 -0.80697064 -0.73690866 -0.72158651 
+##        this       would         the        have         has         was 
+## -0.71090834 -0.70899352 -0.64731768 -0.58718361 -0.56948068 -0.56758791 
+##       could         for       there        when          up         The 
+## -0.54005685 -0.52973281 -0.51499592 -0.37586913 -0.34621512 -0.32503076 
+##          an        from       about        were          is          to 
+## -0.29963923 -0.28421738 -0.21697833 -0.20560158 -0.16562718 -0.15749547 
+##          no          on         not         are        been        time 
+## -0.09250448 -0.02314698 -0.02266190  0.01197825  0.07352595  0.08937754 
+##          at           a        some          be         man         and 
+##  0.13445889  0.20863330  0.28245668  0.38935834  0.40804644  0.41283703 
+##          as         all          in          of          by         who 
+##  0.61887339  0.72477609  0.97843397  1.55867980  1.56607051  3.22904485</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">sort</span>(diff),           <span class="co"># y-values</span></a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">  <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(diff),       <span class="co"># x-values </span></a>
+<a class="sourceLine" id="cb69-3" data-line-number="3">  <span class="dt">type=</span> <span class="st">&quot;n&quot;</span>,            <span class="co"># plot type (empty)</span></a>
+<a class="sourceLine" id="cb69-4" data-line-number="4">  <span class="dt">cex.axis =</span> <span class="fl">.75</span>,       <span class="co"># axis font size</span></a>
+<a class="sourceLine" id="cb69-5" data-line-number="5">  <span class="dt">cex.lab =</span> <span class="fl">.75</span>,        <span class="co"># label font size</span></a>
+<a class="sourceLine" id="cb69-6" data-line-number="6">  <span class="dt">xlab =</span><span class="st">&quot;Prototypical for Non-Celtic Varieties (Cluster 2) &lt;-----&gt; Prototypical for Celtic Varieties (Cluster 1)&quot;</span>, <span class="co"># x-axis label</span></a>
+<a class="sourceLine" id="cb69-7" data-line-number="7">  <span class="dt">yaxt =</span> <span class="st">&quot;n&quot;</span>,           <span class="co"># no y-axis tick marks</span></a>
+<a class="sourceLine" id="cb69-8" data-line-number="8">  <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)            <span class="co"># no y-axis label</span></a>
+<a class="sourceLine" id="cb69-9" data-line-number="9"><span class="kw">text</span>(<span class="kw">sort</span>(diff), <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(diff), <span class="kw">names</span>(<span class="kw">sort</span>(diff)), <span class="dt">cex =</span> <span class="fl">.75</span>) <span class="co"># plot text into plot</span></a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="检验分类是否合理" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.6.2</span> 检验分类是否合理<a href="第九章-机器学习建模基础.html#检验分类是否合理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>现在我们将通过使用自助法（bootstrapping）验证聚类解决方案，测试聚类是否合理。</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">library</span>(pvclust)</a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">res.pv &lt;-<span class="st"> </span><span class="kw">pvclust</span>(<span class="kw">t</span>(wd.dfs),                     <span class="co"># apply pvclust method to clus data</span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3">                  <span class="dt">method.dist=</span><span class="st">&quot;euclidean&quot;</span>,  <span class="co"># use eucledian distance</span></a>
+<a class="sourceLine" id="cb70-4" data-line-number="4">                  <span class="dt">method.hclust=</span><span class="st">&quot;ward.D2&quot;</span>,  <span class="co"># use ward.d2 linkage</span></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5">                  <span class="dt">nboot =</span> <span class="dv">100</span>)              <span class="co"># use 100 bootstrap runs</span></a></code></pre></div>
+<pre><code>## Bootstrap (r = 0.5)... Done.
+## Bootstrap (r = 0.58)... Done.
+## Bootstrap (r = 0.69)... Done.
+## Bootstrap (r = 0.79)... Done.
+## Bootstrap (r = 0.9)... Done.
+## Bootstrap (r = 1.0)... Done.
+## Bootstrap (r = 1.08)... Done.
+## Bootstrap (r = 1.19)... Done.
+## Bootstrap (r = 1.29)... Done.
+## Bootstrap (r = 1.4)... Done.</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">plot</span>(res.pv, <span class="dt">cex =</span> <span class="fl">.75</span>)</a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw">pvrect</span>(res.pv)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">library</span>(gplots)</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="co"># install.packages(&quot;vcd&quot;)</span></a>
+<a class="sourceLine" id="cb73-4" data-line-number="4"><span class="co"># install.packages(&quot;exact2x2&quot;)</span></a>
+<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="kw">library</span>(ape)</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6"><span class="co"># library(vcd)</span></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7"><span class="co"># library(exact2x2)</span></a>
+<a class="sourceLine" id="cb73-8" data-line-number="8"><span class="kw">plot</span>(<span class="kw">as.phylo</span>(cd),      <span class="co"># plot cluster object</span></a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">     <span class="dt">cex =</span> <span class="fl">0.75</span>,        <span class="co"># .75 font size</span></a>
+<a class="sourceLine" id="cb73-10" data-line-number="10">     <span class="dt">label.offset =</span> <span class="fl">.5</span>) <span class="co"># .5 label offset</span></a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co"># plot as unrooted tree</span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">as.phylo</span>(cd),      <span class="co"># plot cluster object</span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">     <span class="dt">type =</span> <span class="st">&quot;unrooted&quot;</span>, <span class="co"># plot as unrooted tree</span></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">     <span class="dt">cex =</span> <span class="fl">.75</span>,         <span class="co"># .75 font size</span></a>
+<a class="sourceLine" id="cb74-5" data-line-number="5">     <span class="dt">label.offset =</span> <span class="dv">1</span>)  <span class="co"># .5 label offset</span></a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-3.png" width="672" /></p>
+</div>
+<div id="类别型数据聚类分析" class="section level4 hasAnchor">
+<h4><span class="header-section-number">9.2.6.3</span> 类别型数据聚类分析<a href="第九章-机器学习建模基础.html#类别型数据聚类分析" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">tone.phon &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch9/tone-phonology.CSV&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on &#39;data/ch9/tone-phonology.CSV&#39;</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">row.names</span>(tone.phon)=tone.phon<span class="op">$</span>language</a>
+<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="co">#tone.phon = select(tone.phon, -language)</span></a>
+<a class="sourceLine" id="cb77-3" data-line-number="3"><span class="co"># convert into factors</span></a>
+<a class="sourceLine" id="cb77-4" data-line-number="4">tone.phon &lt;-<span class="st"> </span><span class="kw">apply</span>(tone.phon, <span class="dv">1</span>, <span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb77-5" data-line-number="5">  x &lt;-<span class="st"> </span><span class="kw">as.factor</span>(x) })</a>
+<a class="sourceLine" id="cb77-6" data-line-number="6"><span class="co"># clean data</span></a>
+<a class="sourceLine" id="cb77-7" data-line-number="7">tone.phon.mtr  &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">as.matrix</span>(tone.phon))</a>
+<a class="sourceLine" id="cb77-8" data-line-number="8"><span class="co"># create distance matrix</span></a>
+<a class="sourceLine" id="cb77-9" data-line-number="9">tone.phon.mtr.d&lt;-<span class="st"> </span><span class="kw">dist</span>(tone.phon.mtr[,<span class="op">-</span><span class="dv">1</span>] , <span class="dt">method =</span> <span class="st">&quot;binary&quot;</span>)   <span class="co"># create a distance object with binary (!) distance</span></a>
+<a class="sourceLine" id="cb77-10" data-line-number="10"><span class="co"># create cluster object (ward.D2 linkage)   : cluster in a way to achieve minimum variance</span></a>
+<a class="sourceLine" id="cb77-11" data-line-number="11">tone.phon.mtr.cd &lt;-<span class="st"> </span><span class="kw">hclust</span>(tone.phon.mtr.d, <span class="dt">method=</span><span class="st">&quot;ward.D2&quot;</span>)</a>
+<a class="sourceLine" id="cb77-12" data-line-number="12"><span class="co"># plot result as dendrogram</span></a>
+<a class="sourceLine" id="cb77-13" data-line-number="13"><span class="kw">plot</span>(tone.phon.mtr.cd , <span class="dt">hang =</span> <span class="dv">-1</span>)              <span class="co"># display dendogram</span></a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
 </div>
 <div id="文本聚类分析" class="section level3 hasAnchor">
-<h3><span class="header-section-number">9.2.2</span> 文本聚类分析<a href="第九章-机器学习建模基础.html#文本聚类分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1"><span class="co"># 主成分分析</span></a>
-<a class="sourceLine" id="cb195-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
-<a class="sourceLine" id="cb195-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>,</a>
-<a class="sourceLine" id="cb195-4" data-line-number="4">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
-<a class="sourceLine" id="cb195-5" data-line-number="5">      <span class="dt">pca.visual.flavour =</span> <span class="st">&quot;technical&quot;</span>, </a>
-<a class="sourceLine" id="cb195-6" data-line-number="6">      <span class="dt">write.png.file =</span> <span class="ot">TRUE</span>, <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-331-1.png" width="672" /></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1"><span class="co"># 显示两本书在第一第二主成分空间的分布</span></a>
-<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
-<a class="sourceLine" id="cb196-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>, </a>
-<a class="sourceLine" id="cb196-4" data-line-number="4">      <span class="dt">mfw.min =</span> <span class="dv">100</span>, <span class="dt">mfw.max =</span> <span class="dv">500</span>,</a>
-<a class="sourceLine" id="cb196-5" data-line-number="5">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
-<a class="sourceLine" id="cb196-6" data-line-number="6">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>, <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb196-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb196-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb196-9" data-line-number="9"><span class="co"># 显示不同高频词的权重loadings</span></a>
-<a class="sourceLine" id="cb196-10" data-line-number="10"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
-<a class="sourceLine" id="cb196-11" data-line-number="11">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>, </a>
-<a class="sourceLine" id="cb196-12" data-line-number="12">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>,</a>
-<a class="sourceLine" id="cb196-13" data-line-number="13">      <span class="dt">pca.visual.flavour =</span> <span class="st">&quot;loadings&quot;</span>, </a>
-<a class="sourceLine" id="cb196-14" data-line-number="14">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb196-15" data-line-number="15">      <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-331-2.png" width="672" /></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1"><span class="co"># cluster analysis</span></a>
-<a class="sourceLine" id="cb197-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
-<a class="sourceLine" id="cb197-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;CA&quot;</span>, </a>
-<a class="sourceLine" id="cb197-4" data-line-number="4">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>,  </a>
-<a class="sourceLine" id="cb197-5" data-line-number="5">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
-<a class="sourceLine" id="cb197-6" data-line-number="6">      <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-331-3.png" width="672" /></p>
+<h3><span class="header-section-number">9.2.7</span> 文本聚类分析<a href="第九章-机器学习建模基础.html#文本聚类分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co"># 主成分分析</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb78-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>,</a>
+<a class="sourceLine" id="cb78-4" data-line-number="4">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
+<a class="sourceLine" id="cb78-5" data-line-number="5">      <span class="dt">pca.visual.flavour =</span> <span class="st">&quot;technical&quot;</span>, </a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">      <span class="dt">write.png.file =</span> <span class="ot">TRUE</span>, <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># 显示两本书在第一第二主成分空间的分布</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb79-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>, </a>
+<a class="sourceLine" id="cb79-4" data-line-number="4">      <span class="dt">mfw.min =</span> <span class="dv">100</span>, <span class="dt">mfw.max =</span> <span class="dv">500</span>,</a>
+<a class="sourceLine" id="cb79-5" data-line-number="5">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
+<a class="sourceLine" id="cb79-6" data-line-number="6">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>, <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb79-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb79-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb79-9" data-line-number="9"><span class="co"># 显示不同高频词的权重loadings</span></a>
+<a class="sourceLine" id="cb79-10" data-line-number="10"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb79-11" data-line-number="11">      <span class="dt">analysis.type =</span> <span class="st">&quot;PCR&quot;</span>, </a>
+<a class="sourceLine" id="cb79-12" data-line-number="12">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>,</a>
+<a class="sourceLine" id="cb79-13" data-line-number="13">      <span class="dt">pca.visual.flavour =</span> <span class="st">&quot;loadings&quot;</span>, </a>
+<a class="sourceLine" id="cb79-14" data-line-number="14">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb79-15" data-line-number="15">      <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co"># cluster analysis</span></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">stylo</span>(<span class="dt">frequencies =</span> culled.freqs1, </a>
+<a class="sourceLine" id="cb80-3" data-line-number="3">      <span class="dt">analysis.type =</span> <span class="st">&quot;CA&quot;</span>, </a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">      <span class="dt">write.png.file =</span> <span class="ot">FALSE</span>,  </a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">      <span class="dt">custom.graph.title =</span> <span class="st">&quot;Judge Dee and Sherlock&quot;</span>, </a>
+<a class="sourceLine" id="cb80-6" data-line-number="6">      <span class="dt">gui =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
 
 </div>
 </div>
@@ -722,20 +1281,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

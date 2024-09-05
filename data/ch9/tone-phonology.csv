@@ -1,0 +1,5 @@
+language,high_level,mid_level,low_level,rising,falling,high-falling-rising,low-falling-rising
+thai,1,1,1,1,1,0,0
+md,1,0,0,1,1,0,1
+sv,1,0,1,1,1,0,1
+nv,1,0,1,1,1,1,1

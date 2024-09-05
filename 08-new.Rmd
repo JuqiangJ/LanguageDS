@@ -9,7 +9,12 @@ output:
 
 # 第九章 机器学习建模基础
 
-![详细背景请看原文献](images/8.2.png)
+&emsp;&emsp;对于某一个观测对象收集多个不同的变量（或者叫特征）形成的数据称为多元数据（Multivariate Data） 。例如，在一个关于学生成绩的研究中，你可能会同时记录每个学生的多门课程成绩（如数学、语文、英语等），这些不同课程的成绩就构成了多变量数据。
+
+&emsp;&emsp;多元数据的分析可以通过统计建模，也可以通过机器学习建模。
+
+&emsp;&emsp;在本章中，我们讨论了两种发现多变量数据集结构的方法。在一种方法中，我们试图通过观测值的分组来发现数据中的结构。这些技术是无监督的（unsupervised），因为我们并不预先规定应该存在什么样的分组。我们将在“聚类（clustering）”这个标题下讨论这些技术。另一种方法中，我们理论上知道存在哪些分组，问题在于数据是否支持这些分组。这第二类技术可以被描述为监督式的（supervised），因为这些技术在分析数据时使用的是由分析师强加于数据的分组。我们将这些技术称为分类方法（methods for classification）。
+
 
 &emsp;&emsp;机器学习（Machine Learning）是人工智能（Artificial Intelligence, AI）的一个重要分支，其主要目标是使计算机通过学习经验数据自动改进和发展。机器学习使计算机从数据中学习模式和规律，从而做出预测或决策，而无需显式地编程。机器学习主要分为2种主要类型，监督学习（Supervised Learning）和无监督学习（Unsupervised Learning）。
 
@@ -19,8 +24,10 @@ output:
 
 ## 监督学习
 
-&emsp;&emsp;下面将用一个二语语音研究的例子讲解如何使用支持向量机（SVM）和随机森林来对中国英语学习者的焦点语音实现进行自动评估。
 
+
+&emsp;&emsp;下面将用一个二语语音研究的例子讲解如何使用支持向量机（SVM）和随机森林来对中国英语学习者的焦点语音实现进行自动评估。
+![详细背景请看原文献](images/8.2.png)
 &emsp;&emsp;传统的统计建模（如广义线性模型）在大多数先前研究中用于调查信息焦点的语音实现，这些研究检查整个数据集，并通过离散指标检测焦点类型的效果。通常，基于不同的声学测量构建几个模型，以测试不同焦点和语言组的效果，但很难得到全面的图景。而人类听众则逐一听取话语并据此作出判断。这个过程可以通过机器学习算法来模拟，这些算法输入一组特征并基于这些特征输出分类结果。
 
 &emsp;&emsp;支持向量机（SVM）和随机森林模型被用于基于不同的声学测量集分类鼻音元音和口音元音。我们理解，计算感知与人类感知并不完全相同，但计算感知在语音研究中的优势在于它纯粹基于声学特征，因此可以剔除句法或词汇的影响。此外，与识别元音或辅音不同，仅仅给听众一些目标词并测试他们如何识别不同的焦点是困难的。机器学习算法可以在没有上下文的情况下识别不同的焦点，从而从感知的角度接近这个问题。
@@ -56,7 +63,10 @@ output:
 
 ```{r message=FALSE}
 library(tidyverse)
+library(languageR)
 setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
+library(cluster)
+library(factoextra)
 
 ```
 
@@ -175,15 +185,180 @@ rbind(CE1.TEST, CE2.TEST)%>%
 
 ## 非监督学习
 
+| |类别数据|连续数据|
+|:----|:----|:----|
+|非距离矩阵| |PCA, FA|
+|距离矩阵|CA, cluster|MDS, cluster|
 
-&emsp;&emsp;下面我们基于词频特征计算两个文本的文体风格特征并通过不同的非监督学习的方法对两个不同的文本进行分类。
+从数据的角度，非监督学习中的多元变量可以是连续型或者类别型。连续型变量中有一种特殊的是距离变量。据此我们介绍不同的非监督学习方法。
 
-### 文本数据预处理
+### principal components analysis
+
+Xiaofei Lu 的句法复杂性测量是一套用于评估书面或口语语言中句法结构复杂性的量化指标。这些测量广泛应用于二语习得（SLA）研究和应用语言学领域，用于评估学习者在语言产出中的句法复杂性发展情况。
+
+| **Measure**                          | **Definition**                                                                                   |
+|--------------------------------------|--------------------------------------------------------------------------------------------------|
+| **MLS (Mean Length of Sentence)**    | The average number of words per sentence.                                                        |
+| **MLT (Mean Length of T-unit)**      | The average number of words per T-unit.                                                          |
+| **MLC (Mean Length of Clause)**      | The average number of words per clause.                                                          |
+| **C/S (Clauses per Sentence)**       | The ratio of the total number of clauses to the total number of sentences.                       |
+| **VP/T (Verb Phrases per T-unit)**   | The ratio of the total number of verb phrases to the total number of T-units.                    |
+| **C/T (Clauses per T-unit)**         | The ratio of the total number of clauses to the total number of T-units.                         |
+| **DC/C (Dependent Clauses per Clause)** | The ratio of the total number of dependent clauses to the total number of clauses.              |
+| **DC/T (Dependent Clauses per T-unit)** | The ratio of the total number of dependent clauses to the total number of T-units.              |
+| **T/S (T-units per Sentence)**       | The ratio of the total number of T-units to the total number of sentences.                       |
+| **CT/T (Complex T-units per T-unit)** | The ratio of the total number of complex T-units (T-units with dependent clauses) to T-units.   |
+| **CP/C (Coordinate Phrases per Clause)** | The ratio of the total number of coordinate phrases to the total number of clauses.            |
+| **CP/T (Coordinate Phrases per T-unit)** | The ratio of the total number of coordinate phrases to the total number of T-units.            |
+| **CN/C (Complex Nominals per Clause)** | The ratio of the total number of complex nominals to the total number of clauses.              |
+| **CN/T (Complex Nominals per T-unit)** | The ratio of the total number of complex nominals to the total number of T-units.              |
+| **SWT/T (Sentence Weight per T-unit)** | The ratio of the total number of sentence weight (content words) to the total number of T-units. |
+
+```{r}
+metrics_SCA <- read_csv("data/ch9/metrics_SCA.CSV")
+
+sc.pr = prcomp(metrics_SCA[, c(-1,-16)])
+
+names(sc.pr)
+round(sc.pr$sdev, 4)
+summary(sc.pr)
+
+props = round((sc.pr$sdev^2/sum(sc.pr$sdev^2)), 3)
+
+barplot(props, col = as.numeric(props > 0.05), 
+        xlab = "principal components", 
+        ylab = "proportion of variance explained") 
+abline(h = 0.05)
+
+
+sc.pr$x[, 1:3]
+
+library(lattice)
+super.sym = trellis.par.get("superpose.symbol")
+
+splom(data.frame(sc.pr$x[,1:3]), 
+        groups = metrics_SCA$Registers, 
+        panel = panel.superpose, 
+        key = list( title = "texts in productivity space", 
+                      text = list(c("trans", "writing")), 
+                      points = list(pch = super.sym$pch[1:2], 
+                                      col = super.sym$col[1:2])))
+
+dim(sc.pr$rotation)
+
+sc.pr$rotation[1:10, 1:3]
+
+biplot(sc.pr, scale = 0, var.axes = F, 
+       col = c("darkgrey", "black"), 
+       cex = c(0.9, 1.2))
+
+sc.pr = prcomp(metrics_SCA[ ,c(-1,-16)], 
+               scale = T, center = T)
+biplot(sc.pr, var.axes = F, col = c("darkgrey", "black"), 
+       cex = c(0.6, 1), xlim = c(-0.42, 0.38))
+
+```
+
+
+
+
+```{r}
+# k-means clustering [assume 3 clusters]
+
+sc.pr$x[,1:3]
+km = kmeans(sc.pr$x[,1:3], centers=2, nstart=5)
+
+# fviz_cluster(km, data = metrics_SCA[, c(-1,-16)],
+#              palette = c("#2E9FDF", "#00AFBB", "#E7B800"), 
+#              geom = "point",
+#              ellipse.type = "convex", 
+#              ggtheme = theme_bw()
+#              )
+
+# km.df <- data.frame(sc.pr$x[,1:3], 
+#                      Cluster=km$cluster, 
+#                      Register = metrics_SCA$Registers)
+
+# Coordinates of individuals
+ind.coord <- as.data.frame(get_pca_ind(sc.pr)$coord)
+# Add clusters obtained using the K-means algorithm
+ind.coord$cluster <- factor(km$cluster)
+# Add Species groups from the original data sett
+ind.coord$Registers <- metrics_SCA$Registers
+ind.coord$text <- metrics_SCA$text
+
+# Percentage of variance explained by dimensions
+eigenvalue <- round(get_eigenvalue(sc.pr), 1)
+variance.percent <- eigenvalue$variance.percent
+head(eigenvalue)
+
+library(ggpubr)
+
+ggscatter(ind.coord, x = "Dim.1", y = "Dim.2",
+  color = "cluster", 
+  palette = "npg", 
+  ellipse = TRUE, 
+  ellipse.type = "convex",
+  label = "text",
+  shape = "Registers", size = 1.5,  legend = "right", 
+  ggtheme = theme_bw(),
+  xlab = paste0("PC 1 (", variance.percent[1], "% )" ),
+  ylab = paste0("PC 2 (", variance.percent[2], "% )" )) 
+
+
+# ggplot(ggdata) +
+#   geom_point(aes(x=PC1, y=PC2, 
+#                  color=factor(Register)), 
+#              size=5, shape=20) +
+#   # stat_ellipse(aes(x=PC1,y=PC2,fill=factor(Cluster)),
+#   #              geom="polygon", level=0.95, alpha=0.2) +
+#   guides(color=guide_legend("Register"),fill=guide_legend("Cluster"))
+```
+
+
+
+
+
+### 因子分析
+主成分分析（Principal Components Analysis，简称PCA）的扩展方法是探索性因子分析（Exploratory Factor Analysis，简称EFA）。在主成分分析中，总方差被分配到各个主成分（PCs）中。因此，某个主成分解释的方差比例由该主成分的方差除以所有主成分的总方差得出。然而，在因子分析中，模型中加入了一个误差项，以考虑数据中可能存在的噪音。因此，不再有唯一的一组主成分（现在称为因子）和载荷。相反，通过因子旋转（Factor Rotation）技术，可以获得各种备选的因子（及其载荷）。因子旋转的目的是尽可能简化因子模型的解释。如果变量在少数几个因子上具有高载荷，并且在某一维度上的载荷要么很大要么接近于零，解释将变得更加直观。
+
+```{r}
+
+
+sc.fac = factanal(metrics_SCA[ ,c(-1,-16)], factors = 3)
+
+loadings = loadings(sc.fac) 
+
+plot(loadings, type = "n", xlim = c(-0.4, 1)) 
+
+text(loadings, rownames(loadings), cex = 0.8)
+
+
+
+sc.fac2 = factanal(metrics_SCA[ ,c(-1,-16)], factors = 3, rotation = "promax") 
+loadings2 = loadings(sc.fac2) 
+plot(loadings2, type = "n", xlim = c(-0.4, 1)) 
+text(loadings2, rownames(loadings)) 
+abline(h = -0.1, col = "darkgrey")
+
+
+```
+
+### Correspondence analysis
+
+适用于频数数据。Correspondence analysis, MDS和hierarchical cluster analysis都基于distance matrix。Correspondence analysis是MDS的一种特殊情况。
+
+在对应分析（Correspondence Analysis）中，我们将行向量（或列向量）视为“城市”的轮廓，并计算它们之间的距离。可以用多种方式计算向量之间的距离（或不相似度），在 `dist()` 函数的在线帮助页面中记录了多种选项。在对应分析中使用的距离度量是所谓的卡方距离（chi-squared distance）。给定一个包含20行和5列的列联表，对应分析构建了两个距离矩阵，一个是20x20的矩阵，指定行之间的距离，另一个是5x5的矩阵，指定列之间的距离。
+
+对应分析的第二步是尽可能忠实地将这些距离表示在二维散点图中，即低维地图中。两行之间的距离越大，它们在行的地图中应该越远。同样，不相似的列应该相距较远，而相似的列在列的地图中应该彼此接近。在对应分析中，我们将行图和列图叠加，这类似于双标图（biplot）中主成分得分（PC scores）和这些主成分上的载荷的叠加。由于卡方距离度量，我们可以确保在合并的地图中行和列之间的接近程度尽可能好地近似于行和列之间的相关性。
+
+
 ```{r message=FALSE}
 library(stylo)
 
 # 导入文本数据
-style.corpus <- load.corpus(files = "all", corpus.dir = "~/Nutstore Files/310_Tutorial/Language data science/data/ch6/detectives",
+style.corpus <- load.corpus(files = "all", 
+                            corpus.dir = "data/ch6/detectives",
          encoding = "UTF-8")
 
 # 对文本进行分词
@@ -222,7 +397,223 @@ freqs1 <- make.table.of.frequencies(sliced.corpus.char.1,
 # 通过删选，用户可以指定特征在语料库中的出现比例，以决定其是否被纳入分析。在语料库中未达到指定比例的词语将被忽略。
 culled.freqs1 <- perform.culling(freqs1, culling.level = 80)
 
+wd.df = as.data.frame(culled.freqs1)
+
+detect.ca = corres.fnc(wd.df)
+
+summary(detect.ca, head = TRUE)
+plot(detect.ca)
+
+
+plot(detect.ca, 
+     #rlabels = oldFrenchMeta$Genre, 
+     #rcol = as.numeric(oldFrenchMeta$Genre), 
+     rcex = 0.4, 
+     extreme = 0.1, ccol = "blue")
+
 ```
+
+
+
+
+### Multi-demensional scaling
+&emsp;&emsp; 多维尺度分析（Multidimensional Scaling, MDS）是一种用于在距离矩阵中发现结构的技术。类似于主成分分析（Principal Components Analysis, PCA），它是一种用于降维的技术，通常将数据降到二维或三维。与对应分析（Correspondence Analysis）类似，实际上对应分析是多维尺度分析的一种特殊情况，其核心思想是在一个平面（例如）中创建一个表示，使得平面中各点之间的距离尽可能准确地反映原始多维空间中各点之间的距离。
+
+&emsp;&emsp;下面我们基于词频特征计算两个文本的文体风格特征并通过不同的非监督学习的方法对两个不同的文本进行分类。
+```{r}
+wd.df.d = dist(wd.df,                 # create distance matrix
+               method = "euclidean")  
+
+wd.mds = cmdscale( wd.df.d, k = 3)
+
+```
+
+### Cluster
+
+
+#### 检测数据是否可以聚类
+
+&emsp;&emsp;我们通过测试数据是否包含非随机性来评估数据是否“可聚类”（clusterable）。为此，我们计算Hopkins统计量，该统计量表示数据与随机分布的相似程度。
+
+- Hopkins值为0.5表明数据是随机的，且没有内在的聚类。
+
+- 如果Hopkins统计量接近1，则说明数据高度可聚类。
+
+- Hopkins值为0表示数据是均匀分布的 (Aggarwal 2015, 158)。
+
+```{r}
+
+
+# apply get_clust_tendency to cluster object
+clusttendency <- get_clust_tendency(wd.df,    
+                                    # define number of points from sample space
+                                    n = 9,      
+                   gradient = list(
+                     # define color for low values
+                     low = "steelblue",
+                     # define color for high values
+                     high = "white")) 
+
+
+
+clusttendency[1]
+```
+
+#### 数据预处理
+```{r}
+# clust <- na.omit(clust)     # remove missing values
+# clean data
+# clusm <- as.matrix(clus)
+# clust <- t(clusm)            # transpose data
+# clust <- na.omit(clust)     # remove missing values
+# clusts <- scale(clust)      # standardize variables
+# clusts <- as.matrix(clusts) # convert into matrix
+wd.dfs <- scale(wd.df)
+```
+
+#### 计算距离矩阵
+
+![距离](images/distance.png)
+```{r}
+clustd <- dist(wd.dfs,                 # 计算距离
+               method = "euclidean")   # use euclidean (!) distance
+
+## 计算距离的各种方法
+# # create distance matrix (euclidean method: not good when dealing with many dimensions)
+# clustd <- dist(clusts, method = "euclidean")
+# # create distance matrix (maximum method: here the difference between points dominates)
+# clustd_maximum <- round(dist(clusts, method = "maximum"), 2)
+# # create distance matrix (manhattan method: most popular choice)
+# clustd_manhatten <- round(dist(clusts, method = "manhattan"), 2) 
+# # create distance matrix (canberra method: for count data only - focuses on small differences and neglects larger differences)
+# clustd_canberra <- round(dist(clusts, method = "canberra"), 2)
+# # create distance matrix (binary method: for binary data only!)
+# clustd_binary <- round(dist(clusts, method = "binary"), 2) 
+# # create distance matrix (minkowski method: is not a true distance measure)
+# clustd_minkowski <- round(dist(clusts, method = "minkowski"), 2) 
+# # distance method for words: daisy (other possible distances are "manhattan" and "gower")
+# clustd_daisy <- round(daisy(clusts, metric = "euclidean"), 2)
+```
+
+#### 创建聚类
+最常见的聚类方法称为**ward.D**或**ward.D2**。这两种连接函数都旨在最小化方差。也就是说，它们以一种使方差最小化的方式进行聚类（类似于普通最小二乘法设计中的回归线）。
+```{r}
+# create cluster object
+cd <- hclust(clustd, method="ward.D2") 
+# display dendrogram              
+plot(cd, hang = -1)        
+
+# 创建cluster的方法
+# # single linkage: cluster with nearest data point
+# cd_single <- hclust(clustd, method="single") 
+# # create cluster object (ward.D linkage)
+# cd_wardd <- hclust(clustd, method="ward.D")
+# # create cluster object (ward.D2 linkage): 
+# # cluster in a way to achieve minimum variance
+# cd_wardd2 <- hclust(clustd, method="ward.D2")
+# # average linkage: cluster with closest mean
+# cd_average <- hclust(clustd, method="average") 
+# # mcquitty linkage
+# cd_mcquitty <- hclust(clustd, method="mcquitty") 
+# # median linkage: cluster with closest median
+# cd_median <- hclust(clustd, method="median")
+# # centroid linkage: cluster with closest prototypical point of target cluster
+# cd_centroid <- hclust(clustd, method="centroid") 
+# # complete linkage: cluster with nearest/furthest data point of target cluster
+# cd_complete <- hclust(clustd, method="complete")  
+
+```
+
+### 确定最佳的聚类数量
+&emsp;&emsp;现在，我们基于轮廓宽度（silhouette widths）来确定最佳的聚类数量。轮廓宽度显示了聚类内部相似性与聚类之间相似性的比率。如果轮廓宽度的值低于0.2，这表明聚类可能不合适（Levshina 2015, 311）。下面的函数显示了2到8个聚类的轮廓宽度值。
+```{r}
+optclus <- sapply(2:8, function(x) summary(silhouette(cutree(cd, k = x), clustd))$avg.width)
+optclus # inspect results
+
+# 最佳的聚类数量是具有最高轮廓系数（silhouette width）的聚类方案。我们将树状图剪切为最佳的聚类数量，并绘制结果。
+optnclust <- which(optclus == max(optclus)) # determine optimal number of clusters
+groups <- cutree(cd, k=optnclust) # cut tree into optimal number of clusters
+
+
+plot(cd, hang = -1, cex = .75)             # plot result as dendrogram
+#rect.hclust(cd, k=optnclust, border="red") # draw red borders around clusters
+```
+#### 确定影响因素
+
+在下一步中，我们旨在确定哪些因素对聚类特别重要——这一步骤类似于推理设计中测量效应大小的过程。
+```{r}
+# which factors are particularly important
+celtic <- wd.dfs[c(1,2),]
+others <- wd.dfs[-c(1,2),]
+# calculate column means
+celtic.cm <- colMeans(celtic)
+others.cm <- colMeans(others)
+# calculate difference between celtic and other englishes
+diff <- celtic.cm - others.cm
+sort(diff, decreasing = F)
+
+plot(sort(diff),           # y-values
+  1:length(diff),       # x-values 
+  type= "n",            # plot type (empty)
+  cex.axis = .75,       # axis font size
+  cex.lab = .75,        # label font size
+  xlab ="Prototypical for Non-Celtic Varieties (Cluster 2) <-----> Prototypical for Celtic Varieties (Cluster 1)", # x-axis label
+  yaxt = "n",           # no y-axis tick marks
+  ylab = "")            # no y-axis label
+text(sort(diff), 1:length(diff), names(sort(diff)), cex = .75) # plot text into plot
+```
+
+#### 检验分类是否合理
+现在我们将通过使用自助法（bootstrapping）验证聚类解决方案，测试聚类是否合理。
+```{r cache=TRUE}
+library(pvclust)
+res.pv <- pvclust(t(wd.dfs),                     # apply pvclust method to clus data
+                  method.dist="euclidean",  # use eucledian distance
+                  method.hclust="ward.D2",  # use ward.d2 linkage
+                  nboot = 100)              # use 100 bootstrap runs
+
+plot(res.pv, cex = .75)
+pvrect(res.pv)
+library(gplots)
+# 
+# install.packages("vcd")
+# install.packages("exact2x2")
+library(ape)
+# library(vcd)
+# library(exact2x2)
+plot(as.phylo(cd),      # plot cluster object
+     cex = 0.75,        # .75 font size
+     label.offset = .5) # .5 label offset
+
+# plot as unrooted tree
+plot(as.phylo(cd),      # plot cluster object
+     type = "unrooted", # plot as unrooted tree
+     cex = .75,         # .75 font size
+     label.offset = 1)  # .5 label offset
+```
+
+#### 类别型数据聚类分析
+
+```{r}
+
+tone.phon <- read.csv("data/ch9/tone-phonology.CSV")
+
+row.names(tone.phon)=tone.phon$language
+#tone.phon = select(tone.phon, -language)
+# convert into factors
+tone.phon <- apply(tone.phon, 1, function(x){
+  x <- as.factor(x) })
+# clean data
+tone.phon.mtr  <- t(as.matrix(tone.phon))
+# create distance matrix
+tone.phon.mtr.d<- dist(tone.phon.mtr[,-1] , method = "binary")   # create a distance object with binary (!) distance
+# create cluster object (ward.D2 linkage)   : cluster in a way to achieve minimum variance
+tone.phon.mtr.cd <- hclust(tone.phon.mtr.d, method="ward.D2")
+# plot result as dendrogram
+plot(tone.phon.mtr.cd , hang = -1)              # display dendogram
+```
+
+
 
 ### 文本聚类分析
 
