@@ -1,0 +1,241 @@
+# 表格制作
+
+![](images/tablesR.png)
+```{r }
+library(tidyverse)
+library(languageR)
+data("lexdec")
+
+# show chinese characters in ggplot
+library(showtext)
+showtext_auto()
+
+
+```
+
+## gt
+
+The gt package in R is a powerful tool for creating elegant and customizable tables for data visualization and reporting.
+
+It offers options for formatting, styling, and theming tables, as well as support for handling complex data structures and creating publication-ready tables with ease.
+
+The GT package, stands for "Grammar of Tables". It was created by the RStudio team and first released in 2018. It offers an intuitive, tidyverse-inspired syntax, making table creation accessible, including for beginners.
+
+GT's user-friendly design for handling complex formatting has quickly gained popularity in the R community. Its ease of use and readability make it a go-to choice for many R users seeking to create clear and aesthetically pleasing tables.
+
+```{r}
+library(gt)
+
+lexdec%>% 
+  group_by(Class, Correct, NativeLanguage)%>%
+  summarise(mean = mean(RT))%>%
+  ungroup()%>%
+  gt()
+
+lexdec%>% 
+  group_by(Class, Correct, NativeLanguage)%>%
+  summarise(mean = mean(RT))%>%
+  #ungroup()%>%
+  gt()  
+
+# 添加表格标题和副标题
+lexdec%>% 
+  group_by(Class, Correct, NativeLanguage)%>%
+  summarise(mean = mean(RT))%>%
+  ungroup()%>%
+  gt() %>%
+    tab_header(title = md("词汇**反应时**"),
+               subtitle = md("不同词汇 *不同语言背景*"))
+# 添加脚注  
+lexdec%>% 
+  group_by(Class, Correct, NativeLanguage)%>%
+  summarise(mean = mean(RT))%>%
+  ungroup()%>%
+  gt() %>%
+  tab_footnote(
+    footnote = "Source: lexdec package",
+    locations = cells_body(columns = NativeLanguage, rows = 1)
+  )
+
+
+lexdec%>% 
+  group_by(Class, Correct, NativeLanguage)%>%
+  summarise(mean = mean(RT))%>%
+  ungroup()%>%
+  gt() %>%
+   tab_spanner(
+    label = "词汇特征",
+    columns = c(Class, Correct)) 
+
+
+```
+
+### gtsummary
+The gtsummary package lets you automatically summarize information about your dataset. In the following case, we use the tbl_summary() function to obtain the main information on the iris dataset. The package detects the variable type and generates the appropriate summary type.
+```{r}
+library(gtsummary)
+lexdec%>% 
+   tbl_summary()
+
+
+lexdec %>%
+  select(Class, Correct, NativeLanguage, RT)%>%
+  tbl_summary(
+    by=NativeLanguage, # group by the `vs` variable (dichotomous: 0 or 1)
+    statistic = list(
+      all_continuous() ~ "{mean} ({sd})", # will display: mean (standard deviation)
+      all_categorical() ~ "{n} / {N} ({p}%)" # will display: n / N (percentage)
+    )
+  ) %>%
+  add_overall() %>% # statistics for all observations
+  add_p() %>% # add p-values
+  bold_labels() %>% # make label in bold
+  italicize_levels() # make categories in label in italic
+
+
+
+```
+
+### gtExtras
+gtExtras augments and expands the functionalities of the gt package. It allows to create even more sophisticated and visually appealing tables.
+
+It comes with a set of themes to make your table good-looking with just one more line of code. It provides functions to easily add plots in table cells. It also has helper functions to help with colors and icons.
+
+```{r}
+#install.packages("gtExtras")
+library(gtExtras)
+
+# create aggregated dataset
+agg_iris = iris %>%
+  group_by(Species) %>%
+  summarize(
+    Sepal.L = list(Sepal.Length),
+    Sepal.W = list(Sepal.Width),
+    Petal.L = list(Petal.Length),
+    Petal.W = list(Petal.Width)
+    )
+agg_lexdec = lexdec %>%
+  select( NativeLanguage, RT, Frequency, FamilySize)%>%
+  group_by(NativeLanguage)%>%
+   summarize(
+    RT= list(RT),
+    Frequency = list(Frequency),
+    FamilySize = list(FamilySize)
+    )
+# display the table with default output with gt package
+agg_lexdec  %>%
+  gt()
+
+
+
+agg_lexdec %>%
+  gt() %>%
+  gt_plt_sparkline(RT) %>%
+  gt_plt_sparkline(Frequency) %>%
+  gt_plt_sparkline(FamilySize)
+
+
+agg_lexdec %>%
+  gt() %>%
+  gt_plt_dist(
+   RT,
+    type = "density" 
+  ) %>%
+  gt_plt_dist( 
+    Frequency,
+    type = "boxplot"
+  ) %>%
+  gt_plt_dist( 
+    FamilySize,
+    type = "histogram"
+  ) 
+
+head(lexdec) %>%
+  select( NativeLanguage, RT, Frequency, FamilySize)%>%
+  gt() %>%
+  gt_plt_bar_pct(
+    RT,
+    labels = TRUE
+  ) %>%
+  gt_plt_bar_pct(
+    Frequency,
+    labels=FALSE,
+    fill = "forestgreen"
+  )
+
+lexdec%>%
+  select( NativeLanguage, RT, Frequency, FamilySize)%>%
+  gt_plt_summary()
+```
+
+## DT: easy filtering & sorting
+DT stands for "DataTables", the Javascript library it interacts with. DT stands out for its ability to handle large datasets efficiently and its rich array of features like searching, sorting, and pagination.
+
+I love adding a DT table at the beginning of my data analysis Quarto report. It provides access to your raw data easily!
+
+Please check my full introduction to DT for more! Oh and this is how a DT table looks like:
+```{r}
+library(DT)
+
+lex.table <- 
+  datatable(lexdec,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) # put it at the top of the table
+
+
+
+```
+
+flextable is another solid option to create very polish static tables. It supports a wide range of formatting options, including merging cells, rotating text, and conditional formatting.
+
+It stands out due to its compatibility with various R Markdown formats, including Word, PowerPoint, and HTML.
+
+
+
+```{r}
+library(flextable)
+set_flextable_defaults(
+  font.family = "Arial", font.size = 10, 
+  border.color = "gray", big.mark = "")
+
+ft <- flextable(head(lexdec)) |> 
+  bold(part = "header") 
+ft
+
+ft |> 
+  highlight(i = ~ RT > 6.3, j = "RT", color = "#ffe842") |> 
+  bg(j = c("Frequency", "FamilySize", "Length"), 
+     bg = scales::col_quantile(palette = c("wheat", "red"), domain =NULL)) |> 
+  add_footer_lines("The 'lexdec' dataset")
+
+
+
+select(lexdec, c("Frequency", "FamilySize", 
+                 "Length","NativeLanguage")) %>% 
+  summarizor(by = c("NativeLanguage")) |> 
+  flextable::as_flextable(spread_first_col = TRUE)
+```
+
+## modelsummary
+
+```{r}
+library(modelsummary)
+library(tinytable)
+datasummary_skim(lexdec)
+
+
+datasummary_balance(~NativeLanguage, lexdec)
+
+datasummary_correlation(lexdec)
+
+mod <- lm(RT ~ NativeLanguage, data = lexdec)
+
+modelsummary(mod, output = "table.docx")
+
+modelsummary(mod)
+
+
+```
+
+

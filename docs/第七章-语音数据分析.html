@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-03" />
+<meta name="date" content="2024-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,23 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.23/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -200,19 +211,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
-<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
-<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
-<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
-<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
-<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
-<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.1</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取"><i class="fa fa-check"></i><b>6.1.1</b> 词频提取</a></li>
+<li class="chapter" data-level="6.1.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.1.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.1.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.1.3</b> 上下文中的关键词索引（KWIC）</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
-<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
-<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
-<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#短语分析"><i class="fa fa-check"></i><b>6.2</b> 短语分析</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文共现"><i class="fa fa-check"></i><b>6.2.1</b> 上下文共现</a></li>
+<li class="chapter" data-level="6.2.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.2.2</b> 搭配分析</a></li>
+<li class="chapter" data-level="6.2.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.2.3</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.2.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.2.4</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.2.5" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.2.5</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.2.6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.2.6</b> 文本情感分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#句子分析"><i class="fa fa-check"></i><b>6.3</b> 句子分析</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#依存句法标注"><i class="fa fa-check"></i><b>6.3.1</b> 依存句法标注</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词性统计"><i class="fa fa-check"></i><b>6.3.2</b> 词性统计</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#依存句法结构"><i class="fa fa-check"></i><b>6.3.3</b> 依存句法结构</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#基于词性的搭配提取"><i class="fa fa-check"></i><b>6.3.4</b> 基于词性的搭配提取</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
@@ -231,13 +247,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
 <li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-1"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
 <li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
 <li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
-<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#principal-components-analysis"><i class="fa fa-check"></i><b>9.2.1</b> principal components analysis</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#因子分析"><i class="fa fa-check"></i><b>9.2.2</b> 因子分析</a></li>
+<li class="chapter" data-level="9.2.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#correspondence-analysis"><i class="fa fa-check"></i><b>9.2.3</b> Correspondence analysis</a></li>
+<li class="chapter" data-level="9.2.4" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#multi-demensional-scaling"><i class="fa fa-check"></i><b>9.2.4</b> Multi-demensional scaling</a></li>
+<li class="chapter" data-level="9.2.5" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#cluster"><i class="fa fa-check"></i><b>9.2.5</b> Cluster</a></li>
+<li class="chapter" data-level="9.2.6" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#确定最佳的聚类数量"><i class="fa fa-check"></i><b>9.2.6</b> 确定最佳的聚类数量</a></li>
+<li class="chapter" data-level="9.2.7" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.7</b> 文本聚类分析</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html"><i class="fa fa-check"></i><b>10</b> 案例一、行为实验数据分析</a><ul>
@@ -247,17 +268,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
 <li class="chapter" data-level="10.5" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html"><i class="fa fa-check"></i><b>11</b> 案例二、文本数据分析</a><ul>
-<li class="chapter" data-level="11.1" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#研究背景-1"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
-<li class="chapter" data-level="11.2" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+<li class="chapter" data-level="11" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html"><i class="fa fa-check"></i><b>11</b> 文本语料数据分析案例</a><ul>
+<li class="chapter" data-level="11.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#案例一狄仁杰小说翻译文体风格"><i class="fa fa-check"></i><b>11.1</b> 案例一、狄仁杰小说翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#研究背景-1"><i class="fa fa-check"></i><b>11.1.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.1.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#数据处理"><i class="fa fa-check"></i><b>11.1.2</b> 数据处理</a></li>
+<li class="chapter" data-level="11.1.3" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#数据可视化-2"><i class="fa fa-check"></i><b>11.1.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.1.4" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#统计建模-1"><i class="fa fa-check"></i><b>11.1.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.1.5" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#结论-1"><i class="fa fa-check"></i><b>11.1.5</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
-<li class="chapter" data-level="11.4" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
-<li class="chapter" data-level="11.5" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+<li class="chapter" data-level="11.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#案例二汉语失语症话语产出"><i class="fa fa-check"></i><b>11.2</b> 案例二、汉语失语症话语产出</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#研究背景-2"><i class="fa fa-check"></i><b>11.2.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#jieba-分词"><i class="fa fa-check"></i><b>11.2.2</b> Jieba 分词</a></li>
+<li class="chapter" data-level="11.2.3" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#汉语失语症语料分词"><i class="fa fa-check"></i><b>11.2.3</b> 汉语失语症语料分词</a></li>
+<li class="chapter" data-level="11.2.4" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#计算词汇丰富度"><i class="fa fa-check"></i><b>11.2.4</b> 计算词汇丰富度</a></li>
+<li class="chapter" data-level="11.2.5" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#提取核心词汇"><i class="fa fa-check"></i><b>11.2.5</b> 提取核心词汇</a></li>
+<li class="chapter" data-level="11.2.6" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#比较核心词汇分数"><i class="fa fa-check"></i><b>11.2.6</b> 比较核心词汇分数</a></li>
+<li class="chapter" data-level="11.2.7" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#核心词汇分数和词汇丰富度相关性分析"><i class="fa fa-check"></i><b>11.2.7</b> 核心词汇分数和词汇丰富度相关性分析</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 案例三、语音数据处理案例</a><ul>
-<li class="chapter" data-level="12.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#研究背景-2"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#研究背景-3"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
 <li class="chapter" data-level="12.2" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
 <li class="chapter" data-level="12.3" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
@@ -286,64 +316,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html"><i class="fa fa-check"></i><b>15</b> 实践案例 汉语失语症话语产出</a><ul>
-<li class="chapter" data-level="15.1" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#研究背景-3"><i class="fa fa-check"></i><b>15.1</b> 研究背景</a></li>
-<li class="chapter" data-level="15.2" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#jieba-分词"><i class="fa fa-check"></i><b>15.2</b> Jieba 分词</a></li>
-<li class="chapter" data-level="15.3" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#汉语失语症语料分词"><i class="fa fa-check"></i><b>15.3</b> 汉语失语症语料分词</a></li>
-<li class="chapter" data-level="15.4" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#计算词汇丰富度"><i class="fa fa-check"></i><b>15.4</b> 计算词汇丰富度</a></li>
-<li class="chapter" data-level="15.5" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#提取核心词汇"><i class="fa fa-check"></i><b>15.5</b> 提取核心词汇</a></li>
-<li class="chapter" data-level="15.6" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#比较核心词汇分数"><i class="fa fa-check"></i><b>15.6</b> 比较核心词汇分数</a></li>
-<li class="chapter" data-level="15.7" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#核心词汇分数和词汇丰富度相关性分析"><i class="fa fa-check"></i><b>15.7</b> 核心词汇分数和词汇丰富度相关性分析</a></li>
+<li class="chapter" data-level="15" data-path="数据可视化-3.html"><a href="数据可视化-3.html"><i class="fa fa-check"></i><b>15</b> 数据可视化</a><ul>
+<li class="chapter" data-level="15.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#条形图bar-plots"><i class="fa fa-check"></i><b>15.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#基于频数"><i class="fa fa-check"></i><b>15.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="15.1.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#基于平均值"><i class="fa fa-check"></i><b>15.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="15.1.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>15.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="15.1.4" data-path="数据可视化-3.html"><a href="数据可视化-3.html#添加柱子的数值"><i class="fa fa-check"></i><b>15.1.4</b> 添加柱子的数值</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html"><i class="fa fa-check"></i><b>16</b> R语言学习资源分类汇总</a><ul>
-<li class="chapter" data-level="16.1" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#统计建模-2"><i class="fa fa-check"></i><b>16.1</b> 统计建模</a></li>
-<li class="chapter" data-level="16.2" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#机器学习"><i class="fa fa-check"></i><b>16.2</b> 机器学习</a></li>
-<li class="chapter" data-level="16.3" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据整理-2"><i class="fa fa-check"></i><b>16.3</b> 数据整理</a></li>
-<li class="chapter" data-level="16.4" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据可视化-3"><i class="fa fa-check"></i><b>16.4</b> 数据可视化</a></li>
-<li class="chapter" data-level="16.5" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络分析"><i class="fa fa-check"></i><b>16.5</b> 网络分析</a></li>
-<li class="chapter" data-level="16.6" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#文本分析"><i class="fa fa-check"></i><b>16.6</b> 文本分析</a></li>
-<li class="chapter" data-level="16.7" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络抓取"><i class="fa fa-check"></i><b>16.7</b> 网络抓取</a></li>
-<li class="chapter" data-level="16.8" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#社交媒体分析"><i class="fa fa-check"></i><b>16.8</b> 社交媒体分析</a></li>
-<li class="chapter" data-level="16.9" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#语音分析"><i class="fa fa-check"></i><b>16.9</b> 语音分析</a></li>
-<li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
-<li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
+<li class="chapter" data-level="15.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>15.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="15.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#线图"><i class="fa fa-check"></i><b>15.3</b> 线图</a></li>
+<li class="chapter" data-level="15.4" data-path="数据可视化-3.html"><a href="数据可视化-3.html#散点图"><i class="fa fa-check"></i><b>15.4</b> 散点图</a></li>
+<li class="chapter" data-level="15.5" data-path="数据可视化-3.html"><a href="数据可视化-3.html#脑区图"><i class="fa fa-check"></i><b>15.5</b> 脑区图</a></li>
+<li class="chapter" data-level="15.6" data-path="数据可视化-3.html"><a href="数据可视化-3.html#venn图"><i class="fa fa-check"></i><b>15.6</b> Venn图</a></li>
+<li class="chapter" data-level="15.7" data-path="数据可视化-3.html"><a href="数据可视化-3.html#diagram"><i class="fa fa-check"></i><b>15.7</b> diagram</a></li>
+<li class="chapter" data-level="15.8" data-path="数据可视化-3.html"><a href="数据可视化-3.html#gant-plot"><i class="fa fa-check"></i><b>15.8</b> Gant plot</a></li>
+<li class="chapter" data-level="15.9" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标lengends"><i class="fa fa-check"></i><b>15.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="15.9.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标整体"><i class="fa fa-check"></i><b>15.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="15.9.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标标题"><i class="fa fa-check"></i><b>15.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="15.9.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图例标识"><i class="fa fa-check"></i><b>15.9.3</b> 图例标识</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
-<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
-<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
-<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
-<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
-<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+<li class="chapter" data-level="15.10" data-path="数据可视化-3.html"><a href="数据可视化-3.html#坐标轴"><i class="fa fa-check"></i><b>15.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="15.11" data-path="数据可视化-3.html"><a href="数据可视化-3.html#配色"><i class="fa fa-check"></i><b>15.11</b> 配色</a></li>
+<li class="chapter" data-level="15.12" data-path="数据可视化-3.html"><a href="数据可视化-3.html#注释标记"><i class="fa fa-check"></i><b>15.12</b> 注释标记</a></li>
+<li class="chapter" data-level="15.13" data-path="数据可视化-3.html"><a href="数据可视化-3.html#theme"><i class="fa fa-check"></i><b>15.13</b> theme</a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
-<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
-<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
-<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
-<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
-<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
-<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
-<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
-<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
-<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
-<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+<li class="chapter" data-level="16" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>16</b> 表格制作</a><ul>
+<li class="chapter" data-level="16.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>16.1</b> gt</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>16.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="16.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>16.1.2</b> gtExtras</a></li>
 </ul></li>
-<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
-<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
-<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
-<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+<li class="chapter" data-level="16.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>16.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="16.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>16.3</b> modelsummary</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
-<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
-<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+<li class="chapter" data-level="17" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>17</b> R-markdown</a><ul>
+<li class="chapter" data-level="17.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml前置部分"><i class="fa fa-check"></i><b>17.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="17.2" data-path="r-markdown.html"><a href="r-markdown.html#代码块"><i class="fa fa-check"></i><b>17.2</b> 代码块</a></li>
+<li class="chapter" data-level="17.3" data-path="r-markdown.html"><a href="r-markdown.html#markdown区域"><i class="fa fa-check"></i><b>17.3</b> Markdown区域</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
-<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
-<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
-<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
-<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+<li class="chapter" data-level="18" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html"><i class="fa fa-check"></i><b>18</b> R语言学习资源分类汇总</a><ul>
+<li class="chapter" data-level="18.1" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#统计建模-2"><i class="fa fa-check"></i><b>18.1</b> 统计建模</a></li>
+<li class="chapter" data-level="18.2" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#机器学习"><i class="fa fa-check"></i><b>18.2</b> 机器学习</a></li>
+<li class="chapter" data-level="18.3" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据整理-1"><i class="fa fa-check"></i><b>18.3</b> 数据整理</a></li>
+<li class="chapter" data-level="18.4" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据可视化-4"><i class="fa fa-check"></i><b>18.4</b> 数据可视化</a></li>
+<li class="chapter" data-level="18.5" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络分析"><i class="fa fa-check"></i><b>18.5</b> 网络分析</a></li>
+<li class="chapter" data-level="18.6" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#文本分析"><i class="fa fa-check"></i><b>18.6</b> 文本分析</a></li>
+<li class="chapter" data-level="18.7" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络抓取"><i class="fa fa-check"></i><b>18.7</b> 网络抓取</a></li>
+<li class="chapter" data-level="18.8" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#社交媒体分析"><i class="fa fa-check"></i><b>18.8</b> 社交媒体分析</a></li>
+<li class="chapter" data-level="18.9" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#语音分析"><i class="fa fa-check"></i><b>18.9</b> 语音分析</a></li>
+<li class="chapter" data-level="18.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>18.10</b> 学科研究</a></li>
+<li class="chapter" data-level="18.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown-1"><i class="fa fa-check"></i><b>18.11</b> R-markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -378,38 +399,33 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 <div id="语音库创建" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.1</span> 语音库创建<a href="第七章-语音数据分析.html#语音库创建" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>语音库的构建离不开录音材料的准备、发音人的选取、录音等工作，本文重点在于如何基于语音数据构建语音库，因此对数据收集不做赘述。EMU-SDMS系统可以基于原始声音数据，直接创建语音库，然后用其EMU-webApp进行语音数据的标注，也可以基于已经标注的语音数据（声音文件和Textgrid文件）来创建语音库。如果是根据原始声音文件直接创建语音库，需要首先自定义语音库标注的层级，每一层的属性，以及层与层的关系。如果是根据已经标注的语音数据，程序包会默认将标注文件的层级设置为语音库的层级。</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="co"># load the package</span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="kw">library</span>(emuR)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;emuR&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:base&#39;:
-## 
-##     norm</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
-<a class="sourceLine" id="cb108-3" data-line-number="3"><span class="co"># 设置语音库的位置</span></a>
-<a class="sourceLine" id="cb108-4" data-line-number="4"> corpusPath =<span class="st"> &quot;data/ch7/speech_corp&quot;</span></a>
-<a class="sourceLine" id="cb108-5" data-line-number="5"><span class="co"># </span></a>
-<a class="sourceLine" id="cb108-6" data-line-number="6"><span class="co"># # 设置已经标注的语音文件 .wav 和标注文件.TextGrid files的位置</span></a>
-<a class="sourceLine" id="cb108-7" data-line-number="7"><span class="co"># path2folder = &quot;/Users/chenjuqiang/Desktop/AmE_Consonants/&quot;</span></a>
-<a class="sourceLine" id="cb108-8" data-line-number="8"><span class="co"># </span></a>
-<a class="sourceLine" id="cb108-9" data-line-number="9"><span class="co"># # 基于语音文件和对应标注文件构建 emuDB 语音库</span></a>
-<a class="sourceLine" id="cb108-10" data-line-number="10"><span class="co"># # 注意：这一步只需要一次，语音库建设完成后不需要重复构建</span></a>
-<a class="sourceLine" id="cb108-11" data-line-number="11"><span class="co"># convert_TextGridCollection(dir = path2folder, </span></a>
-<a class="sourceLine" id="cb108-12" data-line-number="12"><span class="co">#                            dbName = &quot;AmE_Consonants&quot;, </span></a>
-<a class="sourceLine" id="cb108-13" data-line-number="13"><span class="co">#                            targetDir = corpusPath)</span></a>
-<a class="sourceLine" id="cb108-14" data-line-number="14"><span class="co"># </span></a>
-<a class="sourceLine" id="cb108-15" data-line-number="15"><span class="co"># # 将语音库文件位置设置为一个变量</span></a>
-<a class="sourceLine" id="cb108-16" data-line-number="16"> AMECpath =<span class="st"> </span><span class="kw">paste</span>(corpusPath, <span class="st">&quot;/AmE_Consonants_emuDB&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb108-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb108-18" data-line-number="18"><span class="co"># 将语音库载入R语言环境</span></a>
-<a class="sourceLine" id="cb108-19" data-line-number="19"><span class="co"># 注意这一步每次都需要先运行</span></a>
-<a class="sourceLine" id="cb108-20" data-line-number="20">AmeC.corp =<span class="st"> </span><span class="kw">load_emuDB</span>(AMECpath, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb108-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb108-22" data-line-number="22"><span class="co"># 了解一下语音库</span></a>
-<a class="sourceLine" id="cb108-23" data-line-number="23"><span class="kw">summary</span>(AmeC.corp)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="co"># load the package</span></a>
+<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="kw">library</span>(emuR)</a>
+<a class="sourceLine" id="cb234-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb234-4" data-line-number="4"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
+<a class="sourceLine" id="cb234-5" data-line-number="5"><span class="co"># 设置语音库的位置</span></a>
+<a class="sourceLine" id="cb234-6" data-line-number="6"> corpusPath =<span class="st"> &quot;data/ch7/speech_corp&quot;</span></a>
+<a class="sourceLine" id="cb234-7" data-line-number="7"><span class="co"># </span></a>
+<a class="sourceLine" id="cb234-8" data-line-number="8"><span class="co"># # 设置已经标注的语音文件 .wav 和标注文件.TextGrid files的位置</span></a>
+<a class="sourceLine" id="cb234-9" data-line-number="9"><span class="co"># path2folder = &quot;/Users/chenjuqiang/Desktop/AmE_Consonants/&quot;</span></a>
+<a class="sourceLine" id="cb234-10" data-line-number="10"><span class="co"># </span></a>
+<a class="sourceLine" id="cb234-11" data-line-number="11"><span class="co"># # 基于语音文件和对应标注文件构建 emuDB 语音库</span></a>
+<a class="sourceLine" id="cb234-12" data-line-number="12"><span class="co"># # 注意：这一步只需要一次，语音库建设完成后不需要重复构建</span></a>
+<a class="sourceLine" id="cb234-13" data-line-number="13"><span class="co"># convert_TextGridCollection(dir = path2folder, </span></a>
+<a class="sourceLine" id="cb234-14" data-line-number="14"><span class="co">#                            dbName = &quot;AmE_Consonants&quot;, </span></a>
+<a class="sourceLine" id="cb234-15" data-line-number="15"><span class="co">#                            targetDir = corpusPath)</span></a>
+<a class="sourceLine" id="cb234-16" data-line-number="16"><span class="co"># </span></a>
+<a class="sourceLine" id="cb234-17" data-line-number="17"><span class="co"># # 将语音库文件位置设置为一个变量</span></a>
+<a class="sourceLine" id="cb234-18" data-line-number="18"> AMECpath =<span class="st"> </span><span class="kw">paste</span>(corpusPath, <span class="st">&quot;/AmE_Consonants_emuDB&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb234-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb234-20" data-line-number="20"><span class="co"># 将语音库载入R语言环境</span></a>
+<a class="sourceLine" id="cb234-21" data-line-number="21"><span class="co"># 注意这一步每次都需要先运行</span></a>
+<a class="sourceLine" id="cb234-22" data-line-number="22">AmeC.corp =<span class="st"> </span><span class="kw">load_emuDB</span>(AMECpath, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb234-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb234-24" data-line-number="24"><span class="co"># 了解一下语音库</span></a>
+<a class="sourceLine" id="cb234-25" data-line-number="25"><span class="kw">summary</span>(AmeC.corp)</a></code></pre></div>
 <pre><code>## </code></pre>
-<pre><code>## ── Summary of emuDB ──────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<pre><code>## ── Summary of emuDB ───────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 <pre><code>## Name:     AmE_Consonants 
 ## UUID:     6280f273-9c1b-4fae-ae01-99413dda6fb8 
 ## Directory:    /Users/chenjuqiang/Nutstore Files/310_Tutorial/LanguageDS-e/data/ch7/speech_corp/AmE_Consonants_emuDB 
@@ -419,7 +435,7 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 ## Label count:  338 
 ## Link count:  0</code></pre>
 <pre><code>## </code></pre>
-<pre><code>## ── Database configuration ────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<pre><code>## ── Database configuration ─────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 <pre><code>## </code></pre>
 <pre><code>## ── SSFF track definitions ──</code></pre>
 <pre><code>## </code></pre>
@@ -441,36 +457,36 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 <p>  EMU-SDMS系统的另一个优点是基于检索结果的声学分析。传统的语音库数据提取完成后会保存下来，占据很大的空间，特别是语音库标注修改过程中版本控制很难。EMU-SDMS系统可以基于检索结果直接通过wrassp程序包进行声学分析，可以快速的得到所研究的语音目标的声学特征，而不要对于整个语料库进行声学分析。这使得语音分析的流程更加高效。</p>
 <p>  EMU-SDMS系统可以无缝和R语言的其他数据处理，可视化，建模的程序包对接，不需要产生不必要的中间数据，减少版本或人工操作错误的可能性。</p>
 <p>下面我们分别提取语音中的三个常见指标，时长、基频和共振峰。</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="co"># 通过检索函数检索语音库的内容</span></a>
-<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="kw">query</span>(<span class="dt">emuDBhandle =</span> AmeC.corp, <span class="dt">query =</span> <span class="st">&quot;segment =~ .*&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb122-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="co"># 通过检索函数检索语音库的内容</span></a>
+<a class="sourceLine" id="cb248-2" data-line-number="2"><span class="kw">query</span>(<span class="dt">emuDBhandle =</span> AmeC.corp, <span class="dt">query =</span> <span class="st">&quot;segment =~ .*&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 6 × 16
-##   labels start   end db_uuid           session bundle start_item_id end_item_id level attribute start_item_seq_idx
-##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt;       &lt;int&gt; &lt;chr&gt; &lt;chr&gt;                  &lt;int&gt;
-## 1 &quot;&quot;       0    74.9 6280f273-9c1b-4f… 0000    azure              7           7 segm… segment                    1
-## 2 &quot;\\ae&quot;  74.9 191.  6280f273-9c1b-4f… 0000    azure              8           8 segm… segment                    2
-## 3 &quot;\\zh&quot; 191.  305.  6280f273-9c1b-4f… 0000    azure              9           9 segm… segment                    3
-## 4 &quot;u&quot;    305.  498.  6280f273-9c1b-4f… 0000    azure             10          10 segm… segment                    4
-## 5 &quot;\\sw&quot; 498.  651.  6280f273-9c1b-4f… 0000    azure             11          11 segm… segment                    5
-## 6 &quot;&quot;     651.  735.  6280f273-9c1b-4f… 0000    azure             12          12 segm… segment                    6
+##   labels start   end db_uuid            session bundle start_item_id end_item_id level attribute start_item_seq_idx
+##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt;       &lt;int&gt; &lt;chr&gt; &lt;chr&gt;                  &lt;int&gt;
+## 1 &quot;&quot;       0    74.9 6280f273-9c1b-4fa… 0000    azure              7           7 segm… segment                    1
+## 2 &quot;\\ae&quot;  74.9 191.  6280f273-9c1b-4fa… 0000    azure              8           8 segm… segment                    2
+## 3 &quot;\\zh&quot; 191.  305.  6280f273-9c1b-4fa… 0000    azure              9           9 segm… segment                    3
+## 4 &quot;u&quot;    305.  498.  6280f273-9c1b-4fa… 0000    azure             10          10 segm… segment                    4
+## 5 &quot;\\sw&quot; 498.  651.  6280f273-9c1b-4fa… 0000    azure             11          11 segm… segment                    5
+## 6 &quot;&quot;     651.  735.  6280f273-9c1b-4fa… 0000    azure             12          12 segm… segment                    6
 ## # ℹ 5 more variables: end_item_seq_idx &lt;int&gt;, type &lt;chr&gt;, sample_start &lt;int&gt;, sample_end &lt;int&gt;, sample_rate &lt;int&gt;</code></pre>
 </div>
 </div>
 <div id="时长提取" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.2</span> 时长提取<a href="第七章-语音数据分析.html#时长提取" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="co"># 检索语音库中的鼻音和爆破音</span></a>
-<a class="sourceLine" id="cb124-2" data-line-number="2">nasals =<span class="st"> </span><span class="kw">query</span>(AmeC.corp, <span class="dt">query =</span> <span class="st">&quot;segment==n&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb124-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="st">&quot;nasals&quot;</span>)</a>
-<a class="sourceLine" id="cb124-4" data-line-number="4">plosives =<span class="st"> </span><span class="kw">query</span>(AmeC.corp, <span class="st">&quot;segment==b|p|t|d|k|g&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb124-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="st">&quot;plosives&quot;</span>)</a>
-<a class="sourceLine" id="cb124-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb124-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb124-8" data-line-number="8"><span class="co">#计算各自的时长</span></a>
-<a class="sourceLine" id="cb124-9" data-line-number="9">duration.df =<span class="st"> </span><span class="kw">rbind</span>(nasals,plosives)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb124-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">duration =</span> end<span class="op">-</span>start)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb124-11" data-line-number="11"><span class="st">  </span><span class="kw">select</span>(labels, type, duration, bundle)</a>
-<a class="sourceLine" id="cb124-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb124-13" data-line-number="13">duration.df </a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="co"># 检索语音库中的鼻音和爆破音</span></a>
+<a class="sourceLine" id="cb250-2" data-line-number="2">nasals =<span class="st"> </span><span class="kw">query</span>(AmeC.corp, <span class="dt">query =</span> <span class="st">&quot;segment==n&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="st">&quot;nasals&quot;</span>)</a>
+<a class="sourceLine" id="cb250-4" data-line-number="4">plosives =<span class="st"> </span><span class="kw">query</span>(AmeC.corp, <span class="st">&quot;segment==b|p|t|d|k|g&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="st">&quot;plosives&quot;</span>)</a>
+<a class="sourceLine" id="cb250-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb250-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb250-8" data-line-number="8"><span class="co">#计算各自的时长</span></a>
+<a class="sourceLine" id="cb250-9" data-line-number="9">duration.df =<span class="st"> </span><span class="kw">rbind</span>(nasals,plosives)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">duration =</span> end<span class="op">-</span>start)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-11" data-line-number="11"><span class="st">  </span><span class="kw">select</span>(labels, type, duration, bundle)</a>
+<a class="sourceLine" id="cb250-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb250-13" data-line-number="13">duration.df </a></code></pre></div>
 <pre><code>## # A tibble: 10 × 4
 ##    labels type     duration bundle
 ##    &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; 
@@ -487,14 +503,14 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 </div>
 <div id="共振峰提取" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.3</span> 共振峰提取<a href="第七章-语音数据分析.html#共振峰提取" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co"># 元音ai在Praat中的标注是“a\\ic”,</span></a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">vwl =<span class="st"> </span><span class="kw">query</span>(AmeC.corp, <span class="dt">query =</span> <span class="st">&quot;segment== a</span><span class="ch">\\</span><span class="st">ic&quot;</span>)</a>
-<a class="sourceLine" id="cb126-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb126-4" data-line-number="4"><span class="co"># 提取共振峰信息</span></a>
-<a class="sourceLine" id="cb126-5" data-line-number="5"><span class="co"># 所得表格中最后为共振峰信息，T1、T2、T3、T4</span></a>
-<a class="sourceLine" id="cb126-6" data-line-number="6">vwl.fm =<span class="st"> </span><span class="kw">get_trackdata</span>(AmeC.corp, vwl,</a>
-<a class="sourceLine" id="cb126-7" data-line-number="7">                   <span class="dt">onTheFlyFunctionName =</span> <span class="st">&quot;forest&quot;</span>,</a>
-<a class="sourceLine" id="cb126-8" data-line-number="8">                   <span class="dt">resultType =</span> <span class="st">&quot;emuRtrackdata&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="co"># 元音ai在Praat中的标注是“a\\ic”,</span></a>
+<a class="sourceLine" id="cb252-2" data-line-number="2">vwl =<span class="st"> </span><span class="kw">query</span>(AmeC.corp, <span class="dt">query =</span> <span class="st">&quot;segment== a</span><span class="ch">\\</span><span class="st">ic&quot;</span>)</a>
+<a class="sourceLine" id="cb252-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb252-4" data-line-number="4"><span class="co"># 提取共振峰信息</span></a>
+<a class="sourceLine" id="cb252-5" data-line-number="5"><span class="co"># 所得表格中最后为共振峰信息，T1、T2、T3、T4</span></a>
+<a class="sourceLine" id="cb252-6" data-line-number="6">vwl.fm =<span class="st"> </span><span class="kw">get_trackdata</span>(AmeC.corp, vwl,</a>
+<a class="sourceLine" id="cb252-7" data-line-number="7">                   <span class="dt">onTheFlyFunctionName =</span> <span class="st">&quot;forest&quot;</span>,</a>
+<a class="sourceLine" id="cb252-8" data-line-number="8">                   <span class="dt">resultType =</span> <span class="st">&quot;emuRtrackdata&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning in get_trackdata(AmeC.corp, vwl, onTheFlyFunctionName = &quot;forest&quot;, : The emusegs/emuRsegs object passed in refers to bundles with in-homogeneous sampling rates in their audio files! Here is a list of all refered to bundles incl. their sampling rate: 
 ##    session bundle media_file sample_rate                   md5_annot_json
 ## 1     0000    buy    buy.wav       20000 59639695211954ddb3e36ff5978900e7
@@ -518,86 +534,86 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 <pre><code>## 
 ##   INFO: applying forest to 18 segments/events
 ## 
-  |                                                                                                              
-  |                                                                                                        |   0%
-  |                                                                                                              
-  |======                                                                                                  |   6%
-  |                                                                                                              
-  |============                                                                                            |  11%
-  |                                                                                                              
-  |=================                                                                                       |  17%
-  |                                                                                                              
-  |=======================                                                                                 |  22%
-  |                                                                                                              
-  |=============================                                                                           |  28%
-  |                                                                                                              
-  |===================================                                                                     |  33%
-  |                                                                                                              
-  |========================================                                                                |  39%
-  |                                                                                                              
-  |==============================================                                                          |  44%
-  |                                                                                                              
-  |====================================================                                                    |  50%
-  |                                                                                                              
-  |==========================================================                                              |  56%
-  |                                                                                                              
-  |================================================================                                        |  61%
-  |                                                                                                              
-  |=====================================================================                                   |  67%
-  |                                                                                                              
-  |===========================================================================                             |  72%
-  |                                                                                                              
-  |=================================================================================                       |  78%
-  |                                                                                                              
-  |=======================================================================================                 |  83%
-  |                                                                                                              
-  |============================================================================================            |  89%
-  |                                                                                                              
-  |==================================================================================================      |  94%
-  |                                                                                                              
-  |========================================================================================================| 100%</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="co"># load package</span></a>
-<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb129-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="co"># 第一共振峰</span></a>
-<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="kw">ggplot</span>(vwl.fm ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb129-6" data-line-number="6"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_rel, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> sl_rowIdx) <span class="op">+</span></a>
-<a class="sourceLine" id="cb129-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb129-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (ms)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F1 (Hz)&quot;</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-316-1.png" width="672" /></p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="co"># 将共振峰信息进行时长归一化</span></a>
-<a class="sourceLine" id="cb130-2" data-line-number="2">td_vowels_norm =<span class="st"> </span><span class="kw">normalize_length</span>(vwl.fm)</a>
-<a class="sourceLine" id="cb130-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb130-4" data-line-number="4"><span class="kw">ggplot</span>(td_vowels_norm) <span class="op">+</span></a>
-<a class="sourceLine" id="cb130-5" data-line-number="5"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_norm, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> labels) <span class="op">+</span></a>
-<a class="sourceLine" id="cb130-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb130-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (normalized)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F1 (Hz)&quot;</span>) </a></code></pre></div>
+  |                                                                                                               
+  |                                                                                                         |   0%
+  |                                                                                                               
+  |======                                                                                                   |   6%
+  |                                                                                                               
+  |============                                                                                             |  11%
+  |                                                                                                               
+  |==================                                                                                       |  17%
+  |                                                                                                               
+  |=======================                                                                                  |  22%
+  |                                                                                                               
+  |=============================                                                                            |  28%
+  |                                                                                                               
+  |===================================                                                                      |  33%
+  |                                                                                                               
+  |=========================================                                                                |  39%
+  |                                                                                                               
+  |===============================================                                                          |  44%
+  |                                                                                                               
+  |====================================================                                                     |  50%
+  |                                                                                                               
+  |==========================================================                                               |  56%
+  |                                                                                                               
+  |================================================================                                         |  61%
+  |                                                                                                               
+  |======================================================================                                   |  67%
+  |                                                                                                               
+  |============================================================================                             |  72%
+  |                                                                                                               
+  |==================================================================================                       |  78%
+  |                                                                                                               
+  |========================================================================================                 |  83%
+  |                                                                                                               
+  |=============================================================================================            |  89%
+  |                                                                                                               
+  |===================================================================================================      |  94%
+  |                                                                                                               
+  |=========================================================================================================| 100%</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="co"># load package</span></a>
+<a class="sourceLine" id="cb255-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb255-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb255-4" data-line-number="4"><span class="co"># 第一共振峰</span></a>
+<a class="sourceLine" id="cb255-5" data-line-number="5"><span class="kw">ggplot</span>(vwl.fm ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb255-6" data-line-number="6"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_rel, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> sl_rowIdx) <span class="op">+</span></a>
+<a class="sourceLine" id="cb255-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb255-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (ms)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F1 (Hz)&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="co"># 将共振峰信息进行时长归一化</span></a>
+<a class="sourceLine" id="cb256-2" data-line-number="2">td_vowels_norm =<span class="st"> </span><span class="kw">normalize_length</span>(vwl.fm)</a>
+<a class="sourceLine" id="cb256-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb256-4" data-line-number="4"><span class="kw">ggplot</span>(td_vowels_norm) <span class="op">+</span></a>
+<a class="sourceLine" id="cb256-5" data-line-number="5"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_norm, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> labels) <span class="op">+</span></a>
+<a class="sourceLine" id="cb256-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb256-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (normalized)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F1 (Hz)&quot;</span>) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-316-2.png" width="672" /></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="co"># 下面我们提取共振峰中最稳定的部分，中间点</span></a>
-<a class="sourceLine" id="cb132-2" data-line-number="2">td_vowels_midpoint =<span class="st"> </span>td_vowels_norm <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(times_norm <span class="op">==</span><span class="st"> </span><span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb132-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb132-5" data-line-number="5"><span class="co"># 计算元音在一、二共振峰的中心点</span></a>
-<a class="sourceLine" id="cb132-6" data-line-number="6">td_centroids =<span class="st"> </span>td_vowels_midpoint <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb132-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(labels) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb132-8" data-line-number="8"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">T1 =</span> <span class="kw">mean</span>(T1), <span class="dt">T2 =</span> <span class="kw">mean</span>(T2))</a>
-<a class="sourceLine" id="cb132-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb132-10" data-line-number="10"><span class="co"># 画元音的位置图</span></a>
-<a class="sourceLine" id="cb132-11" data-line-number="11"><span class="kw">ggplot</span>(td_vowels_midpoint, <span class="kw">aes</span>(<span class="dt">x =</span> T2, <span class="dt">y =</span> T1, <span class="dt">colour =</span> labels, <span class="dt">label =</span> labels)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb132-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> td_centroids) <span class="op">+</span></a>
-<a class="sourceLine" id="cb132-13" data-line-number="13"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb132-14" data-line-number="14"><span class="st">  </span><span class="kw">scale_y_reverse</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_reverse</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb132-15" data-line-number="15"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;F2 (Hz)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F1 (Hz)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb132-16" data-line-number="16"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-316-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-124-2.png" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="co"># 下面我们提取共振峰中最稳定的部分，中间点</span></a>
+<a class="sourceLine" id="cb258-2" data-line-number="2">td_vowels_midpoint =<span class="st"> </span>td_vowels_norm <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(times_norm <span class="op">==</span><span class="st"> </span><span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb258-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb258-5" data-line-number="5"><span class="co"># 计算元音在一、二共振峰的中心点</span></a>
+<a class="sourceLine" id="cb258-6" data-line-number="6">td_centroids =<span class="st"> </span>td_vowels_midpoint <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb258-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(labels) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb258-8" data-line-number="8"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">T1 =</span> <span class="kw">mean</span>(T1), <span class="dt">T2 =</span> <span class="kw">mean</span>(T2))</a>
+<a class="sourceLine" id="cb258-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb258-10" data-line-number="10"><span class="co"># 画元音的位置图</span></a>
+<a class="sourceLine" id="cb258-11" data-line-number="11"><span class="kw">ggplot</span>(td_vowels_midpoint, <span class="kw">aes</span>(<span class="dt">x =</span> T2, <span class="dt">y =</span> T1, <span class="dt">colour =</span> labels, <span class="dt">label =</span> labels)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> td_centroids) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-13" data-line-number="13"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-14" data-line-number="14"><span class="st">  </span><span class="kw">scale_y_reverse</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_reverse</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-15" data-line-number="15"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;F2 (Hz)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F1 (Hz)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb258-16" data-line-number="16"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-124-3.png" width="672" /></p>
 </div>
 <div id="基频分析" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.4</span> 基频分析<a href="第七章-语音数据分析.html#基频分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  基频是语音中音高的声学基础。所有响音（如元音和鼻音）都有基频。我们说话的语调也是由基频的变化体现的。此外，一些语言如汉语使用基频区分不同词的意思，又称声调。</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">vwl.f0 =<span class="st"> </span><span class="kw">get_trackdata</span>(AmeC.corp, vwl,</a>
-<a class="sourceLine" id="cb133-2" data-line-number="2">                   <span class="dt">onTheFlyFunctionName =</span> <span class="st">&quot;ksvF0&quot;</span>,</a>
-<a class="sourceLine" id="cb133-3" data-line-number="3">                   <span class="dt">resultType =</span> <span class="st">&quot;emuRtrackdata&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1">vwl.f0 =<span class="st"> </span><span class="kw">get_trackdata</span>(AmeC.corp, vwl,</a>
+<a class="sourceLine" id="cb259-2" data-line-number="2">                   <span class="dt">onTheFlyFunctionName =</span> <span class="st">&quot;ksvF0&quot;</span>,</a>
+<a class="sourceLine" id="cb259-3" data-line-number="3">                   <span class="dt">resultType =</span> <span class="st">&quot;emuRtrackdata&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning in get_trackdata(AmeC.corp, vwl, onTheFlyFunctionName = &quot;ksvF0&quot;, : The emusegs/emuRsegs object passed in refers to bundles with in-homogeneous sampling rates in their audio files! Here is a list of all refered to bundles incl. their sampling rate: 
 ##    session bundle media_file sample_rate                   md5_annot_json
 ## 1     0000    buy    buy.wav       20000 59639695211954ddb3e36ff5978900e7
@@ -621,59 +637,59 @@ EMU语音库管理系统（the EMU Speech Database Management System，简称 EM
 <pre><code>## 
 ##   INFO: applying ksvF0 to 18 segments/events
 ## 
-  |                                                                                                              
-  |                                                                                                        |   0%
-  |                                                                                                              
-  |======                                                                                                  |   6%
-  |                                                                                                              
-  |============                                                                                            |  11%
-  |                                                                                                              
-  |=================                                                                                       |  17%
-  |                                                                                                              
-  |=======================                                                                                 |  22%
-  |                                                                                                              
-  |=============================                                                                           |  28%
-  |                                                                                                              
-  |===================================                                                                     |  33%
-  |                                                                                                              
-  |========================================                                                                |  39%
-  |                                                                                                              
-  |==============================================                                                          |  44%
-  |                                                                                                              
-  |====================================================                                                    |  50%
-  |                                                                                                              
-  |==========================================================                                              |  56%
-  |                                                                                                              
-  |================================================================                                        |  61%
-  |                                                                                                              
-  |=====================================================================                                   |  67%
-  |                                                                                                              
-  |===========================================================================                             |  72%
-  |                                                                                                              
-  |=================================================================================                       |  78%
-  |                                                                                                              
-  |=======================================================================================                 |  83%
-  |                                                                                                              
-  |============================================================================================            |  89%
-  |                                                                                                              
-  |==================================================================================================      |  94%
-  |                                                                                                              
-  |========================================================================================================| 100%</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="co"># 此时T1表示的是基频FO</span></a>
-<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="kw">ggplot</span>(vwl.f0 ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_rel, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> sl_rowIdx) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (ms)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F0 (Hz)&quot;</span>)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-317-1.png" width="672" /></p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="co"># 将基频信息进行时长归一化</span></a>
-<a class="sourceLine" id="cb137-2" data-line-number="2">f0_norm =<span class="st"> </span><span class="kw">normalize_length</span>(vwl.f0)</a>
-<a class="sourceLine" id="cb137-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb137-4" data-line-number="4"><span class="kw">ggplot</span>(f0_norm) <span class="op">+</span></a>
-<a class="sourceLine" id="cb137-5" data-line-number="5"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_norm, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> labels) <span class="op">+</span></a>
-<a class="sourceLine" id="cb137-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb137-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (normalized)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F0 (Hz)&quot;</span>) </a></code></pre></div>
+  |                                                                                                               
+  |                                                                                                         |   0%
+  |                                                                                                               
+  |======                                                                                                   |   6%
+  |                                                                                                               
+  |============                                                                                             |  11%
+  |                                                                                                               
+  |==================                                                                                       |  17%
+  |                                                                                                               
+  |=======================                                                                                  |  22%
+  |                                                                                                               
+  |=============================                                                                            |  28%
+  |                                                                                                               
+  |===================================                                                                      |  33%
+  |                                                                                                               
+  |=========================================                                                                |  39%
+  |                                                                                                               
+  |===============================================                                                          |  44%
+  |                                                                                                               
+  |====================================================                                                     |  50%
+  |                                                                                                               
+  |==========================================================                                               |  56%
+  |                                                                                                               
+  |================================================================                                         |  61%
+  |                                                                                                               
+  |======================================================================                                   |  67%
+  |                                                                                                               
+  |============================================================================                             |  72%
+  |                                                                                                               
+  |==================================================================================                       |  78%
+  |                                                                                                               
+  |========================================================================================                 |  83%
+  |                                                                                                               
+  |=============================================================================================            |  89%
+  |                                                                                                               
+  |===================================================================================================      |  94%
+  |                                                                                                               
+  |=========================================================================================================| 100%</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="co"># 此时T1表示的是基频FO</span></a>
+<a class="sourceLine" id="cb262-2" data-line-number="2"><span class="kw">ggplot</span>(vwl.f0 ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb262-3" data-line-number="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_rel, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> sl_rowIdx) <span class="op">+</span></a>
+<a class="sourceLine" id="cb262-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb262-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (ms)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F0 (Hz)&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="co"># 将基频信息进行时长归一化</span></a>
+<a class="sourceLine" id="cb263-2" data-line-number="2">f0_norm =<span class="st"> </span><span class="kw">normalize_length</span>(vwl.f0)</a>
+<a class="sourceLine" id="cb263-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb263-4" data-line-number="4"><span class="kw">ggplot</span>(f0_norm) <span class="op">+</span></a>
+<a class="sourceLine" id="cb263-5" data-line-number="5"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> times_norm, <span class="dt">y =</span> T1, <span class="dt">col =</span> labels, <span class="dt">group =</span> labels) <span class="op">+</span></a>
+<a class="sourceLine" id="cb263-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb263-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Duration (normalized)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;F0 (Hz)&quot;</span>) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-317-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-125-2.png" width="672" /></p>
 
 </div>
 </div>
@@ -714,7 +730,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-new.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-speech.Rmd",
 "text": "Edit"
 },
 "history": {

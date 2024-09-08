@@ -23,14 +23,14 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-03" />
+<meta name="date" content="2024-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="案例二文本数据分析.html"/>
+<link rel="prev" href="文本语料数据分析案例.html"/>
 <link rel="next" href="案例四机器学习.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -52,12 +52,23 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.23/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -200,19 +211,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
-<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
-<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
-<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
-<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
-<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
-<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.1</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取"><i class="fa fa-check"></i><b>6.1.1</b> 词频提取</a></li>
+<li class="chapter" data-level="6.1.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.1.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.1.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.1.3</b> 上下文中的关键词索引（KWIC）</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
-<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
-<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
-<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#短语分析"><i class="fa fa-check"></i><b>6.2</b> 短语分析</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文共现"><i class="fa fa-check"></i><b>6.2.1</b> 上下文共现</a></li>
+<li class="chapter" data-level="6.2.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.2.2</b> 搭配分析</a></li>
+<li class="chapter" data-level="6.2.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.2.3</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.2.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.2.4</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.2.5" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.2.5</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.2.6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.2.6</b> 文本情感分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#句子分析"><i class="fa fa-check"></i><b>6.3</b> 句子分析</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#依存句法标注"><i class="fa fa-check"></i><b>6.3.1</b> 依存句法标注</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词性统计"><i class="fa fa-check"></i><b>6.3.2</b> 词性统计</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#依存句法结构"><i class="fa fa-check"></i><b>6.3.3</b> 依存句法结构</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#基于词性的搭配提取"><i class="fa fa-check"></i><b>6.3.4</b> 基于词性的搭配提取</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
@@ -231,13 +247,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
 <li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-1"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
 <li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
 <li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
-<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#principal-components-analysis"><i class="fa fa-check"></i><b>9.2.1</b> principal components analysis</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#因子分析"><i class="fa fa-check"></i><b>9.2.2</b> 因子分析</a></li>
+<li class="chapter" data-level="9.2.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#correspondence-analysis"><i class="fa fa-check"></i><b>9.2.3</b> Correspondence analysis</a></li>
+<li class="chapter" data-level="9.2.4" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#multi-demensional-scaling"><i class="fa fa-check"></i><b>9.2.4</b> Multi-demensional scaling</a></li>
+<li class="chapter" data-level="9.2.5" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#cluster"><i class="fa fa-check"></i><b>9.2.5</b> Cluster</a></li>
+<li class="chapter" data-level="9.2.6" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#确定最佳的聚类数量"><i class="fa fa-check"></i><b>9.2.6</b> 确定最佳的聚类数量</a></li>
+<li class="chapter" data-level="9.2.7" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.7</b> 文本聚类分析</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html"><i class="fa fa-check"></i><b>10</b> 案例一、行为实验数据分析</a><ul>
@@ -247,17 +268,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
 <li class="chapter" data-level="10.5" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html"><i class="fa fa-check"></i><b>11</b> 案例二、文本数据分析</a><ul>
-<li class="chapter" data-level="11.1" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#研究背景-1"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
-<li class="chapter" data-level="11.2" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+<li class="chapter" data-level="11" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html"><i class="fa fa-check"></i><b>11</b> 文本语料数据分析案例</a><ul>
+<li class="chapter" data-level="11.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#案例一狄仁杰小说翻译文体风格"><i class="fa fa-check"></i><b>11.1</b> 案例一、狄仁杰小说翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#研究背景-1"><i class="fa fa-check"></i><b>11.1.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.1.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#数据处理"><i class="fa fa-check"></i><b>11.1.2</b> 数据处理</a></li>
+<li class="chapter" data-level="11.1.3" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#数据可视化-2"><i class="fa fa-check"></i><b>11.1.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.1.4" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#统计建模-1"><i class="fa fa-check"></i><b>11.1.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.1.5" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#结论-1"><i class="fa fa-check"></i><b>11.1.5</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
-<li class="chapter" data-level="11.4" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
-<li class="chapter" data-level="11.5" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+<li class="chapter" data-level="11.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#案例二汉语失语症话语产出"><i class="fa fa-check"></i><b>11.2</b> 案例二、汉语失语症话语产出</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#研究背景-2"><i class="fa fa-check"></i><b>11.2.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#jieba-分词"><i class="fa fa-check"></i><b>11.2.2</b> Jieba 分词</a></li>
+<li class="chapter" data-level="11.2.3" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#汉语失语症语料分词"><i class="fa fa-check"></i><b>11.2.3</b> 汉语失语症语料分词</a></li>
+<li class="chapter" data-level="11.2.4" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#计算词汇丰富度"><i class="fa fa-check"></i><b>11.2.4</b> 计算词汇丰富度</a></li>
+<li class="chapter" data-level="11.2.5" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#提取核心词汇"><i class="fa fa-check"></i><b>11.2.5</b> 提取核心词汇</a></li>
+<li class="chapter" data-level="11.2.6" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#比较核心词汇分数"><i class="fa fa-check"></i><b>11.2.6</b> 比较核心词汇分数</a></li>
+<li class="chapter" data-level="11.2.7" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#核心词汇分数和词汇丰富度相关性分析"><i class="fa fa-check"></i><b>11.2.7</b> 核心词汇分数和词汇丰富度相关性分析</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 案例三、语音数据处理案例</a><ul>
-<li class="chapter" data-level="12.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#研究背景-2"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#研究背景-3"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
 <li class="chapter" data-level="12.2" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
 <li class="chapter" data-level="12.3" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
@@ -286,64 +316,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html"><i class="fa fa-check"></i><b>15</b> 实践案例 汉语失语症话语产出</a><ul>
-<li class="chapter" data-level="15.1" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#研究背景-3"><i class="fa fa-check"></i><b>15.1</b> 研究背景</a></li>
-<li class="chapter" data-level="15.2" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#jieba-分词"><i class="fa fa-check"></i><b>15.2</b> Jieba 分词</a></li>
-<li class="chapter" data-level="15.3" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#汉语失语症语料分词"><i class="fa fa-check"></i><b>15.3</b> 汉语失语症语料分词</a></li>
-<li class="chapter" data-level="15.4" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#计算词汇丰富度"><i class="fa fa-check"></i><b>15.4</b> 计算词汇丰富度</a></li>
-<li class="chapter" data-level="15.5" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#提取核心词汇"><i class="fa fa-check"></i><b>15.5</b> 提取核心词汇</a></li>
-<li class="chapter" data-level="15.6" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#比较核心词汇分数"><i class="fa fa-check"></i><b>15.6</b> 比较核心词汇分数</a></li>
-<li class="chapter" data-level="15.7" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#核心词汇分数和词汇丰富度相关性分析"><i class="fa fa-check"></i><b>15.7</b> 核心词汇分数和词汇丰富度相关性分析</a></li>
+<li class="chapter" data-level="15" data-path="数据可视化-3.html"><a href="数据可视化-3.html"><i class="fa fa-check"></i><b>15</b> 数据可视化</a><ul>
+<li class="chapter" data-level="15.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#条形图bar-plots"><i class="fa fa-check"></i><b>15.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#基于频数"><i class="fa fa-check"></i><b>15.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="15.1.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#基于平均值"><i class="fa fa-check"></i><b>15.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="15.1.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>15.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="15.1.4" data-path="数据可视化-3.html"><a href="数据可视化-3.html#添加柱子的数值"><i class="fa fa-check"></i><b>15.1.4</b> 添加柱子的数值</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html"><i class="fa fa-check"></i><b>16</b> R语言学习资源分类汇总</a><ul>
-<li class="chapter" data-level="16.1" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#统计建模-2"><i class="fa fa-check"></i><b>16.1</b> 统计建模</a></li>
-<li class="chapter" data-level="16.2" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#机器学习"><i class="fa fa-check"></i><b>16.2</b> 机器学习</a></li>
-<li class="chapter" data-level="16.3" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据整理-2"><i class="fa fa-check"></i><b>16.3</b> 数据整理</a></li>
-<li class="chapter" data-level="16.4" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据可视化-3"><i class="fa fa-check"></i><b>16.4</b> 数据可视化</a></li>
-<li class="chapter" data-level="16.5" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络分析"><i class="fa fa-check"></i><b>16.5</b> 网络分析</a></li>
-<li class="chapter" data-level="16.6" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#文本分析"><i class="fa fa-check"></i><b>16.6</b> 文本分析</a></li>
-<li class="chapter" data-level="16.7" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络抓取"><i class="fa fa-check"></i><b>16.7</b> 网络抓取</a></li>
-<li class="chapter" data-level="16.8" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#社交媒体分析"><i class="fa fa-check"></i><b>16.8</b> 社交媒体分析</a></li>
-<li class="chapter" data-level="16.9" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#语音分析"><i class="fa fa-check"></i><b>16.9</b> 语音分析</a></li>
-<li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
-<li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
+<li class="chapter" data-level="15.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>15.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="15.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#线图"><i class="fa fa-check"></i><b>15.3</b> 线图</a></li>
+<li class="chapter" data-level="15.4" data-path="数据可视化-3.html"><a href="数据可视化-3.html#散点图"><i class="fa fa-check"></i><b>15.4</b> 散点图</a></li>
+<li class="chapter" data-level="15.5" data-path="数据可视化-3.html"><a href="数据可视化-3.html#脑区图"><i class="fa fa-check"></i><b>15.5</b> 脑区图</a></li>
+<li class="chapter" data-level="15.6" data-path="数据可视化-3.html"><a href="数据可视化-3.html#venn图"><i class="fa fa-check"></i><b>15.6</b> Venn图</a></li>
+<li class="chapter" data-level="15.7" data-path="数据可视化-3.html"><a href="数据可视化-3.html#diagram"><i class="fa fa-check"></i><b>15.7</b> diagram</a></li>
+<li class="chapter" data-level="15.8" data-path="数据可视化-3.html"><a href="数据可视化-3.html#gant-plot"><i class="fa fa-check"></i><b>15.8</b> Gant plot</a></li>
+<li class="chapter" data-level="15.9" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标lengends"><i class="fa fa-check"></i><b>15.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="15.9.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标整体"><i class="fa fa-check"></i><b>15.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="15.9.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标标题"><i class="fa fa-check"></i><b>15.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="15.9.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图例标识"><i class="fa fa-check"></i><b>15.9.3</b> 图例标识</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
-<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
-<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
-<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
-<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
-<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+<li class="chapter" data-level="15.10" data-path="数据可视化-3.html"><a href="数据可视化-3.html#坐标轴"><i class="fa fa-check"></i><b>15.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="15.11" data-path="数据可视化-3.html"><a href="数据可视化-3.html#配色"><i class="fa fa-check"></i><b>15.11</b> 配色</a></li>
+<li class="chapter" data-level="15.12" data-path="数据可视化-3.html"><a href="数据可视化-3.html#注释标记"><i class="fa fa-check"></i><b>15.12</b> 注释标记</a></li>
+<li class="chapter" data-level="15.13" data-path="数据可视化-3.html"><a href="数据可视化-3.html#theme"><i class="fa fa-check"></i><b>15.13</b> theme</a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
-<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
-<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
-<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
-<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
-<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
-<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
-<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
-<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
-<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
-<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+<li class="chapter" data-level="16" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>16</b> 表格制作</a><ul>
+<li class="chapter" data-level="16.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>16.1</b> gt</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>16.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="16.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>16.1.2</b> gtExtras</a></li>
 </ul></li>
-<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
-<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
-<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
-<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+<li class="chapter" data-level="16.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>16.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="16.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>16.3</b> modelsummary</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
-<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
-<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+<li class="chapter" data-level="17" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>17</b> R-markdown</a><ul>
+<li class="chapter" data-level="17.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml前置部分"><i class="fa fa-check"></i><b>17.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="17.2" data-path="r-markdown.html"><a href="r-markdown.html#代码块"><i class="fa fa-check"></i><b>17.2</b> 代码块</a></li>
+<li class="chapter" data-level="17.3" data-path="r-markdown.html"><a href="r-markdown.html#markdown区域"><i class="fa fa-check"></i><b>17.3</b> Markdown区域</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
-<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
-<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
-<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
-<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+<li class="chapter" data-level="18" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html"><i class="fa fa-check"></i><b>18</b> R语言学习资源分类汇总</a><ul>
+<li class="chapter" data-level="18.1" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#统计建模-2"><i class="fa fa-check"></i><b>18.1</b> 统计建模</a></li>
+<li class="chapter" data-level="18.2" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#机器学习"><i class="fa fa-check"></i><b>18.2</b> 机器学习</a></li>
+<li class="chapter" data-level="18.3" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据整理-1"><i class="fa fa-check"></i><b>18.3</b> 数据整理</a></li>
+<li class="chapter" data-level="18.4" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据可视化-4"><i class="fa fa-check"></i><b>18.4</b> 数据可视化</a></li>
+<li class="chapter" data-level="18.5" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络分析"><i class="fa fa-check"></i><b>18.5</b> 网络分析</a></li>
+<li class="chapter" data-level="18.6" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#文本分析"><i class="fa fa-check"></i><b>18.6</b> 文本分析</a></li>
+<li class="chapter" data-level="18.7" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络抓取"><i class="fa fa-check"></i><b>18.7</b> 网络抓取</a></li>
+<li class="chapter" data-level="18.8" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#社交媒体分析"><i class="fa fa-check"></i><b>18.8</b> 社交媒体分析</a></li>
+<li class="chapter" data-level="18.9" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#语音分析"><i class="fa fa-check"></i><b>18.9</b> 语音分析</a></li>
+<li class="chapter" data-level="18.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>18.10</b> 学科研究</a></li>
+<li class="chapter" data-level="18.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown-1"><i class="fa fa-check"></i><b>18.11</b> R-markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -368,51 +389,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="案例三语音数据处理案例" class="section level1 hasAnchor">
 <h1><span class="header-section-number">Chapter 12</span> 案例三、语音数据处理案例<a href="案例三语音数据处理案例.html#案例三语音数据处理案例" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="研究背景-2" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.1</span> 研究背景<a href="案例三语音数据处理案例.html#研究背景-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="研究背景-3" class="section level2 hasAnchor">
+<h2><span class="header-section-number">12.1</span> 研究背景<a href="案例三语音数据处理案例.html#研究背景-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure">
 <img src="images/11.1.png" alt="详细背景请看原文献" />
 <p class="caption">详细背景请看原文献</p>
 </div>
 <p>  越南南部方言中SV214调（hỏi）和SV415调（ngã）的音调合并，使得南部越南语的音系系统与北部越南语不同。鉴于这一差异的重要性及其对泰语音调感知同化模式的潜在影响，我们在声学研究中验证了南部越南语中这两个音调的合并情况。为了对基频（f0）轮廓进行全面而动态的比较，我们采用了广义加性混合模型（GAMM），这是一种非线性回归方法，不需要对数据进行聚合或预先选择轮廓中的固定时间点。该方法能够检测动态变化数据中的一般模式，同时考虑到受试者和项目相关的变异性（Nixon, van Rij, Mok, Baayen, &amp; Chen, 2016; Wieling, 2018）。通过这种方式，它可以揭示在数据聚合或任意选择单一时间点时被掩盖的模式。</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
-<a class="sourceLine" id="cb256-2" data-line-number="2"><span class="co">#install.packages(&quot;plotfunctions&quot;)</span></a>
-<a class="sourceLine" id="cb256-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb256-4" data-line-number="4"><span class="co">## 构建模型</span></a>
-<a class="sourceLine" id="cb256-5" data-line-number="5"><span class="kw">library</span>(mgcv)</a>
-<a class="sourceLine" id="cb256-6" data-line-number="6"><span class="co">## 作图</span></a>
-<a class="sourceLine" id="cb256-7" data-line-number="7"><span class="kw">library</span>(itsadug)</a></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a>
+<a class="sourceLine" id="cb432-2" data-line-number="2"><span class="co">#install.packages(&quot;plotfunctions&quot;)</span></a>
+<a class="sourceLine" id="cb432-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb432-4" data-line-number="4"><span class="co">## 构建模型</span></a>
+<a class="sourceLine" id="cb432-5" data-line-number="5"><span class="kw">library</span>(mgcv)</a>
+<a class="sourceLine" id="cb432-6" data-line-number="6"><span class="co">## 作图</span></a>
+<a class="sourceLine" id="cb432-7" data-line-number="7"><span class="kw">library</span>(itsadug)</a></code></pre></div>
 </div>
 <div id="数据导入及整理" class="section level2 hasAnchor">
 <h2><span class="header-section-number">12.2</span> 数据导入及整理<a href="案例三语音数据处理案例.html#数据导入及整理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">contour_data_all =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch12/nv.sv.data.2024-08-24.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb257-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="co"># modelling NV difference</span></a>
-<a class="sourceLine" id="cb257-4" data-line-number="4">nv.data =<span class="st"> </span>contour_data_all<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(tone <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;NV415&quot;</span>, <span class="st">&quot;NV214&quot;</span>) )<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-7" data-line-number="7"><span class="st">  </span><span class="co">#filter(subject != 214)%&gt;%</span></a>
-<a class="sourceLine" id="cb257-8" data-line-number="8"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Time =</span> Timepoint)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>language)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">as.factor</span>(id),</a>
-<a class="sourceLine" id="cb257-11" data-line-number="11">        <span class="dt">tone =</span> <span class="kw">as.factor</span>(tone),</a>
-<a class="sourceLine" id="cb257-12" data-line-number="12">         <span class="dt">subject =</span> <span class="kw">as.factor</span>(subject))</a>
-<a class="sourceLine" id="cb257-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb257-14" data-line-number="14"><span class="co">#sort data per individual trajectory (for autocorrelation)</span></a>
-<a class="sourceLine" id="cb257-15" data-line-number="15">nv.data =<span class="st"> </span><span class="kw">data.frame</span>(nv.data)</a>
-<a class="sourceLine" id="cb257-16" data-line-number="16">nv.data<span class="op">$</span>id =<span class="st"> </span><span class="kw">as.factor</span>(nv.data<span class="op">$</span>id)</a>
-<a class="sourceLine" id="cb257-17" data-line-number="17">nv.data =<span class="st"> </span><span class="kw">start_event</span>(nv.data, <span class="dt">event =</span> <span class="kw">c</span>(<span class="st">&quot;subject&quot;</span>, <span class="st">&quot;id&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">contour_data_all =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch12/nv.sv.data.2024-08-24.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb433-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb433-3" data-line-number="3"><span class="co"># modelling NV difference</span></a>
+<a class="sourceLine" id="cb433-4" data-line-number="4">nv.data =<span class="st"> </span>contour_data_all<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(tone <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;NV415&quot;</span>, <span class="st">&quot;NV214&quot;</span>) )<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-7" data-line-number="7"><span class="st">  </span><span class="co">#filter(subject != 214)%&gt;%</span></a>
+<a class="sourceLine" id="cb433-8" data-line-number="8"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Time =</span> Timepoint)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>language)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb433-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">as.factor</span>(id),</a>
+<a class="sourceLine" id="cb433-11" data-line-number="11">        <span class="dt">tone =</span> <span class="kw">as.factor</span>(tone),</a>
+<a class="sourceLine" id="cb433-12" data-line-number="12">         <span class="dt">subject =</span> <span class="kw">as.factor</span>(subject))</a>
+<a class="sourceLine" id="cb433-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb433-14" data-line-number="14"><span class="co">#sort data per individual trajectory (for autocorrelation)</span></a>
+<a class="sourceLine" id="cb433-15" data-line-number="15">nv.data =<span class="st"> </span><span class="kw">data.frame</span>(nv.data)</a>
+<a class="sourceLine" id="cb433-16" data-line-number="16">nv.data<span class="op">$</span>id =<span class="st"> </span><span class="kw">as.factor</span>(nv.data<span class="op">$</span>id)</a>
+<a class="sourceLine" id="cb433-17" data-line-number="17">nv.data =<span class="st"> </span><span class="kw">start_event</span>(nv.data, <span class="dt">event =</span> <span class="kw">c</span>(<span class="st">&quot;subject&quot;</span>, <span class="st">&quot;id&quot;</span>))</a></code></pre></div>
 </div>
 <div id="数据建模" class="section level2 hasAnchor">
 <h2><span class="header-section-number">12.3</span> 数据建模<a href="案例三语音数据处理案例.html#数据建模" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="越南语北部方言声调建模" class="section level3 hasAnchor">
 <h3><span class="header-section-number">12.3.1</span> 越南语北部方言声调建模<a href="案例三语音数据处理案例.html#越南语北部方言声调建模" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="co"># preliminary model without autocorrelation correction </span></a>
-<a class="sourceLine" id="cb258-2" data-line-number="2">model.nv =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
-<a class="sourceLine" id="cb258-3" data-line-number="3"><span class="st">               </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb258-4" data-line-number="4">             <span class="dt">data=</span> nv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1"><span class="co"># preliminary model without autocorrelation correction </span></a>
+<a class="sourceLine" id="cb434-2" data-line-number="2">model.nv =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
+<a class="sourceLine" id="cb434-3" data-line-number="3"><span class="st">               </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb434-4" data-line-number="4">             <span class="dt">data=</span> nv.data)</a></code></pre></div>
 <pre><code>## Warning in gam.side(sm, X, tol = .Machine$double.eps^0.5): model has repeated 1-d smooths of same variable.</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">summary</span>(model.nv)</a></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1"><span class="kw">summary</span>(model.nv)</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -439,26 +460,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## R-sq.(adj) =  0.676   Deviance explained = 68.8%
 ## fREML = -878.66  Scale est. = 0.013402  n = 1280</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">nvacf =<span class="st"> </span><span class="kw">acf_resid</span>(model.nv)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-347-1.png" width="672" /></p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="co">#获取参数</span></a>
-<a class="sourceLine" id="cb263-2" data-line-number="2">nvacf[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1">nvacf =<span class="st"> </span><span class="kw">acf_resid</span>(model.nv)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1"><span class="co">#获取参数</span></a>
+<a class="sourceLine" id="cb439-2" data-line-number="2">nvacf[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>##         1 
 ## 0.7104244</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="co">## with autocorrelation correction</span></a>
-<a class="sourceLine" id="cb265-2" data-line-number="2">model.nv.b =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
-<a class="sourceLine" id="cb265-3" data-line-number="3"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb265-4" data-line-number="4">               <span class="dt">rho =</span> nvacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb265-5" data-line-number="5">               <span class="dt">AR.start =</span> nv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb265-6" data-line-number="6">               <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb265-7" data-line-number="7">               <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb265-8" data-line-number="8">               <span class="dt">data=</span> nv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" data-line-number="1"><span class="co">## with autocorrelation correction</span></a>
+<a class="sourceLine" id="cb441-2" data-line-number="2">model.nv.b =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
+<a class="sourceLine" id="cb441-3" data-line-number="3"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb441-4" data-line-number="4">               <span class="dt">rho =</span> nvacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb441-5" data-line-number="5">               <span class="dt">AR.start =</span> nv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb441-6" data-line-number="6">               <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb441-7" data-line-number="7">               <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb441-8" data-line-number="8">               <span class="dt">data=</span> nv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : openMP not available: single
 ## threaded computation only
 
-## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : model has repeated 1-d smooths
-## of same variable.</code></pre>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">summary</span>(model.nv.b)</a></code></pre></div>
+## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : model has repeated 1-d smooths of
+## same variable.</code></pre>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1"><span class="kw">summary</span>(model.nv.b)</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -485,25 +506,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## R-sq.(adj) =  0.672   Deviance explained = 68.8%
 ## fREML = -1436.5  Scale est. = 0.01023   n = 1280</code></pre>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="co"># plot</span></a>
-<a class="sourceLine" id="cb269-2" data-line-number="2"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
-<a class="sourceLine" id="cb269-3" data-line-number="3">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
-<a class="sourceLine" id="cb269-4" data-line-number="4">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV415&quot;</span>)), </a>
-<a class="sourceLine" id="cb269-5" data-line-number="5">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), <span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb269-6" data-line-number="6">            <span class="dt">main=</span><span class="st">&quot;Northen Vietnamese&quot;</span>, </a>
-<a class="sourceLine" id="cb269-7" data-line-number="7">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb269-8" data-line-number="8">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1"><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb445-2" data-line-number="2"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
+<a class="sourceLine" id="cb445-3" data-line-number="3">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
+<a class="sourceLine" id="cb445-4" data-line-number="4">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV415&quot;</span>)), </a>
+<a class="sourceLine" id="cb445-5" data-line-number="5">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), <span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb445-6" data-line-number="6">            <span class="dt">main=</span><span class="st">&quot;Northen Vietnamese&quot;</span>, </a>
+<a class="sourceLine" id="cb445-7" data-line-number="7">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, </a>
+<a class="sourceLine" id="cb445-8" data-line-number="8">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): NV415. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 211. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneNV214,s(Time,subject):toneNV415
 ## </code></pre>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
-<a class="sourceLine" id="cb271-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV214&quot;</span>)), </a>
-<a class="sourceLine" id="cb271-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb271-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-347-2.png" width="672" /></p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
+<a class="sourceLine" id="cb447-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV214&quot;</span>)), </a>
+<a class="sourceLine" id="cb447-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb447-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-175-2.png" width="672" /></p>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): NV214. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
@@ -513,16 +534,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>验证越南语北部方言是否存在这个声调对立</p>
 <p>模型比较法
 模型1区分两个对立</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">model.nv =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
-<a class="sourceLine" id="cb273-2" data-line-number="2"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb273-3" data-line-number="3">               <span class="dt">data=</span> nv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1">model.nv =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
+<a class="sourceLine" id="cb449-2" data-line-number="2"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb449-3" data-line-number="3">               <span class="dt">data=</span> nv.data)</a></code></pre></div>
 <pre><code>## Warning in gam.side(sm, X, tol = .Machine$double.eps^0.5): model has repeated 1-d smooths of same variable.</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1"><span class="co">#模型2不区分两个对立</span></a>
-<a class="sourceLine" id="cb275-2" data-line-number="2">model.nv0 =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time)<span class="op">+</span></a>
-<a class="sourceLine" id="cb275-3" data-line-number="3"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb275-4" data-line-number="4">               <span class="dt">data=</span> nv.data)</a>
-<a class="sourceLine" id="cb275-5" data-line-number="5"><span class="co">#比较两个模型</span></a>
-<a class="sourceLine" id="cb275-6" data-line-number="6"><span class="kw">compareML</span>(model.nv, model.nv0)</a></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1"><span class="co">#模型2不区分两个对立</span></a>
+<a class="sourceLine" id="cb451-2" data-line-number="2">model.nv0 =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time)<span class="op">+</span></a>
+<a class="sourceLine" id="cb451-3" data-line-number="3"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb451-4" data-line-number="4">               <span class="dt">data=</span> nv.data)</a>
+<a class="sourceLine" id="cb451-5" data-line-number="5"><span class="co">#比较两个模型</span></a>
+<a class="sourceLine" id="cb451-6" data-line-number="6"><span class="kw">compareML</span>(model.nv, model.nv0)</a></code></pre></div>
 <pre><code>## model.nv: normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, 
 ##     bs = &quot;fs&quot;, m = 1)
 ## 
@@ -536,21 +557,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2  model.nv -878.6559  10     10.602 2.000 2.486e-05  ***
 ## 
 ## AIC difference: -4.63, model model.nv has lower AIC.</code></pre>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1"><span class="co">#此方法缺点是计算量比较大。但是对于不是很复杂的模型没有影响。</span></a></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1"><span class="co">#此方法缺点是计算量比较大。但是对于不是很复杂的模型没有影响。</span></a></code></pre></div>
 <p>差值比较法
   通过修改模型的设定，将表示两个原始平滑函数之间差异的函数包含在模型中。接下来，发现这个差异平滑函数是显著的，这就表明有显著差异。为了拟合这个新模型，我们首先需要创建一个新的二元变量，该变量在一个水平上等于0，而在另一个水平上等于1。我们现在创建一个名为IS214的变量，该变量在单词‘NV214’上为1，而在单词‘NV415’上为0。</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">nv.data<span class="op">$</span>IS214 =<span class="st"> </span>(nv.data<span class="op">$</span>tone <span class="op">==</span><span class="st"> &quot;NV214&quot;</span>)<span class="op">*</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb278-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb278-3" data-line-number="3">model.nv.binary =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>IS214)<span class="op">+</span></a>
-<a class="sourceLine" id="cb278-4" data-line-number="4"><span class="st">                        </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb278-5" data-line-number="5">                      <span class="dt">rho =</span> nvacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb278-6" data-line-number="6">                      <span class="dt">AR.start =</span> nv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb278-7" data-line-number="7">                      <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb278-8" data-line-number="8">                      <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb278-9" data-line-number="9">                      <span class="dt">data=</span> nv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1">nv.data<span class="op">$</span>IS214 =<span class="st"> </span>(nv.data<span class="op">$</span>tone <span class="op">==</span><span class="st"> &quot;NV214&quot;</span>)<span class="op">*</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb454-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb454-3" data-line-number="3">model.nv.binary =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>IS214)<span class="op">+</span></a>
+<a class="sourceLine" id="cb454-4" data-line-number="4"><span class="st">                        </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb454-5" data-line-number="5">                      <span class="dt">rho =</span> nvacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb454-6" data-line-number="6">                      <span class="dt">AR.start =</span> nv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb454-7" data-line-number="7">                      <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb454-8" data-line-number="8">                      <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb454-9" data-line-number="9">                      <span class="dt">data=</span> nv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ s(Time) + s(Time, by = IS214) + s(Time, subject, : openMP not available: single threaded
 ## computation only</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">summary</span>(model.nv.binary)</a></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1"><span class="kw">summary</span>(model.nv.binary)</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -577,19 +598,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## R-sq.(adj) =  0.672   Deviance explained = 68.8%
 ## fREML = -1434.9  Scale est. = 0.01023   n = 1280</code></pre>
 <p>soluation 3</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">nv.data<span class="op">$</span>toneO =<span class="st"> </span><span class="kw">as.ordered</span>(nv.data<span class="op">$</span>tone)</a>
-<a class="sourceLine" id="cb282-2" data-line-number="2"><span class="kw">contrasts</span>(nv.data<span class="op">$</span>toneO) =<span class="st"> &quot;contr.treatment&quot;</span></a>
-<a class="sourceLine" id="cb282-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb282-4" data-line-number="4">model.nv.ord =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>toneO<span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>toneO)<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-5" data-line-number="5"><span class="st">                     </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb282-6" data-line-number="6">                   <span class="dt">rho =</span> nvacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb282-7" data-line-number="7">                   <span class="dt">AR.start =</span> nv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb282-8" data-line-number="8">                   <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb282-9" data-line-number="9">                   <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb282-10" data-line-number="10">                   <span class="dt">data=</span> nv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1">nv.data<span class="op">$</span>toneO =<span class="st"> </span><span class="kw">as.ordered</span>(nv.data<span class="op">$</span>tone)</a>
+<a class="sourceLine" id="cb458-2" data-line-number="2"><span class="kw">contrasts</span>(nv.data<span class="op">$</span>toneO) =<span class="st"> &quot;contr.treatment&quot;</span></a>
+<a class="sourceLine" id="cb458-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb458-4" data-line-number="4">model.nv.ord =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>toneO<span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>toneO)<span class="op">+</span></a>
+<a class="sourceLine" id="cb458-5" data-line-number="5"><span class="st">                     </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb458-6" data-line-number="6">                   <span class="dt">rho =</span> nvacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb458-7" data-line-number="7">                   <span class="dt">AR.start =</span> nv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb458-8" data-line-number="8">                   <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb458-9" data-line-number="9">                   <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb458-10" data-line-number="10">                   <span class="dt">data=</span> nv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ toneO + s(Time) + s(Time, by = toneO) + s(Time, : openMP not available: single threaded
 ## computation only</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">summary</span>(model.nv.ord )</a></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1"><span class="kw">summary</span>(model.nv.ord )</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -619,24 +640,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="越南语南部方言声调建模" class="section level3 hasAnchor">
 <h3><span class="header-section-number">12.3.2</span> 越南语南部方言声调建模<a href="案例三语音数据处理案例.html#越南语南部方言声调建模" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">sv.data =<span class="st"> </span>contour_data_all<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb286-2" data-line-number="2"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb286-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(tone <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SV415&quot;</span>, <span class="st">&quot;SV214&quot;</span>) )<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb286-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Time =</span> Timepoint)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb286-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>language)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb286-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">as.factor</span>(id),</a>
-<a class="sourceLine" id="cb286-7" data-line-number="7">         <span class="dt">tone =</span> <span class="kw">as.factor</span>(tone),</a>
-<a class="sourceLine" id="cb286-8" data-line-number="8">         <span class="dt">subject =</span> <span class="kw">as.factor</span>(subject))</a>
-<a class="sourceLine" id="cb286-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb286-10" data-line-number="10"><span class="co">#sort data per individual trajectory (for autocorrelation)</span></a>
-<a class="sourceLine" id="cb286-11" data-line-number="11">sv.data =<span class="st"> </span><span class="kw">start_event</span>(sv.data, <span class="dt">event =</span> <span class="kw">c</span>(<span class="st">&quot;subject&quot;</span>, <span class="st">&quot;id&quot;</span>))</a>
-<a class="sourceLine" id="cb286-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb286-13" data-line-number="13"><span class="co"># preliminary model without autocorrelation correction </span></a>
-<a class="sourceLine" id="cb286-14" data-line-number="14">model.sv =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-15" data-line-number="15"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb286-16" data-line-number="16">               <span class="dt">data=</span> sv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" data-line-number="1">sv.data =<span class="st"> </span>contour_data_all<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb462-2" data-line-number="2"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb462-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(tone <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SV415&quot;</span>, <span class="st">&quot;SV214&quot;</span>) )<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb462-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Time =</span> Timepoint)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb462-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>language)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb462-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">as.factor</span>(id),</a>
+<a class="sourceLine" id="cb462-7" data-line-number="7">         <span class="dt">tone =</span> <span class="kw">as.factor</span>(tone),</a>
+<a class="sourceLine" id="cb462-8" data-line-number="8">         <span class="dt">subject =</span> <span class="kw">as.factor</span>(subject))</a>
+<a class="sourceLine" id="cb462-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb462-10" data-line-number="10"><span class="co">#sort data per individual trajectory (for autocorrelation)</span></a>
+<a class="sourceLine" id="cb462-11" data-line-number="11">sv.data =<span class="st"> </span><span class="kw">start_event</span>(sv.data, <span class="dt">event =</span> <span class="kw">c</span>(<span class="st">&quot;subject&quot;</span>, <span class="st">&quot;id&quot;</span>))</a>
+<a class="sourceLine" id="cb462-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb462-13" data-line-number="13"><span class="co"># preliminary model without autocorrelation correction </span></a>
+<a class="sourceLine" id="cb462-14" data-line-number="14">model.sv =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
+<a class="sourceLine" id="cb462-15" data-line-number="15"><span class="st">                 </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb462-16" data-line-number="16">               <span class="dt">data=</span> sv.data)</a></code></pre></div>
 <pre><code>## Warning in gam.side(sm, X, tol = .Machine$double.eps^0.5): model has repeated 1-d smooths of same variable.</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1"><span class="kw">summary</span>(model.sv)</a></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" data-line-number="1"><span class="kw">summary</span>(model.sv)</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -663,25 +684,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## R-sq.(adj) =   0.81   Deviance explained = 81.8%
 ## fREML = -1135.6  Scale est. = 0.0087883  n = 1280</code></pre>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">svacf =<span class="st"> </span><span class="kw">acf_resid</span>(model.sv)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-351-1.png" width="672" /></p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1">svacf[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1">svacf =<span class="st"> </span><span class="kw">acf_resid</span>(model.sv)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1">svacf[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>##         1 
 ## 0.5071284</code></pre>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="co">## with autocorrelation correction</span></a>
-<a class="sourceLine" id="cb293-2" data-line-number="2">model.sv.b =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
-<a class="sourceLine" id="cb293-3" data-line-number="3"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb293-4" data-line-number="4">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb293-5" data-line-number="5">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb293-6" data-line-number="6">                 <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb293-7" data-line-number="7">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb293-8" data-line-number="8">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" data-line-number="1"><span class="co">## with autocorrelation correction</span></a>
+<a class="sourceLine" id="cb469-2" data-line-number="2">model.sv.b =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
+<a class="sourceLine" id="cb469-3" data-line-number="3"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb469-4" data-line-number="4">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb469-5" data-line-number="5">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb469-6" data-line-number="6">                 <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb469-7" data-line-number="7">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb469-8" data-line-number="8">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : openMP not available: single
 ## threaded computation only
 
-## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : model has repeated 1-d smooths
-## of same variable.</code></pre>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">summary</span>(model.sv.b)</a></code></pre></div>
+## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : model has repeated 1-d smooths of
+## same variable.</code></pre>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1"><span class="kw">summary</span>(model.sv.b)</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -708,55 +729,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## R-sq.(adj) =  0.809   Deviance explained = 81.8%
 ## fREML = -1371.9  Scale est. = 0.0078498  n = 1280</code></pre>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="co"># plot</span></a>
-<a class="sourceLine" id="cb297-2" data-line-number="2"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
-<a class="sourceLine" id="cb297-3" data-line-number="3">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
-<a class="sourceLine" id="cb297-4" data-line-number="4">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV415&quot;</span>)), </a>
-<a class="sourceLine" id="cb297-5" data-line-number="5">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), <span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb297-6" data-line-number="6">            <span class="dt">main=</span><span class="st">&quot;Southen Vietnamese&quot;</span>, </a>
-<a class="sourceLine" id="cb297-7" data-line-number="7">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb297-8" data-line-number="8">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1"><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb473-2" data-line-number="2"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
+<a class="sourceLine" id="cb473-3" data-line-number="3">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
+<a class="sourceLine" id="cb473-4" data-line-number="4">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV415&quot;</span>)), </a>
+<a class="sourceLine" id="cb473-5" data-line-number="5">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), <span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb473-6" data-line-number="6">            <span class="dt">main=</span><span class="st">&quot;Southen Vietnamese&quot;</span>, </a>
+<a class="sourceLine" id="cb473-7" data-line-number="7">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, </a>
+<a class="sourceLine" id="cb473-8" data-line-number="8">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): SV415. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 411. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneSV214,s(Time,subject):toneSV415
 ## </code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
-<a class="sourceLine" id="cb299-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV214&quot;</span>)), </a>
-<a class="sourceLine" id="cb299-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb299-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-351-2.png" width="672" /></p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
+<a class="sourceLine" id="cb475-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV214&quot;</span>)), </a>
+<a class="sourceLine" id="cb475-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb475-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-179-2.png" width="672" /></p>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): SV214. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 411. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneSV214,s(Time,subject):toneSV415
 ## </code></pre>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="co"># testing if the tone contrast exists</span></a>
-<a class="sourceLine" id="cb301-2" data-line-number="2"><span class="co">#solution 1</span></a>
-<a class="sourceLine" id="cb301-3" data-line-number="3">model.sv.b =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
-<a class="sourceLine" id="cb301-4" data-line-number="4"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb301-5" data-line-number="5">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb301-6" data-line-number="6">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb301-7" data-line-number="7">                 <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb301-8" data-line-number="8">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb301-9" data-line-number="9">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" data-line-number="1"><span class="co"># testing if the tone contrast exists</span></a>
+<a class="sourceLine" id="cb477-2" data-line-number="2"><span class="co">#solution 1</span></a>
+<a class="sourceLine" id="cb477-3" data-line-number="3">model.sv.b =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>tone)<span class="op">+</span></a>
+<a class="sourceLine" id="cb477-4" data-line-number="4"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb477-5" data-line-number="5">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb477-6" data-line-number="6">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb477-7" data-line-number="7">                 <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb477-8" data-line-number="8">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb477-9" data-line-number="9">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : openMP not available: single
 ## threaded computation only
 
-## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : model has repeated 1-d smooths
-## of same variable.</code></pre>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1">model.sv.b0 =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb303-2" data-line-number="2"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb303-3" data-line-number="3">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb303-4" data-line-number="4">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb303-5" data-line-number="5">                 <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb303-6" data-line-number="6">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb303-7" data-line-number="7">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
+## Warning in bam(normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, : model has repeated 1-d smooths of
+## same variable.</code></pre>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">model.sv.b0 =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>tone <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb479-2" data-line-number="2"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb479-3" data-line-number="3">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb479-4" data-line-number="4">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb479-5" data-line-number="5">                 <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb479-6" data-line-number="6">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb479-7" data-line-number="7">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ tone + s(Time, subject, by = tone, bs = &quot;fs&quot;, m = 1), : openMP not available: single
 ## threaded computation only</code></pre>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="kw">compareML</span>(model.sv, model.sv.b0)</a></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" data-line-number="1"><span class="kw">compareML</span>(model.sv, model.sv.b0)</a></code></pre></div>
 <pre><code>## model.sv: normF0 ~ tone + s(Time, by = tone) + s(Time, subject, by = tone, 
 ##     bs = &quot;fs&quot;, m = 1)
 ## 
@@ -769,19 +790,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 model.sv.b0 -1333.003   6   -197.409 4.000
 ## 
 ## AIC difference: 478.04, model model.sv.b0 has lower AIC.</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1"><span class="co"># solution 2</span></a>
-<a class="sourceLine" id="cb307-2" data-line-number="2">sv.data<span class="op">$</span>IS214 =<span class="st"> </span>(sv.data<span class="op">$</span>tone <span class="op">==</span><span class="st"> &quot;SV214&quot;</span>)<span class="op">*</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb307-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb307-4" data-line-number="4">model.sv.binary =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>IS214)<span class="op">+</span></a>
-<a class="sourceLine" id="cb307-5" data-line-number="5"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb307-6" data-line-number="6">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb307-7" data-line-number="7">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb307-8" data-line-number="8">                 <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb307-9" data-line-number="9">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb307-10" data-line-number="10">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" data-line-number="1"><span class="co"># solution 2</span></a>
+<a class="sourceLine" id="cb483-2" data-line-number="2">sv.data<span class="op">$</span>IS214 =<span class="st"> </span>(sv.data<span class="op">$</span>tone <span class="op">==</span><span class="st"> &quot;SV214&quot;</span>)<span class="op">*</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb483-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb483-4" data-line-number="4">model.sv.binary =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>IS214)<span class="op">+</span></a>
+<a class="sourceLine" id="cb483-5" data-line-number="5"><span class="st">                   </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb483-6" data-line-number="6">                 <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb483-7" data-line-number="7">                 <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb483-8" data-line-number="8">                 <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb483-9" data-line-number="9">                 <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb483-10" data-line-number="10">                 <span class="dt">data=</span> sv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ s(Time) + s(Time, by = IS214) + s(Time, subject, : openMP not available: single threaded
 ## computation only</code></pre>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1"><span class="kw">summary</span>(model.sv.binary)</a></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" data-line-number="1"><span class="kw">summary</span>(model.sv.binary)</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -807,21 +828,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## R-sq.(adj) =  0.809   Deviance explained = 81.8%
 ## fREML =  -1378  Scale est. = 0.0078415  n = 1280</code></pre>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="co"># soluation 3</span></a>
-<a class="sourceLine" id="cb311-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb311-3" data-line-number="3">sv.data<span class="op">$</span>toneO =<span class="st"> </span><span class="kw">as.ordered</span>(sv.data<span class="op">$</span>tone)</a>
-<a class="sourceLine" id="cb311-4" data-line-number="4"><span class="kw">contrasts</span>(sv.data<span class="op">$</span>toneO) =<span class="st"> &quot;contr.treatment&quot;</span></a>
-<a class="sourceLine" id="cb311-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb311-6" data-line-number="6">model.sv.ord =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>toneO<span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>toneO)<span class="op">+</span></a>
-<a class="sourceLine" id="cb311-7" data-line-number="7"><span class="st">                     </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb311-8" data-line-number="8">                   <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb311-9" data-line-number="9">                   <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
-<a class="sourceLine" id="cb311-10" data-line-number="10">                   <span class="dt">discrete =</span> T, </a>
-<a class="sourceLine" id="cb311-11" data-line-number="11">                   <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb311-12" data-line-number="12">                   <span class="dt">data=</span> sv.data)</a></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb487-1" data-line-number="1"><span class="co"># soluation 3</span></a>
+<a class="sourceLine" id="cb487-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb487-3" data-line-number="3">sv.data<span class="op">$</span>toneO =<span class="st"> </span><span class="kw">as.ordered</span>(sv.data<span class="op">$</span>tone)</a>
+<a class="sourceLine" id="cb487-4" data-line-number="4"><span class="kw">contrasts</span>(sv.data<span class="op">$</span>toneO) =<span class="st"> &quot;contr.treatment&quot;</span></a>
+<a class="sourceLine" id="cb487-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb487-6" data-line-number="6">model.sv.ord =<span class="st"> </span><span class="kw">bam</span>(normF0 <span class="op">~</span><span class="st"> </span>toneO<span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time) <span class="op">+</span><span class="st"> </span><span class="kw">s</span>(Time, <span class="dt">by=</span>toneO)<span class="op">+</span></a>
+<a class="sourceLine" id="cb487-7" data-line-number="7"><span class="st">                     </span><span class="kw">s</span>(Time, subject, <span class="dt">by =</span> tone, <span class="dt">bs =</span> <span class="st">&quot;fs&quot;</span>, <span class="dt">m =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb487-8" data-line-number="8">                   <span class="dt">rho =</span> svacf[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb487-9" data-line-number="9">                   <span class="dt">AR.start =</span> sv.data<span class="op">$</span>start.event, </a>
+<a class="sourceLine" id="cb487-10" data-line-number="10">                   <span class="dt">discrete =</span> T, </a>
+<a class="sourceLine" id="cb487-11" data-line-number="11">                   <span class="dt">nthreads =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb487-12" data-line-number="12">                   <span class="dt">data=</span> sv.data)</a></code></pre></div>
 <pre><code>## Warning in bam(normF0 ~ toneO + s(Time) + s(Time, by = toneO) + s(Time, : openMP not available: single threaded
 ## computation only</code></pre>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="kw">summary</span>(model.sv.ord )</a></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" data-line-number="1"><span class="kw">summary</span>(model.sv.ord )</a></code></pre></div>
 <pre><code>## 
 ## Family: gaussian 
 ## Link function: identity 
@@ -852,73 +873,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="展示与呈现" class="section level2 hasAnchor">
 <h2><span class="header-section-number">12.4</span> 展示与呈现<a href="案例三语音数据处理案例.html#展示与呈现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="co"># plot the comparison</span></a>
-<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="kw">library</span>(cowplot)</a>
-<a class="sourceLine" id="cb315-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb315-4" data-line-number="4"><span class="co"># png(paste(dir.fig, paste(&quot;gam.mdl&quot;,Sys.Date(),&quot;png&quot;,sep = &quot;.&quot;),sep = &quot;&quot;), units=&quot;in&quot;, width=14, height=10, res=600)</span></a>
-<a class="sourceLine" id="cb315-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb315-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb315-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb315-8" data-line-number="8"><span class="co"># Northen Vietnamese</span></a>
-<a class="sourceLine" id="cb315-9" data-line-number="9"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
-<a class="sourceLine" id="cb315-10" data-line-number="10">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
-<a class="sourceLine" id="cb315-11" data-line-number="11">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV415&quot;</span>)), </a>
-<a class="sourceLine" id="cb315-12" data-line-number="12">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb315-13" data-line-number="13">            <span class="dt">main=</span><span class="st">&quot;Northern Vietnamese&quot;</span>, </a>
-<a class="sourceLine" id="cb315-14" data-line-number="14">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>, </a>
-<a class="sourceLine" id="cb315-15" data-line-number="15">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb491-1" data-line-number="1"><span class="co"># plot the comparison</span></a>
+<a class="sourceLine" id="cb491-2" data-line-number="2"><span class="kw">library</span>(cowplot)</a>
+<a class="sourceLine" id="cb491-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb491-4" data-line-number="4"><span class="co"># png(paste(dir.fig, paste(&quot;gam.mdl&quot;,Sys.Date(),&quot;png&quot;,sep = &quot;.&quot;),sep = &quot;&quot;), units=&quot;in&quot;, width=14, height=10, res=600)</span></a>
+<a class="sourceLine" id="cb491-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb491-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb491-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb491-8" data-line-number="8"><span class="co"># Northen Vietnamese</span></a>
+<a class="sourceLine" id="cb491-9" data-line-number="9"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
+<a class="sourceLine" id="cb491-10" data-line-number="10">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
+<a class="sourceLine" id="cb491-11" data-line-number="11">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV415&quot;</span>)), </a>
+<a class="sourceLine" id="cb491-12" data-line-number="12">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb491-13" data-line-number="13">            <span class="dt">main=</span><span class="st">&quot;Northern Vietnamese&quot;</span>, </a>
+<a class="sourceLine" id="cb491-14" data-line-number="14">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>, </a>
+<a class="sourceLine" id="cb491-15" data-line-number="15">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): NV415. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 211. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneNV214,s(Time,subject):toneNV415
 ## </code></pre>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
-<a class="sourceLine" id="cb317-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV214&quot;</span>)), </a>
-<a class="sourceLine" id="cb317-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb317-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.nv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
+<a class="sourceLine" id="cb493-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;NV214&quot;</span>)), </a>
+<a class="sourceLine" id="cb493-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb493-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): NV214. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 211. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneNV214,s(Time,subject):toneNV415
 ## </code></pre>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="co"># Southern vietnamese</span></a>
-<a class="sourceLine" id="cb319-2" data-line-number="2"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
-<a class="sourceLine" id="cb319-3" data-line-number="3">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
-<a class="sourceLine" id="cb319-4" data-line-number="4">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV415&quot;</span>)), </a>
-<a class="sourceLine" id="cb319-5" data-line-number="5">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb319-6" data-line-number="6">            <span class="dt">main=</span><span class="st">&quot;Southern Vietnamese&quot;</span>, </a>
-<a class="sourceLine" id="cb319-7" data-line-number="7">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>, </a>
-<a class="sourceLine" id="cb319-8" data-line-number="8">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" data-line-number="1"><span class="co"># Southern vietnamese</span></a>
+<a class="sourceLine" id="cb495-2" data-line-number="2"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">ylab =</span> <span class="st">&quot;Normalised f0&quot;</span>, </a>
+<a class="sourceLine" id="cb495-3" data-line-number="3">            <span class="dt">xlab =</span> <span class="st">&quot;Normalised time&quot;</span>,</a>
+<a class="sourceLine" id="cb495-4" data-line-number="4">            <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV415&quot;</span>)), </a>
+<a class="sourceLine" id="cb495-5" data-line-number="5">            <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb495-6" data-line-number="6">            <span class="dt">main=</span><span class="st">&quot;Southern Vietnamese&quot;</span>, </a>
+<a class="sourceLine" id="cb495-7" data-line-number="7">            <span class="dt">rug=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>, </a>
+<a class="sourceLine" id="cb495-8" data-line-number="8">            <span class="dt">hide.label =</span> <span class="st">&quot;fitted values&quot;</span>)</a></code></pre></div>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): SV415. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 411. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneSV214,s(Time,subject):toneSV415
 ## </code></pre>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
-<a class="sourceLine" id="cb321-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV214&quot;</span>)), </a>
-<a class="sourceLine" id="cb321-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
-<a class="sourceLine" id="cb321-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-352-1.png" width="672" /></p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" data-line-number="1"><span class="kw">plot_smooth</span>(model.sv.b, <span class="dt">view=</span><span class="st">&quot;Time&quot;</span>, </a>
+<a class="sourceLine" id="cb497-2" data-line-number="2">            <span class="dt">cond=</span><span class="kw">list</span>(<span class="dt">tone=</span><span class="kw">c</span>(<span class="st">&quot;SV214&quot;</span>)), </a>
+<a class="sourceLine" id="cb497-3" data-line-number="3">            <span class="dt">v0 =</span> <span class="dv">6</span>, <span class="dt">rug=</span><span class="ot">FALSE</span>,<span class="dt">rm.ranef=</span>T, </a>
+<a class="sourceLine" id="cb497-4" data-line-number="4">            <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">add=</span>T)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
 <pre><code>## Summary:
 ##  * tone : factor; set to the value(s): SV214. 
 ##  * Time : numeric predictor; with 30 values ranging from 1.000000 to 10.000000. 
 ##  * subject : factor; set to the value(s): 411. (Might be canceled as random effect, check below.) 
 ##  * NOTE : The following random effects columns are canceled: s(Time,subject):toneSV214,s(Time,subject):toneSV415
 ## </code></pre>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="co"># dev.off()</span></a>
-<a class="sourceLine" id="cb323-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb323-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb323-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb323-5" data-line-number="5"><span class="co"># write.csv(nv.data,</span></a>
-<a class="sourceLine" id="cb323-6" data-line-number="6"><span class="co">#           file = paste(&quot;data/ch12/&quot;,</span></a>
-<a class="sourceLine" id="cb323-7" data-line-number="7"><span class="co">#                        paste(&quot;nv.sv.data&quot;,</span></a>
-<a class="sourceLine" id="cb323-8" data-line-number="8"><span class="co">#                              Sys.Date(),</span></a>
-<a class="sourceLine" id="cb323-9" data-line-number="9"><span class="co">#                              &quot;csv&quot;,</span></a>
-<a class="sourceLine" id="cb323-10" data-line-number="10"><span class="co">#                              sep = &quot;.&quot;),</span></a>
-<a class="sourceLine" id="cb323-11" data-line-number="11"><span class="co">#                        sep = &quot;&quot;) ,row.names = FALSE)</span></a></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" data-line-number="1"><span class="co"># dev.off()</span></a>
+<a class="sourceLine" id="cb499-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb499-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb499-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb499-5" data-line-number="5"><span class="co"># write.csv(nv.data,</span></a>
+<a class="sourceLine" id="cb499-6" data-line-number="6"><span class="co">#           file = paste(&quot;data/ch12/&quot;,</span></a>
+<a class="sourceLine" id="cb499-7" data-line-number="7"><span class="co">#                        paste(&quot;nv.sv.data&quot;,</span></a>
+<a class="sourceLine" id="cb499-8" data-line-number="8"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb499-9" data-line-number="9"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb499-10" data-line-number="10"><span class="co">#                              sep = &quot;.&quot;),</span></a>
+<a class="sourceLine" id="cb499-11" data-line-number="11"><span class="co">#                        sep = &quot;&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 
 </div>
 </div>
@@ -927,7 +948,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="案例二文本数据分析.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="文本语料数据分析案例.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="案例四机器学习.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

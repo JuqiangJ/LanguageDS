@@ -1,0 +1,1361 @@
+# 第六章 文本数据分析
+
+&emsp;&emsp;文本数据属于非结构化数据，通常需要通过分词、词性赋码等自然语言处理方法，将文本数据进行结构化。
+在语言学研究中，语料库研究与文本最为相关。Tognini-Bonelli（2001）提出基于语料库（corpus-based）和语料库驱动（corpus-driven）的区分。基于语料库的研究将语料库用作验证研究者直觉或检查小型数据集中语言的频率和/或合理性的例子来源。研究者不会质疑预先存在的传统描述单元和类别。语料库驱动的分析则是一种更具归纳性的过程：语料库本身就是数据，分析过程中通过记录语料库中的模式来表达语言中的规律性（和例外情况）。语料库驱动的分析倾向于只使用关于语法结构的最低限度的理论预设。
+
+&emsp;&emsp;在词汇层面的语料库研究中，我们一般会进行词频统计（Word Frequency Count），即统计词汇在语料库中的出现频率，以了解词汇的使用频率和分布情况，构建词表。其次，与参考语料库比较，我们可以进行关键词提取（Keyword Extraction）即识别出在特定语境或文本类型中特别频繁出现的词汇。
+
+&emsp;&emsp;再者，如果对于某些特定词汇感兴趣，我们可以通过共现分析（concordance Analysis）研究哪些词汇经常一起出现，以了解词汇之间的关系和语境。
+
+&emsp;&emsp;最后，通过collocation anlysis我们可以分析词组搭配。
+
+&emsp;&emsp;除了对文本中的词汇进行分析，也可以通过词汇来分析文本的风格。词汇丰富度和可读性分析可以帮我们比较不同文本之间词汇复杂性的差异。在分析不同翻译文本的特征是我们常常用到。此外，通过文本中最高频的几百个词的频率特征我们可以解锁不同作家的创作指纹。这样的分析可以帮我们鉴定一些归属存疑的文本作品。
+
+&emsp;&emsp;在R语言中常用的文本处理的程序包有tidytext和quenteda。他们各有不同的功能，同时彼此之间可以相互转化。
+
+
+```{r message=FALSE}
+library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
+library(quanteda)
+#install.packages("readtext")
+require(readtext)
+library(DT)
+library(DiagrammeR)
+
+library(FactoMineR)
+library(factoextra)
+library(flextable)
+library(GGally)
+library(ggdendro)
+library(igraph)
+library(network)
+library(Matrix)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(tm)
+library(sna)
+library(udpipe)
+```
+
+
+```{r}
+grViz("
+digraph text_workflow {
+
+  # a 'graph' statement
+  graph [overlap = true, 
+        fontsize = 10, 
+        rankdir = LR]
+
+  # 节点
+  node [shape = box,
+        style = unfilled,
+        fontname = Helvetica]
+  文本分析[shape = folder]; 
+  词汇分析; 
+  短语分析; 
+  句子分析; 
+
+  
+  node [shape = oval,
+        style = filled,
+        fontname = Helvetica]
+   词频分析;
+   关键词分析; 
+   搭配分析; 
+   词汇丰富度;  
+   信息熵;  
+   情感分析; 
+   心理语言学特征  ;  
+   词汇语义相似度 ;  
+   上下文分析;  
+   搭配分析;  
+   词性分析;  
+   句子依存分析;  
+   可读性分析; 
+  
+# 边线
+  文本分析 ->词汇分析
+  文本分析 ->短语分析
+  文本分析 ->句子分析
+
+
+  词汇分析-> 词频分析;
+   词汇分析-> 关键词分析; 
+   词汇分析-> 词汇丰富度;  
+   词汇分析-> 信息熵;  
+   词汇分析-> 情感分析; 
+   词汇分析-> 心理语言学特征  ;  
+   词汇分析-> 词汇语义相似度 ;  
+  
+  短语分析->上下文分析;  
+   短语分析->搭配分析;  
+   句子分析->词性分析;  
+   句子分析->句子依存分析;  
+   句子分析->可读性分析; 
+  
+
+
+
+}
+")
+
+```
+
+
+
+
+
+
+## 词汇特征
+
+
+
+```{r}
+
+
+grViz("
+digraph data_wrangling_workflow {
+
+  # a 'graph' statement
+  graph [overlap = true, 
+        fontsize = 10, 
+        rankdir = LR]
+
+  # 节点
+  node [shape = box,
+        style = unfilled,
+        fontname = Helvetica]
+  导入readtext[label = '导入 \n readtext', shape = folder, fillcolor = Beige]; 
+  构建语料库corpus[label = '构建语料库 \n corpus']; 
+  分词tokens[label = '分词 \n tokens']; 
+  分词unnest_tokens[label = '分词 \n unnest_tokens', color = red]; 
+  dfm ;   
+
+  
+  node [shape = oval,
+        style = filled,
+        fontname = Helvetica]
+   词频textstat_frequency[label = '词频 \n textstat_frequency'];
+   KWIC[label = 'KWIC \n kwic'] ; 
+   搭配textstat_collocations[label = '搭配 \n textstat_collocations']; 
+   关键词分析textstat_keyness[label = '关键词分析 \n textstat_keyness']   ;  
+  
+# 边线
+导入readtext ->构建语料库corpus->分词tokens-> dfm -> 词频textstat_frequency
+dfm -> 关键词分析textstat_keyness
+分词tokens -> KWIC
+分词tokens -> 搭配textstat_collocations
+
+构建语料库corpus->分词unnest_tokens
+分词unnest_tokens -> 词频textstat_frequency
+分词unnest_tokens -> 关键词分析textstat_keyness
+}
+")
+
+```
+
+### 词频提取
+
+&emsp;&emsp;词频是语料库语言学最基本的概念。频率可以以原始数据的形式给出，例如在某个文本中，某个词出现了58次；或者可以以百分比或比例的形式给出，某个词在每百万词中出现602.91次。这使得可以在不同大小的语料库之间进行比较。
+
+&emsp;&emsp;通过对语料库中每个词进行词频统计编制的词表可以用来生成关键词列表。
+
+
+<font color=red size=5>*quanteda package*</font>
+
+```{r message=FALSE}
+
+# quanteda
+detectives.raw <- readtext("data/ch6/detectives/*txt")
+
+corps.detectives = corpus(detectives.raw)
+
+summary(corpus(corps.detectives), 5)
+
+docvars(corps.detectives, "book") <- names(corps.detectives)
+
+tidy.corps.detectives = tidytext::tidy(corps.detectives)
+
+```
+
+
+```{r }
+
+# make a dfm
+
+dfm_detectives <- corps.detectives %>%
+   tokens(remove_punct = TRUE) %>%
+   tokens_remove(stopwords("en")) %>%
+   dfm()%>%
+   dfm_group(groups = book)
+
+print(dfm_detectives)
+
+topfeatures(dfm_detectives, 20)
+
+
+```
+
+
+
+```{r}
+
+
+library("quanteda.textstats")
+library("quanteda.textplots")
+
+dfm_detectives.freq <- textstat_frequency(dfm_detectives, 
+                                          n = 20, 
+                                          groups = book)
+
+ggplot(dfm_detectives.freq, 
+       aes(x = frequency, y = reorder(feature, frequency))) +
+    geom_point() + 
+    labs(x = "Frequency", y = "Feature")+
+    facet_wrap(~ group, scales = "free") 
+
+
+
+
+```
+
+### 关键词提取
+&emsp;&emsp;在语料库语言学中，关键词分析（keyword analysis）是一种通过与参考语料库进行比较，识别出在特定语料库中出现频率异常高（正关键词）或异常低（负关键词）的词语的方法。
+
+&emsp;&emsp;**关键词（Keyword）**是指在一个文本或语料库中，与参考语料库相比，出现频率显著高于或低于预期的词语。通常，使用统计测试（如对数似然检验或卡方检验）来比较两个词表，以得出关键词。
+&emsp;&emsp;**参考语料库（Reference corpus）**是一个平衡且代表性的语料库，通常用于关键词分析中提供参考词表。在关键词分析中，通过与参考语料库的比较，可以发现哪些词在特定语料库中是关键的。
+
+&emsp;&emsp;在关键词分析中，一个词可能仅仅因为在某些文本中频率极高，而被误认为是关键词。为了确认一个词是否真的具有代表性，可以使用分布图查看这个词在整个语料库中的分布，或者计算在多个文本中均为关键词的词汇列表，以避免因不均匀分布导致的偏差。
+
+#### quanteda package
+
+```{r cache=TRUE}
+# Calculate keyness and determine Trump as target group
+tstat_keyness <- textstat_keyness(dfm_detectives , 
+                                  target = "Dee.txt")
+
+tstat_keyness%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+)
+
+# Plot estimated word keyness
+textplot_keyness(tstat_keyness) 
+```
+
+#### tidytext
+```{r cache=TRUE}
+
+
+
+texts_df = detectives.raw%>%
+  unnest_tokens(word, text)%>%
+  mutate(doc_id = dplyr::recode(doc_id , "Dee.txt" = "text1",
+                                  "Sherlock.txt" = "text2"))%>%
+  group_by(doc_id,word)%>%
+  summarise(freq = n())%>%
+  spread(doc_id, freq, fill = 0)%>%
+  dplyr::rename(token = "word")
+  
+  
+stats_tb2 = texts_df %>%
+  dplyr::mutate(text1 = as.numeric(text1),
+                text2 = as.numeric(text2)) %>%
+  dplyr::mutate(C1 = sum(text1),
+                C2 = sum(text2),
+                N = C1 + C2) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(R1 = text1+text2,
+                R2 = N - R1,
+                O11 = text1,
+                O12 = R1-O11,
+                O21 = C1-O11,
+                O22 = C2-O12) %>%
+  dplyr::mutate(E11 = (R1 * C1) / N,
+                E12 = (R1 * C2) / N,
+                E21 = (R2 * C1) / N,
+                E22 = (R2 * C2) / N) %>%
+  dplyr::select(-text1, -text2)
+
+head(stats_tb2)%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) 
+
+
+assoc_tb3 = stats_tb2 %>%
+  # determine number of rows
+  dplyr::mutate(Rws = nrow(.)) %>%   
+  # work row-wise
+  dplyr::rowwise() %>%
+    # calculate fishers' exact test
+  dplyr::mutate(p = as.vector(unlist(fisher.test(matrix(c(O11, O12, O21, O22), 
+                                                        ncol = 2, byrow = T))[1]))) %>%
+
+# extract descriptives
+    dplyr::mutate(ptw_target = O11/C1*1000,
+                  ptw_ref = O12/C2*1000) %>%
+    
+    # extract x2 statistics
+    dplyr::mutate(X2 = (O11-E11)^2/E11 + (O12-E12)^2/E12 + (O21-E21)^2/E21 + (O22-E22)^2/E22) %>%
+    
+    # extract keyness measures
+    dplyr::mutate(phi = sqrt((X2 / N)),
+                  MI = log2(O11 / E11),
+                  t.score = (O11 - E11) / sqrt(O11),
+                  PMI = log2( (O11 / N) / ((O11+O12) / N) * 
+                                ((O11+O21) / N) ),
+                  DeltaP = (O11 / R1) - (O21 / R2),
+                  LogOddsRatio = log(((O11 + 0.5) * (O22 + 0.5))  / ( (O12 + 0.5) * (O21 + 0.5) )),
+                  G2 = 2 * ((O11+ 0.001) * log((O11+ 0.001) / E11) + (O12+ 0.001) * log((O12+ 0.001) / E12) + O21 * log(O21 / E21) + O22 * log(O22 / E22)),
+                  
+                  # traditional keyness measures
+                  RateRatio = ((O11+ 0.001)/(C1*1000)) / ((O12+ 0.001)/(C2*1000)),
+                  RateDifference = (O11/(C1*1000)) - (O12/(C2*1000)),
+                  DifferenceCoefficient = RateDifference / sum((O11/(C1*1000)), (O12/(C2*1000))),
+                  OddsRatio = ((O11 + 0.5) * (O22 + 0.5))  / ( (O12 + 0.5) * (O21 + 0.5) ),
+                  LLR = 2 * (O11 * (log((O11 / E11)))),
+                  RDF = abs((O11 / C1) - (O12 / C2)),
+                  PDiff = abs(ptw_target - ptw_ref) / ((ptw_target + ptw_ref) / 2) * 100,
+                  SignedDKL = sum(ifelse(O11 > 0, O11 * log(O11 / ((O11 + O12) / 2)), 0) - ifelse(O12 > 0, O12 * log(O12 / ((O11 + O12) / 2)), 0))) %>%
+    
+    # determine Bonferroni corrected significance
+    dplyr::mutate(Sig_corrected = dplyr::case_when(p / Rws > .05 ~ "n.s.",
+                                                   p / Rws > .01 ~ "p < .05*",
+                                                   p / Rws > .001 ~ "p < .01**",
+                                                   p / Rws <= .001 ~ "p < .001***",
+                                                   T ~ "N.A.")) %>% 
+    # round p-value
+    dplyr::mutate(p = round(p, 5),
+                  type = ifelse(E11 > O11, "antitype", "type"),
+                  phi = ifelse(E11 > O11, -phi, phi),
+                  G2 = ifelse(E11 > O11, -G2, G2)) %>%
+    # filter out non significant results
+    dplyr::filter(Sig_corrected != "n.s.") %>%
+    # arrange by G2
+    dplyr::arrange(-G2) %>%
+    # remove superfluous columns
+    dplyr::select(-any_of(c("TermCoocFreq", "AllFreq", "NRows", 
+                            "R1", "R2", "C1", "C2", "E12", "E21",
+                            "E22", "upp", "low", "op", "t.score", "z.score", "Rws"))) %>%
+    dplyr::relocate(any_of(c("token", "type", "Sig_corrected", "O11", "O12",
+                             "ptw_target", "ptw_ref", "G2",  "RDF", "RateRatio", 
+                             "RateDifference", "DifferenceCoefficient", "LLR", "SignedDKL",
+                             "PDiff", "LogOddsRatio", "MI", "PMI", "phi", "X2",  
+                             "OddsRatio", "DeltaP", "p", "E11", "O21", "O22"))) 
+head(assoc_tb3)%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) 
+
+
+```
+
+### 上下文中的关键词索引（KWIC）
+
+
+&emsp;&emsp;索引（Concordance）是指在语料库中按照字母顺序排列的搜索模式索引，显示该搜索模式在每个上下文中的出现。上下文中的关键词索引（Key-Word-In-Context Concordance，简称KWIC）是一种显示关键词在语料库中实际使用情况的工具或方法。具体来说，KWIC 索引会将目标关键词放在中心位置，并显示该词在文本中的所有出现位置，同时显示它前后的一定数量的单词或词组。这种排列方式可以帮助研究者观察关键词在不同上下文中的用法和意义。
+
+&emsp;&emsp;例如，如果你想研究英语中“education”一词的用法，KWIC 索引会将所有包含“education”的句子或句段列出，展示该词左右的上下文。这样，研究者就可以一目了然地看到“education”在不同语境下的使用方式，并分析其频率、搭配、语法特征以及语义变化。
+
+&emsp;&emsp;KWIC 索引在语料库语言学中被广泛应用，因为它能够帮助研究者深入理解词语在实际语言使用中的行为，而不仅仅是关注词频等表面数据。
+
+```{r }
+toks_corpus_detectives <- corps.detectives%>%
+   tokens(remove_punct = TRUE)%>%
+   tokens_remove(stopwords("en")) 
+
+kwic(toks_corpus_detectives , pattern = "murder") %>%
+  head()%>%
+  as.data.frame()
+```
+
+平行语料库共现分析
+
+```{r}
+# 导入
+law_ce <- read_csv("data/ch6/law.csv",  col_names = TRUE)
+
+# 检索中文
+law_ce%>%
+  filter(str_detect(cn, "当事人"))%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) # put it at the top of the table
+
+
+law_ce%>%
+  mutate(count = str_count(cn, "当事人"))%>%
+  filter(count > 0)
+
+##上下排版的文本如何构建平行语料库
+
+trans_corpus <- read_csv("data/ch6/英汉对照文本.csv",  col_names = FALSE)
+row.no = nrow(trans_corpus)
+
+trans.new = trans_corpus%>%
+  mutate(key = rep(c("E","C"), (row.no/2)),
+         id = rep(1:(row.no/2),each=2))%>%
+  spread(key, X1)
+trans.new %>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) # put it at the top of the table
+
+
+#search
+trans.new%>%
+  filter(str_detect(E, "good"))%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) # put it at the top of the table
+
+
+
+```
+
+
+
+#### 词汇文本分布
+```{r }
+kwic(toks_corpus_detectives , pattern = "murder") %>%
+    textplot_xray()
+
+textplot_xray(
+    kwic(toks_corpus_detectives, pattern = "murder"),
+    kwic(toks_corpus_detectives, pattern = "judge"),
+    kwic(toks_corpus_detectives, pattern = "police"),
+    scale = "absolute")
+
+
+```
+
+
+
+
+
+## 短语分析
+
+
+### 上下文共现
+
+```{r}
+# 对于词组
+kwic(toks_corpus_detectives, pattern = phrase("commit crime")) %>%
+    head()%>%
+   as.data.frame()
+```
+
+
+### 搭配分析
+参考https://ladal.edu.au/coll.html#Identifying_collocations_using_kwics
+
+&emsp;&emsp;搭配分析（collocation analysis）是语料库语言学中的一种方法，用于研究词汇之间的共现关系，即在自然语言中某些词语经常一起出现的现象。搭配分析通过识别和分析这些词语的共现频率和模式，可以揭示出词语之间的语义或语法关系。
+
+**搭配（Collocation）**：搭配是指两个或多个词在特定的上下文中经常一起出现。例如，在英语中，“strong”常常与“tea”搭配，而“powerful”则很少与“tea”搭配。类似地，“make a decision”和“take a photo”也是常见的搭配。
+
+**搭配强度（Collocational Strength）**：搭配强度是衡量词语之间共现关系的紧密程度。它通常通过统计方法计算，比如互信息（Mutual Information，MI）或t检验（t-score）等。高搭配强度表明这些词语经常一起出现，并且比随机出现的可能性大得多。
+
+**搭配范围（Collocational Range）**：搭配范围指的是词语在多大范围内（比如在前后几个词内）出现的频率。例如，“make”在前面紧跟着“decision”或“mistake”时，是一个常见的搭配，这个范围通常称为“window size”。
+
+**搭配分析的应用**：
+1. **语言学习**：
+   搭配分析有助于语言学习者理解哪些词语经常一起使用，从而提高语言的自然性和流利度。例如，学习者可以通过搭配分析了解“do homework”比“make homework”更自然。
+
+2. **词典编纂**：
+   词典编纂者使用搭配分析来确定哪些词语组合应该被列为固定搭配，从而为使用者提供更准确的词语用法信息。
+
+3. **语义分析**：
+   通过分析一个词的搭配，可以推测其语义。例如，“dark”通常与“night”搭配，而“dark”与“mood”搭配时，可以暗示“mood”是消极的。
+
+我们需要区分以下概念：
+
+**搭配 (collocations)**：指的是显著彼此吸引且常常一起出现的单词（但不一定是相邻的），例如 *black* 和 *coffee*。
+
+**n元语法 (n-grams)**：指的是相邻的单词组合，比如 *This is*、*is a* 和 *a sentence*，这些双词组 (bi-grams) 组成了句子 *This is a sentence*。
+
+&emsp;&emsp;这样的单词配对或组合表现出一定的自然性，并且倾向于形成重复的模式。它们在语言习得、学习、流利度和使用中起着至关重要的作用，并且有助于自然和惯用的思想表达。一个典型的搭配 (collocation) 例子是 *Merry Christmas*，因为 *merry* 和 *Christmas* 比单词随机组合时更频繁地一起出现。其他搭配的例子包括 *strong coffee*、*make a decision* 或 *take a risk*。对于语言学习者来说，识别和理解搭配 (collocations) 是至关重要的，因为这可以增强他们生成地道且符合语境的语言的能力。
+
+&emsp;&emsp;识别搭配的词对（*w1* 和 *w2*，即搭配 (collocations)）并确定其关联强度（衡量单词彼此吸引的强度）是基于词对在列联表中的共现频率（见下表，*O* 代表观察频率）。
+
+&emsp;&emsp;搭配分析是通过统计方法研究词语之间的共现关系，揭示语言使用中的规律性和隐含语义。它在语言研究、教育和自然语言处理等领域具有广泛的应用。
+```{r }
+toks_corpus_detectives%>%
+  #提取包含大写字母的专有名词
+    tokens_select(pattern = "^[A-Z]", 
+                  valuetype = "regex", 
+                  case_insensitive = FALSE, 
+                  padding = TRUE) %>%
+    textstat_collocations(min_count = 5, 
+                          size = 3, 
+                          tolower = FALSE)
+
+
+
+collocation.3wd <- textstat_collocations(corps.detectives, 
+                                         size = 3, 
+                                         tolower = FALSE)
+```
+
+
+
+&emsp;&emsp;从这个列联表中，我们可以计算出如果单词之间没有任何吸引或排斥关系时的期望频率（见下表，E 表示期望频率）。
+
+观察频率 (Observed Frequency)
+
+|            | w2 出现 | w2 未出现 | 合计    |
+|------------|---------|-----------|---------|
+| w1 出现    | O11     | O12       | R1      |
+| w1 未出现  | O21     | O22       | R2      |
+| 合计       | C1      | C2        | N       |
+
+期望频率 (Expected Frequency)
+
+|            | w2 出现                                 | w2 未出现                                | 合计    |
+|------------|-----------------------------------------|------------------------------------------|---------|
+| w1 出现    | E11 = (R1 * C1) / N                     | E12 = (R1 * C2) / N                      | R1      |
+| w1 未出现  | E21 = (R2 * C1) / N                     | E22 = (R2 * C2) / N                      | R2      |
+| 合计       | C1                                     | C2                                      | N       |
+
+---
+
+&emsp;&emsp;通过这个列联表，期望频率表示在单词之间没有吸引或排斥的情况下，它们一起出现的频率。
+
+&emsp;&emsp;关联度量使用上面列联表中的频率信息来评估单词之间的吸引或排斥强度。因此，关联度量是用来量化词语在搭配 (collocation) 中关系强度和显著性的统计指标。这些度量帮助评估两个单词是否比随机出现更频繁地一起出现。在搭配分析中，常用的几种关联度量包括：
+
+&emsp;&emsp;**Gries的关联度量 (Gries’ AM)**：Gries的AM（Gries 2022）可能是基于条件概率的最佳关联度量。关于其计算方式，请参考Gries (2022)。与其他关联度量相比，它有三个主要优点：
+1. 它考虑到单词1和单词2之间的关联并非对称的（单词1可能比单词2更强烈地吸引单词2，反之亦然），在某种意义上，它非常类似于ΔP。
+2. 它不受频率影响，而其他关联度量则会受到影响（这是一个严重的问题，因为关联度量应该反映关联强度而不是频率）。
+3. 它是归一化的，因为它考虑到不同元素的值范围不同（一些单词可以有非常高的值，而其他单词则不能）。
+
+&emsp;&emsp;**ΔP** (delta P)：ΔP（Ellis 2007；Gries 2013）是一种基于条件概率的关联度量，它在MS中隐含 (Gries 2013, 141)。ΔP有两个优点：它考虑到单词1和单词2之间的关联并非对称的（单词1可能比单词2更强烈地吸引单词2，反之亦然），并且它不受频率影响（这是一个严重的问题，因为关联度量应该反映关联强度而不是频率）（见Gries 2022）。
+
+Δ𝑃1 = 𝑃(𝑤1|𝑤2) = (𝑂11 / 𝑅1) − (𝑂21 / 𝑅2)
+
+Δ𝑃2 = 𝑃(𝑤2|𝑤1) = (𝑂11 / 𝐶1) − (𝑂21 / 𝐶2)
+
+&emsp;&emsp;**逐点互信息 (PMI)**：PMI 衡量两个单词共同出现的可能性，与它们分别独立出现的可能性相比。较高的PMI分数表明较强的关联。
+
+PMI(𝑤1,𝑤2) = log2(𝑃(𝑤1∩𝑤2) / (𝑃(𝑤1) ⋅ 𝑃(𝑤2)))
+
+&emsp;&emsp;**对数似然比 (LLR)**：LLR 将观察到的单词组合出现的可能性与基于单词个体频率的期望可能性进行比较。较高的LLR值表明更显著的关联（其中𝑂𝑖是观察频率，𝐸𝑖是每个组合的期望频率）。
+
+LLR(𝑤1,𝑤2) = 2 ∑(𝑂𝑖 − 𝐸𝑖)^2 / 𝐸𝑖
+
+&emsp;&emsp;**Dice系数**：该度量考虑了单词的共现情况，计算两个单词的重叠与它们各自频率之和的比率。Dice系数的范围是0到1，值越高表明关联越强。
+
+Dice(𝑤1,𝑤2) = 2 × freq(𝑤1∩𝑤2) / (freq(𝑤1) + freq(𝑤2))
+
+&emsp;&emsp;**卡方检验 (Chi-Square)**：卡方检验衡量单词共现的观察频率与期望频率之间的差异。较高的卡方值表明更显著的关联（其中𝑂𝑖是观察频率，𝐸𝑖是每个组合的期望频率）。
+
+𝜒²(𝑤1,𝑤2) = ∑(𝑂𝑖 − 𝐸𝑖)^2 / 𝐸𝑖
+
+&emsp;&emsp;**t-检验 (t-Score)**：t-检验基于观察频率和期望频率之间的差异，并进行标准差归一化。较高的t-分数表明较强的关联。
+
+t-Score(𝑤1,𝑤2) = (freq(𝑤1∩𝑤2) − expected_freq(𝑤1∩𝑤2)) / √freq(𝑤1∩𝑤2)
+
+&emsp;&emsp;**互信息 (MI)**：MI 衡量根据一个单词的出现，另一个单词出现的不确定性减少了多少。较高的MI值表明较强的关联（其中𝑃(𝑤1∩𝑤2)是联合概率，𝑃(𝑤1)和𝑃(𝑤2)是个体概率）。
+
+MI(𝑤1,𝑤2) = log2(𝑃(𝑤1∩𝑤2) / (𝑃(𝑤1) ⋅ 𝑃(𝑤2)))
+
+&emsp;&emsp;**最小敏感度 (Minimum Sensitivity, MS)**：当w1和w2总是一起出现且从不分开时，最小敏感度为1。当w1和w2从未一起出现时，最小敏感度为0。较高的最小敏感度表示两个单词在双词组中的依赖性更强（Pedersen 1998）。
+
+MS = 𝑚𝑖𝑛(𝑃(𝑤1|𝑤2), 𝑃(𝑤2|𝑤1))
+
+&emsp;&emsp;这些关联度量帮助研究人员和语言分析师识别有意义且具有统计显著性的搭配，从而辅助从语料库中提取相关信息，并提高语言学研究中搭配分析的准确性。
+
+#### 基于句子提取搭配
+
+```{r }
+# set options
+options(stringsAsFactors = F)
+options(scipen = 999)
+options(max.print=1000)
+
+
+# read in text
+# text <- base::readRDS(url("https://slcladal.github.io/data/cdo.rda", "rb")) %>%
+#   #合并不同行
+#   paste0(collapse = " ") %>%
+#   #除去多余空格
+#   stringr::str_squish() %>%
+#   stringr::str_remove_all("- ")
+
+# text %>% 
+#   # concatenate the elements in the 'text' object
+#   paste0(collapse = " ") %>%
+#   # separate possessives and contractions
+#   stringr::str_replace_all(fixed("'"), fixed(" '")) %>%
+#   stringr::str_replace_all(fixed("’"), fixed(" '")) %>%
+sentences =corps.detectives%>%
+  # split text into sentences
+  tokenizers::tokenize_sentences() %>%
+  # unlist sentences
+  unlist() %>%
+  # remove non-word characters
+  stringr::str_replace_all("\\W", " ") %>%
+  stringr::str_replace_all("[^[:alnum:] ]", " ") %>%
+  # remove superfluous white spaces
+  stringr::str_squish() %>%
+  # convert to lower case and save in 'sentences' object
+  tolower() 
+
+head(sentences)
+
+# tokenize the 'sentences' data using quanteda package
+coll_basic = sentences %>%
+  quanteda::tokens() %>%
+  # create a document-feature matrix (dfm) using quanteda
+  quanteda::dfm() %>%
+  # create a feature co-occurrence matrix (fcm) without considering trigrams
+  quanteda::fcm(tri = FALSE)%>%
+  # tidy the data using tidytext package
+  tidytext::tidy() %>%
+  # rearrange columns for better readability
+  dplyr::relocate(term, document, count) %>%
+  # rename columns for better interpretation
+  dplyr::rename(w1 = 1,
+                w2 = 2,
+                O11 = 3) 
+
+head(coll_basic)%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) 
+
+  # calculate the total number of observations (N)
+colldf = coll_basic %>%  
+  dplyr::mutate(N = sum(O11)) %>%
+  # calculate R1, O12, and R2
+  dplyr::group_by(w1) %>%
+  dplyr::mutate(R1 = sum(O11),
+                O12 = R1 - O11,
+                R2 = N - R1) %>%
+  dplyr::ungroup(w1) %>%
+  # calculate C1, O21, C2, and O22
+  dplyr::group_by(w2) %>%
+  dplyr::mutate(C1 = sum(O11),
+                O21 = C1 - O11,
+                C2 = N - C1,
+                O22 = R2 - O21) 
+head(colldf )%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) 
+
+# reduce and complement data
+colldf_redux = colldf %>%
+   # determine Term
+  dplyr::filter(w1 == "crime",
+                # set minimum number of occurrences of w2
+                (O11+O21) > 10,
+                # set minimum number of co-occurrences of w1 and w2
+                O11 > 5)  %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(E11 = R1 * C1 / N, 
+                E12 = R1 * C2 / N,
+                E21 = R2 * C1 / N, 
+                E22 = R2 * C2 / N)  
+head(colldf_redux )%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) 
+
+assoc_tb = colldf_redux %>%
+  # determine number of rows
+  dplyr::mutate(Rws = nrow(.)) %>%
+    # work row-wise
+    dplyr::rowwise() %>%
+    # calculate fishers' exact test
+    dplyr::mutate(p = as.vector(unlist(fisher.test(matrix(c(O11, O12, O21, O22), 
+                                                        ncol = 2, byrow = T))[1]))) %>%
+  # extract AM
+    # 1. bias towards top left
+    dplyr::mutate(btl_O12 = ifelse(C1 > R1, 0, R1-C1),
+                  btl_O11 = ifelse(C1 > R1, R1, R1-btl_O12),
+                  btl_O21 = ifelse(C1 > R1, C1-R1, C1-btl_O11),
+                  btl_O22 = ifelse(C1 > R1, C2, C2-btl_O12),
+                  
+    # 2. bias towards top right
+                  btr_O11 = 0, 
+                  btr_O21 = R1,
+                  btr_O12 = C1,
+                  btr_O22 = C2-R1) %>%
+    
+    # 3. calculate AM
+    dplyr::mutate(upp = btl_O11/R1,
+                  low = btr_O11/R1,
+                  op = O11/R1) %>%
+    dplyr::mutate(AM = op / upp) %>%
+    
+    # remove superfluous columns
+    dplyr::select(-any_of(c("btr_O21", "btr_O12", "btr_O22", "btl_O12", 
+                            "btl_O11", "btl_O21", "btl_O22", "btr_O11"))) %>%
+
+    # extract x2 statistics
+    dplyr::mutate(X2 = (O11-E11)^2/E11 + (O12-E12)^2/E12 + (O21-E21)^2/E21 + (O22-E22)^2/E22) %>%
+
+    # extract association measures
+    dplyr::mutate(phi = sqrt((X2 / N)),
+                Dice = (2 * O11) / (R1 + C1),
+                LogDice = log((2 * O11) / (R1 + C1)),
+                MI = log2(O11 / E11),
+                MS = min((O11/C1), (O11/R1)),
+                t.score = (O11 - E11) / sqrt(O11),
+                z.score = (O11 - E11) / sqrt(E11),
+                PMI = log2( (O11 / N) / ((O11+O12) / N) * 
+                              ((O11+O21) / N) ),
+                DeltaP12 = (O11 / (O11 + O12)) - (O21 / (O21 + O22)),
+                DeltaP21 =  (O11 / (O11 + O21)) - (O21 / (O12 + O22)),
+                DP = (O11 / R1) - (O21 / R2),
+                LogOddsRatio = log(((O11 + 0.5) * (O22 + 0.5))  / ( (O12 + 0.5) * (O21 + 0.5) )),
+                # calculate LL aka G2
+                G2 = 2 * (O11 * log(O11 / E11) + O12 * log(O12 / E12) + O21 * log(O21 / E21) + O22 * log(O22 / E22))) %>%
+
+  # determine Bonferroni corrected significance
+  dplyr::mutate(Sig_corrected = dplyr::case_when(p / Rws > .05 ~ "n.s.",
+                                                 p / Rws > .01 ~ "p < .05*",
+                                                 p / Rws > .001 ~ "p < .01**",
+                                                 p / Rws <= .001 ~ "p < .001***",
+                                                 T ~ "N.A.")) %>%
+  
+  # round p-value
+    dplyr::mutate(p = round(p, 5)) %>%
+    # filter out non significant results
+    dplyr::filter(Sig_corrected != "n.s.",
+                # filter out instances where the w1 and w2 repel each other
+                E11 < O11) %>%
+    # arrange by DeltaP12 (association measure)
+    dplyr::arrange(-DeltaP12) %>%
+    # remove superfluous columns
+    dplyr::select(-any_of(c("TermCoocFreq", "AllFreq", "NRows", "O12", "O21", 
+                            "O22", "R1", "R2", "C1", "C2", "E11", "E12", "E21",
+                            "E22", "upp", "low", "op", "Rws"))) 
+
+head(assoc_tb)%>%
+  datatable(.,
+  filter = "top",
+  class = 'cell-border stripe hover compact'
+) 
+
+```
+
+#### 基于目标词提取搭配
+
+```{r}
+
+kwic_words <- quanteda::tokens_select(tokens(corps.detectives,
+                                             remove_numbers = TRUE, 
+                                             remove_punct = TRUE), 
+                                      pattern = "kill", 
+                                      window = 5, 
+                                      selection = "keep") %>%
+  unlist() %>%
+  # tabulate results
+  table() %>%
+  # convert into data frame
+  as.data.frame() %>%
+  # rename columns
+  dplyr::rename(token = 1,
+                n = 2) %>%
+  # add a column with type
+  dplyr::mutate(type = "kwic")
+
+corpus_words <- corps.detectives %>%
+  # tokenize the corpus files
+  quanteda::tokens( remove_numbers = TRUE, 
+                    remove_punct = TRUE) %>%
+  # unlist the tokens to create a data frame
+  unlist() %>%
+  as.data.frame() %>%
+  # rename the column to 'token'
+  dplyr::rename(token = 1) %>%
+  # group by 'token' and count the occurrences
+  dplyr::group_by(token) %>%
+  dplyr::summarise(n = n()) %>%
+  # add column stating where the frequency list is 'from'
+  dplyr::mutate(type = "corpus")
+
+freq_df <- dplyr::left_join(corpus_words, kwic_words, by = c("token")) %>%
+  # rename columns and select relevant columns
+  dplyr::rename(corpus = n.x,
+                kwic = n.y) %>%
+  dplyr::select(-type.x, -type.y) %>%
+  # replace NA values with 0 in 'corpus' and 'kwic' columns
+  tidyr::replace_na(list(corpus = 0, kwic = 0))
+
+
+
+stats_tb = freq_df %>%
+  dplyr::filter(corpus > 0) %>%
+  dplyr::mutate(corpus = as.numeric(corpus),
+                kwic = as.numeric(kwic)) %>%
+  dplyr::mutate(corpus= corpus-kwic,
+                C1 = sum(kwic),
+                C2 = sum(corpus),
+                N = C1 + C2) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(R1 = corpus+kwic,
+                R2 = N - R1,
+                O11 = kwic,
+                O12 = R1-O11,
+                O21 = C1-O11,
+                O22 = C2-O12) %>%
+  dplyr::mutate(E11 = (R1 * C1) / N,
+                E12 = (R1 * C2) / N,
+                E21 = (R2 * C1) / N,
+                E22 = (R2 * C2) / N) %>%
+  dplyr::select(-corpus, -kwic) 
+
+assoc_tb2 = stats_tb %>%
+  # determine number of rows
+  dplyr::mutate(Rws = nrow(.)) %>%
+    # work row-wise
+    dplyr::rowwise() %>%
+    # calculate fishers' exact test
+    dplyr::mutate(p = as.vector(unlist(fisher.test(matrix(c(O11, O12, O21, O22), 
+                                                        ncol = 2, byrow = T))[1]))) %>%
+
+      # extract AM
+    # 1. bias towards top left
+    dplyr::mutate(btl_O12 = ifelse(C1 > R1, 0, R1-C1),
+                  btl_O11 = ifelse(C1 > R1, R1, R1-btl_O12),
+                  btl_O21 = ifelse(C1 > R1, C1-R1, C1-btl_O11),
+                  btl_O22 = ifelse(C1 > R1, C2, C2-btl_O12),
+                  
+    # 2. bias towards top right
+                  btr_O11 = 0, 
+                  btr_O21 = R1,
+                  btr_O12 = C1,
+                  btr_O22 = C2-R1) %>%
+    
+    # 3. calculate AM
+    dplyr::mutate(upp = btl_O11/R1,
+                  low = btr_O11/R1,
+                  op = O11/R1) %>%
+    dplyr::mutate(AM = op / upp) %>%
+    
+    # remove superfluous columns
+    dplyr::select(-any_of(c("btr_O21", "btr_O12", "btr_O22", "btl_O12", 
+                            "btl_O11", "btl_O21", "btl_O22", "btr_O11"))) %>% 
+  
+    # extract x2 statistics
+    dplyr::mutate(X2 = (O11-E11)^2/E11 + (O12-E12)^2/E12 + (O21-E21)^2/E21 + (O22-E22)^2/E22) %>%
+    # extract expected frequency
+    dplyr::mutate(Exp = E11) %>%
+
+    # extract association measures
+    dplyr::mutate(phi = sqrt((X2 / N)),
+                MS = min((O11/C1), (O11/R1)),
+                Dice = (2 * O11) / (R1 + C1),
+                LogDice = log((2 * O11) / (R1 + C1)),
+                MI = log2(O11 / E11),
+                t.score = (O11 - E11) / sqrt(O11),
+                z.score = (O11 - E11) / sqrt(E11),
+                PMI = log2( (O11 / N) / ((O11+O12) / N) * 
+                              ((O11+O21) / N) ),
+                DeltaP12 = (O11 / (O11 + O12)) - (O21 / (O21 + O22)),
+                DeltaP21 =  (O11 / (O11 + O21)) - (O21 / (O12 + O22)),
+                DP = (O11 / R1) - (O21 / R2),
+                LogOddsRatio = log(((O11 + 0.5) * (O22 + 0.5))  / ( (O12 + 0.5) * (O21 + 0.5) )),
+                # calculate LL aka G2
+                G2 = 2 * (O11 * log(O11 / E11) + O12 * log(O12 / E12) + O21 * log(O21 / E21) + O22 * log(O22 / E22))) %>%
+  
+  # determine Bonferroni corrected significance
+  dplyr::mutate(Sig_corrected = dplyr::case_when(p / Rws > .05 ~ "n.s.",
+                                                 p / Rws > .01 ~ "p < .05*",
+                                                 p / Rws > .001 ~ "p < .01**",
+                                                 p / Rws <= .001 ~ "p < .001***",
+                                                 T ~ "N.A.")) %>%  
+  
+  # round p-value
+    dplyr::mutate(p = round(p, 5)) %>%
+    # filter out non significant results
+    dplyr::filter(Sig_corrected != "n.s.",
+                # filter out instances where the w1 and w2 repel each other
+                E11 < O11) %>%
+    # arrange by phi (association measure)
+    dplyr::arrange(-DeltaP12) %>%
+    # remove superfluous columns
+    dplyr::select(-any_of(c("TermCoocFreq", "AllFreq", "NRows", "O12", "O21", 
+                            "O22", "R1", "R2", "C1", "C2", "E11", "E12", "E21",
+                            "E22", "upp", "low", "op", "Rws"))) 
+
+```
+
+```{r}
+# sort the assoc_tb2 data frame in descending order based on the 'phi' column
+assoc_tb2 %>%
+  dplyr::arrange(-phi) %>%
+  # select the top 20 rows after sorting
+  head(20) %>%
+  # create a ggplot with 'token' on the x-axis (reordered by 'phi') and 'phi' on the y-axis
+  ggplot(aes(x = reorder(token, phi, mean), y = phi)) +
+  # add a scatter plot with points representing the 'phi' values
+  geom_point() +
+  # flip the coordinates to have horizontal points
+  coord_flip() +
+  # set the theme to a basic white and black theme
+  theme_bw() +
+  # set the x-axis label to "Token" and y-axis label to "Association strength (phi)"
+  labs(x = "Token", y = "Association strength (phi)")
+```
+
+
+```{r}
+# sort the assoc_tb2 data frame in descending order based on the 'phi' column
+assoc_tb2 %>%
+  dplyr::arrange(-phi) %>%
+  # select the top 20 rows after sorting
+  head(20) %>%
+  # create a ggplot with 'token' on the x-axis (reordered by 'phi') and 'phi' on the y-axis
+  ggplot(aes(x = reorder(token, phi, mean), y = phi, label = phi)) +
+  # add a bar plot using the 'phi' values
+  geom_bar(stat = "identity") +
+  # add text labels above the bars with rounded 'phi' values
+  geom_text(aes(y = phi - 0.005, label = round(phi, 3)), color = "white", size = 3) + 
+  # flip the coordinates to have horizontal bars
+  coord_flip() +
+  # set the theme to a basic white and black theme
+  theme_bw() +
+  # set the x-axis label to "Token" and y-axis label to "Association strength (phi)"
+  labs(x = "Token", y = "Association strength (phi)")
+```
+
+##### Dendrograms
+
+```{r}
+# sort the assoc_tb2 data frame in descending order based on the 'phi' column
+top20colls <- assoc_tb2 %>%
+  dplyr::arrange(-phi) %>%
+  # select the top 20 rows after sorting
+  head(20) %>%
+  # extract the 'token' column 
+  dplyr::pull(token)
+# inspect the top 20 tokens with the highest 'phi' values
+top20colls
+
+# tokenize the 'sentences' data using quanteda package
+keyword_fcm <- sentences %>%
+  quanteda::tokens() %>%
+  # create a document-feature matrix (dfm) from the tokens
+  quanteda::dfm() %>%
+  # select features based on 'top20colls' and the term "selection" pattern
+  quanteda::dfm_select(pattern = c(top20colls, "kill")) %>%
+  # Create a symmetric feature co-occurrence matrix (fcm) 
+  quanteda::fcm(tri = FALSE)
+
+# inspect the first 6 rows and 6 columns of the resulting fcm
+keyword_fcm[1:6, 1:6]
+
+# create a hierarchical clustering object using the distance matrix of the fcm as data
+hclust(dist(keyword_fcm),     
+       # use ward.D as linkage method
+       method="ward.D2") %>% 
+  # generate visualization (dendrogram)
+  ggdendrogram() +              
+  # add title
+  ggtitle("20 most strongly collocating terms of 'kill'")  
+
+```
+
+#### networkplot
+
+```{r}
+# create a network plot using the fcm
+quanteda.textplots::textplot_network(keyword_fcm,
+                                     # set the transparency of edges to 0.8 for visibility
+                                     edge_alpha = 0.8,
+                                     # set the color of edges to gray
+                                     edge_color = "gray",
+                                     # set the size of edges to 2 for better visibility
+                                     edge_size = 2,
+                                     # adjust the size of vertex labels 
+                                     # based on the logarithm of row sums of the fcm
+                                     vertex_labelsize = log(rowSums(keyword_fcm)))
+```
+
+
+
+
+
+
+### 词汇多样性
+
+&emsp;&emsp;词汇丰富度（Lexical Richness）是指在语言学和语言习得研究中，用来衡量一个人使用语言时，所表现出的词汇多样性和复杂程度的指标。它反映了一个人语言表达的广度和深度，具体而言，就是在一个语言片段中，使用多少不同的词汇以及这些词汇的复杂性。
+
+词汇丰富度通常通过以下几个方面来衡量：
+
+1. **类型-标记比率（Type-Token Ratio, TTR）**：这是最常见的词汇丰富度衡量指标。类型指的是不同的词汇种类，而标记指的是词汇的总数。类型-标记比率就是不同词汇种类数与总词汇数的比值。TTR 比值越高，表示词汇丰富度越高，但它会受到文本长度的影响。
+
+2. **词汇密度（Lexical Density）**：衡量一个文本中实词（如名词、动词、形容词、副词）所占的比例。高词汇密度意味着文本中使用了较多的实词，相对内容较为丰富。
+
+3. **平均词长（Mean Word Length）**：平均词长可以作为词汇复杂性的一种衡量方式，通常较长的词汇意味着较高的词汇丰富度。
+
+4. **稀有词汇比例（Proportion of Rare Words）**：这个指标衡量的是在文本中使用的稀有或不常见词汇的比例。稀有词汇使用越多，词汇丰富度通常越高。
+
+5. **D值（D-measure）**：这是一个更复杂的指标，试图通过建模解决 TTR 中的文本长度影响问题，提供一个更稳定的词汇丰富度衡量方式。
+
+**词汇丰富度**的分析在二语习得、语言能力评估、心理语言学等领域中具有重要意义。通过衡量一个人词汇丰富度，可以判断其语言能力、表达能力、认知水平，甚至可以用来诊断语言障碍或认知功能衰退。
+
+```{r }
+
+lexical.diversity <- textstat_lexdiv(dfm_detectives, measure = "all")
+
+lexical.diversity.df = lexical.diversity%>%
+  as.data.frame()%>%
+  # mutate(id = 1:n())%>%
+  # filter(id >1 )%>%
+  select("document","TTR","C","R","K","D","Vm")%>%
+  gather("measures", "values", -c("document"))%>%
+  mutate(measures = as.factor(measures),
+         measures = fct_relevel(measures, "TTR","C","R","K","D","Vm"))
+
+lexical.diversity.df
+
+## 移动窗口词汇丰富度
+lexical.mattr <- textstat_lexdiv(tokens(corps.detectives), 
+                                 measure = "MATTR", MATTR_window = 500)
+
+lexical.mattr
+```
+
+### 文本可读性
+
+```{r }
+readability <- textstat_readability(corps.detectives, measure = "all")
+readability.df = readability %>%
+  select("document","ARI","Flesch","FOG",
+         "Coleman.Liau.short","Dale.Chall","Spache")%>%
+  gather("measures", "values", -c("document"))%>%
+  mutate(measures = as.factor(measures),
+         measures = fct_relevel(measures, "ARI","Flesch","FOG",
+                                "Coleman.Liau.short","Dale.Chall","Spache"))
+
+```
+
+### 文本信息熵
+&emsp;&emsp;文本信息熵（Textual Information Entropy）是信息理论中的一个概念，用来衡量文本中信息的复杂性和不确定性。它是由克劳德·香农（Claude Shannon）在1948年提出的，并广泛应用于语言学、计算机科学和信息论等领域。
+
+**信息熵的基本概念：**
+
+1. **不确定性（Uncertainty）**：信息熵反映了一个系统的不确定性程度。如果某个事件的发生是完全确定的，那么其信息熵为零；相反，如果事件的发生非常不确定，其信息熵则较高。
+
+2. **概率分布（Probability Distribution）**：信息熵的计算基于事件出现的概率分布。在文本处理中，这通常意味着计算某个字母、单词或符号在整个文本中出现的概率。
+
+3. **香农熵（Shannon Entropy）**：这是信息熵最常用的形式，表示为：
+   \[
+   H(X) = -\sum_{i=1}^{n} P(x_i) \log_2 P(x_i)
+   \]
+   其中，\( H(X) \) 是信息熵，\( P(x_i) \) 是事件 \( x_i \) 发生的概率，\( n \) 是可能的事件总数。对于文本信息熵，事件通常是字符、单词或其他文本元素的出现。
+
+**文本信息熵在语言学中的应用：**
+
+&emsp;&emsp;通过计算文本的熵，可以分析文本的语言复杂性。熵值越高，意味着文本的信息量大、复杂性高；熵值越低，意味着文本更为简单、信息量较少。
+
+
+```{r }
+
+textstat_entropy(dfm_detectives)
+
+```
+
+
+### 文本情感分析
+
+
+```{r }
+
+library(dplyr)
+library(stringr)
+library(tidytext)
+
+tidy_books <- detectives.raw %>%
+  unnest_sentences(sentence, text)%>%
+  group_by(doc_id) %>%
+  mutate(linenumber = row_number()) %>%
+  ungroup() %>%
+  unnest_tokens(word, sentence)
+
+
+
+tidy.sent = tidy_books %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(doc_id, index = linenumber %/% 80, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
+  mutate(sentiment = positive - negative)
+
+library(ggplot2)
+
+ggplot(tidy.sent , aes(index, sentiment, fill = doc_id)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~doc_id, ncol = 2, scales = "free_x")
+
+# 进一步看看哪些积极或者消极的词
+bing_word_counts <- tidy_books %>%
+  inner_join(get_sentiments("bing")) %>%
+   group_by(doc_id) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  ungroup()
+
+bing_word_counts %>%
+  group_by(sentiment) %>%
+  slice_max(n, n = 10) %>% 
+  ungroup() %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(n, word, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(doc_id~sentiment, scales = "free_y") +
+  labs(x = "Contribution to sentiment",
+       y = NULL)
+
+
+```
+
+## 句子分析
+
+### 依存句法标注
+
+
+```{r cache=TRUE}
+
+
+
+#Load the model
+# First load the model which you have downloaded or which you have stored somewhere on disk.
+# 
+# udmodel <- udpipe_download_model(language = "chinese")
+
+## Either give a file in the current working directory
+udmodel_eng <- udpipe_load_model(file = "data/ch6/english-ewt-ud-2.5-191206.udpipe")
+# udmodel_chn <- udpipe_load_model(file = "chinese-gsd-ud-2.5-191206.udpipe")
+
+
+
+# dee.raw <- scan(file="judge_dee/01.txt", 
+#                 what="character", 
+#                 sep="\n")
+
+dee.raw = detectives.raw %>%
+  filter(doc_id == "Dee.txt")
+  
+dee.depd <- udpipe_annotate(udmodel_eng, x = dee.raw$text)
+
+
+dee.df <- as.data.frame(dee.depd)
+
+table(dee.df$upos)
+```
+
+### 词性统计
+```{r cache=TRUE}
+library(lattice)
+stats <- txt_freq(dee.df$upos)
+stats$key <- factor(stats$key, levels = rev(stats$key))
+barchart(key ~ freq, data = stats, col = "cadetblue", 
+         main = "UPOS (Universal Parts of Speech)\n frequency of occurrence", 
+         xlab = "Freq")
+```
+
+### 依存句法结构
+```{r}
+library(textplot)
+# generate dependency plot
+dplot <- textplot_dependencyparser(filter(dee.df, doc_id == "doc1",
+                                                    paragraph_id == 2, 
+                                                    sentence_id == 2), size = 3) 
+# show plot
+dplot
+```
+
+
+```{r}
+stats <- subset(dee.df, upos %in% c("NOUN")) 
+stats <- udpipe::txt_freq(stats$token)
+stats$key <- factor(stats$key, levels = rev(stats$key))
+barchart(key ~ freq, data = head(stats, 20), col = "cadetblue", 
+         main = "Most occurring nouns", xlab = "Freq")
+```
+
+### 基于词性的搭配提取
+
+```{r}
+## Using RAKE
+stats <- keywords_rake(x = dee.df, term = "lemma", group = "doc_id", 
+                       relevant = dee.df$upos %in% c("NOUN", "ADJ"))
+stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
+barchart(key ~ rake, data = head(subset(stats, freq > 3), 20), col = "cadetblue", 
+         main = "Keywords identified by RAKE", 
+         xlab = "Rake")
+```
+
+
+```{r}
+## Using Pointwise Mutual Information Collocations
+dee.df$word <- tolower(dee.df$token)
+stats <- keywords_collocation(x = dee.df, term = "word", group = "doc_id")
+stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
+barchart(key ~ pmi, data = head(subset(stats, freq > 3), 20), col = "cadetblue", 
+         main = "Keywords identified by PMI Collocation", 
+         xlab = "PMI (Pointwise Mutual Information)")
+```
+
+
+```{r}
+## Using a sequence of POS tags (noun phrases / verb phrases)
+dee.df$phrase_tag <- as_phrasemachine(dee.df$upos, type = "upos")
+stats <- keywords_phrases(x = dee.df$phrase_tag, term = tolower(dee.df$token), 
+                          pattern = "(A|N)*N(P+D*(A|N)*N)*", 
+                          is_regex = TRUE, detailed = FALSE)
+stats <- subset(stats, ngram > 1 & freq > 3)
+stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
+barchart(key ~ freq, data = head(stats, 20), col = "cadetblue", 
+         main = "Keywords - simple noun phrases", xlab = "Frequency")
+
+
+
+
+```
+
+
+```{r}
+library(igraph)
+library(ggraph)
+library(ggplot2)
+
+## Co-occurrences allow to see how words are used either in the same sentence or next to each other. 
+# This R package make creating co-occurrence graphs using the relevant Parts of Speech tags as easy as possible.
+
+# Nouns / adjectives used in same sentence
+
+cooc <- cooccurrence(x = subset(dee.df, upos %in% c("NOUN", "ADJ")), 
+                     term = "lemma", 
+                     group = c("doc_id", "paragraph_id", "sentence_id"))
+
+
+wordnetwork <- head(cooc, 30)
+wordnetwork <- graph_from_data_frame(wordnetwork)
+
+ggraph(wordnetwork, layout = "fr") +
+  geom_edge_link(aes(width = cooc, edge_alpha = cooc), edge_colour = "blue") +
+  geom_node_text(aes(label = name), col = "darkgreen", size = 4) +
+  theme_graph(base_family = "Arial Narrow") +
+  theme(legend.position = "none") +
+  labs(title = "Cooccurrences within sentence", subtitle = "Nouns & Adjective")
+```
+
+
+```{r}
+cooc <- cooccurrence(dee.df$lemma, 
+                     relevant = dee.df$upos %in% c("NOUN", "ADJ"), 
+                     skipgram = 1)
+head(cooc)
+
+wordnetwork <- head(cooc, 15)
+wordnetwork <- graph_from_data_frame(wordnetwork)
+ggraph(wordnetwork, layout = "fr") +
+  geom_edge_link(aes(width = cooc, edge_alpha = cooc)) +
+  geom_node_text(aes(label = name), col = "darkgreen", size = 4) +
+  theme_graph(base_family = "Arial Narrow") +
+  labs(title = "Words following one another", subtitle = "Nouns & Adjective")
+```
+
+
+```{r}
+dee.df$id <- unique_identifier(dee.df, fields = c("sentence_id", "doc_id"))
+dtm <- subset(dee.df, upos %in% c("NOUN", "ADJ"))
+dtm <- document_term_frequencies(dtm, document = "id", term = "lemma")
+dtm <- document_term_matrix(dtm)
+dtm <- dtm_remove_lowfreq(dtm, minfreq = 5)
+termcorrelations <- dtm_cor(dtm)
+y <- as_cooccurrence(termcorrelations)
+y <- subset(y, term1 < term2 & abs(cooc) > 0.2)
+y <- y[order(abs(y$cooc), decreasing = TRUE), ]
+head(y)
+
+```
+
+
+```{r}
+## Define the identifier at which we will build a topic model
+dee.df$topic_level_id <- unique_identifier(dee.df, fields = c("doc_id", "paragraph_id", "sentence_id"))
+## Get a data.frame with 1 row per id/lemma
+dtf <- subset(dee.df, upos %in% c("NOUN"))
+dtf <- document_term_frequencies(dtf, document = "topic_level_id", term = "lemma")
+head(dtf)
+
+## Create a document/term/matrix for building a topic model
+dtm <- document_term_matrix(x = dtf)
+## Remove words which do not occur that much
+dtm_clean <- dtm_remove_lowfreq(dtm, minfreq = 5)
+head(dtm_colsums(dtm_clean))
+```
+
+
+```{r message=FALSE }
+############################################################
+
+# Use dependency parsing output to get the nominal subject and the adjective of it
+stats <- merge(dee.df, dee.df, 
+               by.x = c("doc_id", "paragraph_id", "sentence_id", "head_token_id"),
+               by.y = c("doc_id", "paragraph_id", "sentence_id", "token_id"),
+               all.x = TRUE, all.y = FALSE, 
+               suffixes = c("", "_parent"), sort = FALSE)
+
+stats <- subset(stats, dep_rel %in% "nsubj" & upos %in% c("NOUN") & upos_parent %in% c("ADJ"))
+
+stats$term <- paste(stats$lemma_parent, stats$lemma, sep = " ")
+stats <- txt_freq(stats$term)
+
+library(wordcloud)
+wordcloud(words = stats$key, freq = stats$freq, min.freq = 5, max.words = 100,
+          random.order = FALSE, colors = c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02"))
+
+
+
+```
+
+```{r}
+# install.packages("devtools")
+# install.packages("devtools")
+# devtools::install_github("timmarchand/dtagger")
+
+# library(dtagger)
+# ## basic example code
+# dtag.df = dtag_directory(path = "data/ch6/detectives", 
+#                          n = NULL, ST = FALSE, deflated = TRUE)
+# 
+# 
+#  # Example text:
+#  text <- "This is an example sentence to be tagged"
+#  # Example speech, tokenized:
+#  speech <- c("I","don't", "know" ,  "erm" ,",", "whether" , "to" ,
+#  "include" ,"hesitation" , "markers", ".")
+#  # Initiate udpipe model
+#  init_udpipe_model()
+#  
+#  udmodel_eng <- udpipe_load_model(file = "data/ch6/english-ewt-ud-2.5-191206.udpipe")
+#  # Tag text
+#  add_st_tags( udmodel_eng, text)
+#  # Tag speech
+#  add_st_tags(speech, st_hesitation = TRUE, tokenized = TRUE)
+# 
+
+```
+
+
+
+
+
+

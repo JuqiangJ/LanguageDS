@@ -1,0 +1,169 @@
+# 第七章 语音数据分析
+
+语音数据在我们的生活中无处不在，从微信语音消息到智能音箱，不断提高着我们的生活质量。语音是声音的一种，是由人类的发音器官发出的声音。从声学上，语音是一种声波。对于声波我们可以分析它的时长和频率。常见的语音分析软件有Praat，可以提供各种各样的语音声学指标的提取。用Praat提取的结构化语音数据，经过数据整理，数据转化，可以像语言实验数据一样进行分析。
+本章我们从数据科学的角度，介绍R语言中的一个语音库构建程序包EMU-R。
+EMU语音库管理系统（the EMU Speech Database Management System，简称 EMU-SDMS）是集语音库建立、控制、检索、分析和管理为一体的多种软件工具的集合体。该系统最早由澳大利亚麦考瑞大学的语音学家Harrington开发的mu+系统(Harrington et al., 1993)，后来发展为EMU软件(Cassidy & Harrington, 2001)。为了适应大数据时代的发展，兼容不同平台，Winkelmann等人将EMU软件的整体构想和功能保留，使用R语言及相关工具包作为依托，优化升级创建了新系统，即EMU-SDMS。由于R语言本身是开源免费的开发环境，EMU-SDMS系统也是完全免费供研究人员使用。EMU-SDMS系统包含三个软件部分：emuR工具包负责语音库构建和管理；wrassp工具包负责声学数据的处理；EMU-webApp负责语音数据的标注。
+与目前的语音库管理系统相比，EMU-SDMS系统有三个优点。
+第一，EMU-SDMS系统的数据结构既包含基于时间（time-based）语音信息，也包含层级性的语音信息。传统的语音标注系统和软件，如Praat必须也只能标注基于时间的语音信息。
+第二，EMU-SDMS系统是第一个使用网页端作为语音标注界面的语音数据管理系统。网页端的标注界面可以单独使用，用户可以对自己加载的语音库进行标注。
+第三，EMU-SDMS系统可以基于检索结果，在线提取语音库中的声学数据（如基频，共振峰）或发音生理数据（如电磁发音数据，electromagnetic articulography，简称 EMA）。传统的语音所有学数据处理流程是将所有数据提取和保存，再通过检索的方式获得。如果修改数据标注，或者修改检索条件，提取数据将会困难且容易出错。
+
+## 语音库创建
+语音库的构建离不开录音材料的准备、发音人的选取、录音等工作，本文重点在于如何基于语音数据构建语音库，因此对数据收集不做赘述。EMU-SDMS系统可以基于原始声音数据，直接创建语音库，然后用其EMU-webApp进行语音数据的标注，也可以基于已经标注的语音数据（声音文件和Textgrid文件）来创建语音库。如果是根据原始声音文件直接创建语音库，需要首先自定义语音库标注的层级，每一层的属性，以及层与层的关系。如果是根据已经标注的语音数据，程序包会默认将标注文件的层级设置为语音库的层级。
+
+```{r }
+
+
+# load the package
+library(emuR)
+library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
+# 设置语音库的位置
+ corpusPath = "data/ch7/speech_corp"
+# 
+# # 设置已经标注的语音文件 .wav 和标注文件.TextGrid files的位置
+# path2folder = "/Users/chenjuqiang/Desktop/AmE_Consonants/"
+# 
+# # 基于语音文件和对应标注文件构建 emuDB 语音库
+# # 注意：这一步只需要一次，语音库建设完成后不需要重复构建
+# convert_TextGridCollection(dir = path2folder, 
+#                            dbName = "AmE_Consonants", 
+#                            targetDir = corpusPath)
+# 
+# # 将语音库文件位置设置为一个变量
+ AMECpath = paste(corpusPath, "/AmE_Consonants_emuDB",sep = "")
+
+# 将语音库载入R语言环境
+# 注意这一步每次都需要先运行
+AmeC.corp = load_emuDB(AMECpath, verbose = FALSE)
+
+# 了解一下语音库
+summary(AmeC.corp)
+```
+
+&emsp;&emsp;我们可以看到，构建的语音库由24个语音文件（Bundle count），在这些文件中共有338个标注信息。每个文件有6层，分别为token, word, segment, closure, burst, aspiration。需要注意的是，我们如果使用Praat对语音文件进行标注，最好再标注工作开始之前确定好标注层数和名称，并用脚本生成对于的标注文件，确保语音库中所有标注文件的层数和名称（包括大小写）是完全相同的。否则会出现无法构建语音库的情况。
+
+
+### 检索相关语音信息
+
+&emsp;&emsp;EMU-SDMS系统的最大优点是拥有强大的检索系统，可以完成固定语音元素查找（例如某个元音），基于正则表达式的模糊查找，以及不同层级多重条件限定的复杂查找。其中，不同层级多重条件限定的复杂查找，可以回答研究问题，比如元音的高低是否收到所在语音环境包括辅音，音节位置，甚至句中位置的影响。在传统的语音库数据处理中，这种检索实现很难，需要复杂的步骤，因为传统的语音库标注中每个层级之间是没有关联的。EMU-SDMS系统的灵活检索，使得语音库研究的数据探索更加高效。
+
+&emsp;&emsp;EMU-SDMS系统的另一个优点是基于检索结果的声学分析。传统的语音库数据提取完成后会保存下来，占据很大的空间，特别是语音库标注修改过程中版本控制很难。EMU-SDMS系统可以基于检索结果直接通过wrassp程序包进行声学分析，可以快速的得到所研究的语音目标的声学特征，而不要对于整个语料库进行声学分析。这使得语音分析的流程更加高效。
+
+&emsp;&emsp;EMU-SDMS系统可以无缝和R语言的其他数据处理，可视化，建模的程序包对接，不需要产生不必要的中间数据，减少版本或人工操作错误的可能性。
+
+下面我们分别提取语音中的三个常见指标，时长、基频和共振峰。
+
+
+
+```{r }
+
+
+# 通过检索函数检索语音库的内容
+query(emuDBhandle = AmeC.corp, query = "segment =~ .*")%>%
+  head()
+```
+
+## 时长提取
+```{r }
+# 检索语音库中的鼻音和爆破音
+nasals = query(AmeC.corp, query = "segment==n")%>%
+  mutate(type = "nasals")
+plosives = query(AmeC.corp, "segment==b|p|t|d|k|g")%>%
+  mutate(type = "plosives")
+
+
+#计算各自的时长
+duration.df = rbind(nasals,plosives)%>%
+  mutate(duration = end-start)%>%
+  select(labels, type, duration, bundle)
+
+duration.df 
+
+
+
+```
+
+## 共振峰提取
+
+```{r }
+
+# 元音ai在Praat中的标注是“a\\ic”,
+vwl = query(AmeC.corp, query = "segment== a\\ic")
+
+# 提取共振峰信息
+# 所得表格中最后为共振峰信息，T1、T2、T3、T4
+vwl.fm = get_trackdata(AmeC.corp, vwl,
+                   onTheFlyFunctionName = "forest",
+                   resultType = "emuRtrackdata")
+
+# load package
+library(ggplot2)
+
+# 第一共振峰
+ggplot(vwl.fm ) +
+  aes(x = times_rel, y = T1, col = labels, group = sl_rowIdx) +
+  geom_line() +
+  labs(x = "Duration (ms)", y = "F1 (Hz)")
+
+# 将共振峰信息进行时长归一化
+td_vowels_norm = normalize_length(vwl.fm)
+
+ggplot(td_vowels_norm) +
+  aes(x = times_norm, y = T1, col = labels, group = labels) +
+  geom_smooth() +
+  labs(x = "Duration (normalized)", y = "F1 (Hz)") 
+
+
+# 下面我们提取共振峰中最稳定的部分，中间点
+td_vowels_midpoint = td_vowels_norm %>% 
+  filter(times_norm == 0.5)
+
+# 计算元音在一、二共振峰的中心点
+td_centroids = td_vowels_midpoint %>%
+  group_by(labels) %>%
+  summarise(T1 = mean(T1), T2 = mean(T2))
+
+# 画元音的位置图
+ggplot(td_vowels_midpoint, aes(x = T2, y = T1, colour = labels, label = labels)) + 
+  geom_text(data = td_centroids) +
+  stat_ellipse() +
+  scale_y_reverse() + scale_x_reverse() + 
+  labs(x = "F2 (Hz)", y = "F1 (Hz)") +
+  theme(legend.position="none")
+
+  
+  
+```
+
+## 基频分析
+
+&emsp;&emsp;基频是语音中音高的声学基础。所有响音（如元音和鼻音）都有基频。我们说话的语调也是由基频的变化体现的。此外，一些语言如汉语使用基频区分不同词的意思，又称声调。
+
+
+```{r }
+
+vwl.f0 = get_trackdata(AmeC.corp, vwl,
+                   onTheFlyFunctionName = "ksvF0",
+                   resultType = "emuRtrackdata")
+
+# 此时T1表示的是基频FO
+ggplot(vwl.f0 ) +
+  aes(x = times_rel, y = T1, col = labels, group = sl_rowIdx) +
+  geom_line() +
+  labs(x = "Duration (ms)", y = "F0 (Hz)")
+
+# 将基频信息进行时长归一化
+f0_norm = normalize_length(vwl.f0)
+
+ggplot(f0_norm) +
+  aes(x = times_norm, y = T1, col = labels, group = labels) +
+  geom_smooth() +
+  labs(x = "Duration (normalized)", y = "F0 (Hz)") 
+
+
+
+```
+
+
+

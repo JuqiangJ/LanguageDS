@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2024-09-03" />
+<meta name="date" content="2024-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,23 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.23/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -200,19 +211,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="第五章-语言实验数据分析.html"><a href="第五章-语言实验数据分析.html#可视化"><i class="fa fa-check"></i><b>5.4</b> 可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html"><i class="fa fa-check"></i><b>6</b> 第六章 文本数据分析</a><ul>
-<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据导入-1"><i class="fa fa-check"></i><b>6.1</b> 数据导入</a></li>
-<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#数据整理-1"><i class="fa fa-check"></i><b>6.2</b> 数据整理</a></li>
-<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.3</b> 词汇特征</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取与词表构建"><i class="fa fa-check"></i><b>6.3.1</b> 词频提取与词表构建</a></li>
-<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.3.2</b> 关键词提取</a></li>
-<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.3.3</b> 上下文中的关键词索引（KWIC）</a></li>
-<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.3.4</b> 搭配分析</a></li>
+<li class="chapter" data-level="6.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇特征"><i class="fa fa-check"></i><b>6.1</b> 词汇特征</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词频提取"><i class="fa fa-check"></i><b>6.1.1</b> 词频提取</a></li>
+<li class="chapter" data-level="6.1.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#关键词提取"><i class="fa fa-check"></i><b>6.1.2</b> 关键词提取</a></li>
+<li class="chapter" data-level="6.1.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文中的关键词索引kwic"><i class="fa fa-check"></i><b>6.1.3</b> 上下文中的关键词索引（KWIC）</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本风格分析"><i class="fa fa-check"></i><b>6.4</b> 文本风格分析</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.4.1</b> 词汇多样性</a></li>
-<li class="chapter" data-level="6.4.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.4.2</b> 文本可读性</a></li>
-<li class="chapter" data-level="6.4.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.4.3</b> 文本信息熵</a></li>
-<li class="chapter" data-level="6.4.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.4.4</b> 文本情感分析</a></li>
+<li class="chapter" data-level="6.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#短语分析"><i class="fa fa-check"></i><b>6.2</b> 短语分析</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#上下文共现"><i class="fa fa-check"></i><b>6.2.1</b> 上下文共现</a></li>
+<li class="chapter" data-level="6.2.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#搭配分析"><i class="fa fa-check"></i><b>6.2.2</b> 搭配分析</a></li>
+<li class="chapter" data-level="6.2.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词汇多样性"><i class="fa fa-check"></i><b>6.2.3</b> 词汇多样性</a></li>
+<li class="chapter" data-level="6.2.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本可读性"><i class="fa fa-check"></i><b>6.2.4</b> 文本可读性</a></li>
+<li class="chapter" data-level="6.2.5" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本信息熵"><i class="fa fa-check"></i><b>6.2.5</b> 文本信息熵</a></li>
+<li class="chapter" data-level="6.2.6" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#文本情感分析"><i class="fa fa-check"></i><b>6.2.6</b> 文本情感分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#句子分析"><i class="fa fa-check"></i><b>6.3</b> 句子分析</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#依存句法标注"><i class="fa fa-check"></i><b>6.3.1</b> 依存句法标注</a></li>
+<li class="chapter" data-level="6.3.2" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#词性统计"><i class="fa fa-check"></i><b>6.3.2</b> 词性统计</a></li>
+<li class="chapter" data-level="6.3.3" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#依存句法结构"><i class="fa fa-check"></i><b>6.3.3</b> 依存句法结构</a></li>
+<li class="chapter" data-level="6.3.4" data-path="第六章-文本数据分析.html"><a href="第六章-文本数据分析.html#基于词性的搭配提取"><i class="fa fa-check"></i><b>6.3.4</b> 基于词性的搭配提取</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="第七章-语音数据分析.html"><a href="第七章-语音数据分析.html"><i class="fa fa-check"></i><b>7</b> 第七章 语音数据分析</a><ul>
@@ -231,13 +247,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模基础</a><ul>
 <li class="chapter" data-level="9.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#监督学习"><i class="fa fa-check"></i><b>9.1</b> 监督学习</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-2"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
+<li class="chapter" data-level="9.1.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#数据导入-1"><i class="fa fa-check"></i><b>9.1.1</b> 数据导入</a></li>
 <li class="chapter" data-level="9.1.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#构建svm模型"><i class="fa fa-check"></i><b>9.1.2</b> 构建SVM模型</a></li>
 <li class="chapter" data-level="9.1.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#random-forest"><i class="fa fa-check"></i><b>9.1.3</b> random forest</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#非监督学习"><i class="fa fa-check"></i><b>9.2</b> 非监督学习</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本数据预处理"><i class="fa fa-check"></i><b>9.2.1</b> 文本数据预处理</a></li>
-<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.2</b> 文本聚类分析</a></li>
+<li class="chapter" data-level="9.2.1" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#principal-components-analysis"><i class="fa fa-check"></i><b>9.2.1</b> principal components analysis</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#因子分析"><i class="fa fa-check"></i><b>9.2.2</b> 因子分析</a></li>
+<li class="chapter" data-level="9.2.3" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#correspondence-analysis"><i class="fa fa-check"></i><b>9.2.3</b> Correspondence analysis</a></li>
+<li class="chapter" data-level="9.2.4" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#multi-demensional-scaling"><i class="fa fa-check"></i><b>9.2.4</b> Multi-demensional scaling</a></li>
+<li class="chapter" data-level="9.2.5" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#cluster"><i class="fa fa-check"></i><b>9.2.5</b> Cluster</a></li>
+<li class="chapter" data-level="9.2.6" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#确定最佳的聚类数量"><i class="fa fa-check"></i><b>9.2.6</b> 确定最佳的聚类数量</a></li>
+<li class="chapter" data-level="9.2.7" data-path="第九章-机器学习建模基础.html"><a href="第九章-机器学习建模基础.html#文本聚类分析"><i class="fa fa-check"></i><b>9.2.7</b> 文本聚类分析</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html"><i class="fa fa-check"></i><b>10</b> 案例一、行为实验数据分析</a><ul>
@@ -247,17 +268,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html#统计建模"><i class="fa fa-check"></i><b>10.4</b> 统计建模</a></li>
 <li class="chapter" data-level="10.5" data-path="案例一行为实验数据分析.html"><a href="案例一行为实验数据分析.html#结论"><i class="fa fa-check"></i><b>10.5</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html"><i class="fa fa-check"></i><b>11</b> 案例二、文本数据分析</a><ul>
-<li class="chapter" data-level="11.1" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#研究背景-1"><i class="fa fa-check"></i><b>11.1</b> 研究背景</a></li>
-<li class="chapter" data-level="11.2" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#数据处理"><i class="fa fa-check"></i><b>11.2</b> 数据处理</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#特征提取"><i class="fa fa-check"></i><b>11.2.1</b> 特征提取</a></li>
+<li class="chapter" data-level="11" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html"><i class="fa fa-check"></i><b>11</b> 文本语料数据分析案例</a><ul>
+<li class="chapter" data-level="11.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#案例一狄仁杰小说翻译文体风格"><i class="fa fa-check"></i><b>11.1</b> 案例一、狄仁杰小说翻译文体风格</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#研究背景-1"><i class="fa fa-check"></i><b>11.1.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.1.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#数据处理"><i class="fa fa-check"></i><b>11.1.2</b> 数据处理</a></li>
+<li class="chapter" data-level="11.1.3" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#数据可视化-2"><i class="fa fa-check"></i><b>11.1.3</b> 数据可视化</a></li>
+<li class="chapter" data-level="11.1.4" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#统计建模-1"><i class="fa fa-check"></i><b>11.1.4</b> 统计建模</a></li>
+<li class="chapter" data-level="11.1.5" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#结论-1"><i class="fa fa-check"></i><b>11.1.5</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#数据可视化-2"><i class="fa fa-check"></i><b>11.3</b> 数据可视化</a></li>
-<li class="chapter" data-level="11.4" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#统计建模-1"><i class="fa fa-check"></i><b>11.4</b> 统计建模</a></li>
-<li class="chapter" data-level="11.5" data-path="案例二文本数据分析.html"><a href="案例二文本数据分析.html#结论-1"><i class="fa fa-check"></i><b>11.5</b> 结论</a></li>
+<li class="chapter" data-level="11.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#案例二汉语失语症话语产出"><i class="fa fa-check"></i><b>11.2</b> 案例二、汉语失语症话语产出</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#研究背景-2"><i class="fa fa-check"></i><b>11.2.1</b> 研究背景</a></li>
+<li class="chapter" data-level="11.2.2" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#jieba-分词"><i class="fa fa-check"></i><b>11.2.2</b> Jieba 分词</a></li>
+<li class="chapter" data-level="11.2.3" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#汉语失语症语料分词"><i class="fa fa-check"></i><b>11.2.3</b> 汉语失语症语料分词</a></li>
+<li class="chapter" data-level="11.2.4" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#计算词汇丰富度"><i class="fa fa-check"></i><b>11.2.4</b> 计算词汇丰富度</a></li>
+<li class="chapter" data-level="11.2.5" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#提取核心词汇"><i class="fa fa-check"></i><b>11.2.5</b> 提取核心词汇</a></li>
+<li class="chapter" data-level="11.2.6" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#比较核心词汇分数"><i class="fa fa-check"></i><b>11.2.6</b> 比较核心词汇分数</a></li>
+<li class="chapter" data-level="11.2.7" data-path="文本语料数据分析案例.html"><a href="文本语料数据分析案例.html#核心词汇分数和词汇丰富度相关性分析"><i class="fa fa-check"></i><b>11.2.7</b> 核心词汇分数和词汇丰富度相关性分析</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html"><i class="fa fa-check"></i><b>12</b> 案例三、语音数据处理案例</a><ul>
-<li class="chapter" data-level="12.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#研究背景-2"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
+<li class="chapter" data-level="12.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#研究背景-3"><i class="fa fa-check"></i><b>12.1</b> 研究背景</a></li>
 <li class="chapter" data-level="12.2" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#数据导入及整理"><i class="fa fa-check"></i><b>12.2</b> 数据导入及整理</a></li>
 <li class="chapter" data-level="12.3" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#数据建模"><i class="fa fa-check"></i><b>12.3</b> 数据建模</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="案例三语音数据处理案例.html"><a href="案例三语音数据处理案例.html#越南语北部方言声调建模"><i class="fa fa-check"></i><b>12.3.1</b> 越南语北部方言声调建模</a></li>
@@ -286,64 +316,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2.10" data-path="文献计量研究案例-语音感知.html"><a href="文献计量研究案例-语音感知.html#研究影响力"><i class="fa fa-check"></i><b>14.2.10</b> 研究影响力</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html"><i class="fa fa-check"></i><b>15</b> 实践案例 汉语失语症话语产出</a><ul>
-<li class="chapter" data-level="15.1" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#研究背景-3"><i class="fa fa-check"></i><b>15.1</b> 研究背景</a></li>
-<li class="chapter" data-level="15.2" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#jieba-分词"><i class="fa fa-check"></i><b>15.2</b> Jieba 分词</a></li>
-<li class="chapter" data-level="15.3" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#汉语失语症语料分词"><i class="fa fa-check"></i><b>15.3</b> 汉语失语症语料分词</a></li>
-<li class="chapter" data-level="15.4" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#计算词汇丰富度"><i class="fa fa-check"></i><b>15.4</b> 计算词汇丰富度</a></li>
-<li class="chapter" data-level="15.5" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#提取核心词汇"><i class="fa fa-check"></i><b>15.5</b> 提取核心词汇</a></li>
-<li class="chapter" data-level="15.6" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#比较核心词汇分数"><i class="fa fa-check"></i><b>15.6</b> 比较核心词汇分数</a></li>
-<li class="chapter" data-level="15.7" data-path="实践案例-汉语失语症话语产出.html"><a href="实践案例-汉语失语症话语产出.html#核心词汇分数和词汇丰富度相关性分析"><i class="fa fa-check"></i><b>15.7</b> 核心词汇分数和词汇丰富度相关性分析</a></li>
+<li class="chapter" data-level="15" data-path="数据可视化-3.html"><a href="数据可视化-3.html"><i class="fa fa-check"></i><b>15</b> 数据可视化</a><ul>
+<li class="chapter" data-level="15.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#条形图bar-plots"><i class="fa fa-check"></i><b>15.1</b> 条形图（Bar plots）</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#基于频数"><i class="fa fa-check"></i><b>15.1.1</b> 基于频数</a></li>
+<li class="chapter" data-level="15.1.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#基于平均值"><i class="fa fa-check"></i><b>15.1.2</b> 基于平均值</a></li>
+<li class="chapter" data-level="15.1.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>15.1.3</b> 调整柱的宽度和之间的距离</a></li>
+<li class="chapter" data-level="15.1.4" data-path="数据可视化-3.html"><a href="数据可视化-3.html#添加柱子的数值"><i class="fa fa-check"></i><b>15.1.4</b> 添加柱子的数值</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html"><i class="fa fa-check"></i><b>16</b> R语言学习资源分类汇总</a><ul>
-<li class="chapter" data-level="16.1" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#统计建模-2"><i class="fa fa-check"></i><b>16.1</b> 统计建模</a></li>
-<li class="chapter" data-level="16.2" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#机器学习"><i class="fa fa-check"></i><b>16.2</b> 机器学习</a></li>
-<li class="chapter" data-level="16.3" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据整理-2"><i class="fa fa-check"></i><b>16.3</b> 数据整理</a></li>
-<li class="chapter" data-level="16.4" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据可视化-3"><i class="fa fa-check"></i><b>16.4</b> 数据可视化</a></li>
-<li class="chapter" data-level="16.5" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络分析"><i class="fa fa-check"></i><b>16.5</b> 网络分析</a></li>
-<li class="chapter" data-level="16.6" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#文本分析"><i class="fa fa-check"></i><b>16.6</b> 文本分析</a></li>
-<li class="chapter" data-level="16.7" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络抓取"><i class="fa fa-check"></i><b>16.7</b> 网络抓取</a></li>
-<li class="chapter" data-level="16.8" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#社交媒体分析"><i class="fa fa-check"></i><b>16.8</b> 社交媒体分析</a></li>
-<li class="chapter" data-level="16.9" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#语音分析"><i class="fa fa-check"></i><b>16.9</b> 语音分析</a></li>
-<li class="chapter" data-level="16.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>16.10</b> 学科研究</a></li>
-<li class="chapter" data-level="16.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown"><i class="fa fa-check"></i><b>16.11</b> R-markdown</a></li>
+<li class="chapter" data-level="15.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>15.2</b> 瓦片图（tile plot）</a></li>
+<li class="chapter" data-level="15.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#线图"><i class="fa fa-check"></i><b>15.3</b> 线图</a></li>
+<li class="chapter" data-level="15.4" data-path="数据可视化-3.html"><a href="数据可视化-3.html#散点图"><i class="fa fa-check"></i><b>15.4</b> 散点图</a></li>
+<li class="chapter" data-level="15.5" data-path="数据可视化-3.html"><a href="数据可视化-3.html#脑区图"><i class="fa fa-check"></i><b>15.5</b> 脑区图</a></li>
+<li class="chapter" data-level="15.6" data-path="数据可视化-3.html"><a href="数据可视化-3.html#venn图"><i class="fa fa-check"></i><b>15.6</b> Venn图</a></li>
+<li class="chapter" data-level="15.7" data-path="数据可视化-3.html"><a href="数据可视化-3.html#diagram"><i class="fa fa-check"></i><b>15.7</b> diagram</a></li>
+<li class="chapter" data-level="15.8" data-path="数据可视化-3.html"><a href="数据可视化-3.html#gant-plot"><i class="fa fa-check"></i><b>15.8</b> Gant plot</a></li>
+<li class="chapter" data-level="15.9" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标lengends"><i class="fa fa-check"></i><b>15.9</b> 图标Lengends</a><ul>
+<li class="chapter" data-level="15.9.1" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标整体"><i class="fa fa-check"></i><b>15.9.1</b> 图标整体</a></li>
+<li class="chapter" data-level="15.9.2" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图标标题"><i class="fa fa-check"></i><b>15.9.2</b> 图标标题</a></li>
+<li class="chapter" data-level="15.9.3" data-path="数据可视化-3.html"><a href="数据可视化-3.html#图例标识"><i class="fa fa-check"></i><b>15.9.3</b> 图例标识</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="数据可视化-4.html"><a href="数据可视化-4.html"><i class="fa fa-check"></i><b>17</b> 数据可视化</a><ul>
-<li class="chapter" data-level="17.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#条形图bar-plots"><i class="fa fa-check"></i><b>17.1</b> 条形图（Bar plots）</a><ul>
-<li class="chapter" data-level="17.1.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于频数"><i class="fa fa-check"></i><b>17.1.1</b> 基于频数</a></li>
-<li class="chapter" data-level="17.1.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#基于平均值"><i class="fa fa-check"></i><b>17.1.2</b> 基于平均值</a></li>
-<li class="chapter" data-level="17.1.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#调整柱的宽度和之间的距离"><i class="fa fa-check"></i><b>17.1.3</b> 调整柱的宽度和之间的距离</a></li>
-<li class="chapter" data-level="17.1.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#添加柱子的数值"><i class="fa fa-check"></i><b>17.1.4</b> 添加柱子的数值</a></li>
+<li class="chapter" data-level="15.10" data-path="数据可视化-3.html"><a href="数据可视化-3.html#坐标轴"><i class="fa fa-check"></i><b>15.10</b> 坐标轴</a></li>
+<li class="chapter" data-level="15.11" data-path="数据可视化-3.html"><a href="数据可视化-3.html#配色"><i class="fa fa-check"></i><b>15.11</b> 配色</a></li>
+<li class="chapter" data-level="15.12" data-path="数据可视化-3.html"><a href="数据可视化-3.html#注释标记"><i class="fa fa-check"></i><b>15.12</b> 注释标记</a></li>
+<li class="chapter" data-level="15.13" data-path="数据可视化-3.html"><a href="数据可视化-3.html#theme"><i class="fa fa-check"></i><b>15.13</b> theme</a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#瓦片图tile-plot-1"><i class="fa fa-check"></i><b>17.2</b> 瓦片图（tile plot）</a></li>
-<li class="chapter" data-level="17.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#线图"><i class="fa fa-check"></i><b>17.3</b> 线图</a></li>
-<li class="chapter" data-level="17.4" data-path="数据可视化-4.html"><a href="数据可视化-4.html#散点图"><i class="fa fa-check"></i><b>17.4</b> 散点图</a></li>
-<li class="chapter" data-level="17.5" data-path="数据可视化-4.html"><a href="数据可视化-4.html#脑区图"><i class="fa fa-check"></i><b>17.5</b> 脑区图</a></li>
-<li class="chapter" data-level="17.6" data-path="数据可视化-4.html"><a href="数据可视化-4.html#venn图"><i class="fa fa-check"></i><b>17.6</b> Venn图</a></li>
-<li class="chapter" data-level="17.7" data-path="数据可视化-4.html"><a href="数据可视化-4.html#diagram"><i class="fa fa-check"></i><b>17.7</b> diagram</a></li>
-<li class="chapter" data-level="17.8" data-path="数据可视化-4.html"><a href="数据可视化-4.html#gant-plot"><i class="fa fa-check"></i><b>17.8</b> Gant plot</a></li>
-<li class="chapter" data-level="17.9" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标lengends"><i class="fa fa-check"></i><b>17.9</b> 图标Lengends</a><ul>
-<li class="chapter" data-level="17.9.1" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标整体"><i class="fa fa-check"></i><b>17.9.1</b> 图标整体</a></li>
-<li class="chapter" data-level="17.9.2" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图标标题"><i class="fa fa-check"></i><b>17.9.2</b> 图标标题</a></li>
-<li class="chapter" data-level="17.9.3" data-path="数据可视化-4.html"><a href="数据可视化-4.html#图例标识"><i class="fa fa-check"></i><b>17.9.3</b> 图例标识</a></li>
+<li class="chapter" data-level="16" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>16</b> 表格制作</a><ul>
+<li class="chapter" data-level="16.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>16.1</b> gt</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>16.1.1</b> gtsummary</a></li>
+<li class="chapter" data-level="16.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>16.1.2</b> gtExtras</a></li>
 </ul></li>
-<li class="chapter" data-level="17.10" data-path="数据可视化-4.html"><a href="数据可视化-4.html#坐标轴"><i class="fa fa-check"></i><b>17.10</b> 坐标轴</a></li>
-<li class="chapter" data-level="17.11" data-path="数据可视化-4.html"><a href="数据可视化-4.html#配色"><i class="fa fa-check"></i><b>17.11</b> 配色</a></li>
-<li class="chapter" data-level="17.12" data-path="数据可视化-4.html"><a href="数据可视化-4.html#注释标记"><i class="fa fa-check"></i><b>17.12</b> 注释标记</a></li>
-<li class="chapter" data-level="17.13" data-path="数据可视化-4.html"><a href="数据可视化-4.html#theme"><i class="fa fa-check"></i><b>17.13</b> theme</a></li>
+<li class="chapter" data-level="16.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>16.2</b> DT: easy filtering &amp; sorting</a></li>
+<li class="chapter" data-level="16.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>16.3</b> modelsummary</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="表格制作.html"><a href="表格制作.html"><i class="fa fa-check"></i><b>18</b> 表格制作</a><ul>
-<li class="chapter" data-level="18.1" data-path="表格制作.html"><a href="表格制作.html#gt"><i class="fa fa-check"></i><b>18.1</b> gt</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="表格制作.html"><a href="表格制作.html#gtsummary"><i class="fa fa-check"></i><b>18.1.1</b> gtsummary</a></li>
-<li class="chapter" data-level="18.1.2" data-path="表格制作.html"><a href="表格制作.html#gtextras"><i class="fa fa-check"></i><b>18.1.2</b> gtExtras</a></li>
+<li class="chapter" data-level="17" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>17</b> R-markdown</a><ul>
+<li class="chapter" data-level="17.1" data-path="r-markdown.html"><a href="r-markdown.html#yaml前置部分"><i class="fa fa-check"></i><b>17.1</b> YAML前置部分</a></li>
+<li class="chapter" data-level="17.2" data-path="r-markdown.html"><a href="r-markdown.html#代码块"><i class="fa fa-check"></i><b>17.2</b> 代码块</a></li>
+<li class="chapter" data-level="17.3" data-path="r-markdown.html"><a href="r-markdown.html#markdown区域"><i class="fa fa-check"></i><b>17.3</b> Markdown区域</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="表格制作.html"><a href="表格制作.html#dt-easy-filtering-sorting"><i class="fa fa-check"></i><b>18.2</b> DT: easy filtering &amp; sorting</a></li>
-<li class="chapter" data-level="18.3" data-path="表格制作.html"><a href="表格制作.html#modelsummary"><i class="fa fa-check"></i><b>18.3</b> modelsummary</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>19</b> R-markdown</a><ul>
-<li class="chapter" data-level="19.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html#yaml前置部分"><i class="fa fa-check"></i><b>19.1</b> YAML前置部分</a></li>
-<li class="chapter" data-level="19.2" data-path="r-markdown-1.html"><a href="r-markdown-1.html#代码块"><i class="fa fa-check"></i><b>19.2</b> 代码块</a></li>
-<li class="chapter" data-level="19.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html#markdown区域"><i class="fa fa-check"></i><b>19.3</b> Markdown区域</a></li>
+<li class="chapter" data-level="18" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html"><i class="fa fa-check"></i><b>18</b> R语言学习资源分类汇总</a><ul>
+<li class="chapter" data-level="18.1" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#统计建模-2"><i class="fa fa-check"></i><b>18.1</b> 统计建模</a></li>
+<li class="chapter" data-level="18.2" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#机器学习"><i class="fa fa-check"></i><b>18.2</b> 机器学习</a></li>
+<li class="chapter" data-level="18.3" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据整理-1"><i class="fa fa-check"></i><b>18.3</b> 数据整理</a></li>
+<li class="chapter" data-level="18.4" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#数据可视化-4"><i class="fa fa-check"></i><b>18.4</b> 数据可视化</a></li>
+<li class="chapter" data-level="18.5" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络分析"><i class="fa fa-check"></i><b>18.5</b> 网络分析</a></li>
+<li class="chapter" data-level="18.6" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#文本分析"><i class="fa fa-check"></i><b>18.6</b> 文本分析</a></li>
+<li class="chapter" data-level="18.7" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#网络抓取"><i class="fa fa-check"></i><b>18.7</b> 网络抓取</a></li>
+<li class="chapter" data-level="18.8" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#社交媒体分析"><i class="fa fa-check"></i><b>18.8</b> 社交媒体分析</a></li>
+<li class="chapter" data-level="18.9" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#语音分析"><i class="fa fa-check"></i><b>18.9</b> 语音分析</a></li>
+<li class="chapter" data-level="18.10" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#学科研究"><i class="fa fa-check"></i><b>18.10</b> 学科研究</a></li>
+<li class="chapter" data-level="18.11" data-path="r语言学习资源分类汇总.html"><a href="r语言学习资源分类汇总.html#r-markdown-1"><i class="fa fa-check"></i><b>18.11</b> R-markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -374,11 +395,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="数据导入" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.1</span> 数据导入<a href="第五章-语言实验数据分析.html#数据导入" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  为了方便数据读取和存储，建议设置工作路径。这里可以将工作路径设置在配套数据文件夹ch5中。实验是使用E-prime进行编程获取的感知数据，单个人的原始数据可以用E-prime进行合成导出成为txt纯文本格式。首先我们使用R的导入函数进行导入得到一个数据框。</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">cm13 &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/ch5/cm13.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="kw">head</span>(cm13)</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;~/Nutstore Files/310_Tutorial/LanguageDS-e&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">cm13 &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/ch5/cm13.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw">head</span>(cm13)</a></code></pre></div>
 <pre><code>##    ExperimentName Subject Session
 ## 1 Assimilation_2b     101       1
 ## 2 Assimilation_2b     101       1
@@ -393,257 +414,250 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 &lt;?xml version=1.0?&gt;\\n&lt;Clock xmlns:dt=urn:schemas-microsoft-com:datatypes&gt;&lt;Description dt:dt=string&gt;E-Prime Primary Realtime Clock&lt;/Description&gt;&lt;StartTime&gt;&lt;Timestamp dt:dt=int&gt;0&lt;/Timestamp&gt;&lt;DateUtc dt:dt=string&gt;2017-12-26T06:39:05Z&lt;/DateUtc&gt;&lt;/StartTime&gt;&lt;FrequencyChanges&gt;&lt;FrequencyChange&gt;&lt;Frequency dt:dt=r8&gt;2742343&lt;/Frequency&gt;&lt;Timestamp dt:dt=r8&gt;15765959310&lt;/Timestamp&gt;&lt;Current dt:dt=r8&gt;0&lt;/Current&gt;&lt;DateUtc dt:dt=string&gt;2017-12-26T06:39:05Z&lt;/DateUtc&gt;&lt;/FrequencyChange&gt;&lt;/FrequencyChanges&gt;&lt;/Clock&gt;\\n
 ## 5 &lt;?xml version=1.0?&gt;\\n&lt;Clock xmlns:dt=urn:schemas-microsoft-com:datatypes&gt;&lt;Description dt:dt=string&gt;E-Prime Primary Realtime Clock&lt;/Description&gt;&lt;StartTime&gt;&lt;Timestamp dt:dt=int&gt;0&lt;/Timestamp&gt;&lt;DateUtc dt:dt=string&gt;2017-12-26T06:39:05Z&lt;/DateUtc&gt;&lt;/StartTime&gt;&lt;FrequencyChanges&gt;&lt;FrequencyChange&gt;&lt;Frequency dt:dt=r8&gt;2742343&lt;/Frequency&gt;&lt;Timestamp dt:dt=r8&gt;15765959310&lt;/Timestamp&gt;&lt;Current dt:dt=r8&gt;0&lt;/Current&gt;&lt;DateUtc dt:dt=string&gt;2017-12-26T06:39:05Z&lt;/DateUtc&gt;&lt;/FrequencyChange&gt;&lt;/FrequencyChanges&gt;&lt;/Clock&gt;\\n
 ## 6 &lt;?xml version=1.0?&gt;\\n&lt;Clock xmlns:dt=urn:schemas-microsoft-com:datatypes&gt;&lt;Description dt:dt=string&gt;E-Prime Primary Realtime Clock&lt;/Description&gt;&lt;StartTime&gt;&lt;Timestamp dt:dt=int&gt;0&lt;/Timestamp&gt;&lt;DateUtc dt:dt=string&gt;2017-12-26T06:39:05Z&lt;/DateUtc&gt;&lt;/StartTime&gt;&lt;FrequencyChanges&gt;&lt;FrequencyChange&gt;&lt;Frequency dt:dt=r8&gt;2742343&lt;/Frequency&gt;&lt;Timestamp dt:dt=r8&gt;15765959310&lt;/Timestamp&gt;&lt;Current dt:dt=r8&gt;0&lt;/Current&gt;&lt;DateUtc dt:dt=string&gt;2017-12-26T06:39:05Z&lt;/DateUtc&gt;&lt;/FrequencyChange&gt;&lt;/FrequencyChanges&gt;&lt;/Clock&gt;\\n
-##       DataFile.Basename Display.RefreshRate ExperimentVersion Group  RandomSeed RuntimeCapabilities
-## 1 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional
-## 2 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional
-## 3 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional
-## 4 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional
-## 5 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional
-## 6 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional
-##   RuntimeVersion RuntimeVersionExpected SessionDate SessionStartDateTimeUtc SessionTime StudioVersion Block
-## 1     2.0.10.353             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     1
-## 2     2.0.10.353             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     2
-## 3     2.0.10.353             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     3
-## 4     2.0.10.353             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     4
-## 5     2.0.10.353             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     5
-## 6     2.0.10.353             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     6
-##   explist explist.Cycle explist.Sample  filename.Block. praclist praclist.Cycle praclist.Sample pracSlide1.ACC
-## 1      NA            NA             NA Thai_F4_maa241-5        2              1               1              0
-## 2      NA            NA             NA  Thai_F4_maa45-4       15              1               2              0
-## 3      NA            NA             NA  Thai_F4_maa45-3        5              1               3              0
-## 4      NA            NA             NA  Thai_F4_mii33-5        9              1               4              0
-## 5      NA            NA             NA Thai_F4_mii315-6       18              1               5              0
-## 6      NA            NA             NA  Thai_F4_mii45-3       20              1               6              0
-##   pracSlide1.CRESP pracSlide1.DurationError pracSlide1.OnsetDelay pracSlide1.OnsetTime
-## 1               NA                        0                    -1               146763
-## 2               NA                        0                     0               155761
-## 3               NA                        0                    -1               164758
-## 4               NA                        0                    -1               173756
-## 5               NA                        0                    -1               182754
-## 6               NA                        0                     0               191752
-##   pracSlide1.OnsetToOnsetTime pracSlide1.RESP pracSlide1.RT pracSlide1.RTTime pracSoundOut1.ACC
-## 1                           0               2          2590            149353                 1
-## 2                           0               5          1992            157753                 0
-## 3                           0               6          2584            167342                 0
-## 4                           0               7          2443            176199                 0
-## 5                           0               7          2329            185083                 0
-## 6                           0               7          2480            194232                 0
-##   pracSoundOut1.CRESP pracSoundOut1.DurationError pracSoundOut1.OnsetDelay pracSoundOut1.OnsetTime
-## 1                  NA                         369                       -1                  142763
-## 2                  NA                           0                       -1                  151761
-## 3                  NA                           0                       -1                  160759
-## 4                  NA                           0                       -1                  169756
-## 5                  NA                           0                       -1                  178754
-## 6                  NA                           0                       -1                  187752
-##   pracSoundOut1.RESP pracSoundOut1.RT pracSoundOut1.RTTime Procedure.Block. Running.Block. speaker.Block.
-## 1                                   0                    0         pracproc       praclist             F4
-## 2                  h             2823               154584         pracproc       praclist             F4
-## 3                  g             3714               164473         pracproc       praclist             F4
-## 4                  f             2269               172025         pracproc       praclist             F4
-## 5                  h             1286               180040         pracproc       praclist             F4
-## 6                  g             1549               189301         pracproc       praclist             F4
-##   syllable.Block. token.Block. tone.Block. Trial f1List1 f1List1.Cycle f1List1.Sample f1List2 f1List2.Cycle
-## 1             maa            5         241    NA      NA            NA             NA      NA            NA
-## 2             maa            4          45    NA      NA            NA             NA      NA            NA
-## 3             maa            3          45    NA      NA            NA             NA      NA            NA
-## 4             mii            5          33    NA      NA            NA             NA      NA            NA
-## 5             mii            6         315    NA      NA            NA             NA      NA            NA
-## 6             mii            3          45    NA      NA            NA             NA      NA            NA
-##   f1List2.Sample f2List1 f2List1.Cycle f2List1.Sample f2List2 f2List2.Cycle f2List2.Sample filename.Trial.
-## 1             NA      NA            NA             NA      NA            NA             NA                
-## 2             NA      NA            NA             NA      NA            NA             NA                
-## 3             NA      NA            NA             NA      NA            NA             NA                
-## 4             NA      NA            NA             NA      NA            NA             NA                
-## 5             NA      NA            NA             NA      NA            NA             NA                
-## 6             NA      NA            NA             NA      NA            NA             NA                
-##   Procedure.Trial. Running.Trial. Slide1.ACC Slide1.CRESP Slide1.DurationError Slide1.OnsetDelay Slide1.OnsetTime
-## 1                                         NA           NA                   NA                NA               NA
-## 2                                         NA           NA                   NA                NA               NA
-## 3                                         NA           NA                   NA                NA               NA
-## 4                                         NA           NA                   NA                NA               NA
-## 5                                         NA           NA                   NA                NA               NA
-## 6                                         NA           NA                   NA                NA               NA
-##   Slide1.OnsetToOnsetTime Slide1.RESP Slide1.RT Slide1.RTTime SoundOut1.ACC SoundOut1.CRESP
-## 1                      NA          NA        NA            NA            NA              NA
-## 2                      NA          NA        NA            NA            NA              NA
-## 3                      NA          NA        NA            NA            NA              NA
-## 4                      NA          NA        NA            NA            NA              NA
-## 5                      NA          NA        NA            NA            NA              NA
-## 6                      NA          NA        NA            NA            NA              NA
-##   SoundOut1.DurationError SoundOut1.OnsetDelay SoundOut1.OnsetTime SoundOut1.RESP SoundOut1.RT SoundOut1.RTTime
-## 1                      NA                   NA                  NA                          NA               NA
-## 2                      NA                   NA                  NA                          NA               NA
-## 3                      NA                   NA                  NA                          NA               NA
-## 4                      NA                   NA                  NA                          NA               NA
-## 5                      NA                   NA                  NA                          NA               NA
-## 6                      NA                   NA                  NA                          NA               NA
-##   speaker.Trial. syllable.Trial. token.Trial. tone.Trial.
-## 1                                          NA          NA
-## 2                                          NA          NA
-## 3                                          NA          NA
-## 4                                          NA          NA
-## 5                                          NA          NA
-## 6                                          NA          NA</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co"># library(readr)</span></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="co"># assimilation &lt;- read_csv(&quot;~/Nutstore Files/310_Tutorial/Language data science/data/ch5/assimilation.csv&quot;)</span></a>
-<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="co"># </span></a>
-<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="co"># head(assimilation)</span></a></code></pre></div>
+##       DataFile.Basename Display.RefreshRate ExperimentVersion Group  RandomSeed RuntimeCapabilities RuntimeVersion
+## 1 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional     2.0.10.353
+## 2 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional     2.0.10.353
+## 3 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional     2.0.10.353
+## 4 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional     2.0.10.353
+## 5 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional     2.0.10.353
+## 6 Assimilation_2b-101-1              60.015          1.0.0.62     1 -1413574928        Professional     2.0.10.353
+##   RuntimeVersionExpected SessionDate SessionStartDateTimeUtc SessionTime StudioVersion Block explist explist.Cycle
+## 1             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     1      NA            NA
+## 2             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     2      NA            NA
+## 3             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     3      NA            NA
+## 4             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     4      NA            NA
+## 5             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     5      NA            NA
+## 6             2.0.10.353  12-26-2017    26-Dec-17 6:39:05 AM    17:39:05    2.0.10.248     6      NA            NA
+##   explist.Sample  filename.Block. praclist praclist.Cycle praclist.Sample pracSlide1.ACC pracSlide1.CRESP
+## 1             NA Thai_F4_maa241-5        2              1               1              0               NA
+## 2             NA  Thai_F4_maa45-4       15              1               2              0               NA
+## 3             NA  Thai_F4_maa45-3        5              1               3              0               NA
+## 4             NA  Thai_F4_mii33-5        9              1               4              0               NA
+## 5             NA Thai_F4_mii315-6       18              1               5              0               NA
+## 6             NA  Thai_F4_mii45-3       20              1               6              0               NA
+##   pracSlide1.DurationError pracSlide1.OnsetDelay pracSlide1.OnsetTime pracSlide1.OnsetToOnsetTime pracSlide1.RESP
+## 1                        0                    -1               146763                           0               2
+## 2                        0                     0               155761                           0               5
+## 3                        0                    -1               164758                           0               6
+## 4                        0                    -1               173756                           0               7
+## 5                        0                    -1               182754                           0               7
+## 6                        0                     0               191752                           0               7
+##   pracSlide1.RT pracSlide1.RTTime pracSoundOut1.ACC pracSoundOut1.CRESP pracSoundOut1.DurationError
+## 1          2590            149353                 1                  NA                         369
+## 2          1992            157753                 0                  NA                           0
+## 3          2584            167342                 0                  NA                           0
+## 4          2443            176199                 0                  NA                           0
+## 5          2329            185083                 0                  NA                           0
+## 6          2480            194232                 0                  NA                           0
+##   pracSoundOut1.OnsetDelay pracSoundOut1.OnsetTime pracSoundOut1.RESP pracSoundOut1.RT pracSoundOut1.RTTime
+## 1                       -1                  142763                                   0                    0
+## 2                       -1                  151761                  h             2823               154584
+## 3                       -1                  160759                  g             3714               164473
+## 4                       -1                  169756                  f             2269               172025
+## 5                       -1                  178754                  h             1286               180040
+## 6                       -1                  187752                  g             1549               189301
+##   Procedure.Block. Running.Block. speaker.Block. syllable.Block. token.Block. tone.Block. Trial f1List1
+## 1         pracproc       praclist             F4             maa            5         241    NA      NA
+## 2         pracproc       praclist             F4             maa            4          45    NA      NA
+## 3         pracproc       praclist             F4             maa            3          45    NA      NA
+## 4         pracproc       praclist             F4             mii            5          33    NA      NA
+## 5         pracproc       praclist             F4             mii            6         315    NA      NA
+## 6         pracproc       praclist             F4             mii            3          45    NA      NA
+##   f1List1.Cycle f1List1.Sample f1List2 f1List2.Cycle f1List2.Sample f2List1 f2List1.Cycle f2List1.Sample f2List2
+## 1            NA             NA      NA            NA             NA      NA            NA             NA      NA
+## 2            NA             NA      NA            NA             NA      NA            NA             NA      NA
+## 3            NA             NA      NA            NA             NA      NA            NA             NA      NA
+## 4            NA             NA      NA            NA             NA      NA            NA             NA      NA
+## 5            NA             NA      NA            NA             NA      NA            NA             NA      NA
+## 6            NA             NA      NA            NA             NA      NA            NA             NA      NA
+##   f2List2.Cycle f2List2.Sample filename.Trial. Procedure.Trial. Running.Trial. Slide1.ACC Slide1.CRESP
+## 1            NA             NA                                                         NA           NA
+## 2            NA             NA                                                         NA           NA
+## 3            NA             NA                                                         NA           NA
+## 4            NA             NA                                                         NA           NA
+## 5            NA             NA                                                         NA           NA
+## 6            NA             NA                                                         NA           NA
+##   Slide1.DurationError Slide1.OnsetDelay Slide1.OnsetTime Slide1.OnsetToOnsetTime Slide1.RESP Slide1.RT
+## 1                   NA                NA               NA                      NA          NA        NA
+## 2                   NA                NA               NA                      NA          NA        NA
+## 3                   NA                NA               NA                      NA          NA        NA
+## 4                   NA                NA               NA                      NA          NA        NA
+## 5                   NA                NA               NA                      NA          NA        NA
+## 6                   NA                NA               NA                      NA          NA        NA
+##   Slide1.RTTime SoundOut1.ACC SoundOut1.CRESP SoundOut1.DurationError SoundOut1.OnsetDelay SoundOut1.OnsetTime
+## 1            NA            NA              NA                      NA                   NA                  NA
+## 2            NA            NA              NA                      NA                   NA                  NA
+## 3            NA            NA              NA                      NA                   NA                  NA
+## 4            NA            NA              NA                      NA                   NA                  NA
+## 5            NA            NA              NA                      NA                   NA                  NA
+## 6            NA            NA              NA                      NA                   NA                  NA
+##   SoundOut1.RESP SoundOut1.RT SoundOut1.RTTime speaker.Trial. syllable.Trial. token.Trial. tone.Trial.
+## 1                          NA               NA                                          NA          NA
+## 2                          NA               NA                                          NA          NA
+## 3                          NA               NA                                          NA          NA
+## 4                          NA               NA                                          NA          NA
+## 5                          NA               NA                                          NA          NA
+## 6                          NA               NA                                          NA          NA</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># library(readr)</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="co"># assimilation &lt;- read_csv(&quot;~/Nutstore Files/310_Tutorial/Language data science/data/ch5/assimilation.csv&quot;)</span></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="co"># </span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="co"># head(assimilation)</span></a></code></pre></div>
 <p>  此时我们得到一个1820行，84列的数据框，里面包含了13名汉语普通话母语者感知不同泰语声调，并将其同化为普通话四个声调的数据。</p>
 </div>
 <div id="数据整理" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.2</span> 数据整理<a href="第五章-语言实验数据分析.html#数据整理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  在正式实验之前，我们让被试进行了几个试次的练习。因此，首先我们需要去掉被试在练习时的数据。原始数据中每列的名称受到E-prime编程和运行的影响，有很多列是没有用的。为了方便后续数据处理，我们选择需要的列（即刺激和对于的选择和反应时数据），并去除被试没有作答的试次。</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">assim.clean =<span class="st"> </span>cm13<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="st">  </span><span class="co"># 除去练习数据</span></a>
-<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(., Procedure.Block. <span class="op">!=</span><span class="st"> &quot;pracproc&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="st">  </span><span class="co"># 选择需要的列并将变量名修改</span></a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(., <span class="dt">subject =</span> <span class="st">&quot;Subject&quot;</span>,</a>
-<a class="sourceLine" id="cb64-6" data-line-number="6">                  <span class="dt">stimuli =</span> <span class="st">&quot;tone.Trial.&quot;</span>,</a>
-<a class="sourceLine" id="cb64-7" data-line-number="7">                  <span class="dt">response =</span> <span class="st">&quot;SoundOut1.RESP&quot;</span>,</a>
-<a class="sourceLine" id="cb64-8" data-line-number="8">                  <span class="dt">response_rt =</span> <span class="st">&quot;SoundOut1.RT&quot;</span>,</a>
-<a class="sourceLine" id="cb64-9" data-line-number="9">                  <span class="dt">rating =</span> <span class="st">&quot;Slide1.RESP&quot;</span>,</a>
-<a class="sourceLine" id="cb64-10" data-line-number="10">                  <span class="dt">rating_rt =</span> <span class="st">&quot;Slide1.RT&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-11" data-line-number="11"><span class="st">  </span><span class="co"># 除去被试未作答的试次</span></a>
-<a class="sourceLine" id="cb64-12" data-line-number="12"><span class="st">  </span><span class="kw">filter</span>(., response <span class="op">!=</span><span class="st">&quot;&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-13" data-line-number="13"><span class="st">  </span><span class="co"># 反应时为刺激播放后1000毫秒后的被试反应，原始数据从刺激播放开始记录，因此进行调整。</span></a>
-<a class="sourceLine" id="cb64-14" data-line-number="14"><span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">response_rt =</span> response_rt<span class="dv">-1000</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-15" data-line-number="15"><span class="st">  </span><span class="co"># 将被试的按键反应改写成相应的母语声调类别，修改刺激名称</span></a>
-<a class="sourceLine" id="cb64-16" data-line-number="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">response =</span>dplyr<span class="op">::</span><span class="st"> </span><span class="kw">recode</span>(response, </a>
-<a class="sourceLine" id="cb64-17" data-line-number="17">                       <span class="dt">f =</span> <span class="st">&quot;M55&quot;</span>, <span class="dt">g =</span> <span class="st">&quot;M35&quot;</span>, </a>
-<a class="sourceLine" id="cb64-18" data-line-number="18">                       <span class="dt">h =</span> <span class="st">&quot;M214&quot;</span>, <span class="dt">j =</span> <span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb64-19" data-line-number="19">         <span class="dt">stimuli =</span> dplyr<span class="op">::</span><span class="st"> </span><span class="kw">recode</span>(stimuli, </a>
-<a class="sourceLine" id="cb64-20" data-line-number="20">                          <span class="st">&quot;33&quot;</span> =<span class="st"> &quot;T33&quot;</span>, <span class="st">&quot;21&quot;</span> =<span class="st"> &quot;T21&quot;</span>, </a>
-<a class="sourceLine" id="cb64-21" data-line-number="21">                          <span class="st">&quot;45&quot;</span> =<span class="st"> &quot;T45&quot;</span>, <span class="st">&quot;315&quot;</span> =<span class="st"> &quot;T315&quot;</span>, </a>
-<a class="sourceLine" id="cb64-22" data-line-number="22">                          <span class="st">&quot;241&quot;</span> =<span class="st"> &quot;T241&quot;</span>))</a>
-<a class="sourceLine" id="cb64-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb64-24" data-line-number="24"><span class="co"># mutate(n = 1)%&gt;%</span></a>
-<a class="sourceLine" id="cb64-25" data-line-number="25"><span class="co">#   group_by(language, subject, stimuli, response)%&gt;%</span></a>
-<a class="sourceLine" id="cb64-26" data-line-number="26"><span class="co">#   summarise(cat = sum(n), </span></a>
-<a class="sourceLine" id="cb64-27" data-line-number="27"><span class="co">#             response_rt = mean(response_rt, na.rm = TRUE),</span></a>
-<a class="sourceLine" id="cb64-28" data-line-number="28"><span class="co">#             rating = mean(rating, na.rm = TRUE), </span></a>
-<a class="sourceLine" id="cb64-29" data-line-number="29"><span class="co">#             #rating_rt =  mean(rating_rt,na.rm = TRUE)</span></a>
-<a class="sourceLine" id="cb64-30" data-line-number="30"><span class="co">#   )%&gt;%</span></a>
-<a class="sourceLine" id="cb64-31" data-line-number="31"><span class="co">#   group_by(subject, stimuli)%&gt;%</span></a>
-<a class="sourceLine" id="cb64-32" data-line-number="32"><span class="co">#   mutate(percent = cat/sum(cat))%&gt;%</span></a>
-<a class="sourceLine" id="cb64-33" data-line-number="33"><span class="co">#   ungroup()%&gt;%</span></a>
-<a class="sourceLine" id="cb64-34" data-line-number="34"><span class="co">#   mutate()</span></a>
-<a class="sourceLine" id="cb64-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb64-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb64-37" data-line-number="37"><span class="co"># tbl.cat = cat.final%&gt;%</span></a>
-<a class="sourceLine" id="cb64-38" data-line-number="38"><span class="co">#   mutate(stimuli = as_factor(stimuli),</span></a>
-<a class="sourceLine" id="cb64-39" data-line-number="39"><span class="co">#          response = as_factor(response),</span></a>
-<a class="sourceLine" id="cb64-40" data-line-number="40"><span class="co">#          stimuli = fct_relevel(stimuli, &quot;T45&quot;,&quot;T33&quot;,&quot;T21&quot;,&quot;T315&quot;,&quot;T241&quot;),</span></a>
-<a class="sourceLine" id="cb64-41" data-line-number="41"><span class="co">#          response = fct_relevel(response,</span></a>
-<a class="sourceLine" id="cb64-42" data-line-number="42"><span class="co">#                             &quot;M55&quot;,&quot;M35&quot;,&quot;M214&quot;,&quot;M51&quot;,</span></a>
-<a class="sourceLine" id="cb64-43" data-line-number="43"><span class="co">#                             &quot;NV44&quot;,&quot;NV22&quot;,&quot;NV35&quot;,&quot;NV21&quot;,&quot;NV415&quot;,&quot;NV214&quot;,</span></a>
-<a class="sourceLine" id="cb64-44" data-line-number="44"><span class="co">#                             &quot;SV44&quot;,&quot;SV22&quot;,&quot;SV35&quot;,&quot;SV21&quot;,&quot;SV214&quot;))%&gt;%</span></a>
-<a class="sourceLine" id="cb64-45" data-line-number="45"><span class="co">#   group_by(stimuli,response)%&gt;%</span></a>
-<a class="sourceLine" id="cb64-46" data-line-number="46"><span class="co">#   summarise(cat.mean = round(sum(percent)/13, 3)*100,</span></a>
-<a class="sourceLine" id="cb64-47" data-line-number="47"><span class="co">#             rate.mean = round(mean(rating,na.rm = TRUE),1))%&gt;%</span></a>
-<a class="sourceLine" id="cb64-48" data-line-number="48"><span class="co">#   gather(temp, score, ends_with(&quot;.mean&quot;)) %&gt;%</span></a>
-<a class="sourceLine" id="cb64-49" data-line-number="49"><span class="co">#   unite(temp1, stimuli, temp, sep = &quot;_&quot;)%&gt;%</span></a>
-<a class="sourceLine" id="cb64-50" data-line-number="50"><span class="co">#   spread(temp1, score)%&gt;%</span></a>
-<a class="sourceLine" id="cb64-51" data-line-number="51"><span class="co">#   #change the order of columns</span></a>
-<a class="sourceLine" id="cb64-52" data-line-number="52"><span class="co">#   select(&quot;response&quot; , &quot;T45_cat.mean&quot;, &quot;T45_rate.mean&quot;,</span></a>
-<a class="sourceLine" id="cb64-53" data-line-number="53"><span class="co">#          &quot;T33_cat.mean&quot; , &quot;T33_rate.mean&quot;,</span></a>
-<a class="sourceLine" id="cb64-54" data-line-number="54"><span class="co">#          &quot;T21_cat.mean&quot;,&quot;T21_rate.mean&quot;,</span></a>
-<a class="sourceLine" id="cb64-55" data-line-number="55"><span class="co">#          &quot;T315_cat.mean&quot;, &quot;T315_rate.mean&quot;,</span></a>
-<a class="sourceLine" id="cb64-56" data-line-number="56"><span class="co">#          &quot;T241_cat.mean&quot;, &quot;T241_rate.mean&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">assim.clean =<span class="st"> </span>cm13<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="st">  </span><span class="co"># 除去练习数据</span></a>
+<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(., Procedure.Block. <span class="op">!=</span><span class="st"> &quot;pracproc&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="st">  </span><span class="co"># 选择需要的列并将变量名修改</span></a>
+<a class="sourceLine" id="cb63-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(., <span class="dt">subject =</span> <span class="st">&quot;Subject&quot;</span>,</a>
+<a class="sourceLine" id="cb63-6" data-line-number="6">                  <span class="dt">stimuli =</span> <span class="st">&quot;tone.Trial.&quot;</span>,</a>
+<a class="sourceLine" id="cb63-7" data-line-number="7">                  <span class="dt">response =</span> <span class="st">&quot;SoundOut1.RESP&quot;</span>,</a>
+<a class="sourceLine" id="cb63-8" data-line-number="8">                  <span class="dt">response_rt =</span> <span class="st">&quot;SoundOut1.RT&quot;</span>,</a>
+<a class="sourceLine" id="cb63-9" data-line-number="9">                  <span class="dt">rating =</span> <span class="st">&quot;Slide1.RESP&quot;</span>,</a>
+<a class="sourceLine" id="cb63-10" data-line-number="10">                  <span class="dt">rating_rt =</span> <span class="st">&quot;Slide1.RT&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-11" data-line-number="11"><span class="st">  </span><span class="co"># 除去被试未作答的试次</span></a>
+<a class="sourceLine" id="cb63-12" data-line-number="12"><span class="st">  </span><span class="kw">filter</span>(., response <span class="op">!=</span><span class="st">&quot;&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-13" data-line-number="13"><span class="st">  </span><span class="co"># 反应时为刺激播放后1000毫秒后的被试反应，原始数据从刺激播放开始记录，因此进行调整。</span></a>
+<a class="sourceLine" id="cb63-14" data-line-number="14"><span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">response_rt =</span> response_rt<span class="dv">-1000</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-15" data-line-number="15"><span class="st">  </span><span class="co"># 将被试的按键反应改写成相应的母语声调类别，修改刺激名称</span></a>
+<a class="sourceLine" id="cb63-16" data-line-number="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">response =</span>dplyr<span class="op">::</span><span class="st"> </span><span class="kw">recode</span>(response, </a>
+<a class="sourceLine" id="cb63-17" data-line-number="17">                       <span class="dt">f =</span> <span class="st">&quot;M55&quot;</span>, <span class="dt">g =</span> <span class="st">&quot;M35&quot;</span>, </a>
+<a class="sourceLine" id="cb63-18" data-line-number="18">                       <span class="dt">h =</span> <span class="st">&quot;M214&quot;</span>, <span class="dt">j =</span> <span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb63-19" data-line-number="19">         <span class="dt">stimuli =</span> dplyr<span class="op">::</span><span class="st"> </span><span class="kw">recode</span>(stimuli, </a>
+<a class="sourceLine" id="cb63-20" data-line-number="20">                          <span class="st">&quot;33&quot;</span> =<span class="st"> &quot;T33&quot;</span>, <span class="st">&quot;21&quot;</span> =<span class="st"> &quot;T21&quot;</span>, </a>
+<a class="sourceLine" id="cb63-21" data-line-number="21">                          <span class="st">&quot;45&quot;</span> =<span class="st"> &quot;T45&quot;</span>, <span class="st">&quot;315&quot;</span> =<span class="st"> &quot;T315&quot;</span>, </a>
+<a class="sourceLine" id="cb63-22" data-line-number="22">                          <span class="st">&quot;241&quot;</span> =<span class="st"> &quot;T241&quot;</span>))</a>
+<a class="sourceLine" id="cb63-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb63-24" data-line-number="24"><span class="co"># mutate(n = 1)%&gt;%</span></a>
+<a class="sourceLine" id="cb63-25" data-line-number="25"><span class="co">#   group_by(language, subject, stimuli, response)%&gt;%</span></a>
+<a class="sourceLine" id="cb63-26" data-line-number="26"><span class="co">#   summarise(cat = sum(n), </span></a>
+<a class="sourceLine" id="cb63-27" data-line-number="27"><span class="co">#             response_rt = mean(response_rt, na.rm = TRUE),</span></a>
+<a class="sourceLine" id="cb63-28" data-line-number="28"><span class="co">#             rating = mean(rating, na.rm = TRUE), </span></a>
+<a class="sourceLine" id="cb63-29" data-line-number="29"><span class="co">#             #rating_rt =  mean(rating_rt,na.rm = TRUE)</span></a>
+<a class="sourceLine" id="cb63-30" data-line-number="30"><span class="co">#   )%&gt;%</span></a>
+<a class="sourceLine" id="cb63-31" data-line-number="31"><span class="co">#   group_by(subject, stimuli)%&gt;%</span></a>
+<a class="sourceLine" id="cb63-32" data-line-number="32"><span class="co">#   mutate(percent = cat/sum(cat))%&gt;%</span></a>
+<a class="sourceLine" id="cb63-33" data-line-number="33"><span class="co">#   ungroup()%&gt;%</span></a>
+<a class="sourceLine" id="cb63-34" data-line-number="34"><span class="co">#   mutate()</span></a>
+<a class="sourceLine" id="cb63-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb63-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb63-37" data-line-number="37"><span class="co"># tbl.cat = cat.final%&gt;%</span></a>
+<a class="sourceLine" id="cb63-38" data-line-number="38"><span class="co">#   mutate(stimuli = as_factor(stimuli),</span></a>
+<a class="sourceLine" id="cb63-39" data-line-number="39"><span class="co">#          response = as_factor(response),</span></a>
+<a class="sourceLine" id="cb63-40" data-line-number="40"><span class="co">#          stimuli = fct_relevel(stimuli, &quot;T45&quot;,&quot;T33&quot;,&quot;T21&quot;,&quot;T315&quot;,&quot;T241&quot;),</span></a>
+<a class="sourceLine" id="cb63-41" data-line-number="41"><span class="co">#          response = fct_relevel(response,</span></a>
+<a class="sourceLine" id="cb63-42" data-line-number="42"><span class="co">#                             &quot;M55&quot;,&quot;M35&quot;,&quot;M214&quot;,&quot;M51&quot;,</span></a>
+<a class="sourceLine" id="cb63-43" data-line-number="43"><span class="co">#                             &quot;NV44&quot;,&quot;NV22&quot;,&quot;NV35&quot;,&quot;NV21&quot;,&quot;NV415&quot;,&quot;NV214&quot;,</span></a>
+<a class="sourceLine" id="cb63-44" data-line-number="44"><span class="co">#                             &quot;SV44&quot;,&quot;SV22&quot;,&quot;SV35&quot;,&quot;SV21&quot;,&quot;SV214&quot;))%&gt;%</span></a>
+<a class="sourceLine" id="cb63-45" data-line-number="45"><span class="co">#   group_by(stimuli,response)%&gt;%</span></a>
+<a class="sourceLine" id="cb63-46" data-line-number="46"><span class="co">#   summarise(cat.mean = round(sum(percent)/13, 3)*100,</span></a>
+<a class="sourceLine" id="cb63-47" data-line-number="47"><span class="co">#             rate.mean = round(mean(rating,na.rm = TRUE),1))%&gt;%</span></a>
+<a class="sourceLine" id="cb63-48" data-line-number="48"><span class="co">#   gather(temp, score, ends_with(&quot;.mean&quot;)) %&gt;%</span></a>
+<a class="sourceLine" id="cb63-49" data-line-number="49"><span class="co">#   unite(temp1, stimuli, temp, sep = &quot;_&quot;)%&gt;%</span></a>
+<a class="sourceLine" id="cb63-50" data-line-number="50"><span class="co">#   spread(temp1, score)%&gt;%</span></a>
+<a class="sourceLine" id="cb63-51" data-line-number="51"><span class="co">#   #change the order of columns</span></a>
+<a class="sourceLine" id="cb63-52" data-line-number="52"><span class="co">#   select(&quot;response&quot; , &quot;T45_cat.mean&quot;, &quot;T45_rate.mean&quot;,</span></a>
+<a class="sourceLine" id="cb63-53" data-line-number="53"><span class="co">#          &quot;T33_cat.mean&quot; , &quot;T33_rate.mean&quot;,</span></a>
+<a class="sourceLine" id="cb63-54" data-line-number="54"><span class="co">#          &quot;T21_cat.mean&quot;,&quot;T21_rate.mean&quot;,</span></a>
+<a class="sourceLine" id="cb63-55" data-line-number="55"><span class="co">#          &quot;T315_cat.mean&quot;, &quot;T315_rate.mean&quot;,</span></a>
+<a class="sourceLine" id="cb63-56" data-line-number="56"><span class="co">#          &quot;T241_cat.mean&quot;, &quot;T241_rate.mean&quot;)</span></a></code></pre></div>
 </div>
 <div id="数据转化" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.3</span> 数据转化<a href="第五章-语言实验数据分析.html#数据转化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  下面我们希望能够先计算每个人在听到泰语五个声调时的选择模式和反应时。然后基于此计算出汉语普通话组的选择模式和反应时。</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">assim.individual =<span class="st"> </span>assim.clean <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="st">  </span><span class="co">#为每个反应计数</span></a>
-<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n =</span> <span class="dv">1</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="st">  </span><span class="co"># 计算每个人每个泰语声调及对应汉语声调反应的次数、评分和反应时均值</span></a>
-<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(subject, stimuli, response)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">cat =</span> <span class="kw">sum</span>(n), </a>
-<a class="sourceLine" id="cb65-7" data-line-number="7">            <span class="dt">response_rt =</span> <span class="kw">mean</span>(response_rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb65-8" data-line-number="8">            <span class="dt">rating =</span> <span class="kw">mean</span>(rating, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-9" data-line-number="9"><span class="st">  </span><span class="co"># 计算每个人每个泰语声调及对应汉语声调反应的比例</span></a>
-<a class="sourceLine" id="cb65-10" data-line-number="10"><span class="st">  </span><span class="kw">group_by</span>(subject, stimuli)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> cat<span class="op">/</span><span class="kw">sum</span>(cat))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-12" data-line-number="12"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">assim.individual =<span class="st"> </span>assim.clean <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="st">  </span><span class="co">#为每个反应计数</span></a>
+<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n =</span> <span class="dv">1</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="st">  </span><span class="co"># 计算每个人每个泰语声调及对应汉语声调反应的次数、评分和反应时均值</span></a>
+<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(subject, stimuli, response)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-6" data-line-number="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">cat =</span> <span class="kw">sum</span>(n), </a>
+<a class="sourceLine" id="cb64-7" data-line-number="7">            <span class="dt">response_rt =</span> <span class="kw">mean</span>(response_rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb64-8" data-line-number="8">            <span class="dt">rating =</span> <span class="kw">mean</span>(rating, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-9" data-line-number="9"><span class="st">  </span><span class="co"># 计算每个人每个泰语声调及对应汉语声调反应的比例</span></a>
+<a class="sourceLine" id="cb64-10" data-line-number="10"><span class="st">  </span><span class="kw">group_by</span>(subject, stimuli)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> cat<span class="op">/</span><span class="kw">sum</span>(cat))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-12" data-line-number="12"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;subject&#39;, &#39;stimuli&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">assim.group =<span class="st"> </span>assim.individual<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="st">  </span><span class="co"># mutate(stimuli = as_factor(stimuli),</span></a>
-<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="st">  </span><span class="co">#        response = as_factor(response),</span></a>
-<a class="sourceLine" id="cb67-4" data-line-number="4"><span class="st">  </span><span class="co">#        stimuli = fct_relevel(stimuli, &quot;T45&quot;,&quot;T33&quot;,&quot;T21&quot;,&quot;T315&quot;,&quot;T241&quot;),</span></a>
-<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="st">  </span><span class="co">#        response = fct_relevel(response,</span></a>
-<a class="sourceLine" id="cb67-6" data-line-number="6"><span class="st">  </span><span class="co">#                           &quot;M55&quot;,&quot;M35&quot;,&quot;M214&quot;,&quot;M51&quot;))%&gt;%</span></a>
-<a class="sourceLine" id="cb67-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(stimuli,response)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-8" data-line-number="8"><span class="st">  </span><span class="co"># 计算每组反应平均值和评分均值</span></a>
-<a class="sourceLine" id="cb67-9" data-line-number="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">cat.mean =</span> <span class="kw">round</span>(<span class="kw">sum</span>(percent)<span class="op">/</span><span class="dv">13</span>, <span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb67-10" data-line-number="10">            <span class="dt">rate.mean =</span> <span class="kw">round</span>(<span class="kw">mean</span>(rating,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>),<span class="dv">1</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-11" data-line-number="11"><span class="st">  </span><span class="kw">gather</span>(temp, score, <span class="kw">ends_with</span>(<span class="st">&quot;.mean&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-12" data-line-number="12"><span class="st">  </span><span class="co"># 将刺激和对应的反应均值和评分均值组合</span></a>
-<a class="sourceLine" id="cb67-13" data-line-number="13"><span class="st">  </span><span class="kw">unite</span>(temp1, stimuli, temp, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-14" data-line-number="14"><span class="st">  </span><span class="co"># 将表格进行转换，得到最终需要的感知同化模式图</span></a>
-<a class="sourceLine" id="cb67-15" data-line-number="15"><span class="st">  </span><span class="kw">spread</span>(temp1, score)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-16" data-line-number="16"><span class="st">  </span><span class="co">#change the order of columns</span></a>
-<a class="sourceLine" id="cb67-17" data-line-number="17"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;response&quot;</span> , <span class="st">&quot;T45_cat.mean&quot;</span>, <span class="st">&quot;T45_rate.mean&quot;</span>,</a>
-<a class="sourceLine" id="cb67-18" data-line-number="18">         <span class="st">&quot;T33_cat.mean&quot;</span> , <span class="st">&quot;T33_rate.mean&quot;</span>,</a>
-<a class="sourceLine" id="cb67-19" data-line-number="19">         <span class="st">&quot;T21_cat.mean&quot;</span>,<span class="st">&quot;T21_rate.mean&quot;</span>,</a>
-<a class="sourceLine" id="cb67-20" data-line-number="20">         <span class="st">&quot;T315_cat.mean&quot;</span>, <span class="st">&quot;T315_rate.mean&quot;</span>,</a>
-<a class="sourceLine" id="cb67-21" data-line-number="21">         <span class="st">&quot;T241_cat.mean&quot;</span>, <span class="st">&quot;T241_rate.mean&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">assim.group =<span class="st"> </span>assim.individual<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="co"># mutate(stimuli = as_factor(stimuli),</span></a>
+<a class="sourceLine" id="cb66-3" data-line-number="3"><span class="st">  </span><span class="co">#        response = as_factor(response),</span></a>
+<a class="sourceLine" id="cb66-4" data-line-number="4"><span class="st">  </span><span class="co">#        stimuli = fct_relevel(stimuli, &quot;T45&quot;,&quot;T33&quot;,&quot;T21&quot;,&quot;T315&quot;,&quot;T241&quot;),</span></a>
+<a class="sourceLine" id="cb66-5" data-line-number="5"><span class="st">  </span><span class="co">#        response = fct_relevel(response,</span></a>
+<a class="sourceLine" id="cb66-6" data-line-number="6"><span class="st">  </span><span class="co">#                           &quot;M55&quot;,&quot;M35&quot;,&quot;M214&quot;,&quot;M51&quot;))%&gt;%</span></a>
+<a class="sourceLine" id="cb66-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(stimuli,response)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-8" data-line-number="8"><span class="st">  </span><span class="co"># 计算每组反应平均值和评分均值</span></a>
+<a class="sourceLine" id="cb66-9" data-line-number="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">cat.mean =</span> <span class="kw">round</span>(<span class="kw">sum</span>(percent)<span class="op">/</span><span class="dv">13</span>, <span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb66-10" data-line-number="10">            <span class="dt">rate.mean =</span> <span class="kw">round</span>(<span class="kw">mean</span>(rating,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>),<span class="dv">1</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-11" data-line-number="11"><span class="st">  </span><span class="kw">gather</span>(temp, score, <span class="kw">ends_with</span>(<span class="st">&quot;.mean&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-12" data-line-number="12"><span class="st">  </span><span class="co"># 将刺激和对应的反应均值和评分均值组合</span></a>
+<a class="sourceLine" id="cb66-13" data-line-number="13"><span class="st">  </span><span class="kw">unite</span>(temp1, stimuli, temp, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-14" data-line-number="14"><span class="st">  </span><span class="co"># 将表格进行转换，得到最终需要的感知同化模式图</span></a>
+<a class="sourceLine" id="cb66-15" data-line-number="15"><span class="st">  </span><span class="kw">spread</span>(temp1, score)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-16" data-line-number="16"><span class="st">  </span><span class="co">#change the order of columns</span></a>
+<a class="sourceLine" id="cb66-17" data-line-number="17"><span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;response&quot;</span> , <span class="st">&quot;T45_cat.mean&quot;</span>, <span class="st">&quot;T45_rate.mean&quot;</span>,</a>
+<a class="sourceLine" id="cb66-18" data-line-number="18">         <span class="st">&quot;T33_cat.mean&quot;</span> , <span class="st">&quot;T33_rate.mean&quot;</span>,</a>
+<a class="sourceLine" id="cb66-19" data-line-number="19">         <span class="st">&quot;T21_cat.mean&quot;</span>,<span class="st">&quot;T21_rate.mean&quot;</span>,</a>
+<a class="sourceLine" id="cb66-20" data-line-number="20">         <span class="st">&quot;T315_cat.mean&quot;</span>, <span class="st">&quot;T315_rate.mean&quot;</span>,</a>
+<a class="sourceLine" id="cb66-21" data-line-number="21">         <span class="st">&quot;T241_cat.mean&quot;</span>, <span class="st">&quot;T241_rate.mean&quot;</span>)</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;stimuli&#39;. You can override using the `.groups` argument.</code></pre>
 </div>
 <div id="可视化" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.4</span> 可视化<a href="第五章-语言实验数据分析.html#可视化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  上述表格包含两个分类变量（泰语刺激的声调类型以及汉语反应的声调类型）和两个连续变量（选择的百分比以及评分）。两个分类变量是自变量，两个连续变量是因变量，我们可以根据因变量不同分别作图。首先，我们可以为感知同化模式画一个堆叠柱状图。普通柱状图的横纵表表示一个分类变量，为了让柱状图可以表示两个分类变量，我们需要在每个柱子中加入不同的颜色来区分。</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">  assim.individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(stimuli,response)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">percent =</span> <span class="kw">round</span>(<span class="kw">sum</span>(percent)<span class="op">/</span><span class="dv">13</span>, <span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb69-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">1</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>response, <span class="dt">y=</span>percent, <span class="dt">x=</span>stimuli)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb69-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>( <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_fill_manual</span>(</a>
-<a class="sourceLine" id="cb69-8" data-line-number="8">        <span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span> =<span class="st"> &quot;black&quot;</span>, <span class="st">&quot;M35&quot;</span>=<span class="st">&quot;gray50&quot;</span>,</a>
-<a class="sourceLine" id="cb69-9" data-line-number="9">                 <span class="st">&quot;M214&quot;</span>=<span class="st">&quot;gray75&quot;</span>, <span class="st">&quot;M51&quot;</span>=<span class="st">&quot;white&quot;</span>),</a>
-<a class="sourceLine" id="cb69-10" data-line-number="10">        <span class="dt">name=</span><span class="st">&quot;Mandarin&quot;</span>,</a>
-<a class="sourceLine" id="cb69-11" data-line-number="11">        <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
-<a class="sourceLine" id="cb69-12" data-line-number="12">        <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-14" data-line-number="14"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Thai tones (stimuli)&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-15" data-line-number="15"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Percentage of choice (%)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb69-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">101</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-17" data-line-number="17"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Perceputal assimialtion of Thai tones by Mandarin listeners&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-18" data-line-number="18"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-20" data-line-number="20"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">  assim.individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(stimuli,response)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb68-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">percent =</span> <span class="kw">round</span>(<span class="kw">sum</span>(percent)<span class="op">/</span><span class="dv">13</span>, <span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb68-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(percent<span class="op">&gt;</span><span class="dv">1</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb68-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>response, <span class="dt">y=</span>percent, <span class="dt">x=</span>stimuli)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>( <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_fill_manual</span>(</a>
+<a class="sourceLine" id="cb68-8" data-line-number="8">        <span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span> =<span class="st"> &quot;black&quot;</span>, <span class="st">&quot;M35&quot;</span>=<span class="st">&quot;gray50&quot;</span>,</a>
+<a class="sourceLine" id="cb68-9" data-line-number="9">                 <span class="st">&quot;M214&quot;</span>=<span class="st">&quot;gray75&quot;</span>, <span class="st">&quot;M51&quot;</span>=<span class="st">&quot;white&quot;</span>),</a>
+<a class="sourceLine" id="cb68-10" data-line-number="10">        <span class="dt">name=</span><span class="st">&quot;Mandarin&quot;</span>,</a>
+<a class="sourceLine" id="cb68-11" data-line-number="11">        <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>),</a>
+<a class="sourceLine" id="cb68-12" data-line-number="12">        <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;M55&quot;</span>, <span class="st">&quot;M35&quot;</span>, <span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-14" data-line-number="14"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Thai tones (stimuli)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-15" data-line-number="15"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Percentage of choice (%)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">101</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-17" data-line-number="17"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Perceputal assimialtion of Thai tones by Mandarin listeners&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-18" data-line-number="18"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-20" data-line-number="20"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>))</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;stimuli&#39;. You can override using the `.groups` argument.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 <p>  两个分类变量的另一种可视化方法是热力图。我们可以用泰语的刺激作为横轴，普通话声调类别作为纵轴，用色块的深浅表示评分的高低。</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">  assim.individual <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(stimuli,response)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">percent =</span> <span class="kw">round</span>(<span class="kw">sum</span>(percent)<span class="op">/</span><span class="dv">13</span>, <span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb71-4" data-line-number="4">              <span class="co"># 计算评分的均值</span></a>
-<a class="sourceLine" id="cb71-5" data-line-number="5">            <span class="dt">rate.mean =</span> <span class="kw">round</span>(<span class="kw">mean</span>(rating,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>),<span class="dv">1</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">text.color =</span> (stimuli<span class="op">==</span><span class="st"> </span>response))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-7" data-line-number="7"><span class="st">  </span><span class="co"># 构建xy轴</span></a>
-<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(stimuli,response))<span class="op">+</span></a>
-<a class="sourceLine" id="cb71-9" data-line-number="9"><span class="st">  </span><span class="co"># 构建热力图</span></a>
-<a class="sourceLine" id="cb71-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> rate.mean))<span class="op">+</span></a>
-<a class="sourceLine" id="cb71-11" data-line-number="11"><span class="st">  </span><span class="co"># 将评分作为标记填入，并设置相应的颜色、大小</span></a>
-<a class="sourceLine" id="cb71-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(rate.mean, <span class="dv">1</span>)), </a>
-<a class="sourceLine" id="cb71-13" data-line-number="13">            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</a>
-<a class="sourceLine" id="cb71-14" data-line-number="14">            <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb71-15" data-line-number="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb71-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai stimuli (%)&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb71-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin responses (%)&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb71-18" data-line-number="18"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;%&quot;</span>,<span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb71-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb71-20" data-line-number="20">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb71-21" data-line-number="21">        <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb71-22" data-line-number="22">        <span class="co">#axis.title.y = element_blank(),</span></a>
-<a class="sourceLine" id="cb71-23" data-line-number="23">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb71-24" data-line-number="24">        <span class="co">#axis.text.y = element_blank(),</span></a>
-<a class="sourceLine" id="cb71-25" data-line-number="25">        <span class="dt">axis.ticks.y =</span> <span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb71-26" data-line-number="26">        <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">  assim.individual <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(stimuli,response)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">percent =</span> <span class="kw">round</span>(<span class="kw">sum</span>(percent)<span class="op">/</span><span class="dv">13</span>, <span class="dv">3</span>)<span class="op">*</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb70-4" data-line-number="4">              <span class="co"># 计算评分的均值</span></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5">            <span class="dt">rate.mean =</span> <span class="kw">round</span>(<span class="kw">mean</span>(rating,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>),<span class="dv">1</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">text.color =</span> (stimuli<span class="op">==</span><span class="st"> </span>response))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-7" data-line-number="7"><span class="st">  </span><span class="co"># 构建xy轴</span></a>
+<a class="sourceLine" id="cb70-8" data-line-number="8"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(stimuli,response))<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-9" data-line-number="9"><span class="st">  </span><span class="co"># 构建热力图</span></a>
+<a class="sourceLine" id="cb70-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> rate.mean))<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-11" data-line-number="11"><span class="st">  </span><span class="co"># 将评分作为标记填入，并设置相应的颜色、大小</span></a>
+<a class="sourceLine" id="cb70-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(rate.mean, <span class="dv">1</span>)), </a>
+<a class="sourceLine" id="cb70-13" data-line-number="13">            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</a>
+<a class="sourceLine" id="cb70-14" data-line-number="14">            <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-15" data-line-number="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Thai stimuli (%)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_y_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Mandarin responses (%)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-18" data-line-number="18"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name=</span><span class="st">&quot;%&quot;</span>,<span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb70-20" data-line-number="20">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb70-21" data-line-number="21">        <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb70-22" data-line-number="22">        <span class="co">#axis.title.y = element_blank(),</span></a>
+<a class="sourceLine" id="cb70-23" data-line-number="23">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>, <span class="dt">size=</span><span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb70-24" data-line-number="24">        <span class="co">#axis.text.y = element_blank(),</span></a>
+<a class="sourceLine" id="cb70-25" data-line-number="25">        <span class="dt">axis.ticks.y =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb70-26" data-line-number="26">        <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;stimuli&#39;. You can override using the `.groups` argument.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-302-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
 
 </div>
 </div>
