@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>语言数据科学教程</title>
+  <title>Chapter 3 第三章 数据加工 | 语言数据科学教程</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="语言数据科学教程" />
+  <meta property="og:title" content="Chapter 3 第三章 数据加工 | 语言数据科学教程" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="语言数据科学教程" />
+  <meta name="twitter:title" content="Chapter 3 第三章 数据加工 | 语言数据科学教程" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="第二章-r语言简介.html"/>
+<link rel="prev" href="第二章-r语言简介.html"/>
+<link rel="next" href="第四章-探索性数据分析.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -307,24 +307,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">语言数据科学教程</h1>
-<p class="author"><em>陈居强</em></p>
-<p class="date"><em>2025-03-15</em></p>
+<div id="第三章-数据加工" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 3</span> 第三章 数据加工<a href="第三章-数据加工.html#第三章-数据加工" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>数据加工（data wrangling）是指对原始数据集进行一系列处理，以消除数据中的错误，选择合适的变量，合并不同数据集，调整数据格式，为后续的探索性数据分析（下一章）做好准备。本章主要介绍数据清理、变量筛选、数据合成、数据塑形等数据处理操作。在学习数据处理之前，我们需要对数据与变量的类型有所了解。</p>
+<div id="学习目标-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.1</span> 学习目标<a href="第三章-数据加工.html#学习目标-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>了解数据与变量的类型</p></li>
+<li><p>掌握数据清理概念与方法</p></li>
+<li><p>掌握变量筛选的方法</p></li>
+<li><p>掌握长宽数据相互转换的方法</p></li>
+<li><p>掌握不同数据集合并的方法</p></li>
+</ul>
 </div>
-<div id="第一章-数据科学简介" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 1</span> 第一章 数据科学简介<a href="index.html#第一章-数据科学简介" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><font size=10>欢迎关注我的<a href="https://juqiangj.github.io/research/">个人主页</a>：</font>
-<img src="images/1.0.png" /></p>
-<div id="数据科学发展简史" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.1</span> 数据科学发展简史<a href="index.html#数据科学发展简史" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="数据与变量类型" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.2</span> 数据与变量类型<a href="第三章-数据加工.html#数据与变量类型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>详见教程</p>
+<div id="数据类型" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.2.1</span> 数据类型<a href="第三章-数据加工.html#数据类型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="数据科学家" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.2</span> 数据科学家<a href="index.html#数据科学家" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="变量类型" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.2.2</span> 变量类型<a href="第三章-数据加工.html#变量类型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="数据科学工作流程" class="section level2 hasAnchor">
-<h2><span class="header-section-number">1.3</span> 数据科学工作流程<a href="index.html#数据科学工作流程" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="数据清洁与筛选" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.3</span> 数据清洁与筛选<a href="第三章-数据加工.html#数据清洁与筛选" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="数据清洁" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.3.1</span> 数据清洁<a href="第三章-数据加工.html#数据清洁" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="变量筛选" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.3.2</span> 变量筛选<a href="第三章-数据加工.html#变量筛选" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="数据塑形与整合" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.4</span> 数据塑形与整合<a href="第三章-数据加工.html#数据塑形与整合" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="数据塑形" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.1</span> 数据塑形<a href="第三章-数据加工.html#数据塑形" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="数据整合" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.2</span> 数据整合<a href="第三章-数据加工.html#数据整合" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="课堂任务-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.5</span> 课堂任务<a href="第三章-数据加工.html#课堂任务-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="任务3.1-数据类型判断" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.1</span> 任务3.1 数据类型判断<a href="第三章-数据加工.html#任务3.1-数据类型判断" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>详见教程</p>
+</div>
+<div id="任务3.2-变量类型判断" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.2</span> 任务3.2 变量类型判断<a href="第三章-数据加工.html#任务3.2-变量类型判断" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="任务3.3-数据清洁" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.3</span> 任务3.3 数据清洁<a href="第三章-数据加工.html#任务3.3-数据清洁" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># 创建含有错误值的数据</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子以确保可重复性</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">df_errors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Student_ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">                 <span class="dt">Listening_Score =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">                 <span class="dt">Speaking_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">103</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">                 <span class="dt">Reading_Score =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="ot">NA</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">                 <span class="dt">Writing_Score =</span> <span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">                 <span class="dt">Age =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">40</span>, <span class="ot">NA</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">                <span class="dt">Gender =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Writing_Score  =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13">    Student_ID <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">50</span>) <span class="op">~</span><span class="st"> </span>Writing_Score  <span class="op">+</span><span class="st"> </span><span class="dv">50</span>, <span class="co"># 添加异常值</span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14">    <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span>Writing_Score ),</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">    <span class="dt">Writing_Score  =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb16-16" data-line-number="16">    Student_ID <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">23</span>, <span class="dv">54</span>,<span class="dv">67</span>) <span class="op">~</span><span class="st"> </span>Writing_Score  <span class="op">-</span><span class="st"> </span><span class="dv">50</span>, <span class="co"># 添加异常值</span></a>
+<a class="sourceLine" id="cb16-17" data-line-number="17">    <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span>Writing_Score ))</a>
+<a class="sourceLine" id="cb16-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb16-19" data-line-number="19"><span class="co"># 使用 drop_na() 函数删除含有缺失值的行</span></a>
+<a class="sourceLine" id="cb16-20" data-line-number="20">df_clean &lt;-<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()</a>
+<a class="sourceLine" id="cb16-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb16-22" data-line-number="22"><span class="co"># 使用均值插值法填补缺失值</span></a>
+<a class="sourceLine" id="cb16-23" data-line-number="23">df_interpolated &lt;-<span class="st"> </span>df_errors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-24" data-line-number="24"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Reading_Score_new =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(Reading_Score), </a>
+<a class="sourceLine" id="cb16-25" data-line-number="25">                                 <span class="kw">mean</span>(Reading_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb16-26" data-line-number="26">                                       Reading_Score))</a>
+<a class="sourceLine" id="cb16-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb16-28" data-line-number="28"><span class="co"># 使用中位数插值法填补缺失值</span></a>
+<a class="sourceLine" id="cb16-29" data-line-number="29">df_interpolated_median &lt;-<span class="st"> </span>df_errors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-30" data-line-number="30"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Reading_Score_new =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(Reading_Score), </a>
+<a class="sourceLine" id="cb16-31" data-line-number="31">                         <span class="kw">median</span>(Reading_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), Reading_Score))</a>
+<a class="sourceLine" id="cb16-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb16-33" data-line-number="33"><span class="co"># 使用 filter() 函数排除异常值</span></a>
+<a class="sourceLine" id="cb16-34" data-line-number="34">df_clean &lt;-<span class="st"> </span>df_clean <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-35" data-line-number="35"><span class="st">  </span><span class="kw">filter</span>(Listening_Score <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>Speaking_Score <span class="op">&lt;=</span><span class="st"> </span><span class="dv">100</span> <span class="op">&amp;</span><span class="st"> </span>Reading_Score <span class="op">&lt;=</span><span class="st"> </span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb16-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb16-37" data-line-number="37"><span class="co"># 过滤掉超过2个标准差的异常值</span></a>
+<a class="sourceLine" id="cb16-38" data-line-number="38">df_clean_sd &lt;-<span class="st"> </span>df_errors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-39" data-line-number="39"><span class="st">  </span><span class="kw">filter</span>(Writing_Score <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Writing_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">sd</span>(Writing_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb16-40" data-line-number="40"><span class="st">    </span>Writing_Score <span class="op">&lt;=</span><span class="st"> </span><span class="kw">mean</span>(Writing_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">sd</span>(Writing_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb16-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb16-42" data-line-number="42"><span class="co"># 使用四分位距法来识别并排除异常值</span></a>
+<a class="sourceLine" id="cb16-43" data-line-number="43">df_clean_iqr &lt;-<span class="st"> </span>df_errors <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-44" data-line-number="44"><span class="st">  </span><span class="kw">filter</span>(Writing_Score <span class="op">&gt;=</span><span class="st"> </span><span class="kw">quantile</span>(Writing_Score, <span class="fl">0.25</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">-</span><span class="st"> </span><span class="fl">1.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">IQR</span>(Writing_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb16-45" data-line-number="45"><span class="st">    </span>Writing_Score <span class="op">&lt;=</span><span class="st"> </span><span class="kw">quantile</span>(Writing_Score, <span class="fl">0.75</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="fl">1.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">IQR</span>(Writing_Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># 创建包含各种文本问题的数据框</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">text_problems &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">  <span class="dt">Problem_Type =</span> <span class="kw">c</span>(<span class="st">&quot;拼写错误&quot;</span>, <span class="st">&quot;冗余词汇&quot;</span>, <span class="st">&quot;标点符号&quot;</span>, <span class="st">&quot;词性标签&quot;</span>),</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">  <span class="dt">Original_Text =</span> <span class="kw">c</span>(<span class="st">&quot;Ths is an exmple of text with splling errors.&quot;</span>,</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5">               <span class="st">&quot;This is is an example example of redundant redundant words.&quot;</span>,</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">                    <span class="st">&quot;Clean the text; remove: punctuations!&quot;</span>,</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">                  <span class="st">&quot;This_DT is_VBZ an_DT example_NN.&quot;</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="co"># 逐行处理文本问题</span></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">cleaned_text &lt;-<span class="st"> </span>text_problems <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Cleaned_Text =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb17-11" data-line-number="11">    Problem_Type <span class="op">==</span><span class="st"> &quot;拼写错误&quot;</span> <span class="op">~</span><span class="st"> </span><span class="kw">str_replace_all</span>(Original_Text, </a>
+<a class="sourceLine" id="cb17-12" data-line-number="12">                                <span class="kw">c</span>(<span class="st">&quot;Ths&quot;</span> =<span class="st"> &quot;This&quot;</span>, <span class="st">&quot;exmple&quot;</span> =<span class="st"> &quot;example&quot;</span>, </a>
+<a class="sourceLine" id="cb17-13" data-line-number="13">                                               <span class="st">&quot;splling&quot;</span> =<span class="st"> &quot;spelling&quot;</span>)),</a>
+<a class="sourceLine" id="cb17-14" data-line-number="14">    Problem_Type <span class="op">==</span><span class="st"> &quot;冗余词汇&quot;</span> <span class="op">~</span><span class="st"> </span><span class="kw">str_replace_all</span>(Original_Text, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">b(</span><span class="ch">\\</span><span class="st">w+)</span><span class="ch">\\</span><span class="st">s+</span><span class="ch">\\</span><span class="st">1</span><span class="ch">\\</span><span class="st">b&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>),</a>
+<a class="sourceLine" id="cb17-15" data-line-number="15">    Problem_Type <span class="op">==</span><span class="st"> &quot;标点符号&quot;</span> <span class="op">~</span><span class="st"> </span><span class="kw">str_replace_all</span>(Original_Text, <span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb17-16" data-line-number="16">    Problem_Type <span class="op">==</span><span class="st"> &quot;词性标签&quot;</span> <span class="op">~</span><span class="st"> </span><span class="kw">str_replace_all</span>(Original_Text, <span class="st">&quot;_[A-Z]+&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb17-17" data-line-number="17">  ))</a></code></pre></div>
+</div>
+<div id="任务3.4-变量筛选" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.4</span> 任务3.4 变量筛选<a href="第三章-数据加工.html#任务3.4-变量筛选" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>  当变量过多时，我们可以选择部分变量组成新的数据框。下面请选择所有女生的听力数据。选择所有男生的阅读数据。Filter函数主要筛选行数据，而select函数主要筛选变量即列数据。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">df.girl =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;Female&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(Listening_Score)</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">df.boy =<span class="st"> </span>df_errors <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;Male&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(Reading_Score)</a></code></pre></div>
+</div>
+<div id="任务3.5-数据塑形" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.5</span> 任务3.5 数据塑形<a href="第三章-数据加工.html#任务3.5-数据塑形" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># 生成一个二语学术写作数据集</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)  <span class="co"># 设置随机种子，以确保结果可复现</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">academic_writing_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">  <span class="dt">student_id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,  <span class="co"># 学生ID</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">  <span class="dt">native_language =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Chinese&quot;</span>, <span class="st">&quot;Spanish&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;Russian&quot;</span>, <span class="st">&quot;German&quot;</span>, <span class="st">&quot;Italian&quot;</span>), <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 母语</span></a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">  <span class="dt">second_language =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;English&quot;</span>, <span class="st">&quot;Chinese&quot;</span>, <span class="st">&quot;Spanish&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;German&quot;</span>, <span class="st">&quot;Italian&quot;</span>), <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 二语</span></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">  <span class="dt">essay1_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文1长度</span></a>
+<a class="sourceLine" id="cb19-8" data-line-number="8">  <span class="dt">essay2_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文2长度</span></a>
+<a class="sourceLine" id="cb19-9" data-line-number="9">  <span class="dt">essay3_length =</span> <span class="kw">sample</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">2000</span>, <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),  <span class="co"># 论文3长度</span></a>
+<a class="sourceLine" id="cb19-10" data-line-number="10">  )</a>
+<a class="sourceLine" id="cb19-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb19-12" data-line-number="12"><span class="co"># 把essay1_length、essay2_length和essay3_length三列汇总到一列中</span></a>
+<a class="sourceLine" id="cb19-13" data-line-number="13">long_data &lt;-<span class="st"> </span><span class="kw">gather</span>(academic_writing_data, </a>
+<a class="sourceLine" id="cb19-14" data-line-number="14">essay, length, </a>
+<a class="sourceLine" id="cb19-15" data-line-number="15">essay1_length<span class="op">:</span>essay3_length)</a>
+<a class="sourceLine" id="cb19-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb19-17" data-line-number="17"><span class="co"># 转回宽格式</span></a>
+<a class="sourceLine" id="cb19-18" data-line-number="18">wide_data &lt;-<span class="st"> </span><span class="kw">spread</span>(long_data, essay, length)</a></code></pre></div>
+</div>
+<div id="任务3.6-数据整合" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.6</span> 任务3.6 数据整合<a href="第三章-数据加工.html#任务3.6-数据整合" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># 创建学生基本信息数据集</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">student_info &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">  <span class="dt">Student_ID =</span> <span class="kw">c</span>(<span class="st">&quot;123456789012&quot;</span>, <span class="st">&quot;123456789013&quot;</span>, <span class="st">&quot;123456789014&quot;</span>),</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">  <span class="dt">Name =</span> <span class="kw">c</span>(<span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Charlie&quot;</span>),</a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">  <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>))</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="co"># 创建学生成绩数据集</span></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8">student_scores &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">  <span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;89012&quot;</span>, <span class="st">&quot;89013&quot;</span>, <span class="st">&quot;89014&quot;</span>, <span class="st">&quot;89015&quot;</span>),  <span class="co"># ID仅包含身份证后六位</span></a>
+<a class="sourceLine" id="cb20-10" data-line-number="10">  <span class="dt">Math_Score =</span> <span class="kw">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">88</span>),</a>
+<a class="sourceLine" id="cb20-11" data-line-number="11">  <span class="dt">English_Score =</span> <span class="kw">c</span>(<span class="dv">82</span>, <span class="dv">76</span>, <span class="dv">91</span>, <span class="dv">80</span>))</a>
+<a class="sourceLine" id="cb20-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb20-13" data-line-number="13"><span class="co"># 标准化ID列</span></a>
+<a class="sourceLine" id="cb20-14" data-line-number="14">student_scores &lt;-<span class="st"> </span>student_scores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-15" data-line-number="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ID =</span> <span class="kw">paste0</span>(<span class="st">&quot;1234567&quot;</span>, ID))  <span class="co"># 假设前十位是固定的</span></a>
+<a class="sourceLine" id="cb20-16" data-line-number="16"><span class="co"># 合并数据集</span></a>
+<a class="sourceLine" id="cb20-17" data-line-number="17">merged_data &lt;-<span class="st"> </span>student_scores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-18" data-line-number="18"><span class="st">  </span><span class="kw">full_join</span>(student_info , <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>=<span class="st">&quot;Student_ID&quot;</span>))  <span class="co"># 使用full_join合并</span></a>
+<a class="sourceLine" id="cb20-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb20-20" data-line-number="20">merged_data.cleaned &lt;-<span class="st"> </span>merged_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-21" data-line-number="21"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Name))</a></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>
@@ -332,8 +485,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="第二章-r语言简介.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="第二章-r语言简介.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="第四章-探索性数据分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -364,7 +517,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-new.Rmd",
 "text": "Edit"
 },
 "history": {
