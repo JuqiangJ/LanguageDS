@@ -48,7 +48,7 @@ library(quanteda.textstats)
 
 
 #### 词汇复杂度特征
-```{r}
+```{r eval=F, echo=T}
 
 dee.raw =readtext("data/ch11/*txt", docvarsfrom = "filenames")
 
@@ -83,7 +83,7 @@ textstat_entropy(dee.dfm)$entropy
 
 ```
 
-```{r}
+```{r eval=F, echo=T}
 readability <- textstat_readability(dee.corpus, measure = "all")
 
 readability.df = readability%>%
@@ -109,7 +109,7 @@ readability.df = readability%>%
 
 &emsp;&emsp;由于文本数据处理需要一定时间，此处我们导入已经处理完成的词汇和句法数据进行分析。
 
-```{r}
+```{r eval=F, echo=T}
 lexical.diversity.df = read_csv("data/ch11/lexical.diversity.df.2022-07-21.CSV")
   
 
@@ -123,7 +123,7 @@ metrics_SCA <- read_csv("data/ch11/metrics_SCA.csv")
 
 
 ### 统计建模
-```{r}
+```{r eval=F, echo=T}
 
 t.test(lexical.diversity.df$TTR[2:17], mu = lexical.diversity.df$TTR[1], alternative = "greater")
 
@@ -153,7 +153,7 @@ t.test(lexical.diversity.df$TTR[2:17], mu = lexical.diversity.df$TTR[1], alterna
 
 ```
 
-```{r}
+```{r eval=F, echo=T}
 
 
 metrics_SCA.ci = metrics_SCA%>%
@@ -198,7 +198,7 @@ t.test(metrics_SCA$MLS[2:17], mu = metrics_SCA$MLS[1], alternative = "less")
 
 ```
 
-```{r}
+```{r eval=F, echo=T}
 
 
 t.test(readability.df$ARI[2:17], mu = readability.df$ARI[1], alternative = "less")
@@ -294,7 +294,7 @@ setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 
 ### Jieba 分词
 
-```{r message = FALSE, warning = FALSE}
+```{r eval=F, echo=T}
 
 text = "口语话语产出越来越被视为评估失语症患者（PWA）语言能力的重要来源。"
 # 创建一个默认的分词器
@@ -318,7 +318,7 @@ segment(text, seg1)
 
 ### 汉语失语症语料分词
 
-```{r message = FALSE, warning = FALSE}
+```{r eval=F, echo=T}
 # 导入被试信息
 
 subjects_all <- read_csv("data/ch11/subjects.all4corelexV2.csv", 
@@ -423,7 +423,7 @@ age.aq.edu.stroke.t.test%>%
 
 ### 计算词汇丰富度
 
-```{r message = FALSE, warning = FALSE}
+```{r eval=F, echo=T}
 chinese.TTR = df.tokenised%>%
     mutate(word2 = dplyr::recode(word,
                         #task 2
@@ -516,7 +516,7 @@ chinese.TTR.test%>%
 ```
 
 ### 提取核心词汇
-```{r  message = FALSE, warning = FALSE}
+```{r  eval=F, echo=T}
 
 core.lex.raw = df.tokenised%>%
   filter(normative == "1")%>%
@@ -632,7 +632,7 @@ core.lex.ctrl.wide%>%
 
 ### 比较核心词汇分数
 
-```{r  message = FALSE, warning = FALSE}
+```{r  eval=F, echo=T}
 
 core.score.pwa.ctrl = df.tokenised%>%
   #filter(Age > 20 & Age < 65 )%>%
@@ -748,7 +748,7 @@ core.lex.wilcox.result%>%
 
 ### 核心词汇分数和词汇丰富度相关性分析
 
-```{r  message = FALSE, warning = FALSE}
+```{r  eval=F, echo=T}
 
 ### correlation with aphasia severity
 score.aq.correlation  = core.score.pwa.ctrl.df %>% 
@@ -821,7 +821,7 @@ score.linguistic.cor.final = score.linguistic.correlation.full%>%
 
 
 
-```{r  message = FALSE, warning = FALSE}
+```{r  eval=F, echo=T}
 
 score.aq.correlation %>%
     flextable()%>%

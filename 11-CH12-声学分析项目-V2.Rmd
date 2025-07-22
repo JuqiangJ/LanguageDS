@@ -25,7 +25,7 @@ library(itsadug)
 
 
 ## 数据导入及整理
-```{r}
+```{r eval=F, echo=T}
 contour_data_all = read.csv("data/ch12/nv.sv.data.2024-08-24.csv")
 
 # modelling NV difference
@@ -49,7 +49,7 @@ nv.data = start_event(nv.data, event = c("subject", "id"))
 ## 数据建模
 
 ### 越南语北部方言声调建模
-```{r }
+```{r eval=F, echo=T}
 # preliminary model without autocorrelation correction 
 model.nv = bam(normF0 ~ tone + s(Time, by=tone)+
                s(Time, subject, by = tone, bs = "fs", m = 1),
@@ -91,7 +91,7 @@ plot_smooth(model.nv.b, view="Time",
 
  模型比较法
  模型1区分两个对立
-```{r    }
+```{r  eval=F, echo=T }
 
 
 
@@ -112,7 +112,7 @@ compareML(model.nv, model.nv0)
 差值比较法
 &emsp;&emsp;通过修改模型的设定，将表示两个原始平滑函数之间差异的函数包含在模型中。接下来，发现这个差异平滑函数是显著的，这就表明有显著差异。为了拟合这个新模型，我们首先需要创建一个新的二元变量，该变量在一个水平上等于0，而在另一个水平上等于1。我们现在创建一个名为IS214的变量，该变量在单词‘NV214’上为1，而在单词‘NV415’上为0。
 
-```{r }
+```{r eval=F, echo=T}
 nv.data$IS214 = (nv.data$tone == "NV214")*1
 
 model.nv.binary = bam(normF0 ~ s(Time) + s(Time, by=IS214)+
@@ -129,7 +129,7 @@ summary(model.nv.binary)
 
 soluation 3
 
-```{r }
+```{r eval=F, echo=T}
 nv.data$toneO = as.ordered(nv.data$tone)
 contrasts(nv.data$toneO) = "contr.treatment"
 
@@ -146,7 +146,7 @@ summary(model.nv.ord )
 
 ### 越南语南部方言声调建模
 
-```{r }
+```{r eval=F, echo=T}
 
 sv.data = contour_data_all%>%
   ungroup()%>%
@@ -244,7 +244,7 @@ summary(model.sv.ord )
 
 ## 展示与呈现
 
-```{r}
+```{r eval=F, echo=T}
 # plot the comparison
 library(cowplot)
 

@@ -16,7 +16,7 @@ output: word_document
 
 在实验中，我们让参与者判断两个声调是否相同，操纵了记忆负荷（两个声调呈现的时间间隔）、语音是否来自同一个人，以及声调所在的音节元音是否相同。
 
-```{r message=FALSE}
+```{r eval=F, echo=T}
 library(lme4)
 library(lsmeans)
 setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
@@ -41,7 +41,7 @@ library(cowplot)
 
 ## 数据整理+描述性统计
 
-```{r }
+```{r eval=F, echo=T}
 
 
 
@@ -87,7 +87,7 @@ knitr::kable(
 低记忆负荷，感知表现由好到差：Two-Category/Non-overlap {T33-T45 = T33-T21 = T33-T241} > Category-Goodness/Non-overlap {T241-T21 } > UnCategorised-Categorised/Partial-overlap {T315-T45}. 
 高记忆负荷，感知表现由好到差: Two-Category/Non-overlap {T33-T45 = T33-T21} > CategoryGoodness/Non-overlap {T241-T21} > Two-Category/Partial-o verlap {T33-T241} = UnCategorised-Categorised/Partial-over lap {T315-T45}
 
-```{r}
+```{r eval=F, echo=T}
 
 
 # Load the data
@@ -109,7 +109,7 @@ md.dis.all = read.csv("data/ch10/md.dis.all.2021-03-21.CSV") %>%
 我们计算了每个认知条件下每个声调对立的作为区分表现的指标。
 
 
-```{r}
+```{r eval=F, echo=T}
 library(showtext)
 showtext_auto()
 
@@ -173,7 +173,7 @@ md.dis.df%>%
 &emsp;&emsp;对于LMER模型中固定因素显著性的估计和相关p值的计算，有几种不同的方法（Luke, 2017）。我们使用了Kenward-Roger自由度近似法（Halekoh & Hojsgaard, 2014）和R中car包的Anova函数。在此，我们报告多级因素或交互作用的主要效应，而不是使用t检验与基线水平进行比较。因此，报告的主要/交互作用效应是所有其他效应水平的平均值，可以直接用于测试我们的预测。
 
 
-```{r }
+```{r eval=F, echo=T}
 
 library(car)
 
@@ -207,7 +207,7 @@ md.dis.mdl.tone
 
 &emsp;&emsp;结果： T33-T45 (M = 4.33, 95 % CIs [4.15, 4.52]) > T33-T21 (M = 3.42, 95 % CIs [3.21, 3.63]) > T241-T21 (M = 3.05, 95 % CIs [2.85, 3.26]) > T33-241 (M = 2.06, 95 % CIs [1.87, 2.25]) = T315-T45 (M = 2.26, 95 % CIs [2.06, 2.45]).
 
-```{r}
+```{r eval=F, echo=T}
 # 对刺激说话人变异和元音环境两个变量的交互作用进行进行事后检验
 md.dis.mdl.vwl.tlk = data.frame(lsmeans(md.dis.mdl, 
                                 pairwise ~ speaker:vowel)$contrasts)

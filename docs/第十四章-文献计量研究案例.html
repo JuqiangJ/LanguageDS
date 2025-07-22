@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2025-07-22" />
+<meta name="date" content="2025-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -459,66 +459,467 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="数据导入及整理-1" class="section level2 hasAnchor">
 <h2><span class="header-section-number">14.2</span> 数据导入及整理<a href="第十四章-文献计量研究案例.html#数据导入及整理-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1"><span class="co"># read files</span></a>
-<a class="sourceLine" id="cb288-2" data-line-number="2">filenames =<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data/ch14/data-24-02-2021&quot;</span>, </a>
-<a class="sourceLine" id="cb288-3" data-line-number="3">                       <span class="dt">pattern =</span> <span class="st">&quot;txt&quot;</span>, </a>
-<a class="sourceLine" id="cb288-4" data-line-number="4">                       <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb288-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb288-6" data-line-number="6"><span class="co"># converting to bibliometric data frame</span></a>
-<a class="sourceLine" id="cb288-7" data-line-number="7">speech.data =<span class="st"> </span><span class="kw">convert2df</span>(filenames, </a>
-<a class="sourceLine" id="cb288-8" data-line-number="8">                         <span class="dt">dbsource =</span> <span class="st">&quot;wos&quot;</span>, </a>
-<a class="sourceLine" id="cb288-9" data-line-number="9">                         <span class="dt">format =</span> <span class="st">&quot;plaintext&quot;</span>)</a>
-<a class="sourceLine" id="cb288-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb288-11" data-line-number="11"><span class="co"># use only research articles</span></a>
-<a class="sourceLine" id="cb288-12" data-line-number="12">speech.data =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb288-13" data-line-number="13"><span class="st">  </span><span class="kw">filter</span>(PY <span class="op">!=</span><span class="st"> </span><span class="dv">2021</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(PY))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb288-14" data-line-number="14"><span class="st">  </span><span class="kw">filter</span>(DT <span class="op">==</span><span class="st"> &quot;ARTICLE&quot;</span>)</a>
-<a class="sourceLine" id="cb288-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb288-16" data-line-number="16">speech.df =<span class="st"> </span><span class="kw">select</span>(speech.data, <span class="st">&quot;AU&quot;</span>  ,   <span class="st">&quot;AF&quot;</span>   ,    <span class="st">&quot;CR&quot;</span>   ,    <span class="st">&quot;AB&quot;</span> )<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb288-17" data-line-number="17"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">AB =</span> <span class="kw">tolower</span>(AB))</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="co"># read files</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2">filenames =<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data/ch14/data-24-02-2021&quot;</span>, </a>
+<a class="sourceLine" id="cb148-3" data-line-number="3">                       <span class="dt">pattern =</span> <span class="st">&quot;txt&quot;</span>, </a>
+<a class="sourceLine" id="cb148-4" data-line-number="4">                       <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb148-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb148-6" data-line-number="6"><span class="co"># converting to bibliometric data frame</span></a>
+<a class="sourceLine" id="cb148-7" data-line-number="7">speech.data =<span class="st"> </span><span class="kw">convert2df</span>(filenames, </a>
+<a class="sourceLine" id="cb148-8" data-line-number="8">                         <span class="dt">dbsource =</span> <span class="st">&quot;wos&quot;</span>, </a>
+<a class="sourceLine" id="cb148-9" data-line-number="9">                         <span class="dt">format =</span> <span class="st">&quot;plaintext&quot;</span>)</a>
+<a class="sourceLine" id="cb148-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb148-11" data-line-number="11"><span class="co"># use only research articles</span></a>
+<a class="sourceLine" id="cb148-12" data-line-number="12">speech.data =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb148-13" data-line-number="13"><span class="st">  </span><span class="kw">filter</span>(PY <span class="op">!=</span><span class="st"> </span><span class="dv">2021</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(PY))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb148-14" data-line-number="14"><span class="st">  </span><span class="kw">filter</span>(DT <span class="op">==</span><span class="st"> &quot;ARTICLE&quot;</span>)</a>
+<a class="sourceLine" id="cb148-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb148-16" data-line-number="16">speech.df =<span class="st"> </span><span class="kw">select</span>(speech.data, <span class="st">&quot;AU&quot;</span>  ,   <span class="st">&quot;AF&quot;</span>   ,    <span class="st">&quot;CR&quot;</span>   ,    <span class="st">&quot;AB&quot;</span> )<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb148-17" data-line-number="17"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">AB =</span> <span class="kw">tolower</span>(AB))</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">result.bib =<span class="st"> </span><span class="kw">biblioAnalysis</span>(speech.data, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb149-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb149-3" data-line-number="3">bib.dscrp =<span class="st"> </span><span class="kw">summary</span>(result.bib, <span class="dt">k=</span> <span class="dv">20</span>)</a></code></pre></div>
 </div>
 <div id="数据可视化与展示" class="section level2 hasAnchor">
 <h2><span class="header-section-number">14.3</span> 数据可视化与展示<a href="第十四章-文献计量研究案例.html#数据可视化与展示" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="语音感知研究概况2000-2020." class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.1</span> 语音感知研究概况(2000-2020).<a href="第十四章-文献计量研究案例.html#语音感知研究概况2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(bib.dscrp<span class="op">$</span>MainInformationDF)</a></code></pre></div>
 </div>
 <div id="语音感知研究发表最多的杂志" class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.2</span> 语音感知研究发表最多的杂志<a href="第十四章-文献计量研究案例.html#语音感知研究发表最多的杂志" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="co"># most relevant sources (journals)</span></a>
+<a class="sourceLine" id="cb151-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>( <span class="kw">head</span>(bib.dscrp<span class="op">$</span>MostRelSources, <span class="dt">n=</span><span class="dv">20</span>))</a>
+<a class="sourceLine" id="cb151-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb151-4" data-line-number="4"><span class="co"># write.csv(bib.dscrp$MostRelSources,</span></a>
+<a class="sourceLine" id="cb151-5" data-line-number="5"><span class="co">#           file =  paste(&quot;MostRelSources&quot;,</span></a>
+<a class="sourceLine" id="cb151-6" data-line-number="6"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb151-7" data-line-number="7"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb151-8" data-line-number="8"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 </div>
 <div id="研究能产性分析" class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.3</span> 研究能产性分析<a href="第十四章-文献计量研究案例.html#研究能产性分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 <div id="语音感知研究产出量-2000-2020." class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.4</span> 语音感知研究产出量 (2000-2020).<a href="第十四章-文献计量研究案例.html#语音感知研究产出量-2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">pd.year =<span class="st"> </span><span class="kw">data.frame</span>(bib.dscrp<span class="op">$</span>AnnualProduction)</a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3">pd.year =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(PY, SC)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(PY)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb152-6" data-line-number="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</a>
+<a class="sourceLine" id="cb152-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb152-8" data-line-number="8">pd.year.fig =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>pd.year, </a>
+<a class="sourceLine" id="cb152-9" data-line-number="9">                        <span class="kw">aes</span>(<span class="dt">x =</span> PY, <span class="dt">y =</span> n, </a>
+<a class="sourceLine" id="cb152-10" data-line-number="10">                            <span class="dt">group =</span> <span class="dv">1</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb152-11" data-line-number="11"><span class="st">                        </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb152-12" data-line-number="12"><span class="st">                        </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb152-13" data-line-number="13"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Years&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb152-14" data-line-number="14"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of publications&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb152-15" data-line-number="15"><span class="st">  </span><span class="co">#ggtitle(&quot;Publications per year 2000-2020&quot;) +</span></a>
+<a class="sourceLine" id="cb152-16" data-line-number="16"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb152-17" data-line-number="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb152-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb152-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb152-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb152-21" data-line-number="21"><span class="co"># jpeg(paste( paste(&quot;year.pub&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;), sep = &quot;&quot;),</span></a>
+<a class="sourceLine" id="cb152-22" data-line-number="22"><span class="co">#     units=&quot;in&quot;, width=4, height=3, res=600)</span></a>
+<a class="sourceLine" id="cb152-23" data-line-number="23"><span class="co">#  </span></a>
+<a class="sourceLine" id="cb152-24" data-line-number="24">  <span class="kw">plot</span>(pd.year.fig)</a>
+<a class="sourceLine" id="cb152-25" data-line-number="25"><span class="co"># </span></a>
+<a class="sourceLine" id="cb152-26" data-line-number="26"><span class="co">#  dev.off()</span></a></code></pre></div>
 </div>
 <div id="语音感知研究数量最高的10个国家地区-2000-2020." class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.5</span> 语音感知研究数量最高的10个国家（地区） (2000-2020).<a href="第十四章-文献计量研究案例.html#语音感知研究数量最高的10个国家地区-2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SCP = 单一国家发表; MCP = 多个国家合作发表</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">pd.ctry =<span class="st"> </span>bib.dscrp<span class="op">$</span>MostProdCountries</a>
+<a class="sourceLine" id="cb153-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb153-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(pd.ctry)</a>
+<a class="sourceLine" id="cb153-4" data-line-number="4"><span class="co"># write.csv(pd.ctry,</span></a>
+<a class="sourceLine" id="cb153-5" data-line-number="5"><span class="co">#           file =  paste(&quot;pd.ctry&quot;,</span></a>
+<a class="sourceLine" id="cb153-6" data-line-number="6"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb153-7" data-line-number="7"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb153-8" data-line-number="8"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a>
+<a class="sourceLine" id="cb153-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb153-10" data-line-number="10"><span class="co"># total citations per country</span></a>
+<a class="sourceLine" id="cb153-11" data-line-number="11"><span class="co"># bib.dscrp$TCperCountries</span></a>
+<a class="sourceLine" id="cb153-12" data-line-number="12"><span class="co"># </span></a>
+<a class="sourceLine" id="cb153-13" data-line-number="13"><span class="co"># pd.ct = cbind(pd.ctry, bib.dscrp$TCperCountries)</span></a>
+<a class="sourceLine" id="cb153-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb153-15" data-line-number="15"><span class="co"># write.csv(pd.ct,</span></a>
+<a class="sourceLine" id="cb153-16" data-line-number="16"><span class="co">#           file =  paste(&quot;pd.ct&quot;,</span></a>
+<a class="sourceLine" id="cb153-17" data-line-number="17"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb153-18" data-line-number="18"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb153-19" data-line-number="19"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 </div>
 <div id="发表量最大的10个国家发表趋势" class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.6</span> 发表量最大的10个国家发表趋势<a href="第十四章-文献计量研究案例.html#发表量最大的10个国家发表趋势" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="co"># a list of top ten countries</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb154-3" data-line-number="3">list.ctry =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;USA&quot;</span>,<span class="st">&quot;UNITED KINGDOM&quot;</span> ,<span class="st">&quot;CANADA&quot;</span> ,</a>
+<a class="sourceLine" id="cb154-4" data-line-number="4">              <span class="st">&quot;GERMANY&quot;</span>,<span class="st">&quot;FRANCE&quot;</span> ,<span class="st">&quot;NETHERLANDS&quot;</span>,</a>
+<a class="sourceLine" id="cb154-5" data-line-number="5">              <span class="st">&quot;CHINA&quot;</span> ,<span class="st">&quot;AUSTRALIA&quot;</span>, <span class="st">&quot;JAPAN&quot;</span> ,<span class="st">&quot;SPAIN&quot;</span>)</a>
+<a class="sourceLine" id="cb154-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb154-7" data-line-number="7">speech.meta =<span class="st"> </span><span class="kw">metaTagExtraction</span>(speech.data, <span class="dt">Field =</span> <span class="st">&quot;AU_CO&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb154-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb154-9" data-line-number="9">pd.year.ctry =<span class="st"> </span>speech.meta<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-10" data-line-number="10"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">rownames_to_column</span>(., <span class="st">&quot;paper&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-11" data-line-number="11"><span class="st">  </span><span class="kw">select</span>(paper, PY, AU_CO)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-12" data-line-number="12"><span class="st">  </span><span class="kw">transform</span>(<span class="dt">AU_CO=</span> <span class="kw">strsplit</span>(AU_CO, <span class="st">&quot;;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-13" data-line-number="13"><span class="st">  </span><span class="kw">unnest</span>(AU_CO)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-14" data-line-number="14"><span class="st">  </span><span class="co"># reduce repetition of multi-author paper</span></a>
+<a class="sourceLine" id="cb154-15" data-line-number="15"><span class="st">  </span><span class="kw">group_by</span>(paper, AU_CO)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-16" data-line-number="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">order =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(order <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-18" data-line-number="18"><span class="st">  </span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-19" data-line-number="19"><span class="st">  </span><span class="kw">count</span>(PY, AU_CO, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-20" data-line-number="20"><span class="st">  </span><span class="kw">filter</span>(AU_CO<span class="op">%in%</span>list.ctry)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-21" data-line-number="21"><span class="st">  </span><span class="kw">group_by</span>(AU_CO)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-22" data-line-number="22"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> <span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb154-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb154-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb154-25" data-line-number="25">pd.year.ctry.fig =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>pd.year.ctry, </a>
+<a class="sourceLine" id="cb154-26" data-line-number="26">                          <span class="kw">aes</span>(<span class="dt">x =</span> PY, <span class="dt">y =</span> n, </a>
+<a class="sourceLine" id="cb154-27" data-line-number="27">                            <span class="dt">group =</span> AU_CO,<span class="dt">color =</span> AU_CO)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-28" data-line-number="28"><span class="st">                        </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb154-29" data-line-number="29"><span class="st">                        </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb154-30" data-line-number="30"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Years&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb154-31" data-line-number="31"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of publications&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb154-32" data-line-number="32"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Publications per year 2000-2020&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-33" data-line-number="33"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb154-34" data-line-number="34"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb154-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb154-36" data-line-number="36"><span class="co"># jpeg(paste( paste(&quot;year.pub.ctry&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;), sep = &quot;&quot;),</span></a>
+<a class="sourceLine" id="cb154-37" data-line-number="37"><span class="co">#     units=&quot;in&quot;, width=6, height=3, res=600)</span></a>
+<a class="sourceLine" id="cb154-38" data-line-number="38"><span class="co"># </span></a>
+<a class="sourceLine" id="cb154-39" data-line-number="39"> <span class="kw">plot</span>(pd.year.ctry.fig)</a>
+<a class="sourceLine" id="cb154-40" data-line-number="40"><span class="co"># </span></a>
+<a class="sourceLine" id="cb154-41" data-line-number="41"><span class="co"># dev.off()</span></a></code></pre></div>
 </div>
 <div id="语音感知领域发表量最高20位学者2000-2020." class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.7</span> 语音感知领域发表量最高20位学者(2000-2020).<a href="第十四章-文献计量研究案例.html#语音感知领域发表量最高20位学者2000-2020." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">au.pd =<span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="kw">names</span>(result.bib<span class="op">$</span>Authors)[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>])</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb155-3" data-line-number="3">h.pub.au &lt;-<span class="st"> </span><span class="kw">Hindex</span>(speech.data, </a>
+<a class="sourceLine" id="cb155-4" data-line-number="4">                  <span class="dt">field =</span> <span class="st">&quot;author&quot;</span>, </a>
+<a class="sourceLine" id="cb155-5" data-line-number="5">                  <span class="dt">elements=</span> au.pd,</a>
+<a class="sourceLine" id="cb155-6" data-line-number="6">                  <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">years =</span> <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb155-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb155-8" data-line-number="8">h.au =<span class="st"> </span><span class="kw">as.data.frame</span>(h.pub.au<span class="op">$</span>H)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb155-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>,<span class="op">-</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb155-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb155-11" data-line-number="11">knitr<span class="op">::</span><span class="kw">kable</span>(h.au)</a>
+<a class="sourceLine" id="cb155-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb155-13" data-line-number="13"><span class="co"># write.csv(h.pub.au$H,</span></a>
+<a class="sourceLine" id="cb155-14" data-line-number="14"><span class="co">#           file =  paste(&quot;MostPdAU&quot;,</span></a>
+<a class="sourceLine" id="cb155-15" data-line-number="15"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb155-16" data-line-number="16"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb155-17" data-line-number="17"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 </div>
 <div id="语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-." class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.8</span> 语音感知领域发表量最高20位学者每年发表和引用趋势(2000-2020). .<a href="第十四章-文献计量研究案例.html#语音感知领域发表量最高20位学者每年发表和引用趋势2000-2020.-." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>TC = 所有发表. 圆圈大小代表发表数量；颜色深度表示引用数数量。</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">topAU10 &lt;-<span class="st"> </span><span class="kw">authorProdOverTime</span>(speech.data, <span class="dt">k =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb156-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb156-3" data-line-number="3"><span class="co"># plot(topAU10$graph)</span></a>
+<a class="sourceLine" id="cb156-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb156-5" data-line-number="5"><span class="co"># jpeg(paste( paste(&quot;MostPdAU&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;), sep = &quot;&quot;),</span></a>
+<a class="sourceLine" id="cb156-6" data-line-number="6"><span class="co">#     units=&quot;in&quot;, width=8, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb156-7" data-line-number="7"><span class="co"># </span></a>
+<a class="sourceLine" id="cb156-8" data-line-number="8"><span class="co"># topAU10</span></a>
+<a class="sourceLine" id="cb156-9" data-line-number="9"><span class="co"># </span></a>
+<a class="sourceLine" id="cb156-10" data-line-number="10"><span class="co"># dev.off()</span></a></code></pre></div>
 </div>
 <div id="合作情况" class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.9</span> 合作情况<a href="第十四章-文献计量研究案例.html#合作情况" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>语音感知研究中最活跃的20所大学/研究机构及其合作网络。网络中的每个节点代表一个不同的大学/研究机构，节点的直径与该机构与其他机构的合作强度成正比。节点之间的连线表示这些大学或研究机构之间的合作路径。</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">uni.coc &lt;-<span class="st"> </span><span class="kw">biblioNetwork</span>(speech.data, </a>
+<a class="sourceLine" id="cb157-2" data-line-number="2">                         <span class="dt">analysis =</span> <span class="st">&quot;collaboration&quot;</span>,  </a>
+<a class="sourceLine" id="cb157-3" data-line-number="3">                         <span class="dt">network =</span> <span class="st">&quot;universities&quot;</span>, </a>
+<a class="sourceLine" id="cb157-4" data-line-number="4">                         <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb157-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb157-6" data-line-number="6"><span class="co"># jpeg(paste(&quot;edu.collab&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;),</span></a>
+<a class="sourceLine" id="cb157-7" data-line-number="7"><span class="co">#     units=&quot;in&quot;, width=6, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb157-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb157-9" data-line-number="9">uni.coc.plot =<span class="st"> </span><span class="kw">networkPlot</span>(uni.coc,</a>
+<a class="sourceLine" id="cb157-10" data-line-number="10">                <span class="dt">n =</span> <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb157-11" data-line-number="11">                <span class="co">#Title = &quot;Collaborations among universities/institutes&quot;,</span></a>
+<a class="sourceLine" id="cb157-12" data-line-number="12">                <span class="dt">type =</span> <span class="st">&quot;sphere&quot;</span>,</a>
+<a class="sourceLine" id="cb157-13" data-line-number="13">                <span class="dt">size=</span><span class="dv">10</span>,<span class="dt">size.cex=</span>T,</a>
+<a class="sourceLine" id="cb157-14" data-line-number="14">                <span class="dt">remove.multiple=</span>F,</a>
+<a class="sourceLine" id="cb157-15" data-line-number="15">                <span class="dt">label.n =</span> <span class="dv">20</span>,</a>
+<a class="sourceLine" id="cb157-16" data-line-number="16">                <span class="dt">edgesize =</span> <span class="dv">3</span>,<span class="dt">labelsize=</span><span class="fl">0.6</span>,</a>
+<a class="sourceLine" id="cb157-17" data-line-number="17">                <span class="co"># plot or not</span></a>
+<a class="sourceLine" id="cb157-18" data-line-number="18">                <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb157-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb157-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb157-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb157-22" data-line-number="22"><span class="co"># dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">plot</span>(uni.coc.plot<span class="op">$</span>graph)</a></code></pre></div>
 <p>  语音感知研究中前20个国家的合作网络。</p>
 <p>  网络中的每个节点代表一个不同的国家，节点的直径与该国家与其他国家合作的强度成正比。节点之间的连线表示国家之间的合作路径。</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="co"># country.coc = metaTagExtraction(speech.data, Field = &quot;AU_CO&quot;, sep = &quot;;&quot;)</span></a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb159-3" data-line-number="3"><span class="co"># country.collab &lt;- biblioNetwork(country.coc, </span></a>
+<a class="sourceLine" id="cb159-4" data-line-number="4"><span class="co">#                            analysis = &quot;collaboration&quot;, </span></a>
+<a class="sourceLine" id="cb159-5" data-line-number="5"><span class="co">#                            network = &quot;countries&quot;, sep = &quot;;&quot;)</span></a>
+<a class="sourceLine" id="cb159-6" data-line-number="6"><span class="co"># </span></a>
+<a class="sourceLine" id="cb159-7" data-line-number="7"><span class="co"># # Plot the network</span></a>
+<a class="sourceLine" id="cb159-8" data-line-number="8"><span class="co"># </span></a>
+<a class="sourceLine" id="cb159-9" data-line-number="9"><span class="co"># # jpeg(paste(&quot;ctry.collab&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;),</span></a>
+<a class="sourceLine" id="cb159-10" data-line-number="10"><span class="co"># #     units=&quot;in&quot;, width=6, height=4, res=600)</span></a>
+<a class="sourceLine" id="cb159-11" data-line-number="11"><span class="co"># #</span></a>
+<a class="sourceLine" id="cb159-12" data-line-number="12"><span class="co"># country.collab.plot = networkPlot(country.collab, n = dim(country.collab)[1],</span></a>
+<a class="sourceLine" id="cb159-13" data-line-number="13"><span class="co">#                 Title = &quot;Country collaborations&quot;,</span></a>
+<a class="sourceLine" id="cb159-14" data-line-number="14"><span class="co">#                 type = &quot;sphere&quot;, size=TRUE,</span></a>
+<a class="sourceLine" id="cb159-15" data-line-number="15"><span class="co">#                 remove.multiple=F,</span></a>
+<a class="sourceLine" id="cb159-16" data-line-number="16"><span class="co">#                 label.n = 15,</span></a>
+<a class="sourceLine" id="cb159-17" data-line-number="17"><span class="co">#                 labelsize=0.7,</span></a>
+<a class="sourceLine" id="cb159-18" data-line-number="18"><span class="co">#                 verbose = FALSE)</span></a>
+<a class="sourceLine" id="cb159-19" data-line-number="19"><span class="co"># #</span></a>
+<a class="sourceLine" id="cb159-20" data-line-number="20"><span class="co"># # dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="co"># plot(country.collab.plot$graph)</span></a></code></pre></div>
 </div>
 <div id="研究影响力" class="section level3 hasAnchor">
 <h3><span class="header-section-number">14.3.10</span> 研究影响力<a href="第十四章-文献计量研究案例.html#研究影响力" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>最高被引研究</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">ct.artcl =<span class="st"> </span><span class="kw">citations</span>(speech.data, </a>
+<a class="sourceLine" id="cb161-2" data-line-number="2">                      <span class="dt">field =</span> <span class="st">&quot;article&quot;</span>, </a>
+<a class="sourceLine" id="cb161-3" data-line-number="3">                      <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb161-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb161-5" data-line-number="5">hot.papers =<span class="st"> </span><span class="kw">data.frame</span>(ct.artcl<span class="op">$</span>Cited[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>],</a>
+<a class="sourceLine" id="cb161-6" data-line-number="6">                        ct.artcl<span class="op">$</span>Year[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>], </a>
+<a class="sourceLine" id="cb161-7" data-line-number="7">                        ct.artcl<span class="op">$</span>Source[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>])<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb161-8" data-line-number="8"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span>,<span class="dv">2</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb161-9" data-line-number="9"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Researcher =</span> CR,</a>
+<a class="sourceLine" id="cb161-10" data-line-number="10">         <span class="dt">Citations =</span> Freq)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb161-11" data-line-number="11"><span class="st">  </span><span class="kw">separate</span>(Researcher, <span class="kw">c</span>(<span class="st">&quot;Researcher&quot;</span>,<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;source&quot;</span>,<span class="st">&quot;p1&quot;</span>,<span class="st">&quot;p2&quot;</span>,<span class="st">&quot;DOI&quot;</span>), <span class="st">&quot;,&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb161-12" data-line-number="12"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>p1,<span class="op">-</span>p2)</a>
+<a class="sourceLine" id="cb161-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb161-14" data-line-number="14">knitr<span class="op">::</span><span class="kw">kable</span>(hot.papers)</a>
+<a class="sourceLine" id="cb161-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb161-16" data-line-number="16"><span class="co"># write.csv(hot.papers,</span></a>
+<a class="sourceLine" id="cb161-17" data-line-number="17"><span class="co">#           file =  paste(&quot;hot.papers&quot;,</span></a>
+<a class="sourceLine" id="cb161-18" data-line-number="18"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb161-19" data-line-number="19"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb161-20" data-line-number="20"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 <p>语音感知高被引作者</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">ct.athr =<span class="st"> </span><span class="kw">citations</span>(speech.data, </a>
+<a class="sourceLine" id="cb162-2" data-line-number="2">                    <span class="dt">field =</span> <span class="st">&quot;author&quot;</span>, </a>
+<a class="sourceLine" id="cb162-3" data-line-number="3">                    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb162-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb162-5" data-line-number="5">hot.authors =<span class="st"> </span><span class="kw">data.frame</span>(ct.athr<span class="op">$</span>Cited[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>])<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb162-6" data-line-number="6"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Authors =</span> CR,</a>
+<a class="sourceLine" id="cb162-7" data-line-number="7">         <span class="dt">Citations =</span> Freq)</a>
+<a class="sourceLine" id="cb162-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb162-9" data-line-number="9">knitr<span class="op">::</span><span class="kw">kable</span>(hot.authors)</a>
+<a class="sourceLine" id="cb162-10" data-line-number="10"><span class="co"># h.cite.au = Hindex(speech.data, </span></a>
+<a class="sourceLine" id="cb162-11" data-line-number="11"><span class="co">#                     field = &quot;author&quot;, </span></a>
+<a class="sourceLine" id="cb162-12" data-line-number="12"><span class="co">#                     elements= hot.authors$CR,</span></a>
+<a class="sourceLine" id="cb162-13" data-line-number="13"><span class="co">#                     sep = &quot;;&quot;, years = 100)</span></a>
+<a class="sourceLine" id="cb162-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb162-15" data-line-number="15"><span class="co"># au.impact = cbind(hot.authors, h.cite.au$H)</span></a>
+<a class="sourceLine" id="cb162-16" data-line-number="16"><span class="co"># </span></a>
+<a class="sourceLine" id="cb162-17" data-line-number="17"><span class="co"># write.csv(hot.authors,</span></a>
+<a class="sourceLine" id="cb162-18" data-line-number="18"><span class="co">#           file =  paste(&quot;hot.authors&quot;,</span></a>
+<a class="sourceLine" id="cb162-19" data-line-number="19"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb162-20" data-line-number="20"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb162-21" data-line-number="21"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 <p>语音感知研究的共引网络。节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其共引度成正比。</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="co"># article co-citation network</span></a>
+<a class="sourceLine" id="cb163-2" data-line-number="2">co.cite &lt;-<span class="st"> </span><span class="kw">biblioNetwork</span>(speech.data, </a>
+<a class="sourceLine" id="cb163-3" data-line-number="3">                         <span class="dt">analysis =</span> <span class="st">&quot;co-citation&quot;</span>, </a>
+<a class="sourceLine" id="cb163-4" data-line-number="4">                         <span class="dt">network =</span> <span class="st">&quot;references&quot;</span>, </a>
+<a class="sourceLine" id="cb163-5" data-line-number="5">                         <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb163-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb163-7" data-line-number="7"><span class="co"># jpeg( paste(&quot;co-citation.network&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;),</span></a>
+<a class="sourceLine" id="cb163-8" data-line-number="8"><span class="co">#      units=&quot;in&quot;, width=8, height=6, res=600)</span></a>
+<a class="sourceLine" id="cb163-9" data-line-number="9"><span class="co">#  </span></a>
+<a class="sourceLine" id="cb163-10" data-line-number="10">cocitation =<span class="st"> </span><span class="kw">networkPlot</span>(co.cite, <span class="dt">n =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb163-11" data-line-number="11">                <span class="dt">Title =</span> <span class="st">&quot;Co-citation network&quot;</span>,</a>
+<a class="sourceLine" id="cb163-12" data-line-number="12">                <span class="dt">type =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">size=</span>T,</a>
+<a class="sourceLine" id="cb163-13" data-line-number="13">                <span class="dt">remove.isolates =</span> T,</a>
+<a class="sourceLine" id="cb163-14" data-line-number="14">                <span class="dt">remove.multiple=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb163-15" data-line-number="15">                <span class="dt">labelsize=</span><span class="fl">0.7</span>,<span class="dt">edgesize =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb163-16" data-line-number="16">                <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb163-17" data-line-number="17"><span class="co">#  </span></a>
+<a class="sourceLine" id="cb163-18" data-line-number="18"><span class="co">#  dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">plot</span>(cocitation<span class="op">$</span>graph)</a>
+<a class="sourceLine" id="cb164-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">kable</span>( cocitation<span class="op">$</span>cluster_res)</a>
+<a class="sourceLine" id="cb164-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb164-4" data-line-number="4"><span class="co"># write.csv(cocitation$cluster_res,</span></a>
+<a class="sourceLine" id="cb164-5" data-line-number="5"><span class="co">#           file =  paste(&quot;co-cite.stats&quot;,</span></a>
+<a class="sourceLine" id="cb164-6" data-line-number="6"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb164-7" data-line-number="7"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb164-8" data-line-number="8"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 <p>语音感知研究的文献耦合网络，其中节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其文献耦合度成正比。</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="co"># article coupling network</span></a>
+<a class="sourceLine" id="cb165-2" data-line-number="2">article.cpl =<span class="st"> </span><span class="kw">biblioNetwork</span>(speech.data, </a>
+<a class="sourceLine" id="cb165-3" data-line-number="3">                           <span class="dt">analysis =</span> <span class="st">&quot;coupling&quot;</span>, </a>
+<a class="sourceLine" id="cb165-4" data-line-number="4">                           <span class="dt">network =</span> <span class="st">&quot;references&quot;</span>, </a>
+<a class="sourceLine" id="cb165-5" data-line-number="5">                           <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb165-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb165-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb165-8" data-line-number="8"><span class="co"># jpeg(paste(&quot;article.coupling.network&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;),</span></a>
+<a class="sourceLine" id="cb165-9" data-line-number="9"><span class="co">#      units=&quot;in&quot;, width=8, height=6, res=600)</span></a>
+<a class="sourceLine" id="cb165-10" data-line-number="10"><span class="co">#  </span></a>
+<a class="sourceLine" id="cb165-11" data-line-number="11">coupling.net =<span class="st"> </span><span class="kw">networkPlot</span>(article.cpl, <span class="dt">n =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb165-12" data-line-number="12">                <span class="dt">Title =</span> <span class="st">&quot;Bibliographic coupling network&quot;</span>,</a>
+<a class="sourceLine" id="cb165-13" data-line-number="13">                <span class="dt">type =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">size=</span>T,</a>
+<a class="sourceLine" id="cb165-14" data-line-number="14">                <span class="dt">remove.isolates =</span> T,</a>
+<a class="sourceLine" id="cb165-15" data-line-number="15">                <span class="dt">remove.multiple=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb165-16" data-line-number="16">                <span class="dt">labelsize=</span><span class="fl">0.7</span>,<span class="dt">edgesize =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb165-17" data-line-number="17">                <span class="dt">verbose =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb165-18" data-line-number="18">                )</a>
+<a class="sourceLine" id="cb165-19" data-line-number="19"><span class="co">#  </span></a>
+<a class="sourceLine" id="cb165-20" data-line-number="20"><span class="co"># dev.off()</span></a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">plot</span>(coupling.net<span class="op">$</span>graph)</a>
+<a class="sourceLine" id="cb166-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb166-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(coupling.net<span class="op">$</span>cluster_res)</a>
+<a class="sourceLine" id="cb166-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb166-5" data-line-number="5"><span class="co"># write.csv(coupling.net$cluster_res,</span></a>
+<a class="sourceLine" id="cb166-6" data-line-number="6"><span class="co">#           file =  paste(&quot;coupling.stats&quot;,</span></a>
+<a class="sourceLine" id="cb166-7" data-line-number="7"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb166-8" data-line-number="8"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb166-9" data-line-number="9"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a></code></pre></div>
 <p>前20个作者定义关键词、机器生成关键词、基于标题和摘要的两词短语（Freq = 频率）<em>注意：在论文表格中，一些术语进行了合并处理，例如在标题两词短语列中，“Cochlear implant”（人工耳蜗）和“cochlear implantation”（人工耳蜗植入）被合并。</em></p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb167-3" data-line-number="3">stop.words =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;elsevier&quot;</span>,<span class="st">&quot;rights reserved&quot;</span>,<span class="st">&quot;NA NA&quot;</span>,</a>
+<a class="sourceLine" id="cb167-4" data-line-number="4">               <span class="st">&quot;results suggest&quot;</span>,<span class="st">&quot;experiment 1&quot;</span>,<span class="st">&quot;speech perception&quot;</span>,</a>
+<a class="sourceLine" id="cb167-5" data-line-number="5">               <span class="st">&quot;experiment 2&quot;</span>,<span class="st">&quot;NA&quot;</span>,<span class="st">&quot;NA&quot;</span>)</a>
+<a class="sourceLine" id="cb167-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb167-7" data-line-number="7"><span class="co"># no temporal variation</span></a>
+<a class="sourceLine" id="cb167-8" data-line-number="8">au.ky =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(DE,PY)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-10" data-line-number="10"><span class="st">  </span><span class="kw">transform</span>(<span class="dt">DE =</span> <span class="kw">strsplit</span>(DE, <span class="st">&quot;;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-11" data-line-number="11"><span class="st">  </span><span class="kw">unnest</span>(DE)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-12" data-line-number="12"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>DE<span class="op">%in%</span><span class="kw">c</span>(<span class="st">&quot;SPEECH PERCEPTION&quot;</span>,<span class="st">&quot;SPEECH&quot;</span>,</a>
+<a class="sourceLine" id="cb167-13" data-line-number="13">                  <span class="st">&quot;PERCEPTION&quot;</span>, <span class="st">&quot; SPEECH&quot;</span>,<span class="st">&quot; SPEECH PERCEPTION&quot;</span>,</a>
+<a class="sourceLine" id="cb167-14" data-line-number="14">                  <span class="st">&quot; PERCEPTION&quot;</span>,<span class="st">&quot; LANGUAGE&quot;</span>, <span class="st">&quot;LANGUAGE&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-15" data-line-number="15"><span class="st">  </span><span class="kw">filter</span>(DE <span class="op">!=</span><span class="st"> &quot;&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(DE))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-16" data-line-number="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DE =</span> <span class="kw">str_replace_all</span>(DE, <span class="st">&quot; &quot;</span>,<span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb167-17" data-line-number="17">         <span class="dt">DE =</span> <span class="kw">str_replace_all</span>(DE, <span class="st">&quot;-&quot;</span>,<span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb167-18" data-line-number="18">         <span class="dt">DE =</span> <span class="kw">str_to_title</span>(DE),</a>
+<a class="sourceLine" id="cb167-19" data-line-number="19">         <span class="dt">DE =</span> dplyr<span class="op">::</span><span class="kw">recode</span>(DE, <span class="st">&quot;Cochlearimplants&quot;</span> =<span class="st"> &quot;Cochlearimplant&quot;</span>),)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-20" data-line-number="20"><span class="st">  </span><span class="kw">count</span>(DE, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-21" data-line-number="21"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">order =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-22" data-line-number="22"><span class="st">  </span><span class="kw">filter</span>(order <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-23" data-line-number="23"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>order)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-24" data-line-number="24"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">AuthorKeywords=</span> DE,</a>
+<a class="sourceLine" id="cb167-25" data-line-number="25">         <span class="dt">AuFreq =</span> n)</a>
+<a class="sourceLine" id="cb167-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb167-27" data-line-number="27"><span class="co"># write.csv(au.ky, </span></a>
+<a class="sourceLine" id="cb167-28" data-line-number="28"><span class="co">#           file =  paste(&quot;au.ky&quot;,</span></a>
+<a class="sourceLine" id="cb167-29" data-line-number="29"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb167-30" data-line-number="30"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb167-31" data-line-number="31"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a>
+<a class="sourceLine" id="cb167-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb167-33" data-line-number="33"><span class="co"># No temporal variation</span></a>
+<a class="sourceLine" id="cb167-34" data-line-number="34">machine.ky =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-35" data-line-number="35"><span class="st">  </span><span class="kw">select</span>(ID,PY)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-36" data-line-number="36"><span class="st">  </span><span class="kw">transform</span>(<span class="dt">ID =</span> <span class="kw">strsplit</span>(ID, <span class="st">&quot;;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-37" data-line-number="37"><span class="st">  </span><span class="kw">unnest</span>(ID)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-38" data-line-number="38"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>ID<span class="op">%in%</span><span class="kw">c</span>(<span class="st">&quot;SPEECH PERCEPTION&quot;</span>,<span class="st">&quot;SPEECH&quot;</span>,</a>
+<a class="sourceLine" id="cb167-39" data-line-number="39">                  <span class="st">&quot;PERCEPTION&quot;</span>, <span class="st">&quot; SPEECH&quot;</span>,<span class="st">&quot; SPEECH PERCEPTION&quot;</span>,</a>
+<a class="sourceLine" id="cb167-40" data-line-number="40">                  <span class="st">&quot; PERCEPTION&quot;</span>,<span class="st">&quot; LANGUAGE&quot;</span>, <span class="st">&quot;LANGUAGE&quot;</span>, </a>
+<a class="sourceLine" id="cb167-41" data-line-number="41">                  <span class="st">&quot;SPEECH-PERCEPTION&quot;</span>, <span class="st">&quot; SPEECH-PERCEPTION&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-42" data-line-number="42"><span class="st">  </span><span class="kw">filter</span>(ID <span class="op">!=</span><span class="st"> &quot;&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(ID))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-43" data-line-number="43"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ID =</span> <span class="kw">str_replace_all</span>(ID, <span class="st">&quot; &quot;</span>,<span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb167-44" data-line-number="44">         <span class="dt">ID =</span> <span class="kw">str_replace_all</span>(ID, <span class="st">&quot;-&quot;</span>,<span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb167-45" data-line-number="45">         <span class="dt">ID =</span> <span class="kw">str_to_title</span>(ID),</a>
+<a class="sourceLine" id="cb167-46" data-line-number="46">         <span class="dt">ID =</span> dplyr<span class="op">::</span><span class="kw">recode</span>(ID, <span class="st">&quot;Cochlearimplants&quot;</span> =<span class="st"> &quot;Cochlearimplant&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-47" data-line-number="47"><span class="st">  </span><span class="kw">count</span>(ID, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-48" data-line-number="48"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">order =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-49" data-line-number="49"><span class="st">  </span><span class="kw">filter</span>(order <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-50" data-line-number="50"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>order)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-51" data-line-number="51"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">MachineKeywords=</span> ID,</a>
+<a class="sourceLine" id="cb167-52" data-line-number="52">         <span class="dt">MFreq =</span> n)</a>
+<a class="sourceLine" id="cb167-53" data-line-number="53"></a>
+<a class="sourceLine" id="cb167-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb167-55" data-line-number="55"><span class="co"># title 2-gram</span></a>
+<a class="sourceLine" id="cb167-56" data-line-number="56">title.ky<span class="fl">.2</span>gram =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-57" data-line-number="57"><span class="st">  </span><span class="kw">select</span>(TI,PY)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-58" data-line-number="58"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">rownames_to_column</span>(., <span class="st">&quot;paper&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-59" data-line-number="59"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, TI, </a>
+<a class="sourceLine" id="cb167-60" data-line-number="60">                <span class="dt">to_lower =</span> T,</a>
+<a class="sourceLine" id="cb167-61" data-line-number="61">                <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-62" data-line-number="62"><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-63" data-line-number="63"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word, <span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop.words) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-64" data-line-number="64"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word, <span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop.words)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-65" data-line-number="65"><span class="st">  </span><span class="kw">unite</span>(bigram, word1, word2, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-66" data-line-number="66"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>bigram<span class="op">%in%</span><span class="st"> </span>stop.words)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-67" data-line-number="67"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">bigram =</span> <span class="kw">str_replace_all</span>(bigram, <span class="st">&quot; &quot;</span>,<span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb167-68" data-line-number="68">         <span class="co">#ID = str_replace_all(ID, &quot;-&quot;,&quot;&quot;),</span></a>
+<a class="sourceLine" id="cb167-69" data-line-number="69">         <span class="dt">bigram =</span> <span class="kw">str_to_title</span>(bigram),</a>
+<a class="sourceLine" id="cb167-70" data-line-number="70">         <span class="dt">bigram =</span> dplyr<span class="op">::</span><span class="kw">recode</span>(bigram, <span class="st">&quot;Cochlearimplants&quot;</span> =<span class="st"> &quot;Cochlearimplant&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-71" data-line-number="71"><span class="st">  </span><span class="kw">count</span>(bigram,<span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-72" data-line-number="72"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">order =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-73" data-line-number="73"><span class="st">  </span><span class="kw">filter</span>(order<span class="op">&lt;</span><span class="dv">25</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-74" data-line-number="74"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>order)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-75" data-line-number="75"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Title2gram=</span> bigram,</a>
+<a class="sourceLine" id="cb167-76" data-line-number="76">         <span class="dt">TFreq =</span> n)</a>
+<a class="sourceLine" id="cb167-77" data-line-number="77"></a>
+<a class="sourceLine" id="cb167-78" data-line-number="78"><span class="co"># write.csv(title.ky.2gram, </span></a>
+<a class="sourceLine" id="cb167-79" data-line-number="79"><span class="co">#           file =  paste(&quot;title.ky.2gram&quot;,</span></a>
+<a class="sourceLine" id="cb167-80" data-line-number="80"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb167-81" data-line-number="81"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb167-82" data-line-number="82"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a>
+<a class="sourceLine" id="cb167-83" data-line-number="83"></a>
+<a class="sourceLine" id="cb167-84" data-line-number="84"></a>
+<a class="sourceLine" id="cb167-85" data-line-number="85"><span class="co"># no temporal variation</span></a>
+<a class="sourceLine" id="cb167-86" data-line-number="86">ab.ky<span class="fl">.2</span>gram =<span class="st"> </span>speech.data<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-87" data-line-number="87"><span class="st">  </span><span class="kw">select</span>(AB,PY)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-88" data-line-number="88"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">rownames_to_column</span>(., <span class="st">&quot;paper&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-89" data-line-number="89"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, AB, </a>
+<a class="sourceLine" id="cb167-90" data-line-number="90">                <span class="dt">to_lower =</span> T,</a>
+<a class="sourceLine" id="cb167-91" data-line-number="91">                <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-92" data-line-number="92"><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-93" data-line-number="93"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word, <span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop.words) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-94" data-line-number="94"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word, <span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop.words)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-95" data-line-number="95"><span class="st">  </span><span class="kw">unite</span>(bigram, word1, word2, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-96" data-line-number="96"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>bigram<span class="op">%in%</span><span class="st"> </span>stop.words)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-97" data-line-number="97"><span class="st">  </span><span class="kw">count</span>(bigram, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-98" data-line-number="98"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">bigram =</span> <span class="kw">str_replace_all</span>(bigram, <span class="st">&quot; &quot;</span>,<span class="st">&quot;&quot;</span>),</a>
+<a class="sourceLine" id="cb167-99" data-line-number="99">         <span class="co">#ID = str_replace_all(ID, &quot;-&quot;,&quot;&quot;),</span></a>
+<a class="sourceLine" id="cb167-100" data-line-number="100">         <span class="dt">bigram =</span> <span class="kw">str_to_title</span>(bigram),</a>
+<a class="sourceLine" id="cb167-101" data-line-number="101">         <span class="dt">bigram =</span> dplyr<span class="op">::</span><span class="kw">recode</span>(bigram, <span class="st">&quot;Cochlearimplants&quot;</span> =<span class="st"> &quot;Cochlearimplant&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-102" data-line-number="102"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">order =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-103" data-line-number="103"><span class="st">  </span><span class="kw">filter</span>(order<span class="op">&lt;</span><span class="dv">25</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-104" data-line-number="104"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>order)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-105" data-line-number="105"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Abstract2gram=</span> bigram,</a>
+<a class="sourceLine" id="cb167-106" data-line-number="106">         <span class="dt">ABFreq =</span> n)</a>
+<a class="sourceLine" id="cb167-107" data-line-number="107"></a>
+<a class="sourceLine" id="cb167-108" data-line-number="108"><span class="co"># write.csv(ab.ky.2gram, </span></a>
+<a class="sourceLine" id="cb167-109" data-line-number="109"><span class="co">#           file =  paste(&quot;ab.ky.2gram&quot;,</span></a>
+<a class="sourceLine" id="cb167-110" data-line-number="110"><span class="co">#                              Sys.Date(),</span></a>
+<a class="sourceLine" id="cb167-111" data-line-number="111"><span class="co">#                              &quot;csv&quot;,</span></a>
+<a class="sourceLine" id="cb167-112" data-line-number="112"><span class="co">#                              sep = &quot;.&quot;) ,row.names = FALSE)</span></a>
+<a class="sourceLine" id="cb167-113" data-line-number="113"></a>
+<a class="sourceLine" id="cb167-114" data-line-number="114">term.freq =<span class="st"> </span>au.ky<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb167-115" data-line-number="115"><span class="st">  </span><span class="kw">bind_cols</span>(machine.ky, title.ky<span class="fl">.2</span>gram, ab.ky<span class="fl">.2</span>gram)</a>
+<a class="sourceLine" id="cb167-116" data-line-number="116"></a>
+<a class="sourceLine" id="cb167-117" data-line-number="117">knitr<span class="op">::</span><span class="kw">kable</span>(term.freq)</a></code></pre></div>
 <p>作者自定义词网络</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">keyword.au &lt;-<span class="st"> </span><span class="kw">biblioNetwork</span>(speech.data, </a>
+<a class="sourceLine" id="cb168-2" data-line-number="2">                           <span class="dt">analysis =</span> <span class="st">&quot;co-occurrences&quot;</span>, </a>
+<a class="sourceLine" id="cb168-3" data-line-number="3">                           <span class="dt">network =</span> <span class="st">&quot;author_keywords&quot;</span>, </a>
+<a class="sourceLine" id="cb168-4" data-line-number="4">                           <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb168-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb168-6" data-line-number="6"><span class="co"># Plot the network</span></a>
+<a class="sourceLine" id="cb168-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb168-8" data-line-number="8"><span class="co"># jpeg(paste(paste(&quot;keyword.au.co-occurrence&quot;,Sys.Date(),&quot;jpeg&quot;,sep = &quot;.&quot;),</span></a>
+<a class="sourceLine" id="cb168-9" data-line-number="9"><span class="co">#           sep = &quot;&quot;),</span></a>
+<a class="sourceLine" id="cb168-10" data-line-number="10"><span class="co">#     units=&quot;in&quot;, width=10, height=8, res=600)</span></a>
+<a class="sourceLine" id="cb168-11" data-line-number="11"><span class="co"># </span></a>
+<a class="sourceLine" id="cb168-12" data-line-number="12">keyword.fig =<span class="st"> </span><span class="kw">networkPlot</span>(keyword.au,</a>
+<a class="sourceLine" id="cb168-13" data-line-number="13">                <span class="dt">normalize=</span><span class="st">&quot;association&quot;</span>, <span class="dt">weighted=</span>T, <span class="dt">n =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb168-14" data-line-number="14">                <span class="dt">Title =</span> <span class="st">&quot;Author keyword co-occurrences&quot;</span>,</a>
+<a class="sourceLine" id="cb168-15" data-line-number="15">                <span class="dt">type =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">size.cex =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb168-16" data-line-number="16">                <span class="dt">size=</span>T,<span class="dt">edgesize =</span> <span class="dv">5</span>,<span class="dt">labelsize=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb168-17" data-line-number="17">                <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb168-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb168-19" data-line-number="19"><span class="co"># dev.off()</span></a></code></pre></div>
 
 </div>
 </div>

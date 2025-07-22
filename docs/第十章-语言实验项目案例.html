@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2025-07-22" />
+<meta name="date" content="2025-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -503,546 +503,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb113-24" data-line-number="24">                   <span class="dt">response =</span> <span class="kw">fct_relevel</span>(response, <span class="st">&quot;M55&quot;</span>,<span class="st">&quot;M35&quot;</span>,<span class="st">&quot;M214&quot;</span>,<span class="st">&quot;M51&quot;</span>))</a>
 <a class="sourceLine" id="cb113-25" data-line-number="25"></a>
 <a class="sourceLine" id="cb113-26" data-line-number="26">md.cat.tbl =<span class="st"> </span><span class="kw">cat.table</span>(cm.cat.fnl)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb113-27" data-line-number="27"><span class="st">  </span><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">where</span>(is.numeric), <span class="op">~</span><span class="st"> </span><span class="kw">round</span>(.x, <span class="dt">digits =</span> <span class="dv">2</span>)))</a></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;isi&#39;, &#39;stimuli&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb115-2" data-line-number="2">  md.cat.tbl,</a>
-<a class="sourceLine" id="cb115-3" data-line-number="3">  <span class="dt">caption =</span> <span class="st">&#39;Table 3 &#39;</span>,</a>
-<a class="sourceLine" id="cb115-4" data-line-number="4">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb115-5" data-line-number="5">)</a></code></pre></div>
-<table>
-<caption>
-<span id="tab:unnamed-chunk-115">Table 10.1: </span>Table 3
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-isi
-</th>
-<th style="text-align:left;">
-response
-</th>
-<th style="text-align:right;">
-T45_cat.mean
-</th>
-<th style="text-align:right;">
-T45_rate.mean
-</th>
-<th style="text-align:right;">
-T33_cat.mean
-</th>
-<th style="text-align:right;">
-T33_rate.mean
-</th>
-<th style="text-align:right;">
-T21_cat.mean
-</th>
-<th style="text-align:right;">
-T21_rate.mean
-</th>
-<th style="text-align:right;">
-T315_cat.mean
-</th>
-<th style="text-align:right;">
-T315_rate.mean
-</th>
-<th style="text-align:right;">
-T241_cat.mean
-</th>
-<th style="text-align:right;">
-T241_rate.mean
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Low
-</td>
-<td style="text-align:left;">
-M55
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-4.0
-</td>
-<td style="text-align:right;">
-77.3
-</td>
-<td style="text-align:right;">
-5.3
-</td>
-<td style="text-align:right;">
-19.9
-</td>
-<td style="text-align:right;">
-3.3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-21.6
-</td>
-<td style="text-align:right;">
-4.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Low
-</td>
-<td style="text-align:left;">
-M35
-</td>
-<td style="text-align:right;">
-88.8
-</td>
-<td style="text-align:right;">
-5.8
-</td>
-<td style="text-align:right;">
-2.8
-</td>
-<td style="text-align:right;">
-2.8
-</td>
-<td style="text-align:right;">
-1.6
-</td>
-<td style="text-align:right;">
-2.1
-</td>
-<td style="text-align:right;">
-48.6
-</td>
-<td style="text-align:right;">
-5.5
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-3.7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Low
-</td>
-<td style="text-align:left;">
-M214
-</td>
-<td style="text-align:right;">
-10.3
-</td>
-<td style="text-align:right;">
-4.3
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-3.3
-</td>
-<td style="text-align:right;">
-25.8
-</td>
-<td style="text-align:right;">
-3.7
-</td>
-<td style="text-align:right;">
-51.2
-</td>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Low
-</td>
-<td style="text-align:left;">
-M51
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-5.5
-</td>
-<td style="text-align:right;">
-19.2
-</td>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-52.7
-</td>
-<td style="text-align:right;">
-4.6
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-7.0
-</td>
-<td style="text-align:right;">
-75.1
-</td>
-<td style="text-align:right;">
-5.6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:left;">
-M55
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-84.7
-</td>
-<td style="text-align:right;">
-5.2
-</td>
-<td style="text-align:right;">
-26.4
-</td>
-<td style="text-align:right;">
-3.2
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-7.0
-</td>
-<td style="text-align:right;">
-28.1
-</td>
-<td style="text-align:right;">
-5.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:left;">
-M35
-</td>
-<td style="text-align:right;">
-85.0
-</td>
-<td style="text-align:right;">
-5.3
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-1.1
-</td>
-<td style="text-align:right;">
-3.3
-</td>
-<td style="text-align:right;">
-44.2
-</td>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:left;">
-M214
-</td>
-<td style="text-align:right;">
-14.7
-</td>
-<td style="text-align:right;">
-4.8
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-5.9
-</td>
-<td style="text-align:right;">
-6.3
-</td>
-<td style="text-align:right;">
-3.8
-</td>
-<td style="text-align:right;">
-55.6
-</td>
-<td style="text-align:right;">
-5.5
-</td>
-<td style="text-align:right;">
-0.5
-</td>
-<td style="text-align:right;">
-6.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:left;">
-M51
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-<td style="text-align:right;">
-13.4
-</td>
-<td style="text-align:right;">
-4.4
-</td>
-<td style="text-align:right;">
-66.2
-</td>
-<td style="text-align:right;">
-4.0
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-71.2
-</td>
-<td style="text-align:right;">
-5.1
-</td>
-</tr>
-</tbody>
-</table>
+<a class="sourceLine" id="cb113-27" data-line-number="27"><span class="st">  </span><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">where</span>(is.numeric), <span class="op">~</span><span class="st"> </span><span class="kw">round</span>(.x, <span class="dt">digits =</span> <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb113-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb113-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb113-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb113-31" data-line-number="31">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb113-32" data-line-number="32">  md.cat.tbl,</a>
+<a class="sourceLine" id="cb113-33" data-line-number="33">  <span class="dt">caption =</span> <span class="st">&#39;Table 3 &#39;</span>,</a>
+<a class="sourceLine" id="cb113-34" data-line-number="34">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb113-35" data-line-number="35">)</a></code></pre></div>
 <p>  我们结合了感知同化数据和母语选项之间的重合关系对两种不同的记忆负荷下的感知区分表现进行了预测。
 低记忆负荷，感知表现由好到差：Two-Category/Non-overlap {T33-T45 = T33-T21 = T33-T241} &gt; Category-Goodness/Non-overlap {T241-T21 } &gt; UnCategorised-Categorised/Partial-overlap {T315-T45}.
 高记忆负荷，感知表现由好到差: Two-Category/Non-overlap {T33-T45 = T33-T21} &gt; CategoryGoodness/Non-overlap {T241-T21} &gt; Two-Category/Partial-o verlap {T33-T241} = UnCategorised-Categorised/Partial-over lap {T315-T45}</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="co"># Load the data</span></a>
-<a class="sourceLine" id="cb116-2" data-line-number="2">md.dis.all =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch10/md.dis.all.2021-03-21.CSV&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="st">            </span><span class="co"># set the order of the contrast</span></a>
-<a class="sourceLine" id="cb116-4" data-line-number="4"><span class="st">            </span><span class="kw">mutate</span>(<span class="dt">Tone_contrast =</span> <span class="kw">fct_relevel</span>(Tone_contrast,</a>
-<a class="sourceLine" id="cb116-5" data-line-number="5">                          <span class="st">&quot;T33-T45&quot;</span>,<span class="st">&quot;T33-T21&quot;</span>,<span class="st">&quot;T241-T21&quot;</span>,</a>
-<a class="sourceLine" id="cb116-6" data-line-number="6">                           <span class="st">&quot;T315-T45&quot;</span>, <span class="st">&quot;T33-T241&quot;</span> ),</a>
-<a class="sourceLine" id="cb116-7" data-line-number="7">                   <span class="dt">cgload =</span> <span class="kw">factor</span>(cgload,<span class="kw">c</span>(<span class="st">&quot;sssv&quot;</span>,<span class="st">&quot;ssdv&quot;</span>,<span class="st">&quot;dssv&quot;</span>,<span class="st">&quot;dsdv&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="co"># Load the data</span></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2">md.dis.all =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/ch10/md.dis.all.2021-03-21.CSV&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-3" data-line-number="3"><span class="st">            </span><span class="co"># set the order of the contrast</span></a>
+<a class="sourceLine" id="cb114-4" data-line-number="4"><span class="st">            </span><span class="kw">mutate</span>(<span class="dt">Tone_contrast =</span> <span class="kw">fct_relevel</span>(Tone_contrast,</a>
+<a class="sourceLine" id="cb114-5" data-line-number="5">                          <span class="st">&quot;T33-T45&quot;</span>,<span class="st">&quot;T33-T21&quot;</span>,<span class="st">&quot;T241-T21&quot;</span>,</a>
+<a class="sourceLine" id="cb114-6" data-line-number="6">                           <span class="st">&quot;T315-T45&quot;</span>, <span class="st">&quot;T33-T241&quot;</span> ),</a>
+<a class="sourceLine" id="cb114-7" data-line-number="7">                   <span class="dt">cgload =</span> <span class="kw">factor</span>(cgload,<span class="kw">c</span>(<span class="st">&quot;sssv&quot;</span>,<span class="st">&quot;ssdv&quot;</span>,<span class="st">&quot;dssv&quot;</span>,<span class="st">&quot;dsdv&quot;</span>)))</a></code></pre></div>
 </div>
 <div id="数据可视化-2" class="section level2 hasAnchor">
 <h2><span class="header-section-number">10.4</span> 数据可视化<a href="第十章-语言实验项目案例.html#数据可视化-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>我们计算了每个认知条件下每个声调对立的作为区分表现的指标。</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">library</span>(showtext)</a>
-<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="kw">showtext_auto</span>()</a>
-<a class="sourceLine" id="cb117-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb117-4" data-line-number="4"><span class="co"># Overall effect of taker and vowel variability plot</span></a>
-<a class="sourceLine" id="cb117-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb117-6" data-line-number="6">label.md =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;T33-T45(TC-N)&quot;</span>,<span class="st">&quot;T33-T21(TC-N)&quot;</span>,</a>
-<a class="sourceLine" id="cb117-7" data-line-number="7">             <span class="st">&quot;T241-T21(CG-N)&quot;</span>,<span class="st">&quot;T315-T45(UC-P)&quot;</span>,</a>
-<a class="sourceLine" id="cb117-8" data-line-number="8">             <span class="st">&quot;T33-T241(TC-N/P)&quot;</span>)</a>
-<a class="sourceLine" id="cb117-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb117-10" data-line-number="10"><span class="kw">names</span>(label.md) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;T33-T45&quot;</span>,<span class="st">&quot;T33-T21&quot;</span>,<span class="st">&quot;T241-T21&quot;</span>,</a>
-<a class="sourceLine" id="cb117-11" data-line-number="11">                     <span class="st">&quot;T315-T45&quot;</span>,<span class="st">&quot;T33-T241&quot;</span>)</a>
-<a class="sourceLine" id="cb117-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb117-13" data-line-number="13"><span class="co"># 计算不同实验条件下每个声调对立的感知表现平均值</span></a>
-<a class="sourceLine" id="cb117-14" data-line-number="14">md.dis.df =<span class="st"> </span>md.dis.all<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb117-15" data-line-number="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">speaker =</span> <span class="kw">case_when</span>(speaker <span class="op">==</span><span class="st"> &quot;Constant&quot;</span> <span class="op">~</span><span class="st"> &quot;单个说话人&quot;</span>, </a>
-<a class="sourceLine" id="cb117-16" data-line-number="16">                               speaker<span class="op">==</span><span class="st"> &quot;Variable&quot;</span> <span class="op">~</span><span class="st"> &quot;两个说话人&quot;</span>),</a>
-<a class="sourceLine" id="cb117-17" data-line-number="17">         <span class="dt">speaker =</span> <span class="kw">fct_relevel</span>(speaker, <span class="st">&quot;单个说话人&quot;</span>, <span class="st">&quot;两个说话人&quot;</span>))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb117-18" data-line-number="18"><span class="st">  </span><span class="kw">groupwiseMean</span>(dprime2 <span class="op">~</span><span class="st"> </span>speaker<span class="op">+</span>vowel <span class="op">+</span><span class="st"> </span>Tone_contrast,</a>
-<a class="sourceLine" id="cb117-19" data-line-number="19">                          <span class="dt">data =</span> .,</a>
-<a class="sourceLine" id="cb117-20" data-line-number="20">                          <span class="dt">conf =</span> <span class="fl">0.95</span>,</a>
-<a class="sourceLine" id="cb117-21" data-line-number="21">                          <span class="dt">digits =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb117-22" data-line-number="22"><span class="co"># 画柱状图</span></a>
-<a class="sourceLine" id="cb117-23" data-line-number="23">md.dis.df<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb117-24" data-line-number="24"><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(speaker, Mean, <span class="dt">fill =</span> vowel))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-25" data-line-number="25"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,</a>
-<a class="sourceLine" id="cb117-26" data-line-number="26">           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-27" data-line-number="27"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Trad.lower,</a>
-<a class="sourceLine" id="cb117-28" data-line-number="28">                    <span class="dt">ymax =</span> Trad.upper),</a>
-<a class="sourceLine" id="cb117-29" data-line-number="29">                <span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-30" data-line-number="30"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Tone_contrast, <span class="dt">ncol  =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb117-31" data-line-number="31">              <span class="dt">strip.position =</span> <span class="st">&quot;bottom&quot;</span>, </a>
-<a class="sourceLine" id="cb117-32" data-line-number="32">              <span class="dt">labeller =</span> <span class="kw">labeller</span>( <span class="dt">Tone_contrast =</span> label.md))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-33" data-line-number="33"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;grey75&quot;</span>, <span class="st">&quot;white&quot;</span>),</a>
-<a class="sourceLine" id="cb117-34" data-line-number="34">                    <span class="dt">name=</span><span class="st">&quot;元音变异性&quot;</span>,</a>
-<a class="sourceLine" id="cb117-35" data-line-number="35">                    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;单个元音&quot;</span>,</a>
-<a class="sourceLine" id="cb117-36" data-line-number="36">                          <span class="st">&quot;两个元音&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-37" data-line-number="37"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;感知准确性&quot;</span>,</a>
-<a class="sourceLine" id="cb117-38" data-line-number="38">       <span class="dt">x =</span> <span class="st">&quot;说话人变异&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-39" data-line-number="39"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-40" data-line-number="40"><span class="st">  </span><span class="co">#设置xy轴标注的字体大小</span></a>
-<a class="sourceLine" id="cb117-41" data-line-number="41"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb117-42" data-line-number="42">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb117-43" data-line-number="43">        <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>(), </a>
-<a class="sourceLine" id="cb117-44" data-line-number="44">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb117-45" data-line-number="45">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-46" data-line-number="46"><span class="st">  </span><span class="co"># 设置图例的位置</span></a>
-<a class="sourceLine" id="cb117-47" data-line-number="47"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.justification=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb117-48" data-line-number="48">        <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb117-49" data-line-number="49">        <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>),</a>
-<a class="sourceLine" id="cb117-50" data-line-number="50">        <span class="dt">legend.title  =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-51" data-line-number="51"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.key.size =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb117-52" data-line-number="52"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw">library</span>(showtext)</a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="kw">showtext_auto</span>()</a>
+<a class="sourceLine" id="cb115-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb115-4" data-line-number="4"><span class="co"># Overall effect of taker and vowel variability plot</span></a>
+<a class="sourceLine" id="cb115-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb115-6" data-line-number="6">label.md =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;T33-T45(TC-N)&quot;</span>,<span class="st">&quot;T33-T21(TC-N)&quot;</span>,</a>
+<a class="sourceLine" id="cb115-7" data-line-number="7">             <span class="st">&quot;T241-T21(CG-N)&quot;</span>,<span class="st">&quot;T315-T45(UC-P)&quot;</span>,</a>
+<a class="sourceLine" id="cb115-8" data-line-number="8">             <span class="st">&quot;T33-T241(TC-N/P)&quot;</span>)</a>
+<a class="sourceLine" id="cb115-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb115-10" data-line-number="10"><span class="kw">names</span>(label.md) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;T33-T45&quot;</span>,<span class="st">&quot;T33-T21&quot;</span>,<span class="st">&quot;T241-T21&quot;</span>,</a>
+<a class="sourceLine" id="cb115-11" data-line-number="11">                     <span class="st">&quot;T315-T45&quot;</span>,<span class="st">&quot;T33-T241&quot;</span>)</a>
+<a class="sourceLine" id="cb115-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb115-13" data-line-number="13"><span class="co"># 计算不同实验条件下每个声调对立的感知表现平均值</span></a>
+<a class="sourceLine" id="cb115-14" data-line-number="14">md.dis.df =<span class="st"> </span>md.dis.all<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-15" data-line-number="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">speaker =</span> <span class="kw">case_when</span>(speaker <span class="op">==</span><span class="st"> &quot;Constant&quot;</span> <span class="op">~</span><span class="st"> &quot;单个说话人&quot;</span>, </a>
+<a class="sourceLine" id="cb115-16" data-line-number="16">                               speaker<span class="op">==</span><span class="st"> &quot;Variable&quot;</span> <span class="op">~</span><span class="st"> &quot;两个说话人&quot;</span>),</a>
+<a class="sourceLine" id="cb115-17" data-line-number="17">         <span class="dt">speaker =</span> <span class="kw">fct_relevel</span>(speaker, <span class="st">&quot;单个说话人&quot;</span>, <span class="st">&quot;两个说话人&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-18" data-line-number="18"><span class="st">  </span><span class="kw">groupwiseMean</span>(dprime2 <span class="op">~</span><span class="st"> </span>speaker<span class="op">+</span>vowel <span class="op">+</span><span class="st"> </span>Tone_contrast,</a>
+<a class="sourceLine" id="cb115-19" data-line-number="19">                          <span class="dt">data =</span> .,</a>
+<a class="sourceLine" id="cb115-20" data-line-number="20">                          <span class="dt">conf =</span> <span class="fl">0.95</span>,</a>
+<a class="sourceLine" id="cb115-21" data-line-number="21">                          <span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb115-22" data-line-number="22"><span class="co"># 画柱状图</span></a>
+<a class="sourceLine" id="cb115-23" data-line-number="23">md.dis.df<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-24" data-line-number="24"><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(speaker, Mean, <span class="dt">fill =</span> vowel))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-25" data-line-number="25"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,</a>
+<a class="sourceLine" id="cb115-26" data-line-number="26">           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-27" data-line-number="27"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Trad.lower,</a>
+<a class="sourceLine" id="cb115-28" data-line-number="28">                    <span class="dt">ymax =</span> Trad.upper),</a>
+<a class="sourceLine" id="cb115-29" data-line-number="29">                <span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-30" data-line-number="30"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Tone_contrast, <span class="dt">ncol  =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb115-31" data-line-number="31">              <span class="dt">strip.position =</span> <span class="st">&quot;bottom&quot;</span>, </a>
+<a class="sourceLine" id="cb115-32" data-line-number="32">              <span class="dt">labeller =</span> <span class="kw">labeller</span>( <span class="dt">Tone_contrast =</span> label.md))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-33" data-line-number="33"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;grey75&quot;</span>, <span class="st">&quot;white&quot;</span>),</a>
+<a class="sourceLine" id="cb115-34" data-line-number="34">                    <span class="dt">name=</span><span class="st">&quot;元音变异性&quot;</span>,</a>
+<a class="sourceLine" id="cb115-35" data-line-number="35">                    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;单个元音&quot;</span>,</a>
+<a class="sourceLine" id="cb115-36" data-line-number="36">                          <span class="st">&quot;两个元音&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-37" data-line-number="37"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;感知准确性&quot;</span>,</a>
+<a class="sourceLine" id="cb115-38" data-line-number="38">       <span class="dt">x =</span> <span class="st">&quot;说话人变异&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-39" data-line-number="39"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-40" data-line-number="40"><span class="st">  </span><span class="co">#设置xy轴标注的字体大小</span></a>
+<a class="sourceLine" id="cb115-41" data-line-number="41"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb115-42" data-line-number="42">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb115-43" data-line-number="43">        <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>(), </a>
+<a class="sourceLine" id="cb115-44" data-line-number="44">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb115-45" data-line-number="45">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-46" data-line-number="46"><span class="st">  </span><span class="co"># 设置图例的位置</span></a>
+<a class="sourceLine" id="cb115-47" data-line-number="47"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.justification=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb115-48" data-line-number="48">        <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb115-49" data-line-number="49">        <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>),</a>
+<a class="sourceLine" id="cb115-50" data-line-number="50">        <span class="dt">legend.title  =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-51" data-line-number="51"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.key.size =</span> <span class="kw">unit</span>(<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb115-52" data-line-number="52"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
 </div>
 <div id="统计建模-1" class="section level2 hasAnchor">
 <h2><span class="header-section-number">10.5</span> 统计建模<a href="第十章-语言实验项目案例.html#统计建模-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>  我们使用LMER模型（通过lme4，Bates, Mächler, Bolker, &amp; Walker, 2015）拟合数据，以d’为因变量，记忆负荷（低和高）、说话人和元音变异性（恒定与可变）以及音调对比（T241-T21, T33-T21, T315-T45, T33-T241, T33-T45）为固定因素，参与者为随机因素，包括受试者内固定因素的随机截距和斜率，即说话人和元音变异性条件，以使模型在数据中最大程度地具有普遍性（如Barr, Levy, Scheepers, &amp; Tily, 2013所建议的）。</p>
 <p>  对于LMER模型中固定因素显著性的估计和相关p值的计算，有几种不同的方法（Luke, 2017）。我们使用了Kenward-Roger自由度近似法（Halekoh &amp; Hojsgaard, 2014）和R中car包的Anova函数。在此，我们报告多级因素或交互作用的主要效应，而不是使用t检验与基线水平进行比较。因此，报告的主要/交互作用效应是所有其他效应水平的平均值，可以直接用于测试我们的预测。</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb118-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb118-3" data-line-number="3"><span class="co">## 为了进一步验证假设，我们对数据使用混合模型</span></a>
-<a class="sourceLine" id="cb118-4" data-line-number="4">md.dis.mdl =<span class="st"> </span><span class="kw">lmer</span>(dprime2 <span class="op">~</span><span class="st"> </span>ISI <span class="op">*</span><span class="st"> </span>speaker <span class="op">*</span><span class="st"> </span>vowel<span class="op">*</span><span class="st"> </span>Tone_contrast <span class="op">+</span></a>
-<a class="sourceLine" id="cb118-5" data-line-number="5"><span class="st">                      </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>speaker<span class="op">|</span>Subject)<span class="op">+</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>vowel<span class="op">|</span>Subject), </a>
-<a class="sourceLine" id="cb118-6" data-line-number="6">                    <span class="dt">data =</span> md.dis.all)</a></code></pre></div>
-<pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="co"># 模型结果</span></a>
-<a class="sourceLine" id="cb120-2" data-line-number="2">md.mdl.smry =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">coef</span>(<span class="kw">summary</span>(md.dis.mdl)))</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb120-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb120-5" data-line-number="5"><span class="co"># 计算不同效应的P值</span></a>
-<a class="sourceLine" id="cb120-6" data-line-number="6">md.dis.mdl.tbl =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">Anova</span>(md.dis.mdl, <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>))</a>
-<a class="sourceLine" id="cb120-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb120-8" data-line-number="8">md.dis.mdl.tbl</a></code></pre></div>
-<pre><code>##                                            F Df Df.res
-## ISI                               0.08144421  1     30
-## speaker                          41.07944654  1     30
-## vowel                            57.40271150  1     30
-## Tone_contrast                   127.22783834  4    510
-## ISI:speaker                       0.04256406  1     30
-## ISI:vowel                         0.02175984  1     30
-## speaker:vowel                    20.06062170  1    510
-## ISI:Tone_contrast                 0.31491830  4    510
-## speaker:Tone_contrast             1.54945070  4    510
-## vowel:Tone_contrast               1.02610302  4    510
-## ISI:speaker:vowel                 0.40565309  1    510
-## ISI:speaker:Tone_contrast         0.04896495  4    510
-## ISI:vowel:Tone_contrast           0.90573265  4    510
-## speaker:vowel:Tone_contrast       0.33158765  4    510
-## ISI:speaker:vowel:Tone_contrast   0.11884579  4    510
-##                                                                                                              Pr..F.
-## ISI                             0.777310856349093248773840514331823214888572692871093750000000000000000000000000000
-## speaker                         0.000000446732319194840525892266662119634013095037516904994845390319824218750000000
-## vowel                           0.000000018974107701813392937758355970799539758075979989371262490749359130859375000
-## Tone_contrast                   0.000000000000000000000000000000000000000000000000000000000000000000000000002911086
-## ISI:speaker                     0.837942106026152933040407333464827388525009155273437500000000000000000000000000000
-## ISI:vowel                       0.883714736199696204721476533450186252593994140625000000000000000000000000000000000
-## speaker:vowel                   0.000009266734389606409372165847504465574502319213934242725372314453125000000000000
-## ISI:Tone_contrast               0.868026640492182921526875816198298707604408264160156250000000000000000000000000000
-## speaker:Tone_contrast           0.186630853689322862010158132761716842651367187500000000000000000000000000000000000
-## vowel:Tone_contrast             0.393171291943390510681410887627862393856048583984375000000000000000000000000000000
-## ISI:speaker:vowel               0.524469889350749340906077122781425714492797851562500000000000000000000000000000000
-## ISI:speaker:Tone_contrast       0.995491349899420452373988155159167945384979248046875000000000000000000000000000000
-## ISI:vowel:Tone_contrast         0.460284356416936102363024474470876157283782958984375000000000000000000000000000000
-## speaker:vowel:Tone_contrast     0.856740099033116431215262309706304222345352172851562500000000000000000000000000000
-## ISI:speaker:vowel:Tone_contrast 0.975786261551118694335116288129938766360282897949218750000000000000000000000000000</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="co"># 对泰语声调对进行事后检验</span></a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">md.dis.mdl.tone =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lsmeans</span>(md.dis.mdl, </a>
-<a class="sourceLine" id="cb122-3" data-line-number="3">                              pairwise <span class="op">~</span><span class="st"> </span>Tone_contrast)<span class="op">$</span>contrasts)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb122-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">where</span>(is.numeric), <span class="op">~</span><span class="st"> </span><span class="kw">round</span>(.x, <span class="dt">digits =</span> <span class="dv">2</span>)))</a></code></pre></div>
-<pre><code>## NOTE: Results may be misleading due to involvement in interactions</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">md.dis.mdl.tone </a></code></pre></div>
-<pre><code>##                   contrast estimate   SE  df t.ratio p.value
-## 1    (T33-T45) - (T33-T21)     0.92 0.12 510    7.95    0.00
-## 2   (T33-T45) - (T241-T21)     1.28 0.12 510   11.12    0.00
-## 3   (T33-T45) - (T315-T45)     2.08 0.12 510   18.00    0.00
-## 4   (T33-T45) - (T33-T241)     2.27 0.12 510   19.71    0.00
-## 5   (T33-T21) - (T241-T21)     0.37 0.12 510    3.17    0.01
-## 6   (T33-T21) - (T315-T45)     1.16 0.12 510   10.05    0.00
-## 7   (T33-T21) - (T33-T241)     1.36 0.12 510   11.76    0.00
-## 8  (T241-T21) - (T315-T45)     0.79 0.12 510    6.88    0.00
-## 9  (T241-T21) - (T33-T241)     0.99 0.12 510    8.59    0.00
-## 10 (T315-T45) - (T33-T241)     0.20 0.12 510    1.71    0.43</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb116-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="co">## 为了进一步验证假设，我们对数据使用混合模型</span></a>
+<a class="sourceLine" id="cb116-4" data-line-number="4">md.dis.mdl =<span class="st"> </span><span class="kw">lmer</span>(dprime2 <span class="op">~</span><span class="st"> </span>ISI <span class="op">*</span><span class="st"> </span>speaker <span class="op">*</span><span class="st"> </span>vowel<span class="op">*</span><span class="st"> </span>Tone_contrast <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-5" data-line-number="5"><span class="st">                      </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>speaker<span class="op">|</span>Subject)<span class="op">+</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>vowel<span class="op">|</span>Subject), </a>
+<a class="sourceLine" id="cb116-6" data-line-number="6">                    <span class="dt">data =</span> md.dis.all)</a>
+<a class="sourceLine" id="cb116-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb116-8" data-line-number="8"><span class="co"># 模型结果</span></a>
+<a class="sourceLine" id="cb116-9" data-line-number="9">md.mdl.smry =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">coef</span>(<span class="kw">summary</span>(md.dis.mdl)))</a>
+<a class="sourceLine" id="cb116-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb116-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb116-12" data-line-number="12"><span class="co"># 计算不同效应的P值</span></a>
+<a class="sourceLine" id="cb116-13" data-line-number="13">md.dis.mdl.tbl =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">Anova</span>(md.dis.mdl, <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>))</a>
+<a class="sourceLine" id="cb116-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb116-15" data-line-number="15">md.dis.mdl.tbl</a>
+<a class="sourceLine" id="cb116-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb116-17" data-line-number="17"><span class="co"># 对泰语声调对进行事后检验</span></a>
+<a class="sourceLine" id="cb116-18" data-line-number="18">md.dis.mdl.tone =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lsmeans</span>(md.dis.mdl, </a>
+<a class="sourceLine" id="cb116-19" data-line-number="19">                              pairwise <span class="op">~</span><span class="st"> </span>Tone_contrast)<span class="op">$</span>contrasts)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb116-20" data-line-number="20"><span class="st">  </span><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">where</span>(is.numeric), <span class="op">~</span><span class="st"> </span><span class="kw">round</span>(.x, <span class="dt">digits =</span> <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb116-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb116-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb116-23" data-line-number="23">md.dis.mdl.tone </a></code></pre></div>
 <p>预测
   低记忆负荷，感知表现由好到差：{T33-T45 = T33-T21 = T33-T241} &gt; {T241-T21 } &gt; {T315-T45}.
   高记忆负荷，感知表现由好到差: {T33-T45 = T33-T21} &gt; {T241-T21} &gt; {T33-T241} = {T315-T45}</p>
 <p>  结果： T33-T45 (M = 4.33, 95 % CIs [4.15, 4.52]) &gt; T33-T21 (M = 3.42, 95 % CIs [3.21, 3.63]) &gt; T241-T21 (M = 3.05, 95 % CIs [2.85, 3.26]) &gt; T33-241 (M = 2.06, 95 % CIs [1.87, 2.25]) = T315-T45 (M = 2.26, 95 % CIs [2.06, 2.45]).</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co"># 对刺激说话人变异和元音环境两个变量的交互作用进行进行事后检验</span></a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">md.dis.mdl.vwl.tlk =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lsmeans</span>(md.dis.mdl, </a>
-<a class="sourceLine" id="cb126-3" data-line-number="3">                                pairwise <span class="op">~</span><span class="st"> </span>speaker<span class="op">:</span>vowel)<span class="op">$</span>contrasts)</a></code></pre></div>
-<pre><code>## NOTE: Results may be misleading due to involvement in interactions</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">md.dis.mdl.vwl.tlk</a></code></pre></div>
-<pre><code>##                                contrast  estimate        SE        df   t.ratio               p.value
-## 1 Constant Constant - Variable Constant 0.7949375 0.1032501 113.33333 7.6991437 0.0000000000334174910
-## 2 Constant Constant - Constant Variable 0.8951875 0.1046631 108.10159 8.5530376 0.0000000000006066259
-## 3 Constant Constant - Variable Variable 1.0361250 0.1046631  59.95688 9.8996200 0.0000000000200567341
-## 4 Variable Constant - Constant Variable 0.1002500 0.1046631  59.95688 0.9578351 0.7736955322903441568
-## 5 Variable Constant - Variable Variable 0.2411875 0.1046631 108.10159 2.3044175 0.1033637878297640755
-## 6 Constant Variable - Variable Variable 0.1409375 0.1032501 113.33333 1.3650105 0.5238382126248282145</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="co"># Mandarin talker vowel interaction</span></a>
-<a class="sourceLine" id="cb130-2" data-line-number="2">md.tlk.vwl =<span class="st">  </span><span class="kw">groupwiseMean</span>(dprime2 <span class="op">~</span><span class="st"> </span>speaker <span class="op">+</span><span class="st"> </span>vowel,</a>
-<a class="sourceLine" id="cb130-3" data-line-number="3">              <span class="dt">data =</span> md.dis.all,</a>
-<a class="sourceLine" id="cb130-4" data-line-number="4">              <span class="dt">conf =</span> <span class="fl">0.95</span>,</a>
-<a class="sourceLine" id="cb130-5" data-line-number="5">              <span class="dt">digits =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb130-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb130-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb130-8" data-line-number="8"> md.tlk.vwl<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>speaker, <span class="dt">y=</span> Mean, <span class="dt">fill=</span>vowel)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb130-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,</a>
-<a class="sourceLine" id="cb130-11" data-line-number="11">           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Trad.lower,</a>
-<a class="sourceLine" id="cb130-13" data-line-number="13">                    <span class="dt">ymax =</span> Trad.upper),</a>
-<a class="sourceLine" id="cb130-14" data-line-number="14">                <span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>,<span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-15" data-line-number="15"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;d&#39; values&quot;</span>,</a>
-<a class="sourceLine" id="cb130-16" data-line-number="16">       <span class="dt">x =</span> <span class="st">&quot;Talker variability&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-17" data-line-number="17"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-18" data-line-number="18"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb130-20" data-line-number="20">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb130-21" data-line-number="21">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb130-22" data-line-number="22">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-23" data-line-number="23"><span class="st">  </span><span class="co">#change lengent style</span></a>
-<a class="sourceLine" id="cb130-24" data-line-number="24"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Constant&quot;</span>, </a>
-<a class="sourceLine" id="cb130-25" data-line-number="25">                            <span class="st">&quot;Variable&quot;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-26" data-line-number="26"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;grey75&quot;</span>),</a>
-<a class="sourceLine" id="cb130-27" data-line-number="27">                    <span class="dt">name=</span><span class="st">&quot;Vowel variability&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb130-28" data-line-number="28"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</a>
-<a class="sourceLine" id="cb130-29" data-line-number="29">        <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="co"># 对刺激说话人变异和元音环境两个变量的交互作用进行进行事后检验</span></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2">md.dis.mdl.vwl.tlk =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lsmeans</span>(md.dis.mdl, </a>
+<a class="sourceLine" id="cb117-3" data-line-number="3">                                pairwise <span class="op">~</span><span class="st"> </span>speaker<span class="op">:</span>vowel)<span class="op">$</span>contrasts)</a>
+<a class="sourceLine" id="cb117-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb117-5" data-line-number="5">md.dis.mdl.vwl.tlk</a>
+<a class="sourceLine" id="cb117-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb117-7" data-line-number="7"><span class="co"># Mandarin talker vowel interaction</span></a>
+<a class="sourceLine" id="cb117-8" data-line-number="8">md.tlk.vwl =<span class="st">  </span><span class="kw">groupwiseMean</span>(dprime2 <span class="op">~</span><span class="st"> </span>speaker <span class="op">+</span><span class="st"> </span>vowel,</a>
+<a class="sourceLine" id="cb117-9" data-line-number="9">              <span class="dt">data =</span> md.dis.all,</a>
+<a class="sourceLine" id="cb117-10" data-line-number="10">              <span class="dt">conf =</span> <span class="fl">0.95</span>,</a>
+<a class="sourceLine" id="cb117-11" data-line-number="11">              <span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb117-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb117-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb117-14" data-line-number="14"> md.tlk.vwl<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb117-15" data-line-number="15"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>speaker, <span class="dt">y=</span> Mean, <span class="dt">fill=</span>vowel)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb117-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,</a>
+<a class="sourceLine" id="cb117-17" data-line-number="17">           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-18" data-line-number="18"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Trad.lower,</a>
+<a class="sourceLine" id="cb117-19" data-line-number="19">                    <span class="dt">ymax =</span> Trad.upper),</a>
+<a class="sourceLine" id="cb117-20" data-line-number="20">                <span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>,<span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-21" data-line-number="21"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;d&#39; values&quot;</span>,</a>
+<a class="sourceLine" id="cb117-22" data-line-number="22">       <span class="dt">x =</span> <span class="st">&quot;Talker variability&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-23" data-line-number="23"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-24" data-line-number="24"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-25" data-line-number="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb117-26" data-line-number="26">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb117-27" data-line-number="27">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb117-28" data-line-number="28">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>,<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-29" data-line-number="29"><span class="st">  </span><span class="co">#change lengent style</span></a>
+<a class="sourceLine" id="cb117-30" data-line-number="30"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Constant&quot;</span>, </a>
+<a class="sourceLine" id="cb117-31" data-line-number="31">                            <span class="st">&quot;Variable&quot;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-32" data-line-number="32"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;grey75&quot;</span>),</a>
+<a class="sourceLine" id="cb117-33" data-line-number="33">                    <span class="dt">name=</span><span class="st">&quot;Vowel variability&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb117-34" data-line-number="34"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</a>
+<a class="sourceLine" id="cb117-35" data-line-number="35">        <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
 <p>  除了主要效应外，我们还进行了多重比较，并使用Tukey调整来解析说话人变异性和元音变异性的交互作用。在恒定说话人的条件下，恒定元音条件（M = 3.71, 95% CI [3.51, 3.90]）的辨别效果优于可变元音条件（M = 2.81, 95% CI [2.60, 3.03]），b = 0.90, SE = 0.11, t(108) = 8.55, p &lt; 0.001。</p>
 <p>  同样地，在恒定元音的条件下，恒定说话人条件（M = 3.71）的辨别效果优于可变说话人条件（M = 2.91, 95% CI [2.70, 3.12]），b = 0.80, SE = 0.10, t(113) = 7.70, p &lt; 0.001。此外，恒定说话人 + 元音条件（M = 3.71）的得分显著高于可变说话人 + 元音条件（M = 2.67, 95% CI [2.46, 2.88]），b = 1.04, SE = 0.11, t(60) = 9.90, p &lt; 0.001。</p>
 </div>

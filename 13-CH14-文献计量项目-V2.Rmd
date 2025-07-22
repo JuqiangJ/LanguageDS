@@ -46,7 +46,7 @@ speech.df = select(speech.data, "AU"  ,   "AF"   ,    "CR"   ,    "AB" )%>%
 
 
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE,results="hide", cache = TRUE }
+```{r eval=F, echo=T}
 
 result.bib = biblioAnalysis(speech.data, sep = ";")
 
@@ -58,7 +58,7 @@ bib.dscrp = summary(result.bib, k= 20)
 
 ### 语音感知研究概况(2000-2020).
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 
 knitr::kable(bib.dscrp$MainInformationDF)
@@ -67,7 +67,7 @@ knitr::kable(bib.dscrp$MainInformationDF)
 
 ### 语音感知研究发表最多的杂志
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 # most relevant sources (journals)
 knitr::kable( head(bib.dscrp$MostRelSources, n=20))
 
@@ -84,7 +84,7 @@ knitr::kable( head(bib.dscrp$MostRelSources, n=20))
 
 ### 语音感知研究产出量 (2000-2020).
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 pd.year = data.frame(bib.dscrp$AnnualProduction)
 
@@ -121,7 +121,7 @@ pd.year.fig = ggplot(data=pd.year,
 SCP = 单一国家发表; MCP = 多个国家合作发表 
 
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 pd.ctry = bib.dscrp$MostProdCountries
 
@@ -147,7 +147,7 @@ knitr::kable(pd.ctry)
 
 ### 发表量最大的10个国家发表趋势 
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, cache = TRUE }
+```{r eval=F, echo=T }
 
 # a list of top ten countries
 
@@ -195,7 +195,7 @@ pd.year.ctry.fig = ggplot(data=pd.year.ctry,
 
 ### 语音感知领域发表量最高20位学者(2000-2020). 
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, cache = TRUE }
+```{r eval=F, echo=T }
 
 au.pd =gsub(","," ",names(result.bib$Authors)[1:20])
 
@@ -221,7 +221,7 @@ knitr::kable(h.au)
 
 TC = 所有发表. 圆圈大小代表发表数量；颜色深度表示引用数数量。
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 topAU10 <- authorProdOverTime(speech.data, k = 20)
 
@@ -240,7 +240,7 @@ topAU10 <- authorProdOverTime(speech.data, k = 20)
 
 语音感知研究中最活跃的20所大学/研究机构及其合作网络。网络中的每个节点代表一个不同的大学/研究机构，节点的直径与该机构与其他机构的合作强度成正比。节点之间的连线表示这些大学或研究机构之间的合作路径。
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, results="hide", cache = TRUE }
+```{r eval=F, echo=T }
 
 uni.coc <- biblioNetwork(speech.data, 
                          analysis = "collaboration",  
@@ -268,7 +268,7 @@ uni.coc.plot = networkPlot(uni.coc,
 
 ```
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, cache = TRUE }
+```{r eval=F, echo=T }
 
 plot(uni.coc.plot$graph)
 
@@ -280,7 +280,7 @@ plot(uni.coc.plot$graph)
 
 &emsp;&emsp;网络中的每个节点代表一个不同的国家，节点的直径与该国家与其他国家合作的强度成正比。节点之间的连线表示国家之间的合作路径。
 
-```{r message = FALSE, warning=FALSE, echo = FALSE, results="hide"}
+```{r eval=F, echo=T}
 
 # country.coc = metaTagExtraction(speech.data, Field = "AU_CO", sep = ";")
 # 
@@ -306,7 +306,7 @@ plot(uni.coc.plot$graph)
 
 ```
 
-```{r message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 # plot(country.collab.plot$graph)
 
@@ -316,7 +316,7 @@ plot(uni.coc.plot$graph)
 
 最高被引研究
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, cache = TRUE }
+```{r eval=F, echo=T}
 
 ct.artcl = citations(speech.data, 
                       field = "article", 
@@ -343,7 +343,7 @@ knitr::kable(hot.papers)
 
 语音感知高被引作者
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, cache = TRUE }
+```{r eval=F, echo=T }
 ct.athr = citations(speech.data, 
                     field = "author", 
                     sep = ";")
@@ -370,7 +370,7 @@ knitr::kable(hot.authors)
 
 语音感知研究的共引网络。节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其共引度成正比。
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, results="hide", cache = TRUE }
+```{r eval=F, echo=T }
 
 # article co-citation network
 co.cite <- biblioNetwork(speech.data, 
@@ -393,7 +393,7 @@ cocitation = networkPlot(co.cite, n = 30,
 
 ```
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 plot(cocitation$graph)
 knitr::kable( cocitation$cluster_res)
@@ -408,7 +408,7 @@ knitr::kable( cocitation$cluster_res)
 
 语音感知研究的文献耦合网络，其中节点代表研究文章。每个节点的标签颜色与其所在的集群相同，节点的大小与其文献耦合度成正比。
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, results="hide", cache = TRUE }
+```{r eval=F, echo=T }
 
 # article coupling network
 article.cpl = biblioNetwork(speech.data, 
@@ -435,7 +435,7 @@ coupling.net = networkPlot(article.cpl, n = 30,
 
 ```
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE}
+```{r eval=F, echo=T}
 
 plot(coupling.net$graph)
 
@@ -452,7 +452,7 @@ knitr::kable(coupling.net$cluster_res)
 
 前20个作者定义关键词、机器生成关键词、基于标题和摘要的两词短语（Freq = 频率）*注意：在论文表格中，一些术语进行了合并处理，例如在标题两词短语列中，“Cochlear implant”（人工耳蜗）和“cochlear implantation”（人工耳蜗植入）被合并。*
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, cache = TRUE }
+```{r eval=F, echo=T }
 library(tidytext)
 
 stop.words = c("elsevier","rights reserved","NA NA",
@@ -575,7 +575,7 @@ knitr::kable(term.freq)
 
 作者自定义词网络
 
-```{r eval= FALSE, message = FALSE, warning=FALSE, echo = FALSE, results="hide", cache = TRUE }
+```{r eval=F, echo=T }
 
 
 keyword.au <- biblioNetwork(speech.data, 

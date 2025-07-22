@@ -13,7 +13,7 @@ library(cowplot)
 
 ## 训练普通话声调模型
 
-```{r}
+```{r eval=F, echo=T}
 
 # import data
 md_discrete = read.csv("data/ch13/md_discrete.csv")
@@ -48,7 +48,7 @@ svm_md$tot.accuracy
 # svm_contour$tot.accuracy
 ```
 
-```{r }
+```{r eval=F, echo=T}
 # producing confusion matrix
 prediction_md <- predict(svm_md, dataset_md)
 
@@ -100,7 +100,7 @@ md_plot = md_confusion%>%
 ```
 
 ## 训练泰语母语者声调模型
-```{r}
+```{r eval=F, echo=T}
 # import data
 thai_discrete = read.csv("data/ch13/thai_discrete.csv")
 
@@ -126,7 +126,7 @@ svm_thai$tot.accuracy
 
 检测泰语母语者声调模型的正确率。
 
-```{r}
+```{r eval=F, echo=T}
 # confusion matrix
 prediction <- predict(svm_thai, dataset_thai)
 
@@ -181,7 +181,7 @@ thai_plot
 
 ## 模拟普通话听者感知泰语声调
 
-```{r}
+```{r eval=F, echo=T}
 # mandarin listeners percieve Thai tones
 prediction_md_thai <- predict(svm_md, dataset_thai)
  
@@ -257,7 +257,7 @@ md.svm.assim.heat
 ```
 
 
-```{r}
+```{r eval=F, echo=T}
 final.cm = read.csv(file = "data/ch13/final.cm.csv")
 
 final.cm$stimuli = as.factor(final.cm$stimuli)
@@ -302,7 +302,7 @@ md_compare
 
 ## 模拟泰语母语听者感知普通话声调
 
-```{r}
+```{r eval=F, echo=T}
 # thai listeners percieve mandarin tones
 prediction_thai_md <- predict(svm_thai, dataset_md)
 
