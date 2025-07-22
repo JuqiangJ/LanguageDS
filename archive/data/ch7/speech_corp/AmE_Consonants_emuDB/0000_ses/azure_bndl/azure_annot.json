@@ -1,0 +1,209 @@
+{
+  "name": "azure",
+  "annotates": "azure.wav",
+  "sampleRate": 20000,
+  "levels": [
+    {
+      "name": "token",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 1,
+          "sampleStart": 0,
+          "sampleDur": 1497,
+          "labels": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "sampleStart": 1498,
+          "sampleDur": 11815,
+          "labels": [
+            {
+              "name": "token",
+              "value": "TEXT"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "sampleStart": 13314,
+          "sampleDur": 1381,
+          "labels": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "word",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 4,
+          "sampleStart": 0,
+          "sampleDur": 1497,
+          "labels": [
+            {
+              "name": "word",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "sampleStart": 1498,
+          "sampleDur": 11815,
+          "labels": [
+            {
+              "name": "word",
+              "value": "azure"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "sampleStart": 13314,
+          "sampleDur": 1381,
+          "labels": [
+            {
+              "name": "word",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "segment",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 7,
+          "sampleStart": 0,
+          "sampleDur": 1497,
+          "labels": [
+            {
+              "name": "segment",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "sampleStart": 1498,
+          "sampleDur": 2328,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "\\ae"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "sampleStart": 3827,
+          "sampleDur": 2277,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "\\zh"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "sampleStart": 6105,
+          "sampleDur": 3864,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "u"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "sampleStart": 9970,
+          "sampleDur": 3057,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "\\sw"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "sampleStart": 13028,
+          "sampleDur": 1667,
+          "labels": [
+            {
+              "name": "segment",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "closure",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 13,
+          "sampleStart": 0,
+          "sampleDur": 14695,
+          "labels": [
+            {
+              "name": "closure",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "burst",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 14,
+          "sampleStart": 0,
+          "sampleDur": 14695,
+          "labels": [
+            {
+              "name": "burst",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aspiration",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 15,
+          "sampleStart": 0,
+          "sampleDur": 14695,
+          "labels": [
+            {
+              "name": "aspiration",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": []
+}

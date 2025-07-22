@@ -1,0 +1,1487 @@
+---
+title: "第九章 机器学习建模基础"
+author: Juqiang
+date: Sept 27, 2024
+output: word_document
+---
+
+# 第九章 机器学习建模基础
+
+```{r message=FALSE}
+
+library(tidyverse)
+library(languageR)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-MS")
+library(cluster)
+#library(factoextra)
+library(caTools)
+library(e1071)
+library(flextable)
+library(lattice)
+dir.fig = "~/Nutstore Files/310_Tutorial/LanguageDS-MS/fig/ch9/"
+library(plotly)
+library(ggfortify)
+
+# remove scientific notation
+options(scipen=999)
+
+
+```
+
+## 学习目标
+
+-	了解机器学习建模中数据准备过程
+
+-	掌握监督和非监督学习建模
+
+-	掌握模型优化基本方法
+
+-	掌握模型评估基本方法
+
+## 数据准备
+
+### 数据划分
+
+### 重采样
+
+### 数据平衡
+
+### 特征工程
+
+#### 因变量特征工程
+
+#### 缺失值
+
+#### 特征筛选
+
+#### 自变量特征工程
+
+## 算法类型
+
+### 监督学习
+
+### 非监督学习
+
+#### 降维
+
+#### 聚类
+
+## 模型优化
+
+## 模型评估
+
+## 建模工具
+
+## 课堂任务
+
+### 任务1 非监督学习-降维技术
+
+#### 主成分分析
+
+```{r eval=F, echo=T}
+
+# 数据导入
+metrics_SCA <- read_csv("data/ch9/metrics_SCA_novel.CSV")%>%
+  mutate(author = str_extract(books, "[A-z]{1,8}_"),
+         author = str_remove(author,"_"))%>%
+   mutate(across(where(is.numeric), ~ round(.x, digits = 2)))
+
+# prcomp建模
+sc.pr = prcomp(metrics_SCA[, -c(1:10, 25)], scale = T, center = T)
+sc.pr$x[, 1:3]
+# sc.pr0 = prcomp(metrics_SCA[, -c(1:10, 25)])
+# sc.pr0$x[, 1:3]
+
+# components
+props = round((sc.pr$sdev^2/sum(sc.pr$sdev^2)), 3)
+
+
+```
+
+```{r eval=F, echo=T}
+
+# factor score
+novel.fscore = as.data.frame(sc.pr$x[, 1:3])%>%
+  mutate(bookname = metrics_SCA$books)%>%
+  relocate(bookname)%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+
+write_csv(novel.fscore,
+          file = paste(dir.fig,
+                       paste("novel.fscore",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") )
+# factor loadings
+novel.floadings = as.data.frame(sc.pr$rotation[, 1:3])%>%
+  mutate(features = rownames(sc.pr$rotation))%>%
+  relocate(features)%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+
+write_csv(novel.floadings,
+          file = paste(dir.fig,
+                       paste("novel.floadings",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") )
+```
+
+```{r eval=F, echo=T}
+
+png(paste(dir.fig, paste("ch9_components",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+barplot(props, col = as.numeric(props > 0.05), 
+        xlab = "principal components", 
+        ylab = "proportion of variance explained") 
+abline(h = 0.05)
+dev.off()
+
+png(paste(dir.fig, paste("ch9_pca",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+super.sym = trellis.par.get("superpose.symbol")
+splom(data.frame(sc.pr$x[,1:3]), 
+        groups = metrics_SCA$author, 
+        panel = panel.superpose, 
+        key = list( title = "English novelists", 
+                      text = list(unique(metrics_SCA$author)), 
+                      points = list(pch = super.sym$pch[1:5], 
+                                      col = super.sym$col[1:5])))
+dev.off()
+
+
+# stats包
+png(paste(dir.fig, paste("ch9_pca_biplot_Stats",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+
+biplot(sc.pr, scale = 0)
+
+dev.off()
+
+# ggplot2
+library(ggfortify)
+png(paste(dir.fig, paste("ch9_pca_biplot_ggplot2",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+
+autoplot(sc.pr, data = metrics_SCA, colour = 'author',
+              loadings = TRUE, loadings.colour = 'gray',
+              loadings.label = TRUE, loadings.label.size = 3)
+dev.off()
+
+# factoextra包
+library(factoextra)
+png(paste(dir.fig, paste("ch9_pca_biplot_factoextra",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+
+fviz_pca_biplot(sc.pr,
+                label="var",
+                habillage = metrics_SCA$author)
+
+dev.off()
+
+
+```
+
+
+```{r eval=F, echo=T}
+
+# princomp包
+sc.prin = princomp(metrics_SCA[, -c(1:10, 25)], cor = TRUE)
+names(sc.prin)
+
+### illstrate how to get eigen values 
+
+#Compute the correlation matrix for the dataset
+cor_matrix <- cor(metrics_SCA[, -c(1:10, 25)])
+
+# Perform an eigenvalue decomposition of the correlation matrix
+eigen_decomp <- eigen(cor_matrix)
+
+# Extract the eigenvalues
+eigen_decomp$values
+
+# Extract the eigenvalues and communality
+# eigenvalues 
+sc.prin$sdev^2
+
+# communality 
+apply(sc.prin$loadings^2, 2, sum)
+
+library(psych)
+# Perform Varimax rotation on the factor solution
+rotated <- psych::faRotate(sc.prin$loadings,"varimax")
+
+#rotated.loadings = as.data.frame(rotated$loadings)
+rotated$loadings
+
+```
+
+
+```{r eval=F, echo=T}
+
+# factor score
+novel.princomp.fscore = as.data.frame(sc.prin$scores[, 1:3])%>%
+  mutate(bookname = metrics_SCA$books)%>%
+  relocate(bookname)%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+
+write_csv(novel.princomp.fscore,
+          file = paste(dir.fig,
+                       paste("novel.princomp.fscore",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") )
+  
+# factor loadings
+novel.princomp.floadings = as.data.frame(sc.prin$loadings[, 1:3])%>%
+  mutate(features = rownames(sc.prin$loadings))%>%
+  relocate(features)%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+
+write_csv(novel.princomp.floadings,
+          file = paste(dir.fig,
+                       paste("novel.princomp.floadings",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") )
+
+```
+
+
+
+
+#### 因子分析
+
+```{r eval=F, echo=T}
+# 尝试不同因子个数
+factanal(metrics_SCA[, -c(1:10,25)], 
+                  factors = 3,
+                  scores = "regression")
+
+factanal(metrics_SCA[, -c(1:10,25)], 
+                  factors = 4,
+                  scores = "regression")
+
+factanal(metrics_SCA[, -c(1:10,25)], 
+                  factors = 5,
+                  scores = "regression")
+
+
+# 尝试不同因子旋转方式
+# 默认是正交 varimax
+# 斜交
+factanal(metrics_SCA[, -c(1:10,25)], 
+                  factors = 3,
+           rotation = "promax",
+                  scores = "regression")
+
+# 提取因子分数
+# sc.fac.5=factanal(metrics_SCA[, -c(1:10,25)], 
+#                   factors = 5,
+#                   scores = "regression")
+# 
+# sc.fac.5$scores
+# 
+# loadings(sc.fac.5) 
+# loadings(sc.fac.4) 
+# loadings(sc.fac.3) 
+# 
+# 
+# loadings = loadings(sc.fac) 
+# plot(loadings, type = "n", xlim = c(-0.4, 1)) 
+# text(loadings, rownames(loadings), cex = 0.8)
+
+
+# factor rotation
+# sc.fac.rot = factanal(metrics_SCA[, -c(1:10,25)], 
+#                    factors = 5, rotation = "promax") 
+# 
+# loadings.rot = loadings(sc.fac.rot) 
+# plot(loadings.rot, type = "n", xlim = c(-0.4, 1)) 
+# text(loadings.rot, rownames(loadings)) 
+# abline(h = -0.1, col = "darkgrey")
+
+
+```
+
+```{r eval=F, echo=T, include= F}
+# 
+# # factor score
+# novel.fa.score = as.data.frame(sc.fac$scores)%>%
+#   mutate(bookname = metrics_SCA$books)%>%
+#   relocate(bookname)%>%
+#   mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+# 
+# 
+# write_csv(novel.fa.score,
+#           file = paste(dir.fig,
+#                        paste("novel.fa.score",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") )
+# 
+# # factor loadings
+# novel.fa.loadings = as.data.frame(sc.fac$loadings[, 1:5])%>%
+#   mutate(features = rownames(sc.fac$loadings))%>%
+#   relocate(features)%>%
+#   mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+
+```
+
+### 对应分析
+
+```{r eval=F, echo=T}
+library(stylo)
+
+# 导入文本数据
+style.corpus <- load.corpus(files = "all", 
+                            corpus.dir = "data/ch9/fictions",
+                            encoding = "UTF-8")
+
+
+# 对文本进行分词
+tokenized.corpus <- txt.to.words.ext(style.corpus, 
+                                     preserve.case = TRUE)
+
+# 根据研究目的我们可以设置一个词表去除一些干扰词。比如我们想排除文本中高频专有名词的干扰。
+# proper.noun = c("DEE","Judge","Dee","")
+# delete.stop.words(tokenized.corpus, stop.words = proper.noun)
+
+# 一些作者研究认为代词对于计算文体风格有干扰，比如如果是一个大女主的小说，那么女性代词就会很多。但是这些不能代表作者风格，只能代表作品风格。
+clean.corpus = delete.stop.words(tokenized.corpus,
+                                  stop.words = stylo.pronouns(corpus.lang = "English"))
+
+corpus.char.1 <- txt.to.features(clean.corpus, 
+                                       ngram.size = 1, 
+                                       features = "w")
+
+# 将数据划分成4000个词一份
+sliced.corpus.char.1 <- make.samples(corpus.char.1, 
+                              sampling = "normal.sampling", 
+                              sample.size = 4000)
+# 提取词频特征
+features1 <- make.frequency.list(sliced.corpus.char.1)
+
+# 制作词频特征表
+freqs1 <- make.table.of.frequencies(sliced.corpus.char.1, 
+                                   features = features1)
+
+
+# Culling
+# 通过删选，用户可以指定特征在语料库中的出现比例，以决定其是否被纳入分析。在语料库中未达到指定比例的词语将被忽略。
+culled.freqs1 <- perform.culling(freqs1, culling.level = 80)
+
+wd.df = as.data.frame(culled.freqs1)
+```
+
+
+```{r eval=F, echo=T}
+# correspondence analysis
+detect.ca = corres.fnc(wd.df)
+
+# summary(detect.ca, head = TRUE)
+
+
+meta.novel = data.frame(books = rownames(wd.df))%>%
+      mutate(author = str_extract(books, "[A-z]{1,8}_"),
+         author = str_remove(author,"_"))
+
+#biplot
+plot(detect.ca, 
+     rlabels = meta.novel$author, 
+     rcol = as.numeric(as.factor(meta.novel$author)), 
+     rcex = 0.4, 
+     extreme = 0.2, ccol = "blue")
+
+
+# library(Factoshiny)
+# result <- Factoshiny(wd.df)
+
+```
+
+#### 多维尺度分析
+
+
+```{r eval=F, echo=T}
+wd.df.d = dist(wd.df,                 # create distance matrix
+               method = "euclidean")  
+
+wd.mds = cmdscale(wd.df.d, k = 3)
+
+
+df.mds = data.frame(wd.mds, 
+                 books = rownames(wd.df))%>%
+         mutate(author = str_extract(books, "[A-z]{1,8}_"),
+         author = str_remove(author,"_"))
+a = dist(iris[, 1:4])
+# 可以通过作家对三个维度做对比
+
+```
+
+### 任务2 非监督学习-聚类算法
+
+#### 层次聚类
+```{r eval=F, echo=T}
+
+
+#### 检测数据是否可以聚类
+clusttendency <- get_clust_tendency(wd.df,    
+                   # define number of points from sample space
+                                    n = 9,      
+                   gradient = list(
+                     # define color for low values
+                     low = "steelblue",
+                     # define color for high values
+                     high = "white")) 
+
+clusttendency[1]
+```
+
+
+```{r eval=F, echo=T}
+#### 数据预处理
+wd.dfs <- scale(wd.df)
+# 计算距离
+clustd <- dist(wd.dfs, method = "euclidean") 
+# 创建聚类
+cd <- hclust(clustd, method="ward.D2") 
+# 距离图           
+plot(cd, hang = -1)    
+
+### 确定最佳的聚类数量
+optclus <- sapply(2:8, function(x) summary(silhouette(cutree(cd, k = x), clustd))$avg.width)
+optclus # inspect results
+# 最佳的聚类数量是具有最高轮廓系数（silhouette width）的聚类方案。我们将树状图剪切为最佳的聚类数量，并绘制结果。
+optnclust <- which(optclus == max(optclus)) # determine optimal number of clusters
+groups <- cutree(cd, k=optnclust) # cut tree into optimal number of clusters
+
+
+plot(cd, hang = -1, cex = .75)             # plot result as dendrogram
+rect.hclust(cd, k = optnclust, border="red") # draw red borders around clusters
+
+```
+
+
+
+```{r eval=F, echo=T}
+
+png(paste(dir.fig, paste("_ch9_cluster",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+plot(cd, hang = -1, cex = .75)             # plot result as dendrogram
+rect.hclust(cd, k = optnclust, border="red") # draw red borders around clusters
+dev.off()
+```
+
+
+
+```{r eval=F, echo=T}
+  # use euclidean (!) distance
+
+## 计算距离的各种方法
+# # create distance matrix (euclidean method: not good when dealing with many dimensions)
+# clustd <- dist(clusts, method = "euclidean")
+# # create distance matrix (maximum method: here the difference between points dominates)
+# clustd_maximum <- round(dist(clusts, method = "maximum"), 2)
+# # create distance matrix (manhattan method: most popular choice)
+# clustd_manhatten <- round(dist(clusts, method = "manhattan"), 2) 
+# # create distance matrix (canberra method: for count data only - focuses on small differences and neglects larger differences)
+# clustd_canberra <- round(dist(clusts, method = "canberra"), 2)
+# # create distance matrix (binary method: for binary data only!)
+# clustd_binary <- round(dist(clusts, method = "binary"), 2) 
+# # create distance matrix (minkowski method: is not a true distance measure)
+# clustd_minkowski <- round(dist(clusts, method = "minkowski"), 2) 
+# # distance method for words: daisy (other possible distances are "manhattan" and "gower")
+# clustd_daisy <- round(daisy(clusts, metric = "euclidean"), 2)
+```
+
+```{r eval=F, echo=T}
+    
+
+# 创建cluster的方法
+# # single linkage: cluster with nearest data point
+# cd_single <- hclust(clustd, method="single") 
+# # create cluster object (ward.D linkage)
+# cd_wardd <- hclust(clustd, method="ward.D")
+# # create cluster object (ward.D2 linkage): 
+# # cluster in a way to achieve minimum variance
+# cd_wardd2 <- hclust(clustd, method="ward.D2")
+# # average linkage: cluster with closest mean
+# cd_average <- hclust(clustd, method="average") 
+# # mcquitty linkage
+# cd_mcquitty <- hclust(clustd, method="mcquitty") 
+# # median linkage: cluster with closest median
+# cd_median <- hclust(clustd, method="median")
+# # centroid linkage: cluster with closest prototypical point of target cluster
+# cd_centroid <- hclust(clustd, method="centroid") 
+# # complete linkage: cluster with nearest/furthest data point of target cluster
+# cd_complete <- hclust(clustd, method="complete")  
+
+```
+
+
+
+```{r eval=F, echo=T}
+# library(pvclust)
+# #### 检验分类是否合理， 现在我们将通过使用自助法（bootstrapping）验证聚类解决方案，测试聚类是否合理。
+# res.pv <- pvclust(t(wd.dfs),                     # apply pvclust method to clus data
+#                   method.dist="euclidean",  # use eucledian distance
+#                   method.hclust="ward.D2",  # use ward.d2 linkage
+#                   nboot = 100)              # use 100 bootstrap runs
+# 
+# plot(res.pv, cex = .75)
+# pvrect(res.pv)
+
+```
+
+#### 类别型数据聚类分析
+
+```{r eval=F, echo=T}
+
+tone.phon <- read.csv("data/ch9/tone-phonology.CSV")
+
+row.names(tone.phon)=tone.phon$language
+#tone.phon = select(tone.phon, -language)
+# convert into factors
+tone.phon <- apply(tone.phon, 1, function(x){
+  x <- as.factor(x) })
+# clean data
+tone.phon.mtr  <- t(as.matrix(tone.phon))
+# create distance matrix
+tone.phon.mtr.d<- dist(tone.phon.mtr[,-1] , method = "binary")   # create a distance object with binary (!) distance
+# create cluster object (ward.D2 linkage)   : cluster in a way to achieve minimum variance
+tone.phon.mtr.cd <- hclust(tone.phon.mtr.d, method="ward.D2")
+# plot result as dendrogram
+plot(tone.phon.mtr.cd , hang = -1)              # display dendogram
+```
+
+```{r eval=F, echo=T}
+
+png(paste(dir.fig, paste("_ch9_cluster.category",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=5, height=6, res=600)
+plot(tone.phon.mtr.cd , hang = -1)              # display dendogram
+dev.off()
+
+```
+
+#### 分割优化
+
+```{r eval=F, echo=T}
+# k-means clustering [assume 3 clusters]
+km = kmeans(sc.pr$x[,1:3], centers=5, nstart=12)
+
+# Coordinates of individuals
+ind.coord <- as.data.frame(get_pca_ind(sc.pr)$coord)
+# Add clusters obtained using the K-means algorithm
+ind.coord$cluster <- factor(km$cluster)
+# Add Species groups from the original data sett
+ind.coord$author <- metrics_SCA$author
+ind.coord$text <- metrics_SCA$books
+
+# Percentage of variance explained by dimensions
+eigenvalue <- round(get_eigenvalue(sc.pr), 1)
+variance.percent <- eigenvalue$variance.percent
+head(eigenvalue)
+
+library(ggpubr)
+
+ggscatter(ind.coord, x = "Dim.1", y = "Dim.2",
+  color = "cluster", 
+  palette = "npg", 
+  ellipse = TRUE, 
+  ellipse.type = "convex",
+  label = "text",
+  shape = "author", size = 1.5,  legend = "right", 
+  ggtheme = theme_bw(),
+  xlab = paste0("PC 1 (", variance.percent[1], "% )" ),
+  ylab = paste0("PC 2 (", variance.percent[2], "% )" )) 
+
+```
+
+
+```{r eval=F, echo=T}
+
+png(paste(dir.fig, paste("_ch9_kmeans",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+ggscatter(ind.coord, x = "Dim.1", y = "Dim.2",
+  color = "cluster", 
+  palette = "npg", 
+  ellipse = TRUE, 
+  ellipse.type = "convex",
+  label = "text",
+  shape = "Registers", size = 1.5,  legend = "right", 
+  ggtheme = theme_bw(),
+  xlab = paste0("PC 1 (", variance.percent[1], "% )" ),
+  ylab = paste0("PC 2 (", variance.percent[2], "% )" )) 
+
+dev.off()
+
+```
+
+
+## 计算文体学
+
+```{r eval=F, echo=T}
+# 主成分分析
+stylo(frequencies = culled.freqs1, 
+      analysis.type = "PCR",
+      custom.graph.title = "Judge Dee and Sherlock", 
+      pca.visual.flavour = "technical", 
+      write.png.file = TRUE, gui = FALSE)
+
+
+
+# 显示两本书在第一第二主成分空间的分布
+stylo(frequencies = culled.freqs1, 
+      analysis.type = "PCR", 
+      mfw.min = 100, mfw.max = 500,
+      custom.graph.title = "Judge Dee and Sherlock", 
+      write.png.file = FALSE, gui = FALSE)
+
+
+# 显示不同高频词的权重loadings
+stylo(frequencies = culled.freqs1, 
+      analysis.type = "PCR", 
+      custom.graph.title = "Judge Dee and Sherlock",
+      pca.visual.flavour = "loadings", 
+      write.png.file = FALSE, 
+      gui = FALSE)
+
+# cluster analysis
+stylo(frequencies = culled.freqs1, 
+      analysis.type = "CA", 
+      write.png.file = FALSE,  
+      custom.graph.title = "Judge Dee and Sherlock", 
+      gui = FALSE)
+
+
+```
+
+
+### 任务3 监督学习模型训练
+
+#### 数据准备
+
+```{r eval=F, echo=T}
+# Helper packages 
+library(rsample) # for data splitting  
+
+# Modeling packages 
+library(caret) # for classification and regression training 
+library(kernlab) # for fitting SVMs  
+
+# Model interpretability packages 
+library(pdp) # for partial dependence plots, etc. 
+library(vip) # for variable importance plots
+
+
+pictureNaming <- read_csv("data/ch9/pictureNaming.new.csv")%>%
+  filter(AoA_r != "#NULL!")%>%
+  drop_na()%>%
+  mutate(AoA_r = as.numeric(AoA_r),
+         AoA_o = as.numeric(AoA_o))%>%
+  select("LEN","VAR","IMG","FAM","VC","FREQ", 
+         "NAgree","H_value","CA","AoA_r","AoA_o", "RT_harm")
+
+
+pictureNaming_split <- initial_split(pictureNaming, prop = 0.7) 
+pictureNaming_train <- training(pictureNaming_split) 
+pictureNaming_test <- testing(pictureNaming_split)
+
+# 美国英语本族语者数据
+datasetAE <- read_csv("data/ch9/datasetAE.CSV")
+datasetAE$focus_type = as.factor(datasetAE$focus_type)
+# Create training (70%) and test (30%) sets 
+
+# orginal response distribution  
+table(datasetAE$focus_type) %>% prop.table() 
+
+# stratified sampling with the rsample package
+datasetAE_split <- initial_split(datasetAE, prop = 0.7, strata = "focus_type") 
+datasetAE_train <- training(datasetAE_split) 
+datasetAE_test <- testing(datasetAE_split)
+
+table(datasetAE_train$focus_type) %>% prop.table() 
+table(datasetAE_test$focus_type) %>% prop.table()
+
+```
+
+#### 决策树
+```{r eval=F, echo=T}
+# Modeling packages 
+library(rpart) # direct engine for decision tree application 
+library(caret) # meta engine for decision tree application  
+# Model interpretability packages 
+library(rpart.plot) # for plotting decision trees 
+library(vip) # for feature importance 
+library(pdp) # for feature effects
+
+
+pictureNaming_m1 <- rpart(formula = RT_harm ~ ., 
+                          data = pictureNaming_train, method = "anova" )
+
+
+rpart.plot(pictureNaming_m1)
+
+plotcp(pictureNaming_m1)
+
+# rpart cross validation results 
+pictureNaming_m1$cptable
+
+pictureNaming_m2 <- rpart( formula = RT_harm ~ ., 
+                   data = pictureNaming_train, method = "anova", 
+                   control = list(cp = 0, xval = 10) )
+
+rpart.plot(pictureNaming_m2)
+
+plotcp(pictureNaming_m2)
+
+vip(pictureNaming_m1, num_features = 7, bar = FALSE)
+
+# caret cross validation results 
+
+pictureNaming_m3 <- train(RT_harm ~ ., 
+                   data = pictureNaming_train, 
+                   method = "rpart", 
+                   trControl = trainControl(method = "cv", number = 10), 
+                   tuneLength = 20 )  
+
+ggplot(pictureNaming_m3)
+
+vip(pictureNaming_m3, num_features = 7, bar = FALSE)
+
+
+```
+
+
+```{r eval=F, echo=T}
+## model 1
+datasetAE.tree1 <- rpart(formula = focus_type ~ ., 
+                         data = datasetAE_train)
+
+rpart.plot(datasetAE.tree1)
+
+plotcp(datasetAE.tree1)
+
+# model2
+datasetAE.tree2 <- rpart( formula = focus_type ~ ., 
+                         data = datasetAE_train,
+                         control = list(cp = 0, xval = 4) )
+rpart.plot(datasetAE.tree2)
+plotcp(datasetAE.tree2)
+
+# model 3
+# caret cross validation results 
+datasetAE.tree3 <- train( focus_type ~ ., 
+                          data = datasetAE_train,
+                          method = "rpart", 
+                   trControl = trainControl(method = "cv", number = 10), 
+                   tuneLength = 20 )  
+
+ggplot(datasetAE.tree3)
+
+# feature importance
+vip(datasetAE.tree3, num_features = 21, bar = FALSE)
+
+# Construct partial dependence plots  
+# p1 <- partial(datasetAE.tree3, pred.var = "Fallexc") %>% autoplot() 
+# p2 <- partial(datasetAE.tree3, pred.var = "Falldur") %>% autoplot() 
+# p3 <- partial(datasetAE.tree3, pred.var = c("Fallexc", "Falldur")) %>% 
+# 
+# plotPartial(levelplot = FALSE, zlab ="yhat", 
+#               drape = TRUE, colorkey = TRUE, 
+#               screen = list(z = -20, x = -60))  
+# # Display plots side by side  
+# gridExtra::grid.arrange(p1, p2, p3, ncol = 3)
+
+
+```
+
+
+```{r eval=F, echo=T}
+
+png(paste(dir.fig, paste("_ch9_datasetAE.tree1",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+rpart.plot(datasetAE.tree1)
+
+dev.off()
+
+png(paste(dir.fig, paste("_ch9_plotcp_datasetAE.tree1",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+plotcp(datasetAE.tree1)
+
+dev.off()
+
+png(paste(dir.fig, paste("_ch9_datasetAE.tree2",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+rpart.plot(datasetAE.tree1)
+
+dev.off()
+
+png(paste(dir.fig, paste("_ch9_plotcp_datasetAE.tree3",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+plotcp(datasetAE.tree1)
+
+dev.off()
+
+png(paste(dir.fig, paste("_ch9_datasetAE.tree3",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+ggplot(datasetAE.tree3)
+dev.off()
+# feature importance
+png(paste(dir.fig, paste("_ch9_datasetAE.tree3.importance",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+vip(datasetAE.tree3, num_features = 21, bar = FALSE)
+dev.off()
+```
+
+
+
+#### bagging
+
+```{r eval=F, echo=T}
+library(ipred) # for fitting bagged decision trees
+
+# make bootstrapping reproducible 
+set.seed(123)  
+# train bagged model 
+datasetAE_bag1 <- bagging( formula = focus_type ~ ., data = datasetAE_train, 
+                           nbagg = 100, coob = TRUE, 
+                           control = rpart.control(minsplit = 2, cp = 0) )
+
+
+
+
+```
+
+#### random forest
+
+```{r eval=F, echo=T}
+# Modeling packages 
+
+# Helper packages 
+library(dplyr) # for data wrangling 
+library(ggplot2) # for awesome graphics  
+# Modeling packages 
+library(ranger) # a c++ implementation of random forest 
+library(h2o) # a java-based implementation of random forest
+
+## package 1
+library(randomForest)
+
+set.seed(123)
+
+RF_AE = randomForest(focus_type ~ .,
+                    ntree = 500, 
+                    data = datasetAE_train, 
+                    importance = TRUE)
+importance(RF_AE)   
+
+varImpPlot(RF_AE, n.var= 5, main ="AE")
+
+# 在构建随机森林的过程中，每棵决策树都是通过对原始训练数据进行有放回抽样（Bootstrap Sampling）得到的子样本训练出来的。剩下样本则没有被该树用于训练，这些样本就是袋外样本。利用那些没有进行训练的数据来进行预测。
+
+as.data.frame(RF_AE$confusion)%>%
+mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  flextable()%>%
+  set_caption(caption = "Table x .")
+```
+
+
+```{r eval=F, echo=T}
+## ranger package
+library(ranger) # a c++ implementation of random forest 
+# number of features  
+n_features <- length(setdiff(names(datasetAE_train), "focus_type"))  
+
+# train a default random forest model 
+datasetAE_rf1 <- ranger( focus_type ~ ., data = datasetAE_train, 
+                    mtry = floor(n_features / 3), 
+                    respect.unordered.factors = "order",
+                    seed = 123 )  
+# get OOB RMSE  
+default_rmse <- sqrt(datasetAE_rf1$prediction.error)
+# create hyperparameter grid 
+hyper_grid <- expand.grid( mtry = floor(n_features * c(.05, .15, .25, .333, .4)), 
+                           min.node.size = c(1, 3, 5, 10), 
+                           replace = c(TRUE, FALSE), 
+                           sample.fraction = c(.5, .63, .8), rmse = NA )  
+
+# execute full cartesian grid search 
+for(i in seq_len(nrow(hyper_grid))) {  
+  # fit model for ith hyperparameter combination 
+fit <- ranger(  formula = focus_type ~ ., 
+                  data = datasetAE_train, 
+                  num.trees = n_features * 10, 
+                  mtry = hyper_grid$mtry[i], 
+                  min.node.size = hyper_grid$min.node.size[i], 
+                  replace = hyper_grid$replace[i], 
+                  sample.fraction = hyper_grid$sample.fraction[i], 
+                  verbose = FALSE, seed = 123, respect.unordered.factors = "order", )  
+  # export OOB error  
+hyper_grid$rmse[i] <- sqrt(fit$prediction.error) 
+  }
+ 
+# assess top 10 models 
+hyper_grid %>%  
+  arrange(rmse) %>%  
+  mutate(perc_gain = (default_rmse - rmse) / default_rmse * 100) %>% 
+  head(10)%>% mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  flextable()%>%
+  set_caption(caption = "Table x .")
+
+# re-run model with impurity-based variable importance
+rf_impurity <- ranger(
+  formula = focus_type ~ ., 
+  data = datasetAE_train, 
+  num.trees = 2000,
+  mtry = 20,
+  min.node.size = 1,
+  sample.fraction = .80,
+  replace = FALSE,
+  importance = "impurity",
+  respect.unordered.factors = "order",
+  verbose = FALSE,
+  seed  = 123
+)
+
+# re-run model with permutation-based variable importance
+rf_permutation <- ranger(
+  formula = focus_type ~ ., 
+  data = datasetAE_train, 
+  num.trees = 2000,
+  mtry = 20,
+  min.node.size = 1,
+  sample.fraction = .80,
+  replace = FALSE,
+  importance = "permutation",
+  respect.unordered.factors = "order",
+  verbose = FALSE,
+  seed  = 123
+)
+
+p1 <- vip::vip(rf_impurity, num_features = 25, bar = FALSE)
+p2 <- vip::vip(rf_permutation, num_features = 25, bar = FALSE)
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+
+```{r eval=F, echo=T}
+png(paste(dir.fig, paste("_ch9_forest.importance",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=8, height=6, res=600)
+
+p1 <- vip::vip(rf_impurity, num_features = 25, bar = FALSE)
+p2 <- vip::vip(rf_permutation, num_features = 25, bar = FALSE)
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+
+dev.off()
+```
+
+
+
+
+```{r eval=F, echo=T}
+# pacakge 3
+library(h2o) # a java-based implementation of random forest
+h2o.no_progress()
+h2o.init(max_mem_size = "5g")
+
+# convert training data to h2o object
+train_h2o <- as.h2o(datasetAE_train)
+
+# set the response column to Sale_Price
+response <- "focus_type"
+
+# set the predictor names
+predictors <- setdiff(colnames(datasetAE_train), response)
+
+h2o_rf1 <- h2o.randomForest(
+    x = predictors, 
+    y = response,
+    training_frame = train_h2o, 
+    ntrees = n_features * 10,
+    seed = 123
+)
+
+h2o_rf1
+
+# hyperparameter grid
+# hyper_grid <- list(
+#   mtries = floor(n_features * c(.05, .15, .25, .333, .4)),
+#   min_rows = c(1, 3, 5, 10),
+#   max_depth = c(10, 20, 30),
+#   sample_rate = c(.55, .632, .70, .80)
+# )
+
+# random grid search strategy
+# search_criteria <- list(
+#   strategy = "RandomDiscrete",
+#   stopping_metric = "mse",
+#   stopping_tolerance = 0.001,   # stop if improvement is < 0.1%
+#   stopping_rounds = 10,         # over the last 10 models
+#   max_runtime_secs = 60*5      # or stop search after 5 min.
+# )
+
+
+# # perform grid search 
+# random_grid <- h2o.grid(
+#   algorithm = "randomForest",
+#   grid_id = "rf_random_grid",
+#   x = predictors, 
+#   y = response, 
+#   training_frame = train_h2o,
+#   hyper_params = hyper_grid,
+#   ntrees = n_features * 10,
+#   seed = 123,
+#   stopping_metric = "RMSE",   
+#   stopping_rounds = 10,           # stop if last 10 trees added 
+#   stopping_tolerance = 0.005,     # don't improve RMSE by 0.5%
+#   search_criteria = search_criteria
+# )
+
+
+# collect the results and sort by our model performance metric 
+# of choice
+# random_grid_perf <- h2o.getGrid(
+#   grid_id = "rf_random_grid", 
+#   sort_by = "mse", 
+#   decreasing = FALSE
+# )
+# 
+# random_grid_perf
+
+```
+
+
+
+#### Gradient Boosting
+
+
+
+```{r eval=F, echo=T}
+# Modeling packages
+library(gbm)      # for original implementation of regular and stochastic GBMs
+library(h2o)      # for a java-based implementation of GBM variants
+library(xgboost)  # for fitting extreme gradient boosting
+
+h2o.init(max_mem_size = "10g")
+
+train_h2o <- as.h2o(datasetAE_train)
+response <- "focus_type"
+predictors <- setdiff(colnames(datasetAE_train), response)
+
+# run a basic GBM model
+set.seed(123)  # for reproducibility
+
+datasetAE_gbm1 <- gbm(
+  formula = focus_type ~ .,
+  data = datasetAE_train,
+  distribution = "gaussian",  # SSE loss function
+  n.trees = 5000,
+  shrinkage = 0.1,
+  interaction.depth = 3,
+  n.minobsinnode = 10,
+  cv.folds = 10
+)
+
+# find index for number trees with minimum CV error
+best <- which.min(datasetAE_gbm1 $cv.error)
+
+# get MSE and compute RMSE
+sqrt(datasetAE_gbm1$cv.error[best])
+
+# plot error curve
+gbm.perf(datasetAE_gbm1, method = "cv")
+
+
+# create grid search
+hyper_grid <- expand.grid(
+  learning_rate = c(0.3, 0.1, 0.05, 0.01, 0.005),
+  RMSE = NA,
+  trees = NA,
+  time = NA
+)
+
+# execute grid search
+for(i in seq_len(nrow(hyper_grid))) {
+
+  # fit gbm
+  set.seed(123)  # for reproducibility
+  train_time <- system.time({
+    m <- gbm(
+      formula = focus_type ~ .,
+      data = datasetAE_train,
+      distribution = "gaussian",
+      n.trees = 5000, 
+      shrinkage = hyper_grid$learning_rate[i], 
+      interaction.depth = 3, 
+      n.minobsinnode = 10,
+      cv.folds = 10 
+   )
+  })
+  
+  # add SSE, trees, and training time to results
+  hyper_grid$RMSE[i]  <- sqrt(min(m$cv.error))
+  hyper_grid$trees[i] <- which.min(m$cv.error)
+  hyper_grid$Time[i]  <- train_time[["elapsed"]]
+
+}
+
+# results
+arrange(hyper_grid, RMSE)
+
+# second try
+# search grid
+hyper_grid <- expand.grid(
+  n.trees = 6000,
+  shrinkage = 0.01,
+  interaction.depth = c(3, 5, 7),
+  n.minobsinnode = c(5, 10, 15)
+)
+
+# create model fit function
+model_fit <- function(n.trees, shrinkage, interaction.depth, n.minobsinnode) {
+  set.seed(123)
+  m <- gbm(
+    formula = focus_type ~ .,
+    data = datasetAE_train,
+    distribution = "gaussian",
+    n.trees = n.trees,
+    shrinkage = shrinkage,
+    interaction.depth = interaction.depth,
+    n.minobsinnode = n.minobsinnode,
+    cv.folds = 10
+  )
+  # compute RMSE
+  sqrt(min(m$cv.error))
+}
+
+# perform search grid with functional programming
+hyper_grid$rmse <- purrr::pmap_dbl(
+  hyper_grid,
+  ~ model_fit(
+    n.trees = ..1,
+    shrinkage = ..2,
+    interaction.depth = ..3,
+    n.minobsinnode = ..4
+    )
+)
+
+# results
+arrange(hyper_grid, rmse)
+
+# implement a stochastic GBM
+
+# refined hyperparameter grid
+hyper_grid <- list(
+  sample_rate = c(0.5, 0.75, 1),              # row subsampling
+  col_sample_rate = c(0.5, 0.75, 1),          # col subsampling for each split
+  col_sample_rate_per_tree = c(0.5, 0.75, 1)  # col subsampling for each tree
+)
+
+# random grid search strategy
+search_criteria <- list(
+  strategy = "RandomDiscrete",
+  stopping_metric = "mse",
+  stopping_tolerance = 0.001,   
+  stopping_rounds = 10,         
+  max_runtime_secs = 60*60      
+)
+
+# perform grid search 
+grid <- h2o.grid(
+  algorithm = "gbm",
+  grid_id = "gbm_grid",
+  x = predictors, 
+  y = response,
+  training_frame = train_h2o,
+  hyper_params = hyper_grid,
+  ntrees = 6000,
+  learn_rate = 0.01,
+  max_depth = 7,
+  min_rows = 5,
+  nfolds = 10,
+  stopping_rounds = 10,
+  stopping_tolerance = 0,
+  search_criteria = search_criteria,
+  seed = 123
+)
+
+# collect the results and sort by our model performance metric of choice
+grid_perf <- h2o.getGrid(
+  grid_id = "gbm_grid", 
+  sort_by = "mse", 
+  decreasing = FALSE
+)
+
+grid_perf
+
+
+# Grab the model_id for the top model, chosen by cross validation error
+best_model_id <- grid_perf@model_ids[[1]]
+best_model <- h2o.getModel(best_model_id)
+
+# Now let’s get performance metrics on the best model
+h2o.performance(model = best_model, xval = TRUE)
+
+#### XGBoost
+library(recipes)
+xgb_prep <- recipe(focus_type ~ ., data = datasetAE_train) %>%
+  step_integer(all_nominal()) %>%
+  prep(training = datasetAE_train, retain = TRUE) %>%
+  juice()
+
+X <- as.matrix(xgb_prep[setdiff(names(xgb_prep), "focus_type")])
+Y <- xgb_prep$focus_type
+
+set.seed(123)
+datasetAE_xgb <- xgb.cv(
+  data = X,
+  label = Y,
+  nrounds = 6000,
+  objective = "reg:linear",
+  early_stopping_rounds = 50, 
+  nfold = 10,
+  params = list(
+    eta = 0.1,
+    max_depth = 3,
+    min_child_weight = 3,
+    subsample = 0.8,
+    colsample_bytree = 1.0),
+  verbose = 0
+)  
+
+# minimum test CV RMSE
+min(datasetAE_xgb$evaluation_log$test_rmse_mean)
+
+# hyperparameter grid
+hyper_grid <- expand.grid(
+  eta = 0.01,
+  max_depth = 3, 
+  min_child_weight = 3,
+  subsample = 0.5, 
+  colsample_bytree = 0.5,
+  gamma = c(0, 1, 10, 100, 1000),
+  lambda = c(0, 1e-2, 0.1, 1, 100, 1000, 10000),
+  alpha = c(0, 1e-2, 0.1, 1, 100, 1000, 10000),
+  rmse = 0,          # a place to dump RMSE results
+  trees = 0          # a place to dump required number of trees
+)
+
+# optimal parameter list
+params <- list(
+  eta = 0.01,
+  max_depth = 3,
+  min_child_weight = 3,
+  subsample = 0.5,
+  colsample_bytree = 0.5
+)
+
+# train final model
+xgb.fit.final <- xgboost(
+  params = params,
+  data = X,
+  label = Y,
+  nrounds = 3944,
+  objective = "reg:linear",
+  verbose = 0
+)
+
+```
+
+
+
+
+
+
+
+#### SVM
+
+```{r eval=F, echo=T}
+
+
+svm_AE = svm(formula = focus_type ~ .,
+                 data = datasetAE,
+                 #regression or classification
+                 type = 'C-classification', 
+                 kernel = 'radial',
+                 cost = "2",
+                 cross = 10)
+
+#summary(svm_AE)
+
+svm_AE$tot.accuracy
+
+svm_AE$accuracies
+
+```
+
+
+
+
+
+
+```{r eval=F, echo=T}
+
+# Tune an SVM with radial basis kernel 
+set.seed(1854) # for reproducibility 
+datasetAE_svm <- train( focus_type ~ ., 
+                    data = datasetAE_train, 
+                    method = "svmRadial", 
+                    preProcess = c("center", "scale"), 
+                    trControl = trainControl(method = "cv", number = 10), 
+                    tuneLength = 10 )
+
+# Plot results  
+ggplot(datasetAE_svm ) + 
+  theme_light()
+
+as.data.frame(datasetAE_svm$results)%>%
+mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  flextable()%>%
+  set_caption(caption = "Table x .")
+
+# Control params for SVM 
+ctrl <- trainControl( method = "cv", number = 10, 
+                      classProbs = TRUE, 
+                      summaryFunction = multiClassSummary # also needed for AUC/ROC 
+                      )  
+# Tune an SVM 
+set.seed(5628) # for reproducibility 
+datasetAE_svm_auc <- train( focus_type ~ .,
+                        data = datasetAE_train, 
+                        method = "svmRadial", 
+                        preProcess = c("center", "scale"),  
+                        metric = "ROC", # area under ROC curve (AUC)
+                        trControl = ctrl, tuneLength = 10 )
+
+confusionMatrix(datasetAE_svm_auc)
+
+# Variable importance plot 
+set.seed(2827) # for reproducibility  
+# prob_bro <- function(object, newdata) { predict(object, 
+#                                                 newdata = newdata, 
+#                                                 type = "prob")[, "bro"] }
+# vip(datasetAE_svm_auc, 
+#     method = "permute", 
+#     nsim = 5, 
+#     train = datasetAE_train, 
+#     target = "focus_type", 
+#     metric = "roc_auc", 
+#     reference_class = "bro", 
+#     pred_wrapper = prob_bro)
+
+vip(
+  datasetAE_svm_auc, 
+  method = "permute", 
+  nsim = 5, 
+  train = datasetAE_train, 
+  target = "focus_type", 
+  metric = yardstick::accuracy_vec, 
+  pred_wrapper = function(object, newdata) predict(object, newdata = newdata),
+  smaller_is_better = FALSE
+)
+
+# vip::list_metrics()
+# 
+# levels(datasetAE_train$focus_type)
+
+
+
+```
+
+```{r eval=F, echo=T}
+
+png(paste(dir.fig, paste("_ch9_datasetAE_svm",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+ggplot(datasetAE_svm ) + 
+  theme_light()
+
+dev.off()
+
+png(paste(dir.fig, paste("_ch9_datasetAE_svm_auc_importance",Sys.Date(),"png",sep = "."),sep = ""), 
+      units="in", width=6, height=6, res=600)
+
+vip(
+  datasetAE_svm_auc, 
+  method = "permute", 
+  nsim = 5, 
+  train = datasetAE_train, 
+  target = "focus_type", 
+  metric = yardstick::accuracy_vec, 
+  pred_wrapper = function(object, newdata) predict(object, newdata = newdata),
+  smaller_is_better = FALSE
+)
+
+dev.off()
+
+
+```
+
+
+
+
+
+
+
+```{r eval=F, echo=T}
+
+
+# 为了模拟美国英语（AE）听众如何感知由中国英语（CE1和CE2）学习者发出的焦点目标词语，使用所有AE数据特征训练了一个支持向量机（SVM）模型，并分别使用两个中国英语学习者组的数据进行测试。
+#Cross langauge preception
+
+# 中国英语学习者大一
+datasetCE1 = read_csv("data/ch9/datasetCE1.CSV")
+# 中国英语学习者大三
+datasetCE2 = read_csv("data/ch9/datasetCE2.CSV")
+datasetCE1$focus_type = as.factor(datasetCE1$focus_type)
+datasetCE2$focus_type = as.factor(datasetCE2$focus_type)
+
+
+
+#svm
+y_predCE1 = predict(svm_AE, newdata = datasetCE1[-1])
+y_predCE2 = predict(svm_AE, newdata = datasetCE2[-1])
+
+library(caret)
+
+conf_ce1 = confusionMatrix(as.factor(datasetCE1$focus_type), y_predCE1)
+conf_ce2 = confusionMatrix(as.factor(datasetCE2$focus_type), y_predCE2)
+
+as.data.frame(conf_ce1$table)%>%
+  group_by(Reference)%>%
+  mutate(accuracy = Freq/sum(Freq),
+         LANG = "CE1")%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  flextable()%>%
+  set_caption(caption = "Table x CE1.")
+
+as.data.frame(conf_ce2$table)%>%
+  group_by(Reference)%>%
+  mutate(accuracy = Freq/sum(Freq),
+         LANG = "CE2")%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  flextable()%>%
+  set_caption(caption = "Table x CE2.")
+
+# 总体准确率在CE1和CE2两组中均高于随机水平，且两组之间的差异较小。在每个组内，BF类词汇相对容易分类，而NF和CF类词汇则较难分类，反映在较低的准确率上。
+
+
+
+```
+
+
+

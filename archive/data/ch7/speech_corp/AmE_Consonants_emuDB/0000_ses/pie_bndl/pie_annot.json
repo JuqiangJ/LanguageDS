@@ -1,0 +1,231 @@
+{
+  "name": "pie",
+  "annotates": "pie.wav",
+  "sampleRate": 20000,
+  "levels": [
+    {
+      "name": "token",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 1,
+          "sampleStart": 0,
+          "sampleDur": 917,
+          "labels": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "sampleStart": 918,
+          "sampleDur": 8366,
+          "labels": [
+            {
+              "name": "token",
+              "value": "TEXT"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "sampleStart": 9285,
+          "sampleDur": 1613,
+          "labels": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "word",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 4,
+          "sampleStart": 0,
+          "sampleDur": 917,
+          "labels": [
+            {
+              "name": "word",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "sampleStart": 918,
+          "sampleDur": 8366,
+          "labels": [
+            {
+              "name": "word",
+              "value": "pie"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "sampleStart": 9285,
+          "sampleDur": 1613,
+          "labels": [
+            {
+              "name": "word",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "segment",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 7,
+          "sampleStart": 0,
+          "sampleDur": 917,
+          "labels": [
+            {
+              "name": "segment",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "sampleStart": 918,
+          "sampleDur": 1939,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "p"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "sampleStart": 2858,
+          "sampleDur": 6426,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "a\\ic"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "sampleStart": 9285,
+          "sampleDur": 1613,
+          "labels": [
+            {
+              "name": "segment",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "closure",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 11,
+          "sampleStart": 0,
+          "sampleDur": 10898,
+          "labels": [
+            {
+              "name": "closure",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "burst",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 12,
+          "sampleStart": 0,
+          "sampleDur": 917,
+          "labels": [
+            {
+              "name": "burst",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "sampleStart": 918,
+          "sampleDur": 250,
+          "labels": [
+            {
+              "name": "burst",
+              "value": "p"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "sampleStart": 1169,
+          "sampleDur": 9729,
+          "labels": [
+            {
+              "name": "burst",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aspiration",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 15,
+          "sampleStart": 0,
+          "sampleDur": 1168,
+          "labels": [
+            {
+              "name": "aspiration",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "sampleStart": 1169,
+          "sampleDur": 1688,
+          "labels": [
+            {
+              "name": "aspiration",
+              "value": "p"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "sampleStart": 2858,
+          "sampleDur": 8040,
+          "labels": [
+            {
+              "name": "aspiration",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": []
+}

@@ -1,0 +1,32 @@
+Orthopaedics
+
+Plastic surgery
+
+Dec 29th 2010 | from PRINT EDITION
+
+A newly developed material should make it easier to mend broken bones
+
+A message of hope
+
+MUCH of modern medicine is high-tech wizardry. Broken bones, however, are still dealt with in a clumsy, old-fashioned way that frequently involves screws, nails and pins. Even the simplest operation can result in infections and incomplete healing if those devices are not placed as they should be. In dramatic circumstances-for instance on a battlefield, where surgeons cannot use X-ray machines and there is no proper operating theatre-the need for so many bits and bobs can make effective surgery impossible. Thousands of soldiers fighting in Iraq and Afghanistan, for example, have had limbs amputated after injuries that could have been treated at any hospital. 
+
+It was with them in mind that DARPA, the research-funding agency of America's Department of Defence, approached a group of scientists at the University of Texas, Houston, two years ago. DARPA wanted something that army doctors could carry in their bags and use to mend injured limbs on the spot, before amputation became inevitable. The researchers, led by Mauro Ferrari and Ennio Tasciotti (who have since moved to the Methodist Hospital Research Institute in the same city) came up with an idea that could change orthopaedic surgery once and for all: a material that surgeons can implant or even inject; which fixes a fractured bone quickly; and which then leads to its full regeneration, with no need for nails and pins. 
+
+The material in question, the product of a collaboration between biologists, nanoengineers and mathematicians, is based on a chemical called polypropylene fumarate. It is activated at 37^C, the temperature of the human body. When applied to a broken bone it solidifies and works like a glue, bringing the two parts of the fracture together. That is necessary, as any orthopaedic surgeon knows, because if a gap of more than a few millimetres is left between fragments the bone will never heal. 
+
+Yet a simple glue would not be enough. The material also has small spheres of porous silicon embedded in it. Their function is twofold. First, they add to the material's strength (a patient with a broken leg should be back on his feet as soon as a week after treatment). Second, as they dissolve into the patient's body, they release cells, proteins and drugs which help that body create new bone tissue.
+
+The cells are mesenchymal stem cells-the progenitors of osteoblasts, which make bone tissue. Mesenchymal stem cells are immune-modulators, which means that they will not be rejected by the patient's immune system. 
+
+Since it would be impossible to inject enough stem cells to complete the job alone, the silicon spheres also contain a cocktail of molecules called growth factors and cytokines that recruit the patient's own stem cells and get them to work on new bone tissue. Antibiotics (to prevent infections), and pain-suppressing drugs complete the package.
+
+Boning up
+
+The key to success, says Dr Tasciotti, is timing. Stem cells must reach the site of the fracture, proliferate and turn into osteoblasts at the right moment. If they start to specialise too early, there will not be enough bone cells to heal the fracture. This is where the mathematicians of the group came in. Using computer simulations, they found the ideal thickness for the silicon spheres and the ideal size for their pores, so that the spheres degrade and release their content at the right rate. While this happens, the polypropylene fumarate becomes integrated with the body thanks to protein fragments called peptides placed on its surface. These make it look like human tissue and thus prevent its rejection by the patient's own cells. 
+
+In this way the whole material is gradually replaced by new bone. More important, Dr Tasciotti says, the technique would provide enough stability to do away with external fixation devices, which often cause infections. 
+
+The researchers have been working on the project for nearly two years. They have already tested their material on rats-applying it directly to fractures, using an implantable sponge. It worked, getting the rodents back on their (fractured) legs and leading to the formation of new bone tissue. It is now the turn of sheep, a sterner challenge because their legs have more weight to sustain. Recently the team has turned the compound into a paste (Dr Tasciotti describes it as "halfway between honey and a toothpaste") that can be injected with an ordinary syringe. Further tests on animals using this technique are under way. If these are successful, tests on humans may follow soon. 
+
+The work of Dr Ferrari and Dr Tasciotti has also generated a spin-off. On a battlefield, even their invention would not be of much use without a way to check the fracture and to decide where to make the injection. A member of the team, Raffaella Righetti of Texas A&amp;M Engineering University, has therefore developed a portable ultrasonic scanner that can give instant three-dimensional images of a bone. Conventional ultrasonics do not work well with bone, but Dr Righetti circumvented the problem by using higher ultrasonic frequencies than normal and special software that amplifies the images of such hard tissues. As well as doing away with screws and pins, the team may soon eliminate the need for X-rays, too. 
+
