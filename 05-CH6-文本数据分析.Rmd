@@ -68,7 +68,7 @@ library(udpipe)
 
 ## 课堂任务
 
-### 任务6.1：高频词分析
+### 任务6.1：高频词分析  {-}
 
 
 ```{r eval=F, echo=T}
@@ -177,7 +177,7 @@ cor.test(data = df.freq[df.freq$author == "Agatha.txt",],
 
 
 
-### 任务6.2：关键词分析
+### 任务6.2：关键词分析 {-}
 
 
 #### 使用quanteda自带的函数
@@ -304,7 +304,7 @@ head(assoc_tb3)%>%
 
 ```
 
-### 任务6.3：共现语境分析
+### 任务6.3：共现语境分析 {-}
 
 
 #### 单词语境分析
@@ -368,7 +368,7 @@ trans.new%>%
 
 
 
-#### 词汇文本分布
+#### 词汇文本分布 {-}
 
 ```{r eval=F, echo=T}
 kwic(toks_corpus_detectives , pattern = "murder") %>%
@@ -383,7 +383,7 @@ textplot_xray(
 
 ```
 
-#### 短语上下文共现
+#### 短语上下文共现 {-}
 
 ```{r eval=F, echo=T}
 # 对于词组
@@ -393,7 +393,7 @@ kwic(toks_corpus_detectives, pattern = phrase("commit crime")) %>%
 ```
 
 
-### 任务6.4：搭配提取
+### 任务6.4：搭配提取 {-}
 
 #### 自带算法
 ```{r eval=F, echo=T}
@@ -418,7 +418,7 @@ collocation.3wd <- textstat_collocations(corps.detectives,
 
 
 
-#### 基于句子提取搭配
+#### 基于句子提取搭配 {-}
 
 ```{r eval=F, echo=T}
 # set options
@@ -581,7 +581,7 @@ head(assoc_tb)%>%
 
 ```
 
-#### 基于目标词提取搭配
+#### 基于目标词提取搭配 {-}
 
 ```{r eval=F, echo=T}
 
@@ -817,9 +817,9 @@ quanteda.textplots::textplot_network(keyword_fcm,
 
 
 
-### 任务6.5 依存句法分析
+### 任务6.5 依存句法分析 {-}
 
-#### 依存句法标注
+#### 依存句法标注 {-}
 
 ```{r eval=F, echo=T}
 #Load the model
@@ -846,7 +846,7 @@ dee.df <- as.data.frame(dee.depd)
 table(dee.df$upos)
 ```
 
-#### 词性统计
+#### 词性统计 {-}
 
 ```{r eval=F, echo=T}
 library(lattice)
@@ -857,7 +857,7 @@ barchart(key ~ freq, data = stats, col = "cadetblue",
          xlab = "Freq")
 ```
 
-#### 依存句法结构
+#### 依存句法结构 {-}
 
 ```{r eval=F, echo=T}
 library(textplot)
@@ -878,7 +878,7 @@ barchart(key ~ freq, data = head(stats, 20), col = "cadetblue",
          main = "Most occurring nouns", xlab = "Freq")
 ```
 
-#### 基于词性的搭配提取
+#### 基于词性的搭配提取 {-}
 
 ```{r eval=F, echo=T}
 ## Using RAKE
@@ -1017,9 +1017,9 @@ wordcloud(words = stats$key, freq = stats$freq, min.freq = 5, max.words = 100,
 ```
 
 
-### 任务6.6 语篇特征分析
+### 任务6.6 语篇特征分析 {-}
 
-#### 词汇丰富度
+#### 词汇丰富度 {-}
 
 
 ```{r eval=F, echo=T}
@@ -1044,7 +1044,7 @@ lexical.mattr <- textstat_lexdiv(tokens(corps.detectives),
 lexical.mattr
 ```
 
-#### 文本可读性
+#### 文本可读性 {-}
 
 ```{r eval=F, echo=T}
 readability <- textstat_readability(corps.detectives, measure = "all")
@@ -1058,7 +1058,7 @@ readability.df = readability %>%
 
 ```
 
-#### 文本信息熵
+#### 文本信息熵 {-}
 
 
 
@@ -1069,7 +1069,7 @@ textstat_entropy(dfm_detectives)
 ```
 
 
-#### 文本情感分析
+#### 文本情感分析 {-}
 
 
 ```{r eval=F, echo=T}

@@ -74,9 +74,9 @@ options(scipen=999)
 
 ## 课堂任务
 
-### 任务1 非监督学习-降维技术
+### 任务1 非监督学习-降维技术 {-}
 
-#### 主成分分析
+#### 主成分分析 {-}
 
 ```{r eval=F, echo=T}
 
@@ -250,10 +250,7 @@ write_csv(novel.princomp.floadings,
 
 ```
 
-
-
-
-#### 因子分析
+#### 因子分析 {-}
 
 ```{r eval=F, echo=T}
 # 尝试不同因子个数
@@ -332,7 +329,7 @@ factanal(metrics_SCA[, -c(1:10,25)],
 
 ```
 
-### 对应分析
+### 对应分析 {-}
 
 ```{r eval=F, echo=T}
 library(stylo)
@@ -403,7 +400,7 @@ plot(detect.ca,
 
 ```
 
-#### 多维尺度分析
+#### 多维尺度分析 {-}
 
 
 ```{r eval=F, echo=T}
@@ -422,9 +419,10 @@ a = dist(iris[, 1:4])
 
 ```
 
-### 任务2 非监督学习-聚类算法
+### 任务2 非监督学习-聚类算法 {-}
 
-#### 层次聚类
+#### 层次聚类 {-}
+
 ```{r eval=F, echo=T}
 
 
@@ -537,7 +535,7 @@ dev.off()
 
 ```
 
-#### 类别型数据聚类分析
+#### 类别型数据聚类分析 {-}
 
 ```{r eval=F, echo=T}
 
@@ -567,7 +565,7 @@ dev.off()
 
 ```
 
-#### 分割优化
+#### 分割优化 {-}
 
 ```{r eval=F, echo=T}
 # k-means clustering [assume 3 clusters]
@@ -623,7 +621,7 @@ dev.off()
 ```
 
 
-## 计算文体学
+## 计算文体学 {-}
 
 ```{r eval=F, echo=T}
 # 主成分分析
@@ -662,9 +660,9 @@ stylo(frequencies = culled.freqs1,
 ```
 
 
-### 任务3 监督学习模型训练
+### 任务3 监督学习模型训练 {-}
 
-#### 数据准备
+#### 数据准备 {-}
 
 ```{r eval=F, echo=T}
 # Helper packages 
@@ -710,7 +708,8 @@ table(datasetAE_test$focus_type) %>% prop.table()
 
 ```
 
-#### 决策树
+#### 决策树 {-}
+
 ```{r eval=F, echo=T}
 # Modeling packages 
 library(rpart) # direct engine for decision tree application 
@@ -847,7 +846,7 @@ dev.off()
 
 
 
-#### bagging
+#### bagging  {-}
 
 ```{r eval=F, echo=T}
 library(ipred) # for fitting bagged decision trees
@@ -864,7 +863,7 @@ datasetAE_bag1 <- bagging( formula = focus_type ~ ., data = datasetAE_train,
 
 ```
 
-#### random forest
+#### random forest  {-}
 
 ```{r eval=F, echo=T}
 # Modeling packages 
@@ -1066,7 +1065,7 @@ h2o_rf1
 
 
 
-#### Gradient Boosting
+#### Gradient Boosting  {-}
 
 
 
@@ -1302,12 +1301,7 @@ xgb.fit.final <- xgboost(
 ```
 
 
-
-
-
-
-
-#### SVM
+#### SVM  {-}
 
 ```{r eval=F, echo=T}
 
@@ -1327,8 +1321,6 @@ svm_AE$tot.accuracy
 svm_AE$accuracies
 
 ```
-
-
 
 
 
@@ -1430,10 +1422,6 @@ dev.off()
 
 
 ```
-
-
-
-
 
 
 

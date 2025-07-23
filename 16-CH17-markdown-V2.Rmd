@@ -102,6 +102,23 @@ library(tidyverse)
 你还可以格式化此区域内显示的文本。
 ![markdown基本语法](images/mdsyntacts.png)
 
+| 功能           | 代码示例                                                                                                                                          | 效果                                                                                                                                          |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **字体：宋体**    | `<font face="宋体">我是宋体</font>`                                                                                                                 | <font face="宋体">我是宋体</font>                                                                                                                 |
+| **字体：楷体**    | `<font face="楷体">我是楷体</font>`                                                                                                                 | <font face="楷体">我是楷体</font>                                                                                                                 |
+| **字号：5**     | `<font size=5>我是尺寸</font>`                                                                                                                    | <font size=5>我是尺寸</font>                                                                                                                    |
+| **字号：10**    | `<font size=10>我是尺寸</font>`                                                                                                                   | <font size=10>我是尺寸</font>                                                                                                                   |
+| **颜色：蓝色**    | `<font color=Blue>我是蓝色</font>`                                                                                                                | <font color=Blue>我是蓝色</font>                                                                                                                |
+| **颜色：紫色**    | `<font color=#871F78>我是紫色</font>`                                                                                                             | <font color=#871F78>我是紫色</font>                                                                                                             |
+| **背景色：黑底白字** | `<font style="background:Black;"color=White>黑色背景白字</font>`                                                                                    | \<font style="background\:Black;"color=White>黑色背景白字</font>                                                                                  |
+| **居中对齐**     | `<p style="text-align:center;">这是居中对齐的段落</p>`                                                                                                 | <p style="text-align:center;">这是居中对齐的段落</p>                                                                                                 |
+| **右对齐**      | `<p style="text-align:right;">这是右对齐的段落</p>`                                                                                                   | <p style="text-align:right;">这是右对齐的段落</p>                                                                                                   |
+| **分散对齐**     | `<p style="text-align:justify">分散对齐</p>`                                                                                                      | <p style="text-align:justify">分散对齐</p>                                                                                                      |
+| **首行缩进**     | `<p style="text-indent:32px;">首行缩进：这是一行以上的段落，第1行进行了缩进，之后所有行没有缩进。缩进的宽度是可以调节的，这里展示的常见的缩进两个汉字宽度的形式，可以设置为<code>2em</code>或<code>32px</code>。</p>` | |
+
+
+
+
 ```{r}
 
 ```

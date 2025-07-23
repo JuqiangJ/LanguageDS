@@ -22,9 +22,12 @@ biblio-style: apalike
     
 # 第一章 数据科学简介
 
-
-<font size=10>欢迎关注我的[个人主页](https://juqiangj.github.io/research/)：</font>
+<font size=5>欢迎关注我的[个人主页](https://juqiangj.github.io/research/)：</font>
 ![](images/1.0.png)
+
+<font size=5>微信公众号：数据科学与语言研究</font>
+
+![](images/1.1.jpg)
 
 ## 数据科学发展简史
 
@@ -43,161 +46,251 @@ biblio-style: apalike
 ```
 
 
-## R语言学习资源分类汇总
+## R语言学习资源分类汇总 {-}
 
-### 数据处理
+### 数据科学与数据处理
 
-- [R for Data Science](https://r4ds.had.co.nz/) by Garrett Grolemund和Hadley Wickham
+#### 📘 图书与电子书 {-}
 
-- [我的工作坊的教程](https://juqiangj.github.io/DH_Data_wrangling/)。
-其他书籍:
+- 📘 [*数据科学中的 R 语言*](https://bookdown.org/wangminjie/R4DS/) — 作者：王敏捷。基于 R for Data Science，适合中文用户入门。⭐⭐⭐⭐☆
 
-- [Data Science Live Book](https://livebook.datascienceheroes.com/index.html)
+- 📘 [*Introduction to Data Science: Data Analysis and Prediction Algorithms with R*](https://rafalab.github.io/dsbook/) — 作者：Rafael A. Irizarry。哈佛大学课程电子书，侧重统计与建模。⭐⭐⭐⭐☆
 
-- [The Pirate’s Guide to R](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html)
+- 📘 [*Introduction to Data Science*](https://ubc-dsci.github.io/introduction-to-datascience/) — 作者：Tiffany-Anne Timbers、Trevor Campbell、Melissa Lee。UBC 教材，结构清晰，适合课堂教学。⭐⭐⭐⭐☆
 
-**推荐书籍与教程：**
+- 📘 [*R for Data Science*](https://r4ds.had.co.nz/) [旧版](https://r4ds.hadley.nz/)— 作者：Garrett Grolemund 和 Hadley Wickham。R 语言数据处理的经典入门书，全面讲解 tidyverse 流程。⭐⭐⭐⭐⭐
 
-- *[R for Data Science](https://r4ds.had.co.nz/)* — Garrett Grolemund 和 Hadley Wickham 合著，是 R 语言数据处理的经典入门书。
-- *[我的工作坊教程](https://juqiangj.github.io/DH_Data_wrangling/)* — 适合初学者逐步学习数据整洁与变形操作。
-- *[Data Science Live Book](https://livebook.datascienceheroes.com/index.html)* — 结合理论与实战，适合中级进阶者。
-- *[The Pirate’s Guide to R](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html)* — 用轻松幽默的方式学习 R，适合教学与自学。
+- 📘 [*The R Manuals*](https://cran.r-project.org/manuals.html) ⭐⭐⭐⭐⭐
+
+- 📘 [*R Books*](https://www.r-project.org/doc/bib/R-books.html) ⭐⭐⭐⭐⭐
+
+- 📘 [*Data Wrangle 教程*](https://juqiangj.github.io/DH_Data_wrangling/) — 作者：陈居强。适合初学者系统学习数据清洗与整洁操作，案例丰富。⭐⭐⭐⭐
+
+- 📘 [*Data Science Live Book*](https://livebook.datascienceheroes.com/index.html) — 理论与实战结合，涵盖特征工程、变量重要性分析等主题，适合进阶者。⭐⭐⭐⭐
+
+- 📘 [*The Pirate’s Guide to R*](https://bookdown.org/ndphillips/YaRrr/where-did-this-book-come-from.html) — 用幽默和图解的方式讲解 R，适合初学者和教学使用。⭐⭐⭐⭐☆
+
+#### 📄 学术文献 {-}
+
+- 📄 Behrens, J. T. (1997). *Principles and Procedures of Exploratory Data Analysis*. *Psychological Methods*, 2(2), 131–160. — 探索性数据分析经典文献。⭐⭐⭐
+
+#### 🌐 博客与网络资源 {-}
+
+- 🌐 [*FlowingData 博客*](https://flowingdata.com/about/) — Nathan Yau 博士运营的可视化博客，案例丰富、风格有趣，适合扩展阅读。⭐⭐⭐⭐☆
+
+- 🌐 [*The History of Data Science and Pioneers You Should Know*](https://onlinestemprograms.wpi.edu/blog/history-data-science-and-pioneers-you-should-know) — 数据科学的历史与重要人物简介，可用于教学引入或学术演讲材料。⭐⭐⭐
+
 
 
 ### 数据可视化
 
-- [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/index.html)。
+#### 📘 图书资源 {-}
 
-- [cookbook R](http://www.cookbook-r.com/Graphs/)。
+- 📘 [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/index.html) — 作者：Hadley Wickham。ggplot2 官方指南，数据可视化领域的权威读物。⭐⭐⭐⭐⭐
 
-- [*R Graphics Cookbook, 2nd edition*](https://r-graphics.org/)。
+- 📘 [*R Graphics Cookbook*](http://www.cookbook-r.com/Graphs/)[*2nd edition*](https://r-graphics.org/) — 作者：Winston Chang。图形制作实用手册，覆盖 ggplot2 和 base R 图形系统。⭐⭐⭐⭐
 
-- [地图可视化Geocomputation with R](https://geocompr.robinlovelace.net/) 
+#### 🌐 在线教程 / 网页资源 {-}
 
-- [流程图DiagramR](https://rich-iannone.github.io/DiagrammeR/)
+- 🌐 [*Cookbook for R - Graphs*](http://www.cookbook-r.com/Graphs/) — 提供大量图形绘制范例，查询便捷，适合快速解决可视化问题。⭐⭐⭐⭐
+
+- 🌐 [*Geocomputation with R*](https://geocompr.robinlovelace.net/) — 介绍如何使用 R 进行地理空间数据处理与可视化，涵盖 sf、raster、tmap 等包。⭐⭐⭐⭐⭐
+
+- 🌐 [*DiagrammeR 官方文档*](https://rich-iannone.github.io/DiagrammeR/) — 绘制流程图、图结构与网络图工具包，支持 graphviz 与 mermaid 语法。⭐⭐⭐⭐
+
+- 🌐 [*flextable R package*](https://ardata-fr.github.io/flextable-book/index.html) ⭐⭐⭐⭐⭐
+
 
 ### 文本分析
 
-- [Corpus Linguistics](https://alvinntnu.github.io/NTNU_ENC2036_LECTURES/) by Alvin Cheng-Hsien Chen
+#### 📘 图书资源 {-}
 
-- [Text mining with R](https://www.tidytextmining.com/index.html)
+- 📘 [*Text Mining with R Tidytext教程*](https://www.tidytextmining.com/index.html) — 作者：Julia Silge 和 David Robinson。基于 tidytext 包，系统讲解如何使用 tidyverse 工具进行文本挖掘。⭐⭐⭐⭐⭐
 
-- [Computational Stylistics Group](https://computationalstylistics.github.io/) is a cross-institutional research team focused on computer-assisted text analysis, stylometry, authorship attribution, sentiment analysis, and the like stuff. The research projects conducted by the team members could be described as an intersection of linguistics, literary criticism, and computer science – however the best name here would be “Digital Humanities”. The group is based mostly in Kraków, at the Institute of Polish Language (Polish Academy of Sciences), but also at the Jagiellonian University and the University of Antwerp.
+#### 🌐 在线教程 / 网页资源 {-}
+
+- 🌐 [*Quanteda软件包官网*](https://quanteda.io/) — 作者：Kenneth Benoit and Kohei Watanabe。系统介绍Quanteda、文本分析基础与工具，适合语言类课程使用。⭐⭐⭐⭐
+
+- 🌐 [*Corpus Linguistics 课程讲义*](https://alvinntnu.github.io/NTNU_ENC2036_LECTURES/) — 作者：Alvin Cheng-Hsien Chen。系统介绍语料库语言学、文本分析基础与工具，适合语言类课程使用。⭐⭐⭐⭐
+
+- 🌐 [*Text mining in R for the social sciences and digital humanities*](https://tm4ss.github.io/docs/index.html) — 作者：Andreas Niekler, Gregor Wiedemann。系统介绍语料库语言学、文本分析基础与工具，适合语言类课程使用。⭐⭐⭐⭐
+
+
+- 🌐 [*Computational Stylistics Group*](https://computationalstylistics.github.io/) — 跨机构研究团队（the Institute of Polish Language (Polish Academy of Sciences), but also at the Jagiellonian University and the University of Antwerp），聚焦计算风格学、文本风格分析、作者识别、情感分析等，强调语言学、文学批评与计算方法的交叉融合。⭐⭐⭐⭐
 
 ### 语音分析
 
-* wrassp 是R的一个封装包，围绕Michel Scheffers的libassp（高级语音信号处理器）构建。libassp库旨在提供处理大多数常见音频格式的语音信号文件并执行语音科学/语音科学中常见分析的功能。这包括计算共振峰、基频、均方根、自动相关、一系列频谱分析、零交叉率、滤波等。这个封装包为R提供了libassp信号处理功能的大部分子集，并以一种（希望）用户友好的方式提供给用户。
+#### 🌐 在线教程 / 使用手册 {-}
 
--[教程](https://cran.r-project.org/web/packages/wrassp/vignettes/wrassp_intro.html)
+- 🌐 [*wrassp 入门教程*](https://cran.r-project.org/web/packages/wrassp/vignettes/wrassp_intro.html) — 介绍如何使用 wrassp 包进行音频信号分析，含实例与语法讲解。是 R 对 Michel Scheffers 的 `libassp`（高级语音信号处理器）库的封装。支持处理常见音频格式并执行语音科学常用的分析功能，包括：共振峰、基频、均方根能量、自动相关、频谱分析、零交叉率、滤波等。该包为 R 提供了 libassp 功能的主要子集，力求以用户友好的方式服务于语音信号分析。⭐⭐⭐⭐⭐
 
-* soundgen 基于*seewave*的功能，增加了用于声音合成、操作和分析的高级函数（参见关于声音合成的小册子）。[教程](https://cran.r-project.org/web/packages/soundgen/vignettes/acoustic_analysis.html)
 
-* EMU-R: EMU语音数据库管理系统（EMU-SDMS）是一组软件工具，旨在尽可能接近一个集成解决方案，用于生成、操作、查询、分析和管理语音数据库。[手册](https://ips-lmu.github.io/The-EMU-SDMS-Manual/index.html)
+- 🌐 [*soundgen 教程：声学分析*](https://cran.r-project.org/web/packages/soundgen/vignettes/acoustic_analysis.html) — 基于 `seewave` 的功能，扩展了音频合成、处理和分析的高级函数。适用于声学特征提取与声音合成任务，特别适合语音/动物声音分析教学与研究。⭐⭐⭐⭐
+
+
+- 🌐 [*EMU-SDMS 官方手册*](https://ips-lmu.github.io/The-EMU-SDMS-Manual/index.html) — EMU 语音数据库管理系统（EMU-SDMS）为一个集成式语音数据库解决方案，支持语音数据的生成、注释、查询、分析与管理。系统介绍 EMU 的结构、标注、音频管理与可视化工具，适合深入研究语音数据库的用户。⭐⭐⭐⭐⭐
+
+- 🌐 [*国际音标在线输入键盘*](https://www.internationalphoneticalphabet.org/html-ipa-keyboard-v1/keyboard/) — 可交互地输入国际音标符号，适合语音学学习、作业编辑与标注使用。⭐⭐⭐⭐
+
+- 🌐 [*Praat 脚本资源（UCLA）*](https://phonetics.linguistics.ucla.edu/facilities/acoustic/praat.html) — 提供常用的 Praat 脚本集合，用于自动化语音信号分析任务。⭐⭐⭐⭐⭐
+
+- 🌐 [*语音学基础练习：The Articulatory System*](https://opentextbc.ca/psyclanguage/chapter/the-articulatory-system/) — 开源教材中的一章，介绍发音器官及基本发音方式，适合初学者练习。⭐⭐⭐⭐
+
+- 🌐 [*R 语言绘制元音图教程*](https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/) — 教你如何使用 R 可视化元音的 F1-F2 图，适用于语音学与音系学研究。⭐⭐⭐⭐
+
+- 🌐 [*用 R 绘制 Praat 风格图形*](https://rpuggaardrode.github.io/praatpicture_manual/waveform.html) — 教程介绍如何使用 `praatpicture` 包生成波形图与频谱图，风格接近 Praat。⭐⭐⭐⭐
+
+- 🌐 [*EMU-R 系统概览章节*](https://ips-lmu.github.io/The-EMU-SDMS-Manual/chap-overview.html) — 介绍 EMU-SDMS 系统的整体结构、主要模块和工作流程，是进行语音数据库管理的关键参考。⭐⭐⭐⭐⭐
+
+- 🌐 [*SWPhonetics：基于共振峰计算元音发音位置*](https://swphonetics.com/methods/vowel-articulation-from-formants/) — 提供详细算法与可视化方法，支持在线计算与下载数据。⭐⭐⭐⭐
+
+- 🌐 [*社科院语音数据库 AESOP*](https://www.aclclp.org.tw/use_mat.php#aesop) — 包含多语言语音语料，适用于跨语言声学分析、语音合成与识别研究。⭐⭐⭐⭐⭐
+
 
 ### 统计建模
 
-- [Summary and Analysis of Extension Program Evaluation in R](https://rcompanion.org/handbook/index.html)  当我需要了解如何进行各种t检验、ANOVA或回归分析时，我常用的参考。
+#### 📘 图书资源 {-}
+
+- 📘 [*Learning Statistics with R: A Tutorial for Psychology Students and Other Beginners*](https://learningstatisticswithr.com/book/) — 面向心理学初学者的统计入门教材，内容涵盖描述性统计、推论统计及线性建模，风格友好。⭐⭐⭐⭐⭐
+
+- 📘 [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/svm.html) — 以实际应用为导向，系统介绍机器学习在 R 中的实现，包括支持向量机、随机森林等。⭐⭐⭐⭐
+
+- 📘 [*Statistical Thinking for the 21st Century*](https://statsthinking21.github.io/statsthinking21-core-site/index.html) — 现代统计思维教材，强调模型建构与理解而非公式推导，适合数据科学初学者。⭐⭐⭐⭐
+
+#### 🌐 在线教程 / 网页资源 {-}
+
+- 🌐 [*R Companion to the Handbook of Biological Statistics*](https://rcompanion.org/handbook/index.html) — 提供 R 实现的统计方法指南，适用于生命科学、行为科学等领域，内容实用详尽，当我需要了解如何进行各种t检验、ANOVA或回归分析时，我常用的参考。⭐⭐⭐⭐⭐
+
+- 🌐 [*A Primer on Factor Analysis in Research using Reproducible R Software*](https://rstudio-pubs-static.s3.amazonaws.com/1064415_4457273740634e8b81901636e1371c29.html#Module_V:_Factor_Loading) — 基于 R 的主成分分析与因子分析入门手册，强调可重复研究实践。⭐⭐⭐⭐
+
+#### 📄 学术文章 {-}
+
+- 📄 Schad, D. J., Vasishth, S., Hohenstein, S., & Kliegl, R. (2020).  
+*How to capitalize on a priori contrasts in linear (mixed) models: A tutorial.*  
+_Journal of Memory and Language, 110_, 104038. [https://doi.org/10.1016/j.jml.2019.104038](https://doi.org/10.1016/j.jml.2019.104038)  
+→ 线性混合模型中对比编码的实用教程，尤其适用于语言学研究设计。⭐⭐⭐⭐⭐
+
+- 📄 Quené, H., & van den Bergh, H. (2008).  
+*Examples of mixed-effects modeling with crossed random effects and with binomial data.*  
+_Journal of Memory and Language, 59_(4), 413–425. [https://doi.org/10.1016/j.jml.2008.02.002](https://doi.org/10.1016/j.jml.2008.02.002)  
+→ 展示如何处理交叉随机效应与二项数据，是语音与语言学数据建模的经典范例。⭐⭐⭐⭐
+
+- 📄 Jaeger, T. F. (2008).  
+*Categorical data analysis: Away from ANOVAs (transformation or not) and towards logit mixed models.*  
+_Journal of Memory and Language, 59_(4), 434–446. [https://doi.org/10.1016/j.jml.2007.11.007](https://doi.org/10.1016/j.jml.2007.11.007)  
+→ 推崇使用逻辑回归混合模型分析分类数据，为语言学研究方法变革的重要文章。⭐⭐⭐⭐⭐
+
+- 📄 Oleson, J. J., Brown, G. D., & McCreery, R. (2019).  
+*Essential Statistical Concepts for Research in Speech, Language, and Hearing Sciences.*  
+_Journal of Speech, Language, and Hearing Research, 62_(3), 489–497. [https://doi.org/10.1044/2018_JSLHR-S-ASTM-18-0239](https://doi.org/10.1044/2018_JSLHR-S-ASTM-18-0239)  
+→ 为言语、语言与听觉研究提供核心统计概念梳理，适合初学者和研究者阅读。⭐⭐⭐⭐
+
 
 ### 机器学习
 
-- [Tidymodels packages](https://www.tidymodels.org/packages/)
 
-- The [caret package](https://topepo.github.io/caret/index.html) (short for Classification And REgression Training) is a set of functions that attempt to streamline the process for creating predictive models. 
+#### 📘 图书资源 {-}
 
-### 网络分析
+- 陈文贤. (2020). *大话数据科学*. 北京: 清华大学出版社。  
+  用通俗幽默的语言介绍数据科学的基本思想、流程和方法，适合中文读者理解建模思维与统计推理的基本框架。⭐⭐⭐⭐⭐
 
-- [Network Analysis in R](https://robwiederstein.github.io/network_analysis/) by Robert Wiederstein
-- [An Introduction to Network Analysis for Psycholinguists
-](https://vpf-netsci.netlify.app/part2-demo.html#Meso-level_(community_structure)) by Cynthia Siew
 
-**网络可视化**
+#### 🌐 在线教程/网页 {-}
 
-* [*Static and dynamic network visualization with R*](http://kateto.net/network-visualization)
+- [A Primer on Factor Analysis in Research using Reproducible R Software 因子分析](https://rstudio-pubs-static.s3.amazonaws.com/1064415_4457273740634e8b81901636e1371c29.html#Abstract)  
+  因子分析基础教程，基于 R 语言的可复现分析流程，适合社会科学与心理语言学研究者。⭐⭐⭐⭐⭐
 
-* [*Introduction to Network Analysis with R*](https://www.jessesadler.com/post/network-analysis-with-r/)
 
-* [ggnet2: network visualization with ggplot2](https://briatte.github.io/ggnet/)
+- [Tidymodels with R](https://www.tmwr.org/)  
+  - 系统介绍了基于 `tidymodels` 的现代建模流程，包括数据预处理、建模、调参与评估等步骤。⭐⭐⭐⭐⭐
 
-- [论文](https://journal.r-project.org/archive/2017/RJ-2017-023/index.html)。
 
+- [Tidymodels Packages Overview](https://www.tidymodels.org/packages/)  
+  - 提供 `tidymodels` 生态系统中各 R 包的功能简介与使用文档链接，是了解整体框架的入口页面。
+  
+- The [caret package](https://topepo.github.io/caret/index.html) (short for Classification And REgression Training) is a set of functions that attempt to streamline the process for creating predictive models. ⭐⭐⭐⭐⭐
+
+
+### 网络分析 
+
+#### 📘 图书资源 {-}
+
+- 📘 [*Network Analysis in R*](https://robwiederstein.github.io/network_analysis/) — 作者：Robert Wiederstein。全面介绍R语言中的网络分析方法，涵盖基础理论和实践应用。⭐⭐⭐⭐
+
+#### 🌐 在线教程/网页资源 {-}
+- 🌐 [*An Introduction to Network Analysis for Psycholinguists*](https://vpf-netsci.netlify.app/part2-demo.html#Meso-level_(community_structure)) — 作者：Cynthia Siew。针对心理语言学领域的网络分析入门教程，特别关注社区结构等中观层面分析。⭐⭐⭐
+
+- 🌐 [*Static and dynamic network visualization with R*](http://kateto.net/network-visualization) — 作者：Katya Ognyanova。详细讲解R中静态和动态网络可视化的方法与技巧，包含丰富代码示例。⭐⭐⭐⭐⭐
+- 🌐 [*Introduction to Network Analysis with R*](https://www.jessesadler.com/post/network-analysis-with-r/) — 作者：Jesse Sadler。R语言网络分析入门指南，适合初学者快速上手。⭐⭐⭐⭐
+- 🌐 [*ggnet2: network visualization with ggplot2*](https://briatte.github.io/ggnet/) — 作者：François Briatte。介绍如何使用ggplot2风格的ggnet2包进行网络可视化。⭐⭐⭐
+
+#### 📄 学术文章 {-}
+
+- 📄 [*Network Analysis in R Journal*](https://journal.r-project.org/archive/2017/RJ-2017-023/index.html) — R Journal发表的网络分析专题论文，涵盖前沿方法与应用案例。⭐⭐⭐⭐
 
 
 ### 网络抓取
 
-- [rvest: easy web scraping with R](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/) 
+#### 🌐 在线教程/网页资源 {-}
 
-- [教程 1](https://www.datacamp.com/community/tutorials/r-web-scraping-rvest) 
+- 🌐 [*rvest: easy web scraping with R*](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/) — RStudio官方博客文章，介绍rvest包的基本用法和网页抓取原理。⭐⭐⭐⭐
+  
+- 🌐 [*Web Scraping in R using rvest*](https://www.datacamp.com/community/tutorials/r-web-scraping-rvest) — DataCamp社区教程，提供rvest包网页抓取的实战案例和分步指导。⭐⭐⭐⭐⭐
 
-- [教程 2](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/)
+- 🌐 [*Beginner's Guide to Web Scraping in R using rvest*](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/) — Analytics Vidhya的入门指南，包含实际案例和操作知识。⭐⭐⭐
+
 
 ### 社交媒体分析
 
-随着越来越多的人深深沉浸在社交媒体中，分析他们的语言行为可能会揭示出有价值的信息。
+#### 📘 图书资源 {-}
 
-- [Learning Social Media Analytics with R](https://learning.oreilly.com/library/view/learning-social-media/9781787127524/)
+- 📘 [*Learning Social Media Analytics with R*](https://learning.oreilly.com/library/view/learning-social-media/9781787127524/) — O'Reilly出版的实用指南，涵盖使用R进行社交媒体数据收集、分析和可视化全流程。⭐⭐⭐⭐
 
-- [教程 1](http://pablobarbera.com/big-data-upf/html/02a-networks-intro-visualization.html)
+#### 🌐 在线教程/网页资源 {-}
 
+- 🌐 [*Network Analysis and Visualization*](http://pablobarbera.com/big-data-upf/html/02a-networks-intro-visualization.html) — 作者：Pablo Barberá。UPF大学大数据课程讲义，重点介绍社交媒体网络分析和可视化技术。⭐⭐⭐⭐⭐
 
 
 ### 学科研究
-- [文献计量bibliometrix](https://www.bibliometrix.org/home/)
 
-- [Using R for psychological research](https://personality-project.org/r/r.guide.html)
+#### 🌐 在线工具与平台 {-}
 
-- [The psych and psychTools packages](https://personality-project.org/r/psych/)
+- 🌐 [*bibliometrix*](https://www.bibliometrix.org/home/) — 专业的文献计量分析工具，提供完整的科学计量学和知识图谱分析解决方案。支持R语言接口。⭐⭐⭐⭐⭐
 
-### 文档输出
+#### 📚 心理学研究资源 {-}
 
-**R-markdown**
+- 📚 [*Using R for psychological research*](https://personality-project.org/r/r.guide.html) — 心理学研究中R语言应用的权威指南，涵盖实验设计到数据分析全流程。⭐⭐⭐⭐
 
-*代码交互运行块的笔记本*
+- 📚 [*The psych and psychTools packages*](https://personality-project.org/r/psych/) — 心理学研究必备R包，提供心理测量、人格分析和问卷开发等专业功能。⭐⭐⭐⭐⭐
 
-- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
-- [Tufte](https://rstudio.github.io/tufte/) 
-- [DataTables](https://rstudio.github.io/DT/)
+### 文档输出 
 
-*网站和博客*
+#### 📘 图书资源 {-}
 
-教程: [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/)
+- 📘 [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) — 作者：Yihui Xie。R Markdown 权威指南，涵盖从基础到高级的所有功能。⭐⭐⭐⭐⭐
 
-*书籍*
-教程: [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+- 📘 [*bookdown: Authoring Books and Technical Documents*](https://bookdown.org/yihui/bookdown/) — 作者：Yihui Xie。使用 R Markdown 编写书籍和技术文档的完整指南。⭐⭐⭐⭐⭐
 
-*幻灯片*
-- [xaringan, creating remark.js through R Markdown](https://github.com/yihui/xaringan) 
+#### 🌐 网站和博客资源 {-}
 
-- [reveal.js Presentations](https://bookdown.org/yihui/rmarkdown/revealjs.html) 
+- 🌐 [*blogdown: Creating Websites with R Markdown*](https://bookdown.org/yihui/blogdown/) — 使用 R Markdown 创建静态网站的详细教程。⭐⭐⭐⭐
 
-- [reveal.js](https://github.com/hakimel/reveal.js#markdown)
+#### 📊 幻灯片制作 {-}
 
-*交互式教程*
+- 📊 [*xaringan: Creating remark.js Slides*](https://github.com/yihui/xaringan) — 通过 R Markdown 创建 remark.js 幻灯片的包。⭐⭐⭐⭐
 
--[教程](https://rstudio.github.io/learnr/#overview)
+- 📊 [*reveal.js Presentations*](https://bookdown.org/yihui/rmarkdown/revealjs.html) — 使用 R Markdown 制作 reveal.js 幻灯片的指南。⭐⭐⭐
 
-- [pkgdown](https://pkgdown.r-lib.org/articles/pkgdown.html)
+- 📊 [*reveal.js 官方仓库*](https://github.com/hakimel/reveal.js#markdown) — reveal.js 的官方文档，支持 Markdown 语法。⭐⭐⭐⭐
 
-**Markdown 语法**
-- 字体  
-+ <font face="宋体">我是宋体</font>  
-+ <font face="楷体">我是楷体</font>- 字号  
-+ <font size=5>我是尺寸</font>   
-+ <font size=10>我是尺寸</font>
-- 颜色  
-+ <font color=Blue>我是蓝色</font>    
-+ <font color=#871F78>我是紫色</font>  
-- 背景  
-+ <font style="background:Black;"color=White>黑色背景白字</font>
+#### 🛠️ 交互式工具 {-}
 
-- 对齐    
-+ <p style="text-align:center;">这是居中对齐的段落</p>   
-+ <p style="text-align:right;">这是右对齐的段落</p>    
-+ <p style="text-align:justify">分散对齐</p>  
-- 缩进  
-+ <p style="text-indent:32px;">首行缩进：这是一行以上的段落，第1行进行了缩进，之后所有行没有缩进。缩进的宽度是可以调节的，这里展示的常见的缩进两个汉字宽度的形式，可以设置为`2em`或`32px`。</p>
+- 🛠️ [*learnr 交互式教程*](https://rstudio.github.io/learnr/#overview) — 创建交互式教程的 R 包。⭐⭐⭐⭐
 
-&emsp;&emsp;每当我开展R语言的工作坊时，我首先需要向参与者解释为什么他们应该学习R语言。  
+- 🛠️ [*pkgdown 文档*](https://pkgdown.r-lib.org/articles/pkgdown.html) — 为 R 包创建专业文档网站的工具。⭐⭐⭐⭐⭐
 
-&emsp;&emsp;下面是使用R可以做的一些很酷的事情，涵盖了从数据分析、统计建模、可视化到制作幻灯片、仪表板、博客文章、互动教程等多个方面。
+#### 🎨 特殊样式 {-}
 
+- 🎨 [*Tufte 样式*](https://rstudio.github.io/tufte/) — 实现 Edward Tufte 风格的 R Markdown 文档。⭐⭐⭐
 
+- 🎨 [*DataTables 交互式表格*](https://rstudio.github.io/DT/) — 在 R Markdown 中创建交互式表格。⭐⭐⭐⭐
