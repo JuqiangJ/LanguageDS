@@ -1,25 +1,13 @@
 # 第四章 探索性数据分析
 
 
-&emsp;&emsp;探索性数据分析（Exploratory Data Analysis，简称EDA）通过可视化和统计手段来帮助人们理解数据中的模式和特征，发现数据中隐藏的关联性和趋势，为进一步的数据建模和分析提供基础。这种分析过程可以帮助数据科学家针对数据和应用的场景，提出假设或问题。
+## 学习目标  {-}
 
-&emsp;&emsp;探索性数据分析过程中会不断反复经历以下几个环节：
+- 📌 **了解探索性数据分析的概念**  
 
-- 数据转换：对数据集中的数值变量进行变换、重构以及描述性统计值计算。
+- 📌 **掌握数据转化的常见方法**  
 
-- 数据可视化：通过绘制条形图、直方图、散点图、箱线图、密度图等，将数据可视化，更好地展示数据的趋中性和分布。
-
-- 数据建模：通过统计模型验证数据之间的关系。
-
-
-## 学习目标
-
-
-- 了解探索性数据分析的概念
-
-- 掌握数据转化的常见方法
-
-- 了解数据可视化类型与特点
+- 📌 **了解数据可视化类型与特点**  
 
 
 ## 数据转换
@@ -65,11 +53,7 @@
 
 ### 任务4.1 数据标准化与归一化 {-}
 
-- 计算每个词汇的情感得分与抽象度的乘积作为新特征Emotion_Abstractness_Product。
-- 计算每个词汇的词频与意象度的差作为新特征Frequency_Imagery_Difference。
-- 对词频特征进行Z-score标准化，并创建新特征Frequency_Zscore。
-- 对词汇抽象度进行Min-Max归一化，并创建新特征Abstractness_Normalized
-- 对词频特征进行对数化，并创建新特征Frequency_Log。
+&emsp;&emsp;计算每个词汇的情感得分与抽象度的乘积作为新特征Emotion_Abstractness_Product。计算每个词汇的词频与意象度的差作为新特征Frequency_Imagery_Difference。对词频特征进行Z-score标准化，并创建新特征Frequency_Zscore。对词汇抽象度进行Min-Max归一化，并创建新特征Abstractness_Normalized。对词频特征进行对数化，并创建新特征Frequency_Log。
 
 ```{r eval=F, echo=T}
 library(tidyverse)

@@ -1,8 +1,15 @@
 
 # 第二章 R语言简介
 
-### 学习目标
+## 学习目标 {-}
 
+- 📌 **了解R语言特点**  
+
+- 📌 **安装R、R-Studio、R软件包**  
+
+- 📌 **新建R语言编程文档**  
+
+- 📌 **掌握R语言基本数据结构及简单操作**  
 
 
 ## R语言发展简史
@@ -87,6 +94,8 @@ R语言可以在计算机上通过终端命令直接运行，也有自己的图�
 ![第四步输入项目名称](images/2.12.png)
 
 在项目文件夹内，需要对不同数据和文件进行管理。我们可以参考[Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/) 的建议，在项目文件下设置子文件夹。 
+
+![文件夹结构](images/2.folder.png)
 
 ├── README.md <- 介绍项目整体及注意事项
 |
