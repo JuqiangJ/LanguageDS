@@ -1,14 +1,18 @@
 
-# 第十二章 声学分析项目案例
+# 第十二章 声学分析项目案例 {-}
 
-## 案例三、语音数据处理案例 
+## 案例12.1 越南语南北方言声调曲拱对比 {-}
 
 
-## 研究背景
+### 研究背景 {-}
 
-![详细背景请看原文献](images/11.1.png)
+### 研究问题及假设  {-}
 
-&emsp;&emsp;越南南部方言中SV214调（hỏi）和SV415调（ngã）的音调合并，使得南部越南语的音系系统与北部越南语不同。鉴于这一差异的重要性及其对泰语音调感知同化模式的潜在影响，我们在声学研究中验证了南部越南语中这两个音调的合并情况。为了对基频（f0）轮廓进行全面而动态的比较，我们采用了广义加性混合模型（GAMM），这是一种非线性回归方法，不需要对数据进行聚合或预先选择轮廓中的固定时间点。该方法能够检测动态变化数据中的一般模式，同时考虑到受试者和项目相关的变异性（Nixon, van Rij, Mok, Baayen, & Chen, 2016; Wieling, 2018）。通过这种方式，它可以揭示在数据聚合或任意选择单一时间点时被掩盖的模式。
+### 研究方法
+
+### 数据收集
+
+### 数据处理
 
 
 ```{r message=FALSE, warning=FALSE }
@@ -24,8 +28,10 @@ library(itsadug)
 
 
 
-## 数据导入及整理
+
 ```{r eval=F, echo=T}
+
+## 数据导入及整理
 contour_data_all = read.csv("data/ch12/nv.sv.data.2024-08-24.csv")
 
 # modelling NV difference
@@ -46,10 +52,11 @@ nv.data = start_event(nv.data, event = c("subject", "id"))
 
 ```
 
-## 数据建模
+#### 数据建模
 
-### 越南语北部方言声调建模
+
 ```{r eval=F, echo=T}
+### 越南语北部方言声调建模
 # preliminary model without autocorrelation correction 
 model.nv = bam(normF0 ~ tone + s(Time, by=tone)+
                s(Time, subject, by = tone, bs = "fs", m = 1),
@@ -87,19 +94,19 @@ plot_smooth(model.nv.b, view="Time",
 ```
 
 
-验证越南语北部方言是否存在这个声调对立
 
- 模型比较法
- 模型1区分两个对立
 ```{r  eval=F, echo=T }
 
+# 验证越南语北部方言是否存在这个声调对立
 
+# （一）模型比较法
+# 模型1区分两个对立
 
 
 model.nv = bam(normF0 ~ tone + s(Time, by=tone)+
                  s(Time, subject, by = tone, bs = "fs", m = 1),
                data= nv.data)
-#模型2不区分两个对立
+# 模型2不区分两个对立
 model.nv0 = bam(normF0 ~ tone + s(Time)+
                  s(Time, subject, by = tone, bs = "fs", m = 1),
                data= nv.data)
@@ -109,10 +116,14 @@ compareML(model.nv, model.nv0)
 
 ```
 
-差值比较法
-&emsp;&emsp;通过修改模型的设定，将表示两个原始平滑函数之间差异的函数包含在模型中。接下来，发现这个差异平滑函数是显著的，这就表明有显著差异。为了拟合这个新模型，我们首先需要创建一个新的二元变量，该变量在一个水平上等于0，而在另一个水平上等于1。我们现在创建一个名为IS214的变量，该变量在单词‘NV214’上为1，而在单词‘NV415’上为0。
+
 
 ```{r eval=F, echo=T}
+
+# （二）差值比较法
+# 通过修改模型的设定，将表示两个原始平滑函数之间差异的函数包含在模型中。接下来，发现这个差异平滑函数是显著的，这就表明有显著差异。为了拟合这个新模型，我们首先需要创建一个新的二元变量，该变量在一个水平上等于0，而在另一个水平上等于1。我们现在创建一个名为IS214的变量，该变量在单词‘NV214’上为1，而在单词‘NV415’上为0。
+
+
 nv.data$IS214 = (nv.data$tone == "NV214")*1
 
 model.nv.binary = bam(normF0 ~ s(Time) + s(Time, by=IS214)+
@@ -127,9 +138,10 @@ summary(model.nv.binary)
 ```
 
 
-soluation 3
+
 
 ```{r eval=F, echo=T}
+# （三）
 nv.data$toneO = as.ordered(nv.data$tone)
 contrasts(nv.data$toneO) = "contr.treatment"
 
@@ -144,10 +156,11 @@ summary(model.nv.ord )
 
 ```
 
-### 越南语南部方言声调建模
+
 
 ```{r eval=F, echo=T}
 
+### 越南语南部方言声调建模
 sv.data = contour_data_all%>%
   ungroup()%>%
   filter(tone %in% c("SV415", "SV214") )%>%
@@ -242,9 +255,10 @@ summary(model.sv.ord )
 ```
 
 
-## 展示与呈现
+
 
 ```{r eval=F, echo=T}
+## 展示与呈现
 # plot the comparison
 library(cowplot)
 
@@ -292,7 +306,36 @@ plot_smooth(model.sv.b, view="Time",
 #                        sep = "") ,row.names = FALSE)
 ```
 
+### 结论 {-}
 
 
+## 案例12.2 汉语母语者模仿泰语声调研究 {-}
+
+### 研究背景 {-}
+
+### 研究问题及假设 {-}
+
+### 研究方法 {-}
+
+#### 数据收集 {-}
+
+
+#### 数据处理 {-}
+
+```{r eval=F, echo=T}
+
+
+```
+
+### 研究结果 {-}
+
+
+#### 数据建模 {-}
+
+```{r eval=F, echo=T}
+
+
+```
+### 结论 {-}
 
 

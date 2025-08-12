@@ -1,5 +1,9 @@
 # 第十三章 机器学习项目案例
 
+
+
+## 案例13.1 基于母语特征建模预测声调学习难点
+
 ![详细背景请看原文献](images/12.1.png)
 
 ```{r echo=FALSE, include=FALSE}
@@ -11,7 +15,20 @@ setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 library(cowplot)
 ```
 
-## 训练普通话声调模型
+### 研究背景 {-}
+
+### 研究问题及假设 {-}
+
+### 研究方法 {-}
+
+#### 数据收集 {-}
+
+#### 数据处理 {-}
+
+
+### 研究结果  {-}
+
+#### 数据建模 {-}
 
 ```{r eval=F, echo=T}
 
@@ -99,8 +116,14 @@ md_plot = md_confusion%>%
 
 ```
 
-## 训练泰语母语者声调模型
+
+
+
+
+
 ```{r eval=F, echo=T}
+## 训练泰语母语者声调模型
+
 # import data
 thai_discrete = read.csv("data/ch13/thai_discrete.csv")
 
@@ -179,10 +202,12 @@ thai_plot
 ```
 
 
-## 模拟普通话听者感知泰语声调
+
 
 ```{r eval=F, echo=T}
-# mandarin listeners percieve Thai tones
+
+## 模拟普通话听者感知泰语声调
+
 prediction_md_thai <- predict(svm_md, dataset_thai)
  
 table( prediction_md_thai, thai_discrete$tone)
@@ -300,10 +325,11 @@ md_compare
 
 ```
 
-## 模拟泰语母语听者感知普通话声调
+
 
 ```{r eval=F, echo=T}
-# thai listeners percieve mandarin tones
+## 模拟泰语母语听者感知普通话声调
+
 prediction_thai_md <- predict(svm_thai, dataset_md)
 
 table(prediction_thai_md, md_discrete$tone)
@@ -414,7 +440,1212 @@ thai_compare
 
 
 
+### 结论 {-}
 
+
+## 案例13.2 基于母语特征建模评估外语声调产出 {-}
+
+### 研究背景 {-}
+
+### 研究问题及假设 {-}
+
+### 研究方法 {-}
+
+#### 数据收集 {-}
+
+#### 数据处理 
+
+```{r eval=F, echo=T}
+library(tidyverse)
+
+dir.interim = "data/interim/"
+dir.processed = "data/processed/"
+
+# Thai data
+
+# prosody pro with discrete measures
+# thai_all <- read.delim(paste(dir.interim,
+#                              "Thai_all/thai_all.means",
+#                              sep = ""), 
+#                        stringsAsFactors=FALSE)
+
+# contour_data_all = read.csv(paste(dir.processed, 
+#                                   paste("contour_data_all",
+#                                         "2020-08-02",
+#                                         "csv",
+#                                         sep = "."),
+#                                   sep = ""))
+
+# thai_mean = thai_all %>%
+#   filter(., rowLabel != "silence")%>%
+#   mutate(language = "Thai",
+#          tone = str_extract(rowLabel, "[0-9]{2,3}"),
+#          informant = str_extract(rowLabel, "(F|M)[1-8]"),
+#          token = str_extract(rowLabel, "[1-6]{1}$"),
+#          syllable = str_extract(rowLabel, "m[a,i]"))
+# 
+# # duration
+# 
+# duration_thai = thai_mean%>%
+#   select(language, tone, informant, token, syllable, duration)
+
+# f0 normtime data
+# df.thai.f0 <- read.delim("data/processed/Thai_all/thai_all.normtimef0", 
+#                        stringsAsFactors=FALSE)
+
+df.thai.f0 = read.delim(paste(dir.interim,
+                        "Thai_all/thai_all.normtimef0",
+                        sep = ""), 
+                        stringsAsFactors=FALSE)
+
+# df.thai.f0.new <- read.delim("data/processed/Thai_new/thai_new.normtimef0", 
+#                          stringsAsFactors=FALSE)
+
+df.thai.f0.new = read.delim(paste(dir.interim,
+                            "Thai_new/thai_new.normtimef0",
+                            sep = ""), 
+                            stringsAsFactors=FALSE)
+
+f0.thai = df.thai.f0%>%
+  filter(., rowLabel != "silence")%>%
+  group_by(rowLabel)%>%
+  mutate(language = "Thai",
+         tone = str_extract(rowLabel, "[0-9]{2,3}"),
+         informant = str_extract(rowLabel, "(F|M)[1-8]"),
+         token = str_extract(rowLabel, "[1-6]{1}$"),
+         syllable = str_extract(rowLabel, "m[a,i]"),
+         timepoint = 1:n())
+
+f0.thai.new = df.thai.f0.new%>%
+  filter(., rowLabel != "silence_mono")%>%
+  group_by(rowLabel)%>%
+  mutate(language = "Thai",
+         tone = str_extract(rowLabel, "[i,a,u,r][0-9]{1}[-,_]"),
+         informant = paste(str_extract(rowLabel, "(F|M)[1-9]"),"b", sep = ""),
+         token = str_extract(rowLabel, "-[1-6]{1}"),
+         syllable = str_extract(rowLabel, "[m,n][a,i,u]"),
+         timepoint = 1:n())%>%
+  mutate(tone = str_extract(tone, "[0-9]{1}[-,_]"),
+    tone = recode(tone, "0-" = "33", "1-"="21",
+                       "2-" = "241", "3-"= "45","4-"="315", "0_" = "33", "1_"="21",
+                       "2_" = "241", "3_"= "45","4_"="315"),
+         token = str_extract(token, "[1-9]{1}"))%>%
+  filter(!is.na(tone))%>%
+  filter(tone != "5-")
+
+# unique(f0.thai.new$tone)
+
+f0.thai.all = rbind(f0.thai, f0.thai.new)
+
+#unique(f0.thai.all$tone)
+
+f0.thai.8points = f0.thai.all %>%
+  # select 8 points first 
+  filter(timepoint >1 & timepoint < 10) %>%
+  group_by(informant)%>%
+  #normalisation
+  mutate(normF0 = (F0 - mean(F0))/sqrt(sum(F0^2)/length(F0)))%>%
+  select(language, tone, informant, token, syllable, timepoint, normF0)
+
+
+#onset/offset data
+
+onset.thai = f0.thai.8points%>%
+  filter(timepoint == 2)%>%
+  rename(onset = normF0)%>%
+  select(language, tone, informant, token, syllable, onset)
+
+offset.thai = f0.thai.8points%>%
+  filter(timepoint == 9)%>%
+  rename(offset = normF0)%>%
+  select(language, tone, informant, token, syllable, offset)
+
+#re-calculating data from 10-90%
+meanf0.thai = f0.thai.8points%>%
+  group_by(language, tone, informant, token, syllable)%>%
+  summarise(f0mean =mean(normF0))
+
+excursion.thai = f0.thai.8points%>%
+  group_by(language, tone, informant, token, syllable)%>%
+  summarise(excursion = max(normF0)-min(normF0))
+
+maxloc.thai = f0.thai.8points%>%
+  group_by(language, tone, informant, token, syllable)%>%
+  summarise(maxloc = which.max(normF0)/8)
+
+
+thai.discrete = onset.thai%>%
+  left_join(offset.thai, by = c ("language", "tone", "informant", "token", "syllable"))%>%
+  left_join(meanf0.thai, by = c ("language", "tone", "informant", "token", "syllable"))%>%
+  left_join(excursion.thai, by = c ("language", "tone", "informant", "token", "syllable"))%>%
+  left_join(maxloc.thai, by = c ("language", "tone", "informant", "token", "syllable"))
+
+# output thai data
+write.csv(thai.discrete,  
+          file = paste(dir.processed, 
+                       paste("thai.discrete",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+
+
+##### md and sv ###########
+
+
+
+
+# mandarin and sv data
+
+md.f0.8point <- read_csv(paste(dir.interim,
+                               paste("f0.md.10pnt",
+                               "2020-12-29",
+                               "csv",
+                               sep = "."),
+                               sep = ""))%>%
+              group_by(subject)%>%
+              # select timepoint
+              filter(timepoint>1 & timepoint < 10)%>%
+              mutate(F0norm = (F0 - mean(F0))/sqrt(sum(F0^2)/length(F0)),
+                      language = "md")%>%
+            group_by(bundle, id)%>%
+            mutate(timepoint = 1:n())%>% # recode timepoint
+            select("language","subject","F0","isi","id","tone","speaker",
+         "vowel_vari","syllable", "token",
+         "timepoint","F0norm","bundle","cgload","informant")%>%
+                select(language, informant = subject, isi, id, tone, 
+                       speaker, vowel_vari, syllable, token, timepoint, 
+                       normF0 = F0norm, session = bundle)
+
+sv.f0.8point <-  read_csv(paste(dir.interim,
+                                paste("f0.sv.10pnt",
+                                        "2020-12-29",
+                                          "csv",
+                                        sep = "."),
+                                        sep = ""))%>%
+                         group_by(subject)%>%
+                          # select timepoint
+                       filter(timepoint>1 & timepoint < 10)%>%
+             mutate(F0norm = (F0 - mean(F0))/sqrt(sum(F0^2)/length(F0)),
+                    language = "sv")%>%
+              group_by(bundle, id)%>%
+              mutate(timepoint = 1:n())%>% # recode timepoint
+            select("language","subject","F0","isi","id","tone","speaker",
+         "vowel_vari","syllable", "token",
+         "timepoint","F0norm","bundle","cgload","informant")%>%
+          select(language, informant = subject, isi, id, tone, 
+                  speaker, vowel_vari, syllable, token, timepoint, 
+                  normF0 = F0norm, session = bundle)
+
+# ds_md_discrete <- read_csv("data/processed/ds_md_discrete.csv")
+# 
+# ds_sv_discrete <- read_csv("data/processed/ds_sv_discrete.csv")
+
+md.sv.f0.8points = rbind(md.f0.8point, sv.f0.8point)
+  
+
+# duration
+# duration_md = ds_md_dur%>%
+#   mutate(language = "md")%>%
+#   select(language, informant = subject, isi, id, tone, speaker, vowel_vari, syllable, token,
+#          session = bundle, duration)
+# 
+# duration_sv = ds_sv_dur%>%
+#   mutate(language = "sv")%>%
+#   select(language, informant = subject, isi, id, tone, speaker, vowel_vari, syllable, token,
+#          session = bundle, duration)
+# 
+# duration_all = rbind(duration_md, duration_sv)
+
+
+
+# both mandarin and sv data
+onset_all = md.sv.f0.8points%>%
+  # this dataset has only 8 point
+  filter(timepoint == 1)%>%
+  rename(onset = normF0)%>%
+  select(tone, language, session, id, isi, speaker, vowel_vari,informant, 
+         token, syllable, onset)
+
+
+offset_all = md.sv.f0.8points%>%
+  filter(timepoint == 8)%>%
+  rename(offset = normF0)%>%
+  select(tone, language, session, id, isi, speaker, vowel_vari,informant, 
+         token, syllable, offset)
+
+#re-calculating data from 10-90%
+meanf0_all = md.sv.f0.8points%>%
+  group_by(tone, language, session,id,isi, speaker, vowel_vari,informant, 
+           token, syllable)%>%
+  summarise(f0mean = mean(normF0))
+
+excursion_all = md.sv.f0.8points%>%
+  group_by(tone, language, session,id,isi, speaker, vowel_vari,informant, 
+           token, syllable)%>%
+  summarise(excursion = max(normF0)-min(normF0))
+
+maxloc_all = md.sv.f0.8points%>%
+  group_by(tone, language, session,id,isi, speaker, vowel_vari,informant, 
+           token, syllable)%>%
+  summarise(maxloc = which.max(normF0)/8)
+
+md.sv.discrete = onset_all%>%
+  left_join(offset_all, by = c ("tone", "language", "session","id","isi", "speaker", "vowel_vari","informant", 
+                               "token", "syllable"))%>%
+  left_join(meanf0_all, by = c ("tone", "language", "session","id","isi", "speaker", "vowel_vari","informant", 
+                               "token", "syllable"))%>%
+  left_join(excursion_all, by = c ("tone", "language", "session","id","isi", "speaker", "vowel_vari","informant", 
+                                  "token", "syllable"))%>%
+  left_join(maxloc_all, by = c ("tone", "language", "session","id","isi", "speaker", "vowel_vari","informant", 
+                               "token", "syllable"))
+
+
+# output thai data
+write.csv(md.sv.discrete,  
+          file = paste(dir.processed, 
+                       paste("md.sv.discrete",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+```
+
+### 研究结果  {-}
+
+#### 数据建模 {-}
+
+```{r eval=F, echo=T}
+
+library(tidymodels)
+# calculate confidence intervals
+library(rcompanion)
+
+dir.interim = "data/interim/"
+dir.processed = "data/processed/"
+
+## 机器学习
+
+# Thai data
+# 2020-11-30 first remove 2 point and normalise
+# 2020-12-29
+thai.discrete = read.csv(paste(dir.processed, 
+                       paste("thai.discrete",
+                             "2020-11-30",
+                             "csv",
+                             sep = "."),
+                       sep = ""))
+### split the dataset ####
+set.seed(123)
+# thai.discrete
+# 
+# table(thai.test$tone)
+# table(thai.train$tone)
+# unique(thai.discrete$informant)
+# length(unique(thai.discrete$informant))
+
+thai.split = thai.discrete%>%
+             mutate(tone = as.factor(tone))%>%
+             # feature selection
+             select(c(2,6,7,8,9,10))%>%
+             initial_split(., prob = 0.70, 
+                           # for each tone group
+                              strata = tone)
+
+thai.test = testing(thai.split)
+
+thai.train = training(thai.split)
+
+# thai.rcp = recipe(tone ~  .,
+#                   data = thai.train)%>%
+#            step_normalize(all_numeric()) 
+# 
+# # # preprocessed data
+#    preprocessed <- thai.rcp %>%
+#    # apply the recipe to the training data
+#   prep(thai.train) %>%
+# #   # extract the pre-processed training dataset
+#   juice()
+#  preprocessed
+
+# fit the model
+# Using the non-formula method with train will 
+# pass the factor predictors to randomForest and everything will work.
+# randomforest
+rf_model = rand_forest(trees = 500, mode = "classification") %>%
+  # specify that the `mtry` parameter needs to be tuned
+  # set_args(mtry = tune()) %>%
+  # select the engine/package that underlies the model
+  # set_engine("randomForest", importance = "impurity") %>%
+  set_engine("randomForest") %>%
+  fit(tone ~ onset + offset + f0mean + excursion + maxloc, 
+      data = training(thai.split))
+
+#svm model
+svm_model = svm_poly() %>% 
+  set_engine("kernlab") %>% 
+  set_mode("classification") %>%
+  fit(tone ~ onset + offset + f0mean + excursion + maxloc, 
+      data = training(thai.split))
+
+#lda model
+library(discrim)
+
+lda_model = discrim_linear() %>% 
+  set_engine("MASS") %>% 
+  set_mode("classification") %>%
+  fit(tone ~ onset + offset + f0mean + excursion + maxloc, 
+      data = training(thai.split))
+  
+
+# build the workflow
+
+# rf_workflow <- workflow() %>%
+#   # add the recipe
+#   add_recipe(thai.rcp) %>%
+#   # add the model
+#   add_model(rf_model)
+
+##### Tune the parameters (optional)#########
+
+# create CV object from training data
+thai_cv <- vfold_cv(thai.train)
+
+# specify which values eant to try
+rf_grid <- expand.grid(mtry = c(3, 4, 5))
+
+# extract results
+rf_tune_results <- rf_workflow %>%
+  tune_grid(resamples = thai_cv, #CV object
+            grid = rf_grid, # grid of values to try
+            metrics = metric_set(accuracy, roc_auc) # metrics we care about
+            )
+
+# print results
+rf_tune_results %>%
+  collect_metrics()
+
+# extract the best value for the accuracy metric 
+param_final <- rf_tune_results %>%
+  select_best(metric = "accuracy")
+param_final
+
+# add this parameter to the workflow
+rf_workflow <- rf_workflow %>%
+  finalize_workflow(param_final)
+
+
+
+####### make the prediction ############
+
+# thai.rf.fit <- rf_workflow %>%
+#   # fit on the training set and evaluate on test set
+#   last_fit(thai.split)
+
+#predict(rf_model, testing(thai.split)) 
+
+rf_model %>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test) %>%
+  glimpse()
+
+# model validation
+rf_model %>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test) %>%
+  metrics(truth = tone, estimate = .pred_class)
+
+# plot gain curve
+rf_model %>%
+  predict(testing(thai.split), type = "prob") %>%
+  bind_cols(thai.test) %>%
+  gain_curve(tone, .pred_21: .pred_45) %>%
+  autoplot()
+
+# plot roc curve
+rf_model %>%
+  predict(testing(thai.split), type = "prob") %>%
+  bind_cols(thai.test) %>%
+  roc_curve(tone, .pred_21: .pred_45) %>%
+  autoplot()
+
+library(randomForest)
+rf.thai.fit = rf_model$fit
+
+importance(rf_model$fit) 
+
+varImpPlot(rf_model$fit, 
+           n.var= 5,
+           main = "Variable importance in classifying Thai tones")
+
+## predicting with svm
+svm_model %>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test) %>%
+  metrics(truth = tone, estimate = .pred_class)
+
+
+# plot gain curve
+svm_model %>%
+  predict(testing(thai.split), type = "prob") %>%
+  bind_cols(thai.test) %>%
+  gain_curve(tone, .pred_21: .pred_45) %>%
+  autoplot()
+
+
+# linear discriminat analysis
+lda_model%>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test) %>%
+  metrics(truth = tone, estimate = .pred_class)
+
+#############################
+#### confusion matrices #####
+#############################
+
+rf.cfm = rf_model %>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test)%>%
+  group_by(.pred_class, tone)%>%
+  summarise(n = n())%>%
+  group_by(tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (.pred_class == tone))
+
+# planned for statistical comparision
+ rf.thai.prob = rf_model %>%
+   predict(testing(thai.split), type = "prob") %>%
+   bind_cols(thai.test)%>%
+  gather(prediction, prob, 1: 5)%>%
+   mutate(prediction = stringr::str_extract(prediction, "[0-9]{2}"),
+         tone = as.character(tone),
+         mdl = "rf")%>%
+   filter(tone == prediction)
+  
+  
+rf.thai.plt = rf.cfm%>%
+  ggplot(aes(.pred_class, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1), 
+                color = text.color), 
+            size = 4) +
+  scale_colour_manual(values=c("black", "white"))+
+  scale_x_discrete(name = "Model classifications as each Thai tone",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"))+
+  ggtitle("Random Forest") + 
+  #scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name="%",low = "white", high = "black") +
+  theme(axis.text.x = element_text(face="bold", size=8),
+        axis.title.x = element_text(face="bold", size=10),
+        #axis.title.y = element_text(face="bold", size=10),
+        axis.title.y = element_blank(),
+        #axis.text.y = element_text(face="bold", size=8),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        legend.position="none",
+        panel.background = element_blank())
+  
+
+
+svm.cfm = svm_model %>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test)%>%
+  group_by(.pred_class, tone)%>%
+  summarise(n = n())%>%
+  group_by(tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (.pred_class == tone))
+
+ svm.thai.prob = svm_model %>%
+   predict(testing(thai.split), type = "prob") %>%
+   bind_cols(thai.test)%>%
+   gather(prediction, prob, 1: 5)%>%
+    mutate(prediction = stringr::str_extract(prediction, "[0-9]{2}"),
+       tone = as.character(tone),
+       mdl = "svm")%>%
+    filter(tone == prediction)
+  
+svm.thai.plt=svm.cfm%>%
+  ggplot(aes(.pred_class, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1),color = text.color), 
+            size = 4) +
+  scale_colour_manual(values=c("black", "white"))+
+  scale_x_discrete(name = "     ",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"))+
+  ggtitle("Support Vector Machine") + 
+  #scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name=" ",
+                      limits = c(0,100),
+                      low = "white", high = "black") +
+  theme(axis.text.x = element_text(face="bold", 
+                                   size=8),
+        axis.title.y = element_blank(),
+        axis.title.x = element_text(face="bold", 
+                                   size=10),
+        #axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        #legend.position="none",
+        panel.background = element_blank())+
+  # remove the legend for color
+  guides(color = FALSE)
+
+
+
+lda.cfm = lda_model %>%
+  predict(testing(thai.split)) %>%
+  bind_cols(thai.test)%>%
+  group_by(.pred_class, tone)%>%
+  summarise(n = n())%>%
+  group_by(tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (.pred_class == tone))
+
+lda.thai.plt = lda.cfm%>%
+  ggplot(aes(.pred_class, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1), color = text.color), size = 4) +
+  scale_x_discrete(name = "",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tone stimuli",
+                   limits=c("21","33","45","315","241"))+
+  scale_colour_manual(values=c("black", "white"))+
+  ggtitle("Linear Discriminant Analysis") + 
+  #scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name=" ",
+                      limits = c(0,100),
+                      low = "white", high = "black") +
+  theme(axis.text.x = element_text(face="bold", size=8),
+        axis.title.x = element_text(face="bold", size=10),
+        axis.text.y = element_text(face="bold", size=8),
+        axis.title.y = element_text(face="bold", size=10),
+        #axis.title.y = element_text(face="bold", size=10),
+        #axis.title.x = element_blank(),
+        #axis.title.y = element_blank(),
+        #axis.text.y = element_blank(),
+        #axis.ticks = element_blank(),
+        legend.position="none",
+        panel.background = element_blank())
+  # remove the legend for color
+  #guides(color = FALSE)
+
+
+#lda probability
+lda.thai.prob = lda_model %>%
+  predict(testing(thai.split), type = "prob") %>%
+  bind_cols(thai.test)%>%
+  gather(prediction, prob, 1: 5)%>%
+  mutate(prediction = stringr::str_extract(prediction, "[0-9]{2}"),
+         tone = as.character(tone),
+         mdl = "lda")%>%
+  filter(tone == prediction)
+
+# compare three models
+thai.mdl.three = rbind(rf.thai.prob, svm.thai.prob, lda.thai.prob)
+
+thai.three.mdl = lm(prob ~ tone*mdl, data = thai.mdl.three )
+
+anova(thai.three.mdl)
+lsmeans(thai.three.mdl,
+        pairwise ~ mdl,
+        adjust="tukey")  
+
+
+library(cowplot)
+thai.ml.plt = plot_grid(lda.thai.plt,rf.thai.plt, svm.thai.plt,  nrow = 1,
+          labels = c('', '',""), label_size = 0,
+          rel_widths = c(1.1, 1, 1.2))
+
+png(paste(dir.processed, paste("thai.ml.plt ",Sys.Date(),"png",sep = "."), sep = ""),
+    units="in", width=9, height=3, res=600)
+
+plot(thai.ml.plt )
+
+dev.off()
+
+###### mandarin and vietnamese imitation data #######
+# 2020-11-30 old version that first normalising and removing
+# 2020-12-29 first removing and normalising
+md.sv.discrete = read.csv(paste(dir.processed, 
+                               paste("md.sv.discrete",
+                                     "2020-12-29",
+                                     "csv",
+                                     sep = "."),
+                               sep = ""))%>%
+                mutate(tone = as.factor(tone))
+
+# predicting imitation data
+rf_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete) %>%
+  metrics(truth = tone, estimate = .pred_class)
+
+labels <- c(md = "Mandarin imitators", sv = "Vietnamese imitators")
+
+
+rf.imit.plt = rf_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete)%>%
+  group_by(.pred_class, language, tone)%>%
+  summarise(n = n())%>%
+  group_by(language,tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (.pred_class == tone))%>%
+  ggplot(aes(.pred_class, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1), color = text.color), 
+            size = 4) +
+  scale_x_discrete(name = "Model classifications as each Thai tone",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"))+
+  scale_colour_manual(values=c("black", "white"))+
+  ggtitle("Random Forest") + 
+  #scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name="%",
+                      low = "white", high = "black") +
+  theme(axis.text.x = element_text(face="bold", size=10),
+        #axis.text.y = element_text(face="bold", size=10),
+        axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title.x = element_text(face="bold", size=12),
+        #axis.title.y = element_text(face="bold", size=12),
+        axis.text.y = element_blank(),
+        legend.position="none",
+        panel.background = element_blank())+
+  theme(plot.title = element_text(hjust = 0.5))+
+  facet_wrap(~language, 
+             nrow = 2,
+             labeller=labeller(language = labels))+
+  theme(strip.text.x = element_text(size=10,face="bold", color = "black"),
+        strip.background = element_rect(fill="white"))
+
+
+
+svm_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete) %>%
+  metrics(truth = tone, estimate = .pred_class)
+
+svm.imit.plt = svm_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete)%>%
+  group_by(.pred_class, language, tone)%>%
+  summarise(n = n())%>%
+  group_by(language,tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (.pred_class == tone))%>%
+  ggplot(aes(.pred_class, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1), color = text.color), 
+            size = 4) +
+  scale_x_discrete(name = "    ",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"))+
+  scale_colour_manual(values=c("black", "white"))+
+  ggtitle("Support Vector Machine") + 
+  #scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name="    ",
+                      limits = c(0,100),
+                      low = "white", high = "black") +
+  theme(#axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        #axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text.x = element_text(face="bold", 
+                                   size=10),
+        axis.title.x = element_text(face="bold", 
+                                   size=12),
+        # legend.position="none",
+        panel.background = element_blank())+
+  theme(plot.title = element_text(hjust = 0.5))+
+  facet_wrap(~language, 
+             nrow = 2,
+             labeller=labeller(language = labels))+
+  # remove the legend for color
+  guides(color = FALSE)+
+  theme(strip.text.x = element_text(size= 10, face="bold", color = "white"),
+        strip.background = element_rect(fill="white"))
+
+
+lda_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete) %>%
+  metrics(truth = tone, estimate = .pred_class)
+
+lda.imit.plt = lda_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete)%>%
+  group_by(.pred_class, language, tone)%>%
+  summarise(n = n())%>%
+  group_by(language,tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (.pred_class == tone))%>%
+  ggplot(aes(.pred_class, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1), color = text.color), 
+            size = 4) +
+  scale_x_discrete(name = "   ",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tone stimuli",
+                   limits=c("21","33","45","315","241"))+
+  scale_colour_manual(values=c("black", "white"))+
+  ggtitle("Linear Discriminant Analysis") + 
+  #scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name="%",
+                      low = "white", high = "black") +
+  theme(#axis.text.x = element_blank(),
+        #axis.text.y = element_blank(),
+        #axis.title.x = element_blank(),
+        #axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text.y = element_text(face="bold", size=10),
+        axis.text.x = element_text(face="bold", size=10),
+        axis.title.y = element_text(face="bold", size=12),
+        legend.position="none",
+        panel.background = element_blank())+
+  theme(plot.title = element_text(hjust = 0.5))+
+  facet_wrap(~language, 
+             nrow = 2,
+             labeller=labeller(language = labels))+
+  # remove the legend for color
+  guides(color = FALSE)+
+  theme(strip.text.x = element_text(size=10, face="bold", color = "white"),
+        strip.background = element_rect(fill="white"))
+
+imit.ml.plt = plot_grid(lda.imit.plt,rf.imit.plt, svm.imit.plt, nrow = 1,
+                        ncol = 3,
+                        labels = c('', '',""), label_size = 0,
+                        rel_widths = c(1.2, 1, 1.2))
+
+png(paste(dir.processed, paste("imit.ml.plt ",Sys.Date(),"png",sep = "."), sep = ""),
+    units="in", width=11, height=6, res=600)
+
+plot(imit.ml.plt )
+
+dev.off()
+
+#table
+
+svm.imit.plt = svm_model %>%
+  predict(md.sv.discrete) %>%
+  bind_cols(md.sv.discrete)%>%
+  group_by(.pred_class, language, tone)%>%
+  summarise(n = n())%>%
+  group_by(language,tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n))
+```
+
+
+
+```{r eval=F, echo=T}
+## 检验不同组的差异
+mandarin_test_mod = read.csv(paste(dir.processed, 
+                                paste("mandarin_test_mod",
+                                      "csv",
+                                      sep = "."),
+                                sep = ""))%>%
+  mutate(tone = as.factor(tone))
+
+vietnamese_test_mod = read.csv(paste(dir.processed, 
+                                   paste("vietnamese_test_mod",
+                                         "csv",
+                                         sep = "."),
+                                   sep = ""))%>%
+  mutate(tone = as.factor(tone))
+
+thai_native_test_mod = read.csv(paste(dir.processed, 
+                                   paste("thai_native_test_mod",
+                                         "csv",
+                                         sep = "."),
+                                   sep = ""))%>%
+  mutate(tone = as.factor(tone))
+
+thai_native_test_mod$prediction = as.factor(thai_native_test_mod$prediction)
+
+thai.plt = thai_native_test_mod%>%
+  group_by(prediction, tone)%>%
+  summarise(n = n())%>%
+  group_by(tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (prediction == tone))%>%
+  ggplot(aes(prediction, tone))+
+  geom_tile(aes(fill = percent*100))+
+  geom_text(aes(label = round(percent*100, 1), color = text.color), 
+            size = 4) +
+  scale_x_discrete(name = "Model classifications as each Thai tone",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"))+
+  scale_colour_manual(values=c("black", "white"))+
+  #ggtitle("") + 
+  scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name="%",
+                      low = "white", high = "black") +
+  theme(axis.text.x = element_text(face="bold", size=10),
+        axis.text.y = element_text(face="bold", size=10),
+        #axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title.x = element_text(face="bold", size=12),
+        axis.title.y = element_text(face="bold", size=12),
+        #axis.text.y = element_blank(),
+        #legend.position="none",
+        panel.background = element_blank())+
+  # theme(plot.title = element_text(hjust = 0.5))+
+  # remove the legend for color
+  guides(color = FALSE)+
+  theme(strip.text.x = element_text(size=10,face="bold", color = "black"),
+        strip.background = element_rect(fill="white"))
+
+png(paste(dir.processed, paste("thai.plt",Sys.Date(),"png",sep = "."), sep = ""),
+    units="in", width=4, height=3.5, res=600)
+
+plot(thai.plt)
+
+dev.off()
+
+
+
+
+md.sv.df = mandarin_test_mod%>%
+  bind_rows(vietnamese_test_mod)%>%
+  gather(key = tone2, value = prob, T21, T33, T241, T315, T45)%>%
+  mutate(prediction = paste("T", prediction,sep = "" ))%>%
+  filter(prediction == tone2)
+
+
+labels <- c(md = "Mandarin imitators", sv = "Vietnamese imitators")
+
+md.sv.plt = md.sv.df %>%
+  mutate(prediction= str_remove(prediction, "T"))%>%
+  group_by(prediction, language, tone)%>%
+  summarise(n = n())%>%
+  group_by(language,tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n),
+         text.color = (prediction == tone))%>%
+  ggplot(aes(prediction, tone))+
+  geom_tile(aes(fill = percent*100))+
+  geom_text(aes(label = round(percent*100, 1), color = text.color), 
+            size = 4) +
+  scale_x_discrete(name = "Model classifications as each Thai tone",
+                   limits=c("21","33","45","315","241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"))+
+  scale_colour_manual(values=c("black", "white"))+
+  ggtitle("") + 
+  scale_fill_discrete(name="Percentage (%)")+
+  scale_fill_gradient(name="%",
+                      low = "white", high = "black") +
+  theme(axis.text.x = element_text(face="bold", size=10),
+        axis.text.y = element_text(face="bold", size=10),
+        #axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title.x = element_text(face="bold", size=12),
+        axis.title.y = element_text(face="bold", size=12),
+        #axis.text.y = element_blank(),
+        #legend.position="none",
+        panel.background = element_blank())+
+  theme(plot.title = element_text(hjust = 0.5))+
+  facet_wrap(~language, 
+             nrow = 1,
+             labeller=labeller(language = labels))+
+  # remove the legend for color
+  guides(color = FALSE)+
+  theme(strip.text.x = element_text(size=10,face="bold", color = "black"),
+        strip.background = element_rect(fill="white"))
+
+png(paste(dir.processed, paste("md.sv.plt",Sys.Date(),"png",sep = "."), sep = ""),
+    units="in", width=6, height=3, res=600)
+
+plot(md.sv.plt )
+
+dev.off()
+
+###################################################################
+######################### model with probability ##################
+###################################################################
+
+library(lme4)
+library(broom)
+library(lsmeans)
+library(lmerTest)
+#library(car)
+md.sv.mdl.data = md.sv.df%>%
+  mutate(prediction= str_remove(prediction, "T"))%>%
+  filter(prediction == tone)%>%
+  mutate(prob = round(prob, 3))
+
+md.sv.mdl.data$informant = as.factor(md.sv.mdl.data$informant)
+
+imit.mdl = lmer(prob ~ language*isi*speaker*vowel_vari*tone +(1|informant), 
+                   data = md.sv.mdl.data)
+
+summary(imit.mdl)
+
+# install.packages("lmerTest")
+
+# too slow
+# anova(imit.mdl, type = 2, ddf = "Kenward-Roger")
+
+anova(imit.mdl)
+
+options(scipen = 999) 
+
+tone.main.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone, 
+                                     pbkrtest.limit = 7190)$contrast)
+
+lsmeans(imit.mdl, pairwise ~ tone, 
+        pbkrtest.limit = 7190)
+
+groupwiseMean(prob ~ tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(tone.main.df,  
+          file = paste(dir.processed, 
+                       paste("tone.main.df",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+isi.talker.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ isi:speaker, 
+                                      pbkrtest.limit = 7190)$contrast)
+
+groupwiseMean(prob ~ isi+speaker,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(isi.talker.df,  
+          file = paste(dir.processed, 
+                       paste("isi.talker.df",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+tone.lang.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone:language, 
+                                     pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("tone1","lang1","tone2","lang2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)
+
+groupwiseMean(prob ~ language + tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(tone.lang.df,  
+          file = paste(dir.processed, 
+                       paste("tone.lang.df",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+tone.speaker.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone:speaker, 
+                                        pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("tone1","lang1","tone2","lang2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)
+
+groupwiseMean(prob ~ speaker + tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(tone.speaker.df ,  
+          file = paste(dir.processed, 
+                       paste("tone.speaker.df",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+tone.isi.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone:isi, 
+                      pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("tone1","lang1","tone2","lang2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)
+
+lsmeans(imit.mdl, pairwise ~ tone:isi, 
+        pbkrtest.limit = 7190)
+groupwiseMean(prob ~ isi + tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+two.way = tone.lang.df%>%bind_rows(tone.isi.df)%>%bind_rows(tone.speaker.df)
+
+write.csv(two.way,  
+          file = paste(dir.processed, 
+                       paste("two.way",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+lang.vwl.isi.df = as.data.frame(lsmeans(imit.mdl, 
+                                pairwise ~ language:vowel_vari:isi, 
+                                    pbkrtest.limit = 7190)$contrast)
+
+
+lang.isi.tone.df = as.data.frame(lsmeans(imit.mdl, 
+                                        pairwise ~ language:isi:tone, 
+                                        pbkrtest.limit = 7190)$contrast)%>%
+  lang.isi.tone.df%>%
+  separate(contrast, c("lang1","mem1","tone1","lang2","mem2","tone2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)%>%
+  filter(p.value < 0.05)
+##############################################################################
+####################### new model with percent choice ########################
+##############################################################################
+
+md.sv.mdl.data = md.sv.df%>%
+  mutate(prediction= str_remove(prediction, "T"))%>%
+  group_by(prediction, language, isi, speaker, vowel_vari, tone, informant)%>%
+  summarise(n = n())%>%
+  group_by(language, isi, speaker, vowel_vari, tone, informant)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n))%>%
+  filter(prediction ==  tone)
+
+md.sv.mdl.data$informant = as.factor(md.sv.mdl.data$informant)
+
+imit.mdl = lmer(percent ~ language*isi*speaker*vowel_vari*tone +(1|informant), 
+                data = md.sv.mdl.data)
+
+summary(imit.mdl)
+
+library(car)
+imit.mdl.fixed = Anova(imit.mdl, test = "F")
+colnames(imit.mdl.fixed) = c("F","DF","DF2","p")
+filter(imit.mdl.fixed, p < 0.05)
+# install.packages("lmerTest")
+# anova(imit.mdl, type = 2, ddf = "Kenward-Roger")
+# anova(imit.mdl)
+
+
+
+tone.main.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone, 
+                                     pbkrtest.limit = 7190)$contrast)
+
+groupwiseMean(percent ~ tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(tone.main.df,  
+          file = paste(dir.processed, 
+                       paste("tone.main.df.percent",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+# isi.talker.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ isi:speaker, 
+#                                       pbkrtest.limit = 7190)$contrast)
+# 
+# groupwiseMean(prob ~ isi+speaker,
+#               data   = md.sv.mdl.data,
+#               conf   = 0.95,
+#               digits = 3)
+# 
+# write.csv(isi.talker.df,  
+#           file = paste(dir.processed, 
+#                        paste("isi.talker.df",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") ,row.names = FALSE)
+
+tone.lang.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone:language, 
+                                     pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("tone1","lang1","tone2","lang2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)
+
+
+groupwiseMean(percent ~ language + tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(tone.lang.df,  
+          file = paste(dir.processed, 
+                       paste("tone.lang.df",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+tone.speaker.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone:speaker, 
+                                        pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("tone1","lang1","tone2","lang2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)
+
+groupwiseMean(percent ~ speaker + tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+write.csv(tone.speaker.df ,  
+          file = paste(dir.processed, 
+                       paste("tone.speaker.df",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+tone.isi.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ tone:isi, 
+                                    pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("tone1","lang1","tone2","lang2"))%>%
+  filter(tone1 == tone2 & lang1 != lang2)
+
+groupwiseMean(prob ~ isi + tone,
+              data   = md.sv.mdl.data,
+              conf   = 0.95,
+              digits = 3)
+
+two.way = tone.lang.df%>%bind_rows(tone.isi.df)%>%bind_rows(tone.speaker.df)
+
+write.csv(two.way,  
+          file = paste(dir.processed, 
+                       paste("two.way",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
+lang.tone.isi.df = as.data.frame(lsmeans(imit.mdl, pairwise ~ language:isi:tone, 
+                                    pbkrtest.limit = 7190)$contrast)%>%
+  separate(contrast, c("l1","m1","t1","l2","m2","t2"))%>%
+  filter(p.value < 0.05)
+%>%
+  filter(t1 == t2)
+
+
+```
+
+
+### 结论 {-}
 
 
 
