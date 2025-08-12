@@ -4,7 +4,7 @@
 
 
 
-![详细背景请看原文献](images/10.1.png)
+![详细背景请看原文献](images/11.1.png)
 
 
 ```{r eval=F, echo=T}
@@ -289,7 +289,7 @@ t.test(readability$Spache[2:17], mu = readability$Spache[1], alternative = "less
 
 ## 案例11.2 汉语失语症话语产出 {-}
 
-![详细背景请看原文献](images/14.1.png)
+![详细背景请看原文献](images/11.2.png)
 
 ### 研究背景 {-}
 
