@@ -1,14 +1,14 @@
-# 第十三章 机器学习项目案例
+# 机器学习项目案例
 
-
-
-## 案例13.1 基于母语特征建模预测声调学习难点
+## 案例13.1 基于母语特征建模预测声调学习难点 {-}
 
 ![详细背景请看原文献](images/12.1.png)
 
 ```{r echo=FALSE, include=FALSE}
+
 library(tidyverse)
 # install.packages('e1071')
+
 library(e1071)
 setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 
@@ -64,6 +64,8 @@ svm_md$tot.accuracy
 #                   cross = 10)
 # svm_contour$tot.accuracy
 ```
+
+
 
 ```{r eval=F, echo=T}
 # producing confusion matrix
