@@ -1,0 +1,473 @@
+# 第八章 统计建模入门
+
+
+## 学习目标 {-}
+
+- 📌 **了解推断性统计的基本逻辑** 
+
+- 📌 **了解常见概率分布** 
+
+- 📌 **熟悉不同参数和非参数检验使用条件** 
+
+- 📌 **掌握统计检验算法实现及解读** 
+
+
+## 统计检验流派
+
+## 概率分布
+
+## 参数和非参数统计检验
+
+## 经典统计测试的结果解读与汇报
+
+### 因变量为数值变量
+
+#### t检验
+
+#### 方差分析
+
+#### 相关分析
+
+#### 线性回归
+
+#### 一般线性模型与广义线性模型
+
+
+
+### 因变量为分类变量
+
+#### 卡方检验
+
+#### 逻辑回归
+
+## 课堂任务
+
+### 任务8.1 统计模型选择 {-}
+
+
+### 任务8.2 卡方检验 {-}
+
+```{r eval=F, echo=T}
+# 1. 直接创建数据框（更直观的方式）
+text_analysis_df <- data.frame(
+  性别 = c(rep("男性用户", 1000), rep("女性用户", 1000)),
+  情感强化方式 = c(
+    rep("强化表达", 210), rep("中性表达", 650), rep("弱化表达", 140), # 男性
+    rep("强化表达", 320), rep("中性表达", 520), rep("弱化表达", 160)  # 女性
+  )
+)
+
+# 2. 创建列联表
+contingency_table <- table(text_analysis_df$性别, text_analysis_df$情感强化方式)
+
+print(contingency_table)
+
+# 添加边际和（可选）
+
+addmargins(contingency_table)
+
+
+# 3. 计算百分比（更深入的理解）
+cat("行百分比（%）：\n")
+prop.table(contingency_table, margin = 1) * 100
+
+
+cat("列百分比（%）：\n")
+prop.table(contingency_table, margin = 2) * 100
+
+
+# 4. 进行卡方检验
+chi_sq_test <- chisq.test(contingency_table, correct = FALSE)
+
+print(chi_sq_test)
+
+
+# 计算百分比用于绘图
+plot_data <- text_analysis_df %>%
+  group_by(性别, 情感强化方式) %>%
+  summarise(计数 = n(), .groups = 'drop') %>%
+  group_by(性别) %>%
+  mutate(百分比 = 计数 / sum(计数) * 100)
+
+# 绘制堆叠百分比条形图
+ggplot(plot_data, aes(x = 性别, y = 百分比, fill = 情感强化方式)) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(aes(label = sprintf("%.1f%%", 百分比)), 
+            position = position_stack(vjust = 0.5),
+            size = 4) +
+  scale_fill_manual(values = c("#FF6B6B", "#4ECDC4", "#556270")) +
+  labs(title = "性别与情感强化方式的关系",
+       subtitle = paste0("卡方检验: χ²(", chi_sq_test$parameter, ") = ", 
+                        round(chi_sq_test$statistic, 2), 
+                        ", p = ", format.pval(chi_sq_test$p.value, digits = 3)),
+       x = "性别", 
+       y = "百分比",
+       fill = "情感强化方式") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+
+library(rstatix)
+contingency_table%>%
+  chisq_test()
+```
+
+### 任务8.3 t检验、方差分析 {-}
+```{r eval=F, echo=T}
+
+# 单样本t检验 (One-Sample t-test)
+# 研究场景：
+# 检验一所语言学校学生的平均托福成绩是否显著高于全球平均分（假设为90分）。
+# 设置随机种子以保证结果可重现
+set.seed(123)
+# 生成数据：假设该校40名学生的托福成绩，平均分92，标准差8
+toefl_scores <- rnorm(n = 40, mean = 92, sd = 8)
+# 将数据转换为数据框
+toefl_data <- data.frame(score = toefl_scores)
+
+# 检测数据是否符合正态分布，P<0.05 不符合正态分布
+shapiro.test(toefl_data$score)
+plot(density(toefl_data$score))
+
+# 进行单样本t检验，检验均值是否不等于90（默认双侧）
+t_test_result <- t.test(toefl_data$score, mu = 90, alternative = "greater") # 使用alternative = "greater"检验是否大于90
+
+# 输出结果
+print(t_test_result)
+
+# 绘制箱线图进行可视化
+boxplot(toefl_data$score, main = "Distribution of TOEFL Scores", 
+        ylab = "Score", col = "lightblue")
+abline(h = 90, col = "red", lty = 2) # 添加全球平均分参考线
+
+# 使用rstatix
+
+# 创建数据
+scores_long <- data.frame(
+  student_id = rep(paste0("S", 1001:1050), each = 4),
+  gender = rep(sample(c("男", "女"), 50, replace = TRUE), each = 4),
+  skill = rep(c("听力", "口语", "阅读", "写作"), times = 50),
+  score = round(c(
+    rnorm(50, 75, 10),  # 听力
+    rnorm(50, 72, 12),  # 口语
+    rnorm(50, 78, 8),   # 阅读
+    rnorm(50, 70, 11)   # 写作
+  ))
+)
+scores_long %>%
+    group_by(skill) %>%
+  t_test(score ~ 1, mu = 60)
+
+```
+
+```{r eval=F, echo=T}
+
+
+# 独立样本t检验 (Independent-Samples t-test)
+# 研究场景：比较两种不同的外语教学方法（“沉浸式” vs. “传统式”）对学生词汇测试成绩的影响。
+# 设置随机种子
+set.seed(456)
+# 生成两组独立的数据
+# 组1: 沉浸式教学，假设平均成绩更高为85分
+group_immersive <- rnorm(n = 30, mean = 85, sd = 7)
+# 组2: 传统式教学，假设平均成绩稍低为78分
+group_traditional <- rnorm(n = 35, mean = 78, sd = 8) # 允许两组人数不同
+
+# 创建数据框：一列是成绩，一列是分组标签
+method_data <- data.frame(
+  score = c(group_immersive, group_traditional),
+  method = factor(rep(c("Immersive", "Traditional"), 
+                      times = c(30, 35))) # 创建分组因子
+)
+
+# 进行独立样本t检验（默认假设方差不相等，使用Welch's t-test）
+ t.test(score ~ method, data = method_data, 
+                     alternative = "greater") # 检验“沉浸式”成绩是否大于“传统式”
+
+
+
+# 绘制分组箱线图进行可视化
+boxplot(score ~ method, data = method_data, 
+        main = "Vocabulary Score by Teaching Method",
+        xlab = "Teaching Method", 
+        ylab = "Vocabulary Test Score",
+        col = c("#FF6B6B", "#4ECDC4")) # 为两组设置不同的颜色
+# rstatix 
+stat.test = method_data %>% 
+  t_test(score ~ method, paired = FALSE) 
+stat.test
+# Create a box plot
+p <- ggboxplot(
+  method_data, x = "method", y = "score", 
+  color = "method", 
+  palette = "jco",
+  ylim = c(0,105)
+  )
+# Add the p-value manually
+p + stat_pvalue_manual(stat.test, label = "p", y.position = 100)
+
+
+# 如果非正态分布，汇报Mann–Whitney U test 更好
+wilcox.test(score ~ method, data = method_data )
+
+
+```
+
+```{r eval=F, echo=T}
+# 配对样本t检验 (Paired-Samples t-test)
+# 研究场景：检验一项为期8周的发音训练课程是否显著改善了10名学生的发音清晰度得分（收集每个学生训练前和训练后的数据）。
+# 设置随机种子
+set.seed(789)
+# 生成数据：为每个学生生成一个“基础”分数，然后前后分数相关
+n_pairs <- 10 # 10个学生
+base_score <- rnorm(n = n_pairs, mean = 70, sd = 10) # 训练前的基础水平
+# 训练后分数：在基础分数上增加一个改善量（平均改善5分），并与前测相关
+post_score <- base_score + rnorm(n = n_pairs, mean = 5, sd = 3) # 后测分数
+# 创建数据框
+pronunciation_data <- data.frame(
+  subject = factor(rep(1:n_pairs, times = 2)), # 受试者编号，用于配对
+  time = factor(rep(c("Pre-test", "Post-test"), each = n_pairs), # 时间点
+                levels = c("Pre-test", "Post-test")), # 设定因子顺序
+  score = c(base_score, post_score)
+)
+# 查看数据（长格式）
+head(pronunciation_data, 12)
+# 进行配对样本t检验
+# 方法一：使用公式语法，指定配对参数
+t.test(score ~ time, data = pronunciation_data, 
+                        paired = TRUE, # 关键参数：指定这是配对检验
+                        alternative = "less") # 检验“前测”是否小于“后测”
+
+# 方法二：直接提供两个向量
+t.test(base_score, post_score, paired = TRUE)
+
+
+
+# 绘制差异图（连接线图）
+library(ggplot2)
+ggplot(pronunciation_data, aes(x = time, y = score, group = subject)) +
+  geom_line(color = "grey", linewidth = 1) +
+  geom_point(size = 3) +
+  labs(title = "Pronunciation Scores Before and After Training",
+       subtitle = "Paired Samples t-test",
+       x = "Time Point",
+       y = "Clarity Score") +
+  theme_minimal()
+
+# rstatix
+
+stat.test <- pronunciation_data %>% 
+  t_test(score ~ time, paired = TRUE) 
+stat.test
+
+# Box plot
+p <- ggpaired(
+  pronunciation_data, 
+  x = "time", y = "score", color = "time", palette = "jco", 
+  line.color = "gray", line.size = 0.4, ylim = c(0, 105)
+  )
+
+p + stat_pvalue_manual(stat.test, label = "p", y.position = 100)
+
+
+```
+
+
+```{r eval=F, echo=T}
+
+# 模拟数据并进行混合方差分析
+
+# 设置随机种子
+set.seed(123)
+
+# 参数设置
+n <- 60  # 总被试数
+n_per_group <- 30  # 每组被试数
+
+# 生成被试信息
+subject_id <- paste0("S", 1001:(1000 + n))
+wm_capacity <- rep(c("高工作记忆", "低工作记忆"), each = n_per_group)
+
+# 模拟基础反应时间（毫秒）
+# 假设低工作记忆组基础反应时间更长
+base_rt_low <- rnorm(n_per_group, 800, 100)  # 低组
+base_rt_high <- rnorm(n_per_group, 700, 90)   # 高组
+
+# 生成两种句子类型的反应时间
+# 假设宾语从句更难，反应时间更长，且低工作记忆组受难度影响更大
+df.wm <- data.frame(
+  subject_id = rep(subject_id, each = 2),
+  wm_capacity = rep(wm_capacity, each = 2),
+  sentence_type = rep(c("宾语关系从句", "主语关系从句"), times = n),
+  reaction_time = c(
+    # 低工作记忆组
+    base_rt_low + rnorm(n_per_group, 150, 40),  # 宾语从句
+    base_rt_low + rnorm(n_per_group, 50, 30),   # 主语从句
+    
+    # 高工作记忆组  
+    base_rt_high + rnorm(n_per_group, 80, 35),  # 宾语从句
+    base_rt_high + rnorm(n_per_group, 30, 25)   # 主语从句
+  )
+)
+
+wm.aov = aov ( reaction_time  ~ wm_capacity * sentence_type, data = df.wm)
+
+summary(wm.aov)
+
+TukeyHSD(wm.aov)
+# rstatix
+df.wm %>% anova_test(reaction_time  ~ wm_capacity*sentence_type)
+anv.test = df.wm %>% anova_test(reaction_time  ~ wm_capacity*sentence_type)
+
+```
+
+### 任务8.3 相关分析 {-}
+
+```{r eval=F, echo=T}
+
+Liu2007 <- read_csv("data/Liu2007.csv")%>%
+  select(WF, CF, PF, AoA, CON, FAM, IMG)
+# r base
+cor.test(~WF+ AoA,
+         data = Liu2007,
+         method = "pearson")
+# method = "kendall", "spearman"
+
+# Correlation test between two variables
+Liu2007 %>% cor_test(AoA, CON, method = "pearson")
+
+
+# Correlation of one variable against all
+Liu2007 %>%cor_test(AoA, method = "pearson")
+
+
+# Pairwise correlation test between all variables
+Liu2007 %>% cor_test(method = "pearson")
+
+# Compute correlation matrix
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+cor.mat <- Liu2007 %>% cor_mat()
+cor.mat
+
+# Show the significance levels
+cor.mat %>% cor_get_pval()
+
+# Replacing correlation coefficients by symbols
+cor.mat %>%
+  cor_as_symbols() %>%
+  pull_lower_triangle()
+
+# Mark significant correlations
+cor.mat %>%
+  cor_mark_significant()
+
+# Draw correlogram using R base plot
+cor.mat %>%
+  cor_reorder() %>%
+  pull_lower_triangle() %>% 
+  cor_plot()
+
+
+
+```
+
+
+```{r eval=F, echo=T}
+
+lm.model = lm(AoA ~ WF+ CF+ PF,
+               data = Liu2007)
+
+summary(lm.model)
+
+```
+lm模型对象的summary函数包括对模型参数（截距和斜率）的估计，以及模型的R平方值和模型的p值。
+
+如何解读模型？
+&emsp;&emsp;模型产生了截距的系数和斜率的系数；
+
+&emsp;&emsp;每个系数还伴随着其他三个数字：其标准误差、t值和p值。p值告诉我们系数是否显著不同于零。
+
+&emsp;&emsp;如果预测变量的系数为零，则预测变量与因变量之间没有任何关系，因此作为预测变量是毫无价值的。为了确定系数是否显著不同于零，从而具有潜在的预测能力，进行双侧t检验，使用t值和相关的自由度。
+
+&emsp;&emsp;t值本身是系数除以其标准误差得到的值。这个标准误差是系数估计的确定程度的衡量。标准误差越小，估计周围的置信区间就越小，接受区域中包含零的可能性就越小，因此系数可能为零的概率也越小。
+
+&emsp;&emsp;残差标准误差是模型不成功的度量；它衡量了我们无法通过预测变量处理的因变量的变异性。模型越好，其残差标准误差就越小。
+
+&emsp;&emsp;多重R平方是平方相关系数r²，它在0到1的范围内量化了模型解释的方差的比例。
+
+### 任务8.4 多元回归 {-}
+
+```{r eval=F, echo=T}
+# 汉语词汇判断数据
+TrialsSCLP <- read_csv("data/TrialsSCLP.csv")
+# 汉语词汇特征数据
+chineselexicaldatabase2_1 <- read_csv("data/chineselexicaldatabase2.1.csv")
+# 选择单字词
+cld.df = chineselexicaldatabase2_1%>%
+  filter(Length == 1)
+
+# 计算判断准确率，并提取单字词的词汇特征
+char.dec.reg = TrialsSCLP %>%
+  group_by(item,lexicality)%>%
+  summarise(total = sum(accuracy),
+            percent = total/n(),
+            z.rt.mean = mean(zscore,na.rm = TRUE))%>%
+  filter(!is.na(z.rt.mean))%>%
+  left_join(cld.df, by = c("item"= "Word"))%>%
+  filter(!is.na(C1))
+
+# 构建模型
+char.dec.mdl = lm(z.rt.mean~  Frequency + PhonologicalFrequency + Strokes, data = char.dec.reg)
+
+
+# 查看模型摘要
+summary(model)
+
+
+# 增加词汇心理语言学特征
+char.dec.reg.psy = char.dec.reg%>%
+  left_join(Liu2007,by = c("item"= "Word"))%>%
+  filter(!is.na(Tag))
+
+char.dec.psyc.mdl = lm(z.rt.mean~  AoA + CON + FAM + IMG + 
+                         Frequency + PhonologicalFrequency + 
+                         Strokes, data = char.dec.reg.psy)
+# 查看模型摘要
+summary(char.dec.psyc.mdl)
+
+```
+
+### 任务8.5 逻辑回归 {-}
+
+```{r eval=F, echo=T}
+
+# 拟合逻辑回归模型
+char.dec.df = TrialsSCLP%>%
+  filter(subject == "AZ" & lexicality == "character")%>%
+  mutate(accuracy = as.factor(accuracy))%>%
+  left_join(cld.df, by = c("item"= "Word"))%>%
+  filter(!is.na(C1))
+
+model <- glm(accuracy ~ Frequency + PhonologicalFrequency + Strokes, 
+             family="binomial", 
+             data=char.dec.df)
+
+# 不使用科学计数法
+options(scipen=999)
+
+#view model summary
+summary(model)
+
+caret::varImp(model)
+
+```
+
+| 公式             | 描述                                                                                             |
+| :--------------- | :----------------------------------------------------------------------------------------------- |
+| `(1\|s)`         | 对因子 `s` 的每个唯一水平设置随机截距                                                                  |
+| `(1\|s) + (1\|i)`  | 对因子 `s` 和因子 `i` 的每个唯一水平分别设置随机截距                                                         |
+| `(1\|s/i)`       | 对因子 `s` 和嵌套在 `s` 内的因子 `i` 设置随机截距。展开形式为 `(1\|s) + (1\|s:i)`，即 `s` 的每个水平及 `s` 与 `i` 的水平组合均分配随机截距。嵌套随机效应用于多层级模型，例如 `s` 表示学校，`i` 表示学校内的班级。 |
+| `(a\|s)`         | 对因子 `s` 的每个水平，设置变量 `a` 的随机截距和随机斜率，并估计截距与斜率的相关性（等价于 `(a*b\|s)`）                             |
+| `(a*b\|s)`       | 对因子 `s` 的每个水平，设置变量 `a`、`b` 及其交互项 `a:b` 的随机截距和斜率，并估计所有随机效应间的相关性                               |
+| `(0+a\|s)`       | 对因子 `s` 的每个水平，仅设置变量 `a` 的随机斜率（不包含随机截距）                                                         |
+| `(a\|\|s)`       | 对因子 `s` 的每个水平，设置变量 `a` 的随机截距和随机斜率，但强制随机效应间无相关性（即相关性设为0）。展开形式为：`(0+a\|s) + (1\|s)`              |

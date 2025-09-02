@@ -23,7 +23,7 @@
 <meta name="author" content="陈居强" />
 
 
-<meta name="date" content="2025-08-24" />
+<meta name="date" content="2025-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -305,11 +305,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#课堂任务-6"><i class="fa fa-check"></i><b>8.5</b> 课堂任务</a><ul>
 <li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.1-统计模型选择"><i class="fa fa-check"></i>任务8.1 统计模型选择</a></li>
-<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.2-卡方检验t检验方差分析"><i class="fa fa-check"></i>任务8.2 卡方检验，t检验、方差分析</a></li>
+<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.2-卡方检验"><i class="fa fa-check"></i>任务8.2 卡方检验</a></li>
+<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.3-t检验方差分析"><i class="fa fa-check"></i>任务8.3 t检验、方差分析</a></li>
+<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.3-相关分析"><i class="fa fa-check"></i>任务8.3 相关分析</a></li>
+<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.4-多元回归"><i class="fa fa-check"></i>任务8.4 多元回归</a></li>
+<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#任务8.5-逻辑回归"><i class="fa fa-check"></i>任务8.5 逻辑回归</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#因变量为连续变量而自变量为分类变量"><i class="fa fa-check"></i>因变量为连续变量而自变量为分类变量</a></li>
-<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#因变量为连续变量自变量为分类变量"><i class="fa fa-check"></i>因变量为连续变量，自变量为分类变量</a></li>
-<li class="chapter" data-level="" data-path="第八章-统计建模入门.html"><a href="第八章-统计建模入门.html#因变量与自变量均为连续变量"><i class="fa fa-check"></i>因变量与自变量均为连续变量</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="第九章-机器学习建模入门.html"><a href="第九章-机器学习建模入门.html"><i class="fa fa-check"></i><b>9</b> 第九章 机器学习建模入门</a><ul>
 <li class="chapter" data-level="" data-path="第九章-机器学习建模入门.html"><a href="第九章-机器学习建模入门.html#学习目标-8"><i class="fa fa-check"></i>学习目标</a></li>
@@ -493,9 +494,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.4</span> 经典统计测试的结果解读与汇报<a href="第八章-统计建模入门.html#经典统计测试的结果解读与汇报" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="因变量为数值变量" class="section level3 hasAnchor">
 <h3><span class="header-section-number">8.4.1</span> 因变量为数值变量<a href="第八章-统计建模入门.html#因变量为数值变量" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="t检验" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.1.1</span> t检验<a href="第八章-统计建模入门.html#t检验" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="方差分析" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.1.2</span> 方差分析<a href="第八章-统计建模入门.html#方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="相关分析" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.1.3</span> 相关分析<a href="第八章-统计建模入门.html#相关分析" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="线性回归" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.1.4</span> 线性回归<a href="第八章-统计建模入门.html#线性回归" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="一般线性模型与广义线性模型" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.1.5</span> 一般线性模型与广义线性模型<a href="第八章-统计建模入门.html#一般线性模型与广义线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
 </div>
 <div id="因变量为分类变量" class="section level3 hasAnchor">
 <h3><span class="header-section-number">8.4.2</span> 因变量为分类变量<a href="第八章-统计建模入门.html#因变量为分类变量" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="卡方检验" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.2.1</span> 卡方检验<a href="第八章-统计建模入门.html#卡方检验" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="逻辑回归" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.4.2.2</span> 逻辑回归<a href="第八章-统计建模入门.html#逻辑回归" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
 </div>
 </div>
 <div id="课堂任务-6" class="section level2 hasAnchor">
@@ -503,104 +525,418 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="任务8.1-统计模型选择" class="section level3 unnumbered hasAnchor">
 <h3>任务8.1 统计模型选择<a href="第八章-统计建模入门.html#任务8.1-统计模型选择" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="任务8.2-卡方检验t检验方差分析" class="section level3 unnumbered hasAnchor">
-<h3>任务8.2 卡方检验，t检验、方差分析<a href="第八章-统计建模入门.html#任务8.2-卡方检验t检验方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">library</span>(languageR)</a>
-<a class="sourceLine" id="cb71-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;lexdec&quot;</span>)</a>
-<a class="sourceLine" id="cb71-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb71-5" data-line-number="5">tbl=<span class="st"> </span><span class="kw">table</span>(lexdec<span class="op">$</span>Correct, lexdec<span class="op">$</span>PrevType)</a>
-<a class="sourceLine" id="cb71-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb71-7" data-line-number="7"><span class="co"># 卡方检验</span></a>
-<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="kw">chisq.test</span>(tbl) </a></code></pre></div>
+<div id="任务8.2-卡方检验" class="section level3 unnumbered hasAnchor">
+<h3>任务8.2 卡方检验<a href="第八章-统计建模入门.html#任务8.2-卡方检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co"># 1. 直接创建数据框（更直观的方式）</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2">text_analysis_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">  性别 =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;男性用户&quot;</span>, <span class="dv">1000</span>), <span class="kw">rep</span>(<span class="st">&quot;女性用户&quot;</span>, <span class="dv">1000</span>)),</a>
+<a class="sourceLine" id="cb71-4" data-line-number="4">  情感强化方式 =<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">    <span class="kw">rep</span>(<span class="st">&quot;强化表达&quot;</span>, <span class="dv">210</span>), <span class="kw">rep</span>(<span class="st">&quot;中性表达&quot;</span>, <span class="dv">650</span>), <span class="kw">rep</span>(<span class="st">&quot;弱化表达&quot;</span>, <span class="dv">140</span>), <span class="co"># 男性</span></a>
+<a class="sourceLine" id="cb71-6" data-line-number="6">    <span class="kw">rep</span>(<span class="st">&quot;强化表达&quot;</span>, <span class="dv">320</span>), <span class="kw">rep</span>(<span class="st">&quot;中性表达&quot;</span>, <span class="dv">520</span>), <span class="kw">rep</span>(<span class="st">&quot;弱化表达&quot;</span>, <span class="dv">160</span>)  <span class="co"># 女性</span></a>
+<a class="sourceLine" id="cb71-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb71-8" data-line-number="8">)</a>
+<a class="sourceLine" id="cb71-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb71-10" data-line-number="10"><span class="co"># 2. 创建列联表</span></a>
+<a class="sourceLine" id="cb71-11" data-line-number="11">contingency_table &lt;-<span class="st"> </span><span class="kw">table</span>(text_analysis_df<span class="op">$</span>性别, text_analysis_df<span class="op">$</span>情感强化方式)</a>
+<a class="sourceLine" id="cb71-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb71-13" data-line-number="13"><span class="kw">print</span>(contingency_table)</a>
+<a class="sourceLine" id="cb71-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb71-15" data-line-number="15"><span class="co"># 添加边际和（可选）</span></a>
+<a class="sourceLine" id="cb71-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb71-17" data-line-number="17"><span class="kw">addmargins</span>(contingency_table)</a>
+<a class="sourceLine" id="cb71-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb71-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb71-20" data-line-number="20"><span class="co"># 3. 计算百分比（更深入的理解）</span></a>
+<a class="sourceLine" id="cb71-21" data-line-number="21"><span class="kw">cat</span>(<span class="st">&quot;行百分比（%）：</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb71-22" data-line-number="22"><span class="kw">prop.table</span>(contingency_table, <span class="dt">margin =</span> <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb71-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb71-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb71-25" data-line-number="25"><span class="kw">cat</span>(<span class="st">&quot;列百分比（%）：</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb71-26" data-line-number="26"><span class="kw">prop.table</span>(contingency_table, <span class="dt">margin =</span> <span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb71-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb71-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb71-29" data-line-number="29"><span class="co"># 4. 进行卡方检验</span></a>
+<a class="sourceLine" id="cb71-30" data-line-number="30">chi_sq_test &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(contingency_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb71-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb71-32" data-line-number="32"><span class="kw">print</span>(chi_sq_test)</a>
+<a class="sourceLine" id="cb71-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb71-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb71-35" data-line-number="35"><span class="co"># 计算百分比用于绘图</span></a>
+<a class="sourceLine" id="cb71-36" data-line-number="36">plot_data &lt;-<span class="st"> </span>text_analysis_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-37" data-line-number="37"><span class="st">  </span><span class="kw">group_by</span>(性别, 情感强化方式) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-38" data-line-number="38"><span class="st">  </span><span class="kw">summarise</span>(计数 =<span class="st"> </span><span class="kw">n</span>(), <span class="dt">.groups =</span> <span class="st">&#39;drop&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-39" data-line-number="39"><span class="st">  </span><span class="kw">group_by</span>(性别) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-40" data-line-number="40"><span class="st">  </span><span class="kw">mutate</span>(百分比 =<span class="st"> </span>计数 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(计数) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb71-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb71-42" data-line-number="42"><span class="co"># 绘制堆叠百分比条形图</span></a>
+<a class="sourceLine" id="cb71-43" data-line-number="43"><span class="kw">ggplot</span>(plot_data, <span class="kw">aes</span>(<span class="dt">x =</span> 性别, <span class="dt">y =</span> 百分比, <span class="dt">fill =</span> 情感强化方式)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-44" data-line-number="44"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-45" data-line-number="45"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">sprintf</span>(<span class="st">&quot;%.1f%%&quot;</span>, 百分比)), </a>
+<a class="sourceLine" id="cb71-46" data-line-number="46">            <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb71-47" data-line-number="47">            <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-48" data-line-number="48"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#FF6B6B&quot;</span>, <span class="st">&quot;#4ECDC4&quot;</span>, <span class="st">&quot;#556270&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-49" data-line-number="49"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;性别与情感强化方式的关系&quot;</span>,</a>
+<a class="sourceLine" id="cb71-50" data-line-number="50">       <span class="dt">subtitle =</span> <span class="kw">paste0</span>(<span class="st">&quot;卡方检验: χ²(&quot;</span>, chi_sq_test<span class="op">$</span>parameter, <span class="st">&quot;) = &quot;</span>, </a>
+<a class="sourceLine" id="cb71-51" data-line-number="51">                        <span class="kw">round</span>(chi_sq_test<span class="op">$</span>statistic, <span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb71-52" data-line-number="52">                        <span class="st">&quot;, p = &quot;</span>, <span class="kw">format.pval</span>(chi_sq_test<span class="op">$</span>p.value, <span class="dt">digits =</span> <span class="dv">3</span>)),</a>
+<a class="sourceLine" id="cb71-53" data-line-number="53">       <span class="dt">x =</span> <span class="st">&quot;性别&quot;</span>, </a>
+<a class="sourceLine" id="cb71-54" data-line-number="54">       <span class="dt">y =</span> <span class="st">&quot;百分比&quot;</span>,</a>
+<a class="sourceLine" id="cb71-55" data-line-number="55">       <span class="dt">fill =</span> <span class="st">&quot;情感强化方式&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-56" data-line-number="56"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-57" data-line-number="57"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb71-58" data-line-number="58">        <span class="dt">plot.subtitle =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb71-59" data-line-number="59"></a>
+<a class="sourceLine" id="cb71-60" data-line-number="60"><span class="kw">library</span>(rstatix)</a>
+<a class="sourceLine" id="cb71-61" data-line-number="61">contingency_table<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-62" data-line-number="62"><span class="st">  </span><span class="kw">chisq_test</span>()</a></code></pre></div>
 </div>
-</div>
-<div id="因变量为连续变量而自变量为分类变量" class="section level2 unnumbered hasAnchor">
-<h2>因变量为连续变量而自变量为分类变量<a href="第八章-统计建模入门.html#因变量为连续变量而自变量为分类变量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>  当因变量为分类变量而自变量为连续变量时，我们可以使用逻辑回归（Logistic Regression）。逻辑回归是一种广泛使用的统计模型，特别适用于处理分类问题，尤其是二分类问题。它通过建立自变量和因变量之间的关系来预测因变量的类别概率。逻辑回归通过一个逻辑函数（Logistic Function），也称为Sigmoid函数，将自变量的线性组合转换为一个概率值。它输出的结果是一个在0到1之间的概率值，用来表示某个事件发生的可能性。</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co">#fit logistic regression model</span></a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">model &lt;-<span class="st"> </span><span class="kw">glm</span>(Correct <span class="op">~</span><span class="st"> </span>Frequency<span class="op">+</span>FamilySize, </a>
-<a class="sourceLine" id="cb72-3" data-line-number="3">             <span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>, </a>
-<a class="sourceLine" id="cb72-4" data-line-number="4">             <span class="dt">data=</span>lexdec)</a>
-<a class="sourceLine" id="cb72-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb72-6" data-line-number="6"><span class="co">#disable scientific notation for model summary</span></a>
-<a class="sourceLine" id="cb72-7" data-line-number="7"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</a>
-<a class="sourceLine" id="cb72-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb72-9" data-line-number="9"><span class="co">#view model summary</span></a>
-<a class="sourceLine" id="cb72-10" data-line-number="10"><span class="kw">summary</span>(model)</a>
-<a class="sourceLine" id="cb72-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb72-12" data-line-number="12">caret<span class="op">::</span><span class="kw">varImp</span>(model)</a></code></pre></div>
-</div>
-<div id="因变量为连续变量自变量为分类变量" class="section level2 unnumbered hasAnchor">
-<h2>因变量为连续变量，自变量为分类变量<a href="第八章-统计建模入门.html#因变量为连续变量自变量为分类变量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>  如果自变量只有两层，可以使用t检验（T-tests）。t检验是一种常见的统计检验方法，用于比较两个样本均值之间的差异。单样本t检验（One-Sample T-test）用于比较一个样本的均值与一个已知的总体均值之间的差异。应用前提是，数据是从正态分布的总体中抽取的。样本是独立随机抽取的。比如，假设某学校声称其学生的平均IQ为100。我们抽取一个班级的学生进行IQ测试，想验证这个班级的平均IQ是否显著不同于100。</p>
-<ul>
-<li><p>独立样本t检验（Independent Samples T-test），用于比较两个独立样本的均值是否显著不同。应用前提是两个样本来自正态分布的总体。两个样本是独立的，即每个样本中的观测值不依赖于另一个样本的观测值。
-两个样本的方差相等（同方差性假设）。当不满足同方差性假设时，可以使用Welch’s t检验。
-比如，我们想比较男性和女性的平均工资，抽取了一组男性和女性的工资数据，检验两者的平均工资是否有显著差异。</p></li>
-<li><p>配对样本t检验（Paired Samples T-test）用于比较两个相关样本的均值是否显著不同。通常用于前后测量或配对设计。应用前提是配对差值（即每对观测值的差值）来自正态分布。样本是成对的，每对数据之间有某种相关性。比如，我们想比较一组学生在参加培训前后的考试成绩，检查培训是否对考试成绩有显著影响。</p></li>
-</ul>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co"># 检测数据是否符合正态分布，P&lt;0.05 不符合正态分布</span></a>
-<a class="sourceLine" id="cb73-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="kw">shapiro.test</span>(lexdec<span class="op">$</span>RT)</a>
-<a class="sourceLine" id="cb73-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="kw">plot</span>(<span class="kw">density</span>(lexdec<span class="op">$</span>RT))</a>
-<a class="sourceLine" id="cb73-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb73-7" data-line-number="7"><span class="co"># 参与者母语是否是英语</span></a>
-<a class="sourceLine" id="cb73-8" data-line-number="8"><span class="kw">t.test</span>(RT <span class="op">~</span><span class="st"> </span>NativeLanguage, <span class="dt">data=</span>lexdec)</a>
-<a class="sourceLine" id="cb73-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb73-10" data-line-number="10"><span class="co"># 汇报Mann–Whitney U test 更好</span></a>
-<a class="sourceLine" id="cb73-11" data-line-number="11"><span class="kw">wilcox.test</span>(RT <span class="op">~</span><span class="st"> </span>NativeLanguage, <span class="dt">data=</span>lexdec)</a></code></pre></div>
-<p>  当自变量有两个以上，或者自变量超过两个水平，我们可以使用方差分析（Analysis of Variance, ANOVA）。方差分析通过分析数据中的变异来源，确定不同组之间的均值是否有显著差异。ANOVA的主要优势在于它能够同时比较多个组的均值，而无需进行多次t检验，从而减少第一类错误的概率。</p>
-<ul>
-<li><p>单因素方差分析（One-Way ANOVA）：用于比较一个因子（自变量）下的多个组（水平）的均值是否存在显著差异。
-比如比较不同教学方法对学生成绩的影响。</p></li>
-<li><p>双因素方差分析（Two-Way ANOVA）：用于比较两个因子（自变量）及其交互作用对因变量的影响。
-适用场景：研究不同教学方法和不同学习时间对学生成绩的影响。</p></li>
-<li><p>重复测量方差分析（Repeated Measures ANOVA）：用于处理同一组受试者在不同时间点或不同条件下的测量数据。比如，同一组学生在不同教学方法下的成绩变化等。</p></li>
-</ul>
-<p>ANOVA 的基本原理是通过将总变异分解为组间变异和组内变异，来判断不同组的均值是否存在显著差异。</p>
-<p>  在发现整体组间均值存在显著差异后，进一步确定哪些具体组之间存在差异需要使用事后比较（Post-Hoc Comparisons）。因为ANOVA只告诉我们至少有一组均值不同，但不能明确指出哪些组之间存在差异。事后比较中，我们要控制多重比较带来的第一类错误（即假阳性）。常见的方法有Tukey’s HSD（Honestly Significant Difference）检验、Bonferroni检验等。</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">lex.aov =<span class="st"> </span><span class="kw">aov</span> (RT <span class="op">~</span><span class="st"> </span>PrevType <span class="op">+</span><span class="st"> </span>Class, <span class="dt">data =</span> lexdec)</a>
-<a class="sourceLine" id="cb74-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="kw">summary</span>(lex.aov)</a>
-<a class="sourceLine" id="cb74-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="kw">TukeyHSD</span>(lex.aov)</a></code></pre></div>
-</div>
-<div id="因变量与自变量均为连续变量" class="section level2 unnumbered hasAnchor">
-<h2>因变量与自变量均为连续变量<a href="第八章-统计建模入门.html#因变量与自变量均为连续变量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>当我们为两个或以上连续型变量建模时，我们可以使用相关分析和线性回归。</p>
-<p>  相关分析确定一个变量是否随着另一个变量的变化而系统地变化。它不指定哪个变量是因变量，哪个变量是自变量。比较合适观察数据集中哪些变量彼此相关。Pearson, Spearman 和 Kendall 是三种常见的相关性检验方法，主要用于衡量两个变量之间的相关程度。尽管它们都用于相关性分析，但它们有不同的假设和适用场景。</p>
-<ul>
-<li><p>Pearson相关系数（Pearson Correlation Coefficient）是最常用的相关性测量方法，用于衡量两个变量之间的线性关系。假设前提：数据是连续的，符合正态分布，数据之间存在线性关系。数据是独立的。简单易计算，结果易于解释。在数据符合正态分布且有线性关系时，效果最好。对异常值敏感。不能有效处理非线性关系。</p></li>
-<li><p>Spearman相关系数（Spearman Rank Correlation Coefficient）是基于数据排序的非参数检验方法，用于衡量两个变量之间的单调关系。假设前提有数据是连续的或离散的。数据不需要符合正态分布。数据之间存在单调关系。适用于衡量两个变量之间的单调关系，例如学生成绩排名和运动成绩排名的关系。对异常值不敏感。可以处理非线性关系。对于完全线性关系，效率不如Pearson相关系数。</p></li>
-</ul>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">         <span class="dt">data =</span> lexdec,</a>
-<a class="sourceLine" id="cb75-3" data-line-number="3">         <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a>
-<a class="sourceLine" id="cb75-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb75-5" data-line-number="5"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb75-6" data-line-number="6">         <span class="dt">data =</span> lexdec,</a>
-<a class="sourceLine" id="cb75-7" data-line-number="7">         <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</a>
-<a class="sourceLine" id="cb75-8" data-line-number="8"></a>
+<div id="任务8.3-t检验方差分析" class="section level3 unnumbered hasAnchor">
+<h3>任务8.3 t检验、方差分析<a href="第八章-统计建模入门.html#任务8.3-t检验方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># 单样本t检验 (One-Sample t-test)</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="co"># 研究场景：</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="co"># 检验一所语言学校学生的平均托福成绩是否显著高于全球平均分（假设为90分）。</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="co"># 设置随机种子以保证结果可重现</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb72-6" data-line-number="6"><span class="co"># 生成数据：假设该校40名学生的托福成绩，平均分92，标准差8</span></a>
+<a class="sourceLine" id="cb72-7" data-line-number="7">toefl_scores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">40</span>, <span class="dt">mean =</span> <span class="dv">92</span>, <span class="dt">sd =</span> <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb72-8" data-line-number="8"><span class="co"># 将数据转换为数据框</span></a>
+<a class="sourceLine" id="cb72-9" data-line-number="9">toefl_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">score =</span> toefl_scores)</a>
+<a class="sourceLine" id="cb72-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb72-11" data-line-number="11"><span class="co"># 检测数据是否符合正态分布，P&lt;0.05 不符合正态分布</span></a>
+<a class="sourceLine" id="cb72-12" data-line-number="12"><span class="kw">shapiro.test</span>(toefl_data<span class="op">$</span>score)</a>
+<a class="sourceLine" id="cb72-13" data-line-number="13"><span class="kw">plot</span>(<span class="kw">density</span>(toefl_data<span class="op">$</span>score))</a>
+<a class="sourceLine" id="cb72-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb72-15" data-line-number="15"><span class="co"># 进行单样本t检验，检验均值是否不等于90（默认双侧）</span></a>
+<a class="sourceLine" id="cb72-16" data-line-number="16">t_test_result &lt;-<span class="st"> </span><span class="kw">t.test</span>(toefl_data<span class="op">$</span>score, <span class="dt">mu =</span> <span class="dv">90</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>) <span class="co"># 使用alternative = &quot;greater&quot;检验是否大于90</span></a>
+<a class="sourceLine" id="cb72-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb72-18" data-line-number="18"><span class="co"># 输出结果</span></a>
+<a class="sourceLine" id="cb72-19" data-line-number="19"><span class="kw">print</span>(t_test_result)</a>
+<a class="sourceLine" id="cb72-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb72-21" data-line-number="21"><span class="co"># 绘制箱线图进行可视化</span></a>
+<a class="sourceLine" id="cb72-22" data-line-number="22"><span class="kw">boxplot</span>(toefl_data<span class="op">$</span>score, <span class="dt">main =</span> <span class="st">&quot;Distribution of TOEFL Scores&quot;</span>, </a>
+<a class="sourceLine" id="cb72-23" data-line-number="23">        <span class="dt">ylab =</span> <span class="st">&quot;Score&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</a>
+<a class="sourceLine" id="cb72-24" data-line-number="24"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">90</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>) <span class="co"># 添加全球平均分参考线</span></a>
+<a class="sourceLine" id="cb72-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb72-26" data-line-number="26"><span class="co"># 使用rstatix</span></a>
+<a class="sourceLine" id="cb72-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb72-28" data-line-number="28"><span class="co"># 创建数据</span></a>
+<a class="sourceLine" id="cb72-29" data-line-number="29">scores_long &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb72-30" data-line-number="30">  <span class="dt">student_id =</span> <span class="kw">rep</span>(<span class="kw">paste0</span>(<span class="st">&quot;S&quot;</span>, <span class="dv">1001</span><span class="op">:</span><span class="dv">1050</span>), <span class="dt">each =</span> <span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb72-31" data-line-number="31">  <span class="dt">gender =</span> <span class="kw">rep</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;男&quot;</span>, <span class="st">&quot;女&quot;</span>), <span class="dv">50</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">each =</span> <span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb72-32" data-line-number="32">  <span class="dt">skill =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;听力&quot;</span>, <span class="st">&quot;口语&quot;</span>, <span class="st">&quot;阅读&quot;</span>, <span class="st">&quot;写作&quot;</span>), <span class="dt">times =</span> <span class="dv">50</span>),</a>
+<a class="sourceLine" id="cb72-33" data-line-number="33">  <span class="dt">score =</span> <span class="kw">round</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb72-34" data-line-number="34">    <span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">10</span>),  <span class="co"># 听力</span></a>
+<a class="sourceLine" id="cb72-35" data-line-number="35">    <span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dv">72</span>, <span class="dv">12</span>),  <span class="co"># 口语</span></a>
+<a class="sourceLine" id="cb72-36" data-line-number="36">    <span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dv">78</span>, <span class="dv">8</span>),   <span class="co"># 阅读</span></a>
+<a class="sourceLine" id="cb72-37" data-line-number="37">    <span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dv">70</span>, <span class="dv">11</span>)   <span class="co"># 写作</span></a>
+<a class="sourceLine" id="cb72-38" data-line-number="38">  ))</a>
+<a class="sourceLine" id="cb72-39" data-line-number="39">)</a>
+<a class="sourceLine" id="cb72-40" data-line-number="40">scores_long <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb72-41" data-line-number="41"><span class="st">    </span><span class="kw">group_by</span>(skill) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb72-42" data-line-number="42"><span class="st">  </span><span class="kw">t_test</span>(score <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">mu =</span> <span class="dv">60</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co"># 独立样本t检验 (Independent-Samples t-test)</span></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="co"># 研究场景：比较两种不同的外语教学方法（“沉浸式” vs. “传统式”）对学生词汇测试成绩的影响。</span></a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="co"># 设置随机种子</span></a>
+<a class="sourceLine" id="cb73-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">456</span>)</a>
+<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="co"># 生成两组独立的数据</span></a>
+<a class="sourceLine" id="cb73-6" data-line-number="6"><span class="co"># 组1: 沉浸式教学，假设平均成绩更高为85分</span></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7">group_immersive &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">30</span>, <span class="dt">mean =</span> <span class="dv">85</span>, <span class="dt">sd =</span> <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8"><span class="co"># 组2: 传统式教学，假设平均成绩稍低为78分</span></a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">group_traditional &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">35</span>, <span class="dt">mean =</span> <span class="dv">78</span>, <span class="dt">sd =</span> <span class="dv">8</span>) <span class="co"># 允许两组人数不同</span></a>
+<a class="sourceLine" id="cb73-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb73-11" data-line-number="11"><span class="co"># 创建数据框：一列是成绩，一列是分组标签</span></a>
+<a class="sourceLine" id="cb73-12" data-line-number="12">method_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb73-13" data-line-number="13">  <span class="dt">score =</span> <span class="kw">c</span>(group_immersive, group_traditional),</a>
+<a class="sourceLine" id="cb73-14" data-line-number="14">  <span class="dt">method =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Immersive&quot;</span>, <span class="st">&quot;Traditional&quot;</span>), </a>
+<a class="sourceLine" id="cb73-15" data-line-number="15">                      <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">35</span>))) <span class="co"># 创建分组因子</span></a>
+<a class="sourceLine" id="cb73-16" data-line-number="16">)</a>
+<a class="sourceLine" id="cb73-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb73-18" data-line-number="18"><span class="co"># 进行独立样本t检验（默认假设方差不相等，使用Welch&#39;s t-test）</span></a>
+<a class="sourceLine" id="cb73-19" data-line-number="19"> <span class="kw">t.test</span>(score <span class="op">~</span><span class="st"> </span>method, <span class="dt">data =</span> method_data, </a>
+<a class="sourceLine" id="cb73-20" data-line-number="20">                     <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>) <span class="co"># 检验“沉浸式”成绩是否大于“传统式”</span></a>
+<a class="sourceLine" id="cb73-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb73-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb73-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb73-24" data-line-number="24"><span class="co"># 绘制分组箱线图进行可视化</span></a>
+<a class="sourceLine" id="cb73-25" data-line-number="25"><span class="kw">boxplot</span>(score <span class="op">~</span><span class="st"> </span>method, <span class="dt">data =</span> method_data, </a>
+<a class="sourceLine" id="cb73-26" data-line-number="26">        <span class="dt">main =</span> <span class="st">&quot;Vocabulary Score by Teaching Method&quot;</span>,</a>
+<a class="sourceLine" id="cb73-27" data-line-number="27">        <span class="dt">xlab =</span> <span class="st">&quot;Teaching Method&quot;</span>, </a>
+<a class="sourceLine" id="cb73-28" data-line-number="28">        <span class="dt">ylab =</span> <span class="st">&quot;Vocabulary Test Score&quot;</span>,</a>
+<a class="sourceLine" id="cb73-29" data-line-number="29">        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;#FF6B6B&quot;</span>, <span class="st">&quot;#4ECDC4&quot;</span>)) <span class="co"># 为两组设置不同的颜色</span></a>
+<a class="sourceLine" id="cb73-30" data-line-number="30"><span class="co"># rstatix </span></a>
+<a class="sourceLine" id="cb73-31" data-line-number="31">stat.test =<span class="st"> </span>method_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb73-32" data-line-number="32"><span class="st">  </span><span class="kw">t_test</span>(score <span class="op">~</span><span class="st"> </span>method, <span class="dt">paired =</span> <span class="ot">FALSE</span>) </a>
+<a class="sourceLine" id="cb73-33" data-line-number="33">stat.test</a>
+<a class="sourceLine" id="cb73-34" data-line-number="34"><span class="co"># Create a box plot</span></a>
+<a class="sourceLine" id="cb73-35" data-line-number="35">p &lt;-<span class="st"> </span><span class="kw">ggboxplot</span>(</a>
+<a class="sourceLine" id="cb73-36" data-line-number="36">  method_data, <span class="dt">x =</span> <span class="st">&quot;method&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;score&quot;</span>, </a>
+<a class="sourceLine" id="cb73-37" data-line-number="37">  <span class="dt">color =</span> <span class="st">&quot;method&quot;</span>, </a>
+<a class="sourceLine" id="cb73-38" data-line-number="38">  <span class="dt">palette =</span> <span class="st">&quot;jco&quot;</span>,</a>
+<a class="sourceLine" id="cb73-39" data-line-number="39">  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">105</span>)</a>
+<a class="sourceLine" id="cb73-40" data-line-number="40">  )</a>
+<a class="sourceLine" id="cb73-41" data-line-number="41"><span class="co"># Add the p-value manually</span></a>
+<a class="sourceLine" id="cb73-42" data-line-number="42">p <span class="op">+</span><span class="st"> </span><span class="kw">stat_pvalue_manual</span>(stat.test, <span class="dt">label =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">y.position =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb73-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb73-44" data-line-number="44"></a>
+<a class="sourceLine" id="cb73-45" data-line-number="45"><span class="co"># 如果非正态分布，汇报Mann–Whitney U test 更好</span></a>
+<a class="sourceLine" id="cb73-46" data-line-number="46"><span class="kw">wilcox.test</span>(score <span class="op">~</span><span class="st"> </span>method, <span class="dt">data =</span> method_data )</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co"># 配对样本t检验 (Paired-Samples t-test)</span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="co"># 研究场景：检验一项为期8周的发音训练课程是否显著改善了10名学生的发音清晰度得分（收集每个学生训练前和训练后的数据）。</span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="co"># 设置随机种子</span></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">789</span>)</a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="co"># 生成数据：为每个学生生成一个“基础”分数，然后前后分数相关</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6">n_pairs &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># 10个学生</span></a>
+<a class="sourceLine" id="cb74-7" data-line-number="7">base_score &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n_pairs, <span class="dt">mean =</span> <span class="dv">70</span>, <span class="dt">sd =</span> <span class="dv">10</span>) <span class="co"># 训练前的基础水平</span></a>
+<a class="sourceLine" id="cb74-8" data-line-number="8"><span class="co"># 训练后分数：在基础分数上增加一个改善量（平均改善5分），并与前测相关</span></a>
+<a class="sourceLine" id="cb74-9" data-line-number="9">post_score &lt;-<span class="st"> </span>base_score <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n_pairs, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">3</span>) <span class="co"># 后测分数</span></a>
+<a class="sourceLine" id="cb74-10" data-line-number="10"><span class="co"># 创建数据框</span></a>
+<a class="sourceLine" id="cb74-11" data-line-number="11">pronunciation_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb74-12" data-line-number="12">  <span class="dt">subject =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span>n_pairs, <span class="dt">times =</span> <span class="dv">2</span>)), <span class="co"># 受试者编号，用于配对</span></a>
+<a class="sourceLine" id="cb74-13" data-line-number="13">  <span class="dt">time =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Pre-test&quot;</span>, <span class="st">&quot;Post-test&quot;</span>), <span class="dt">each =</span> n_pairs), <span class="co"># 时间点</span></a>
+<a class="sourceLine" id="cb74-14" data-line-number="14">                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Pre-test&quot;</span>, <span class="st">&quot;Post-test&quot;</span>)), <span class="co"># 设定因子顺序</span></a>
+<a class="sourceLine" id="cb74-15" data-line-number="15">  <span class="dt">score =</span> <span class="kw">c</span>(base_score, post_score)</a>
+<a class="sourceLine" id="cb74-16" data-line-number="16">)</a>
+<a class="sourceLine" id="cb74-17" data-line-number="17"><span class="co"># 查看数据（长格式）</span></a>
+<a class="sourceLine" id="cb74-18" data-line-number="18"><span class="kw">head</span>(pronunciation_data, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb74-19" data-line-number="19"><span class="co"># 进行配对样本t检验</span></a>
+<a class="sourceLine" id="cb74-20" data-line-number="20"><span class="co"># 方法一：使用公式语法，指定配对参数</span></a>
+<a class="sourceLine" id="cb74-21" data-line-number="21"><span class="kw">t.test</span>(score <span class="op">~</span><span class="st"> </span>time, <span class="dt">data =</span> pronunciation_data, </a>
+<a class="sourceLine" id="cb74-22" data-line-number="22">                        <span class="dt">paired =</span> <span class="ot">TRUE</span>, <span class="co"># 关键参数：指定这是配对检验</span></a>
+<a class="sourceLine" id="cb74-23" data-line-number="23">                        <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>) <span class="co"># 检验“前测”是否小于“后测”</span></a>
+<a class="sourceLine" id="cb74-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb74-25" data-line-number="25"><span class="co"># 方法二：直接提供两个向量</span></a>
+<a class="sourceLine" id="cb74-26" data-line-number="26"><span class="kw">t.test</span>(base_score, post_score, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb74-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb74-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb74-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb74-30" data-line-number="30"><span class="co"># 绘制差异图（连接线图）</span></a>
+<a class="sourceLine" id="cb74-31" data-line-number="31"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb74-32" data-line-number="32"><span class="kw">ggplot</span>(pronunciation_data, <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> score, <span class="dt">group =</span> subject)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-33" data-line-number="33"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">linewidth =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-34" data-line-number="34"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-35" data-line-number="35"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Pronunciation Scores Before and After Training&quot;</span>,</a>
+<a class="sourceLine" id="cb74-36" data-line-number="36">       <span class="dt">subtitle =</span> <span class="st">&quot;Paired Samples t-test&quot;</span>,</a>
+<a class="sourceLine" id="cb74-37" data-line-number="37">       <span class="dt">x =</span> <span class="st">&quot;Time Point&quot;</span>,</a>
+<a class="sourceLine" id="cb74-38" data-line-number="38">       <span class="dt">y =</span> <span class="st">&quot;Clarity Score&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-39" data-line-number="39"><span class="st">  </span><span class="kw">theme_minimal</span>()</a>
+<a class="sourceLine" id="cb74-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb74-41" data-line-number="41"><span class="co"># rstatix</span></a>
+<a class="sourceLine" id="cb74-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb74-43" data-line-number="43">stat.test &lt;-<span class="st"> </span>pronunciation_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-44" data-line-number="44"><span class="st">  </span><span class="kw">t_test</span>(score <span class="op">~</span><span class="st"> </span>time, <span class="dt">paired =</span> <span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb74-45" data-line-number="45">stat.test</a>
+<a class="sourceLine" id="cb74-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb74-47" data-line-number="47"><span class="co"># Box plot</span></a>
+<a class="sourceLine" id="cb74-48" data-line-number="48">p &lt;-<span class="st"> </span><span class="kw">ggpaired</span>(</a>
+<a class="sourceLine" id="cb74-49" data-line-number="49">  pronunciation_data, </a>
+<a class="sourceLine" id="cb74-50" data-line-number="50">  <span class="dt">x =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;score&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">palette =</span> <span class="st">&quot;jco&quot;</span>, </a>
+<a class="sourceLine" id="cb74-51" data-line-number="51">  <span class="dt">line.color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">line.size =</span> <span class="fl">0.4</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">105</span>)</a>
+<a class="sourceLine" id="cb74-52" data-line-number="52">  )</a>
+<a class="sourceLine" id="cb74-53" data-line-number="53"></a>
+<a class="sourceLine" id="cb74-54" data-line-number="54">p <span class="op">+</span><span class="st"> </span><span class="kw">stat_pvalue_manual</span>(stat.test, <span class="dt">label =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">y.position =</span> <span class="dv">100</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="co"># 模拟数据并进行混合方差分析</span></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"><span class="co"># 设置随机种子</span></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb75-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb75-6" data-line-number="6"><span class="co"># 参数设置</span></a>
+<a class="sourceLine" id="cb75-7" data-line-number="7">n &lt;-<span class="st"> </span><span class="dv">60</span>  <span class="co"># 总被试数</span></a>
+<a class="sourceLine" id="cb75-8" data-line-number="8">n_per_group &lt;-<span class="st"> </span><span class="dv">30</span>  <span class="co"># 每组被试数</span></a>
 <a class="sourceLine" id="cb75-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb75-10" data-line-number="10"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>RT <span class="op">+</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb75-11" data-line-number="11">         <span class="dt">data =</span> lexdec,</a>
-<a class="sourceLine" id="cb75-12" data-line-number="12">         <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
-<p>  线性回归指定一个变量为自变量，另一个为因变量。所得模型用线性关系来描述这些变量之间的关系。线性回归是参数检验，假设残差的正态性、同方差性和独立性，以及两个变量之间的线性关系。如果模型中有多个区间/比例类型的自变量，那么线性回归将扩展为多元回归。如果自变量是分类变量，那么线性回归将变成单因素方差分析。可以使用 lm 函数来执行线性回归，这与我们用于方差分析的函数相同。</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">lm.model =<span class="st"> </span><span class="kw">lm</span>(RT <span class="op">~</span><span class="st"> </span>Frequency,</a>
-<a class="sourceLine" id="cb76-2" data-line-number="2">               <span class="dt">data =</span> lexdec)</a>
-<a class="sourceLine" id="cb76-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="kw">summary</span>(lm.model)</a></code></pre></div>
+<a class="sourceLine" id="cb75-10" data-line-number="10"><span class="co"># 生成被试信息</span></a>
+<a class="sourceLine" id="cb75-11" data-line-number="11">subject_id &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;S&quot;</span>, <span class="dv">1001</span><span class="op">:</span>(<span class="dv">1000</span> <span class="op">+</span><span class="st"> </span>n))</a>
+<a class="sourceLine" id="cb75-12" data-line-number="12">wm_capacity &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;高工作记忆&quot;</span>, <span class="st">&quot;低工作记忆&quot;</span>), <span class="dt">each =</span> n_per_group)</a>
+<a class="sourceLine" id="cb75-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb75-14" data-line-number="14"><span class="co"># 模拟基础反应时间（毫秒）</span></a>
+<a class="sourceLine" id="cb75-15" data-line-number="15"><span class="co"># 假设低工作记忆组基础反应时间更长</span></a>
+<a class="sourceLine" id="cb75-16" data-line-number="16">base_rt_low &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n_per_group, <span class="dv">800</span>, <span class="dv">100</span>)  <span class="co"># 低组</span></a>
+<a class="sourceLine" id="cb75-17" data-line-number="17">base_rt_high &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n_per_group, <span class="dv">700</span>, <span class="dv">90</span>)   <span class="co"># 高组</span></a>
+<a class="sourceLine" id="cb75-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb75-19" data-line-number="19"><span class="co"># 生成两种句子类型的反应时间</span></a>
+<a class="sourceLine" id="cb75-20" data-line-number="20"><span class="co"># 假设宾语从句更难，反应时间更长，且低工作记忆组受难度影响更大</span></a>
+<a class="sourceLine" id="cb75-21" data-line-number="21">df.wm &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb75-22" data-line-number="22">  <span class="dt">subject_id =</span> <span class="kw">rep</span>(subject_id, <span class="dt">each =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb75-23" data-line-number="23">  <span class="dt">wm_capacity =</span> <span class="kw">rep</span>(wm_capacity, <span class="dt">each =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb75-24" data-line-number="24">  <span class="dt">sentence_type =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;宾语关系从句&quot;</span>, <span class="st">&quot;主语关系从句&quot;</span>), <span class="dt">times =</span> n),</a>
+<a class="sourceLine" id="cb75-25" data-line-number="25">  <span class="dt">reaction_time =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb75-26" data-line-number="26">    <span class="co"># 低工作记忆组</span></a>
+<a class="sourceLine" id="cb75-27" data-line-number="27">    base_rt_low <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n_per_group, <span class="dv">150</span>, <span class="dv">40</span>),  <span class="co"># 宾语从句</span></a>
+<a class="sourceLine" id="cb75-28" data-line-number="28">    base_rt_low <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n_per_group, <span class="dv">50</span>, <span class="dv">30</span>),   <span class="co"># 主语从句</span></a>
+<a class="sourceLine" id="cb75-29" data-line-number="29">    </a>
+<a class="sourceLine" id="cb75-30" data-line-number="30">    <span class="co"># 高工作记忆组  </span></a>
+<a class="sourceLine" id="cb75-31" data-line-number="31">    base_rt_high <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n_per_group, <span class="dv">80</span>, <span class="dv">35</span>),  <span class="co"># 宾语从句</span></a>
+<a class="sourceLine" id="cb75-32" data-line-number="32">    base_rt_high <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n_per_group, <span class="dv">30</span>, <span class="dv">25</span>)   <span class="co"># 主语从句</span></a>
+<a class="sourceLine" id="cb75-33" data-line-number="33">  )</a>
+<a class="sourceLine" id="cb75-34" data-line-number="34">)</a>
+<a class="sourceLine" id="cb75-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb75-36" data-line-number="36">wm.aov =<span class="st"> </span><span class="kw">aov</span> ( reaction_time  <span class="op">~</span><span class="st"> </span>wm_capacity <span class="op">*</span><span class="st"> </span>sentence_type, <span class="dt">data =</span> df.wm)</a>
+<a class="sourceLine" id="cb75-37" data-line-number="37"></a>
+<a class="sourceLine" id="cb75-38" data-line-number="38"><span class="kw">summary</span>(wm.aov)</a>
+<a class="sourceLine" id="cb75-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb75-40" data-line-number="40"><span class="kw">TukeyHSD</span>(wm.aov)</a>
+<a class="sourceLine" id="cb75-41" data-line-number="41"><span class="co"># rstatix</span></a>
+<a class="sourceLine" id="cb75-42" data-line-number="42">df.wm <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anova_test</span>(reaction_time  <span class="op">~</span><span class="st"> </span>wm_capacity<span class="op">*</span>sentence_type)</a>
+<a class="sourceLine" id="cb75-43" data-line-number="43">anv.test =<span class="st"> </span>df.wm <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anova_test</span>(reaction_time  <span class="op">~</span><span class="st"> </span>wm_capacity<span class="op">*</span>sentence_type)</a></code></pre></div>
+</div>
+<div id="任务8.3-相关分析" class="section level3 unnumbered hasAnchor">
+<h3>任务8.3 相关分析<a href="第八章-统计建模入门.html#任务8.3-相关分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">Liu2007 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/Liu2007.csv&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(WF, CF, PF, AoA, CON, FAM, IMG)</a>
+<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="co"># r base</span></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="kw">cor.test</span>(<span class="op">~</span>WF<span class="op">+</span><span class="st"> </span>AoA,</a>
+<a class="sourceLine" id="cb76-5" data-line-number="5">         <span class="dt">data =</span> Liu2007,</a>
+<a class="sourceLine" id="cb76-6" data-line-number="6">         <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a>
+<a class="sourceLine" id="cb76-7" data-line-number="7"><span class="co"># method = &quot;kendall&quot;, &quot;spearman&quot;</span></a>
+<a class="sourceLine" id="cb76-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb76-9" data-line-number="9"><span class="co"># Correlation test between two variables</span></a>
+<a class="sourceLine" id="cb76-10" data-line-number="10">Liu2007 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor_test</span>(AoA, CON, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a>
+<a class="sourceLine" id="cb76-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb76-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb76-13" data-line-number="13"><span class="co"># Correlation of one variable against all</span></a>
+<a class="sourceLine" id="cb76-14" data-line-number="14">Liu2007 <span class="op">%&gt;%</span><span class="kw">cor_test</span>(AoA, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a>
+<a class="sourceLine" id="cb76-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb76-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb76-17" data-line-number="17"><span class="co"># Pairwise correlation test between all variables</span></a>
+<a class="sourceLine" id="cb76-18" data-line-number="18">Liu2007 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor_test</span>(<span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a>
+<a class="sourceLine" id="cb76-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb76-20" data-line-number="20"><span class="co"># Compute correlation matrix</span></a>
+<a class="sourceLine" id="cb76-21" data-line-number="21"><span class="co">#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></a>
+<a class="sourceLine" id="cb76-22" data-line-number="22">cor.mat &lt;-<span class="st"> </span>Liu2007 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor_mat</span>()</a>
+<a class="sourceLine" id="cb76-23" data-line-number="23">cor.mat</a>
+<a class="sourceLine" id="cb76-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb76-25" data-line-number="25"><span class="co"># Show the significance levels</span></a>
+<a class="sourceLine" id="cb76-26" data-line-number="26">cor.mat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor_get_pval</span>()</a>
+<a class="sourceLine" id="cb76-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb76-28" data-line-number="28"><span class="co"># Replacing correlation coefficients by symbols</span></a>
+<a class="sourceLine" id="cb76-29" data-line-number="29">cor.mat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-30" data-line-number="30"><span class="st">  </span><span class="kw">cor_as_symbols</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-31" data-line-number="31"><span class="st">  </span><span class="kw">pull_lower_triangle</span>()</a>
+<a class="sourceLine" id="cb76-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb76-33" data-line-number="33"><span class="co"># Mark significant correlations</span></a>
+<a class="sourceLine" id="cb76-34" data-line-number="34">cor.mat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-35" data-line-number="35"><span class="st">  </span><span class="kw">cor_mark_significant</span>()</a>
+<a class="sourceLine" id="cb76-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb76-37" data-line-number="37"><span class="co"># Draw correlogram using R base plot</span></a>
+<a class="sourceLine" id="cb76-38" data-line-number="38">cor.mat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-39" data-line-number="39"><span class="st">  </span><span class="kw">cor_reorder</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-40" data-line-number="40"><span class="st">  </span><span class="kw">pull_lower_triangle</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-41" data-line-number="41"><span class="st">  </span><span class="kw">cor_plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">lm.model =<span class="st"> </span><span class="kw">lm</span>(AoA <span class="op">~</span><span class="st"> </span>WF<span class="op">+</span><span class="st"> </span>CF<span class="op">+</span><span class="st"> </span>PF,</a>
+<a class="sourceLine" id="cb77-2" data-line-number="2">               <span class="dt">data =</span> Liu2007)</a>
+<a class="sourceLine" id="cb77-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb77-4" data-line-number="4"><span class="kw">summary</span>(lm.model)</a></code></pre></div>
 <p>lm模型对象的summary函数包括对模型参数（截距和斜率）的估计，以及模型的R平方值和模型的p值。</p>
 <p>如何解读模型？
-  模型产生了截距的系数（6.5）和斜率的系数（-0.04）；</p>
+  模型产生了截距的系数和斜率的系数；</p>
 <p>  每个系数还伴随着其他三个数字：其标准误差、t值和p值。p值告诉我们系数是否显著不同于零。</p>
 <p>  如果预测变量的系数为零，则预测变量与因变量之间没有任何关系，因此作为预测变量是毫无价值的。为了确定系数是否显著不同于零，从而具有潜在的预测能力，进行双侧t检验，使用t值和相关的自由度。</p>
 <p>  t值本身是系数除以其标准误差得到的值。这个标准误差是系数估计的确定程度的衡量。标准误差越小，估计周围的置信区间就越小，接受区域中包含零的可能性就越小，因此系数可能为零的概率也越小。</p>
 <p>  残差标准误差是模型不成功的度量；它衡量了我们无法通过预测变量处理的因变量的变异性。模型越好，其残差标准误差就越小。</p>
-<p>  多重R平方为0.8115。这个R平方是平方相关系数r²，它在0到1的范围内量化了模型解释的方差的比例。</p>
+<p>  多重R平方是平方相关系数r²，它在0到1的范围内量化了模型解释的方差的比例。</p>
+</div>
+<div id="任务8.4-多元回归" class="section level3 unnumbered hasAnchor">
+<h3>任务8.4 多元回归<a href="第八章-统计建模入门.html#任务8.4-多元回归" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co"># 汉语词汇判断数据</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2">TrialsSCLP &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/TrialsSCLP.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb78-3" data-line-number="3"><span class="co"># 汉语词汇特征数据</span></a>
+<a class="sourceLine" id="cb78-4" data-line-number="4">chineselexicaldatabase2_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/chineselexicaldatabase2.1.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb78-5" data-line-number="5"><span class="co"># 选择单字词</span></a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">cld.df =<span class="st"> </span>chineselexicaldatabase2_<span class="dv">1</span><span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(Length <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb78-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb78-9" data-line-number="9"><span class="co"># 计算判断准确率，并提取单字词的词汇特征</span></a>
+<a class="sourceLine" id="cb78-10" data-line-number="10">char.dec.reg =<span class="st"> </span>TrialsSCLP <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-11" data-line-number="11"><span class="st">  </span><span class="kw">group_by</span>(item,lexicality)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-12" data-line-number="12"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total =</span> <span class="kw">sum</span>(accuracy),</a>
+<a class="sourceLine" id="cb78-13" data-line-number="13">            <span class="dt">percent =</span> total<span class="op">/</span><span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb78-14" data-line-number="14">            <span class="dt">z.rt.mean =</span> <span class="kw">mean</span>(zscore,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-15" data-line-number="15"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(z.rt.mean))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-16" data-line-number="16"><span class="st">  </span><span class="kw">left_join</span>(cld.df, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;item&quot;</span>=<span class="st"> &quot;Word&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-17" data-line-number="17"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(C1))</a>
+<a class="sourceLine" id="cb78-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb78-19" data-line-number="19"><span class="co"># 构建模型</span></a>
+<a class="sourceLine" id="cb78-20" data-line-number="20">char.dec.mdl =<span class="st"> </span><span class="kw">lm</span>(z.rt.mean<span class="op">~</span><span class="st">  </span>Frequency <span class="op">+</span><span class="st"> </span>PhonologicalFrequency <span class="op">+</span><span class="st"> </span>Strokes, <span class="dt">data =</span> char.dec.reg)</a>
+<a class="sourceLine" id="cb78-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb78-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb78-23" data-line-number="23"><span class="co"># 查看模型摘要</span></a>
+<a class="sourceLine" id="cb78-24" data-line-number="24"><span class="kw">summary</span>(model)</a>
+<a class="sourceLine" id="cb78-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb78-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb78-27" data-line-number="27"><span class="co"># 增加词汇心理语言学特征</span></a>
+<a class="sourceLine" id="cb78-28" data-line-number="28">char.dec.reg.psy =<span class="st"> </span>char.dec.reg<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-29" data-line-number="29"><span class="st">  </span><span class="kw">left_join</span>(Liu2007,<span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;item&quot;</span>=<span class="st"> &quot;Word&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-30" data-line-number="30"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Tag))</a>
+<a class="sourceLine" id="cb78-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb78-32" data-line-number="32">char.dec.psyc.mdl =<span class="st"> </span><span class="kw">lm</span>(z.rt.mean<span class="op">~</span><span class="st">  </span>AoA <span class="op">+</span><span class="st"> </span>CON <span class="op">+</span><span class="st"> </span>FAM <span class="op">+</span><span class="st"> </span>IMG <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-33" data-line-number="33"><span class="st">                         </span>Frequency <span class="op">+</span><span class="st"> </span>PhonologicalFrequency <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-34" data-line-number="34"><span class="st">                         </span>Strokes, <span class="dt">data =</span> char.dec.reg.psy)</a>
+<a class="sourceLine" id="cb78-35" data-line-number="35"><span class="co"># 查看模型摘要</span></a>
+<a class="sourceLine" id="cb78-36" data-line-number="36"><span class="kw">summary</span>(char.dec.psyc.mdl)</a></code></pre></div>
+</div>
+<div id="任务8.5-逻辑回归" class="section level3 unnumbered hasAnchor">
+<h3>任务8.5 逻辑回归<a href="第八章-统计建模入门.html#任务8.5-逻辑回归" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># 拟合逻辑回归模型</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2">char.dec.df =<span class="st"> </span>TrialsSCLP<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(subject <span class="op">==</span><span class="st"> &quot;AZ&quot;</span> <span class="op">&amp;</span><span class="st"> </span>lexicality <span class="op">==</span><span class="st"> &quot;character&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy =</span> <span class="kw">as.factor</span>(accuracy))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-5" data-line-number="5"><span class="st">  </span><span class="kw">left_join</span>(cld.df, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;item&quot;</span>=<span class="st"> &quot;Word&quot;</span>))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(C1))</a>
+<a class="sourceLine" id="cb79-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb79-8" data-line-number="8">model &lt;-<span class="st"> </span><span class="kw">glm</span>(accuracy <span class="op">~</span><span class="st"> </span>Frequency <span class="op">+</span><span class="st"> </span>PhonologicalFrequency <span class="op">+</span><span class="st"> </span>Strokes, </a>
+<a class="sourceLine" id="cb79-9" data-line-number="9">             <span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>, </a>
+<a class="sourceLine" id="cb79-10" data-line-number="10">             <span class="dt">data=</span>char.dec.df)</a>
+<a class="sourceLine" id="cb79-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb79-12" data-line-number="12"><span class="co"># 不使用科学计数法</span></a>
+<a class="sourceLine" id="cb79-13" data-line-number="13"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>)</a>
+<a class="sourceLine" id="cb79-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb79-15" data-line-number="15"><span class="co">#view model summary</span></a>
+<a class="sourceLine" id="cb79-16" data-line-number="16"><span class="kw">summary</span>(model)</a>
+<a class="sourceLine" id="cb79-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb79-18" data-line-number="18">caret<span class="op">::</span><span class="kw">varImp</span>(model)</a></code></pre></div>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="85%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">公式</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>(1\|s)</code></td>
+<td align="left">对因子 <code>s</code> 的每个唯一水平设置随机截距</td>
+</tr>
+<tr class="even">
+<td align="left"><code>(1\|s) + (1\|i)</code></td>
+<td align="left">对因子 <code>s</code> 和因子 <code>i</code> 的每个唯一水平分别设置随机截距</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>(1\|s/i)</code></td>
+<td align="left">对因子 <code>s</code> 和嵌套在 <code>s</code> 内的因子 <code>i</code> 设置随机截距。展开形式为 <code>(1\|s) + (1\|s:i)</code>，即 <code>s</code> 的每个水平及 <code>s</code> 与 <code>i</code> 的水平组合均分配随机截距。嵌套随机效应用于多层级模型，例如 <code>s</code> 表示学校，<code>i</code> 表示学校内的班级。</td>
+</tr>
+<tr class="even">
+<td align="left"><code>(a\|s)</code></td>
+<td align="left">对因子 <code>s</code> 的每个水平，设置变量 <code>a</code> 的随机截距和随机斜率，并估计截距与斜率的相关性（等价于 <code>(a*b\|s)</code>）</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>(a*b\|s)</code></td>
+<td align="left">对因子 <code>s</code> 的每个水平，设置变量 <code>a</code>、<code>b</code> 及其交互项 <code>a:b</code> 的随机截距和斜率，并估计所有随机效应间的相关性</td>
+</tr>
+<tr class="even">
+<td align="left"><code>(0+a\|s)</code></td>
+<td align="left">对因子 <code>s</code> 的每个水平，仅设置变量 <code>a</code> 的随机斜率（不包含随机截距）</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>(a\|\|s)</code></td>
+<td align="left">对因子 <code>s</code> 的每个水平，设置变量 <code>a</code> 的随机截距和随机斜率，但强制随机效应间无相关性（即相关性设为0）。展开形式为：<code>(0+a\|s) + (1\|s)</code></td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
 </div>
             </section>
@@ -640,7 +976,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-CH8-统计建模.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-CH8-统计建模V2.Rmd",
 "text": "Edit"
 },
 "history": {
