@@ -55,14 +55,7 @@ svm_md = svm(formula = tone ~ .,
 # summary(svm_md)
 svm_md$tot.accuracy
 
-# # model based on contour features
-# svm_contour = svm(formula = tone ~ .,
-#                   data = dataset_thai_8point,
-#                   type = 'C-classification',#regression or classification
-#                   kernel = 'radial',
-#                   cost = "2",
-#                   cross = 10)
-# svm_contour$tot.accuracy
+
 ```
 
 
@@ -118,14 +111,9 @@ md_plot = md_confusion%>%
 
 ```
 
-
-
-
-
-
 ```{r eval=F, echo=T}
-## 训练泰语母语者声调模型
 
+## 模拟普通话听者感知泰语声调
 # import data
 thai_discrete = read.csv("data/ch13/thai_discrete.csv")
 
@@ -135,80 +123,6 @@ dataset_thai = thai_discrete[ , c(2, 6:11)]
 # scale the data
 dataset_thai[,-1] = scale(dataset_thai[-1])
 
-# Fitting classifier
-# model based on discrete features
-svm_thai = svm(formula = tone ~ .,
-               data = dataset_thai,
-               type = 'C-classification',#regression or classification
-               kernel = 'radial',
-               cost = "2",
-               cross = 10)
-# total accuracy
-# summary(svm_thai)
-svm_thai$tot.accuracy
-
-```
-
-检测泰语母语者声调模型的正确率。
-
-```{r eval=F, echo=T}
-# confusion matrix
-prediction <- predict(svm_thai, dataset_thai)
-
-thai_confusion = data.frame(pred = prediction, tone = thai_discrete$tone)
-
-thai_confusion_table = thai_confusion%>%
-  group_by(tone,pred)%>%
-  summarize(n = n())%>%
-  group_by(tone)%>%
-  mutate(sum = sum(n),
-         percent = round((n/sum)*100,2))%>%
-  select(tone,pred,percent)%>%
-  spread(tone, percent)
-thai_confusion$tone = as.factor(thai_confusion$tone)
-
-# write.csv(thai_confusion_table, 
-#           file = "data/processed/thai_confusion_table ", 
-#           row.names = FALSE)
-
-thai_plot = thai_confusion%>%
-  group_by(pred, tone)%>%
-  summarise(n = n())%>%
-  group_by(tone)%>%
-  mutate(percent = n/sum(n),
-         sum = sum(n))%>%
-  ggplot(aes(pred, tone))+
-  geom_tile(aes(fill = percent*100 ))+
-  geom_text(aes(label = round(percent*100, 1)), size = 4)+
-  scale_x_discrete(name = "Predictions",
-                   limits=c("21","33","45","315","241"),
-                   labels=c("T21", "T33", "T45","T315","T241"))+
-  scale_y_discrete(name = "Thai tones",
-                   limits=c("21","33","45","315","241"),
-                   labels=c("T21", "T33", "T45","T315","T241"))+
-  scale_fill_gradient(name="Percentage (%)",
-                      low = "white", high = "red") +
-  theme(axis.text.x = element_text(face="bold", 
-                                   size=10),
-        axis.text.y = element_text(face="bold", 
-                                   size=10),
-        panel.background = element_blank())
-
-thai_plot
-# Print this our for publication
-# png("thai_tones.png", units="in", width=5, height=4, res=600)
-# thai_plot
-# dev.off()
-
-
-```
-
-
-
-
-```{r eval=F, echo=T}
-
-## 模拟普通话听者感知泰语声调
 
 prediction_md_thai <- predict(svm_md, dataset_thai)
  
@@ -326,6 +240,94 @@ md_compare
  # dev.off()
 
 ```
+
+
+
+
+
+
+```{r eval=F, echo=T}
+## 训练泰语母语者声调模型
+# # import data
+# thai_discrete = read.csv("data/ch13/thai_discrete.csv")
+# 
+# # Selecting features
+# dataset_thai = thai_discrete[ , c(2, 6:11)]
+# 
+# # scale the data
+# dataset_thai[,-1] = scale(dataset_thai[-1])
+
+
+# Fitting classifier
+# model based on discrete features
+svm_thai = svm(formula = tone ~ .,
+               data = dataset_thai,
+               type = 'C-classification',#regression or classification
+               kernel = 'radial',
+               cost = "2",
+               cross = 10)
+# total accuracy
+# summary(svm_thai)
+svm_thai$tot.accuracy
+
+```
+
+检测泰语母语者声调模型的正确率。
+
+```{r eval=F, echo=T}
+# confusion matrix
+prediction <- predict(svm_thai, dataset_thai)
+
+thai_confusion = data.frame(pred = prediction, tone = thai_discrete$tone)
+
+thai_confusion_table = thai_confusion%>%
+  group_by(tone,pred)%>%
+  summarize(n = n())%>%
+  group_by(tone)%>%
+  mutate(sum = sum(n),
+         percent = round((n/sum)*100,2))%>%
+  select(tone,pred,percent)%>%
+  spread(tone, percent)
+thai_confusion$tone = as.factor(thai_confusion$tone)
+
+# write.csv(thai_confusion_table, 
+#           file = "data/processed/thai_confusion_table ", 
+#           row.names = FALSE)
+
+thai_plot = thai_confusion%>%
+  group_by(pred, tone)%>%
+  summarise(n = n())%>%
+  group_by(tone)%>%
+  mutate(percent = n/sum(n),
+         sum = sum(n))%>%
+  ggplot(aes(pred, tone))+
+  geom_tile(aes(fill = percent*100 ))+
+  geom_text(aes(label = round(percent*100, 1)), size = 4)+
+  scale_x_discrete(name = "Predictions",
+                   limits=c("21","33","45","315","241"),
+                   labels=c("T21", "T33", "T45","T315","T241"))+
+  scale_y_discrete(name = "Thai tones",
+                   limits=c("21","33","45","315","241"),
+                   labels=c("T21", "T33", "T45","T315","T241"))+
+  scale_fill_gradient(name="Percentage (%)",
+                      low = "white", high = "red") +
+  theme(axis.text.x = element_text(face="bold", 
+                                   size=10),
+        axis.text.y = element_text(face="bold", 
+                                   size=10),
+        panel.background = element_blank())
+
+thai_plot
+# Print this our for publication
+# png("thai_tones.png", units="in", width=5, height=4, res=600)
+# thai_plot
+# dev.off()
+
+
+```
+
+
+
 
 
 

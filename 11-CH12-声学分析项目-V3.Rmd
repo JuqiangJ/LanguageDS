@@ -1102,3 +1102,29 @@ md_model.p3 = cbind(appendix1a,appendix1b,appendix1c)
 ### 结论 {-}
 
 
+## 课程项目孵化器
+声学分析可以使用IPA开放数据
+UCLA 语音学实验室档案
+http://archive.phonetics.ucla.edu/
+UCLA 语音学实验室档案。收录了世界各地的语言录音样本。这些数据集对于语音研究、音系学研究，都非常有帮助，涉及到了200个语言，并且配有相应的国际音标转写，以及田野调查的一些笔记。
+Sanders, N. C., & Chin, S. B. (2009). Phonological Distance Measures. Journal of Quantitative Linguistics, 16(1), 96–114. 
+Vakulenko, M. (2021). Calculation of Phonetic Distances between Speech Sounds. Journal of Quantitative Linguistics, 28(3), 223–236. 
+Vakulenko, M. O. (2023). Unified Parametrization of Phonetic Features and Numerical Calculation of Phonetic Distances between Speech Sounds. Journal of Quantitative Linguistics, 30(1), 67–85. 
+Bauer, L., Warren, P., Bardsley, D., Kennedy, M., & Major, G. (2007). New Zealand English. Journal of the International Phonetic Association, 37(01), 97. https://doi.org/10.1017/S0025100306002830
+Chen, Y., & Gussenhoven, C. (2015). Shanghai Chinese. Journal of the International Phonetic Association, 45(3), 321–337. https://doi.org/10.1017/S0025100315000043
+Cox, F., & Palethorpe, S. (2007). Australian English. Journal of the International Phonetic Association, 37(3), 341–350. https://doi.org/10.1017/S0025100307003192
+Deterding, D. (1997). The Formants of Monophthong Vowels in Standard Southern British English Pronunciation. Journal of the International Phonetic Association, 27(1–2), 47–55. https://doi.org/10.1017/S0025100300005417
+Deterding, D. (2006). The North Wind versus a Wolf: Short texts for the description and measurement of English pronunciation. Journal of the International Phonetic Association, 36(2), 187–196. https://doi.org/10.1017/S0025100306002544
+Ferragne, E., & Pellegrino, F. (2010). Formant frequencies of vowels in 13 accents of the British Isles. Journal of the International Phonetic Association, 40(1), 1–34. https://doi.org/10.1017/S0025100309990247
+Harrington, J., Palethorpe, S., & Watson, C. (2000). Monophthongal vowel changes in Received Pronunciation: An acoustic analysis of the Queen’s Christmas broadcasts. Journal of the International Phonetic Association, 30(1–2), 63–78. https://doi.org/10.1017/S0025100300006666
+Hawkins, S., & Midgley, J. (2005). Formant frequencies of RP monophthongs in four age groups of speakers. Journal of the International Phonetic Association, 35(2), 183–199. https://doi.org/10.1017/S0025100305002124
+Hillenbrand, J. M. (2003). American English: Southern Michigan. Journal of the International Phonetic Association, 33(1), 121–126. https://doi.org/10.1017/S0025100303001221
+Lee, W.-S., & Zee, E. (2003). Standard Chinese (Beijing). Journal of the International Phonetic Association, 33(1), 109–112. https://doi.org/10.1017/S0025100303001208
+Li, Q., Chen, Y., & Xiong, Z. (2019). Tianjin Mandarin. Journal of the International Phonetic Association, 49(1), 109–128. https://doi.org/10.1017/S0025100317000287
+Roach, P. (2004). British English: Received Pronunciation. Journal of the International Phonetic Association, 34(2), 239–245. https://doi.org/10.1017/S0025100304001768
+Shi, M., & Chen, Y. (undefined/ed). Lili Wu Chinese. Journal of the International Phonetic Association, 1–23. https://doi.org/10.1017/S0025100320000092
+Villarreal, D., Clark, L., Hay, J., & Watson, K. (2020). From categories to gradience: Auto-coding sociophonetic variation with random forests. Laboratory Phonology: Journal of the Association for Laboratory Phonology, 11(1), Article 1. https://doi.org/10.5334/labphon.216
+Watson, K. (2007). Liverpool English. Journal of the International Phonetic Association, 37(3), 351–360. https://doi.org/10.1017/S0025100307003180
+Zee, E. (1991). Chinese (Hong Kong Cantonese). Journal of the International Phonetic Association, 21(1), 46–48.
+
+
