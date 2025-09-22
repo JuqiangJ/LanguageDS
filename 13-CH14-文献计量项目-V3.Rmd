@@ -632,9 +632,6 @@ plot(keyword.fig$graph)
 
 ```{r eval=F, echo=T}
 
-setwd("~/Nutstore Files/115_JournalPaper/11_biblio-aphasia")
-
-tbl.fig = "data/TablesFigures/"
 
 # import libraries
 
@@ -648,7 +645,7 @@ library(showtext)
 showtext_auto()
 # read files
 
-filenames = list.files(path = "data/scopus", 
+filenames = list.files(path = "data/ch14/scopus", 
                        pattern = "csv", 
                        full.names = TRUE)
 # converting to bibliometric data frame
@@ -757,7 +754,7 @@ jpeg(paste( tbl.fig, paste("year.pub",Sys.Date(),"jpeg",sep = "."), sep = ""),
 ## 发表国家（地区）分布及增长趋势
 pd.ctry = bib.dscrp$MostProdCountries
 
-# knitr::kable(pd.ctry)
+knitr::kable(pd.ctry)
 
 # write.csv(bib.dscrp$MostProdCountries,
 #           file = paste(tbl.fig,
@@ -810,7 +807,7 @@ pd.year.ctry.fig = ggplot(data=pd.year.ctry,
 # jpeg(paste(tbl.fig,  paste("year.pub.ctry",Sys.Date(),"jpeg",sep = "."), sep = ""),
 #     units="in", width=10, height=4, res=600)
 # 
-#  plot(pd.year.ctry.fig)
+plot(pd.year.ctry.fig)
 # 
 # dev.off()
 
@@ -823,7 +820,7 @@ pd.year.ctry.fig = ggplot(data=pd.year.ctry,
 ## 高产和高被引研究者
 topAU10 <- authorProdOverTime(neuro.bib, k = 20)
 
-#plot(topAU10$graph)
+plot(topAU10$graph)
 
 
 
@@ -908,7 +905,7 @@ author.coc <- biblioNetwork(neuro.bib,
 
 author.coc.plt = networkPlot(author.coc ,
                 n = 40,
-                Title = "国际神经语言学机构合作网络",
+                Title = "国际神经语言学研究者合作网络",
                 type = "sphere",
                 size=10,size.cex=T,
                 remove.multiple=F,
@@ -925,7 +922,7 @@ png(paste(tbl.fig,
            sep = ""),
      units="in", width=6, height=6, res=600)
 
-plot(uni.coc.plot$graph)
+plot(author.coc.plt$graph)
 
 dev.off()
 
@@ -977,13 +974,179 @@ hot.papers = data.frame(ct.artcl$Cited[1:50],
 
 knitr::kable(hot.papers)
 
-write.csv(hot.papers,
+# write.csv(hot.papers,
+#           file = paste(tbl.fig,
+#                        paste("hot.papers",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") ,row.names = FALSE)
+
+```
+
+```{r eval=F, echo=T}
+## 基于文献共引关系的神经语言学文献引用网络分析
+
+# article co-citation network
+co.cite <- biblioNetwork(neuro.bib, 
+                         analysis = "co-citation", 
+                         network = "references", 
+                         sep = ";")
+
+CoCitation = networkPlot(co.cite, n = 50,
+                Title = "神经语言学共被引文献网络",
+                type = "fruchterman", size=1,
+                curved=TRUE,
+                remove.isolates = T,
+                remove.multiple=FALSE,
+                labelsize=0.5,edgesize = 2,
+                verbose = FALSE)
+
+
+
+jpeg(paste(tbl.fig,
+           paste("Co-Citation Network",
+                 Sys.Date(),
+                 "jpeg",
+                 sep = "."),
+           sep = ""),
+     units="in", width=8, height=6, res=600)
+
+ plot( CoCitation$graph)
+
+  
+ dev.off()
+
+```
+
+
+```{r eval=F, echo=T}
+
+citation.df = neuro.bib%>%
+  tibble::rownames_to_column(., "id")%>%
+  mutate(id = toupper(id))%>%
+  select(id, TI, CR)%>%
+  unnest_tokens(vertex, CR, token = stringr::str_split, pattern = ";")%>%
+  mutate(vertex1 = str_extract(vertex,"[a-z]{1,10}, [a-z]"),
+         vertex1 = toupper(vertex1),
+         vertex2 = str_extract(vertex,"\\([0-9]{4}\\)"),
+         vertex2 = str_extract(vertex,"[0-9]{4}"),
+         reference = vertex,
+         vertex = paste(vertex1, vertex2))%>%
+  select(vertex,reference)
+
+CoCitation.raw = as.data.frame(CoCitation$cluster_res)%>%
+  mutate(vertex1 = str_extract(vertex,"[a-z]{1,10} "),
+         vertex1 = str_remove(vertex1, " "),
+         vertex2 = str_extract(vertex," [a-z]{1}"),
+         vertex2 = str_remove(vertex2, " "),
+         vertex3 = str_extract(vertex,"[0-9]{4}"),
+         vertex = paste(vertex1, vertex2, sep = ", "),
+         vertex = paste(vertex, vertex3),
+         vertex = toupper(vertex))%>%
+  left_join(citation.df )%>%
+  distinct()
+
+
+CoCitation.df = CoCitation.raw%>%
+  group_by(vertex)%>%
+  mutate(n = 1:n())%>%
+  filter(n == 1)%>%
+  select("vertex", "cluster", "btw_centrality", "reference")%>%
+  mutate(centrality = round(btw_centrality,2))%>%
+  arrange(cluster,desc(centrality))%>%
+  select(cluster, vertex, centrality, reference)
+
+CoCitation.df%>%
+  #select(-SO, -DOI)%>%
+  datatable(extensions = 'Buttons',
+            options = list(dom = 'Blfrtip',
+                           buttons = c('copy', 'csv', 'excel', 'pdf'),
+                           lengthMenu = list(c(10,25,50,-1),
+                                            c(10,25,50,"All"))))
+# 
+write.csv(CoCitation.df,
           file = paste(tbl.fig,
-                       paste("hot.papers",
+                       paste("CoCitation.df",
                              Sys.Date(),
                              "csv",
                              sep = "."),
                        sep = "") ,row.names = FALSE)
+
+
+```
+
+
+
+```{r eval=F, echo=T}
+## 	基于文献耦合关系的神经语言学文献引用网络分析
+
+article.cpl = biblioNetwork(neuro.bib, 
+                           analysis = "coupling", 
+                           network = "references", 
+                           sep = ";")
+
+coupling.net = networkPlot(article.cpl, n =50,
+                Title = "神经语言学文献耦合网络",
+                type = "auto", size=T,
+                remove.isolates = T,
+                remove.multiple=FALSE,
+                cluster = "optimal",
+                labelsize=0.7,edgesize = 5,
+                verbose = FALSE
+                )
+
+jpeg(paste(tbl.fig,
+           paste("article.cpl",
+                 Sys.Date(),
+                 "jpeg",
+                 sep = "."),
+           sep = ""),
+     units="in", width=6, height=4, res=600)
+
+plot(coupling.net$graph)
+
+dev.off()
+
+
+
+```
+
+```{r eval=F, echo=T}
+
+couple.df = as.data.frame(coupling.net$cluster_res)%>%
+    mutate(vertex1 = str_extract(vertex,"[a-z]{1,10} "),
+         vertex1 = str_remove(vertex1, " "),
+         vertex2 = str_extract(vertex," [a-z]{1}"),
+         vertex2 = str_remove(vertex2, " "),
+         vertex3 = str_extract(vertex,"[0-9]{4}"),
+         vertex = paste(vertex1, vertex2, sep = ", "),
+         vertex = paste(vertex, vertex3),
+         vertex = toupper(vertex))%>%
+  left_join(citation.df)%>%
+  distinct()%>%
+  select("vertex", "cluster", "btw_centrality", "reference")%>%
+  mutate(btw_centrality = round(btw_centrality,2))%>%
+  arrange(cluster,desc(btw_centrality))%>%
+  group_by(vertex)%>%
+  mutate(n = 1:n())%>%
+  filter(n == 1)%>%
+  select(cluster, vertex, btw_centrality, reference)
+
+couple.df%>%
+ datatable(extensions = 'Buttons',
+            options = list(dom = 'Blfrtip',
+                           buttons = c('copy', 'csv', 'excel', 'pdf'),
+                           lengthMenu = list(c(10,25,50,-1),
+                                             c(10,25,50,"All"))))
+write.csv(couple.df ,
+          file = paste(tbl.fig,
+                       paste("couple.df ",
+                             Sys.Date(),
+                             "csv",
+                             sep = "."),
+                       sep = "") ,row.names = FALSE)
+
 
 ```
 
@@ -998,13 +1161,11 @@ write.csv(hot.papers,
 #                "results suggest","experiment 1",
 #                "experiment 2","NA","NA")
 
-stopWords <- read_csv("data/stopWords.csv", col_names = FALSE)
+stopWords <- read_csv("data/ch14/stopWords.csv", col_names = FALSE)
 
 stop.words = as.vector(stopWords$X1)
 
 # keywords
-
-# no temporal variation
 au.ky = neuro.bib%>%
   select(DE,PY)%>%
   transform(DE = strsplit(DE, ";")) %>%
@@ -1038,7 +1199,7 @@ authorkeyword.coc <- biblioNetwork(neuro.meta,
 
 authorkeyword.coc.plt = networkPlot(authorkeyword.coc ,
                 n = 40,
-                Title = "神经语言学论文关键词共现网络",
+                Title = "神经语言学论文作者关键词共现网络",
                 type = "fruchterman",
                 size=10, size.cex=T,curved=TRUE, 
                 remove.multiple=F,
@@ -1125,7 +1286,7 @@ write.csv(title.all,
                              sep = "."),
                        sep = "") ,row.names = FALSE)
 
-
+neuro.meta$TI_TM = neuro.meta$TI
 title.coc <- biblioNetwork(neuro.meta, 
                          analysis = "co-occurrences",  
                          network = "titles", 
@@ -1133,7 +1294,7 @@ title.coc <- biblioNetwork(neuro.meta,
 
 title.coc.plt = networkPlot(title.coc ,
                 n = 40,
-                Title = "神经语言学论文关键词共现网络",
+                Title = "神经语言学论文标题关键词共现网络",
                 type = "sphere",
                 size=10,size.cex=T,
                 remove.multiple=F,
@@ -1150,7 +1311,7 @@ png(paste(tbl.fig,
            sep = ""),
      units="in", width=4, height=4, res=600)
 
-plot(authorkeyword.coc.plt$graph)
+plot(title.coc.plt$graph)
 
 dev.off()
 
@@ -1326,8 +1487,9 @@ topic.df = df%>%
   filter(sum != 0)
   
 
-# for cleaning up stats
+# 整理提取统计值
 library(broom)
+options(scipen = 999)
 topic.test =  topic.df%>%
   group_by(pattern)%>%
   summarise(res = list(
@@ -1345,10 +1507,7 @@ topic.wide.df = df%>%
   spread(period, norm.freq)%>%
   # fill all na with 0
   replace(is.na(.), 0)
-# %>%
-#   group_by(pattern)%>%
-#   mutate(sum = sum(norm.freq))%>%
-#   filter(sum != 0)
+
 
 topic.results = topic.test%>%
   filter(p.value<0.05)%>%
@@ -1514,185 +1673,4 @@ write.csv(trend.peak.valley,
 
 
 
-
-```{r eval=F, echo=T}
-## 1.6.10.	基于文献共引关系的神经语言学文献引用网络分析
-
-# article co-citation network
-co.cite <- biblioNetwork(neuro.bib, 
-                         analysis = "co-citation", 
-                         network = "references", 
-                         sep = ";")
-
-CoCitation = networkPlot(co.cite, n = 50,
-                Title = "神经语言学共引文献网络",
-                type = "fruchterman", size=1,
-                curved=TRUE,
-                remove.isolates = T,
-                remove.multiple=FALSE,
-                labelsize=0.5,edgesize = 2,
-                verbose = FALSE)
-
-
-
-jpeg(paste(tbl.fig,
-           paste("Co-Citation Network",
-                 Sys.Date(),
-                 "jpeg",
-                 sep = "."),
-           sep = ""),
-     units="in", width=8, height=6, res=600)
-
- plot( CoCitation$graph)
-
-  
- dev.off()
-
-```
-
-
-```{r eval=F, echo=T}
-
-citation.df = neuro.bib%>%
-  tibble::rownames_to_column(., "id")%>%
-  mutate(id = toupper(id))%>%
-  select(id, TI, CR)%>%
-  unnest_tokens(vertex, CR, token = stringr::str_split, pattern = ";")%>%
-  #head()%>%
-  mutate(vertex1 = str_extract(vertex,"[a-z]{1,10} [a-z].,"),
-         vertex1 = toupper(vertex1),
-         vertex2 = str_extract(vertex,"\\([0-9]{4}\\)"),
-         vertex2 = str_extract(vertex,"[0-9]{4}"),
-         reference = vertex,
-         vertex = paste(vertex1, vertex2))%>%
-  select(vertex,reference)%>%
-  mutate(vertex = str_remove(vertex, ".,"))
-
-
-# a = aphasia.df %>%
-#   mutate(vertex = str_replace_all(vertex, "\.",","))%>%
-#   head(10)
-
-CoCitation.raw = as.data.frame(CoCitation$cluster_res)%>%
-  #mutate(vertex = str_replace_all(vertex, "[a-z]\\. ",", "))%>%
-  mutate(
-    #vertex = str_remove(vertex, "-[0-9]{1}$"),
-         vertex1 = str_extract(vertex,"[a-z]{1,10} "),
-         vertex1 = str_remove(vertex1, " "),
-         vertex2 = str_extract(vertex," [a-z]{1}"),
-         vertex2 = str_remove(vertex2, " "),
-         vertex3 = str_extract(vertex,"[0-9]{4}"),
-         vertex = paste(vertex1, vertex2, sep = " "),
-         vertex = paste(vertex, vertex3),
-         vertex = toupper(vertex))%>%
-  left_join(citation.df )%>%
-  distinct()
-
-
-CoCitation.df = CoCitation.raw%>%
-  group_by(vertex)%>%
-  mutate(n = 1:n())%>%
-  filter(n == 1)%>%
-  select("vertex", "cluster", "btw_centrality", "reference")%>%
-  mutate(centrality = round(btw_centrality,2),
-         )%>%
-  arrange(cluster,desc(centrality))%>%
-  select(cluster, vertex, centrality, reference)
-
-# CoCitation.df%>%
-#   #select(-SO, -DOI)%>%
-#   datatable(extensions = 'Buttons',
-#             options = list(dom = 'Blfrtip',
-#                            buttons = c('copy', 'csv', 'excel', 'pdf'),
-#                            lengthMenu = list(c(10,25,50,-1),
-#                                             c(10,25,50,"All"))))
-# 
-write.csv(CoCitation.df,
-          file = paste(tbl.fig,
-                       paste("CoCitation.df",
-                             Sys.Date(),
-                             "csv",
-                             sep = "."),
-                       sep = "") ,row.names = FALSE)
-
-
-```
-
-
-
-```{r eval=F, echo=T}
-## 	基于文献耦合关系的神经语言学文献引用网络分析
-
-# article coupling network
-article.cpl = biblioNetwork(neuro.bib, 
-                           analysis = "coupling", 
-                           network = "references", 
-                           sep = ";")
-
-coupling.net = networkPlot(article.cpl, n =50,
-                Title = "神经语言学文献耦合网络",
-                type = "auto", size=T,
-                remove.isolates = T,
-                remove.multiple=FALSE,
-                cluster = "optimal",
-                labelsize=0.7,edgesize = 5,
-                verbose = FALSE
-                )
-
-jpeg(paste(tbl.fig,
-           paste("article.cpl",
-                 Sys.Date(),
-                 "jpeg",
-                 sep = "."),
-           sep = ""),
-     units="in", width=6, height=4, res=600)
-
-plot(coupling.net$graph)
-
-dev.off()
-
-
-
-```
-
-```{r eval=F, echo=T}
-
-aphasia.df = aphasia%>%
-  tibble::rownames_to_column(., "vertex")%>%
-  mutate(vertex = toupper(vertex))
-
-couple.df = as.data.frame(coupling.net$cluster_res)%>%
-    mutate(vertex1 = str_extract(vertex,"[a-z]{1,10} "),
-         vertex1 = str_remove(vertex1, " "),
-         vertex2 = str_extract(vertex," [a-z]{1}"),
-         vertex2 = str_remove(vertex2, " "),
-         vertex3 = str_extract(vertex,"[0-9]{4}"),
-         vertex = paste(vertex1, vertex2, sep = " "),
-         vertex = paste(vertex, vertex3),
-         vertex = toupper(vertex))%>%
-  left_join(citation.df)%>%
-  select("vertex", "cluster", "btw_centrality", "reference")%>%
-  mutate(btw_centrality = round(btw_centrality,2))%>%
-  arrange(cluster,desc(btw_centrality))%>%
-  group_by(vertex)%>%
-  mutate(n = 1:n())%>%
-  filter(n == 1)
-
-  
-couple.df%>%
- datatable(extensions = 'Buttons',
-            options = list(dom = 'Blfrtip',
-                           buttons = c('copy', 'csv', 'excel', 'pdf'),
-                           lengthMenu = list(c(10,25,50,-1),
-                                             c(10,25,50,"All"))))
-write.csv(couple.df ,
-          file = paste(tbl.fig,
-                       paste("couple.df ",
-                             Sys.Date(),
-                             "csv",
-                             sep = "."),
-                       sep = "") ,row.names = FALSE)
-
-
-```
 
