@@ -140,17 +140,31 @@ austen.emma.word <- austen_books() %>%
   count(word, sort = TRUE) %>% 
   #筛选Emma这个小说
   filter(book == "Emma")%>%
-  #显示前20个高频词
-  head(20)
+  mutate(total = sum(n),
+         relativefrq = (n/total)*100)%>%
+  #显示前5的高频词
+  head(5)
 
 library(ggplot2)
 
-austen.emma.word  %>%
-  #给高频词排序
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(n, word)) +
-  geom_col() +
-  labs(y = NULL)
+austen.word = austen_books() %>%
+  group_by(book) %>%
+  unnest_tokens(word, text)%>%
+  count(word, sort = TRUE) %>% 
+  group_by(book)%>%
+  mutate(total = sum(n),
+         relativefrq = (n/total)*100)%>%
+  filter(word %in% austen.emma.word$word)
+
+austen.word %>%
+  mutate(word = reorder(word, relativefrq)) %>%
+  ggplot(aes(relativefrq, word, fill = book)) +  # fill按book变量着色
+  geom_col(position = position_dodge(width = 0.7),  # 关键：平行排列，width控制间距
+           width = 0.6) +  # 控制条形的宽度
+  scale_fill_brewer(palette = "Set1") +  # 使用区分度好的配色
+  labs(y = NULL, x = "Frequency", fill = "Book") +
+  theme_minimal() +
+  theme(legend.position = "top")  # 图例放在顶部
 
 ```
 
