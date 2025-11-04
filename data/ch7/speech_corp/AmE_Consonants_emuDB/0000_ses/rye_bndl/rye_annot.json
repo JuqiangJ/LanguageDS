@@ -1,0 +1,187 @@
+{
+  "name": "rye",
+  "annotates": "rye.wav",
+  "sampleRate": 20000,
+  "levels": [
+    {
+      "name": "token",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 1,
+          "sampleStart": 0,
+          "sampleDur": 1000,
+          "labels": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "sampleStart": 1001,
+          "sampleDur": 10254,
+          "labels": [
+            {
+              "name": "token",
+              "value": "TEXT"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "sampleStart": 11256,
+          "sampleDur": 1428,
+          "labels": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "word",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 4,
+          "sampleStart": 0,
+          "sampleDur": 1000,
+          "labels": [
+            {
+              "name": "word",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "sampleStart": 1001,
+          "sampleDur": 10254,
+          "labels": [
+            {
+              "name": "word",
+              "value": "rye"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "sampleStart": 11256,
+          "sampleDur": 1428,
+          "labels": [
+            {
+              "name": "word",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "segment",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 7,
+          "sampleStart": 0,
+          "sampleDur": 1000,
+          "labels": [
+            {
+              "name": "segment",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "sampleStart": 1001,
+          "sampleDur": 1762,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "\\rt"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "sampleStart": 2764,
+          "sampleDur": 8491,
+          "labels": [
+            {
+              "name": "segment",
+              "value": "a\\ic"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "sampleStart": 11256,
+          "sampleDur": 1428,
+          "labels": [
+            {
+              "name": "segment",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "closure",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 11,
+          "sampleStart": 0,
+          "sampleDur": 12684,
+          "labels": [
+            {
+              "name": "closure",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "burst",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 12,
+          "sampleStart": 0,
+          "sampleDur": 12684,
+          "labels": [
+            {
+              "name": "burst",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aspiration",
+      "type": "SEGMENT",
+      "items": [
+        {
+          "id": 13,
+          "sampleStart": 0,
+          "sampleDur": 12684,
+          "labels": [
+            {
+              "name": "aspiration",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": []
+}

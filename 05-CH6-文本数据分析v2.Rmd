@@ -675,157 +675,18 @@ head(assoc_tb)%>%
 
 ```
 
-#### 基于提取搭配 {-}
+
 
 ```{r eval=F, echo=T}
 
-kwic_words <- quanteda::tokens_select(tokens(corps.detectives,
-                                             remove_numbers = TRUE, 
-                                             remove_punct = TRUE), 
-                                      pattern = "kill", 
-                                      window = 5, 
-                                      selection = "keep") %>%
-  unlist() %>%
-  # tabulate results
-  table() %>%
-  # convert into data frame
-  as.data.frame() %>%
-  # rename columns
-  dplyr::rename(token = 1,
-                n = 2) %>%
-  # add a column with type
-  dplyr::mutate(type = "kwic")
-
-corpus_words <- corps.detectives %>%
-  # tokenize the corpus files
-  quanteda::tokens( remove_numbers = TRUE, 
-                    remove_punct = TRUE) %>%
-  # unlist the tokens to create a data frame
-  unlist() %>%
-  as.data.frame() %>%
-  # rename the column to 'token'
-  dplyr::rename(token = 1) %>%
-  # group by 'token' and count the occurrences
-  dplyr::group_by(token) %>%
-  dplyr::summarise(n = n()) %>%
-  # add column stating where the frequency list is 'from'
-  dplyr::mutate(type = "corpus")
-
-freq_df <- dplyr::left_join(corpus_words, kwic_words, by = c("token")) %>%
-  # rename columns and select relevant columns
-  dplyr::rename(corpus = n.x,
-                kwic = n.y) %>%
-  dplyr::select(-type.x, -type.y) %>%
-  # replace NA values with 0 in 'corpus' and 'kwic' columns
-  tidyr::replace_na(list(corpus = 0, kwic = 0))
-
-
-
-stats_tb = freq_df %>%
-  dplyr::filter(corpus > 0) %>%
-  dplyr::mutate(corpus = as.numeric(corpus),
-                kwic = as.numeric(kwic)) %>%
-  dplyr::mutate(corpus= corpus-kwic,
-                C1 = sum(kwic),
-                C2 = sum(corpus),
-                N = C1 + C2) %>%
-  dplyr::rowwise() %>%
-  dplyr::mutate(R1 = corpus+kwic,
-                R2 = N - R1,
-                O11 = kwic,
-                O12 = R1-O11,
-                O21 = C1-O11,
-                O22 = C2-O12) %>%
-  dplyr::mutate(E11 = (R1 * C1) / N,
-                E12 = (R1 * C2) / N,
-                E21 = (R2 * C1) / N,
-                E22 = (R2 * C2) / N) %>%
-  dplyr::select(-corpus, -kwic) 
-
-assoc_tb2 = stats_tb %>%
-  # determine number of rows
-  dplyr::mutate(Rws = nrow(.)) %>%
-    # work row-wise
-    dplyr::rowwise() %>%
-    # calculate fishers' exact test
-    dplyr::mutate(p = as.vector(unlist(fisher.test(matrix(c(O11, O12, O21, O22), 
-                                                        ncol = 2, byrow = T))[1]))) %>%
-
-      # extract AM
-    # 1. bias towards top left
-    dplyr::mutate(btl_O12 = ifelse(C1 > R1, 0, R1-C1),
-                  btl_O11 = ifelse(C1 > R1, R1, R1-btl_O12),
-                  btl_O21 = ifelse(C1 > R1, C1-R1, C1-btl_O11),
-                  btl_O22 = ifelse(C1 > R1, C2, C2-btl_O12),
-                  
-    # 2. bias towards top right
-                  btr_O11 = 0, 
-                  btr_O21 = R1,
-                  btr_O12 = C1,
-                  btr_O22 = C2-R1) %>%
-    
-    # 3. calculate AM
-    dplyr::mutate(upp = btl_O11/R1,
-                  low = btr_O11/R1,
-                  op = O11/R1) %>%
-    dplyr::mutate(AM = op / upp) %>%
-    
-    # remove superfluous columns
-    dplyr::select(-any_of(c("btr_O21", "btr_O12", "btr_O22", "btl_O12", 
-                            "btl_O11", "btl_O21", "btl_O22", "btr_O11"))) %>% 
-  
-    # extract x2 statistics
-    dplyr::mutate(X2 = (O11-E11)^2/E11 + (O12-E12)^2/E12 + (O21-E21)^2/E21 + (O22-E22)^2/E22) %>%
-    # extract expected frequency
-    dplyr::mutate(Exp = E11) %>%
-
-    # extract association measures
-    dplyr::mutate(phi = sqrt((X2 / N)),
-                MS = min((O11/C1), (O11/R1)),
-                Dice = (2 * O11) / (R1 + C1),
-                LogDice = log((2 * O11) / (R1 + C1)),
-                MI = log2(O11 / E11),
-                t.score = (O11 - E11) / sqrt(O11),
-                z.score = (O11 - E11) / sqrt(E11),
-                PMI = log2( (O11 / N) / ((O11+O12) / N) * 
-                              ((O11+O21) / N) ),
-                DeltaP12 = (O11 / (O11 + O12)) - (O21 / (O21 + O22)),
-                DeltaP21 =  (O11 / (O11 + O21)) - (O21 / (O12 + O22)),
-                DP = (O11 / R1) - (O21 / R2),
-                LogOddsRatio = log(((O11 + 0.5) * (O22 + 0.5))  / ( (O12 + 0.5) * (O21 + 0.5) )),
-                # calculate LL aka G2
-                G2 = 2 * (O11 * log(O11 / E11) + O12 * log(O12 / E12) + O21 * log(O21 / E21) + O22 * log(O22 / E22))) %>%
-  
-  # determine Bonferroni corrected significance
-  dplyr::mutate(Sig_corrected = dplyr::case_when(p / Rws > .05 ~ "n.s.",
-                                                 p / Rws > .01 ~ "p < .05*",
-                                                 p / Rws > .001 ~ "p < .01**",
-                                                 p / Rws <= .001 ~ "p < .001***",
-                                                 T ~ "N.A.")) %>%  
-  
-  # round p-value
-    dplyr::mutate(p = round(p, 5)) %>%
-    # filter out non significant results
-    dplyr::filter(Sig_corrected != "n.s.",
-                # filter out instances where the w1 and w2 repel each other
-                E11 < O11) %>%
-    # arrange by phi (association measure)
-    dplyr::arrange(-DeltaP12) %>%
-    # remove superfluous columns
-    dplyr::select(-any_of(c("TermCoocFreq", "AllFreq", "NRows", "O12", "O21", 
-                            "O22", "R1", "R2", "C1", "C2", "E11", "E12", "E21",
-                            "E22", "upp", "low", "op", "Rws"))) 
-
-```
-
-```{r eval=F, echo=T}
-# sort the assoc_tb2 data frame in descending order based on the 'phi' column
+# data visualisation
+# sort the assoc_tb data frame in descending order based on the 'phi' column
 assoc_tb %>%
   dplyr::arrange(-phi) %>%
   # select the top 20 rows after sorting
   head(20) %>%
   # create a ggplot with 'token' on the x-axis (reordered by 'phi') and 'phi' on the y-axis
-  ggplot(aes(x = reorder(token, phi, mean), y = phi)) +
+  ggplot(aes(x = reorder(w2, phi, mean), y = phi)) +
   # add a scatter plot with points representing the 'phi' values
   geom_point() +
   # flip the coordinates to have horizontal points
@@ -833,40 +694,41 @@ assoc_tb %>%
   # set the theme to a basic white and black theme
   theme_bw() +
   # set the x-axis label to "Token" and y-axis label to "Association strength (phi)"
-  labs(x = "Token", y = "Association strength (phi)")
+  labs(x = "Collocation for crime", y = "Association strength (phi)")
 ```
 
 
 ```{r eval=F, echo=T}
-# sort the assoc_tb2 data frame in descending order based on the 'phi' column
-assoc_tb2 %>%
+# sort the assoc_tb data frame in descending order based on the 'phi' column
+assoc_tb %>%
   dplyr::arrange(-phi) %>%
   # select the top 20 rows after sorting
   head(20) %>%
-  # create a ggplot with 'token' on the x-axis (reordered by 'phi') and 'phi' on the y-axis
-  ggplot(aes(x = reorder(token, phi, mean), y = phi, label = phi)) +
+  # create a ggplot with 'w2' on the x-axis (reordered by 'phi') and 'phi' on the y-axis
+  ggplot(aes(x = reorder(w2, phi, mean), y = phi, label = phi)) +
   # add a bar plot using the 'phi' values
   geom_bar(stat = "identity") +
   # add text labels above the bars with rounded 'phi' values
-  geom_text(aes(y = phi - 0.005, label = round(phi, 3)), color = "white", size = 3) + 
+  #geom_text(aes(y = phi - 0.005, label = round(phi, 3)), color = "white", size = 3) + 
+  #geom_text(aes(y = phi, label = round(phi, 3)), color = "white", size = 3) + 
   # flip the coordinates to have horizontal bars
   coord_flip() +
   # set the theme to a basic white and black theme
   theme_bw() +
   # set the x-axis label to "Token" and y-axis label to "Association strength (phi)"
-  labs(x = "Token", y = "Association strength (phi)")
+  labs(x = "Collocation for crime", y = "Association strength (phi)")
 ```
 
 
 
 ```{r eval=F, echo=T}
 # sort the assoc_tb2 data frame in descending order based on the 'phi' column
-top20colls <- assoc_tb2 %>%
+top20colls <- assoc_tb %>%
   dplyr::arrange(-phi) %>%
   # select the top 20 rows after sorting
   head(20) %>%
   # extract the 'token' column 
-  dplyr::pull(token)
+  dplyr::pull(w2)
 # inspect the top 20 tokens with the highest 'phi' values
 top20colls
 
@@ -918,7 +780,7 @@ quanteda.textplots::textplot_network(keyword_fcm,
 ```{r eval=F, echo=T}
 #Load the model
 # First load the model which you have downloaded or which you have stored somewhere on disk.
-# 
+
 # udmodel <- udpipe_download_model(language = "chinese")
 
 ## Either give a file in the current working directory
@@ -940,6 +802,34 @@ dee.df <- as.data.frame(dee.depd)
 table(dee.df$upos)
 ```
 
+
+|| Treebank                   | Mode         |  Words |  Sents |  UPOS |  XPOS |  UFeats | AllTags |  Lemma |  UAS  |  LAS  |  MLAS |  BLEX |
+   | Chinese-GSD                | Raw text     |  90.3% |  99.1% | 84.1% | 84.0% |  89.0%  |  82.8%  |  90.3% | 61.6% | 57.8% | 50.8% | 54.7% |
+   | Chinese-GSD                | Gold tok     |    -   |    -   | 92.2% | 92.0% |  98.7%  |  90.8%  | 100.0% | 74.4% | 69.5% | 62.2% | 67.8% |
+   | Chinese-GSD                | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 82.6% | 80.5% | 77.5% | 79.6% |
+   | Chinese-GSDSimp            | Raw text     |  90.3% |  99.1% | 84.2% | 84.1% |  89.0%  |  82.8%  |  90.3% | 62.6% | 58.7% | 51.3% | 55.2% |
+   | Chinese-GSDSimp            | Gold tok     |    -   |    -   | 92.0% | 91.8% |  98.6%  |  90.5%  | 100.0% | 74.1% | 69.0% | 61.8% | 67.1% |
+   | Chinese-GSDSimp            | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 82.7% | 80.4% | 77.5% | 79.6% |
+   | Classical Chinese-Kyoto    | Raw text     |  99.5% |  41.7% | 89.9% | 89.2% |  92.3%  |  86.7%  |  99.5% | 68.9% | 62.9% | 59.1% | 61.3% |
+   | Classical Chinese-Kyoto    | Gold tok     |    -   |    -   | 92.0% | 91.3% |  93.6%  |  89.2%  | 100.0% | 81.0% | 74.7% | 71.0% | 73.5% |
+   | Classical Chinese-Kyoto    | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 90.0% | 85.9% | 84.6% | 85.0% |
+   | English-EWT                | Raw text     |  98.9% |  77.4% | 93.3% | 92.8% |  94.2%  |  91.3%  |  95.5% | 80.2% | 77.0% | 67.7% | 69.5% |
+   | English-EWT                | Gold tok     |    -   |    -   | 94.4% | 93.9% |  95.4%  |  92.5%  |  96.4% | 84.4% | 81.1% | 71.6% | 73.6% |
+   | English-EWT                | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 88.1% | 86.2% | 82.4% | 83.1% |
+   | English-GUM                | Raw text     |  99.7% |  82.3% | 93.8% | 93.3% |  94.3%  |  92.2%  |  94.9% | 80.2% | 76.2% | 64.8% | 65.1% |
+   | English-GUM                | Gold tok     |    -   |    -   | 94.1% | 93.7% |  94.6%  |  92.5%  |  95.2% | 82.0% | 77.9% | 66.2% | 66.6% |
+   | English-GUM                | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 86.5% | 84.4% | 78.0% | 79.0% |
+   | English-LinES              | Raw text     |  99.9% |  87.5% | 94.9% | 92.7% |  94.9%  |  90.3%  |  97.1% | 80.4% | 75.9% | 67.0% | 69.5% |
+   | English-LinES              | Gold tok     |    -   |    -   | 95.0% | 92.8% |  95.0%  |  90.4%  |  97.1% | 81.2% | 76.6% | 67.7% | 70.2% |
+   | English-LinES              | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 85.5% | 82.3% | 78.1% | 79.8% |
+   | English-ParTUT             | Raw text     |  99.7% | 100.0% | 93.6% | 93.2% |  93.4%  |  91.7%  |  96.7% | 83.9% | 80.4% | 69.0% | 71.4% |
+   | English-ParTUT             | Gold tok     |    -   |    -   | 93.8% | 93.5% |  93.6%  |  91.9%  |  97.0% | 84.2% | 80.6% | 69.1% | 71.5% |
+   | English-ParTUT             | Gold tok+mor |    -   |    -   |   -   |   -   |    -    |    -    |    -   | 86.8% | 85.4% | 79.0% | 80.1% |
+   
+
+
+
+
 #### 词性统计 {-}
 
 ```{r eval=F, echo=T}
@@ -957,8 +847,8 @@ barchart(key ~ freq, data = stats, col = "cadetblue",
 library(textplot)
 # generate dependency plot
 dplot <- textplot_dependencyparser(filter(dee.df, doc_id == "doc1",
-                                                    paragraph_id == 2, 
-                                                    sentence_id == 2), size = 3) 
+                                                    paragraph_id ==5, 
+                                                    sentence_id == 9), size = 3) 
 # show plot
 dplot
 ```
@@ -980,8 +870,8 @@ stats <- keywords_rake(x = dee.df, term = "lemma", group = "doc_id",
                        relevant = dee.df$upos %in% c("NOUN", "ADJ"))
 stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
 barchart(key ~ rake, data = head(subset(stats, freq > 3), 20), col = "cadetblue", 
-         main = "Keywords identified by RAKE", 
-         xlab = "Rake")
+         main = "Key NOUN + ADJ phrases identified by RAKE", 
+         xlab = "Rake (Rapid Automatic Keyword Extraction method)")
 ```
 
 
@@ -992,7 +882,7 @@ stats <- keywords_collocation(x = dee.df, term = "word", group = "doc_id")
 stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
 barchart(key ~ pmi, data = head(subset(stats, freq > 3), 20), col = "cadetblue", 
          main = "Keywords identified by PMI Collocation", 
-         xlab = "PMI (Pointwise Mutual Information)")
+         xlab = "PMI (Pointwise Mutual Information method)")
 ```
 
 
@@ -1056,20 +946,8 @@ ggraph(wordnetwork, layout = "fr") +
 ```
 
 
-```{r eval=F, echo=T}
-dee.df$id <- unique_identifier(dee.df, fields = c("sentence_id", "doc_id"))
-dtm <- subset(dee.df, upos %in% c("NOUN", "ADJ"))
-dtm <- document_term_frequencies(dtm, document = "id", term = "lemma")
-dtm <- document_term_matrix(dtm)
-dtm <- dtm_remove_lowfreq(dtm, minfreq = 5)
-termcorrelations <- dtm_cor(dtm)
-y <- as_cooccurrence(termcorrelations)
-y <- subset(y, term1 < term2 & abs(cooc) > 0.2)
-y <- y[order(abs(y$cooc), decreasing = TRUE), ]
-head(y)
 
-```
-
+## topic modelling
 
 ```{r eval=F, echo=T}
 ## Define the identifier at which we will build a topic model
@@ -1084,31 +962,20 @@ dtm <- document_term_matrix(x = dtf)
 ## Remove words which do not occur that much
 dtm_clean <- dtm_remove_lowfreq(dtm, minfreq = 5)
 head(dtm_colsums(dtm_clean))
+
+
+library(topicmodels)
+m <- LDA(dtm_clean, k = 4, method = "Gibbs", 
+         control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
+
+scores <- predict(m, newdata = dtm, type = "topics", 
+                  labels = c("labela", "labelb", "labelc", "xyz"))
+
+predict(m, type = "terms", min_posterior = 0.05, min_terms = 3)
 ```
 
 
-```{r eval=F, echo=T}
-############################################################
 
-# Use dependency parsing output to get the nominal subject and the adjective of it
-stats <- merge(dee.df, dee.df, 
-               by.x = c("doc_id", "paragraph_id", "sentence_id", "head_token_id"),
-               by.y = c("doc_id", "paragraph_id", "sentence_id", "token_id"),
-               all.x = TRUE, all.y = FALSE, 
-               suffixes = c("", "_parent"), sort = FALSE)
-
-stats <- subset(stats, dep_rel %in% "nsubj" & upos %in% c("NOUN") & upos_parent %in% c("ADJ"))
-
-stats$term <- paste(stats$lemma_parent, stats$lemma, sep = " ")
-stats <- txt_freq(stats$term)
-
-library(wordcloud)
-wordcloud(words = stats$key, freq = stats$freq, min.freq = 5, max.words = 100,
-          random.order = FALSE, colors = c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02"))
-
-
-
-```
 
 
 ### 任务6.6 语篇特征分析 {-}
@@ -1150,6 +1017,7 @@ readability.df = readability %>%
          measures = fct_relevel(measures, "ARI","Flesch","FOG",
                                 "Coleman.Liau.short","Dale.Chall","Spache"))
 
+readability.df
 ```
 
 #### 文本信息熵 {-}
@@ -1183,6 +1051,7 @@ tidy_books <- detectives.raw %>%
 
 tidy.sent = tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
+  # 每八十行进行一次平均
   count(doc_id, index = linenumber %/% 80, sentiment) %>%
   pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
   mutate(sentiment = positive - negative)
@@ -1200,14 +1069,14 @@ bing_word_counts <- tidy_books %>%
   count(word, sentiment, sort = TRUE) %>%
   ungroup()
 
-bing_word_counts %>%
-  group_by(sentiment) %>%
+  bing_word_counts %>%
+  group_by(doc_id, sentiment) %>%
   slice_max(n, n = 10) %>% 
   ungroup() %>%
-  mutate(word = reorder(word, n)) %>%
+  mutate(word = reorder(word, n))%>%
   ggplot(aes(n, word, fill = sentiment)) +
   geom_col(show.legend = FALSE) +
-  facet_wrap(doc_id~sentiment, scales = "free_y") +
+  facet_wrap(sentiment ~ doc_id, scales = "free_y") +
   labs(x = "Contribution to sentiment",
        y = NULL)
 
@@ -1215,6 +1084,167 @@ bing_word_counts %>%
 ```
 
 
+Schweinberger, Martin. 2025. Sentiment Analysis in R. Brisbane: The University of Queensland. url: https://ladal.edu.au/tutorials/sentiment/sentiment.html (Version 2025.04.02).
+
+```{r eval=F, echo=T}
+
+nrc <- readRDS("data/ch6/nrc.rda")
+
+novels_anno <- tidy_books %>%
+    dplyr::group_by(doc_id) %>%
+    dplyr::mutate(words = n()) %>%
+    dplyr::left_join(nrc) %>%
+    dplyr::mutate(
+        novel = factor(doc_id),
+        sentiment = factor(sentiment)
+    )
+
+
+novels <- novels_anno %>%
+    dplyr::group_by(novel) %>%
+    dplyr::group_by(novel, sentiment) %>%
+    dplyr::summarise(
+        sentiment = unique(sentiment),
+        sentiment_freq = n(),
+        words = unique(words)
+    ) %>%
+    dplyr::filter(is.na(sentiment) == F) %>%
+    dplyr::mutate(percentage = round(sentiment_freq / words * 100, 1))
+
+novels %>%
+    dplyr::filter(
+        sentiment != "positive",
+        sentiment != "negative"
+    ) %>%
+    ggplot(aes(sentiment, percentage, fill = novel)) +
+    geom_bar(
+        stat = "identity",
+        position = position_dodge()
+    ) +
+    scale_fill_manual(name = "", values = c("orange", "gray70", "red")) +
+    theme_bw() +
+    theme(legend.position = "top")
+
+novels %>%
+    dplyr::filter(
+        sentiment != "positive",
+        sentiment != "negative"
+    ) %>%
+    dplyr::mutate(sentiment = factor(sentiment,
+        levels = c(
+            "anger", "fear", "disgust", "sadness",
+            "surprise", "anticipation", "trust", "joy"
+        )
+    )) %>%
+    ggplot(aes(novel, percentage, fill = sentiment)) +
+    geom_bar(stat = "identity", position = position_dodge()) +
+    scale_fill_brewer(palette = "RdBu") +
+    theme_bw() +
+    theme(legend.position = "right") +
+    coord_flip()
+
+# Identifying important emotives
+novels_impw <- novels_anno %>%
+    dplyr::filter(
+        !is.na(sentiment),
+        sentiment != "anticipation",
+        sentiment != "surprise",
+        sentiment != "disgust",
+        sentiment != "negative",
+        sentiment != "sadness",
+        sentiment != "positive"
+    ) %>%
+    dplyr::mutate(sentiment = factor(sentiment, levels = c("anger", "fear", "trust", "joy"))) %>%
+    dplyr::group_by(novel) %>%
+    dplyr::count(word, sentiment, sort = TRUE) %>%
+    dplyr::group_by(novel, sentiment) %>%
+    dplyr::top_n(3) %>%
+    dplyr::mutate(score = n / sum(n))
+
+
+novels_impw %>%
+    dplyr::group_by(novel) %>%
+    slice_max(score, n = 20) %>%
+    dplyr::arrange(desc(score)) %>%
+    dplyr::ungroup() %>%
+    ggplot(aes(x = reorder(word, score), y = score, fill = word)) +
+    facet_wrap(novel ~ sentiment, ncol = 4, scales = "free_y") +
+    geom_col(show.legend = FALSE) +
+    coord_flip() +
+    labs(x = "Words")
+```
+
+
+```{r eval=F, echo=T}
+# Calculating and dispalying polarity
+novels %>%
+    dplyr::filter(sentiment == "positive" | sentiment == "negative") %>%
+    dplyr::select(-percentage, -words) %>%
+    dplyr::mutate(
+        sentiment_sum = sum(sentiment_freq),
+        positive = sentiment_sum - sentiment_freq
+    ) %>%
+    dplyr::filter(sentiment != "positive") %>%
+    dplyr::rename(negative = sentiment_freq) %>%
+    dplyr::select(novel, positive, negative) %>%
+    dplyr::group_by(novel) %>%
+    dplyr::summarise(polarity = positive / negative) %>%
+    ggplot(aes(reorder(novel, polarity, mean), polarity, fill = novel)) +
+    geom_bar(stat = "identity") +
+    geom_text(aes(y = polarity - 0.1, label = round(polarity, 2)),
+        color = "white", size = 4
+    ) +
+    theme_bw() +
+    labs(
+        y = "Polarity\n(ration of positive to negative emitives)",
+        x = ""
+    ) +
+    coord_cartesian(y = c(0, 2)) +
+    scale_y_continuous(
+        breaks = seq(0, 2, 1),
+        labels = c("more negative", "neutral", "more positive")
+    ) +
+    theme(legend.position = "none")
+
+
+# Calculating and dispalying changes in polarity
+library(Hmisc)
+novels_bin <- novels_anno %>%
+    dplyr::group_by(novel) %>%
+    dplyr::filter(is.na(sentiment) | sentiment == "negative" | sentiment == "positive") %>%
+    dplyr::mutate(
+        sentiment = as.character(sentiment),
+        sentiment = case_when(
+            is.na(sentiment) ~ "0",
+            TRUE ~ sentiment
+        ),
+        sentiment = case_when(
+            sentiment == "0" ~ 0,
+            sentiment == "positive" ~ 1,
+            TRUE ~ -1
+        ),
+        id = 1:n(),
+        index = as.numeric(cut2(id, m = 80))
+    ) %>%
+    dplyr::group_by(novel, index) %>%
+    dplyr::summarize(
+        index = unique(index),
+        polarity = mean(sentiment)
+    )
+
+ggplot(novels_bin, aes(index, polarity)) +
+    facet_wrap(vars(novel), scales = "free_x") +
+    geom_smooth(se = F, col = "black") +
+    theme_bw() +
+    labs(
+        y = "polarity ratio (mean by bin)",
+        x = "index (bin)"
+    )
+
+
+
+
+```
 
 
 拓展阅读
