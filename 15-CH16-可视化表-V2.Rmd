@@ -101,19 +101,22 @@ gtExtras augments and expands the functionalities of the gt package. It allows t
 
 It comes with a set of themes to make your table good-looking with just one more line of code. It provides functions to easily add plots in table cells. It also has helper functions to help with colors and icons.
 
-```{r}
+```{r eval=F, echo=T}
 #install.packages("gtExtras")
 library(gtExtras)
 
 # create aggregated dataset
-agg_iris = iris %>%
-  group_by(Species) %>%
-  summarize(
-    Sepal.L = list(Sepal.Length),
-    Sepal.W = list(Sepal.Width),
-    Petal.L = list(Petal.Length),
-    Petal.W = list(Petal.Width)
-    )
+# agg_iris = iris %>%
+#   group_by(Species) %>%
+#   summarize(
+#     Sepal.L = list(Sepal.Length),
+#     Sepal.W = list(Sepal.Width),
+#     Petal.L = list(Petal.Length),
+#     Petal.W = list(Petal.Width)
+#     )
+library(languageR)
+data(lexdec)
+
 agg_lexdec = lexdec %>%
   select( NativeLanguage, RT, Frequency, FamilySize)%>%
   group_by(NativeLanguage)%>%
