@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.5669 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 2.5669 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.023073173984046645 
+            text = "" 
+        intervals [2]:
+            xmin = 0.023073173984046645 
+            xmax = 0.15717999586852138 
+            text = "f" 
+        intervals [3]:
+            xmin = 0.15717999586852138 
+            xmax = 0.6231443769925439 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6231443769925439 
+            xmax = 0.7436132169904618 
+            text = "θ" 
+        intervals [5]:
+            xmin = 0.7436132169904618 
+            xmax = 1.2391265588686904 
+            text = "" 
+        intervals [6]:
+            xmin = 1.2391265588686904 
+            xmax = 1.4027823415073715 
+            text = "s" 
+        intervals [7]:
+            xmin = 1.4027823415073715 
+            xmax = 1.8710197196124867 
+            text = "" 
+        intervals [8]:
+            xmin = 1.8710197196124867 
+            xmax = 2.0801354418730233 
+            text = "ʃ" 
+        intervals [9]:
+            xmin = 2.0801354418730233 
+            xmax = 2.5669 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 2.5669 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.023073173984046645 
+            text = "" 
+        intervals [2]:
+            xmin = 0.023073173984046645 
+            xmax = 0.500402540013533 
+            text = "fie" 
+        intervals [3]:
+            xmin = 0.500402540013533 
+            xmax = 0.6231443769925439 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6231443769925439 
+            xmax = 1.0959277490598447 
+            text = "thigh" 
+        intervals [5]:
+            xmin = 1.0959277490598447 
+            xmax = 1.2391265588686904 
+            text = "" 
+        intervals [6]:
+            xmin = 1.2391265588686904 
+            xmax = 1.7619158645200326 
+            text = "sigh" 
+        intervals [7]:
+            xmin = 1.7619158645200326 
+            xmax = 1.8710197196124867 
+            text = "" 
+        intervals [8]:
+            xmin = 1.8710197196124867 
+            xmax = 2.4438149588478706 
+            text = "shy" 
+        intervals [9]:
+            xmin = 2.4438149588478706 
+            xmax = 2.5669 
+            text = "" 

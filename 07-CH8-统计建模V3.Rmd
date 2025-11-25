@@ -1,0 +1,895 @@
+# 第八章 统计建模入门
+
+
+## 学习目标 {-}
+
+- 📌 **了解推断性统计的基本逻辑** 
+
+- 📌 **了解常见概率分布** 
+
+- 📌 **熟悉不同参数和非参数检验使用条件** 
+
+- 📌 **掌握统计检验算法实现及解读** 
+
+
+## 统计检验流派
+
+## 概率分布
+
+## 参数和非参数统计检验
+
+## 经典统计测试的结果解读与汇报
+
+### 因变量为数值变量
+
+#### t检验
+
+#### 方差分析
+
+#### 相关分析
+
+#### 线性回归
+
+#### 一般线性模型与广义线性模型
+
+
+
+### 因变量为分类变量
+
+#### 卡方检验
+
+#### 逻辑回归
+
+## 课堂任务
+
+```{r}
+library(tidyverse)
+
+library(gridExtra)
+
+library(showtext)
+
+showtext_auto()  # 自动应用字体
+```
+
+
+
+
+### 任务8.1 偏度与峰度 {-}
+
+```{r eval=F, echo=T}
+# 设置随机种子保证结果可重现
+set.seed(123)
+
+# 生成不同偏度的数据
+n <- 10000
+
+# 正态分布（对称）
+normal_data <- rnorm(n, 0, 1)
+
+# 正偏态（右偏）数据 - 使用卡方分布
+positive_skew <- rchisq(n, df = 5)
+
+# 负偏态（左偏）数据 - 对正偏态取负值并平移
+negative_skew <- -rchisq(n, df = 5) + 10
+
+# 生成不同峰度的数据
+# 低峰度（平峰） - 均匀分布
+low_kurtosis <- runif(n, -3, 3)
+
+# 高峰度（尖峰） - 使用t分布（小自由度）
+high_kurtosis <- rt(n, df = 3)
+
+# 创建数据框
+df_skew <- data.frame(
+  type = rep(c("正态分布", "正偏态(右偏)", "负偏态(左偏)"), each = n),
+  value = c(normal_data, positive_skew, negative_skew)
+)
+
+df_kurtosis <- data.frame(
+  type = rep(c("正态分布", "低峰度(平峰)", "高峰度(尖峰)"), each = n),
+  value = c(normal_data, low_kurtosis, high_kurtosis)
+)
+
+
+library(psych)              
+
+describeBy(df_skew$value,df_skew$type,digits= 4)  
+
+describeBy(df_kurtosis$value,df_kurtosis$type,digits= 4)
+```
+
+
+```{r eval=F, echo=T}
+
+# 设置编码和图形参数
+options(encoding = "UTF-8")
+par(family = "sans")  # 使用系统默认字体
+# 设置随机种子
+set.seed(123)
+
+# 生成不同偏度和峰度的数据
+n <- 10000
+
+# 偏度数据
+normal_data <- rnorm(n, 0, 1)                    # 对称
+positive_skew <- rchisq(n, df = 3)               # 正偏态
+negative_skew <- -rchisq(n, df = 4) + 8          # 负偏态
+
+# 设置图形参数
+par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+
+# 正态分布（对称）
+hist(normal_data, breaks = 50, prob = TRUE, main = "正态分布 (对称)\n偏度 ≈ 0",
+     xlab = "数值", ylab = "密度", col = "lightblue", border = "white")
+lines(density(normal_data), col = "red", lwd = 2)
+abline(v = mean(normal_data), col = "blue", lwd = 2, lty = 1)
+abline(v = median(normal_data), col = "darkgreen", lwd = 2, lty = 2)
+legend("topright", legend = c("均值", "中位数"), 
+       col = c("blue", "darkgreen"), lty = 1:2, lwd = 2)
+
+# 正偏态分布（右偏）
+hist(positive_skew, breaks = 50, prob = TRUE, main = "正偏态分布 (右偏)\n均值 > 中位数",
+     xlab = "数值", ylab = "密度", col = "lightcoral", border = "white")
+lines(density(positive_skew), col = "red", lwd = 2)
+abline(v = mean(positive_skew), col = "blue", lwd = 2, lty = 1)
+abline(v = median(positive_skew), col = "darkgreen", lwd = 2, lty = 2)
+
+# 负偏态分布（左偏）
+hist(negative_skew, breaks = 50, prob = TRUE, main = "负偏态分布 (左偏)\n均值 < 中位数",
+     xlab = "数值", ylab = "密度", col = "lightgreen", border = "white")
+lines(density(negative_skew), col = "red", lwd = 2)
+abline(v = mean(negative_skew), col = "blue", lwd = 2, lty = 1)
+abline(v = median(negative_skew), col = "darkgreen", lwd = 2, lty = 2)
+
+# 偏度对比图
+plot(density(normal_data), type = "l", lwd = 3, col = "black",
+     main = "偏度对比", xlab = "数值", ylab = "密度",
+     xlim = range(c(normal_data, positive_skew, negative_skew)),
+     ylim = c(0, 0.6))
+lines(density(positive_skew), col = "red", lwd = 2)
+lines(density(negative_skew), col = "blue", lwd = 2)
+legend("topright", legend = c("对称", "右偏", "左偏"),
+       col = c("black", "red", "blue"), lwd = 2)
+
+
+### 峰度数据
+low_kurtosis <- runif(n, -3, 3)                  # 低峰度
+high_kurtosis <- rt(n, df = 3)                   # 高峰度
+
+# 设置图形参数
+par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+
+# 正态分布（基准）
+hist(normal_data, breaks = 50, prob = TRUE, main = "正态分布\n峰度 ≈ 3",
+     xlab = "数值", ylab = "密度", col = "lightgray", border = "white")
+lines(density(normal_data), col = "black", lwd = 2)
+
+# 低峰度分布（平峰）
+hist(low_kurtosis, breaks = 50, prob = TRUE, main = "低峰度分布 (平峰)\n峰度 < 3",
+     xlab = "数值", ylab = "密度", col = "lightyellow", border = "white")
+lines(density(low_kurtosis), col = "orange", lwd = 2)
+
+# 高峰度分布（尖峰）
+hist(high_kurtosis, breaks = 50, prob = TRUE, main = "高峰度分布 (尖峰)\n峰度 > 3",
+     xlab = "数值", ylab = "密度", col = "lightpink", border = "white")
+lines(density(high_kurtosis), col = "purple", lwd = 2)
+
+# 峰度对比图
+x_range <- range(c(normal_data, low_kurtosis, high_kurtosis))
+y_max <- max(c(density(normal_data)$y, density(low_kurtosis)$y, density(high_kurtosis)$y))
+
+plot(density(normal_data), type = "l", lwd = 3, col = "black",
+     main = "峰度对比", xlab = "数值", ylab = "密度",
+     xlim = x_range, ylim = c(0, y_max))
+lines(density(low_kurtosis), col = "orange", lwd = 2)
+lines(density(high_kurtosis), col = "purple", lwd = 2)
+legend("topright", legend = c("正态分布", "低峰度", "高峰度"),
+       col = c("black", "orange", "purple"), lwd = 2)
+
+
+
+# 使用QQ图检验分布形态
+par(mfrow = c(2, 3), mar = c(4, 4, 2, 1))
+
+qqnorm(normal_data, main = "正态分布 QQ图")
+qqline(normal_data, col = "red")
+
+qqnorm(positive_skew, main = "正偏态 QQ图")
+qqline(positive_skew, col = "red")
+
+qqnorm(negative_skew, main = "负偏态 QQ图")
+qqline(negative_skew, col = "red")
+
+qqnorm(low_kurtosis, main = "低峰度 QQ图")
+qqline(low_kurtosis, col = "red")
+
+qqnorm(high_kurtosis, main = "高峰度 QQ图")
+qqline(high_kurtosis, col = "red")
+
+
+
+# 箱线图展示偏度
+par(mfrow = c(1, 2), mar = c(6, 4, 3, 1))
+
+# 偏度箱线图
+boxplot(list("对称" = normal_data, 
+             "右偏" = positive_skew, 
+             "左偏" = negative_skew),
+        main = "偏度对箱线图的影响",
+        col = c("lightblue", "lightcoral", "lightgreen"),
+        las = 2)
+
+# 峰度箱线图
+boxplot(list("正态" = normal_data, 
+             "低峰度" = low_kurtosis, 
+             "高峰度" = high_kurtosis),
+        main = "峰度对箱线图的影响",
+        col = c("lightgray", "lightyellow", "lightpink"),
+        las = 2)
+```
+
+
+### 任务8.2 概率分布 {-}
+
+```{r eval=F, echo=T}
+
+
+#如果我们以Sun的数据库词频为参考，即“我”的出现概率p为0.033534，语料库为一百万词。
+#刚刚好出现34000次的概率为0.00007837387。
+
+dbinom(34000, 1000000, 0.033534)
+
+counts = 33000:34500 
+plot(counts, dbinom(counts, 1000000, 0.033534), 
+     type = "h", xlab = "频率", ylab = "概率")
+mtext("Binomial", 3, 1)
+
+# “p”表示对应分布的累积分布函数。小于或等于x的概率
+pbinom(34000, 1000000, 0.033534)
+1-pbinom(34000, 1000000, 0.033534)
+# 我们可以从分布中看出，大于34000（1-pbinom(34000, 1000000, 0.033534)）和小于33000（pbinom(33000, 1000000, 0.033534)）的概率都很小。
+
+pbinom(33000, 1000000, 0.033534)
+
+```
+
+```{r eval=F, echo=T}
+
+# 模拟不同词频抽样
+
+par(mfrow = c(3, 2), mar = c(4, 4, 2, 1))  # Reapply layout for saving
+
+
+## high frequency words 
+n = 1000000
+p = 0.033534 
+frequencies = seq(32500, 34500, by = 1) # 25, 26, 27, ..., 94, 95 
+ probabilities = dbinom(frequencies, n, p) 
+ plot(frequencies, probabilities, type = "h", 
+      xlab = "高频词'我'", ylab = "probability of frequency")
+
+s = 500 # the number of random numbers
+n = 1000000 # number of trials in one experiment 
+p = 0.033534 # probability of success
+x = xtabs( ~ rbinom(s, n, p) ) / s
+plot(as.numeric(names(x)), 
+      x, type = "h", 
+      xlim = c(32500, 34500), 
+      xlab = "高频词'我'", ylab = "sample probability of frequency")
+
+
+## middle frequency words 
+n = 1000000
+p = 0.000372
+frequencies = seq(320, 425, by = 1) # 25, 26, 27, ..., 94, 95 
+ probabilities = dbinom(frequencies, n, p) 
+ plot(frequencies, probabilities, type = "h", 
+      xlab = "中频词‘中国’", ylab = "probability of frequency")
+
+s = 500 # the number of random numbers
+n = 1000000 # number of trials in one experiment 
+p = 0.000372 # probability of success
+x = xtabs( ~ rbinom(s, n, p) ) / s
+plot(as.numeric(names(x)), 
+      x, type = "h", 
+      xlim = c(320, 425), 
+      xlab = "中频词‘中国’", ylab = "sample probability of frequency")
+
+
+
+## low frequency words 
+n = 1000000
+p = 0.000001 
+frequencies = seq(0, 20, by = 1) # 25, 26, 27, ..., 94, 95 
+ probabilities = dbinom(frequencies, n, p) 
+ plot(frequencies, probabilities, type = "h", 
+      xlab = "低频词‘麒麟’", ylab = "probability of frequency")
+
+s = 500 # the number of random numbers
+n = 1000000 # number of trials in one experiment 
+p =  0.000001  # probability of success
+x = xtabs( ~ rbinom(s, n, p) ) / s
+plot(as.numeric(names(x)), 
+      x, type = "h", 
+      xlim = c(0, 20), 
+      xlab = "低频词‘麒麟’", ylab = "sample probability of frequency")
+
+```
+
+
+```{r eval=F, echo=T}
+
+
+# 模拟不同大小的语料库
+
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))  # Reapply layout for saving
+ n = 1000 
+ p = 0.033534
+ frequencies = seq(0, 70, by = 1) # 25, 26, 27, ..., 94, 95 
+ probabilities = dbinom(frequencies, n, p) 
+ plot(frequencies, probabilities, type = "h", 
+      xlab = "frequency", ylab = "probability of frequency")
+
+n = 50
+p = 0.033534
+ frequencies = seq(0, 70, by = 1) # 25, 26, 27, ..., 94, 95 
+ probabilities = dbinom(frequencies, n, p) 
+ plot(frequencies, probabilities, type = "h", 
+      xlab = "frequency", ylab = "probability of frequency")
+
+
+```
+
+```{r eval=F, echo=T}
+
+### binomial vs. possion distribution
+ 
+par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))  # Reapply layout for saving
+
+n = 1000
+p =  0.033
+counts = 10:60 
+plot(counts, dbinom(counts, n, p), 
+     type = "h", xlab = "频率", ylab = "概率")
+mtext("Binomial", 3, 1)
+n = 1000
+p =  0.033
+lambda = n * p
+plot(counts, dpois(counts, lambda), 
+     type = "h", xlab="频率", ylab="概率") 
+mtext("Poisson", 3, 1)
+
+
+# 不同lambda的泊松分布
+
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))  # Reapply layout for saving
+
+
+lambda1 = 0.5
+lambda2 = 3
+lambda3 = 50
+lambda4 = 100
+plot(0:4, dpois(0:4, lambda1), 
+     type = "h", xlab="频率", ylab="概率") 
+mtext("Poisson (0.5)", 3, 1)
+
+plot(0:10, dpois(0:10, lambda2), 
+     type = "h", xlab="频率", ylab="概率") 
+mtext("Poisson (3)", 3, 1)
+
+plot(20:80, dpois(20:80, lambda3), 
+     type = "h", xlab="频率", ylab="概率") 
+mtext("Poisson (50)", 3, 1)
+
+plot(60:140, dpois(60:140, lambda4), 
+     type = "h", xlab="频率", ylab="概率") 
+mtext("Poisson (100)", 3, 1)
+
+```
+
+
+```{r eval=F, echo=T}
+
+## 连续数据的分布
+# 正态分布
+par(mfrow = c(1, 3), mar = c(4, 4, 2, 1))  # Reapply layout for saving
+
+
+x= seq(-4, 4, 0.1)
+y = dnorm(x)
+plot(x, y, xlab = "x", 
+      ylab = "density", ylim = c(0, 0.8), 
+      type = "l")
+# line type: the quoted character is lower case L > 
+mtext("normal(0, 1)", 3, 1)
+abline(v = 0, lty = 2)
+
+
+x= seq(-4, 4, 0.1)
+y = dnorm(x, mean = 0, sd = 0.5)
+plot(x, y, xlab = "x", 
+      ylab = "density", ylim = c(0, 0.8), 
+      type = "l")
+# line type: the quoted character is lower case L > 
+mtext("normal(0, 0.5)", 3, 1)
+abline(v = 0, lty = 2)
+
+x= seq(0, 8, 0.1)
+y = dnorm(x, mean = 4, sd = 1)
+ plot(x, y, xlab = "x", 
+      ylab = "density", ylim = c(0, 0.8), 
+      type = "l")
+# line type: the quoted character is lower case L > 
+mtext("normal(4, 1)", 3, 1)
+abline(v = 4, lty = 2)
+
+par(mfrow = c(3, 1), mar = c(4, 4, 2, 1))  # Reapply layout for saving
+
+```
+
+
+```{r eval=F, echo=T}
+## t分布
+x= seq(-6, 6, 0.1)
+y = dt(x,2)
+y2 = dt(x,5)
+
+plot(x, y, xlab = "", 
+      ylab = "density", ylim = c(0, 0.4), 
+      type = "l")
+mtext("t分布", 3, 0.5)
+par(new=TRUE)
+plot(x, y2, xlab = "", 
+      ylab = "density", ylim = c(0, 0.4), 
+      type = "l", col = 2, lty = 3, lwd = 2)
+
+x= seq(0, 10, 0.1)
+y = df(x,5,5)
+y2 = df(x,2,1)
+y3 = df(x,5,1)
+y4 = df(x,10,10)
+plot(x, y, xlab = "", 
+      ylab = "density", ylim = c(0, 1), 
+      type = "l")
+mtext("F分布", 3, 1)
+par(new=TRUE)
+plot(x, y2, xlab = "", 
+      ylab = "density", ylim = c(0, 1), 
+      type = "l", col = 2, lty = 3, lwd = 2)
+par(new=TRUE)
+plot(x, y3, xlab = "", 
+      ylab = "density", ylim = c(0, 1), 
+      type = "l", col = 3, lty = 3, lwd = 2)
+par(new=TRUE)
+plot(x, y4, xlab = "", 
+      ylab = "density", ylim = c(0, 1), 
+      type = "l", col = 4, lty = 3, lwd = 2)
+
+
+x= seq(0, 10, 0.1)
+y = dchisq(x,1)
+y2 = dchisq(x,2)
+y3 = dchisq(x,3)
+
+plot(x, y, xlab = "", 
+      ylab = "density", ylim = c(0,1.5), 
+      type = "l")
+mtext("卡方分布", 3, 1)
+par(new=TRUE)
+plot(x, y2, xlab = "", 
+      ylab = "density", ylim = c(0, 1.5), 
+      type = "l", col = 2, lty = 3, lwd = 2)
+par(new=TRUE)
+plot(x, y3, xlab = "", 
+      ylab = "density", ylim = c(0, 1.5), 
+      type = "l", col = 3, lty = 3, lwd = 2)
+
+```
+
+### 任务8.3 统计模型选择 {-}
+
+
+### 任务8.4 t检验 {-}
+
+```{r eval=F, echo=T}
+
+# 单样本t检验 (One-Sample t-test)
+# 研究场景：
+# 检验一所语言学校学生的平均托福成绩是否显著高于全球平均分（假设为90分）。
+# 设置随机种子以保证结果可重现
+set.seed(123)
+# 生成数据：假设该校40名学生的托福成绩，平均分92，标准差8
+toefl_scores <- rnorm(n = 40, mean = 92, sd = 8)
+# 将数据转换为数据框
+toefl_data <- data.frame(score = toefl_scores)
+
+# 检测数据是否符合正态分布，P<0.05 不符合正态分布
+shapiro.test(toefl_data$score)
+plot(density(toefl_data$score))
+
+# 进行单样本t检验，检验均值是否不等于90（默认双侧）
+t.test(toefl_data$score, mu = 90, alternative = "greater") # 使用alternative = "greater"检验是否大于90
+
+x= seq(-6, 6, 0.1)
+y3 = dt(x,39)
+plot(x, y3, xlab = "", 
+      ylab = "density", ylim = c(0, 0.4), 
+      type = "l", col = 3, lty = 3, lwd = 2)
+pt(2.0795,39)
+1-pt(2.0795,39)
+
+# 绘制箱线图进行可视化
+boxplot(toefl_data$score, main = "Distribution of TOEFL Scores", 
+        ylab = "Score", col = "lightblue")
+abline(h = 90, col = "red", lty = 2) # 添加全球平均分参考线
+
+# 使用rstatix
+
+# 创建数据
+scores_long <- data.frame(
+  student_id = rep(paste0("S", 1001:1050), each = 4),
+  gender = rep(sample(c("男", "女"), 50, replace = TRUE), each = 4),
+  skill = rep(c("听力", "口语", "阅读", "写作"), times = 50),
+  score = round(c(
+    rnorm(50, 75, 10),  # 听力
+    rnorm(50, 72, 12),  # 口语
+    rnorm(50, 78, 8),   # 阅读
+    rnorm(50, 70, 11)   # 写作
+  ))
+)
+scores_long %>%
+    group_by(skill) %>%
+  t_test(score ~ 1, mu = 60)
+
+```
+
+```{r eval=F, echo=T}
+
+
+# 独立样本t检验 (Independent-Samples t-test)
+# 研究场景：比较两种不同的外语教学方法（“沉浸式” vs. “传统式”）对学生词汇测试成绩的影响。
+# 设置随机种子
+set.seed(456)
+# 生成两组独立的数据
+# 组1: 沉浸式教学，假设平均成绩更高为85分
+group_immersive <- rnorm(n = 30, mean = 85, sd = 7)
+# 组2: 传统式教学，假设平均成绩稍低为78分
+group_traditional <- rnorm(n = 35, mean = 78, sd = 8) # 允许两组人数不同
+
+# 创建数据框：一列是成绩，一列是分组标签
+method_data <- data.frame(
+  score = c(group_immersive, group_traditional),
+  method = factor(rep(c("Immersive", "Traditional"), 
+                      times = c(30, 35))) # 创建分组因子
+)
+
+# 进行独立样本t检验（默认假设方差不相等，使用Welch's t-test）
+ t.test(score ~ method, data = method_data, 
+                     alternative = "greater") # 检验“沉浸式”成绩是否大于“传统式”
+
+
+
+# 绘制分组箱线图进行可视化
+boxplot(score ~ method, data = method_data, 
+        main = "Vocabulary Score by Teaching Method",
+        xlab = "Teaching Method", 
+        ylab = "Vocabulary Test Score",
+        col = c("#FF6B6B", "#4ECDC4")) # 为两组设置不同的颜色
+# rstatix 
+stat.test = method_data %>% 
+  t_test(score ~ method, paired = FALSE) 
+stat.test
+# Create a box plot
+p <- ggboxplot(
+  method_data, x = "method", y = "score", 
+  color = "method", 
+  palette = "jco",
+  ylim = c(0,105)
+  )
+# Add the p-value manually
+p + stat_pvalue_manual(stat.test, label = "p", y.position = 100)
+
+
+# 如果非正态分布，汇报Mann–Whitney U test 更好
+wilcox.test(score ~ method, data = method_data )
+
+
+```
+
+```{r eval=F, echo=T}
+# 配对样本t检验 (Paired-Samples t-test)
+# 研究场景：检验一项为期8周的发音训练课程是否显著改善了10名学生的发音清晰度得分（收集每个学生训练前和训练后的数据）。
+# 设置随机种子
+set.seed(789)
+# 生成数据：为每个学生生成一个“基础”分数，然后前后分数相关
+n_pairs <- 10 # 10个学生
+base_score <- rnorm(n = n_pairs, mean = 70, sd = 10) # 训练前的基础水平
+# 训练后分数：在基础分数上增加一个改善量（平均改善5分），并与前测相关
+post_score <- base_score + rnorm(n = n_pairs, mean = 5, sd = 3) # 后测分数
+# 创建数据框
+pronunciation_data <- data.frame(
+  subject = factor(rep(1:n_pairs, times = 2)), # 受试者编号，用于配对
+  time = factor(rep(c("Pre-test", "Post-test"), each = n_pairs), # 时间点
+                levels = c("Pre-test", "Post-test")), # 设定因子顺序
+  score = c(base_score, post_score)
+)
+# 查看数据（长格式）
+head(pronunciation_data, 12)
+# 进行配对样本t检验
+# 方法一：使用公式语法，指定配对参数
+t.test(score ~ time, data = pronunciation_data, 
+                        paired = TRUE, # 关键参数：指定这是配对检验
+                        alternative = "less") # 检验“前测”是否小于“后测”
+
+# 方法二：直接提供两个向量
+t.test(base_score, post_score, paired = TRUE)
+
+
+
+# 绘制差异图（连接线图）
+library(ggplot2)
+ggplot(pronunciation_data, aes(x = time, y = score, group = subject)) +
+  geom_line(color = "grey", linewidth = 1) +
+  geom_point(size = 3) +
+  labs(title = "Pronunciation Scores Before and After Training",
+       subtitle = "Paired Samples t-test",
+       x = "Time Point",
+       y = "Clarity Score") +
+  theme_minimal()
+
+# rstatix
+
+stat.test <- pronunciation_data %>% 
+  t_test(score ~ time, paired = TRUE) 
+stat.test
+
+# Box plot
+p <- ggpaired(
+  pronunciation_data, 
+  x = "time", y = "score", color = "time", palette = "jco", 
+  line.color = "gray", line.size = 0.4, ylim = c(0, 105)
+  )
+
+p + stat_pvalue_manual(stat.test, label = "p", y.position = 100)
+
+
+```
+
+
+### 任务8.5 方差分析 {-}
+
+```{r eval=F, echo=T}
+
+# 模拟数据并进行混合方差分析
+
+# 设置随机种子
+set.seed(123)
+
+# 参数设置
+n <- 60  # 总被试数
+n_per_group <- 30  # 每组被试数
+
+# 生成被试信息
+subject_id <- paste0("S", 1001:(1000 + n))
+wm_capacity <- rep(c("高工作记忆", "低工作记忆"), each = n_per_group)
+
+# 模拟基础反应时间（毫秒）
+# 假设低工作记忆组基础反应时间更长
+base_rt_low <- rnorm(n_per_group, 800, 100)  # 低组
+base_rt_high <- rnorm(n_per_group, 700, 90)   # 高组
+
+# 生成两种句子类型的反应时间
+# 假设宾语从句更难，反应时间更长，且低工作记忆组受难度影响更大
+df.wm <- data.frame(
+  subject_id = rep(subject_id, each = 2),
+  wm_capacity = rep(wm_capacity, each = 2),
+  sentence_type = rep(c("宾语关系从句", "主语关系从句"), times = n),
+  reaction_time = c(
+    # 低工作记忆组
+    base_rt_low + rnorm(n_per_group, 150, 40),  # 宾语从句
+    base_rt_low + rnorm(n_per_group, 50, 30),   # 主语从句
+    
+    # 高工作记忆组  
+    base_rt_high + rnorm(n_per_group, 80, 35),  # 宾语从句
+    base_rt_high + rnorm(n_per_group, 30, 25)   # 主语从句
+  )
+)
+
+wm.aov = aov ( reaction_time  ~ wm_capacity * sentence_type, data = df.wm)
+
+summary(wm.aov)
+
+TukeyHSD(wm.aov)
+# rstatix
+df.wm %>% anova_test(reaction_time  ~ wm_capacity*sentence_type)
+anv.test = df.wm %>% anova_test(reaction_time  ~ wm_capacity*sentence_type)
+
+```
+
+
+
+### 任务8.6 卡方检验 {-}
+
+```{r eval=F, echo=T}
+# 1. 直接创建数据框（更直观的方式）
+text_analysis_df <- data.frame(
+  性别 = c(rep("男性用户", 1000), rep("女性用户", 1000)),
+  情感强化方式 = c(
+    rep("强化表达", 210), rep("中性表达", 650), rep("弱化表达", 140), # 男性
+    rep("强化表达", 320), rep("中性表达", 520), rep("弱化表达", 160)  # 女性
+  )
+)
+
+# 2. 创建列联表
+contingency_table <- table(text_analysis_df$性别, text_analysis_df$情感强化方式)
+
+print(contingency_table)
+
+# 添加边际和（可选）
+
+addmargins(contingency_table)
+
+
+# 3. 计算百分比（更深入的理解）
+cat("行百分比（%）：\n")
+prop.table(contingency_table, margin = 1) * 100
+
+
+cat("列百分比（%）：\n")
+prop.table(contingency_table, margin = 2) * 100
+
+
+# 4. 进行卡方检验
+chi_sq_test <- chisq.test(contingency_table, correct = FALSE)
+
+print(chi_sq_test)
+
+
+# 计算百分比用于绘图
+plot_data <- text_analysis_df %>%
+  group_by(性别, 情感强化方式) %>%
+  summarise(计数 = n(), .groups = 'drop') %>%
+  group_by(性别) %>%
+  mutate(百分比 = 计数 / sum(计数) * 100)
+
+# 绘制堆叠百分比条形图
+ggplot(plot_data, aes(x = 性别, y = 百分比, fill = 情感强化方式)) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(aes(label = sprintf("%.1f%%", 百分比)), 
+            position = position_stack(vjust = 0.5),
+            size = 4) +
+  scale_fill_manual(values = c("#FF6B6B", "#4ECDC4", "#556270")) +
+  labs(title = "性别与情感强化方式的关系",
+       subtitle = paste0("卡方检验: χ²(", chi_sq_test$parameter, ") = ", 
+                        round(chi_sq_test$statistic, 2), 
+                        ", p = ", format.pval(chi_sq_test$p.value, digits = 3)),
+       x = "性别", 
+       y = "百分比",
+       fill = "情感强化方式") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+
+library(rstatix)
+contingency_table%>%
+  chisq_test()
+```
+
+
+### 任务8.7 相关分析 {-}
+
+```{r eval=F, echo=T}
+
+Liu2007 <- read_csv("data/Liu2007.csv")%>%
+  select(WF, CF, PF, AoA, CON, FAM, IMG)
+# r base
+cor.test(~WF+ AoA,
+         data = Liu2007,
+         method = "pearson")
+# method = "kendall", "spearman"
+
+# Correlation test between two variables
+Liu2007 %>% cor_test(AoA, CON, method = "pearson")
+
+
+# Correlation of one variable against all
+Liu2007 %>%cor_test(AoA, method = "pearson")
+
+
+# Pairwise correlation test between all variables
+Liu2007 %>% cor_test(method = "pearson")
+
+# Compute correlation matrix
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+cor.mat <- Liu2007 %>% cor_mat()
+cor.mat
+
+# Show the significance levels
+cor.mat %>% cor_get_pval()
+
+# Replacing correlation coefficients by symbols
+cor.mat %>%
+  cor_as_symbols() %>%
+  pull_lower_triangle()
+
+# Mark significant correlations
+cor.mat %>%
+  cor_mark_significant()
+
+# Draw correlogram using R base plot
+cor.mat %>%
+  cor_reorder() %>%
+  pull_lower_triangle() %>% 
+  cor_plot()
+
+
+
+```
+
+
+```{r eval=F, echo=T}
+
+lm.model = lm(AoA ~ WF+ CF+ PF,
+               data = Liu2007)
+
+summary(lm.model)
+
+```
+lm模型对象的summary函数包括对模型参数（截距和斜率）的估计，以及模型的R平方值和模型的p值。
+
+如何解读模型？
+&emsp;&emsp;模型产生了截距的系数和斜率的系数；
+
+&emsp;&emsp;每个系数还伴随着其他三个数字：其标准误差、t值和p值。p值告诉我们系数是否显著不同于零。
+
+&emsp;&emsp;如果预测变量的系数为零，则预测变量与因变量之间没有任何关系，因此作为预测变量是毫无价值的。为了确定系数是否显著不同于零，从而具有潜在的预测能力，进行双侧t检验，使用t值和相关的自由度。
+
+&emsp;&emsp;t值本身是系数除以其标准误差得到的值。这个标准误差是系数估计的确定程度的衡量。标准误差越小，估计周围的置信区间就越小，接受区域中包含零的可能性就越小，因此系数可能为零的概率也越小。
+
+&emsp;&emsp;残差标准误差是模型不成功的度量；它衡量了我们无法通过预测变量处理的因变量的变异性。模型越好，其残差标准误差就越小。
+
+&emsp;&emsp;多重R平方是平方相关系数r²，它在0到1的范围内量化了模型解释的方差的比例。
+
+### 任务8.8 多元回归 {-}
+
+```{r eval=F, echo=T}
+# 汉语词汇判断数据
+TrialsSCLP <- read_csv("data/TrialsSCLP.csv")
+# 汉语词汇特征数据
+chineselexicaldatabase2_1 <- read_csv("data/chineselexicaldatabase2.1.csv")
+# 选择单字词
+cld.df = chineselexicaldatabase2_1%>%
+  filter(Length == 1)
+
+# 计算判断准确率，并提取单字词的词汇特征
+char.dec.reg = TrialsSCLP %>%
+  group_by(item,lexicality)%>%
+  summarise(total = sum(accuracy),
+            percent = total/n(),
+            z.rt.mean = mean(zscore,na.rm = TRUE))%>%
+  filter(!is.na(z.rt.mean))%>%
+  left_join(cld.df, by = c("item"= "Word"))%>%
+  filter(!is.na(C1))
+
+# 构建模型
+char.dec.mdl = lm(z.rt.mean~  Frequency + PhonologicalFrequency + Strokes, data = char.dec.reg)
+
+
+# 查看模型摘要
+summary(model)
+
+
+# 增加词汇心理语言学特征
+char.dec.reg.psy = char.dec.reg%>%
+  left_join(Liu2007,by = c("item"= "Word"))%>%
+  filter(!is.na(Tag))
+
+char.dec.psyc.mdl = lm(z.rt.mean~  AoA + CON + FAM + IMG + 
+                         Frequency + PhonologicalFrequency + 
+                         Strokes, data = char.dec.reg.psy)
+# 查看模型摘要
+summary(char.dec.psyc.mdl)
+
+```
+

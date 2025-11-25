@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 1.6655 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 1.6655 
+        intervals: size = 7 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.038567608719697076 
+            text = "" 
+        intervals [2]:
+            xmin = 0.038567608719697076 
+            xmax = 0.06363929052427489 
+            text = "b" 
+        intervals [3]:
+            xmin = 0.06363929052427489 
+            xmax = 0.5252531966909134 
+            text = "" 
+        intervals [4]:
+            xmin = 0.5252531966909134 
+            xmax = 0.5591737073676951 
+            text = "d" 
+        intervals [5]:
+            xmin = 0.5591737073676951 
+            xmax = 1.1092759022563727 
+            text = "" 
+        intervals [6]:
+            xmin = 1.1092759022563727 
+            xmax = 1.1564696562414605 
+            text = "g" 
+        intervals [7]:
+            xmin = 1.1564696562414605 
+            xmax = 1.6655 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 1.6655 
+        intervals: size = 7 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.038567608719697076 
+            text = "" 
+        intervals [2]:
+            xmin = 0.038567608719697076 
+            xmax = 0.4102184213522623 
+            text = "buy" 
+        intervals [3]:
+            xmin = 0.4102184213522623 
+            xmax = 0.5252531966909134 
+            text = "" 
+        intervals [4]:
+            xmin = 0.5252531966909134 
+            xmax = 0.9322993248122942 
+            text = "die" 
+        intervals [5]:
+            xmin = 0.9322993248122942 
+            xmax = 1.1092759022563727 
+            text = "" 
+        intervals [6]:
+            xmin = 1.1092759022563727 
+            xmax = 1.5679401987989434 
+            text = "guy" 
+        intervals [7]:
+            xmin = 1.5679401987989434 
+            xmax = 1.6655 
+            text = "" 

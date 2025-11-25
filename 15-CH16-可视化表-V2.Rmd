@@ -1,5 +1,9 @@
 # 附录2 表格可视化
 
+McDonald, J. H. (2014). The Handbook of Biological Statistics (3rd ed.). SPARKY HOUSE PUBLISHING.
+
+![](images/goodtable.png)
+
 ![](images/tablesR.png)
 ```{r }
 library(tidyverse)

@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 1.6562000000000001 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 1.6562000000000001 
+        intervals: size = 7 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.04421852925867611 
+            text = "" 
+        intervals [2]:
+            xmin = 0.04421852925867611 
+            xmax = 0.1424786949081966 
+            text = "p" 
+        intervals [3]:
+            xmin = 0.1424786949081966 
+            xmax = 0.5897824340589989 
+            text = "" 
+        intervals [4]:
+            xmin = 0.5897824340589989 
+            xmax = 0.6660440551601192 
+            text = "t" 
+        intervals [5]:
+            xmin = 0.6660440551601192 
+            xmax = 1.0664175659410011 
+            text = "" 
+        intervals [6]:
+            xmin = 1.0664175659410011 
+            xmax = 1.1470788959518015 
+            text = "k" 
+        intervals [7]:
+            xmin = 1.1470788959518015 
+            xmax = 1.6562000000000001 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 1.6562000000000001 
+        intervals: size = 7 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.04421852925867611 
+            text = "" 
+        intervals [2]:
+            xmin = 0.04421852925867611 
+            xmax = 0.4665905845879582 
+            text = "pie" 
+        intervals [3]:
+            xmin = 0.4665905845879582 
+            xmax = 0.5897824340589989 
+            text = "" 
+        intervals [4]:
+            xmin = 0.5897824340589989 
+            xmax = 0.9681574002914807 
+            text = "tie" 
+        intervals [5]:
+            xmin = 0.9681574002914807 
+            xmax = 1.0664175659410011 
+            text = "" 
+        intervals [6]:
+            xmin = 1.0664175659410011 
+            xmax = 1.6222474581972441 
+            text = "kite" 
+        intervals [7]:
+            xmin = 1.6222474581972441 
+            xmax = 1.6562000000000001 
+            text = "" 

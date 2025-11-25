@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.2778 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 2.2778 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.07089948528933364 
+            text = "" 
+        intervals [2]:
+            xmin = 0.07089948528933364 
+            xmax = 0.3391602378040053 
+            text = "i" 
+        intervals [3]:
+            xmin = 0.3391602378040053 
+            xmax = 0.6638969382165025 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6638969382165025 
+            xmax = 0.893834726086221 
+            text = "ɪ" 
+        intervals [5]:
+            xmin = 0.893834726086221 
+            xmax = 1.214537430220302 
+            text = "" 
+        intervals [6]:
+            xmin = 1.214537430220302 
+            xmax = 1.454560208786061 
+            text = "ɛ" 
+        intervals [7]:
+            xmin = 1.454560208786061 
+            xmax = 1.70466797804786 
+            text = "" 
+        intervals [8]:
+            xmin = 1.70466797804786 
+            xmax = 2.033438674738773 
+            text = "æ" 
+        intervals [9]:
+            xmin = 2.033438674738773 
+            xmax = 2.2778 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 2.2778 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.038627515062004715 
+            text = "" 
+        intervals [2]:
+            xmin = 0.038627515062004715 
+            xmax = 0.4057211763978712 
+            text = "bead" 
+        intervals [3]:
+            xmin = 0.4057211763978712 
+            xmax = 0.5953190014834285 
+            text = "" 
+        intervals [4]:
+            xmin = 0.5953190014834285 
+            xmax = 0.9664466590977111 
+            text = "bid" 
+        intervals [5]:
+            xmin = 0.9664466590977111 
+            xmax = 1.1741974674361408 
+            text = "" 
+        intervals [6]:
+            xmin = 1.1741974674361408 
+            xmax = 1.5412911287720072 
+            text = "bed" 
+        intervals [7]:
+            xmin = 1.5412911287720072 
+            xmax = 1.668362011542115 
+            text = "" 
+        intervals [8]:
+            xmin = 1.668362011542115 
+            xmax = 2.0979826151934313 
+            text = "bad" 
+        intervals [9]:
+            xmin = 2.0979826151934313 
+            xmax = 2.2778 
+            text = "" 

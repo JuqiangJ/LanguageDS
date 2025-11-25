@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.5848500000000003 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 2.5848500000000003 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.04154565575023749 
+            text = "" 
+        intervals [2]:
+            xmin = 0.04154565575023749 
+            xmax = 0.15599024351325327 
+            text = "v" 
+        intervals [3]:
+            xmin = 0.15599024351325327 
+            xmax = 0.6481019708942213 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6481019708942213 
+            xmax = 0.7671243421677576 
+            text = "ð" 
+        intervals [5]:
+            xmin = 0.7671243421677576 
+            xmax = 1.2958583376328905 
+            text = "" 
+        intervals [6]:
+            xmin = 1.2958583376328905 
+            xmax = 1.4766807862984555 
+            text = "z" 
+        intervals [7]:
+            xmin = 1.4766807862984555 
+            xmax = 2.0489037251135342 
+            text = "" 
+        intervals [8]:
+            xmin = 2.0489037251135342 
+            xmax = 2.154192745855509 
+            text = "ʒ" 
+        intervals [9]:
+            xmin = 2.154192745855509 
+            xmax = 2.5848500000000003 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 2.5848500000000003 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.04154565575023749 
+            text = "" 
+        intervals [2]:
+            xmin = 0.04154565575023749 
+            xmax = 0.5199240325996436 
+            text = "vie" 
+        intervals [3]:
+            xmin = 0.5199240325996436 
+            xmax = 0.6481019708942213 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6481019708942213 
+            xmax = 1.1196136724778463 
+            text = "thy" 
+        intervals [5]:
+            xmin = 1.1196136724778463 
+            xmax = 1.2958583376328905 
+            text = "" 
+        intervals [6]:
+            xmin = 1.2958583376328905 
+            xmax = 1.7582144721954742 
+            text = "zoo" 
+        intervals [7]:
+            xmin = 1.7582144721954742 
+            xmax = 1.8978368692663536 
+            text = "" 
+        intervals [8]:
+            xmin = 1.8978368692663536 
+            xmax = 2.5135487514313786 
+            text = "azure" 
+        intervals [9]:
+            xmin = 2.5135487514313786 
+            xmax = 2.5848500000000003 
+            text = "" 

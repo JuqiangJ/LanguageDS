@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.3857500000000003 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 2.3857500000000003 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.05102109957514087 
+            text = "" 
+        intervals [2]:
+            xmin = 0.05102109957514087 
+            xmax = 0.1291868614913662 
+            text = "l" 
+        intervals [3]:
+            xmin = 0.1291868614913662 
+            xmax = 0.7080360173034133 
+            text = "" 
+        intervals [4]:
+            xmin = 0.7080360173034133 
+            xmax = 0.7967647200191286 
+            text = "r" 
+        intervals [5]:
+            xmin = 0.7967647200191286 
+            xmax = 1.2932229375951543 
+            text = "" 
+        intervals [6]:
+            xmin = 1.2932229375951543 
+            xmax = 1.4495544614276048 
+            text = "w" 
+        intervals [7]:
+            xmin = 1.4495544614276048 
+            xmax = 1.9819266777218962 
+            text = "" 
+        intervals [8]:
+            xmin = 1.9819266777218962 
+            xmax = 2.036853969879244 
+            text = "j" 
+        intervals [9]:
+            xmin = 2.036853969879244 
+            xmax = 2.3857500000000003 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 2.3857500000000003 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.05102109957514087 
+            text = "" 
+        intervals [2]:
+            xmin = 0.05102109957514087 
+            xmax = 0.5390289645115748 
+            text = "lie" 
+        intervals [3]:
+            xmin = 0.5390289645115748 
+            xmax = 0.7080360173034133 
+            text = "" 
+        intervals [4]:
+            xmin = 0.7080360173034133 
+            xmax = 1.2213949401586228 
+            text = "rye" 
+        intervals [5]:
+            xmin = 1.2213949401586228 
+            xmax = 1.2932229375951543 
+            text = "" 
+        intervals [6]:
+            xmin = 1.2932229375951543 
+            xmax = 1.783343390691486 
+            text = "why" 
+        intervals [7]:
+            xmin = 1.783343390691486 
+            xmax = 1.9819266777218962 
+            text = "" 
+        intervals [8]:
+            xmin = 1.9819266777218962 
+            xmax = 2.3326163122649617 
+            text = "you" 
+        intervals [9]:
+            xmin = 2.3326163122649617 
+            xmax = 2.3857500000000003 
+            text = "" 

@@ -90,9 +90,6 @@ ggplot2图形语法
 课堂任务-4
 使用quanteda自带的函数
 tidytext
-单词语境分析
-双语平行语料库检索
-自带算法
 topic-modelling
 第七章-语音数据分析
 语音数据产生的生理基础

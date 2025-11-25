@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.2380500000000003 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "SEG" 
+        xmin = 0 
+        xmax = 2.2380500000000003 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.12302118097665554 
+            text = "" 
+        intervals [2]:
+            xmin = 0.12302118097665554 
+            xmax = 0.4212819914784188 
+            text = "ɑ" 
+        intervals [3]:
+            xmin = 0.4212819914784188 
+            xmax = 0.6590979201176984 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6590979201176984 
+            xmax = 0.9732131258620803 
+            text = "o" 
+        intervals [5]:
+            xmin = 0.9732131258620803 
+            xmax = 1.216499510097182 
+            text = "" 
+        intervals [6]:
+            xmin = 1.216499510097182 
+            xmax = 1.4533245390337979 
+            text = "ʊ" 
+        intervals [7]:
+            xmin = 1.4533245390337979 
+            xmax = 1.7384869320111522 
+            text = "" 
+        intervals [8]:
+            xmin = 1.7384869320111522 
+            xmax = 2.0248569460809516 
+            text = "u" 
+        intervals [9]:
+            xmin = 2.0248569460809516 
+            xmax = 2.2380500000000003 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "WORD" 
+        xmin = 0 
+        xmax = 2.2380500000000003 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.04176740535823499 
+            text = "" 
+        intervals [2]:
+            xmin = 0.04176740535823499 
+            xmax = 0.4787541742329114 
+            text = "pod" 
+        intervals [3]:
+            xmin = 0.4787541742329114 
+            xmax = 0.6432435248750797 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6432435248750797 
+            xmax = 1.0356398071298913 
+            text = "bode" 
+        intervals [5]:
+            xmin = 1.0356398071298913 
+            xmax = 1.1726832017901994 
+            text = "" 
+        intervals [6]:
+            xmin = 1.1726832017901994 
+            xmax = 1.5266511170309092 
+            text = "good" 
+        intervals [7]:
+            xmin = 1.5266511170309092 
+            xmax = 1.6958782447966145 
+            text = "" 
+        intervals [8]:
+            xmin = 1.6958782447966145 
+            xmax = 2.079356429727453 
+            text = "booed" 
+        intervals [9]:
+            xmin = 2.079356429727453 
+            xmax = 2.2380500000000003 
+            text = "" 
