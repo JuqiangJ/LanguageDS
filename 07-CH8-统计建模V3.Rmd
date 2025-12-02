@@ -50,6 +50,12 @@ library(gridExtra)
 library(showtext)
 
 showtext_auto()  # 自动应用字体
+
+library(rstatix)
+
+# remove scientific notation
+options(scipen=999)
+
 ```
 
 
@@ -546,7 +552,6 @@ scores_long %>%
 
 ```{r eval=F, echo=T}
 
-
 # 独立样本t检验 (Independent-Samples t-test)
 # 研究场景：比较两种不同的外语教学方法（“沉浸式” vs. “传统式”）对学生词汇测试成绩的影响。
 # 设置随机种子
@@ -598,6 +603,7 @@ wilcox.test(score ~ method, data = method_data )
 ```
 
 ```{r eval=F, echo=T}
+
 # 配对样本t检验 (Paired-Samples t-test)
 # 研究场景：检验一项为期8周的发音训练课程是否显著改善了10名学生的发音清晰度得分（收集每个学生训练前和训练后的数据）。
 # 设置随机种子
@@ -696,20 +702,224 @@ df.wm <- data.frame(
   )
 )
 
+# 正态性检验
+
+shapiro.test(df.wm$reaction_time)
+
+shapiro_test(df.wm$reaction_time)
+
+# 方差齐性检验(H0:方差齐)
+levene_test(df.wm, reaction_time  ~ wm_capacity * sentence_type)
+
+plot(density(toefl_data$score))
+
+
 wm.aov = aov ( reaction_time  ~ wm_capacity * sentence_type, data = df.wm)
-
 summary(wm.aov)
-
 TukeyHSD(wm.aov)
+# 输出简洁表格
+library(broom)
+tidy(wm.aov)
+
 # rstatix
 df.wm %>% anova_test(reaction_time  ~ wm_capacity*sentence_type)
-anv.test = df.wm %>% anova_test(reaction_time  ~ wm_capacity*sentence_type)
+
+df.wm %>% tukey_hsd(reaction_time  ~ wm_capacity*sentence_type)
+
+```
+
+### 任务8.6 相关分析 {-}
+
+```{r eval=F, echo=T}
+library(broom)
+
+Liu2007 <- read_csv("data/Liu2007.csv")%>%
+  select(Tag, WF, CF, PF, AoA, CON, FAM, IMG)
+
+psychling.df = Liu2007%>%select(WF, CF, PF, AoA, CON, FAM, IMG)
+
+# r base
+cor.test(~WF+ AoA,
+         data = psychling.df,
+         method = "pearson") # method = "kendall", "spearman"
+
+# 多个变量和某一个变量的现象
+# 方法1：使用map和tidy直接处理
+cor.test.mlt = map(psychling.df %>% select(-CON),cor.test,y = psychling.df$CON)
+# 转换为整洁的数据框
+cor_results <- cor.test.mlt %>%
+  map_dfr(tidy, .id = "variable")
+
+# 创建相关性森林图
+ggplot(cor_results, aes(x = estimate, y = reorder(variable, estimate))) +
+  geom_point(size = 3, aes(color = ifelse(p.value < 0.05, "显著", "不显著"))) +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = 0.2) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  scale_color_manual(values = c("显著" = "red", "不显著" = "blue")) +
+  labs(
+    title = "各变量与CON的相关性分析",
+    x = "相关系数 (95% CI)",
+    y = "变量",
+    color = "显著性"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+# 创建p值热图
+cor_matrix <- psychling.df %>%
+  cor(use = "pairwise.complete.obs")
+
+# install.packages("corrplot")
+library(corrplot)
+
+# 绘制相关矩阵热图
+corrplot(cor_matrix, 
+         method = "circle",
+         type = "upper",
+         tl.col = "black",
+         tl.srt = 45,
+         addCoef.col = "black",
+         number.cex = 0.7)
+
+# 方法2：使用tidyverse风格
+psychling.df %>%
+  select(-CON) %>%
+  map(~cor.test(.x, psychling.df$CON)) %>%
+  map_dfr(tidy, .id = "variable") %>%
+  mutate(
+    sig = ifelse(p.value < 0.001, "***",
+                ifelse(p.value < 0.01, "**",
+                      ifelse(p.value < 0.05, "*", "")))
+  ) %>%
+  arrange(p.value)
+```
+
+
+```{r eval=F, echo=T}
+
+# rstatix package
+# Correlation test between two variables
+psychling.df %>% cor_test(AoA, CON, method = "pearson")
+
+
+# Correlation of one variable against all
+psychling.df %>%cor_test(AoA, method = "pearson")
+
+
+# Pairwise correlation test between all variables
+psychling.df %>% cor_test(method = "pearson")
+
+# Compute correlation matrix
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+cor.mat <- psychling.df %>% cor_mat()
+cor.mat
+
+# Show the significance levels
+cor.mat %>% cor_get_pval()
+
+# Replacing correlation coefficients by symbols
+cor.mat %>%
+  cor_as_symbols() %>%
+  pull_lower_triangle()
+
+# Mark significant correlations
+cor.mat %>%
+  cor_mark_significant()
+
+# Draw correlogram using R base plot
+cor.mat %>%
+  cor_reorder() %>%
+  pull_lower_triangle() %>% 
+  cor_plot()
 
 ```
 
 
+```{r eval=F, echo=T}
 
-### 任务8.6 卡方检验 {-}
+lm.model = lm(AoA ~ WF+ CF+ PF,
+               data = Liu2007)
+
+summary(lm.model)
+
+```
+
+
+### 任务8.7 多元回归 {-}
+
+```{r eval=F, echo=T}
+# 汉语词汇判断数据
+TrialsSCLP <- read_csv("data/TrialsSCLP.csv")
+# 汉语词汇特征数据
+chineselexicaldatabase2_1 <- read_csv("data/chineselexicaldatabase2.1.csv")
+# 选择单字词
+cld.df = chineselexicaldatabase2_1%>%
+  filter(Length == 1)
+
+# 计算判断准确率，并提取单字词的词汇特征
+char.dec.reg = TrialsSCLP %>%
+  group_by(item,lexicality)%>%
+  summarise(total = sum(accuracy),
+            percent = total/n(),
+            z.rt.mean = mean(zscore,na.rm = TRUE))%>%
+  filter(!is.na(z.rt.mean))%>%
+  left_join(cld.df, by = c("item"= "Word"))%>%
+  filter(!is.na(C1))
+
+# 1 构建模型
+char.dec.mdl = lm(z.rt.mean~  C1Structure + Frequency + PhonologicalFrequency + Strokes, data = char.dec.reg)
+
+# 2 查看模型摘要
+summary(char.dec.mdl)
+char.dec.mdl.df = tidy(char.dec.mdl)
+# t值本身是系数除以其标准误差得到的值。
+char.dec.mdl.df$estimate/char.dec.mdl.df$std.error
+
+# 3 共线性诊断与逐步回归
+car::vif(char.dec.mdl)
+
+# 逐步回归
+char.dec.mdl2 = step(char.dec.mdl, direction = "backward", trace = 0)
+summary(char.dec.mdl2)
+
+# 4 回归诊断
+
+# 残存检验
+library(ggfortify)
+
+autoplot(char.dec.mdl2, which = c(1:6))
+
+shapiro.test(char.dec.mdl2$residuals) # 残差正态性检验, <.005不通过
+
+library(lmtest)
+
+dwtest(char.dec.mdl2) #残差独立性检验, <.005不通过
+
+bptest(char.dec.mdl2) #残差异方差检验, <.005不通过
+
+
+
+
+```
+
+
+```{r eval=F, echo=T}
+# 增加词汇心理语言学特征
+char.dec.reg.psy = char.dec.reg%>%
+  left_join(Liu2007,by = c("item"= "Word"))%>%
+  filter(!is.na(Tag))
+
+char.dec.psyc.mdl = lm(z.rt.mean~  AoA + CON + FAM + IMG + 
+                         Frequency + PhonologicalFrequency + 
+                         Strokes, data = char.dec.reg.psy)
+# 查看模型摘要
+summary(char.dec.psyc.mdl)
+
+
+```
+
+
+### 任务8.8 卡方检验 {-}
 
 ```{r eval=F, echo=T}
 # 1. 直接创建数据框（更直观的方式）
@@ -743,7 +953,11 @@ prop.table(contingency_table, margin = 2) * 100
 # 4. 进行卡方检验
 chi_sq_test <- chisq.test(contingency_table, correct = FALSE)
 
-print(chi_sq_test)
+chisq_test(contingency_table)
+
+# 5. 比较情感强化方式差异
+
+pairwise_prop_test(contingency_table)
 
 
 # 计算百分比用于绘图
@@ -774,122 +988,129 @@ ggplot(plot_data, aes(x = 性别, y = 百分比, fill = 情感强化方式)) +
 library(rstatix)
 contingency_table%>%
   chisq_test()
-```
-
-
-### 任务8.7 相关分析 {-}
-
-```{r eval=F, echo=T}
-
-Liu2007 <- read_csv("data/Liu2007.csv")%>%
-  select(WF, CF, PF, AoA, CON, FAM, IMG)
-# r base
-cor.test(~WF+ AoA,
-         data = Liu2007,
-         method = "pearson")
-# method = "kendall", "spearman"
-
-# Correlation test between two variables
-Liu2007 %>% cor_test(AoA, CON, method = "pearson")
-
-
-# Correlation of one variable against all
-Liu2007 %>%cor_test(AoA, method = "pearson")
-
-
-# Pairwise correlation test between all variables
-Liu2007 %>% cor_test(method = "pearson")
-
-# Compute correlation matrix
-#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-cor.mat <- Liu2007 %>% cor_mat()
-cor.mat
-
-# Show the significance levels
-cor.mat %>% cor_get_pval()
-
-# Replacing correlation coefficients by symbols
-cor.mat %>%
-  cor_as_symbols() %>%
-  pull_lower_triangle()
-
-# Mark significant correlations
-cor.mat %>%
-  cor_mark_significant()
-
-# Draw correlogram using R base plot
-cor.mat %>%
-  cor_reorder() %>%
-  pull_lower_triangle() %>% 
-  cor_plot()
 
 
 
 ```
+
+### 任务8.9 功效分析 {-}
+
 
 
 ```{r eval=F, echo=T}
 
-lm.model = lm(AoA ~ WF+ CF+ PF,
-               data = Liu2007)
 
-summary(lm.model)
+# 安装和加载pwr包
+# install.packages("pwr")
+library(pwr)
+
+# 1. 双样本t检验的功效分析
+# 例1：计算所需样本量
+# 已知：功效=0.8，效应量d=0.5（中等效应），α=0.05，双侧检验
+result <- pwr.t.test(d = 0.5, 
+                     power = 0.8, 
+                     sig.level = 0.05,
+                     type = "two.sample",  # 独立样本t检验
+                     alternative = "two.sided")
+
+print(result)
+# 输出每个组需要约64个样本（总样本128）
+
+# 查看具体数值
+result$n  # 每组样本量
+result$power  # 实际功效
+
+# 例2：计算现有设计的实际功效
+# 已知：每组n=30，d=0.5，α=0.05
+pwr.t.test(n = 30,
+           d = 0.5,
+           sig.level = 0.05,
+           type = "two.sample",
+           alternative = "two.sided")$power
+# 输出功效约为0.38，说明样本量不足
+
+
+# 例3：单侧检验的功效分析
+# 研究药物疗效，只关心是否优于对照（单向）
+pwr.t.test(d = 0.4,
+           power = 0.9,
+           sig.level = 0.05,
+           type = "two.sample",
+           alternative = "greater")  # 单侧检验
+
 
 ```
-lm模型对象的summary函数包括对模型参数（截距和斜率）的估计，以及模型的R平方值和模型的p值。
 
-如何解读模型？
-&emsp;&emsp;模型产生了截距的系数和斜率的系数；
-
-&emsp;&emsp;每个系数还伴随着其他三个数字：其标准误差、t值和p值。p值告诉我们系数是否显著不同于零。
-
-&emsp;&emsp;如果预测变量的系数为零，则预测变量与因变量之间没有任何关系，因此作为预测变量是毫无价值的。为了确定系数是否显著不同于零，从而具有潜在的预测能力，进行双侧t检验，使用t值和相关的自由度。
-
-&emsp;&emsp;t值本身是系数除以其标准误差得到的值。这个标准误差是系数估计的确定程度的衡量。标准误差越小，估计周围的置信区间就越小，接受区域中包含零的可能性就越小，因此系数可能为零的概率也越小。
-
-&emsp;&emsp;残差标准误差是模型不成功的度量；它衡量了我们无法通过预测变量处理的因变量的变异性。模型越好，其残差标准误差就越小。
-
-&emsp;&emsp;多重R平方是平方相关系数r²，它在0到1的范围内量化了模型解释的方差的比例。
-
-### 任务8.8 多元回归 {-}
 
 ```{r eval=F, echo=T}
-# 汉语词汇判断数据
-TrialsSCLP <- read_csv("data/TrialsSCLP.csv")
-# 汉语词汇特征数据
-chineselexicaldatabase2_1 <- read_csv("data/chineselexicaldatabase2.1.csv")
-# 选择单字词
-cld.df = chineselexicaldatabase2_1%>%
-  filter(Length == 1)
 
-# 计算判断准确率，并提取单字词的词汇特征
-char.dec.reg = TrialsSCLP %>%
-  group_by(item,lexicality)%>%
-  summarise(total = sum(accuracy),
-            percent = total/n(),
-            z.rt.mean = mean(zscore,na.rm = TRUE))%>%
-  filter(!is.na(z.rt.mean))%>%
-  left_join(cld.df, by = c("item"= "Word"))%>%
-  filter(!is.na(C1))
+# 2. 相关性检验的功效分析
 
-# 构建模型
-char.dec.mdl = lm(z.rt.mean~  Frequency + PhonologicalFrequency + Strokes, data = char.dec.reg)
+# 计算检测特定相关系数所需的样本量
+pwr.r.test(r = 0.3,          # 预期的相关系数
+           power = 0.8,      # 目标功效
+           sig.level = 0.05,
+           alternative = "two.sided")
 
+# 结果：需要约84个样本才能以80%的功效检测到r=0.3的相关性
 
-# 查看模型摘要
-summary(model)
-
-
-# 增加词汇心理语言学特征
-char.dec.reg.psy = char.dec.reg%>%
-  left_join(Liu2007,by = c("item"= "Word"))%>%
-  filter(!is.na(Tag))
-
-char.dec.psyc.mdl = lm(z.rt.mean~  AoA + CON + FAM + IMG + 
-                         Frequency + PhonologicalFrequency + 
-                         Strokes, data = char.dec.reg.psy)
-# 查看模型摘要
-summary(char.dec.psyc.mdl)
+# 已知样本量，计算可检测的最小效应
+# n=50时，能达到80%功效的最小相关系数是多少？
+result <- pwr.r.test(n = 50,
+                     power = 0.8,
+                     sig.level = 0.05)
+result$r  # 约为0.35
 
 ```
+
+
+```{r eval=F, echo=T}
+# 3. 方差分析（ANOVA）的功效分析
+
+# 单因素方差分析（k=3组）
+pwr.anova.test(k = 3,           # 组数
+               f = 0.25,        # 效应量f（Cohen准则：小=0.1，中=0.25，大=0.4）
+               power = 0.8,
+               sig.level = 0.05)
+
+
+```
+
+```{r eval=F, echo=T}
+# 4. 卡方检验的功效分析
+
+
+# 计算卡方检验的功效
+effect_size <- sqrt(0.1/(1-0.1))  # w效应量，0.1为小效应
+pwr.chisq.test(w = effect_size,
+               df = 4,           # 自由度
+               power = 0.8,
+               sig.level = 0.05,
+               N = NULL)         # 需要计算N
+```
+
+
+```{r eval=F, echo=T}
+
+library(ggplot2)
+# https://data-wise.github.io/doe/appendix/r-packages/pwr.html#:~:text=The%20pwr%20package%20is%20a%20versatile%20and%20user-friendly,in%20R%2C%20covering%20various%20statistical%20tests%20and%20scenarios.
+
+
+effect_sizes <- seq(0.1, 0.5, 0.01)
+powers <- sapply(effect_sizes, function(d) {
+    pwr.t.test(d = d, n = 40, sig.level = 0.01, type = "two.sample")$power
+})
+
+data <- data.frame(effect_sizes, powers)
+
+ggplot(data, aes(x = effect_sizes, y = powers)) +
+    geom_line() +
+    labs(title = "Power Curve", x = "Effect Size", y = "Power") +
+    theme_bw()
+
+
+
+```
+
+
 
