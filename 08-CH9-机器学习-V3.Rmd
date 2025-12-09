@@ -76,7 +76,7 @@ options(scipen=999)
 
 ## 课堂任务
 
-### 任务1 非监督学习-降维技术 {-}
+### 任务9.1 降维技术：主成份分析与因子分析{-}
 
 #### 主成分分析 {-}
 
@@ -90,12 +90,16 @@ metrics_SCA <- read_csv("data/ch9/metrics_SCA_novel.CSV")%>%
 
 # prcomp建模
 sc.pr = prcomp(metrics_SCA[, -c(1:10, 25)], scale = T, center = T)
-sc.pr$x[, 1:3]
-# sc.pr0 = prcomp(metrics_SCA[, -c(1:10, 25)])
-# sc.pr0$x[, 1:3]
-
+# Scree plot
 # components
 props = round((sc.pr$sdev^2/sum(sc.pr$sdev^2)), 3)
+#png(paste(dir.fig, paste("ch9_components",Sys.Date(),"png",sep = "."),sep = ""),
+#     units="in", width=5, height=6, res=600)
+barplot(props, col = as.numeric(props > 0.05), 
+        xlab = "principal components", 
+        ylab = "proportion of variance explained") 
+abline(h = 0.05)
+#dev.off()
 
 
 ```
@@ -108,40 +112,9 @@ novel.fscore = as.data.frame(sc.pr$x[, 1:3])%>%
   relocate(bookname)%>%
   mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
 
-write_csv(novel.fscore,
-          file = paste(dir.fig,
-                       paste("novel.fscore",
-                             Sys.Date(),
-                             "csv",
-                             sep = "."),
-                       sep = "") )
-# factor loadings
-novel.floadings = as.data.frame(sc.pr$rotation[, 1:3])%>%
-  mutate(features = rownames(sc.pr$rotation))%>%
-  relocate(features)%>%
-  mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
-
-write_csv(novel.floadings,
-          file = paste(dir.fig,
-                       paste("novel.floadings",
-                             Sys.Date(),
-                             "csv",
-                             sep = "."),
-                       sep = "") )
-```
-
-```{r eval=F, echo=T}
-
-png(paste(dir.fig, paste("ch9_components",Sys.Date(),"png",sep = "."),sep = ""), 
-      units="in", width=5, height=6, res=600)
-barplot(props, col = as.numeric(props > 0.05), 
-        xlab = "principal components", 
-        ylab = "proportion of variance explained") 
-abline(h = 0.05)
-dev.off()
-
-png(paste(dir.fig, paste("ch9_pca",Sys.Date(),"png",sep = "."),sep = ""), 
-      units="in", width=5, height=6, res=600)
+# scatter plot
+# png(paste(dir.fig, paste("ch9_pca",Sys.Date(),"png",sep = "."),sep = ""), 
+#       units="in", width=5, height=6, res=600)
 super.sym = trellis.par.get("superpose.symbol")
 splom(data.frame(sc.pr$x[,1:3]), 
         groups = metrics_SCA$author, 
@@ -150,37 +123,67 @@ splom(data.frame(sc.pr$x[,1:3]),
                       text = list(unique(metrics_SCA$author)), 
                       points = list(pch = super.sym$pch[1:5], 
                                       col = super.sym$col[1:5])))
-dev.off()
+#dev.off()
 
+
+
+# write_csv(novel.fscore,
+#           file = paste(dir.fig,
+#                        paste("novel.fscore",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") )
+
+```
+
+```{r eval=F, echo=T}
+
+# factor loadings
+novel.floadings = as.data.frame(sc.pr$rotation[, 1:3])%>%
+  mutate(features = rownames(sc.pr$rotation))%>%
+  relocate(features)%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
+
+# write_csv(novel.floadings,
+#           file = paste(dir.fig,
+#                        paste("novel.floadings",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") )
+
+
+# biplot
 
 # stats包
-png(paste(dir.fig, paste("ch9_pca_biplot_Stats",Sys.Date(),"png",sep = "."),sep = ""), 
-      units="in", width=5, height=6, res=600)
+# png(paste(dir.fig, paste("ch9_pca_biplot_Stats",Sys.Date(),"png",sep = "."),sep = ""), 
+#       units="in", width=5, height=6, res=600)
 
 biplot(sc.pr, scale = 0)
 
-dev.off()
+# dev.off()
 
 # ggplot2
 library(ggfortify)
-png(paste(dir.fig, paste("ch9_pca_biplot_ggplot2",Sys.Date(),"png",sep = "."),sep = ""), 
-      units="in", width=5, height=6, res=600)
+# png(paste(dir.fig, paste("ch9_pca_biplot_ggplot2",Sys.Date(),"png",sep = "."),sep = ""), 
+#       units="in", width=5, height=6, res=600)
 
 autoplot(sc.pr, data = metrics_SCA, colour = 'author',
               loadings = TRUE, loadings.colour = 'gray',
               loadings.label = TRUE, loadings.label.size = 3)
-dev.off()
+# dev.off()
 
 # factoextra包
 library(factoextra)
-png(paste(dir.fig, paste("ch9_pca_biplot_factoextra",Sys.Date(),"png",sep = "."),sep = ""), 
-      units="in", width=5, height=6, res=600)
+# png(paste(dir.fig, paste("ch9_pca_biplot_factoextra",Sys.Date(),"png",sep = "."),sep = ""), 
+#       units="in", width=5, height=6, res=600)
 
 fviz_pca_biplot(sc.pr,
                 label="var",
                 habillage = metrics_SCA$author)
 
-dev.off()
+# dev.off()
 
 
 ```
@@ -228,13 +231,13 @@ novel.princomp.fscore = as.data.frame(sc.prin$scores[, 1:3])%>%
   relocate(bookname)%>%
   mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
 
-write_csv(novel.princomp.fscore,
-          file = paste(dir.fig,
-                       paste("novel.princomp.fscore",
-                             Sys.Date(),
-                             "csv",
-                             sep = "."),
-                       sep = "") )
+# write_csv(novel.princomp.fscore,
+#           file = paste(dir.fig,
+#                        paste("novel.princomp.fscore",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") )
   
 # factor loadings
 novel.princomp.floadings = as.data.frame(sc.prin$loadings[, 1:3])%>%
@@ -242,13 +245,13 @@ novel.princomp.floadings = as.data.frame(sc.prin$loadings[, 1:3])%>%
   relocate(features)%>%
   mutate(across(where(is.numeric), ~ round(.x, digits = 4)))
 
-write_csv(novel.princomp.floadings,
-          file = paste(dir.fig,
-                       paste("novel.princomp.floadings",
-                             Sys.Date(),
-                             "csv",
-                             sep = "."),
-                       sep = "") )
+# write_csv(novel.princomp.floadings,
+#           file = paste(dir.fig,
+#                        paste("novel.princomp.floadings",
+#                              Sys.Date(),
+#                              "csv",
+#                              sep = "."),
+#                        sep = "") )
 
 ```
 
@@ -256,26 +259,37 @@ write_csv(novel.princomp.floadings,
 
 ```{r eval=F, echo=T}
 # 尝试不同因子个数
-factanal(metrics_SCA[, -c(1:10,25)], 
+fac.3 = factanal(metrics_SCA[, -c(1:10,25)], 
                   factors = 3,
                   scores = "regression")
+fac.3 
+# fac.4 = factanal(metrics_SCA[, -c(1:10,25)], 
+#                   factors = 4,
+#                   scores = "regression")
+# 
+# fac.5 = factanal(metrics_SCA[, -c(1:10,25)], 
+#                   factors = 5,
+#                   scores = "regression")
 
-factanal(metrics_SCA[, -c(1:10,25)], 
-                  factors = 4,
-                  scores = "regression")
+loadings = loadings(fac.3) 
+plot(loadings, type = "n", xlim = c(-0.4, 1)) 
+text(loadings, rownames(loadings), cex = 0.8)
 
-factanal(metrics_SCA[, -c(1:10,25)], 
-                  factors = 5,
-                  scores = "regression")
 
 
 # 尝试不同因子旋转方式
 # 默认是正交 varimax
 # 斜交
-factanal(metrics_SCA[, -c(1:10,25)], 
+fac.3.rotate = factanal(metrics_SCA[, -c(1:10,25)], 
                   factors = 3,
            rotation = "promax",
                   scores = "regression")
+fac.3.rotate
+
+loadings.rot = loadings(fac.3.rotate) 
+plot(loadings.rot, type = "n", xlim = c(-0.4, 1)) 
+text(loadings.rot, rownames(loadings), cex = 0.8)
+
 
 # 提取因子分数
 # sc.fac.5=factanal(metrics_SCA[, -c(1:10,25)], 
@@ -287,11 +301,6 @@ factanal(metrics_SCA[, -c(1:10,25)],
 # loadings(sc.fac.5) 
 # loadings(sc.fac.4) 
 # loadings(sc.fac.3) 
-# 
-# 
-# loadings = loadings(sc.fac) 
-# plot(loadings, type = "n", xlim = c(-0.4, 1)) 
-# text(loadings, rownames(loadings), cex = 0.8)
 
 
 # factor rotation
@@ -331,7 +340,9 @@ factanal(metrics_SCA[, -c(1:10,25)],
 
 ```
 
-### 对应分析 {-}
+### 任务9.2 降维技术：对应分析与多维尺度分析{-}
+
+#### 对应分析 {-}
 
 ```{r eval=F, echo=T}
 library(stylo)
@@ -382,8 +393,7 @@ wd.df = as.data.frame(culled.freqs1)
 # correspondence analysis
 detect.ca = corres.fnc(wd.df)
 
-# summary(detect.ca, head = TRUE)
-
+summary(detect.ca, head = TRUE)
 
 meta.novel = data.frame(books = rownames(wd.df))%>%
       mutate(author = str_extract(books, "[A-z]{1,8}_"),
@@ -416,12 +426,44 @@ df.mds = data.frame(wd.mds,
                  books = rownames(wd.df))%>%
          mutate(author = str_extract(books, "[A-z]{1,8}_"),
          author = str_remove(author,"_"))
-a = dist(iris[, 1:4])
-# 可以通过作家对三个维度做对比
+
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(stringr)
+library(ggrepel)
+
+# 为了方便，数据命名为X1, X2, X3
+colnames(df.mds)[1:3] <- c("Dim1", "Dim2", "Dim3")
+
+# 1. 二维散点图（使用前两个维度）
+ggplot(df.mds, aes(x = Dim1, y = Dim2, color = author)) +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_text_repel(aes(label = books), size = 3, max.overlaps = 20) +
+  labs(title = "MDS Visualization (2D)",
+       x = "Dimension 1",
+       y = "Dimension 2",
+       color = "Author") +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+# 2. 按作者分面的二维图
+ggplot(df.mds, aes(x = Dim1, y = Dim2, color = author)) +
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = books), size = 2.5, max.overlaps = 10) +
+  facet_wrap(~ author, scales = "free") +
+  labs(title = "MDS Visualization by Author",
+       x = "Dimension 1",
+       y = "Dimension 2") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+
 
 ```
 
-### 任务2 非监督学习-聚类算法 {-}
+### 任务9.3 聚类算法 {-}
 
 #### 层次聚类 {-}
 
@@ -439,6 +481,7 @@ clusttendency <- get_clust_tendency(wd.df,
                      high = "white")) 
 
 clusttendency[1]
+
 ```
 
 
@@ -451,7 +494,13 @@ clustd <- dist(wd.dfs, method = "euclidean")
 cd <- hclust(clustd, method="ward.D2") 
 # 距离图           
 plot(cd, hang = -1)    
-
+# Display dendrogram with improvements
+plot(cd, 
+     hang = -1, 
+     cex.lab = 0.001,  # Adjust label font size
+     las = 2,        # Rotate labels for better readability
+     main = "Dendrogram",  # Add title
+     col = "blue")   # Optional: color the branches
 ### 确定最佳的聚类数量
 optclus <- sapply(2:8, function(x) summary(silhouette(cutree(cd, k = x), clustd))$avg.width)
 optclus # inspect results
@@ -570,7 +619,7 @@ dev.off()
 #### 分割优化 {-}
 
 ```{r eval=F, echo=T}
-# k-means clustering [assume 3 clusters]
+# k-means clustering 
 km = kmeans(sc.pr$x[,1:3], centers=5, nstart=12)
 
 # Coordinates of individuals
@@ -662,9 +711,8 @@ stylo(frequencies = culled.freqs1,
 ```
 
 
-### 任务3 监督学习模型训练 {-}
+### 任务9.4 监督学习回归任务 {-}
 
-#### 数据准备 {-}
 
 ```{r eval=F, echo=T}
 # Helper packages 
@@ -674,10 +722,19 @@ library(rsample) # for data splitting
 library(caret) # for classification and regression training 
 library(kernlab) # for fitting SVMs  
 
-# Model interpretability packages 
-library(pdp) # for partial dependence plots, etc. 
-library(vip) # for variable importance plots
 
+
+```
+
+
+```{r eval=F, echo=T}
+# Modeling packages 
+library(rpart) # direct engine for decision tree application 
+library(caret) # meta engine for decision tree application  
+# Model interpretability packages 
+library(rpart.plot) # for plotting decision trees 
+library(vip) # for feature importance 
+library(pdp) # for feature effects
 
 pictureNaming <- read_csv("data/ch9/pictureNaming.new.csv")%>%
   filter(AoA_r != "#NULL!")%>%
@@ -687,10 +744,93 @@ pictureNaming <- read_csv("data/ch9/pictureNaming.new.csv")%>%
   select("LEN","VAR","IMG","FAM","VC","FREQ", 
          "NAgree","H_value","CA","AoA_r","AoA_o", "RT_harm")
 
-
+# 数据分为训练集和测试集
 pictureNaming_split <- initial_split(pictureNaming, prop = 0.7) 
 pictureNaming_train <- training(pictureNaming_split) 
 pictureNaming_test <- testing(pictureNaming_split)
+
+pictureNaming_m1 <- rpart(formula = RT_harm ~ ., 
+                          data = pictureNaming_train, method = "anova" )
+
+
+rpart.plot(pictureNaming_m1)
+
+plotcp(pictureNaming_m1)
+
+# rpart cross validation results 
+pictureNaming_m1$cptable
+
+# 不同特征的重要性
+vip(pictureNaming_m1, num_features = 7, bar = FALSE)
+
+# 1. 使用模型进行预测
+test_predictions <- predict(pictureNaming_m1, newdata = pictureNaming_test)
+
+# 2. 获取测试集真实值
+test_actual <- pictureNaming_test$RT_harm
+
+# 3. 创建结果数据框
+results <- data.frame(
+  Actual = test_actual,
+  Predicted = test_predictions,
+  Residual = test_actual - test_predictions
+)
+
+library(Metrics)      # 评估指标
+# 基础回归评估指标
+model_performance <- data.frame(
+  # 1. 误差指标
+  MAE = mae(test_actual, test_predictions),          # 平均绝对误差
+  RMSE = rmse(test_actual, test_predictions),        # 均方根误差
+  MAPE = mape(test_actual, test_predictions) * 100,  # 平均绝对百分比误差
+  
+  # 2. 拟合优度指标
+  R_squared = cor(test_actual, test_predictions)^2,  # R平方
+  Adjusted_R2 = 1 - (1 - cor(test_actual, test_predictions)^2) * 
+    (nrow(pictureNaming_test) - 1) / 
+    (nrow(pictureNaming_test) - ncol(pictureNaming_test) - 1),
+  
+  # 3. 相对指标
+  NRMSE = rmse(test_actual, test_predictions) / mean(test_actual),  # 标准化RMSE
+  
+  # 4. 样本统计
+  Sample_Size = nrow(pictureNaming_test),
+  Predictor_Count = ncol(pictureNaming_test) - 1  # 减去因变量
+)
+
+```
+
+
+
+
+```{r eval=F, echo=T}
+# 模型优化
+pictureNaming_m2 <- rpart( formula = RT_harm ~ ., 
+                   data = pictureNaming_train, method = "anova", 
+                   control = list(cp = 0, xval = 10) )
+
+rpart.plot(pictureNaming_m2)
+
+plotcp(pictureNaming_m2)
+
+# caret cross validation results 
+
+pictureNaming_m3 <- train(RT_harm ~ ., 
+                   data = pictureNaming_train, 
+                   method = "rpart", 
+                   trControl = trainControl(method = "cv", number = 10), 
+                   tuneLength = 20 )  
+
+ggplot(pictureNaming_m3)
+
+vip(pictureNaming_m3, num_features = 7, bar = FALSE)
+
+
+```
+
+### 任务9.5 监督学习分类任务 {-}
+
+```{r eval=F, echo=T}
 
 # 美国英语本族语者数据
 datasetAE <- read_csv("data/ch9/datasetAE.CSV")
@@ -710,56 +850,11 @@ table(datasetAE_test$focus_type) %>% prop.table()
 
 ```
 
-#### 决策树 {-}
+
+#### 决策树模型
 
 ```{r eval=F, echo=T}
-# Modeling packages 
-library(rpart) # direct engine for decision tree application 
-library(caret) # meta engine for decision tree application  
-# Model interpretability packages 
-library(rpart.plot) # for plotting decision trees 
-library(vip) # for feature importance 
-library(pdp) # for feature effects
 
-
-pictureNaming_m1 <- rpart(formula = RT_harm ~ ., 
-                          data = pictureNaming_train, method = "anova" )
-
-
-rpart.plot(pictureNaming_m1)
-
-plotcp(pictureNaming_m1)
-
-# rpart cross validation results 
-pictureNaming_m1$cptable
-
-pictureNaming_m2 <- rpart( formula = RT_harm ~ ., 
-                   data = pictureNaming_train, method = "anova", 
-                   control = list(cp = 0, xval = 10) )
-
-rpart.plot(pictureNaming_m2)
-
-plotcp(pictureNaming_m2)
-
-vip(pictureNaming_m1, num_features = 7, bar = FALSE)
-
-# caret cross validation results 
-
-pictureNaming_m3 <- train(RT_harm ~ ., 
-                   data = pictureNaming_train, 
-                   method = "rpart", 
-                   trControl = trainControl(method = "cv", number = 10), 
-                   tuneLength = 20 )  
-
-ggplot(pictureNaming_m3)
-
-vip(pictureNaming_m3, num_features = 7, bar = FALSE)
-
-
-```
-
-
-```{r eval=F, echo=T}
 ## model 1
 datasetAE.tree1 <- rpart(formula = focus_type ~ ., 
                          data = datasetAE_train)
@@ -859,8 +954,6 @@ set.seed(123)
 datasetAE_bag1 <- bagging( formula = focus_type ~ ., data = datasetAE_train, 
                            nbagg = 100, coob = TRUE, 
                            control = rpart.control(minsplit = 2, cp = 0) )
-
-
 
 
 ```

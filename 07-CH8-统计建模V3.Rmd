@@ -733,8 +733,9 @@ df.wm %>% tukey_hsd(reaction_time  ~ wm_capacity*sentence_type)
 ```{r eval=F, echo=T}
 library(broom)
 
-Liu2007 <- read_csv("data/Liu2007.csv")%>%
-  select(Tag, WF, CF, PF, AoA, CON, FAM, IMG)
+Liu2007 <- read_csv("data/ch8/Liu2007.csv")
+# %>%
+#   select(Tag, WF, CF, PF, AoA, CON, FAM, IMG)
 
 psychling.df = Liu2007%>%select(WF, CF, PF, AoA, CON, FAM, IMG)
 
@@ -849,9 +850,9 @@ summary(lm.model)
 
 ```{r eval=F, echo=T}
 # 汉语词汇判断数据
-TrialsSCLP <- read_csv("data/TrialsSCLP.csv")
+TrialsSCLP <- read_csv("data/ch8/TrialsSCLP.csv")
 # 汉语词汇特征数据
-chineselexicaldatabase2_1 <- read_csv("data/chineselexicaldatabase2.1.csv")
+chineselexicaldatabase2_1 <- read_csv("data/ch8/chineselexicaldatabase2.1.csv")
 # 选择单字词
 cld.df = chineselexicaldatabase2_1%>%
   filter(Length == 1)
@@ -881,7 +882,7 @@ car::vif(char.dec.mdl)
 # 逐步回归
 char.dec.mdl2 = step(char.dec.mdl, direction = "backward", trace = 0)
 summary(char.dec.mdl2)
-
+step(char.dec.mdl, direction = "forward", trace = 0)
 # 4 回归诊断
 
 # 残存检验
@@ -898,8 +899,6 @@ dwtest(char.dec.mdl2) #残差独立性检验, <.005不通过
 bptest(char.dec.mdl2) #残差异方差检验, <.005不通过
 
 
-
-
 ```
 
 
@@ -914,7 +913,7 @@ char.dec.psyc.mdl = lm(z.rt.mean~  AoA + CON + FAM + IMG +
                          Strokes, data = char.dec.reg.psy)
 # 查看模型摘要
 summary(char.dec.psyc.mdl)
-
+step(char.dec.psyc.mdl, direction = "backward", trace = 0)
 
 ```
 
