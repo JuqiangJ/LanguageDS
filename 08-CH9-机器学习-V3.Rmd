@@ -711,21 +711,139 @@ stylo(frequencies = culled.freqs1,
 ```
 
 
-### 任务9.4 监督学习回归任务 {-}
+### 任务9.4 监督学习数据集划分 {-}
 
 
 ```{r eval=F, echo=T}
 # Helper packages 
-library(rsample) # for data splitting  
+library(tidymodels)
 
-# Modeling packages 
-library(caret) # for classification and regression training 
-library(kernlab) # for fitting SVMs  
+pictureNaming <- read_csv("data/ch9/pictureNaming.new.csv")%>%
+  filter(AoA_r != "#NULL!")%>%
+  drop_na()%>%
+  mutate(AoA_r = as.numeric(AoA_r),
+         AoA_o = as.numeric(AoA_o))%>%
+  select("LEN","VAR","IMG","FAM","VC","FREQ", 
+         "NAgree","H_value","CA","AoA_r","AoA_o", "RT_harm")%>%
+  mutate(LEN = as.factor(LEN))
+
+# Using base R 
+set.seed(123) # for reproducibility  
+index_1 <- sample(1:nrow(pictureNaming), round(nrow(pictureNaming) * 0.7)) 
+train_1 <- pictureNaming[index_1, ] 
+test_1 <- pictureNaming[-index_1, ]  
+# Using caret package 
+library(caret)
+set.seed(123) # for reproducibility  
+index_2 <- createDataPartition(pictureNaming$RT_harm, p = 0.7, list = FALSE) 
+train_2 <- pictureNaming[index_2, ] 
+test_2 <- pictureNaming[-index_2, ]  
+# Using rsample package 
+library(rsample) # for data splitting  
+set.seed(123) # for reproducibility  
+split_1 <- initial_split(pictureNaming, prop = 0.7) 
+train_3 <- training(split_1) 
+test_3 <- testing(split_1)  
+# Using h2o package  
+# library(h2o) # for resampling and model training  
+# h2o set-up 
+# h2o.no_progress() # turn off h2o progress bars 
+# h2o.init() # launch h2o  
+# pictureNaming.h2o <- as.h2o(pictureNaming)
+# split_2 <- h2o.splitFrame(pictureNaming, ratios = 0.7, seed = 123) 
+# train_4 <- split_2[[1]] 
+# test_4 <- split_2[[2]]
+
+# 分层抽样
+# orginal response distribution  
+table(pictureNaming$LEN) %>% prop.table() 
+
+# stratified sampling with the rsample package 
+set.seed(123)  
+split_strat <- initial_split(pictureNaming, prop = 0.7, strata = "LEN") 
+train_strat <- training(split_strat) 
+test_strat <- testing(split_strat)  
+# consistent response ratio between train & test 
+table(train_strat$LEN) %>% prop.table() 
+table(test_strat$LEN) %>% prop.table()
+
+
+```
+### 任务9.5 监督学习缺失数据 {-}
+
+```{r eval=F, echo=T}
+pictureNaming.miss <- read_csv("data/ch9/pictureNaming.missing.csv")%>%
+  filter(AoA_r != "#NULL!")%>%
+  mutate(AoA_r = as.numeric(AoA_r),
+         AoA_o = as.numeric(AoA_o))%>%
+  select("LEN","VAR","IMG","FAM","VC","FREQ", 
+         "NAgree","H_value","CA","AoA_r","AoA_o", "RT_harm")%>%
+  mutate(LEN = as.factor(LEN))
+
+sum(is.na(pictureNaming.miss))
+
+pictureNaming.miss %>% 
+  is.na() %>%  
+  reshape2::melt() %>% 
+  ggplot(aes(Var2, Var1, fill=value)) + 
+  geom_raster() + 
+  coord_flip() + 
+  scale_y_continuous(NULL, expand = c(0, 0)) + 
+  scale_fill_grey(name = "",  labels = c("Present", "Missing")) + 
+  xlab("Observation") + 
+  theme(axis.text.y = element_text(size = 4))
+
+
+# 
+pictureNaming.recipe <- recipe(RT_harm ~ ., data = pictureNaming_train) %>%
+  step_medianimpute(H_value)%>%
+  # step_knnimpute(all_predictors(), neighbors = 6)
+  # step_bagimpute(all_predictors()) # tree-based
+
+```
+
+### 任务9.6 监督学习特征工程 {-}
+```{r eval=F, echo=T}
+
+# 删除零方差变量
+caret::nearZeroVar(pictureNaming, saveMetrics= TRUE) %>% 
+  rownames_to_column() %>% 
+  filter(nzv)
+
+# 数据分布正态化
+
+# Normalize all numeric columns  
+pictureNaming.recipe = recipe(RT_harm ~ ., data = pictureNaming_train) %>% 
+  step_YeoJohnson(all_numeric())
+
+# 均值和方差标准化 same mean and variance
+pictureNaming.recipe %>%  
+  step_center(all_numeric(), -all_outcomes()) %>% 
+  step_scale(all_numeric(), -all_outcomes())
+
+# 整合在一起
+pictureNaming_split <- initial_split(pictureNaming, prop = 0.7) 
+pictureNaming_train <- training(pictureNaming_split) 
+pictureNaming_test <- testing(pictureNaming_split)
+
+blueprint <- recipe(RT_harm ~ ., data = pictureNaming_train) %>% 
+  step_nzv(all_nominal()) %>% 
+  step_center(all_numeric(), -all_outcomes()) %>% 
+  step_scale(all_numeric(), -all_outcomes()) %>% 
+  step_pca(all_numeric(), -all_outcomes())%>%
+  step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE)
+
+prepare <- prep(blueprint, training = pictureNaming_train)
+
+baked_train <- bake(prepare, new_data = pictureNaming_train) 
+baked_test <- bake(prepare, new_data = pictureNaming_test)
 
 
 
 ```
 
+
+### 任务9.5 监督学习回归任务 {-}
 
 ```{r eval=F, echo=T}
 # Modeling packages 
@@ -736,18 +854,12 @@ library(rpart.plot) # for plotting decision trees
 library(vip) # for feature importance 
 library(pdp) # for feature effects
 
-pictureNaming <- read_csv("data/ch9/pictureNaming.new.csv")%>%
-  filter(AoA_r != "#NULL!")%>%
-  drop_na()%>%
-  mutate(AoA_r = as.numeric(AoA_r),
-         AoA_o = as.numeric(AoA_o))%>%
-  select("LEN","VAR","IMG","FAM","VC","FREQ", 
-         "NAgree","H_value","CA","AoA_r","AoA_o", "RT_harm")
-
 # 数据分为训练集和测试集
 pictureNaming_split <- initial_split(pictureNaming, prop = 0.7) 
 pictureNaming_train <- training(pictureNaming_split) 
 pictureNaming_test <- testing(pictureNaming_split)
+
+
 
 pictureNaming_m1 <- rpart(formula = RT_harm ~ ., 
                           data = pictureNaming_train, method = "anova" )
