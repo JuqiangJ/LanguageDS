@@ -826,6 +826,12 @@ pictureNaming_split <- initial_split(pictureNaming, prop = 0.7)
 pictureNaming_train <- training(pictureNaming_split) 
 pictureNaming_test <- testing(pictureNaming_split)
 
+# the recipes package
+# 1. recipe: where you define your feature engineering steps to create your blueprint. 
+# 2. prepare: estimate feature engineering parameters based on training data. 
+# 3. bake: apply the blueprint to new data.
+
+
 blueprint <- recipe(RT_harm ~ ., data = pictureNaming_train) %>% 
   step_nzv(all_nominal()) %>% 
   step_center(all_numeric(), -all_outcomes()) %>% 
@@ -833,6 +839,7 @@ blueprint <- recipe(RT_harm ~ ., data = pictureNaming_train) %>%
   step_pca(all_numeric(), -all_outcomes())%>%
   step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE)
 
+# there are many feature engineering steps that we do not want to train on the test data (e.g., standardize and PCA) as this would create data leakage.
 prepare <- prep(blueprint, training = pictureNaming_train)
 
 baked_train <- bake(prepare, new_data = pictureNaming_train) 
@@ -843,7 +850,7 @@ baked_test <- bake(prepare, new_data = pictureNaming_test)
 ```
 
 
-### 任务9.5 监督学习回归任务 {-}
+### 任务9.7 监督学习回归任务 {-}
 
 ```{r eval=F, echo=T}
 # Modeling packages 
@@ -940,7 +947,7 @@ vip(pictureNaming_m3, num_features = 7, bar = FALSE)
 
 ```
 
-### 任务9.5 监督学习分类任务 {-}
+### 任务9.8 监督学习分类任务 {-}
 
 ```{r eval=F, echo=T}
 
@@ -974,6 +981,29 @@ datasetAE.tree1 <- rpart(formula = focus_type ~ .,
 rpart.plot(datasetAE.tree1)
 
 plotcp(datasetAE.tree1)
+
+# 模型评估
+# 对测试集进行预测
+predictions <- predict(datasetAE.tree1, 
+                       newdata = datasetAE_test, 
+                       type = "class")
+probabilities <- predict(datasetAE.tree1, 
+                         newdata = datasetAE_test, 
+                         type = "prob")
+
+# 加载评估包
+library(caret)
+library(pROC)
+
+# 创建混淆矩阵
+confusion_matrix <- confusionMatrix(predictions, 
+                                   datasetAE_test$focus_type)
+print(confusion_matrix)
+
+# 查看详细的评估指标
+confusion_matrix$overall  # 总体准确率
+confusion_matrix$byClass  # 各类别的详细指标（精确率、召回率、F1等）
+
 
 # model2
 datasetAE.tree2 <- rpart( formula = focus_type ~ ., 
@@ -1101,6 +1131,49 @@ as.data.frame(RF_AE$confusion)%>%
 mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
   flextable()%>%
   set_caption(caption = "Table x .")
+
+
+# 模型评估
+
+RF_predictions <- predict(RF_AE, newdata = datasetAE_test)
+RF_probabilities <- predict(RF_AE, newdata = datasetAE_test, type = "prob")
+
+RF_cm <- confusionMatrix(RF_predictions, datasetAE_test$focus_type)
+# 4. 可视化混淆矩阵
+conf_matrix_df <- as.data.frame(RF_cm$table)
+ggplot(conf_matrix_df, aes(x = Reference, y = Prediction, fill = Freq)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = Freq), color = "black", size = 4) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  labs(title = "混淆矩阵热力图",
+       x = "真实类别",
+       y = "预测类别",
+       fill = "计数") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# 提取每个类别的指标
+class_metrics <- RF_cm$byClass
+print(round(class_metrics, 4))
+
+
+
+# 创建汇总表
+metrics_summary <- data.frame(
+  指标 = c("总体准确率", "Kappa系数", "微平均F1", "宏平均F1", "加权平均F1"),
+  值 = c(
+    RF_cm$overall["Accuracy"],
+    RF_cm$overall["Kappa"],
+    # 微平均F1（等于准确率）
+    RF_cm$overall["Accuracy"],
+    # 宏平均F1
+    mean(class_metrics[, "F1"], na.rm = TRUE),
+    # 加权平均F1
+    weighted.mean(class_metrics[, "F1"], table(datasetAE_test$focus_type), na.rm = TRUE)
+  )
+)
+print(metrics_summary)
 ```
 
 
