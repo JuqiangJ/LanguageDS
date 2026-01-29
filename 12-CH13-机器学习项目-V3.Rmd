@@ -1,19 +1,31 @@
 # 机器学习项目案例
 
+```{r eval=F, echo=T}
+# 数据及数据处理
+library(tidyverse)
+# 机器学习模型
+library(e1071)
+library(discrim)#lda model
+library(tidymodels)
+# 统计模型
+library(rcompanion)
+library(lsmeans)
+
+# 数据可视化
+library(cowplot)
+
+
+
+
+
+```
+
+
 ## 案例13.1 基于母语特征建模预测声调学习难点 {-}
 
 ![详细背景请看原文献](images/12.1.png)
 
-```{r echo=FALSE, include=FALSE}
 
-library(tidyverse)
-# install.packages('e1071')
-
-library(e1071)
-setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
-
-library(cowplot)
-```
 
 ### 研究背景 {-}
 
@@ -467,9 +479,7 @@ thai_compare
 
 ```{r eval=F, echo=T}
 
-library(tidymodels)
-# calculate confidence intervals
-library(rcompanion)
+
 
 thai.discrete = read.csv("data/ch13/thai.discrete.2020-11-30.csv")
 ### split the dataset ####
@@ -500,7 +510,6 @@ svm_model = svm_poly() %>%
       data = training(thai.split))
 
 #lda model
-library(discrim)
 
 lda_model = discrim_linear() %>% 
   set_engine("MASS") %>% 
@@ -626,12 +635,11 @@ lda.thai.plt = lda.cfm%>%
   # remove the legend for color
   #guides(color = FALSE)
 
-library(cowplot)
 
 thai.ml.plt = plot_grid(lda.thai.plt,rf.thai.plt, svm.thai.plt,  nrow = 1,
           labels = c('', '',""), label_size = 0,
           rel_widths = c(1.1, 1, 1.2))
-
+thai.ml.plt
 # png(paste(dir.processed, paste("thai.ml.plt ",Sys.Date(),"png",sep = "."), sep = ""),
 #     units="in", width=9, height=3, res=600)
 # 
@@ -676,7 +684,8 @@ thai.mdl.three = rbind(rf.thai.prob, svm.thai.prob, lda.thai.prob)
 thai.three.mdl = lm(prob ~ tone*mdl, data = thai.mdl.three )
 
 anova(thai.three.mdl)
-library(lsmeans)
+
+
 lsmeans(thai.three.mdl,
         pairwise ~ mdl,
         adjust="tukey")  
@@ -836,7 +845,7 @@ imit.ml.plt = plot_grid(lda.imit.plt,rf.imit.plt, svm.imit.plt, nrow = 1,
                         ncol = 3,
                         labels = c('', '',""), label_size = 0,
                         rel_widths = c(1.2, 1, 1.2))
-
+imit.ml.plt
 ```
 
 ### 结论 {-}

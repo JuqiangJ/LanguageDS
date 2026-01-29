@@ -23,12 +23,25 @@
 
 ## 课堂任务
 
+```{r eval=F, echo=T}
+# 数据处理函数大合集
+library(tidyverse)
+########################################
+# ✔ dplyr     1.1.3     ✔ readr     2.1.4
+# ✔ forcats   1.0.0     ✔ stringr   1.5.1
+# ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+# ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+# ✔ purrr     1.0.2  
+#########################################
+
+
+```
+
+
 ### 任务5.1：数据导入  {-}
 
 ```{r eval=F, echo=T}
 
-library(tidyverse)
-setwd("~/your folder")
 assim = list.files(paste0(getwd(), "/data/ch5"), 
                    full.names=T, pattern = ".txt")
 
@@ -127,7 +140,8 @@ assim.individual = assim.clean %>%
   ungroup()
 
 
-assim.group = assim.individual%>%
+assim.group = 
+  assim.individual%>%
   # mutate(stimuli = as_factor(stimuli),
   #        response = as_factor(response),
   #        stimuli = fct_relevel(stimuli, "T45","T33","T21","T315","T241"),
@@ -189,7 +203,7 @@ assim.individual %>%
 
 ```{r eval=F, echo=T}
   
-  assim.individual %>%
+assim.individual %>%
   group_by(stimuli,response)%>%
   summarise(percent = round(sum(percent)/13, 3)*100,
               # 计算评分的均值
@@ -198,9 +212,9 @@ assim.individual %>%
   # 构建xy轴
   ggplot(aes(stimuli,response))+
   # 构建热力图
-  geom_tile(aes(fill = rate.mean))+
+  geom_tile(aes(fill = percent))+
   # 将评分作为标记填入，并设置相应的颜色、大小
-  geom_text(aes(label = round(rate.mean, 1)), 
+  geom_text(aes(label = round(percent, 1)), 
             color = "red",
             size = 4) +
   scale_colour_manual(values=c("black", "white"))+
@@ -217,12 +231,12 @@ assim.individual %>%
         axis.ticks.x = element_blank())
 ```
 
+### 任务5.5：数据保存与版本控制 {-}
+
+```{r eval=F, echo=T}
 
 
 
-
-
-
-
+```
 
 

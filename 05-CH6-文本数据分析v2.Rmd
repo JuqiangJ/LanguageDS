@@ -13,30 +13,7 @@
 - 📌 **掌握语篇分析基本方法** 
 
 
-```{r message=FALSE}
-library(tidyverse)
-setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
-library(quanteda)
-#install.packages("readtext")
-require(readtext)
-library(DT)
-library(DiagrammeR)
 
-library(FactoMineR)
-library(factoextra)
-library(flextable)
-library(GGally)
-library(ggdendro)
-library(igraph)
-library(network)
-library(Matrix)
-library(quanteda.textstats)
-library(quanteda.textplots)
-library(tm)
-library(sna)
-library(udpipe)
-library(tidytext)
-```
 
 ## 语言分析的单位
 
@@ -88,6 +65,43 @@ library(tidytext)
 
 ## 课堂任务
 
+```{r message=FALSE}
+library(tidyverse)
+setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
+# 导入文本数据
+require(readtext)
+# 文本数据分析
+library(quanteda)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(tidytext)
+# 依存句法分析
+library(udpipe)
+# 表格呈现
+library(DT)
+library(flextable)
+
+library(DiagrammeR)
+
+library(FactoMineR)
+library(factoextra)
+# 停止使用科学计数法
+options(scipen = 999)
+# 可视化
+library(GGally)
+library(ggdendro)
+library(igraph)
+library(network)
+library(Matrix)
+# 可视化
+library(scales)
+
+library(tm)
+library(sna)
+
+
+```
+
 ### 任务6.1 高频词分析  {-}
 
 
@@ -128,8 +142,6 @@ topfeatures(dfm_detectives, 20)
 
 ```{r eval=F, echo=T}
 
-library("quanteda.textstats")
-library("quanteda.textplots")
 
 dfm_detectives.freq <- textstat_frequency(dfm_detectives, 
                                           n = 10, 
@@ -148,7 +160,7 @@ ggplot(dfm_detectives.freq,
 ```{r eval=F, echo=T}
 
 
-library(tidytext)
+
 tidy.corps.detectives = tidytext::tidy(corps.detectives)%>%
    unnest_tokens(word, text) %>%
    anti_join(stop_words, by = "word")%>%
@@ -170,7 +182,7 @@ tidy.corps.detectives%>%
 
 
 ```{r eval=F, echo=T}
-options(scipen = 999)
+
 ## 计算两者的词汇频率相关性
 df.freq = tidy.corps.detectives%>%
  select(-n) %>% 
@@ -179,7 +191,7 @@ df.freq = tidy.corps.detectives%>%
                names_to = "author", values_to = "proportion")%>%
   filter(!is.na(Sherlock.txt) & !is.na(proportion))
 
-library(scales)
+
 # expect a warning about rows with missing values being removed
 ggplot(df.freq, aes(x = proportion, y = `Sherlock.txt`, 
                       color = abs(`Sherlock.txt` - proportion))) +
@@ -220,11 +232,7 @@ tstat_keyness <- textstat_keyness(dfm_detectives ,
                                   measure = "lr", 
                                   target = "Sherlock.txt")
 
-tstat_keyness%>%
-  datatable(.,
-  filter = "top",
-  class = 'cell-border stripe hover compact'
-)
+
 
 # Plot estimated word keyness
 textplot_keyness(tstat_keyness,
@@ -442,6 +450,7 @@ trans.new = trans_corpus%>%
   mutate(key = rep(c("E","C"), (row.no/2)),
          id = rep(1:(row.no/2),each=2))%>%
   spread(key, X1)
+
 trans.new %>%
   datatable(.,
   filter = "top",
@@ -740,7 +749,7 @@ keyword_fcm <- sentences %>%
   # create a document-feature matrix (dfm) from the tokens
   quanteda::dfm() %>%
   # select features based on 'top20colls' and the term "selection" pattern
-  quanteda::dfm_select(pattern = c(top20colls, "kill")) %>%
+  quanteda::dfm_select(pattern = c(top20colls, "crime")) %>%
   # Create a symmetric feature co-occurrence matrix (fcm) 
   quanteda::fcm(tri = FALSE)
 
@@ -908,9 +917,11 @@ ggraph(wordnetwork, layout = "fr") +
 
 
 
-## topic modelling
+
 
 ```{r eval=F, echo=T}
+## topic modelling
+
 ## Define the identifier at which we will build a topic model
 dee.df$topic_level_id <- unique_identifier(dee.df, fields = c("doc_id", "paragraph_id", "sentence_id"))
 ## Get a data.frame with 1 row per id/lemma

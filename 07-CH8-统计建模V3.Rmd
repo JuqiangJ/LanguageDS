@@ -46,14 +46,24 @@
 library(tidyverse)
 
 library(gridExtra)
-
 library(showtext)
-
 showtext_auto()  # 自动应用字体
 
+# 统计包
 library(rstatix)
+library(psych)   
+library(lmtest)
 
-# remove scientific notation
+# 功效分析
+library(pwr)
+
+# 可视化
+library(ggfortify)
+# install.packages("corrplot")
+library(corrplot)
+# 模型整洁输出
+library(broom)
+# 去除科学计数
 options(scipen=999)
 
 ```
@@ -98,7 +108,34 @@ df_kurtosis <- data.frame(
 )
 
 
-library(psych)              
+
+# 偏度数据统计
+df_skew %>%
+  group_by(type) %>%
+  summarise(
+    N = n(),
+    Mean = mean(value),
+    SD = sd(value),
+    Skewness = psych::skew(value),
+    Kurtosis = psych::kurtosi(value),
+    .groups = 'drop'
+  ) %>%
+  mutate(across(where(is.numeric), ~ round(., 4))) 
+
+# 峰度数据统计
+df_kurtosis %>%
+  group_by(type) %>%
+  summarise(
+    N = n(),
+    Mean = mean(value),
+    SD = sd(value),
+    Skewness = psych::skew(value),
+    Kurtosis = psych::kurtosi(value),
+    .groups = 'drop'
+  ) %>%
+  mutate(across(where(is.numeric), ~ round(., 4)))
+
+
 
 describeBy(df_skew$value,df_skew$type,digits= 4)  
 
@@ -521,7 +558,8 @@ x= seq(-6, 6, 0.1)
 y3 = dt(x,39)
 plot(x, y3, xlab = "", 
       ylab = "density", ylim = c(0, 0.4), 
-      type = "l", col = 3, lty = 3, lwd = 2)
+      type = "l", col = 2, lty = 1, lwd = 2)
+
 pt(2.0795,39)
 1-pt(2.0795,39)
 
@@ -581,11 +619,13 @@ boxplot(score ~ method, data = method_data,
         xlab = "Teaching Method", 
         ylab = "Vocabulary Test Score",
         col = c("#FF6B6B", "#4ECDC4")) # 为两组设置不同的颜色
+
 # rstatix 
 stat.test = method_data %>% 
   t_test(score ~ method, paired = FALSE) 
 stat.test
 # Create a box plot
+library(ggpubr)
 p <- ggboxplot(
   method_data, x = "method", y = "score", 
   color = "method", 
@@ -718,7 +758,7 @@ wm.aov = aov ( reaction_time  ~ wm_capacity * sentence_type, data = df.wm)
 summary(wm.aov)
 TukeyHSD(wm.aov)
 # 输出简洁表格
-library(broom)
+
 tidy(wm.aov)
 
 # rstatix
@@ -731,7 +771,6 @@ df.wm %>% tukey_hsd(reaction_time  ~ wm_capacity*sentence_type)
 ### 任务8.6 相关分析 {-}
 
 ```{r eval=F, echo=T}
-library(broom)
 
 Liu2007 <- read_csv("data/ch8/Liu2007.csv")
 # %>%
@@ -744,12 +783,13 @@ cor.test(~WF+ AoA,
          data = psychling.df,
          method = "pearson") # method = "kendall", "spearman"
 
-# 多个变量和某一个变量的现象
+# 多变量相关
 # 方法1：使用map和tidy直接处理
 cor.test.mlt = map(psychling.df %>% select(-CON),cor.test,y = psychling.df$CON)
 # 转换为整洁的数据框
 cor_results <- cor.test.mlt %>%
-  map_dfr(tidy, .id = "variable")
+  map_dfr(tidy, .id = "variable")%>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
 
 # 创建相关性森林图
 ggplot(cor_results, aes(x = estimate, y = reorder(variable, estimate))) +
@@ -758,7 +798,7 @@ ggplot(cor_results, aes(x = estimate, y = reorder(variable, estimate))) +
   geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
   scale_color_manual(values = c("显著" = "red", "不显著" = "blue")) +
   labs(
-    title = "各变量与CON的相关性分析",
+    title = "各变量与具象性的相关性分析",
     x = "相关系数 (95% CI)",
     y = "变量",
     color = "显著性"
@@ -770,8 +810,6 @@ ggplot(cor_results, aes(x = estimate, y = reorder(variable, estimate))) +
 cor_matrix <- psychling.df %>%
   cor(use = "pairwise.complete.obs")
 
-# install.packages("corrplot")
-library(corrplot)
 
 # 绘制相关矩阵热图
 corrplot(cor_matrix, 
@@ -792,7 +830,9 @@ psychling.df %>%
                 ifelse(p.value < 0.01, "**",
                       ifelse(p.value < 0.05, "*", "")))
   ) %>%
-  arrange(p.value)
+  arrange(p.value)%>%
+  select(-method)%>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
 ```
 
 
@@ -804,19 +844,26 @@ psychling.df %>% cor_test(AoA, CON, method = "pearson")
 
 
 # Correlation of one variable against all
-psychling.df %>%cor_test(AoA, method = "pearson")
+psychling.df %>%
+  cor_test(AoA, method = "pearson")%>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
 
 
 # Pairwise correlation test between all variables
-psychling.df %>% cor_test(method = "pearson")
+psychling.df %>% 
+  cor_test(method = "pearson")%>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
 
 # Compute correlation matrix
-#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 cor.mat <- psychling.df %>% cor_mat()
 cor.mat
 
 # Show the significance levels
-cor.mat %>% cor_get_pval()
+cor.mat %>% 
+  cor_get_pval()%>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
+
 
 # Replacing correlation coefficients by symbols
 cor.mat %>%
@@ -872,7 +919,8 @@ char.dec.mdl = lm(z.rt.mean~  C1Structure + Frequency + PhonologicalFrequency + 
 
 # 2 查看模型摘要
 summary(char.dec.mdl)
-char.dec.mdl.df = tidy(char.dec.mdl)
+char.dec.mdl.df = tidy(char.dec.mdl)%>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
 # t值本身是系数除以其标准误差得到的值。
 char.dec.mdl.df$estimate/char.dec.mdl.df$std.error
 
@@ -880,20 +928,24 @@ char.dec.mdl.df$estimate/char.dec.mdl.df$std.error
 car::vif(char.dec.mdl)
 
 # 逐步回归
+# 后向
 char.dec.mdl2 = step(char.dec.mdl, direction = "backward", trace = 0)
 summary(char.dec.mdl2)
-step(char.dec.mdl, direction = "forward", trace = 0)
+# 前向
+char.dec.mdl3 = step(char.dec.mdl, direction = "forward", trace = 0)
+summary(char.dec.mdl3)
+
 # 4 回归诊断
 
 # 残存检验
-library(ggfortify)
+
 
 autoplot(char.dec.mdl2, which = c(1:6))
 
 shapiro.test(char.dec.mdl2$residuals) # 残差正态性检验, <.005不通过
 
-library(lmtest)
 
+# lmtest包
 dwtest(char.dec.mdl2) #残差独立性检验, <.005不通过
 
 bptest(char.dec.mdl2) #残差异方差检验, <.005不通过
@@ -940,7 +992,7 @@ print(contingency_table)
 addmargins(contingency_table)
 
 
-# 3. 计算百分比（更深入的理解）
+# 计算百分比（更深入的理解）
 cat("行百分比（%）：\n")
 prop.table(contingency_table, margin = 1) * 100
 
@@ -949,17 +1001,16 @@ cat("列百分比（%）：\n")
 prop.table(contingency_table, margin = 2) * 100
 
 
-# 4. 进行卡方检验
-chi_sq_test <- chisq.test(contingency_table, correct = FALSE)
+# 3. 进行卡方检验
+chi_sq_test = chisq.test(contingency_table, correct = FALSE)
+print(chi_sq_test)
 
-chisq_test(contingency_table)
-
-# 5. 比较情感强化方式差异
+# 4. 比较情感强化方式差异
 
 pairwise_prop_test(contingency_table)
 
 
-# 计算百分比用于绘图
+# 5. 计算百分比用于绘图
 plot_data <- text_analysis_df %>%
   group_by(性别, 情感强化方式) %>%
   summarise(计数 = n(), .groups = 'drop') %>%
@@ -999,10 +1050,6 @@ contingency_table%>%
 ```{r eval=F, echo=T}
 
 
-# 安装和加载pwr包
-# install.packages("pwr")
-library(pwr)
-
 # 1. 双样本t检验的功效分析
 # 例1：计算所需样本量
 # 已知：功效=0.8，效应量d=0.5（中等效应），α=0.05，双侧检验
@@ -1030,7 +1077,7 @@ pwr.t.test(n = 30,
 
 
 # 例3：单侧检验的功效分析
-# 研究药物疗效，只关心是否优于对照（单向）
+
 pwr.t.test(d = 0.4,
            power = 0.9,
            sig.level = 0.05,
@@ -1091,7 +1138,6 @@ pwr.chisq.test(w = effect_size,
 
 ```{r eval=F, echo=T}
 
-library(ggplot2)
 # https://data-wise.github.io/doe/appendix/r-packages/pwr.html#:~:text=The%20pwr%20package%20is%20a%20versatile%20and%20user-friendly,in%20R%2C%20covering%20various%20statistical%20tests%20and%20scenarios.
 
 

@@ -7,25 +7,47 @@ output: word_document
 
 # 第九章 机器学习建模入门
 
-```{r message=FALSE}
-
+```{r eval=F, echo=T}
+# 数据及数据处理
 library(tidyverse)
 library(languageR)
-setwd("~/Nutstore Files/310_Tutorial/LanguageDS-MS")
-library(cluster)
-#library(factoextra)
-library(caTools)
-library(e1071)
-library(flextable)
+
+#可视化
 library(lattice)
-dir.fig = "~/Nutstore Files/310_Tutorial/LanguageDS-MS/fig/ch9/"
 library(plotly)
 library(ggfortify)
+library(plotly)
+library(ggrepel)
+library(factoextra)
+library(ggpubr)
+
+#机器学习建模
+library(cluster)
+library(caTools)
+library(e1071)
+library(ranger) # a c++ implementation of random forest 
+library(tidymodels)
+library(rpart) # direct engine for decision tree application 
+library(caret) # meta engine for decision tree application  
+# Model interpretability packages 
+library(rpart.plot) # for plotting decision trees 
+library(vip) # for feature importance 
+library(pdp) # for feature effects
+library(pROC)
+library(ipred) # for fitting bagged decision trees
+library(Metrics)      # 评估指标
+library(gbm)      # for original implementation of regular and stochastic GBMs
+library(h2o)      # for a java-based implementation of GBM variants
+library(xgboost)  # for fitting extreme gradient boosting
+library(recipes)
+library(randomForest)
+# 表格输出
+library(flextable)
 
 # remove scientific notation
 options(scipen=999)
 
-
+set.seed(123)
 ```
 
 ## 学习目标 {-}
@@ -78,6 +100,29 @@ options(scipen=999)
 
 ### 任务9.1 降维技术：主成份分析与因子分析{-}
 
+```{r eval=F, echo=T}
+# 数据处理函数大合集
+library(tidyverse)
+########################################
+# ✔ dplyr     1.1.3     ✔ readr     2.1.4
+# ✔ forcats   1.0.0     ✔ stringr   1.5.1
+# ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+# ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+# ✔ purrr     1.0.2  
+#########################################
+
+# 可视化
+library(factoextra)
+library(ggfortify)
+# 统计
+library(psych)
+# 文本数据处理
+library(stylo)
+
+
+
+
+```
 #### 主成分分析 {-}
 
 ```{r eval=F, echo=T}
@@ -88,8 +133,11 @@ metrics_SCA <- read_csv("data/ch9/metrics_SCA_novel.CSV")%>%
          author = str_remove(author,"_"))%>%
    mutate(across(where(is.numeric), ~ round(.x, digits = 2)))
 
-# prcomp建模
+# prcomp构建主成分模型
 sc.pr = prcomp(metrics_SCA[, -c(1:10, 25)], scale = T, center = T)
+# 查看模型结果
+names(sc.pr)
+
 # Scree plot
 # components
 props = round((sc.pr$sdev^2/sum(sc.pr$sdev^2)), 3)
@@ -164,8 +212,7 @@ biplot(sc.pr, scale = 0)
 
 # dev.off()
 
-# ggplot2
-library(ggfortify)
+
 # png(paste(dir.fig, paste("ch9_pca_biplot_ggplot2",Sys.Date(),"png",sep = "."),sep = ""), 
 #       units="in", width=5, height=6, res=600)
 
@@ -174,8 +221,7 @@ autoplot(sc.pr, data = metrics_SCA, colour = 'author',
               loadings.label = TRUE, loadings.label.size = 3)
 # dev.off()
 
-# factoextra包
-library(factoextra)
+
 # png(paste(dir.fig, paste("ch9_pca_biplot_factoextra",Sys.Date(),"png",sep = "."),sep = ""), 
 #       units="in", width=5, height=6, res=600)
 
@@ -213,7 +259,7 @@ sc.prin$sdev^2
 # communality 
 apply(sc.prin$loadings^2, 2, sum)
 
-library(psych)
+
 # Perform Varimax rotation on the factor solution
 rotated <- psych::faRotate(sc.prin$loadings,"varimax")
 
@@ -270,6 +316,24 @@ fac.3
 # fac.5 = factanal(metrics_SCA[, -c(1:10,25)], 
 #                   factors = 5,
 #                   scores = "regression")
+
+# 方法1：用 1 - uniqueness
+communality <- 1 - fac.3$uniquenesses
+
+# 方法2：用载荷平方和（验证一致性）
+loadings_matrix <- fac.3$loadings[]
+communality_from_loadings <- rowSums(loadings_matrix^2)
+
+# 比较两种方法
+comparison <- data.frame(
+  变量 = names(fac.3$uniquenesses),
+  独特方差 = round(fac.3$uniquenesses, 4),
+  方法1_公因子方差 = round(communality, 4),
+  方法2_公因子方差 = round(communality_from_loadings, 4),
+  是否相等 = round(communality, 4) == round(communality_from_loadings, 4)
+)
+print(comparison)
+
 
 loadings = loadings(fac.3) 
 plot(loadings, type = "n", xlim = c(-0.4, 1)) 
@@ -345,7 +409,6 @@ text(loadings.rot, rownames(loadings), cex = 0.8)
 #### 对应分析 {-}
 
 ```{r eval=F, echo=T}
-library(stylo)
 
 # 导入文本数据
 style.corpus <- load.corpus(files = "all", 
@@ -391,16 +454,16 @@ wd.df = as.data.frame(culled.freqs1)
 
 ```{r eval=F, echo=T}
 # correspondence analysis
-detect.ca = corres.fnc(wd.df)
+english.fiction.ca = corres.fnc(wd.df)
 
-summary(detect.ca, head = TRUE)
+summary(english.fiction.ca, head = TRUE)
 
 meta.novel = data.frame(books = rownames(wd.df))%>%
       mutate(author = str_extract(books, "[A-z]{1,8}_"),
          author = str_remove(author,"_"))
 
 #biplot
-plot(detect.ca, 
+plot(english.fiction.ca, 
      rlabels = meta.novel$author, 
      rcol = as.numeric(as.factor(meta.novel$author)), 
      rcex = 0.4, 
@@ -427,11 +490,7 @@ df.mds = data.frame(wd.mds,
          mutate(author = str_extract(books, "[A-z]{1,8}_"),
          author = str_remove(author,"_"))
 
-library(ggplot2)
-library(plotly)
-library(dplyr)
-library(stringr)
-library(ggrepel)
+
 
 # 为了方便，数据命名为X1, X2, X3
 colnames(df.mds)[1:3] <- c("Dim1", "Dim2", "Dim3")
@@ -468,7 +527,6 @@ ggplot(df.mds, aes(x = Dim1, y = Dim2, color = author)) +
 #### 层次聚类 {-}
 
 ```{r eval=F, echo=T}
-
 
 #### 检测数据是否可以聚类
 clusttendency <- get_clust_tendency(wd.df,    
@@ -509,7 +567,7 @@ optnclust <- which(optclus == max(optclus)) # determine optimal number of cluste
 groups <- cutree(cd, k=optnclust) # cut tree into optimal number of clusters
 
 
-plot(cd, hang = -1, cex = .75)             # plot result as dendrogram
+plot(cd, hang = -1, cex = .05)             # plot result as dendrogram
 rect.hclust(cd, k = optnclust, border="red") # draw red borders around clusters
 
 ```
@@ -635,7 +693,6 @@ eigenvalue <- round(get_eigenvalue(sc.pr), 1)
 variance.percent <- eigenvalue$variance.percent
 head(eigenvalue)
 
-library(ggpubr)
 
 ggscatter(ind.coord, x = "Dim.1", y = "Dim.2",
   color = "cluster", 
@@ -711,12 +768,13 @@ stylo(frequencies = culled.freqs1,
 ```
 
 
-### 任务9.4 监督学习数据集划分 {-}
+### 任务9.4 监督学习-回归任务 {-}
+
+#### 数据集划分示例 {-}
 
 
 ```{r eval=F, echo=T}
-# Helper packages 
-library(tidymodels)
+
 
 pictureNaming <- read_csv("data/ch9/pictureNaming.new.csv")%>%
   filter(AoA_r != "#NULL!")%>%
@@ -732,18 +790,21 @@ set.seed(123) # for reproducibility
 index_1 <- sample(1:nrow(pictureNaming), round(nrow(pictureNaming) * 0.7)) 
 train_1 <- pictureNaming[index_1, ] 
 test_1 <- pictureNaming[-index_1, ]  
+
 # Using caret package 
 library(caret)
 set.seed(123) # for reproducibility  
 index_2 <- createDataPartition(pictureNaming$RT_harm, p = 0.7, list = FALSE) 
 train_2 <- pictureNaming[index_2, ] 
 test_2 <- pictureNaming[-index_2, ]  
+
 # Using rsample package 
 library(rsample) # for data splitting  
 set.seed(123) # for reproducibility  
 split_1 <- initial_split(pictureNaming, prop = 0.7) 
 train_3 <- training(split_1) 
 test_3 <- testing(split_1)  
+
 # Using h2o package  
 # library(h2o) # for resampling and model training  
 # h2o set-up 
@@ -769,7 +830,7 @@ table(test_strat$LEN) %>% prop.table()
 
 
 ```
-### 任务9.5 监督学习缺失数据 {-}
+#### 缺失数据 {-}
 
 ```{r eval=F, echo=T}
 pictureNaming.miss <- read_csv("data/ch9/pictureNaming.missing.csv")%>%
@@ -802,7 +863,7 @@ pictureNaming.recipe <- recipe(RT_harm ~ ., data = pictureNaming_train) %>%
 
 ```
 
-### 任务9.6 监督学习特征工程 {-}
+#### 特征工程 {-}
 ```{r eval=F, echo=T}
 
 # 删除零方差变量
@@ -850,18 +911,14 @@ baked_test <- bake(prepare, new_data = pictureNaming_test)
 ```
 
 
-### 任务9.7 监督学习回归任务 {-}
+#### 回归任务建模 {-}
 
 ```{r eval=F, echo=T}
-# Modeling packages 
-library(rpart) # direct engine for decision tree application 
-library(caret) # meta engine for decision tree application  
-# Model interpretability packages 
-library(rpart.plot) # for plotting decision trees 
-library(vip) # for feature importance 
-library(pdp) # for feature effects
+
+
 
 # 数据分为训练集和测试集
+set.seed(123)
 pictureNaming_split <- initial_split(pictureNaming, prop = 0.7) 
 pictureNaming_train <- training(pictureNaming_split) 
 pictureNaming_test <- testing(pictureNaming_split)
@@ -895,7 +952,7 @@ results <- data.frame(
   Residual = test_actual - test_predictions
 )
 
-library(Metrics)      # 评估指标
+
 # 基础回归评估指标
 model_performance <- data.frame(
   # 1. 误差指标
@@ -947,7 +1004,7 @@ vip(pictureNaming_m3, num_features = 7, bar = FALSE)
 
 ```
 
-### 任务9.8 监督学习分类任务 {-}
+### 任务9.5 监督学习分类任务 {-}
 
 ```{r eval=F, echo=T}
 
@@ -991,9 +1048,7 @@ probabilities <- predict(datasetAE.tree1,
                          newdata = datasetAE_test, 
                          type = "prob")
 
-# 加载评估包
-library(caret)
-library(pROC)
+
 
 # 创建混淆矩阵
 confusion_matrix <- confusionMatrix(predictions, 
@@ -1088,7 +1143,7 @@ dev.off()
 #### bagging  {-}
 
 ```{r eval=F, echo=T}
-library(ipred) # for fitting bagged decision trees
+
 
 # make bootstrapping reproducible 
 set.seed(123)  
@@ -1103,17 +1158,9 @@ datasetAE_bag1 <- bagging( formula = focus_type ~ ., data = datasetAE_train,
 #### random forest  {-}
 
 ```{r eval=F, echo=T}
-# Modeling packages 
 
-# Helper packages 
-library(dplyr) # for data wrangling 
-library(ggplot2) # for awesome graphics  
-# Modeling packages 
-library(ranger) # a c++ implementation of random forest 
-library(h2o) # a java-based implementation of random forest
+## package 1 = randomForest
 
-## package 1
-library(randomForest)
 
 set.seed(123)
 
@@ -1129,6 +1176,7 @@ varImpPlot(RF_AE, n.var= 5, main ="AE")
 
 as.data.frame(RF_AE$confusion)%>%
 mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+
   flextable()%>%
   set_caption(caption = "Table x .")
 
@@ -1179,7 +1227,7 @@ print(metrics_summary)
 
 ```{r eval=F, echo=T}
 ## ranger package
-library(ranger) # a c++ implementation of random forest 
+
 # number of features  
 n_features <- length(setdiff(names(datasetAE_train), "focus_type"))  
 
@@ -1272,8 +1320,8 @@ dev.off()
 
 
 ```{r eval=F, echo=T}
-# pacakge 3
-library(h2o) # a java-based implementation of random forest
+# pacakge 3 = h2o
+
 h2o.no_progress()
 h2o.init(max_mem_size = "5g")
 
@@ -1350,10 +1398,6 @@ h2o_rf1
 
 
 ```{r eval=F, echo=T}
-# Modeling packages
-library(gbm)      # for original implementation of regular and stochastic GBMs
-library(h2o)      # for a java-based implementation of GBM variants
-library(xgboost)  # for fitting extreme gradient boosting
 
 h2o.init(max_mem_size = "10g")
 
@@ -1516,7 +1560,7 @@ best_model <- h2o.getModel(best_model_id)
 h2o.performance(model = best_model, xval = TRUE)
 
 #### XGBoost
-library(recipes)
+
 xgb_prep <- recipe(focus_type ~ ., data = datasetAE_train) %>%
   step_integer(all_nominal()) %>%
   prep(training = datasetAE_train, retain = TRUE) %>%
@@ -1718,8 +1762,6 @@ datasetCE2 = read_csv("data/ch9/datasetCE2.CSV")
 datasetCE1$focus_type = as.factor(datasetCE1$focus_type)
 datasetCE2$focus_type = as.factor(datasetCE2$focus_type)
 
-
-
 #svm
 y_predCE1 = predict(svm_AE, newdata = datasetCE1[-1])
 y_predCE2 = predict(svm_AE, newdata = datasetCE2[-1])
@@ -1733,7 +1775,9 @@ as.data.frame(conf_ce1$table)%>%
   group_by(Reference)%>%
   mutate(accuracy = Freq/sum(Freq),
          LANG = "CE1")%>%
-  mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 2)))
+
+%>%
   flextable()%>%
   set_caption(caption = "Table x CE1.")
 
@@ -1741,7 +1785,8 @@ as.data.frame(conf_ce2$table)%>%
   group_by(Reference)%>%
   mutate(accuracy = Freq/sum(Freq),
          LANG = "CE2")%>%
-  mutate(across(where(is.numeric), ~ round(.x, digits = 2)))%>%
+  mutate(across(where(is.numeric), ~ round(.x, digits = 2)))
+%>%
   flextable()%>%
   set_caption(caption = "Table x CE2.")
 

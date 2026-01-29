@@ -1,6 +1,36 @@
 
 # 声学分析项目案例
 
+
+```{r message=FALSE, warning=FALSE }
+
+#install.packages("plotfunctions")
+library(tidyverse)
+
+# 统计建模
+library(mgcv)
+library(lme4)
+library(car)
+library(lsmeans)
+library(rstatix)
+require(nlme)
+
+## 作图
+library(itsadug)
+# plot the comparison
+library(cowplot)
+
+# remove scientific notation
+options(scipen=999)
+
+# 计算置信区间
+library(rcompanion)
+
+```
+
+
+
+
 ## 案例12.1 越南语南北方言声调曲拱对比 {-}
 
 
@@ -13,20 +43,6 @@
 ### 数据收集
 
 ### 数据处理
-
-
-```{r message=FALSE, warning=FALSE }
-
-setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
-#install.packages("plotfunctions")
-library(tidyverse)
-## 构建模型
-library(mgcv)
-## 作图
-library(itsadug)
-```
-
-
 
 
 ```{r eval=F, echo=T}
@@ -206,23 +222,14 @@ plot_smooth(model.sv.b, view="Time",
             v0 = 6, rug=FALSE,rm.ranef=T, 
             col="green",add=T)
 
-# testing if the tone contrast exists
-#solution 1
-model.sv.b = bam(normF0 ~ tone + s(Time, by=tone)+
+
+model.sv = bam(normF0 ~ tone + s(Time, by=tone)+
                    s(Time, subject, by = tone, bs = "fs", m = 1),
-                 rho = svacf[2],
-                 AR.start = sv.data$start.event, 
-                 discrete = T, 
-                 nthreads = 2,
                  data= sv.data)
-model.sv.b0 = bam(normF0 ~ tone + 
+model.sv0 = bam(normF0 ~ tone +  s(Time)+
                    s(Time, subject, by = tone, bs = "fs", m = 1),
-                 rho = svacf[2],
-                 AR.start = sv.data$start.event, 
-                 discrete = T, 
-                 nthreads = 2,
                  data= sv.data)
-compareML(model.sv, model.sv.b0)
+compareML(model.sv.b, model.sv.b0)
 
 # solution 2
 sv.data$IS214 = (sv.data$tone == "SV214")*1
@@ -258,9 +265,7 @@ summary(model.sv.ord )
 
 
 ```{r eval=F, echo=T}
-## 展示与呈现
-# plot the comparison
-library(cowplot)
+
 
 # png(paste(dir.fig, paste("gam.mdl",Sys.Date(),"png",sep = "."),sep = ""), units="in", width=14, height=10, res=600)
 
@@ -325,14 +330,9 @@ plot_smooth(model.sv.b, view="Time",
 #### 数据处理 {-}
 
 ```{r eval=F, echo=T}
-# set storage directory
-setwd("~/Nutstore Files/115_JournalPaper/3_Cog_imitation")
-dir.processed = "/Users/chenjuqiang/Nutstore Files/115_JournalPaper/3_Cog_imitation/data/processed/"
-dir.fig = "/Users/chenjuqiang/Nutstore Files/115_JournalPaper/3_Cog_imitation/data/figures/"
-dir.tbl = "/Users/chenjuqiang/Nutstore Files/115_JournalPaper/3_Cog_imitation/data/tables/"
-  
+
 ##### import eprime data
-  ep_md <- read.delim("data/raw/md_ep.txt")
+  ep_md <- read.delim("data/ch12/md_ep.txt")
   
 #data cleaning
   ep_md_clean <- ep_md%>%
@@ -369,7 +369,7 @@ dir.tbl = "/Users/chenjuqiang/Nutstore Files/115_JournalPaper/3_Cog_imitation/da
   #duration
   
   #set working directory
-  duration_md_file = list.files("data/interim/md_mean",full.names=T)
+  duration_md_file = list.files("data/ch12/md_mean",full.names=T)
 
 # duration data
   #mandarin data
@@ -407,7 +407,7 @@ dir.tbl = "/Users/chenjuqiang/Nutstore Files/115_JournalPaper/3_Cog_imitation/da
   # 
 
 #loading 10 point f0 data
-filename_md = list.files("data/interim/md_norm_f0",full.names=T)
+filename_md = list.files("data/ch12/md_norm_f0",full.names=T)
  
 #mandarin
   df_md_f0 = data.frame()
@@ -463,13 +463,13 @@ filename_md = list.files("data/interim/md_norm_f0",full.names=T)
               maxloc = which.max(F0norm)/8)%>%
     ungroup()
  
-   write.csv(md_imit_8points,
-            file = paste(dir.processed,
-                         paste("md_imit_8points",
-                               Sys.Date(),
-                               "csv",
-                               sep = "."),
-                         sep = "") ,row.names = FALSE)
+   # write.csv(md_imit_8points,
+   #          file = paste(dir.processed,
+   #                       paste("md_imit_8points",
+   #                             Sys.Date(),
+   #                             "csv",
+   #                             sep = "."),
+   #                       sep = "") ,row.names = FALSE)
   
   # md_all = left_join(md, imit_excursion, by = c("bundle", "id"))
   
@@ -479,7 +479,7 @@ filename_md = list.files("data/interim/md_norm_f0",full.names=T)
 #####################
 
   #stimulus syllabe duration
-  stim.duration <- read.delim("data/interim/stim_duration.txt", na.strings="--undefined--", stringsAsFactors=FALSE)
+  stim.duration <- read.delim("data/ch12/stim_duration.txt", na.strings="--undefined--", stringsAsFactors=FALSE)
   
   colnames(stim.duration)= c("rowLabel", "stim_duration")
   
@@ -496,7 +496,7 @@ filename_md = list.files("data/interim/md_norm_f0",full.names=T)
   
   #Thai 10 point
   
-  raw.10points = read.delim("data/interim/stim_normf0.txt")
+  raw.10points = read.delim("data/ch12/stim_normf0.txt")
   
   #get excursion
   stim.8point = raw.10points%>%
@@ -520,13 +520,13 @@ write.csv(stim.8point,
                                sep = "."),
                          sep = "") ,row.names = FALSE)  
   
-  stim.discret = stim.8point%>%
+stim.discret = stim.8point%>%
     group_by(informant, tone, token, syllable)%>%
     summarise(mean.stim=mean(F0norm.stim),
               excursion.stim = max(F0norm.stim)-min(F0norm.stim),
               maxloc.stim = which.max(F0norm.stim)/8)
   
-  stimuli.data.all = stim.discret%>% 
+stimuli.data.all = stim.discret%>% 
     left_join(., stim.duration, by = c("informant", "tone", "token", "syllable"))%>%
     select(informant, 
            tone, 
@@ -545,7 +545,7 @@ write.csv(stim.8point,
   
 # duration difference score
   
-ds_md_dur = dur_md %>%
+ds.md.dur = dur_md %>%
     mutate(., informant = as.character(informant),
            syllable = str_extract(syllable, "m[a-z]{1}"),
            syllable = as.character(syllable),
@@ -574,7 +574,7 @@ ds_md_dur = dur_md %>%
 
   
   # discrete difference score
-  ds_md_discrete = md_imit_discrete %>%
+  ds.md.discrete = md_imit_discrete %>%
     mutate(., informant = as.character(informant),
            syllable = str_extract(syllable, "m[a-z]{1}"),
            syllable = as.character(syllable),
@@ -627,11 +627,7 @@ ds_md_dur = dur_md %>%
 #### 数据建模 {-}
 
 ```{r eval=F, echo=T}
-library(tidyverse)
-#install packages
-library(lme4)
-# remove scientific notation
-options(scipen=999)
+
 
   
 #import data
@@ -656,9 +652,6 @@ ds.md.dur  <- read.csv(paste(dir.processed,
 
 #### Experiemnt 1 ####
 
-library(car)
-library(lsmeans)
-require(nlme)
 # convert tone into a categorical variable
 ds.md.dur$tone = as.factor(ds.md.dur$tone)
 ds.md.dur$subject = as.factor(ds.md.dur$subject)
@@ -776,7 +769,6 @@ ds.md.241 = ds.all.discrete%>%
                           conf = 0.95,
                           digits = 3)
 
-library(rcompanion)
 ds.all.discrete%>%
     groupwiseMean(df_meanf0 ~ language + speaker,
                           data = .,
@@ -1093,6 +1085,7 @@ appendix1a.new = Anova(imit.md.f0mean, test = "F")
 appendix1b.new = Anova(imit.md.excursion, test = "F")
 appendix1c.new = Anova(imit.md.maxloc, test = "F")
 
+appendix0a.new = Anova(imit.md.dur, test = "F")
 
 md_model.p3 = cbind(appendix1a,appendix1b,appendix1c)
 

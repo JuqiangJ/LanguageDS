@@ -1,5 +1,49 @@
 # 文本分析项目案例
 
+
+```{r eval=F, echo=T}
+# 数据处理
+library(tidyverse)
+
+# 文本数据分析
+library(quanteda)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(tidytext)
+require(readtext)
+library(jiebaR) #中文分词
+
+# 表格输出
+library(DT)
+library(flextable)
+
+# 整洁模型输出
+library(broom)
+
+# 计算置信区间
+library(rcompanion)
+
+# 可视化
+library(cowplot)
+library("RColorBrewer")
+library(ggpubr) # add r values in regression lines
+# 显示中文
+library(showtext)
+showtext_auto()
+
+# 统计建模
+library(lme4)
+library(lsmeans)
+library(rstatix)
+
+# remove scientific notation
+options(scipen=999)
+
+#filter function
+`%!in%` <- Negate(`%in%`)
+
+```
+
 ## 案例11.1 狄仁杰小说翻译文体风格 {-}
 
 
@@ -7,38 +51,7 @@
 ![详细背景请看原文献](images/11.1.png)
 
 
-```{r eval=F, echo=T}
-library(tidyverse)
 
-library(lme4)
-library(lsmeans)
-library(DT)
-# for cleaning up stats
-library(broom)
-# calculate confidence intervals
-library(rcompanion)
-library(cowplot)
-library(flextable)
-library(tidyverse)
-library(quanteda)
-
-require(readtext)
-library(quanteda.textstats)
-
-library(tidytext)
-
-library(rstatix)
-library(flextable)
-#install.packages("RColorBrewer")
-library("RColorBrewer")
-# remove scientific notation
-options(scipen=999)
-setwd("/Users/chenjuqiang/Nutstore Files/310_Tutorial/LanguageDS-MS/认知科学与数据挖掘")
-
-processed.dir = "data/processed/"
-tbl.fig = "data/tbl_fig/"
-
-```
 
 ### 研究背景 {-}
 
@@ -54,7 +67,7 @@ tbl.fig = "data/tbl_fig/"
 #### 数据加工 {-}
 
 ```{r eval=F, echo=T}
-dee.raw =readtext("data/session3/*.txt", docvarsfrom = "filenames")
+dee.raw =readtext("data/ch11/*.txt", docvarsfrom = "filenames")
 
 dee.corpus = corpus(dee.raw)
 
@@ -82,7 +95,9 @@ dee.corpus.summary%>%
 
 
 ```{r eval=F, echo=T}
-lexical.diversity <- textstat_lexdiv(dee.dfm, measure = "all")
+lexical.diversity <- textstat_lexdiv(dee.dfm, measure = "all")%>%
+  			mutate(across(where(is.numeric), ~ round(., 3)))
+
 
 lexical.mattr <- textstat_lexdiv(tokens(dee.corpus), 
                                  measure = "MATTR", 
@@ -93,7 +108,7 @@ lexical.mattr <- textstat_lexdiv(tokens(dee.corpus),
 ##### Syntactic complexity {-}
 
 ```{r eval=F, echo=T}
-metrics_SCA <- read_csv("data/session3/metrics_SCA.csv")
+metrics_SCA <- read_csv("data/ch11/metrics_SCA.csv")
 
 metrics_SCA.ci = metrics_SCA%>%
   filter(text !="01.txt")%>%
@@ -303,32 +318,9 @@ t.test(readability$Spache[2:17], mu = readability$Spache[1], alternative = "less
 
 ```{r message = FALSE, warning = FALSE}
 
-library(tidyverse)
-library(tidytext)
-library(quanteda)
-library(stringr)
-library(jiebaR)
-library(readtext)
-library(rstatix)
-# for cleaning up stats
-library(broom)
-# calculate confidence intervals
-library(rcompanion)
-library(cowplot)
-library(flextable)
-# remove scientific notation
-options(scipen=999)
 
-# add r values in regression lines
-library(ggpubr)
-# show chinese characters in ggplot
-library(showtext)
-showtext_auto()
 
-#filter function
-`%!in%` <- Negate(`%in%`)
 
-setwd("~/Nutstore Files/310_Tutorial/LanguageDS-e")
 
 ```
 
@@ -848,8 +840,7 @@ score.linguistic.cor.final = score.linguistic.correlation.full%>%
          statistic = round(statistic, 0),
          p = round(p,4))%>%
   filter(group == "patient")%>%
-  filter(var %in% c("score-ttr","score-c","score-r","score-AQ",
-                    "ttr-AQ","c-AQ","r-AQ"))
+  filter(var %in% c("score-r"))
 
 
 

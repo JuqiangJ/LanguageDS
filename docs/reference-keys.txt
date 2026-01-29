@@ -90,7 +90,6 @@ ggplot2图形语法
 课堂任务-4
 使用quanteda自带的函数
 tidytext
-topic-modelling
 第七章-语音数据分析
 语音数据产生的生理基础
 语音数据的声学特征
